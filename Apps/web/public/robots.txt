@@ -1,0 +1,76 @@
+# Luxury Properties Ltd - robots.txt
+# https://luxurypropertiesltd.com.ng
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+Disallow: /_next/
+Disallow: /assets/
+Disallow: /*.json$
+Disallow: /*?_escaped_fragment_
+Disallow: /*?sort=
+Disallow: /*?filter=
+Disallow: /*?page=
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /auth/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# Ahrefs (allow for backlink analysis)
+User-agent: AhrefsBot
+Allow: /
+
+# Semrush (allow for analysis)
+User-agent: SemrushBot
+Allow: /
+
+# MJ12bot (allow for Majestic analysis)
+User-agent: MJ12bot
+Allow: /
+
+# Sitemaps
+Sitemap: https://luxurypropertiesltd.com.ng/sitemap.xml
+
+# Crawl-delay for polite bots
+User-agent: *
+Crawl-delay: 2
+
+# Social Media Crawlers (allow fully)
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# AI/LLM Crawlers
+User-agent: GPTBot
+Allow: /llms.txt
+Disallow: /
+
+User-agent: ChatGPT-User
+Allow: /llms.txt
+Disallow: /
+
+User-agent: ClaudeBot
+Allow: /llms.txt
+Disallow: /
+
+User-agent: Amazonbot
+Allow: /llms.txt
+Disallow: /
