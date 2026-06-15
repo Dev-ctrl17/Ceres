@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import pb from "@/lib/pocketbaseClient";
+import supabase from "@/lib/supabaseClient";
 
 const ContactForm = ({ propertyId = null }) => {
   const [loading, setLoading] = useState(false);
@@ -29,7 +29,11 @@ const ContactForm = ({ propertyId = null }) => {
         isContacted: false,
       };
 
-      await pb.collection("leads").create(leadData, { $autoCancel: false });
+      const { error } = await supabase
+        .from("leads")
+        .insert(leadData);
+
+      if (error) throw error;
       toast.success("Message sent successfully. We will contact you soon.");
       reset();
     } catch (error) {

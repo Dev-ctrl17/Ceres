@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import pb from "@/lib/pocketbaseClient";
+import supabase from "@/lib/supabaseClient";
 
 const PropertySubmissionForm = () => {
   const [loading, setLoading] = useState(false);
@@ -27,32 +27,31 @@ const PropertySubmissionForm = () => {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const formData = new FormData();
-      formData.append("title", data.title);
-      formData.append("description", data.description || "");
-      formData.append("price", data.price || 0);
-      formData.append("location", data.location || "");
-      formData.append("propertyType", propertyType);
-      formData.append("ownerName", data.ownerName || "");
-      formData.append("ownerEmail", data.ownerEmail || "");
-      formData.append("ownerPhone", data.ownerPhone || "");
-      formData.append("status", "Pending");
+      const submissionData = {
+        title: data.title,
+        description: data.description || "",
+        price: parseFloat(data.price) || 0,
+        location: data.location || "",
+        propertyType: propertyType,
+        ownerName: data.ownerName || "",
+        ownerEmail: data.ownerEmail || "",
+        ownerPhone: data.ownerPhone || "",
+        status: "Pending",
+      };
 
-      if (data.images && data.images.length > 0) {
-        for (let i = 0; i < data.images.length; i++) {
-          formData.append("images", data.images[i]);
-        }
-      }
+      const { error } = await supabase
+        .from("propertySubmissions")
+        .insert(submissionData);
 
-      await pb
-        .collection("propertySubmissions")
-        .create(formData, { $autoCancel: false });
+      if (error) throw error;
+
       toast.success(
         "Property submitted successfully. Our team will review it shortly.",
       );
       reset();
       setPropertyType("");
     } catch (error) {
+      console.error(error);
       toast.error("Failed to submit property. Please try again.");
     } finally {
       setLoading(false);

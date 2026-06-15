@@ -4,7 +4,8 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star } from 'lucide-react';
-import pb from '@/lib/pocketbaseClient';
+import supabase from '@/lib/supabaseClient';
+import { getFileUrl } from '@/lib/supabaseService';
 
 const ReviewsPage = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -13,11 +14,13 @@ const ReviewsPage = () => {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const records = await pb.collection('testimonials').getFullList({
-          sort: '-created',
-          $autoCancel: false,
-        });
-        setTestimonials(records);
+        const { data, error } = await supabase
+          .from('testimonials')
+          .select('*')
+          .order('created', { ascending: false });
+
+        if (error) throw error;
+        setTestimonials(data || []);
       } catch (error) {
         console.error('Failed to fetch testimonials:', error);
       } finally {
@@ -84,38 +87,43 @@ const ReviewsPage = () => {
               </div>
             ) : (
               <div className="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-                {testimonials.map((testimonial) => (
-                  <Card key={testimonial.id} className="break-inside-avoid">
-                    <CardContent className="p-6">
-                      <div className="flex mb-4">{renderStars(testimonial.rating)}</div>
-                      <p className="text-muted-foreground leading-relaxed mb-4">
-                        {testimonial.testimonialText}
-                      </p>
-                      <div className="flex items-center space-x-3">
-                        {testimonial.clientPhoto ? (
-                          <img
-                            src={pb.files.getUrl(testimonial, testimonial.clientPhoto)}
-                            alt={testimonial.clientName}
-                            className="w-12 h-12 rounded-xl object-cover"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                            <span className="text-lg font-bold text-primary">
-                              {testimonial.clientName.charAt(0)}
-                            </span>
-                          </div>
-                        )}
-                        <div>
-                          <p className="font-semibold">{testimonial.clientName}</p>
-                          {testimonial.serviceType && (
-                            <p className="text-sm text-muted-foreground">{testimonial.serviceType}</p>
+                {testimonials.map((testimonial) => {
+                  const photoUrl = testimonial.clientPhoto
+                    ? getFileUrl("agent-photos", testimonial.clientPhoto)
+                    : null;
+                  return (
+                    <Card key={testimonial.id} className="break-inside-avoid">
+                      <CardContent className="p-6">
+                        <div className="flex mb-4">{renderStars(testimonial.rating)}</div>
+                        <p className="text-muted-foreground leading-relaxed mb-4">
+                          {testimonial.testimonialText}
+                        </p>
+                        <div className="flex items-center space-x-3">
+                          {photoUrl ? (
+                            <img
+                              src={photoUrl}
+                              alt={testimonial.clientName}
+                              className="w-12 h-12 rounded-xl object-cover"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                              <span className="text-lg font-bold text-primary">
+                                {testimonial.clientName?.charAt(0) || '?'}
+                              </span>
+                            </div>
                           )}
+                          <div>
+                            <p className="font-semibold">{testimonial.clientName}</p>
+                            {testimonial.serviceType && (
+                              <p className="text-sm text-muted-foreground">{testimonial.serviceType}</p>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                      </CardContent>
+                    </Card>
+                  );
+                })}
               </div>
             )}
           </div>
@@ -124,10 +132,6 @@ const ReviewsPage = () => {
         <section className="py-20 bg-muted">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold mb-12 text-center">Google Reviews</h2>
-            {/* Elfsight Google Reviews Widget
-            <div className="flex justify-center mb-8">
-              <div className="elfsight-app-0a882bc9-6f84-4cbf-b147-303cfc2d7b06" data-elfsight-app-lazy></div>
-            </div> */}
             <div className="text-center">
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 We value your feedback. Leave us a review on Google to help others make informed decisions.

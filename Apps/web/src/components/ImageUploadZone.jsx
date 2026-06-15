@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
-import { UploadCloud, X, GripVertical } from "lucide-react";
+import { UploadCloud, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import pb from "@/lib/pocketbaseClient";
+import { getFileUrl } from "@/lib/supabaseService";
 
 const ImageUploadZone = ({
   images,
@@ -44,6 +44,11 @@ const ImageUploadZone = ({
   );
 
   const totalImages = images.length + existingImages.length;
+
+  const getImageUrl = (filename) => {
+    if (!record) return null;
+    return getFileUrl("property-images", filename) || filename;
+  };
 
   return (
     <div className="space-y-4">
@@ -90,10 +95,13 @@ const ImageUploadZone = ({
               className="relative group aspect-video rounded-lg overflow-hidden border bg-muted"
             >
               <img
-                src={pb.files.getUrl(record, filename)}
+                src={getImageUrl(filename)}
                 alt={`Property ${idx}`}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                onError={(e) => {
+                  e.target.src = "https://via.placeholder.com/400x300?text=Image";
+                }}
               />
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <Button

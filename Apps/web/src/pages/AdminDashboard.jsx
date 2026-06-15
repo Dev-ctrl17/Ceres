@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext.jsx";
 import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
-import pb from "@/lib/pocketbaseClient";
+import supabase from "@/lib/supabaseClient";
+import { getFileUrl } from "@/lib/supabaseService";
 import {
   Package,
   Users,
   Star,
   MessageSquare,
+  UsersRound,
   Plus,
   Edit,
   Trash2,
@@ -57,6 +60,7 @@ const AdminDashboard = () => {
 const TABS = [
   { id: "properties", label: "Properties", icon: Package },
   { id: "agents", label: "Agents", icon: Users },
+  { id: "team", label: "Team Members", icon: UsersRound },
   { id: "reviews", label: "Reviews", icon: Star },
   { id: "testimonials", label: "Testimonials", icon: MessageSquare },
 ];
@@ -73,6 +77,8 @@ const DashboardTabs = () => {
         return ReviewsManager;
       case "testimonials":
         return TestimonialsManager;
+      case "team":
+        return TeamMembersManager;
       default:
         return PropertiesManager;
     }
@@ -107,10 +113,13 @@ const PropertiesManager = () => {
 
   const fetchProperties = async () => {
     try {
-      const records = await pb
-        .collection("properties")
-        .getFullList({ $autoCancel: false, sort: "-created" });
-      setProperties(records);
+      const { data, error } = await supabase
+        .from("properties")
+        .select("*")
+        .order("created", { ascending: false });
+
+      if (error) throw error;
+      setProperties(data || []);
     } catch (err) {
       toast.error("Failed to load properties");
     }
@@ -147,10 +156,19 @@ const PropertiesManager = () => {
   const onSubmit = async (data) => {
     try {
       if (editing) {
-        await pb.collection("properties").update(editing, data);
+        const { error } = await supabase
+          .from("properties")
+          .update(data)
+          .eq("id", editing);
+
+        if (error) throw error;
         toast.success("Property updated");
       } else {
-        await pb.collection("properties").create(data);
+        const { error } = await supabase
+          .from("properties")
+          .insert(data);
+
+        if (error) throw error;
         toast.success("Property created");
       }
       setDialogOpen(false);
@@ -163,12 +181,25 @@ const PropertiesManager = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this property?")) return;
     try {
-      await pb.collection("properties").delete(id);
+      const { error } = await supabase
+        .from("properties")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
       toast.success("Property deleted");
       fetchProperties();
     } catch (err) {
       toast.error("Delete failed");
     }
+  };
+
+  const getPropertyImageUrl = (property) => {
+    if (property.images && property.images.length > 0) {
+      return getFileUrl("property-images", property.images[0]) || property.images[0];
+    }
+    if (property.image_url) return property.image_url;
+    return null;
   };
 
   return (
@@ -258,15 +289,18 @@ const PropertiesManager = () => {
           >
             <div className="flex items-center gap-3">
               <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
-                {p.images && p.images.length > 0 ? (
-                  <img
-                    src={pb.files.getUrl(p, p.images[0])}
-                    alt={p.title}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">No img</div>
-                )}
+                {(() => {
+                  const url = getPropertyImageUrl(p);
+                  return url ? (
+                    <img
+                      src={url}
+                      alt={p.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">No img</div>
+                  );
+                })()}
               </div>
               <div>
                 <h3 className="font-semibold">{p.title}</h3>
@@ -311,10 +345,13 @@ const AgentsManager = () => {
 
   const fetchAgents = async () => {
     try {
-      const records = await pb
-        .collection("agents")
-        .getFullList({ $autoCancel: false, sort: "-created" });
-      setAgents(records);
+      const { data, error } = await supabase
+        .from("agents")
+        .select("*")
+        .order("created", { ascending: false });
+
+      if (error) throw error;
+      setAgents(data || []);
     } catch (err) {
       toast.error("Failed to load agents");
     }
@@ -362,20 +399,26 @@ const AgentsManager = () => {
     }
     setIsSubmitting(true);
     try {
-      const submitData = new FormData();
-      submitData.append("name", formValues.name);
-      submitData.append("email", formValues.email);
-      submitData.append("phone", formValues.phone);
-
-      if (photoFile instanceof File) {
-        submitData.append("photo", photoFile);
-      }
+      const submitData = {
+        name: formValues.name,
+        email: formValues.email,
+        phone: formValues.phone,
+      };
 
       if (editing) {
-        await pb.collection("agents").update(editing, submitData, { $autoCancel: false });
+        const { error } = await supabase
+          .from("agents")
+          .update(submitData)
+          .eq("id", editing);
+
+        if (error) throw error;
         toast.success("Agent updated");
       } else {
-        await pb.collection("agents").create(submitData, { $autoCancel: false });
+        const { error } = await supabase
+          .from("agents")
+          .insert(submitData);
+
+        if (error) throw error;
         toast.success("Agent created");
       }
       setDialogOpen(false);
@@ -390,12 +433,23 @@ const AgentsManager = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this agent?")) return;
     try {
-      await pb.collection("agents").delete(id);
+      const { error } = await supabase
+        .from("agents")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
       toast.success("Agent deleted");
       fetchAgents();
     } catch (err) {
       toast.error("Delete failed");
     }
+  };
+
+  const getAgentPhotoUrl = (agent) => {
+    if (agent.photo) return getFileUrl("agent-photos", agent.photo);
+    if (agent.image) return getFileUrl("agent-photos", agent.image);
+    return null;
   };
 
   return (
@@ -464,45 +518,48 @@ const AgentsManager = () => {
         </Dialog>
       </div>
       <div className="grid gap-4">
-        {agents.map((a) => (
-          <div
-            key={a.id}
-            className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
-                {a.photo ? (
-                  <img
-                    src={pb.files.getUrl(a, a.photo)}
-                    alt={a.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-500 font-bold">
-                    {a.name?.charAt(0) || "?"}
-                  </div>
-                )}
+        {agents.map((a) => {
+          const photoUrl = getAgentPhotoUrl(a);
+          return (
+            <div
+              key={a.id}
+              className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+                  {photoUrl ? (
+                    <img
+                      src={photoUrl}
+                      alt={a.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-500 font-bold">
+                      {a.name?.charAt(0) || "?"}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <h3 className="font-semibold">{a.name}</h3>
+                  <p className="text-sm text-gray-500">{a.phone}</p>
+                  <p className="text-xs text-gray-400">{a.email}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="font-semibold">{a.name}</h3>
-                <p className="text-sm text-gray-500">{a.phone}</p>
-                <p className="text-xs text-gray-400">{a.email}</p>
+              <div className="flex gap-2">
+                <Button size="sm" variant="outline" onClick={() => openEdit(a)}>
+                  <Edit className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => handleDelete(a.id)}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </Button>
               </div>
             </div>
-            <div className="flex gap-2">
-              <Button size="sm" variant="outline" onClick={() => openEdit(a)}>
-                <Edit className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="destructive"
-                onClick={() => handleDelete(a.id)}
-              >
-                <Trash2 className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );
@@ -517,10 +574,13 @@ const ReviewsManager = () => {
 
   const fetchReviews = async () => {
     try {
-      const records = await pb
-        .collection("reviews")
-        .getFullList({ $autoCancel: false, sort: "-created" });
-      setReviews(records);
+      const { data, error } = await supabase
+        .from("reviews")
+        .select("*")
+        .order("created", { ascending: false });
+
+      if (error) throw error;
+      setReviews(data || []);
     } catch (err) {
       toast.error("Failed to load reviews");
     }
@@ -550,10 +610,19 @@ const ReviewsManager = () => {
   const onSubmit = async (data) => {
     try {
       if (editing) {
-        await pb.collection("reviews").update(editing, data);
+        const { error } = await supabase
+          .from("reviews")
+          .update(data)
+          .eq("id", editing);
+
+        if (error) throw error;
         toast.success("Review updated");
       } else {
-        await pb.collection("reviews").create(data);
+        const { error } = await supabase
+          .from("reviews")
+          .insert(data);
+
+        if (error) throw error;
         toast.success("Review created");
       }
       setDialogOpen(false);
@@ -566,7 +635,12 @@ const ReviewsManager = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this review?")) return;
     try {
-      await pb.collection("reviews").delete(id);
+      const { error } = await supabase
+        .from("reviews")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
       toast.success("Review deleted");
       fetchReviews();
     } catch (err) {
@@ -658,10 +732,13 @@ const TestimonialsManager = () => {
 
   const fetchTestimonials = async () => {
     try {
-      const records = await pb
-        .collection("testimonials")
-        .getFullList({ $autoCancel: false, sort: "-created" });
-      setTestimonials(records);
+      const { data, error } = await supabase
+        .from("testimonials")
+        .select("*")
+        .order("created", { ascending: false });
+
+      if (error) throw error;
+      setTestimonials(data || []);
     } catch (err) {
       toast.error("Failed to load testimonials");
     }
@@ -691,10 +768,19 @@ const TestimonialsManager = () => {
   const onSubmit = async (data) => {
     try {
       if (editing) {
-        await pb.collection("testimonials").update(editing, data);
+        const { error } = await supabase
+          .from("testimonials")
+          .update(data)
+          .eq("id", editing);
+
+        if (error) throw error;
         toast.success("Testimonial updated");
       } else {
-        await pb.collection("testimonials").create(data);
+        const { error } = await supabase
+          .from("testimonials")
+          .insert(data);
+
+        if (error) throw error;
         toast.success("Testimonial created");
       }
       setDialogOpen(false);
@@ -707,7 +793,12 @@ const TestimonialsManager = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this testimonial?")) return;
     try {
-      await pb.collection("testimonials").delete(id);
+      const { error } = await supabase
+        .from("testimonials")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
       toast.success("Testimonial deleted");
       fetchTestimonials();
     } catch (err) {
@@ -778,6 +869,215 @@ const TestimonialsManager = () => {
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+};
+
+// ---------- Team Members Manager ----------
+const TeamMembersManager = () => {
+  const [members, setMembers] = useState([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [photoFile, setPhotoFile] = useState(null);
+  const { register, handleSubmit, reset } = useForm();
+
+  const fetchMembers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("teamMembers")
+        .select("*")
+        .order("created_at", { ascending: true });
+
+      if (error) throw error;
+      setMembers(data || []);
+    } catch (err) {
+      toast.error("Failed to load team members");
+    }
+  };
+
+  useEffect(() => {
+    fetchMembers();
+  }, []);
+
+  const openCreate = () => {
+    setEditing(null);
+    reset({ name: "", position: "", bio: "", photo: "" });
+    setPhotoFile(null);
+    setDialogOpen(true);
+  };
+
+  const openEdit = (member) => {
+    setEditing(member.id);
+    reset({
+      name: member.name,
+      position: member.position || "",
+      bio: member.bio || "",
+    });
+    setPhotoFile(null);
+    setDialogOpen(true);
+  };
+
+  const onSubmit = async (data) => {
+    try {
+      const memberData = {
+        name: data.name,
+        position: data.position || "",
+        bio: data.bio || "",
+      };
+
+      if (editing) {
+        const { error } = await supabase
+          .from("teamMembers")
+          .update(memberData)
+          .eq("id", editing);
+
+        if (error) throw error;
+        toast.success("Team member updated");
+      } else {
+        const { error } = await supabase
+          .from("teamMembers")
+          .insert(memberData);
+
+        if (error) throw error;
+        toast.success("Team member created");
+      }
+      setDialogOpen(false);
+      fetchMembers();
+    } catch (err) {
+      toast.error("Operation failed");
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this team member?")) return;
+    try {
+      const { error } = await supabase
+        .from("teamMembers")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+      toast.success("Team member deleted");
+      fetchMembers();
+    } catch (err) {
+      toast.error("Delete failed");
+    }
+  };
+
+  const getPhotoUrl = (member) => {
+    if (member.photo) return getFileUrl("team-photos", member.photo);
+    return null;
+  };
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Team Members</h2>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={openCreate}>
+              <Plus className="w-4 h-4 mr-2" />
+              Add Team Member
+            </Button>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>
+                {editing ? "Edit Team Member" : "Add Team Member"}
+              </DialogTitle>
+            </DialogHeader>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Full Name *</label>
+                <Input
+                  placeholder="e.g. Jane Doe"
+                  {...register("name", { required: true })}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Position / Title</label>
+                <Input
+                  placeholder="e.g. CEO, Agent, Manager"
+                  {...register("position")}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Photo</label>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) setPhotoFile(file);
+                  }}
+                />
+                {photoFile && (
+                  <p className="text-xs text-green-600">Selected: {photoFile.name}</p>
+                )}
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Bio</label>
+                <Textarea
+                  placeholder="Brief bio..."
+                  {...register("bio")}
+                  rows={3}
+                />
+              </div>
+              <Button type="submit" className="w-full">
+                {editing ? "Update" : "Create"}
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </div>
+      <div className="grid gap-4">
+        {members.map((m) => {
+          const photoUrl = getPhotoUrl(m);
+          return (
+            <div
+              key={m.id}
+              className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
+            >
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+                  {photoUrl ? (
+                    <img
+                      src={photoUrl}
+                      alt={m.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-500 font-bold">
+                      {m.name?.charAt(0) || "?"}
+                    </div>
+                  )}
+                </div>
+                <div>
+                  <h3 className="font-semibold">{m.name}</h3>
+                  {m.position && (
+                    <p className="text-sm text-gray-500">{m.position}</p>
+                  )}
+                  {m.bio && (
+                    <p className="text-xs text-gray-400 line-clamp-1">{m.bio}</p>
+                  )}
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <Button size="sm" variant="outline" onClick={() => openEdit(m)}>
+                  <Edit className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => handleDelete(m.id)}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import pb from '@/lib/pocketbaseClient';
+import supabase from '@/lib/supabaseClient';
 
 const AuthContext = createContext(null);
 
@@ -8,24 +8,51 @@ export const AuthProvider = ({ children }) => {
   const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
-    if (pb.authStore.isValid) {
-      setCurrentUser(pb.authStore.model);
-    }
-    setInitialLoading(false);
+    // Check for existing session
+    const initSession = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (session?.user) {
+          setCurrentUser(session.user);
+        }
+      } catch (err) {
+        console.error('Error getting session:', err);
+      } finally {
+        setInitialLoading(false);
+      }
+    };
+
+    initSession();
+
+    // Listen for auth state changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (_event, session) => {
+        setCurrentUser(session?.user || null);
+      }
+    );
+
+    return () => {
+      subscription?.unsubscribe();
+    };
   }, []);
 
   const login = async (email, password) => {
-    const authData = await pb.collection('users').authWithPassword(email, password, { $autoCancel: false });
-    setCurrentUser(authData.record);
-    return authData;
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    if (error) throw error;
+    setCurrentUser(data.user);
+    return data;
   };
 
-  const logout = () => {
-    pb.authStore.clear();
+  const logout = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) throw error;
     setCurrentUser(null);
   };
 
-  const isAuthenticated = pb.authStore.isValid;
+  const isAuthenticated = !!currentUser;
 
   return (
     <AuthContext.Provider value={{ currentUser, login, logout, isAuthenticated, initialLoading }}>

@@ -4,7 +4,8 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Target, Eye, Award } from 'lucide-react';
-import pb from '@/lib/pocketbaseClient';
+import supabase from '@/lib/supabaseClient';
+import { getFileUrl } from '@/lib/supabaseService';
 
 const AboutPage = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -13,11 +14,13 @@ const AboutPage = () => {
   useEffect(() => {
     const fetchTeam = async () => {
       try {
-        const records = await pb.collection('teamMembers').getFullList({
-          sort: 'created',
-          $autoCancel: false,
-        });
-        setTeamMembers(records);
+        const { data, error } = await supabase
+          .from('teamMembers')
+          .select('*')
+          .order('created', { ascending: true });
+
+        if (error) throw error;
+        setTeamMembers(data || []);
       } catch (error) {
         console.error('Failed to fetch team:', error);
       } finally {
@@ -147,7 +150,7 @@ const AboutPage = () => {
                       <div className="w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden bg-muted">
                         {member.photo ? (
                           <img
-                            src={pb.files.getUrl(member, member.photo)}
+                            src={getFileUrl("team-photos", member.photo) || member.photo}
                             alt={member.name}
                             className="w-full h-full object-cover"
                             loading="lazy"

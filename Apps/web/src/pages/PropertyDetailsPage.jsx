@@ -9,7 +9,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, Bed, Bath, CheckCircle, MessageCircle, X } from 'lucide-react';
-import pb from '@/lib/pocketbaseClient';
+import supabase from '@/lib/supabaseClient';
+import { getFileUrl } from '@/lib/supabaseService';
 
 const PropertyDetailsPage = () => {
   const { id } = useParams();
@@ -22,15 +23,28 @@ const PropertyDetailsPage = () => {
   useEffect(() => {
     const fetchProperty = async () => {
       try {
-        const record = await pb.collection('properties').getOne(id, { $autoCancel: false });
+        const { data: record, error } = await supabase
+          .from('properties')
+          .select('*')
+          .eq('id', id)
+          .single();
+
+        if (error) throw error;
+
         setProperty(record);
 
-        const similar = await pb.collection('properties').getFullList({
-          filter: `propertyType = "${record.propertyType}" && id != "${id}"`,
-          sort: '-created',
-          $autoCancel: false,
-        });
-        setSimilarProperties(similar.slice(0, 3));
+        // Fetch similar properties
+        const { data: similar, error: similarError } = await supabase
+          .from('properties')
+          .select('*')
+          .eq('propertyType', record.propertyType)
+          .neq('id', id)
+          .order('created', { ascending: false })
+          .limit(3);
+
+        if (!similarError) {
+          setSimilarProperties(similar || []);
+        }
       } catch (error) {
         console.error('Failed to fetch property:', error);
       } finally {
@@ -73,6 +87,10 @@ const PropertyDetailsPage = () => {
     );
   }
 
+  const getImageUrl = (image) => {
+    return getFileUrl("property-images", image) || image;
+  };
+
   const images = property.images || [];
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-NG', {
@@ -82,7 +100,13 @@ const PropertyDetailsPage = () => {
     }).format(price);
   };
 
-  const amenitiesList = property.amenities ? property.amenities.split(',').map(a => a.trim()) : [];
+  const amenitiesList = property.amenities
+    ? (Array.isArray(property.amenities)
+        ? property.amenities
+        : typeof property.amenities === 'string'
+          ? property.amenities.split(',').map(a => a.trim())
+          : [])
+    : [];
 
   return (
     <>
@@ -104,7 +128,7 @@ const PropertyDetailsPage = () => {
                     onClick={() => { setCurrentImageIndex(0); setLightboxOpen(true); }}
                   >
                     <img
-                      src={pb.files.getUrl(property, images[0])}
+                      src={getImageUrl(images[0])}
                       alt={property.title}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                       loading="lazy"
@@ -119,7 +143,7 @@ const PropertyDetailsPage = () => {
                           onClick={() => { setCurrentImageIndex(index + 1); setLightboxOpen(true); }}
                         >
                           <img
-                            src={pb.files.getUrl(property, image)}
+                            src={getImageUrl(image)}
                             alt={`${property.title} ${index + 2}`}
                             className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                             loading="lazy"
@@ -270,7 +294,7 @@ const PropertyDetailsPage = () => {
           </button>
           <div className="max-w-6xl w-full">
             <img
-              src={pb.files.getUrl(property, images[currentImageIndex])}
+              src={getImageUrl(images[currentImageIndex])}
               alt={`${property.title} ${currentImageIndex + 1}`}
               className="w-full h-auto rounded-xl"
               loading="lazy"

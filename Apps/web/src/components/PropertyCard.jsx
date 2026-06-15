@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import pb from "@/lib/pocketbaseClient";
+import { getFileUrl } from "@/lib/supabaseService";
 
 const PropertyCard = ({ property, featured = false }) => {
   const imageUrl =
     property.images && property.images.length > 0
-      ? pb.files.getUrl(property, property.images[0])
+      ? getFileUrl("property-images", property.images[0]) || property.images[0]
       : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800";
 
   const formatPrice = (price) => {

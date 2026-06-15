@@ -12,7 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import pb from "@/lib/pocketbaseClient";
+import supabase from "@/lib/supabaseClient";
 
 const AgentFormModal = ({
   isOpen,
@@ -90,31 +90,30 @@ const AgentFormModal = ({
 
     setIsSubmitting(true);
     try {
-      const submitData = new FormData();
-      submitData.append("name", formData.name);
-      submitData.append("email", formData.email);
-      submitData.append("phone", formData.phone);
-      submitData.append("position", formData.position);
-      submitData.append("locations", formData.locations);
-      submitData.append(
-        "propertiesAssigned",
-        parseInt(formData.propertiesAssigned) || 0,
-      );
-      submitData.append("bio", formData.bio);
-
-      if (formData.image instanceof File) {
-        submitData.append("image", formData.image);
-      }
+      const submitData = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        position: formData.position,
+        locations: formData.locations,
+        propertiesAssigned: parseInt(formData.propertiesAssigned) || 0,
+        bio: formData.bio,
+      };
 
       if (editingAgent) {
-        await pb
-          .collection("agents")
-          .update(editingAgent.id, submitData, { $autoCancel: false });
+        const { error } = await supabase
+          .from("agents")
+          .update(submitData)
+          .eq("id", editingAgent.id);
+
+        if (error) throw error;
         toast.success("Agent updated successfully!");
       } else {
-        await pb
-          .collection("agents")
-          .create(submitData, { $autoCancel: false });
+        const { error } = await supabase
+          .from("agents")
+          .insert(submitData);
+
+        if (error) throw error;
         toast.success("Agent added successfully!");
       }
 

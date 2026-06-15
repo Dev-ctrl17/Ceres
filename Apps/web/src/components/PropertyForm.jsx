@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { usePropertyForm } from "@/hooks/usePropertyForm.js";
 import ImageUploadZone from "./ImageUploadZone.jsx";
 import VideoUploadZone from "./VideoUploadZone.jsx";
-import pb from "@/lib/pocketbaseClient";
+import supabase from "@/lib/supabaseClient";
 
 const AMENITIES_LIST = [
   "Swimming Pool",
@@ -52,9 +52,12 @@ const PropertyForm = ({ initialData, onSubmit, onCancel, isSubmitting }) => {
   const [agents, setAgents] = useState([]);
 
   useEffect(() => {
-    pb.collection("agents")
-      .getFullList({ $autoCancel: false })
-      .then(setAgents)
+    supabase
+      .from("agents")
+      .select("*")
+      .then(({ data, error }) => {
+        if (!error) setAgents(data || []);
+      })
       .catch(console.error);
   }, []);
 

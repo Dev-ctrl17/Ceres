@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import pb from '@/lib/pocketbaseClient';
+import { agentsApi } from '@/lib/supabaseService';
 
 export const useAgents = () => {
   const [agents, setAgents] = useState([]);
@@ -11,11 +11,9 @@ export const useAgents = () => {
       setLoading(true);
       setError(null);
       try {
-        const records = await pb.collection('agents').getFullList({
-          sort: '-rating',
-          $autoCancel: false,
-        });
-        setAgents(records);
+        const { data, error: fetchError } = await agentsApi.getAll();
+        if (fetchError) throw new Error(fetchError.message);
+        setAgents(data || []);
       } catch (err) {
         setError(err.message);
       } finally {

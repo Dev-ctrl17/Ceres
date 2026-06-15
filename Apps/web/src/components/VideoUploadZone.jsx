@@ -1,7 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { Film, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import pb from "@/lib/pocketbaseClient";
 
 const VideoUploadZone = ({
   videos,
@@ -133,7 +132,7 @@ const VideoUploadZone = ({
                 className="text-destructive hover:text-destructive hover:bg-destructive/10"
                 onClick={() => onRemoveVideo(idx)}
               >
-                <X className="h-4 w-4" />
+                <X className="w-4 h-4" />
               </Button>
             </div>
           ))}

@@ -12,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
-import pb from '@/lib/pocketbaseClient';
+import supabase from '@/lib/supabaseClient';
 
 const EPANPage = () => {
   const [agentLoading, setAgentLoading] = useState(false);
@@ -38,15 +38,16 @@ const EPANPage = () => {
     try {
       const description = `Company/Agency: ${data.company}\nYears of Experience: ${data.experience}\nSpecialization: ${data.specialization}\nMessage: ${data.message}`;
       
-      await pb.collection('propertySubmissions').create({
+      const { error } = await supabase.from('propertySubmissions').insert({
         title: `Agent Registration - ${data.fullName}`,
         description: description,
         ownerName: data.fullName,
         ownerEmail: data.email,
         ownerPhone: data.phone,
         status: 'Pending'
-      }, { $autoCancel: false });
+      });
       
+      if (error) throw error;
       toast.success('Registration submitted successfully. We will contact you soon.');
       resetAgent();
     } catch (error) {
@@ -61,15 +62,16 @@ const EPANPage = () => {
     try {
       const message = `Company: ${data.companyName}\nInquiry Type: ${inquiryType}\nMessage: ${data.message}`;
       
-      await pb.collection('leads').create({
+      const { error } = await supabase.from('leads').insert({
         name: data.contactPerson,
         email: data.email,
         phone: data.phone,
         message: message,
-        leadType: 'Contact Form', // Using allowed schema value
+        leadType: 'Contact Form',
         isContacted: false
-      }, { $autoCancel: false });
+      });
       
+      if (error) throw error;
       toast.success('Inquiry submitted successfully. Our partnership team will reach out.');
       resetPartner();
       setInquiryType('');

@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import pb from '@/lib/pocketbaseClient';
+import { propertiesApi } from '@/lib/supabaseService';
 
 export const useProperties = () => {
   const [properties, setProperties] = useState([]);
@@ -10,24 +10,10 @@ export const useProperties = () => {
     setLoading(true);
     setError(null);
     try {
-      let filterString = '';
-      const conditions = [];
-
-      if (filters.location) conditions.push(`location ~ "${filters.location}"`);
-      if (filters.propertyType && filters.propertyType !== 'all') conditions.push(`propertyType = "${filters.propertyType}"`);
-      if (filters.bedrooms && filters.bedrooms !== 'all') conditions.push(`bedrooms >= ${filters.bedrooms}`);
-      if (filters.status && filters.status !== 'all') conditions.push(`status = "${filters.status}"`);
-
-      if (conditions.length > 0) filterString = conditions.join(' && ');
-
-      const records = await pb.collection('properties').getFullList({
-        filter: filterString,
-        sort: '-created',
-        $autoCancel: false,
-      });
-
-      setProperties(records);
-      return records;
+      const { data, error: fetchError } = await propertiesApi.getAll(filters);
+      if (fetchError) throw new Error(fetchError.message);
+      setProperties(data || []);
+      return data;
     } catch (err) {
       setError(err.message);
       throw err;
@@ -39,8 +25,8 @@ export const useProperties = () => {
   const fetchPropertyById = useCallback(async (id) => {
     setLoading(true);
     try {
-      const record = await pb.collection('properties').getOne(id, { $autoCancel: false });
-      return record;
+      const data = await propertiesApi.getById(id);
+      return data;
     } catch (err) {
       setError(err.message);
       throw err;
@@ -52,7 +38,7 @@ export const useProperties = () => {
   const createProperty = useCallback(async (formData) => {
     setLoading(true);
     try {
-      const record = await pb.collection('properties').create(formData, { $autoCancel: false });
+      const record = await propertiesApi.create(formData);
       setProperties(prev => [record, ...prev]);
       return record;
     } catch (err) {
@@ -66,7 +52,7 @@ export const useProperties = () => {
   const updateProperty = useCallback(async (id, formData) => {
     setLoading(true);
     try {
-      const record = await pb.collection('properties').update(id, formData, { $autoCancel: false });
+      const record = await propertiesApi.update(id, formData);
       setProperties(prev => prev.map(p => p.id === id ? record : p));
       return record;
     } catch (err) {
@@ -80,7 +66,7 @@ export const useProperties = () => {
   const deleteProperty = useCallback(async (id) => {
     setLoading(true);
     try {
-      await pb.collection('properties').delete(id, { $autoCancel: false });
+      await propertiesApi.delete(id);
       setProperties(prev => prev.filter(p => p.id !== id));
     } catch (err) {
       setError(err.message);

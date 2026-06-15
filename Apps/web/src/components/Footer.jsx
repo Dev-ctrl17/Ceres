@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import pb from "@/lib/pocketbaseClient";
+import supabase from "@/lib/supabaseClient";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -22,17 +22,23 @@ const Footer = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await pb
-        .collection("newsletter")
-        .create({ email }, { $autoCancel: false });
+      const { error } = await supabase
+        .from("newsletter")
+        .insert({ email });
+
+      if (error) {
+        if (error.code === "23505") {
+          toast.error("Email already subscribed");
+        } else {
+          toast.error("Subscription failed. Please try again.");
+        }
+        return;
+      }
+
       toast.success("Subscribed to newsletter");
       setEmail("");
     } catch (error) {
-      if (error.message.includes("duplicate")) {
-        toast.error("Email already subscribed");
-      } else {
-        toast.error("Subscription failed. Please try again.");
-      }
+      toast.error("Subscription failed. Please try again.");
     } finally {
       setLoading(false);
     }

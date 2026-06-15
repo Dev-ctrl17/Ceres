@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
-import pb from '@/lib/pocketbaseClient';
+import supabase from '@/lib/supabaseClient';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -28,21 +28,24 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const [featured, latest] = await Promise.all([
-          pb.collection('properties').getList(1, 3, {
-            filter: 'isFeatured = true && status = "Available"',
-            sort: '-created',
-            $autoCancel: false,
-          }),
-          pb.collection('properties').getList(1, 6, {
-            filter: 'status = "Available"',
-            sort: '-created',
-            $autoCancel: false,
-          })
+        const [featuredResult, latestResult] = await Promise.all([
+          supabase
+            .from('properties')
+            .select('*')
+            .eq('isFeatured', true)
+            .eq('status', 'Available')
+            .order('created', { ascending: false })
+            .limit(3),
+          supabase
+            .from('properties')
+            .select('*')
+            .eq('status', 'Available')
+            .order('created', { ascending: false })
+            .limit(6)
         ]);
         
-        setFeaturedProperties(featured.items);
-        setLatestProperties(latest.items);
+        setFeaturedProperties(featuredResult.data || []);
+        setLatestProperties(latestResult.data || []);
       } catch (error) {
         console.error('Error fetching properties:', error);
         toast.error('Failed to load properties');
@@ -68,15 +71,23 @@ const HomePage = () => {
     e.preventDefault();
     setSubscribing(true);
     try {
-      await pb.collection('newsletter').create({ email }, { $autoCancel: false });
+      const { error } = await supabase
+        .from('newsletter')
+        .insert({ email });
+
+      if (error) {
+        if (error.code === '23505') {
+          toast.error('This email is already subscribed.');
+        } else {
+          toast.error('Failed to subscribe. Please try again.');
+        }
+        return;
+      }
+
       toast.success('Successfully subscribed to our newsletter!');
       setEmail('');
     } catch (error) {
-      if (error.message.includes('duplicate')) {
-        toast.error('This email is already subscribed.');
-      } else {
-        toast.error('Failed to subscribe. Please try again.');
-      }
+      toast.error('Failed to subscribe. Please try again.');
     } finally {
       setSubscribing(false);
     }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import pb from '@/lib/pocketbaseClient';
+import { blogPostsApi } from '@/lib/supabaseService';
 
 export const useBlogPosts = (category = null) => {
   const [posts, setPosts] = useState([]);
@@ -11,13 +11,9 @@ export const useBlogPosts = (category = null) => {
       setLoading(true);
       setError(null);
       try {
-        const filterString = category ? `category = "${category}"` : '';
-        const records = await pb.collection('blogPosts').getFullList({
-          filter: filterString,
-          sort: '-publishDate',
-          $autoCancel: false,
-        });
-        setPosts(records);
+        const { data, error: fetchError } = await blogPostsApi.getAll(category);
+        if (fetchError) throw new Error(fetchError.message);
+        setPosts(data || []);
       } catch (err) {
         setError(err.message);
       } finally {
