@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "npm run dev --prefix apps/web",
-    "build": "npm run build --prefix apps/web",
-    "start": "npm run start --prefix apps/web",
-    "lint": "npm run lint --prefix apps/web"
+    "dev": "npm run dev --prefix Apps/web",
+    "build": "npm run build --prefix Apps/web",
+    "start": "npm run start --prefix Apps/web",
+    "lint": "npm run lint --prefix Apps/web"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
