@@ -41,15 +41,18 @@ const Header = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-16 md:h-20 lg:h-24">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center flex-shrink-0">
             <img
               src="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png"
               alt="Luxury Property"
-              className="h-20 w-auto object-contain"
-              style={{ filter: "brightness(1) contrast(1)", maxWidth: "200px" }}
-              loading="lazy"
+              className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain"
+              style={{ filter: "brightness(1) contrast(1)", maxWidth: "160px" }}
+              loading="eager"
+              onError={(e) => {
+                e.target.style.display = "none";
+              }}
             />
           </Link>
 
