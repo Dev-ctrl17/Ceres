@@ -2,6 +2,7 @@
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/googlec5d3e468141d2edd.html", "destination": "/googlec5d3e468141d2edd.html" },
     { "source": "/blog/amp/(.*)/index.html", "destination": "/blog/amp/$1/index.html" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
