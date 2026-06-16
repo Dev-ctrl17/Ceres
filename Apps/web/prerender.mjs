@@ -45,7 +45,7 @@ for (const route of ROUTES) {
     writeFileSync(outPath, html);
     console.log(`  ✅ / ${route}`);
   } catch (e) {
-    console.log(`  ❌ ${route}: ${e.message}`);
+    console.log(` ${route}: ${e.message}`);
   }
 }
 
