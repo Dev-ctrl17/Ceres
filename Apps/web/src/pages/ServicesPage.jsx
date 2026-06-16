@@ -84,9 +84,8 @@ const ServicesPage = () => {
             <img 
               src="https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg"
               alt="Our Services" 
-              className="w-full h-full object-cover"
-  style={{ objectPosition: 'center', transform: 'scale(0.8)', transformOrigin: 'center' }}
-  loading="lazy"
+                 className="w-full h-full object-cover"
+    loading="lazy"
             />
             <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
           </div>

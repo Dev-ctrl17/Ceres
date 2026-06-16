@@ -33,11 +33,10 @@ const BuyPage = () => {
             <img 
               src="https://www.image2url.com/r2/default/images/1781618484006-40ea0e34-24b2-418b-91c4-1f35fdd01ec8.jpeg"
               alt="Find your dream property" 
-              className="w-full h-full object-cover scale-75 origin-center"
-              loading="lazy"
+                 className="w-full h-full object-cover"
+    loading="lazy"
             />
-            <div className="absolute inset-0 bg-slate-950/40 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/30 to-background" />
+            <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ letterSpacing: '-0.02em' }}>Find Your Dream Property</h1>
