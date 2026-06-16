@@ -82,7 +82,7 @@ const ServicesPage = () => {
         <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/vvqYBTRP/service.jpg"
+              src="https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg"
               alt="Our Services" 
               className="w-full h-full object-cover"
               loading="lazy"

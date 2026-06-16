@@ -121,7 +121,7 @@ const HomePage = () => {
         <section className="relative min-h-[90dvh] flex items-center justify-center pt-20 pb-32">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1506851321937-51fff21bc9a0?q=80&w=2070&auto=format&fit=crop" 
+              src="https://www.image2url.com/r2/default/images/1781618469672-f363452b-534b-451c-9b4e-1f1b7efd15b8.jpeg" 
               alt="Luxury modern home exterior" 
               className="w-full h-full object-cover"
               loading="lazy"
@@ -222,7 +222,7 @@ const HomePage = () => {
                 </div>
                 <div className="order-1 md:order-2 relative">
                   <div className="aspect-square rounded-3xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop" alt="Secure real estate transaction" className="w-full h-full object-cover" loading="lazy" />
+                    <img src="https://www.image2url.com/r2/default/images/1781618477582-1005fa15-bd99-4786-bb20-160a0f75d002.jpeg" alt="Secure real estate transaction" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
                 </div>
@@ -231,7 +231,7 @@ const HomePage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div className="relative">
                   <div className="aspect-square rounded-3xl overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop" alt="Expert real estate consultation" className="w-full h-full object-cover" loading="lazy" />
+                    <img src="https://www.image2url.com/r2/default/images/1781618469713-68bb7539-44b8-46bd-9f07-d4868e145147.jpeg" alt="Expert real estate consultation" className="w-full h-full object-cover" loading="lazy" />
                   </div>
                   <div className="absolute -top-6 -right-6 w-48 h-48 bg-primary/10 rounded-full blur-3xl -z-10" />
                 </div>

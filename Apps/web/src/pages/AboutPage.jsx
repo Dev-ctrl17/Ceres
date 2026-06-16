@@ -55,7 +55,7 @@ const AboutPage = () => {
         <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/GvJjcXJD/about.jpg"
+              src="https://www.image2url.com/r2/default/images/1781619633951-48ac0036-1929-4e9c-a44e-9ea02995669f.jpeg"
               alt="Best Luxury Real Estate Agency Nigeria - Luxury Properties Ltd" 
               className="w-full h-full object-cover"
               loading="lazy"

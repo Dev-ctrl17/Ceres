@@ -29,7 +29,7 @@ const SellPage = () => {
         <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/5WPwQB7W/sell.jpg"
+              src="https://www.image2url.com/r2/default/images/1781618476695-08c4ab99-6c9e-4700-9de5-ed819f7d85bb.jpeg"
               alt="Sell Your Property" 
               className="w-full h-full object-cover"
               loading="lazy"

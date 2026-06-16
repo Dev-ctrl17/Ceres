@@ -31,7 +31,7 @@ const BuyPage = () => {
         <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/nNBWm87Q/buy.png"
+              src="https://www.image2url.com/r2/default/images/1781618484006-40ea0e34-24b2-418b-91c4-1f35fdd01ec8.jpeg"
               alt="Find your dream property" 
               className="w-full h-full object-cover"
               loading="lazy"

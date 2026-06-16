@@ -28,7 +28,7 @@ const RentPage = () => {
         <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/tTmxcFdS/rent.png"
+              src="https://www.image2url.com/r2/default/images/1781618476860-202949ba-8ed6-4e3d-ba06-ec71d84c6e04.jpeg"
               alt="Rental Properties" 
               className="w-full h-full object-cover"
               loading="lazy"

@@ -28,7 +28,7 @@ const PropertiesPage = () => {
         <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/Qv7JsQ8d/properties.png"
+              src="https://www.image2url.com/r2/default/images/1781618537376-b115f9d3-7d9d-44a1-b434-f17755a0d94c.jpeg"
               alt="Browse All Properties" 
               className="w-full h-full object-cover"
               loading="lazy"
