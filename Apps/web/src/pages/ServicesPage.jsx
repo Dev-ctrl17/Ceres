@@ -85,10 +85,10 @@ const ServicesPage = () => {
               src="https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg"
               alt="Our Services" 
               className="w-full h-full object-cover"
-              loading="lazy"
+  style={{ objectPosition: 'center', transform: 'scale(0.8)', transformOrigin: 'center' }}
+  loading="lazy"
             />
-            <div className="absolute inset-0 bg-slate-950/40 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-background" />
+            <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1

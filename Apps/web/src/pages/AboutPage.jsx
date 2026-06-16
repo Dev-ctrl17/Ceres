@@ -57,11 +57,11 @@ const AboutPage = () => {
             <img 
               src="https://www.image2url.com/r2/default/images/1781619633951-48ac0036-1929-4e9c-a44e-9ea02995669f.jpeg"
               alt="Best Luxury Real Estate Agency Nigeria - Luxury Properties Ltd" 
-              className="w-full h-full object-cover scale-75 origin-center"
+              className="w-full h-full object-cover"
+              style={{ objectPosition: 'center', transform: 'scale(0.8)', transformOrigin: 'center' }}
               loading="lazy"
             />
             <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/30 to-background" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ letterSpacing: '-0.02em' }}>Best Luxury Real Estate Agency Nigeria</h1>

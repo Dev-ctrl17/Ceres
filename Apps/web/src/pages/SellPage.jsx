@@ -32,10 +32,10 @@ const SellPage = () => {
               src="https://www.image2url.com/r2/default/images/1781618476695-08c4ab99-6c9e-4700-9de5-ed819f7d85bb.jpeg"
               alt="Sell Your Property" 
               className="w-full h-full object-cover"
-              loading="lazy"
+  style={{ objectPosition: 'center', transform: 'scale(0.8)', transformOrigin: 'center' }}
+  loading="lazy"
             />
-            <div className="absolute inset-0 bg-slate-950/40 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/30 to-background" />
+            <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ letterSpacing: '-0.02em' }}>Sell Your Property</h1>
