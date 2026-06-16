@@ -58,8 +58,8 @@ const ReviewsPage = () => {
               className="w-full h-full object-cover"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-slate-950/70 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-background" />
+            <div className="absolute inset-0 bg-slate-950/40 mix-blend-multiply" />
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/30 to-background" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ letterSpacing: '-0.02em' }}>Customer Reviews</h1>
