@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext.jsx";
 import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
 import supabase from "@/lib/supabaseClient";
-import { getFileUrl } from "@/lib/supabaseService";
+import { getFileUrl, uploadFile } from "@/lib/supabaseService";
 import {
   Package,
   Users,
@@ -15,6 +15,7 @@ import {
   Edit,
   Trash2,
   LogOut,
+  X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -108,7 +109,14 @@ const PropertiesManager = () => {
   const [properties, setProperties] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState(null);
-  const { register, handleSubmit, reset, setValue } = useForm();
+  const [imageFiles, setImageFiles] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
+  const [existingImages, setExistingImages] = useState([]);
+  const [uploading, setUploading] = useState(false);
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+  const MIN_IMAGES = 2;
+  const MAX_IMAGES = 7;
 
   const fetchProperties = async () => {
     try {
@@ -128,9 +136,19 @@ const PropertiesManager = () => {
     fetchProperties();
   }, []);
 
+  // Cleanup previews on unmount
+  useEffect(() => {
+    return () => {
+      imagePreviews.forEach((preview) => URL.revokeObjectURL(preview));
+    };
+  }, [imagePreviews]);
+
   const openCreate = () => {
     setEditing(null);
     reset({});
+    setImageFiles([]);
+    setImagePreviews([]);
+    setExistingImages([]);
     setDialogOpen(true);
   };
 
@@ -147,17 +165,96 @@ const PropertiesManager = () => {
       type: property.type,
       purpose: property.purpose,
       status: property.status,
-      image_url: property.image_url,
+      videoTour: property.videoTour || "",
     });
+    // Populate existing images from the property
+    if (property.images && property.images.length > 0) {
+      setExistingImages([...property.images]);
+    } else if (property.image_url) {
+      setExistingImages([property.image_url]);
+    } else {
+      setExistingImages([]);
+    }
+    setImageFiles([]);
+    setImagePreviews([]);
     setDialogOpen(true);
   };
 
+  const handleFileSelect = (e) => {
+    const files = Array.from(e.target.files || []);
+    const totalImages = existingImages.length + imageFiles.length + files.length;
+
+    if (totalImages > MAX_IMAGES) {
+      toast.error(`Maximum ${MAX_IMAGES} images allowed. You can add ${MAX_IMAGES - existingImages.length - imageFiles.length} more.`);
+      return;
+    }
+
+    // Validate file types
+    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp"];
+    const invalidFiles = files.filter((f) => !validTypes.includes(f.type));
+    if (invalidFiles.length > 0) {
+      toast.error("Only JPG, PNG, GIF, and WebP images are allowed");
+      return;
+    }
+
+    // Create previews for new files
+    const newPreviews = files.map((file) => URL.createObjectURL(file));
+    setImageFiles((prev) => [...prev, ...files]);
+    setImagePreviews((prev) => [...prev, ...newPreviews]);
+
+    // Reset the file input
+    e.target.value = "";
+  };
+
+  const removeNewImage = (index) => {
+    // Revoke the preview URL
+    URL.revokeObjectURL(imagePreviews[index]);
+    setImageFiles((prev) => prev.filter((_, i) => i !== index));
+    setImagePreviews((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const removeExistingImage = (index) => {
+    setExistingImages((prev) => prev.filter((_, i) => i !== index));
+  };
+
   const onSubmit = async (data) => {
+    const totalImages = existingImages.length + imageFiles.length;
+
+    if (totalImages < MIN_IMAGES) {
+      toast.error(`Please add at least ${MIN_IMAGES} images`);
+      return;
+    }
+
+    if (totalImages > MAX_IMAGES) {
+      toast.error(`Maximum ${MAX_IMAGES} images allowed`);
+      return;
+    }
+
+    setUploading(true);
     try {
+      // Upload new files to Supabase Storage
+      let uploadedPaths = [];
+      if (imageFiles.length > 0) {
+        toast.info(`Uploading ${imageFiles.length} image(s)...`);
+        const uploadPromises = imageFiles.map((file) =>
+          uploadFile("property-images", file, "properties")
+        );
+        uploadedPaths = await Promise.all(uploadPromises);
+      }
+
+      // Combine existing images with newly uploaded paths
+      const allImages = [...existingImages, ...uploadedPaths];
+
+      const submitData = {
+        ...data,
+        images: allImages,
+        image_url: allImages[0] || "", // Keep backward compatibility
+      };
+
       if (editing) {
         const { error } = await supabase
           .from("properties")
-          .update(data)
+          .update(submitData)
           .eq("id", editing);
 
         if (error) throw error;
@@ -165,7 +262,7 @@ const PropertiesManager = () => {
       } else {
         const { error } = await supabase
           .from("properties")
-          .insert(data);
+          .insert(submitData);
 
         if (error) throw error;
         toast.success("Property created");
@@ -173,7 +270,9 @@ const PropertiesManager = () => {
       setDialogOpen(false);
       fetchProperties();
     } catch (err) {
-      toast.error("Operation failed");
+      toast.error(err.message || "Operation failed");
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -200,6 +299,8 @@ const PropertiesManager = () => {
     if (property.image_url) return property.image_url;
     return null;
   };
+
+  const totalImageCount = existingImages.length + imageFiles.length;
 
   return (
     <div>
@@ -261,73 +362,158 @@ const PropertiesManager = () => {
               <Input
                 placeholder="Status (available/sold/rented)"
                 {...register("status", { required: true })}
-              />
-              <Input
-                placeholder="Image URL"
-                {...register("image_url")}
                 className="col-span-2"
               />
-              <Textarea
-                placeholder="Description"
-                {...register("description", { required: true })}
-                className="col-span-2"
-                rows={4}
-              />
-              <Button type="submit" className="col-span-2">
-                {editing ? "Update" : "Create"}
-              </Button>
-            </form>
-          </DialogContent>
-        </Dialog>
-      </div>
-      <div className="grid gap-4">
-        {properties.map((p) => (
-          <div
-            key={p.id}
-            className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
-          >
-            <div className="flex items-center gap-3">
-              <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
-                {(() => {
-                  const url = getPropertyImageUrl(p);
-                  return url ? (
-                    <img
-                      src={url}
-                      alt={p.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">No img</div>
-                  );
-                })()}
-              </div>
-              <div>
-                <h3 className="font-semibold">{p.title}</h3>
-                <p className="text-sm text-gray-500">{p.location}</p>
-                <p className="text-xs text-gray-400">
-                  ₦{p.price?.toLocaleString()} | {p.bedrooms || "?"} bed / {p.bathrooms || "?"} bath
-                  {p.status && <span className="ml-2">— {p.status}</span>}
-                </p>
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <Button size="sm" variant="outline" onClick={() => openEdit(p)}>
-                <Edit className="w-4 h-4" />
-              </Button>
-              <Button
-                size="sm"
-                variant="destructive"
-                onClick={() => handleDelete(p.id)}
-              >
-                <Trash2 className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
+              <div className="col-span-2">
+                <label className="text-sm font-medium mb-1 block">
+                  Property Images ({totalImageCount} / {MAX_IMAGES})
+                  <span className="text-muted-foreground font-normal ml-1">
+                    — Minimum {MIN_IMAGES}, Maximum {MAX_IMAGES}
+                  </span>
+                </label>
+
+                {/* Existing images (when editing) */}
+                {existingImages.length > 0 && (
+                  <div className="mb-3">
+                    <p className="text-xs text-muted-foreground mb-2">Existing images:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {existingImages.map((img, index) => {
+                        const imgUrl = img.startsWith("http") ? img : getFileUrl("property-images", img) || img;
+                        return (
+                          <div key={`existing-${index}`} className="relative group">
+                            <img
+                              src={imgUrl}
+                              alt={`Existing ${index + 1}`}
+                              className="w-20 h-20 object-cover rounded-lg border"
+                            />
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              size="sm"
+                              className="absolute -top-2 -right-2 w-5 h-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                              onClick={() => removeExistingImage(index)}
+                            >
+                              <X className="w-3 h-3" />
+                            </Button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+
+                {/* New file previews */}
+                {imagePreviews.length > 0 && (
+                  <div className="mb-3">
+                    <p className="text-xs text-muted-foreground mb-2">New images to upload:</p>
+                    <div className="flex flex-wrap gap-2">
+                       {imagePreviews.map((preview, index) => (
+                         <div key={`new-${index}`} className="relative group">
+                           <img
+                             src={preview}
+                             alt={`New ${index + 1}`}
+                             className="w-20 h-20 object-cover rounded-lg border"
+                           />
+                           <Button
+                             type="button"
+                             variant="destructive"
+                             size="sm"
+                             className="absolute -top-2 -right-2 w-5 h-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                             onClick={() => removeNewImage(index)}
+                           >
+                             <X className="w-3 h-3" />
+                           </Button>
+                         </div>
+                       ))}
+                     </div>
+                   </div>
+                 )}
+
+                 {/* File upload input */}
+                 {totalImageCount < MAX_IMAGES && (
+                   <div className="mt-2">
+                     <label className="flex items-center justify-center w-full h-24 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                       <div className="text-center">
+                         <Plus className="w-6 h-6 mx-auto text-muted-foreground" />
+                         <p className="text-xs text-muted-foreground mt-1">
+                           Click to upload images from your device
+                         </p>
+                       </div>
+                       <input
+                         type="file"
+                         accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                         multiple
+                         className="hidden"
+                         onChange={handleFileSelect}
+                       />
+                     </label>
+                   </div>
+                 )}
+                 <p className="text-xs text-muted-foreground mt-1">
+                   Upload images from your device (JPG, PNG, GIF, WebP — max 10MB each)
+                 </p>
+               </div>
+               <Textarea
+                 placeholder="Description"
+                 {...register("description", { required: true })}
+                 className="col-span-2"
+                 rows={4}
+               />
+               <Button type="submit" className="col-span-2" disabled={uploading}>
+                 {uploading ? "Uploading..." : editing ? "Update" : "Create"}
+               </Button>
+             </form>
+           </DialogContent>
+         </Dialog>
+       </div>
+       <div className="grid gap-4">
+         {properties.map((p) => (
+           <div
+             key={p.id}
+             className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
+           >
+             <div className="flex items-center gap-3">
+               <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
+                 {(() => {
+                   const url = getPropertyImageUrl(p);
+                   return url ? (
+                     <img
+                       src={url}
+                       alt={p.title}
+                       className="w-full h-full object-cover"
+                     />
+                   ) : (
+                     <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">No img</div>
+                   );
+                 })()}
+               </div>
+               <div>
+                 <h3 className="font-semibold">{p.title}</h3>
+                 <p className="text-sm text-gray-500">{p.location}</p>
+                 <p className="text-xs text-gray-400">
+                   ₦{p.price?.toLocaleString()} | {p.bedrooms || "?"} bed / {p.bathrooms || "?"} bath
+                   {p.status && <span className="ml-2">— {p.status}</span>}
+                 </p>
+               </div>
+             </div>
+             <div className="flex gap-2">
+               <Button size="sm" variant="outline" onClick={() => openEdit(p)}>
+                 <Edit className="w-4 h-4" />
+               </Button>
+               <Button
+                 size="sm"
+                 variant="destructive"
+                 onClick={() => handleDelete(p.id)}
+               >
+                 <Trash2 className="w-4 h-4" />
+               </Button>
+             </div>
+           </div>
+         ))}
+       </div>
+     </div>
+   );
+ };
 
 // ---------- Agents Manager ----------
 const AgentsManager = () => {
