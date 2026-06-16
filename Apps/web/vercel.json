@@ -1,9 +1,13 @@
 {
+  "cleanUrls": false,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/googlec5d3e468141d2edd.html", "destination": "/googlec5d3e468141d2edd.html" },
-    { "source": "/blog/amp/(.*)/index.html", "destination": "/blog/amp/$1/index.html" },
+    { "source": "/og-image.png", "destination": "/og-image.png" },
+    { "source": "/llms.txt", "destination": "/llms.txt" },
+    { "source": "/blog/amp/(.*)", "destination": "/blog/amp/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
