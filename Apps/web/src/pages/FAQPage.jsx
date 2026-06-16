@@ -200,6 +200,43 @@ const FAQPage = () => {
         },
       ],
     },
+    {
+      category: 'Voice Search & Quick Answers',
+      questions: [
+        {
+          q: 'What is the most expensive house in Lagos?',
+          a: 'The most expensive houses in Lagos are on Banana Island, where waterfront mansions cost between ₦2 billion and ₦5 billion. Banana Island is Nigeria\'s most prestigious address with 24/7 security and private beach access.'
+        },
+        {
+          q: 'How much does a 3 bedroom apartment cost in Lagos?',
+          a: 'A 3-bedroom luxury apartment in Lagos costs between ₦40 million in Lekki Phase 1 and ₦350 million on Banana Island. Average rent for a 3-bedroom luxury apartment is ₦6-15 million per year depending on the neighborhood.'
+        },
+        {
+          q: 'Where is the most expensive area to live in Lagos?',
+          a: 'Banana Island is the most expensive area to live in Lagos. It\'s a man-made island with property prices starting at ₦200 million. Other expensive areas include Ikoyi and Victoria Island.'
+        },
+        {
+          q: 'What is the cheapest luxury neighborhood in Lagos?',
+          a: 'Lekki Phase 1 is the cheapest luxury neighborhood in Lagos, with properties starting from ₦40 million. It offers modern estates, better roads, and proximity to international schools.'
+        },
+        {
+          q: 'How long does Governor\'s Consent take in Lagos?',
+          a: 'Governor\'s Consent in Lagos typically takes 6-12 weeks to process. The timeline depends on document completeness and the property location. Budget approximately 10% of the property value for consent fees.'
+        },
+        {
+          q: 'What is the average rent for a luxury apartment in Lagos?',
+          a: 'Average rent for a luxury apartment in Lagos is ₦4-18 million per year. In Lekki it\'s ₦4-12 million, in Victoria Island ₦6-18 million, and in Ikoyi ₦8-20 million.'
+        },
+        {
+          q: 'Can I buy property in Lagos as a foreigner?',
+          a: 'Yes, foreigners can buy property in Lagos. You need a valid passport, Nigerian Tax Identification Number (TIN), and a bank account. The process is the same as for Nigerian citizens.'
+        },
+        {
+          q: 'How do I sell my house fast in Lagos?',
+          a: 'To sell your house fast in Lagos: price it correctly using market data, invest in professional staging and photography, list with a luxury agency like Luxury Properties Ltd, and be flexible with showings.'
+        },
+      ],
+    },
   ];
 
   return (
