@@ -1093,7 +1093,7 @@ const TeamMembersManager = () => {
   const fetchMembers = async () => {
     try {
       const { data, error } = await supabase
-        .from("teamMembers")
+        .from("teammembers")
         .select("*")
         .order("created_at", { ascending: true });
 
@@ -1136,7 +1136,7 @@ const TeamMembersManager = () => {
 
       if (photoFile) {
         try {
-          const photoPath = await uploadFile("team-photos", photoFile, "teamMembers");
+          const photoPath = await uploadFile("team-photos", photoFile, "teammembers");
           memberData.photo = photoPath;
         } catch (uploadErr) {
           toast.error("Photo upload failed, but member will be saved");
@@ -1145,7 +1145,7 @@ const TeamMembersManager = () => {
 
       if (editing) {
         const { error } = await supabase
-          .from("teamMembers")
+          .from("teammembers")
           .update(memberData)
           .eq("id", editing);
 
@@ -1153,7 +1153,7 @@ const TeamMembersManager = () => {
         toast.success("Team member updated");
       } else {
         const { error } = await supabase
-          .from("teamMembers")
+          .from("teammembers")
           .insert(memberData);
 
         if (error) throw error;
@@ -1170,7 +1170,7 @@ const TeamMembersManager = () => {
     if (!window.confirm("Delete this team member?")) return;
     try {
       const { error } = await supabase
-        .from("teamMembers")
+        .from("teammembers")
         .delete()
         .eq("id", id);
 

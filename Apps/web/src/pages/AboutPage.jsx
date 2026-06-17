@@ -227,9 +227,9 @@ const AboutPage = () => {
     const fetchTeam = async () => {
       try {
         const { data, error } = await supabase
-          .from('teamMembers')
+          .from('teammembers')
           .select('*')
-          .order('created', { ascending: true });
+          .order('created_at', { ascending: true });
 
         if (error) throw error;
         setTeamMembers(data || []);

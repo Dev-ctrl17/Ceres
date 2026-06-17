@@ -28,24 +28,45 @@ const HomePage = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const [featuredResult, latestResult] = await Promise.all([
+        const [featuredResult, latestResult] = await Promise.allSettled([
           supabase
             .from('properties')
             .select('*')
             .eq('isFeatured', true)
             .eq('status', 'Available')
-            .order('created', { ascending: false })
+            .order('created_at', { ascending: false })
             .limit(3),
           supabase
             .from('properties')
             .select('*')
             .eq('status', 'Available')
-            .order('created', { ascending: false })
+            .order('created_at', { ascending: false })
             .limit(6)
         ]);
         
-        setFeaturedProperties(featuredResult.data || []);
-        setLatestProperties(latestResult.data || []);
+        if (featuredResult.status === 'fulfilled') {
+          setFeaturedProperties(featuredResult.value.data || []);
+        } else {
+          console.error('Error fetching featured properties:', featuredResult.reason);
+          // isFeatured column may not exist, fetch latest available instead
+          try {
+            const { data } = await supabase
+              .from('properties')
+              .select('*')
+              .eq('status', 'Available')
+              .order('created_at', { ascending: false })
+              .limit(3);
+            setFeaturedProperties(data || []);
+          } catch (fallbackErr) {
+            console.error('Fallback fetch failed:', fallbackErr);
+          }
+        }
+        
+        if (latestResult.status === 'fulfilled') {
+          setLatestProperties(latestResult.value.data || []);
+        } else {
+          console.error('Error fetching latest properties:', latestResult.reason);
+        }
       } catch (error) {
         console.error('Error fetching properties:', error);
         toast.error('Failed to load properties');

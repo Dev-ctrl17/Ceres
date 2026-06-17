@@ -39,7 +39,7 @@ const PropertyDetailsPage = () => {
           .select('*')
           .eq('propertyType', record.propertyType)
           .neq('id', id)
-          .order('created', { ascending: false })
+          .order('created_at', { ascending: false })
           .limit(3);
 
         if (!similarError) {

@@ -292,7 +292,7 @@ export const propertiesApi = {
       query = query.eq('status', filters.status);
     }
 
-    return query.order('created', { ascending: false });
+    return query.order('created_at', { ascending: false });
   },
 
   getById: (id) => fetchById('properties', id),
@@ -340,7 +340,7 @@ export const leadsApi = {
     return supabase
       .from('leads')
       .select('*')
-      .order('created', { ascending: false });
+      .order('created_at', { ascending: false });
   },
   create: (data) => createRecord('leads', data),
   delete: (id) => deleteRecord('leads', id),
@@ -352,7 +352,7 @@ export const testimonialsApi = {
     return supabase
       .from('testimonials')
       .select('*')
-      .order('created', { ascending: false });
+      .order('created_at', { ascending: false });
   },
   create: (data) => createRecord('testimonials', data),
   update: (id, data) => updateRecord('testimonials', id, data),
@@ -365,7 +365,7 @@ export const reviewsApi = {
     return supabase
       .from('reviews')
       .select('*')
-      .order('created', { ascending: false });
+      .order('created_at', { ascending: false });
   },
   create: (data) => createRecord('reviews', data),
   update: (id, data) => updateRecord('reviews', id, data),
@@ -379,7 +379,7 @@ export const newsletterApi = {
     return supabase
       .from('newsletter')
       .select('*')
-      .order('created', { ascending: false });
+      .order('created_at', { ascending: false });
   },
   delete: (id) => deleteRecord('newsletter', id),
 };
@@ -391,7 +391,7 @@ export const propertySubmissionsApi = {
     return supabase
       .from('propertySubmissions')
       .select('*')
-      .order('created', { ascending: false });
+      .order('created_at', { ascending: false });
   },
   delete: (id) => deleteRecord('propertySubmissions', id),
 };

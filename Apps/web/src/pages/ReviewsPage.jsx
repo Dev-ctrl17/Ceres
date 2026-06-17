@@ -17,7 +17,7 @@ const ReviewsPage = () => {
         const { data, error } = await supabase
           .from('testimonials')
           .select('*')
-          .order('created', { ascending: false });
+          .order('created_at', { ascending: false });
 
         if (error) throw error;
         setTestimonials(data || []);
@@ -56,10 +56,10 @@ const ReviewsPage = () => {
               src="https://www.image2url.com/r2/default/images/1781315484156-19239477-a163-4063-9288-df5a0f6fe1b3.png"
               alt="Customer Reviews" 
               className="w-full h-full object-cover"
-              loading="lazy"
+  style={{ objectPosition: 'center', transform: 'scale(0.8)', transformOrigin: 'center' }}
+  loading="lazy"
             />
-            <div className="absolute inset-0 bg-slate-950/40 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/30 to-background" />
+            <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ letterSpacing: '-0.02em' }}>Customer Reviews</h1>

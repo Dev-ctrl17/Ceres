@@ -1,13 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - Defer to avoid blocking render -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E4JGVMVLV"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-0E4JGVMVLV');
+      // Defer analytics initialization to avoid blocking LCP
+      if (document.readyState === 'complete') {
+        gtag('js', new Date());
+        gtag('config', 'G-0E4JGVMVLV');
+      } else {
+        window.addEventListener('load', function() {
+          gtag('js', new Date());
+          gtag('config', 'G-0E4JGVMVLV');
+        });
+      }
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
