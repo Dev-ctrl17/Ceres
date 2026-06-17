@@ -275,22 +275,31 @@ function parseFilterString(filterString) {
 export const propertiesApi = {
   getAll: (filters = {}) => {
     let query = supabase.from('properties').select('*');
+    
+    // Default to 'Available' status unless explicitly requested otherwise
+    const statusFilter = (filters.status && filters.status !== 'all') ? filters.status : 'Available';
+    query = query.eq('status', statusFilter);
 
     if (filters.location) {
       query = query.ilike('location', `%${filters.location}%`);
     }
-    if (filters.propertyType && filters.propertyType !== 'all') {
-      query = query.eq('property_type', filters.propertyType);
+
+    // Use snake_case column names
+    if (filters.property_type && filters.property_type !== 'all') {
+      query = query.eq('property_type', filters.property_type);
     }
+
     if (filters.bedrooms && filters.bedrooms !== 'all') {
-      query = query.gte('bedrooms', parseInt(filters.bedrooms));
+      query = query.eq('bedrooms', parseInt(filters.bedrooms));
     }
-    if (filters.status && filters.status !== 'all') {
-      if (filters.status === 'Available') {
-        query = query.eq('status', 'Available');
-      }
-      query = query.eq('status', filters.status);
+
+    if (filters.minPrice) {
+      query = query.gte('price', filters.minPrice);
     }
+    if (filters.maxPrice) {
+      query = query.lte('price', filters.maxPrice);
+    }
+
     if (filters.purpose) {
       query = query.eq('purpose', filters.purpose);
     }
