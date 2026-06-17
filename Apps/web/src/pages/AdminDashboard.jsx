@@ -252,7 +252,6 @@ const PropertiesManager = () => {
         address: data.location,
         bedroom: parseInt(data.bedrooms),
         bathroom: parseInt(data.bathrooms),
-        area_sqt: data.area,
         property_type: data.type,
         status: data.status || "Available",
         image_url: allImages[0] || "",
