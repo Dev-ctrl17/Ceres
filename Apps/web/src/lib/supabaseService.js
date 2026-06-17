@@ -291,6 +291,9 @@ export const propertiesApi = {
       }
       query = query.eq('status', filters.status);
     }
+    if (filters.purpose) {
+      query = query.eq('purpose', filters.purpose);
+    }
 
     return query.order('created_at', { ascending: false });
   },

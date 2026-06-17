@@ -46,7 +46,7 @@ const animationStyles = `
 `;
 
 const BuyPage = () => {
-  const { properties, loading } = useProperties({ status: 'Available' });
+  const { properties, loading } = useProperties({ status: 'Available', purpose: 'Buy' });
 
   const buyingSteps = [
     { icon: Home, title: 'Browse Properties', description: 'Explore our verified listings and find your dream property' },

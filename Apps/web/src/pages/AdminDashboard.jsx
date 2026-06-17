@@ -28,6 +28,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { useForm } from "react-hook-form";
 
 const AdminDashboard = () => {
@@ -163,7 +170,7 @@ const PropertiesManager = () => {
       area: property.area_sqft || property.area,
       description: property.description,
       type: property.property_type || property.type,
-      purpose: "Buy",
+      purpose: property.purpose || "Buy",
       status: property.status,
       videoTour: "",
     });
@@ -268,6 +275,7 @@ const PropertiesManager = () => {
         bathrooms: parseInt(data.bathrooms),
         area_sqft: data.area,
         property_type: data.type,
+        purpose: data.purpose || "Buy",
         status: data.status || "Available",
         // Store the first image as the primary image_url
         image_url: allImages[0] || "",
@@ -375,19 +383,44 @@ const PropertiesManager = () => {
                 type="number"
                 {...register("area", { required: true })}
               />
-              <Input
-                placeholder="Type (e.g. Villa, Apartment)"
-                {...register("type", { required: true })}
-              />
-              <Input
-                placeholder="Purpose (Buy/Rent)"
-                {...register("purpose", { required: true })}
-              />
-              <Input
-                placeholder="Status (available/sold/rented)"
-                {...register("status", { required: true })}
-                className="col-span-2"
-              />
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Type *</label>
+                <Select name="type" required defaultValue="Residential" onValueChange={(value) => register("type").onChange({ target: { value } })}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select type" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Residential">Residential</SelectItem>
+                    <SelectItem value="Commercial">Commercial</SelectItem>
+                    <SelectItem value="Shortlet">Shortlet</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Purpose *</label>
+                <Select name="purpose" required defaultValue="Buy" onValueChange={(value) => register("purpose").onChange({ target: { value } })}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select purpose" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Buy">Buy</SelectItem>
+                    <SelectItem value="Rent">Rent</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="space-y-2 col-span-2">
+                <label className="text-sm font-medium">Status *</label>
+                <Select name="status" required defaultValue="Available" onValueChange={(value) => register("status").onChange({ target: { value } })}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Available">Available</SelectItem>
+                    <SelectItem value="Sold">Sold</SelectItem>
+                    <SelectItem value="Rented">Rented</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
 
               {/* ── Image upload section ── */}
               <div className="col-span-2">

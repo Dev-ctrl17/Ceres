@@ -118,7 +118,7 @@ const animationStyles = `
 
 const RentPage = () => {
   const [activeTab, setActiveTab] = useState('all');
-  const { properties, loading } = useProperties({ status: 'Available' });
+  const { properties, loading } = useProperties({ status: 'Available', purpose: 'Rent' });
 
   const filterByType = (type) => {
     if (type === 'all') return properties;
