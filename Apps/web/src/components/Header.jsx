@@ -102,6 +102,8 @@ const Header = () => {
             className="lg:hidden p-2 rounded-lg transition-colors"
             style={{ color: "#1A1A1A" }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? (
               <X className="w-6 h-6" />

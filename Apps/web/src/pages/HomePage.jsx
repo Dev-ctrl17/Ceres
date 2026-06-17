@@ -306,8 +306,8 @@ const HomePage = () => {
                     </div>
                     <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                     <p className="text-muted-foreground leading-relaxed mb-6 flex-grow">{service.desc}</p>
-                    <Link to="/services" className="text-primary font-medium hover:underline inline-flex items-center mt-auto" aria-label={`Learn more about ${service.title}`}>
-                      Learn more <ArrowRight className="w-4 h-4 ml-1" />
+                    <Link to="/services" className="text-primary font-medium hover:underline inline-flex items-center mt-auto">
+                      View {service.title} <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
                   </CardContent>
                 </Card>
@@ -334,7 +334,7 @@ const HomePage = () => {
                   </Link>
                   <Link to="/about" aria-label="Learn more about EPAN">
                     <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10">
-                      Learn More
+                      About EPAN
                     </Button>
                   </Link>
                 </div>
