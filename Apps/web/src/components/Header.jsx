@@ -48,6 +48,8 @@ const Header = () => {
               src="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png"
               alt="Luxury Property"
               className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto object-contain"
+              width="160"
+              height="80"
               style={{ filter: "brightness(1) contrast(1)", maxWidth: "160px" }}
               loading="eager"
               onError={(e) => {

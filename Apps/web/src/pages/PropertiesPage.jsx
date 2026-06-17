@@ -6,6 +6,25 @@ import PropertyCard from '@/components/PropertyCard.jsx';
 import PropertyFilter from '@/components/PropertyFilter.jsx';
 import { useProperties } from '@/hooks/useProperties.js';
 
+const animationStyles = `
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-animate { animation: fadeInUp 1s ease-out forwards; }
+  .hero-image { animation: fadeIn 1.5s ease-out forwards; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
+  .hero-image:hover { transform: scale(1.05); }
+  .hero-section { animation: fadeIn 0.5s ease-out; }
+  .filter-section { animation: fadeInUp 0.8s ease-out 0.2s forwards; opacity: 0; }
+  .property-card { opacity: 0; animation: slideInUp 0.6s ease-out forwards; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease; }
+  .property-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.12); }
+`;
+
 const PropertiesPage = () => {
   const [filters, setFilters] = useState({});
   const [appliedFilters, setAppliedFilters] = useState({});
@@ -22,22 +41,22 @@ const PropertiesPage = () => {
         <meta name="description" content="Browse our complete collection of verified properties for sale and rent in Lagos." />
       </Helmet>
 
+      <style>{animationStyles}</style>
+
       <Header />
 
       <main>
-        <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center">
+        <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://www.image2url.com/r2/default/images/1781618537376-b115f9d3-7d9d-44a1-b434-f17755a0d94c.jpeg"
               alt="Browse All Properties" 
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover hero-image"
               loading="lazy"
             />
-            <div className="absolute inset-0 bg-slate-950/40 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/30 to-background" />
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-white" style={{ letterSpacing: '-0.02em' }}>Browse All Properties</h1>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 filter-section">
+            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-white hero-animate" style={{ letterSpacing: '-0.02em' }}>Browse All Properties</h1>
             <PropertyFilter filters={filters} setFilters={setFilters} onSearch={handleSearch} />
           </div>
         </section>
@@ -67,7 +86,7 @@ const PropertiesPage = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {properties.map((property) => (
-                  <PropertyCard key={property.id} property={property} featured={property.isFeatured} />
+                  <PropertyCard key={property.id} property={property} featured={property.isFeatured} className="property-card" />
                 ))}
               </div>
             )}

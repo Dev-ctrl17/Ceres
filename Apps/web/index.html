@@ -17,6 +17,15 @@
     <title>Luxury Properties Ltd — Premium Real Estate in Nigeria</title>
     <meta name="description" content="Luxury Properties Ltd is Nigeria's premier luxury real estate agency. Buy, sell, or rent exclusive high-end properties in Lagos, Abuja, and across Nigeria. Concierge service, off-market listings, and expert advisory." />
     <link rel="canonical" href="https://luxurypropertiesltd.com.ng" />
+
+    <!-- Preconnect hints for critical origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://lrmljudwbzjawafuztwp.supabase.co" />
+    <link rel="dns-prefetch" href="https://lrmljudwbzjawafuztwp.supabase.co" />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link rel="dns-prefetch" href="https://www.image2url.com" />
+
     <!-- Hreflang Tags -->
     <link rel="alternate" hreflang="en-ng" href="https://luxurypropertiesltd.com.ng" />
     <link rel="alternate" hreflang="en" href="https://luxurypropertiesltd.com.ng" />
@@ -59,11 +68,52 @@
       "areaServed": ["Lagos", "Abuja", "Port Harcourt", "Nigeria"],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Luxury Properties",
+        "name": "Luxury Property Services",
         "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Luxury Homes"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Off-Market Properties"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Concierge Real Estate Service"}}
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Luxury Homes",
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "NGN",
+                "lowPrice": "50000000",
+                "highPrice": "5000000000",
+                "offerCount": "50"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Off-Market Properties",
+              "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "NGN",
+                "lowPrice": "100000000",
+                "highPrice": "5000000000",
+                "offerCount": "20"
+              }
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Concierge Real Estate Service",
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "NGN",
+                "price": "0",
+                "priceSpecification": {
+                  "@type": "PriceSpecification",
+                  "description": "Contact for pricing"
+                }
+              }
+            }
+          }
         ]
       }
     }
@@ -105,7 +155,7 @@
     }
     </script>
     <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
+    <script src="https://elfsightcdn.com/platform.js" async defer></script>
   </head>
   <body>
     <div id="root"></div>

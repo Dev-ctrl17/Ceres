@@ -123,7 +123,7 @@ const PropertiesManager = () => {
       const { data, error } = await supabase
         .from("properties")
         .select("*")
-        .order("created", { ascending: false });
+        .order("created_at", { ascending: false });
 
       if (error) throw error;
       setProperties(data || []);
@@ -160,12 +160,12 @@ const PropertiesManager = () => {
       location: property.location,
       bedrooms: property.bedrooms,
       bathrooms: property.bathrooms,
-      area: property.area,
+      area: property.area_sqft || property.area,
       description: property.description,
-      type: property.type,
-      purpose: property.purpose,
+      type: property.property_type || property.type,
+      purpose: property.propertyStatus === "For Rent" ? "Rent" : "Buy",
       status: property.status,
-      videoTour: property.videoTour || "",
+      videoTour: property.virtualTourUrl || property.videoTour || "",
     });
     // Populate existing images from the property
     if (property.images && property.images.length > 0) {
@@ -245,10 +245,22 @@ const PropertiesManager = () => {
       // Combine existing images with newly uploaded paths
       const allImages = [...existingImages, ...uploadedPaths];
 
+      // Map form field names to database column names
       const submitData = {
-        ...data,
+        title: data.title,
+        description: data.description,
+        price: data.price,
+        location: data.location,
+        bedrooms: data.bedrooms,
+        bathrooms: data.bathrooms,
+        area_sqft: data.area,
+        property_type: data.type,
+        status: data.status || "available",
+        virtualTourUrl: data.videoTour || "",
         images: allImages,
-        image_url: allImages[0] || "", // Keep backward compatibility
+        image_url: allImages[0] || "",
+        propertyStatus: data.purpose === "Rent" ? "For Rent" : "For Sale",
+        updated_at: new Date().toISOString(),
       };
 
       if (editing) {
@@ -533,7 +545,7 @@ const AgentsManager = () => {
       const { data, error } = await supabase
         .from("agents")
         .select("*")
-        .order("created", { ascending: false });
+        .order("created_at", { ascending: false });
 
       if (error) throw error;
       setAgents(data || []);
@@ -590,7 +602,18 @@ const AgentsManager = () => {
         phone: formValues.phone,
       };
 
+      // Upload photo if selected
+      if (photoFile) {
+        try {
+          const photoPath = await uploadFile("agent-photos", photoFile, "agents");
+          submitData.photo = photoPath;
+        } catch (uploadErr) {
+          toast.error("Photo upload failed, but agent will be saved");
+        }
+      }
+
       if (editing) {
+        submitData.updated_at = new Date().toISOString();
         const { error } = await supabase
           .from("agents")
           .update(submitData)
@@ -762,7 +785,7 @@ const ReviewsManager = () => {
       const { data, error } = await supabase
         .from("reviews")
         .select("*")
-        .order("created", { ascending: false });
+        .order("created_at", { ascending: false });
 
       if (error) throw error;
       setReviews(data || []);
@@ -920,7 +943,7 @@ const TestimonialsManager = () => {
       const { data, error } = await supabase
         .from("testimonials")
         .select("*")
-        .order("created", { ascending: false });
+        .order("created_at", { ascending: false });
 
       if (error) throw error;
       setTestimonials(data || []);
@@ -1110,6 +1133,15 @@ const TeamMembersManager = () => {
         position: data.position || "",
         bio: data.bio || "",
       };
+
+      if (photoFile) {
+        try {
+          const photoPath = await uploadFile("team-photos", photoFile, "teamMembers");
+          memberData.photo = photoPath;
+        } catch (uploadErr) {
+          toast.error("Photo upload failed, but member will be saved");
+        }
+      }
 
       if (editing) {
         const { error } = await supabase

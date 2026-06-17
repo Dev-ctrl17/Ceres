@@ -124,7 +124,7 @@ const HomePage = () => {
               src="https://www.image2url.com/r2/default/images/1781618469672-f363452b-534b-451c-9b4e-1f1b7efd15b8.jpeg" 
               alt="Luxury modern home exterior" 
               className="w-full h-full object-cover"
-              loading="lazy"
+              fetchpriority="high"
             />
             <div className="absolute inset-0 bg-slate-950/60 mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
@@ -164,7 +164,7 @@ const HomePage = () => {
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Properties</h2>
                 <p className="text-muted-foreground text-lg max-w-2xl">Handpicked premium listings that represent the pinnacle of luxury living and exceptional investment opportunities.</p>
               </div>
-              <Link to="/properties">
+              <Link to="/properties" aria-label="View all properties">
                 <Button variant="outline" className="group">
                   View All Properties 
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -260,8 +260,8 @@ const HomePage = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 text-center">
               {stats.map((stat, index) => (
                 <div key={index} className="space-y-2">
-                  <p className="text-4xl md:text-5xl font-bold tabular-nums tracking-tight">{stat.value}</p>
-                  <p className="text-sm md:text-base font-medium opacity-90 uppercase tracking-wider">{stat.label}</p>
+                  <p className="text-4xl md:text-5xl font-bold tabular-nums tracking-tight text-white">{stat.value}</p>
+                  <p className="text-sm md:text-base font-medium uppercase tracking-wider text-white">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -285,7 +285,7 @@ const HomePage = () => {
                     </div>
                     <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                     <p className="text-muted-foreground leading-relaxed mb-6 flex-grow">{service.desc}</p>
-                    <Link to="/services" className="text-primary font-medium hover:underline inline-flex items-center mt-auto">
+                    <Link to="/services" className="text-primary font-medium hover:underline inline-flex items-center mt-auto" aria-label={`Learn more about ${service.title}`}>
                       Learn more <ArrowRight className="w-4 h-4 ml-1" />
                     </Link>
                   </CardContent>
@@ -306,12 +306,12 @@ const HomePage = () => {
                   Are you a real estate professional looking to grow your career? Join our exclusive network to access verified listings, earn competitive commissions, and connect with industry leaders.
                 </p>
                 <div className="flex flex-wrap gap-4">
-                  <Link to="/epan">
+                  <Link to="/epan" aria-label="Become an EPAN member">
                     <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
                       Become a Member
                     </Button>
                   </Link>
-                  <Link to="/about">
+                  <Link to="/about" aria-label="Learn more about EPAN">
                     <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10">
                       Learn More
                     </Button>
@@ -322,24 +322,24 @@ const HomePage = () => {
                 <div className="space-y-4 mt-8">
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl">
                     <TrendingUp className="w-8 h-8 text-primary mb-4" />
-                    <h4 className="font-semibold mb-2">Higher Earnings</h4>
+                    <h3 className="font-semibold mb-2">Higher Earnings</h3>
                     <p className="text-sm text-slate-400">Access premium listings with better commission splits.</p>
                   </div>
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl">
                     <Clock className="w-8 h-8 text-primary mb-4" />
-                    <h4 className="font-semibold mb-2">Fast Closings</h4>
+                    <h3 className="font-semibold mb-2">Fast Closings</h3>
                     <p className="text-sm text-slate-400">Streamlined processes to help you close deals faster.</p>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl">
                     <Shield className="w-8 h-8 text-primary mb-4" />
-                    <h4 className="font-semibold mb-2">Verified Inventory</h4>
+                    <h3 className="font-semibold mb-2">Verified Inventory</h3>
                     <p className="text-sm text-slate-400">Sell with confidence knowing every property is vetted.</p>
                   </div>
                   <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl">
                     <Users className="w-8 h-8 text-primary mb-4" />
-                    <h4 className="font-semibold mb-2">Elite Network</h4>
+                    <h3 className="font-semibold mb-2">Elite Network</h3>
                     <p className="text-sm text-slate-400">Collaborate with top-performing agents nationwide.</p>
                   </div>
                 </div>
@@ -366,8 +366,9 @@ const HomePage = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 className="h-12 text-base"
+                aria-label="Email address for newsletter subscription"
               />
-              <Button type="submit" size="lg" disabled={subscribing} className="h-12 px-8">
+              <Button type="submit" size="lg" disabled={subscribing} className="h-12 px-8" aria-label="Subscribe to newsletter">
                 {subscribing ? 'Subscribing...' : 'Subscribe'}
               </Button>
             </form>

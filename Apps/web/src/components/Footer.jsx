@@ -44,6 +44,13 @@ const Footer = () => {
     }
   };
 
+  const socialLinks = [
+    { href: "https://web.facebook.com/agene.sunday", icon: <Facebook className="w-4 h-4" />, label: "Facebook" },
+    { href: "https://www.instagram.com/luxurypropertiesltd/", icon: <Instagram className="w-4 h-4" />, label: "Instagram" },
+    { href: "https://twitter.com", icon: <Twitter className="w-4 h-4" />, label: "Twitter" },
+    { href: "https://linkedin.com", icon: <Linkedin className="w-4 h-4" />, label: "LinkedIn" },
+  ];
+
   return (
     <footer style={{ backgroundColor: "#0B1120", color: "#FFFFFF" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -55,6 +62,8 @@ const Footer = () => {
                 src="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png"
                 alt="Luxury Property"
                 className="h-32 w-auto object-contain"
+                width="280"
+                height="128"
                 style={{ maxWidth: "280px" }}
                 loading="lazy"
               />
@@ -67,29 +76,13 @@ const Footer = () => {
               professional, innovative real estate solutions.
             </p>
             <div className="flex space-x-3">
-              {[
-                {
-                  href: "https://web.facebook.com/agene.sunday",
-                  icon: <Facebook className="w-4 h-4" />,
-                },
-                {
-                  href: "https://www.instagram.com/luxurypropertiesltd/",
-                  icon: <Instagram className="w-4 h-4" />,
-                },
-                {
-                  href: "https://twitter.com",
-                  icon: <Twitter className="w-4 h-4" />,
-                },
-                {
-                  href: "https://linkedin.com",
-                  icon: <Linkedin className="w-4 h-4" />,
-                },
-              ].map(({ href, icon }) => (
+              {socialLinks.map(({ href, icon, label }) => (
                 <a
                   key={href}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Follow us on ${label}`}
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-opacity hover:opacity-80"
                   style={{
                     backgroundColor: "rgba(212,175,55,0.15)",
@@ -104,12 +97,12 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4
+            <h2
               className="text-base font-semibold mb-4"
               style={{ color: "#D4AF37" }}
             >
               Quick Links
-            </h4>
+            </h2>
             <ul className="space-y-3">
               {[
                 { label: "Browse Properties", path: "/properties" },
@@ -138,12 +131,12 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4
+            <h2
               className="text-base font-semibold mb-4"
               style={{ color: "#D4AF37" }}
             >
               Contact Info
-            </h4>
+            </h2>
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <Phone
@@ -210,12 +203,12 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h4
+            <h2
               className="text-base font-semibold mb-4"
               style={{ color: "#D4AF37" }}
             >
               Newsletter
-            </h4>
+            </h2>
             <p
               className="text-sm mb-4"
               style={{ color: "rgba(255,255,255,0.8)" }}
@@ -229,6 +222,7 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                aria-label="Email address for newsletter"
                 style={{
                   backgroundColor: "rgba(255,255,255,0.05)",
                   border: "1px solid rgba(255,255,255,0.15)",
@@ -244,6 +238,7 @@ const Footer = () => {
                   border: "none",
                 }}
                 disabled={loading}
+                aria-label="Subscribe to newsletter"
               >
                 {loading ? "Subscribing..." : "Subscribe"}
               </Button>

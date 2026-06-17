@@ -19,6 +19,7 @@ const PropertyFilter = ({ filters, setFilters, onSearch }) => {
           value={filters.location || ""}
           onChange={(e) => setFilters({ ...filters, location: e.target.value })}
           className="text-foreground"
+          aria-label="Search by location"
         />
 
         <Select
@@ -27,7 +28,7 @@ const PropertyFilter = ({ filters, setFilters, onSearch }) => {
             setFilters({ ...filters, propertyType: value })
           }
         >
-          <SelectTrigger>
+          <SelectTrigger aria-label="Property Type">
             <SelectValue placeholder="Property Type" />
           </SelectTrigger>
           <SelectContent>
@@ -44,7 +45,7 @@ const PropertyFilter = ({ filters, setFilters, onSearch }) => {
           value={filters.bedrooms || ""}
           onValueChange={(value) => setFilters({ ...filters, bedrooms: value })}
         >
-          <SelectTrigger>
+          <SelectTrigger aria-label="Bedrooms">
             <SelectValue placeholder="Bedrooms" />
           </SelectTrigger>
           <SelectContent>
@@ -61,7 +62,7 @@ const PropertyFilter = ({ filters, setFilters, onSearch }) => {
           value={filters.status || ""}
           onValueChange={(value) => setFilters({ ...filters, status: value })}
         >
-          <SelectTrigger>
+          <SelectTrigger aria-label="Status">
             <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
@@ -72,7 +73,7 @@ const PropertyFilter = ({ filters, setFilters, onSearch }) => {
           </SelectContent>
         </Select>
 
-        <Button onClick={onSearch} className="w-full">
+        <Button onClick={onSearch} className="w-full" aria-label="Search properties">
           <Search className="w-4 h-4 mr-2" />
           Search
         </Button>
