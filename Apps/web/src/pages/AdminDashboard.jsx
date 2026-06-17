@@ -280,7 +280,7 @@ const PropertiesManager = () => {
         // Store the first image as the primary image_url
         image_url: allImages[0] || "",
         images: allImages,
-        is_featured: false,
+        is_featured: data.is_featured || false,
       };
 
       if (editing) {
@@ -413,7 +413,7 @@ const PropertiesManager = () => {
                   </Select>
                 )} />
               </div>
-              <div className="space-y-2 col-span-2">
+              <div className="space-y-2">
                 <label className="text-sm font-medium">Status *</label>
                 <Controller name="status" control={control} defaultValue="Available" render={({ field }) => (
                   <Select onValueChange={field.onChange} value={field.value}>
@@ -424,6 +424,20 @@ const PropertiesManager = () => {
                       <SelectItem value="Available">Available</SelectItem>
                       <SelectItem value="Sold">Sold</SelectItem>
                       <SelectItem value="Rented">Rented</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )} />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Featured Property</label>
+                <Controller name="is_featured" control={control} defaultValue={false} render={({ field }) => (
+                  <Select onValueChange={(value) => field.onChange(value === 'true')} value={field.value ? 'true' : 'false'}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select featured status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="false">No</SelectItem>
+                      <SelectItem value="true">Yes - Featured</SelectItem>
                     </SelectContent>
                   </Select>
                 )} />

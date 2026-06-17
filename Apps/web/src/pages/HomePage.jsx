@@ -41,7 +41,7 @@ const HomePage = () => {
             .select('*')
             .eq('status', 'Available')
             .order('created_at', { ascending: false })
-            .limit(6)
+            .limit(10)
         ]);
         
         if (featuredResult.status === 'fulfilled') {

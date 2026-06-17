@@ -271,14 +271,15 @@ function parseFilterString(filterString) {
 // SPECIFIC TABLE HELPERS
 // ============================================================
 
-// --- Properties ---
-export const propertiesApi = {
-  getAll: (filters = {}) => {
-    let query = supabase.from('properties').select('*');
-    
-    // Default to 'Available' status unless explicitly requested otherwise
-    const statusFilter = (filters.status && filters.status !== 'all') ? filters.status : 'Available';
-    query = query.eq('status', statusFilter);
+  // --- Properties ---
+  export const propertiesApi = {
+    getAll: (filters = {}) => {
+      let query = supabase.from('properties').select('*');
+      
+      // Only filter by status if explicitly provided
+      if (filters.status && filters.status !== 'all') {
+        query = query.eq('status', filters.status);
+      }
 
     if (filters.location) {
       query = query.ilike('location', `%${filters.location}%`);
