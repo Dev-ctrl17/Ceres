@@ -136,7 +136,7 @@ const PropertiesManager = () => {
     fetchProperties();
   }, []);
 
-  // Cleanup previews on unmount
+  // Cleanup object URL previews on unmount to avoid memory leaks
   useEffect(() => {
     return () => {
       imagePreviews.forEach((preview) => URL.revokeObjectURL(preview));
@@ -167,7 +167,7 @@ const PropertiesManager = () => {
       status: property.status,
       videoTour: "",
     });
-    // Populate existing images from the property
+    // Populate existing images — store as full public URLs so they're ready to save as-is
     if (property.image_url) {
       setExistingImages([property.image_url]);
     } else {
@@ -183,7 +183,11 @@ const PropertiesManager = () => {
     const totalImages = existingImages.length + imageFiles.length + files.length;
 
     if (totalImages > MAX_IMAGES) {
-      toast.error(`Maximum ${MAX_IMAGES} images allowed. You can add ${MAX_IMAGES - existingImages.length - imageFiles.length} more.`);
+      toast.error(
+        `Maximum ${MAX_IMAGES} images allowed. You can add ${
+          MAX_IMAGES - existingImages.length - imageFiles.length
+        } more.`
+      );
       return;
     }
 
@@ -195,17 +199,16 @@ const PropertiesManager = () => {
       return;
     }
 
-    // Create previews for new files
+    // Create local blob previews for the UI
     const newPreviews = files.map((file) => URL.createObjectURL(file));
     setImageFiles((prev) => [...prev, ...files]);
     setImagePreviews((prev) => [...prev, ...newPreviews]);
 
-    // Reset the file input
+    // Reset the file input so the same file can be re-selected if needed
     e.target.value = "";
   };
 
   const removeNewImage = (index) => {
-    // Revoke the preview URL
     URL.revokeObjectURL(imagePreviews[index]);
     setImageFiles((prev) => prev.filter((_, i) => i !== index));
     setImagePreviews((prev) => prev.filter((_, i) => i !== index));
@@ -230,20 +233,31 @@ const PropertiesManager = () => {
 
     setUploading(true);
     try {
-      // Upload new files to Supabase Storage
-      let uploadedPaths = [];
+      // Upload new local files to Supabase Storage and convert returned
+      // storage paths → full public URLs before saving to the database.
+      let uploadedUrls = [];
       if (imageFiles.length > 0) {
         toast.info(`Uploading ${imageFiles.length} image(s)...`);
+
         const uploadPromises = imageFiles.map((file) =>
           uploadFile("property-images", file, "properties")
         );
-        uploadedPaths = await Promise.all(uploadPromises);
+
+        // uploadFile returns storage paths, e.g. "properties/uuid.jpg"
+        const uploadedPaths = await Promise.all(uploadPromises);
+
+        // Convert each path to a full public URL using getFileUrl
+        uploadedUrls = uploadedPaths.map((path) => {
+          // If getFileUrl returns null/undefined fall back to the raw path
+          // so we never accidentally store an empty string
+          return getFileUrl("property-images", path) || path;
+        });
       }
 
-      // Combine existing images with newly uploaded paths
-      const allImages = [...existingImages, ...uploadedPaths];
+      // existingImages are already full public URLs (set during openEdit),
+      // so we can merge them directly with the freshly converted URLs.
+      const allImages = [...existingImages, ...uploadedUrls];
 
-      // Map form field names to database column names
       const submitData = {
         title: data.title,
         description: data.description,
@@ -255,6 +269,7 @@ const PropertiesManager = () => {
         area_sqft: data.area,
         property_type: data.type,
         status: data.status || "Available",
+        // Store the first image as the primary image_url
         image_url: allImages[0] || "",
         is_featured: false,
       };
@@ -275,6 +290,7 @@ const PropertiesManager = () => {
         if (error) throw error;
         toast.success("Property created");
       }
+
       setDialogOpen(false);
       fetchProperties();
     } catch (err) {
@@ -372,6 +388,8 @@ const PropertiesManager = () => {
                 {...register("status", { required: true })}
                 className="col-span-2"
               />
+
+              {/* ── Image upload section ── */}
               <div className="col-span-2">
                 <label className="text-sm font-medium mb-1 block">
                   Property Images ({totalImageCount} / {MAX_IMAGES})
@@ -380,13 +398,18 @@ const PropertiesManager = () => {
                   </span>
                 </label>
 
-                {/* Existing images (when editing) */}
+                {/* Existing images (edit mode) */}
                 {existingImages.length > 0 && (
                   <div className="mb-3">
-                    <p className="text-xs text-muted-foreground mb-2">Existing images:</p>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      Existing images:
+                    </p>
                     <div className="flex flex-wrap gap-2">
                       {existingImages.map((img, index) => {
-                        const imgUrl = img.startsWith("http") ? img : getFileUrl("property-images", img) || img;
+                        // existingImages already holds full public URLs
+                        const imgUrl = img.startsWith("http")
+                          ? img
+                          : getFileUrl("property-images", img) || img;
                         return (
                           <div key={`existing-${index}`} className="relative group">
                             <img
@@ -410,118 +433,126 @@ const PropertiesManager = () => {
                   </div>
                 )}
 
-                {/* New file previews */}
+                {/* New file previews (blob URLs — display only, not saved) */}
                 {imagePreviews.length > 0 && (
                   <div className="mb-3">
-                    <p className="text-xs text-muted-foreground mb-2">New images to upload:</p>
+                    <p className="text-xs text-muted-foreground mb-2">
+                      New images to upload:
+                    </p>
                     <div className="flex flex-wrap gap-2">
-                       {imagePreviews.map((preview, index) => (
-                         <div key={`new-${index}`} className="relative group">
-                           <img
-                             src={preview}
-                             alt={`New ${index + 1}`}
-                             className="w-20 h-20 object-cover rounded-lg border"
-                           />
-                           <Button
-                             type="button"
-                             variant="destructive"
-                             size="sm"
-                             className="absolute -top-2 -right-2 w-5 h-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                             onClick={() => removeNewImage(index)}
-                           >
-                             <X className="w-3 h-3" />
-                           </Button>
-                         </div>
-                       ))}
-                     </div>
-                   </div>
-                 )}
+                      {imagePreviews.map((preview, index) => (
+                        <div key={`new-${index}`} className="relative group">
+                          <img
+                            src={preview}
+                            alt={`New ${index + 1}`}
+                            className="w-20 h-20 object-cover rounded-lg border"
+                          />
+                          <Button
+                            type="button"
+                            variant="destructive"
+                            size="sm"
+                            className="absolute -top-2 -right-2 w-5 h-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                            onClick={() => removeNewImage(index)}
+                          >
+                            <X className="w-3 h-3" />
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-                 {/* File upload input */}
-                 {totalImageCount < MAX_IMAGES && (
-                   <div className="mt-2">
-                     <label className="flex items-center justify-center w-full h-24 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-primary transition-colors">
-                       <div className="text-center">
-                         <Plus className="w-6 h-6 mx-auto text-muted-foreground" />
-                         <p className="text-xs text-muted-foreground mt-1">
-                           Click to upload images from your device
-                         </p>
-                       </div>
-                       <input
-                         type="file"
-                         accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
-                         multiple
-                         className="hidden"
-                         onChange={handleFileSelect}
-                       />
-                     </label>
-                   </div>
-                 )}
-                 <p className="text-xs text-muted-foreground mt-1">
-                   Upload images from your device (JPG, PNG, GIF, WebP — max 10MB each)
-                 </p>
-               </div>
-               <Textarea
-                 placeholder="Description"
-                 {...register("description", { required: true })}
-                 className="col-span-2"
-                 rows={4}
-               />
-               <Button type="submit" className="col-span-2" disabled={uploading}>
-                 {uploading ? "Uploading..." : editing ? "Update" : "Create"}
-               </Button>
-             </form>
-           </DialogContent>
-         </Dialog>
-       </div>
-       <div className="grid gap-4">
-         {properties.map((p) => (
-           <div
-             key={p.id}
-             className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
-           >
-             <div className="flex items-center gap-3">
-               <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
-                 {(() => {
-                   const url = getPropertyImageUrl(p);
-                   return url ? (
-                     <img
-                       src={url}
-                       alt={p.title}
-                       className="w-full h-full object-cover"
-                     />
-                   ) : (
-                     <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">No img</div>
-                   );
-                 })()}
-               </div>
-               <div>
-                 <h3 className="font-semibold">{p.title}</h3>
-                 <p className="text-sm text-gray-500">{p.location}</p>
-                 <p className="text-xs text-gray-400">
-                   ₦{p.price?.toLocaleString()} | {p.bedrooms || "?"} bed / {p.bathrooms || "?"} bath
-                   {p.status && <span className="ml-2">— {p.status}</span>}
-                 </p>
-               </div>
-             </div>
-             <div className="flex gap-2">
-               <Button size="sm" variant="outline" onClick={() => openEdit(p)}>
-                 <Edit className="w-4 h-4" />
-               </Button>
-               <Button
-                 size="sm"
-                 variant="destructive"
-                 onClick={() => handleDelete(p.id)}
-               >
-                 <Trash2 className="w-4 h-4" />
-               </Button>
-             </div>
-           </div>
-         ))}
-       </div>
-     </div>
-   );
- };
+                {/* File picker — hidden when the max is reached */}
+                {totalImageCount < MAX_IMAGES && (
+                  <div className="mt-2">
+                    <label className="flex items-center justify-center w-full h-24 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                      <div className="text-center">
+                        <Plus className="w-6 h-6 mx-auto text-muted-foreground" />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Click to upload images from your device
+                        </p>
+                      </div>
+                      <input
+                        type="file"
+                        accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                        multiple
+                        className="hidden"
+                        onChange={handleFileSelect}
+                      />
+                    </label>
+                  </div>
+                )}
+
+                <p className="text-xs text-muted-foreground mt-1">
+                  JPG, PNG, GIF, WebP — max 10 MB each
+                </p>
+              </div>
+
+              <Textarea
+                placeholder="Description"
+                {...register("description", { required: true })}
+                className="col-span-2"
+                rows={4}
+              />
+              <Button type="submit" className="col-span-2" disabled={uploading}>
+                {uploading ? "Uploading..." : editing ? "Update" : "Create"}
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <div className="grid gap-4">
+        {properties.map((p) => (
+          <div
+            key={p.id}
+            className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
+                {(() => {
+                  const url = getPropertyImageUrl(p);
+                  return url ? (
+                    <img
+                      src={url}
+                      alt={p.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
+                      No img
+                    </div>
+                  );
+                })()}
+              </div>
+              <div>
+                <h3 className="font-semibold">{p.title}</h3>
+                <p className="text-sm text-gray-500">{p.location}</p>
+                <p className="text-xs text-gray-400">
+                  ₦{p.price?.toLocaleString()} | {p.bedrooms || "?"} bed /{" "}
+                  {p.bathrooms || "?"} bath
+                  {p.status && <span className="ml-2">— {p.status}</span>}
+                </p>
+              </div>
+            </div>
+            <div className="flex gap-2">
+              <Button size="sm" variant="outline" onClick={() => openEdit(p)}>
+                <Edit className="w-4 h-4" />
+              </Button>
+              <Button
+                size="sm"
+                variant="destructive"
+                onClick={() => handleDelete(p.id)}
+              >
+                <Trash2 className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 // ---------- Agents Manager ----------
 const AgentsManager = () => {
@@ -579,14 +610,16 @@ const AgentsManager = () => {
 
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
-      setPhotoFile(file);
-    }
+    if (file) setPhotoFile(file);
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!formValues.name.trim() || !formValues.email.trim() || !formValues.phone.trim()) {
+    if (
+      !formValues.name.trim() ||
+      !formValues.email.trim() ||
+      !formValues.phone.trim()
+    ) {
       toast.error("Name, email, and phone are required");
       return;
     }
@@ -598,11 +631,11 @@ const AgentsManager = () => {
         phone: formValues.phone,
       };
 
-      // Upload photo if selected
       if (photoFile) {
         try {
           const photoPath = await uploadFile("agent-photos", photoFile, "agents");
-          submitData.photo = photoPath;
+          // Convert path → public URL before saving
+          submitData.photo = getFileUrl("agent-photos", photoPath) || photoPath;
         } catch (uploadErr) {
           toast.error("Photo upload failed, but agent will be saved");
         }
@@ -618,13 +651,11 @@ const AgentsManager = () => {
         if (error) throw error;
         toast.success("Agent updated");
       } else {
-        const { error } = await supabase
-          .from("agents")
-          .insert(submitData);
-
+        const { error } = await supabase.from("agents").insert(submitData);
         if (error) throw error;
         toast.success("Agent created");
       }
+
       setDialogOpen(false);
       fetchAgents();
     } catch (err) {
@@ -637,11 +668,7 @@ const AgentsManager = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this agent?")) return;
     try {
-      const { error } = await supabase
-        .from("agents")
-        .delete()
-        .eq("id", id);
-
+      const { error } = await supabase.from("agents").delete().eq("id", id);
       if (error) throw error;
       toast.success("Agent deleted");
       fetchAgents();
@@ -651,8 +678,17 @@ const AgentsManager = () => {
   };
 
   const getAgentPhotoUrl = (agent) => {
-    if (agent.photo) return getFileUrl("agent-photos", agent.photo);
-    if (agent.image) return getFileUrl("agent-photos", agent.image);
+    if (agent.photo) {
+      // If already a full URL return as-is, otherwise convert
+      return agent.photo.startsWith("http")
+        ? agent.photo
+        : getFileUrl("agent-photos", agent.photo);
+    }
+    if (agent.image) {
+      return agent.image.startsWith("http")
+        ? agent.image
+        : getFileUrl("agent-photos", agent.image);
+    }
     return null;
   };
 
@@ -669,7 +705,9 @@ const AgentsManager = () => {
           </DialogTrigger>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>{editing ? "Edit Agent" : "Add New Agent"}</DialogTitle>
+              <DialogTitle>
+                {editing ? "Edit Agent" : "Add New Agent"}
+              </DialogTitle>
             </DialogHeader>
             <form onSubmit={onSubmit} className="space-y-4">
               <div className="space-y-2">
@@ -705,22 +743,25 @@ const AgentsManager = () => {
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Photo</label>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  onChange={handlePhotoChange}
-                />
+                <Input type="file" accept="image/*" onChange={handlePhotoChange} />
                 {photoFile && (
-                  <p className="text-xs text-green-600">Selected: {photoFile.name}</p>
+                  <p className="text-xs text-green-600">
+                    Selected: {photoFile.name}
+                  </p>
                 )}
               </div>
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Saving..." : editing ? "Update Agent" : "Add Agent"}
+                {isSubmitting
+                  ? "Saving..."
+                  : editing
+                  ? "Update Agent"
+                  : "Add Agent"}
               </Button>
             </form>
           </DialogContent>
         </Dialog>
       </div>
+
       <div className="grid gap-4">
         {agents.map((a) => {
           const photoUrl = getAgentPhotoUrl(a);
@@ -822,10 +863,7 @@ const ReviewsManager = () => {
         if (error) throw error;
         toast.success("Review updated");
       } else {
-        const { error } = await supabase
-          .from("reviews")
-          .insert(data);
-
+        const { error } = await supabase.from("reviews").insert(data);
         if (error) throw error;
         toast.success("Review created");
       }
@@ -839,11 +877,7 @@ const ReviewsManager = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this review?")) return;
     try {
-      const { error } = await supabase
-        .from("reviews")
-        .delete()
-        .eq("id", id);
-
+      const { error } = await supabase.from("reviews").delete().eq("id", id);
       if (error) throw error;
       toast.success("Review deleted");
       fetchReviews();
@@ -887,13 +921,12 @@ const ReviewsManager = () => {
                 {...register("text", { required: true })}
                 rows={3}
               />
-              <Button type="submit">
-                {editing ? "Update" : "Create"}
-              </Button>
+              <Button type="submit">{editing ? "Update" : "Create"}</Button>
             </form>
           </DialogContent>
         </Dialog>
       </div>
+
       <div className="grid gap-4">
         {reviews.map((r) => (
           <div
@@ -980,10 +1013,7 @@ const TestimonialsManager = () => {
         if (error) throw error;
         toast.success("Testimonial updated");
       } else {
-        const { error } = await supabase
-          .from("testimonials")
-          .insert(data);
-
+        const { error } = await supabase.from("testimonials").insert(data);
         if (error) throw error;
         toast.success("Testimonial created");
       }
@@ -1039,13 +1069,12 @@ const TestimonialsManager = () => {
                 {...register("text", { required: true })}
                 rows={3}
               />
-              <Button type="submit">
-                {editing ? "Update" : "Create"}
-              </Button>
+              <Button type="submit">{editing ? "Update" : "Create"}</Button>
             </form>
           </DialogContent>
         </Dialog>
       </div>
+
       <div className="grid gap-4">
         {testimonials.map((t) => (
           <div
@@ -1054,9 +1083,7 @@ const TestimonialsManager = () => {
           >
             <div>
               <h3 className="font-semibold">{t.name}</h3>
-              {t.role && (
-                <p className="text-sm text-gray-500">{t.role}</p>
-              )}
+              {t.role && <p className="text-sm text-gray-500">{t.role}</p>}
               <p className="text-sm text-gray-600 line-clamp-2">{t.text}</p>
             </div>
             <div className="flex gap-2">
@@ -1106,7 +1133,7 @@ const TeamMembersManager = () => {
 
   const openCreate = () => {
     setEditing(null);
-    reset({ name: "", position: "", bio: "", photo: "" });
+    reset({ name: "", position: "", bio: "" });
     setPhotoFile(null);
     setDialogOpen(true);
   };
@@ -1132,8 +1159,13 @@ const TeamMembersManager = () => {
 
       if (photoFile) {
         try {
-          const photoPath = await uploadFile("team-photos", photoFile, "teammembers");
-          memberData.photo = photoPath;
+          const photoPath = await uploadFile(
+            "team-photos",
+            photoFile,
+            "teammembers"
+          );
+          // Convert path → public URL before saving
+          memberData.photo = getFileUrl("team-photos", photoPath) || photoPath;
         } catch (uploadErr) {
           toast.error("Photo upload failed, but member will be saved");
         }
@@ -1148,13 +1180,11 @@ const TeamMembersManager = () => {
         if (error) throw error;
         toast.success("Team member updated");
       } else {
-        const { error } = await supabase
-          .from("teammembers")
-          .insert(memberData);
-
+        const { error } = await supabase.from("teammembers").insert(memberData);
         if (error) throw error;
         toast.success("Team member created");
       }
+
       setDialogOpen(false);
       fetchMembers();
     } catch (err) {
@@ -1179,8 +1209,11 @@ const TeamMembersManager = () => {
   };
 
   const getPhotoUrl = (member) => {
-    if (member.photo) return getFileUrl("team-photos", member.photo);
-    return null;
+    if (!member.photo) return null;
+    // If already a full URL return as-is, otherwise convert
+    return member.photo.startsWith("http")
+      ? member.photo
+      : getFileUrl("team-photos", member.photo);
   };
 
   return (
@@ -1226,7 +1259,9 @@ const TeamMembersManager = () => {
                   }}
                 />
                 {photoFile && (
-                  <p className="text-xs text-green-600">Selected: {photoFile.name}</p>
+                  <p className="text-xs text-green-600">
+                    Selected: {photoFile.name}
+                  </p>
                 )}
               </div>
               <div className="space-y-2">
@@ -1244,6 +1279,7 @@ const TeamMembersManager = () => {
           </DialogContent>
         </Dialog>
       </div>
+
       <div className="grid gap-4">
         {members.map((m) => {
           const photoUrl = getPhotoUrl(m);
