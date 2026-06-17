@@ -4,6 +4,7 @@ import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
 
 // Eager load - always needed on first page
 import HomePage from "./pages/HomePage.jsx";
@@ -66,6 +67,7 @@ function App() {
           </Routes>
         </Suspense>
         <Toaster />
+        <Analytics />
       </Router>
     </AuthProvider>
   );
