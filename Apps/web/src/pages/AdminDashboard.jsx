@@ -157,20 +157,18 @@ const PropertiesManager = () => {
     reset({
       title: property.title,
       price: property.price,
-      location: property.location,
-      bedrooms: property.bedrooms,
-      bathrooms: property.bathrooms,
-      area: property.area_sqft || property.area,
+      location: property.location || property.address,
+      bedrooms: property.bedroom || property.bedrooms,
+      bathrooms: property.bathroom || property.bathrooms,
+      area: property.area_sqt || property.area,
       description: property.description,
       type: property.property_type || property.type,
-      purpose: property.propertyStatus === "For Rent" ? "Rent" : "Buy",
+      purpose: "Buy",
       status: property.status,
-      videoTour: property.virtualTourUrl || property.videoTour || "",
+      videoTour: "",
     });
     // Populate existing images from the property
-    if (property.images && property.images.length > 0) {
-      setExistingImages([...property.images]);
-    } else if (property.image_url) {
+    if (property.image_url) {
       setExistingImages([property.image_url]);
     } else {
       setExistingImages([]);
@@ -251,16 +249,14 @@ const PropertiesManager = () => {
         description: data.description,
         price: data.price,
         location: data.location,
-        bedrooms: data.bedrooms,
-        bathrooms: data.bathrooms,
-        area_sqft: data.area,
+        address: data.location,
+        bedroom: parseInt(data.bedrooms),
+        bathroom: parseInt(data.bathrooms),
+        area_sqt: data.area,
         property_type: data.type,
-        status: data.status || "available",
-        virtualTourUrl: data.videoTour || "",
-        images: allImages,
+        status: data.status || "Available",
         image_url: allImages[0] || "",
-        propertyStatus: data.purpose === "Rent" ? "For Rent" : "For Sale",
-        updated_at: new Date().toISOString(),
+        is_featured: false,
       };
 
       if (editing) {
