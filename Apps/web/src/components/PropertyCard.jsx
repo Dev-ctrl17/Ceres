@@ -7,8 +7,8 @@ import { getFileUrl } from "@/lib/supabaseService";
 
 const PropertyCard = ({ property, featured = false }) => {
   const imageUrl =
-    property.images && property.images.length > 0
-      ? getFileUrl("property-images", property.images[0]) || property.images[0]
+    property.image_url
+      ? getFileUrl("property-images", property.image_url) || property.image_url
       : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800";
 
   const formatPrice = (price) => {

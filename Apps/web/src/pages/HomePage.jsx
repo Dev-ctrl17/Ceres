@@ -32,7 +32,7 @@ const HomePage = () => {
           supabase
             .from('properties')
             .select('*')
-            .eq('isFeatured', true)
+            .eq('is_featured', true)
             .eq('status', 'Available')
             .order('created_at', { ascending: false })
             .limit(3),

@@ -122,7 +122,7 @@ const RentPage = () => {
 
   const filterByType = (type) => {
     if (type === 'all') return properties;
-    return properties.filter(p => p.propertyType === type);
+    return properties.filter(p => p.property_type === type);
   };
 
   return (

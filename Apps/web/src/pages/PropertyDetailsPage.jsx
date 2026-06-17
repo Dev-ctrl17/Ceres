@@ -37,7 +37,7 @@ const PropertyDetailsPage = () => {
         const { data: similar, error: similarError } = await supabase
           .from('properties')
           .select('*')
-          .eq('propertyType', record.propertyType)
+          .eq('property_type', record.property_type)
           .neq('id', id)
           .order('created_at', { ascending: false })
           .limit(3);
@@ -91,7 +91,7 @@ const PropertyDetailsPage = () => {
     return getFileUrl("property-images", image) || image;
   };
 
-  const images = property.images || [];
+  const images = property.image_url ? [property.image_url] : [];
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-NG', {
       style: 'currency',

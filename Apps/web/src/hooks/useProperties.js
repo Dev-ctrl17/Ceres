@@ -1,16 +1,17 @@
 import { useState, useCallback } from 'react';
 import { propertiesApi } from '@/lib/supabaseService';
 
-export const useProperties = () => {
+export const useProperties = (filters = {}) => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchProperties = useCallback(async (filters = {}) => {
+  const fetchProperties = useCallback(async (overrideFilters) => {
+    const appliedFilters = overrideFilters || filters;
     setLoading(true);
     setError(null);
     try {
-      const { data, error: fetchError } = await propertiesApi.getAll(filters);
+      const { data, error: fetchError } = await propertiesApi.getAll(appliedFilters);
       if (fetchError) throw new Error(fetchError.message);
       setProperties(data || []);
       return data;
