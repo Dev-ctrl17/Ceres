@@ -203,15 +203,11 @@ const HomePage = () => {
                   </div>
                 ))}
               </div>
-            ) : featuredProperties.length > 0 ? (
+            ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {featuredProperties.map((property) => (
                   <PropertyCard key={property.id} property={property} featured={true} />
                 ))}
-              </div>
-            ) : (
-              <div className="text-center py-12 bg-muted rounded-2xl">
-                <p className="text-muted-foreground">No featured properties available at the moment.</p>
               </div>
             )}
           </div>
@@ -243,15 +239,11 @@ const HomePage = () => {
                   </div>
                 ))}
               </div>
-            ) : latestProperties.length > 0 ? (
+            ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {latestProperties.map((property) => (
                   <PropertyCard key={property.id} property={property} />
                 ))}
-              </div>
-            ) : (
-              <div className="text-center py-12 bg-muted rounded-2xl">
-                <p className="text-muted-foreground">No latest properties available at the moment.</p>
               </div>
             )}
           </div>

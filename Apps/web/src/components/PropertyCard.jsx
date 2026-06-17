@@ -6,10 +6,13 @@ import { Badge } from "@/components/ui/badge";
 import { getFileUrl } from "@/lib/supabaseService";
 
 const PropertyCard = ({ property, featured = false }) => {
-  const imageUrl =
-    property.image_url
-      ? getFileUrl("property-images", property.image_url) || property.image_url
-      : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800";
+  // Prefer first image from images array, fall back to image_url
+  const firstImage = property.images?.length ? property.images[0] : property.image_url;
+  const imageUrl = firstImage
+    ? firstImage.startsWith('http')
+      ? firstImage
+      : getFileUrl("property-images", firstImage) || firstImage
+    : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800";
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("en-NG", {

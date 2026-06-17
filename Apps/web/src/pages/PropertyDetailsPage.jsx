@@ -8,7 +8,7 @@ import PropertyCard from '@/components/PropertyCard.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MapPin, Bed, Bath, CheckCircle, MessageCircle, X } from 'lucide-react';
+import { MapPin, Bed, Bath, CheckCircle, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl } from '@/lib/supabaseService';
 
@@ -290,15 +290,36 @@ const PropertyDetailsPage = () => {
         <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4">
           <button
             onClick={() => setLightboxOpen(false)}
-            className="absolute top-4 right-4 text-white hover:text-primary transition-colors"
+            className="absolute top-4 right-4 text-white hover:text-primary transition-colors z-10"
           >
             <X className="w-8 h-8" />
           </button>
+          
+          {/* Previous button */}
+          {images.length > 1 && (
+            <button
+              onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors bg-black/50 hover:bg-black/70 rounded-full p-3 z-10"
+            >
+              <ChevronLeft className="w-8 h-8" />
+            </button>
+          )}
+          
+          {/* Next button */}
+          {images.length > 1 && (
+            <button
+              onClick={() => setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors bg-black/50 hover:bg-black/70 rounded-full p-3 z-10"
+            >
+              <ChevronRight className="w-8 h-8" />
+            </button>
+          )}
+          
           <div className="max-w-6xl w-full">
             <img
               src={getImageUrl(images[currentImageIndex])}
               alt={`${property.title} ${currentImageIndex + 1}`}
-              className="w-full h-auto rounded-xl"
+              className="w-full h-auto rounded-xl max-h-[80vh] object-contain"
               loading="lazy"
             />
             <div className="flex justify-center space-x-4 mt-6">
