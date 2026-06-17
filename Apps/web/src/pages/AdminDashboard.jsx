@@ -174,12 +174,11 @@ const PropertiesManager = () => {
       status: property.status,
       videoTour: "",
     });
-    // Populate existing images — store as full public URLs so they're ready to save as-is
-    if (property.image_url) {
-      setExistingImages([property.image_url]);
-    } else {
-      setExistingImages([]);
-    }
+    // Populate existing images — prefer the full images array, fall back to image_url
+    setExistingImages(
+      property.images?.length ? property.images :
+      property.image_url ? [property.image_url] : []
+    );
     setImageFiles([]);
     setImagePreviews([]);
     setDialogOpen(true);
@@ -327,9 +326,14 @@ const PropertiesManager = () => {
 
   const getPropertyImageUrl = (property) => {
     if (property.images && property.images.length > 0) {
-      return getFileUrl("property-images", property.images[0]) || property.images[0];
+      const firstImage = property.images[0];
+      if (firstImage.startsWith('http')) return firstImage;
+      return getFileUrl("property-images", firstImage) || firstImage;
     }
-    if (property.image_url) return property.image_url;
+    if (property.image_url) {
+      if (property.image_url.startsWith('http')) return property.image_url;
+      return getFileUrl("property-images", property.image_url) || property.image_url;
+    }
     return null;
   };
 

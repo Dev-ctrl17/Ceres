@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { useSearchParams } from 'react-router-dom';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
@@ -26,8 +27,19 @@ const animationStyles = `
 `;
 
 const PropertiesPage = () => {
-  const [filters, setFilters] = useState({});
-  const [appliedFilters, setAppliedFilters] = useState({});
+  const [searchParams] = useSearchParams();
+  const [filters, setFilters] = useState({
+    location: searchParams.get('location') || '',
+    propertyType: searchParams.get('type') || '',
+    bedrooms: searchParams.get('beds') || '',
+    status: searchParams.get('status') || '',
+  });
+  const [appliedFilters, setAppliedFilters] = useState({
+    location: searchParams.get('location') || '',
+    propertyType: searchParams.get('type') || '',
+    bedrooms: searchParams.get('beds') || '',
+    status: searchParams.get('status') || '',
+  });
   const { properties, loading } = useProperties(appliedFilters);
 
   const handleSearch = () => {

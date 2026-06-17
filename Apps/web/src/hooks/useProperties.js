@@ -1,90 +1,54 @@
-import { useState, useCallback } from 'react';
-import { propertiesApi } from '@/lib/supabaseService';
+import { useState, useEffect } from 'react';
+import supabase from '@/lib/supabaseClient';
 
 export const useProperties = (filters = {}) => {
   const [properties, setProperties] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const fetchProperties = useCallback(async (overrideFilters) => {
-    const appliedFilters = overrideFilters || filters;
-    setLoading(true);
-    setError(null);
-    try {
-      const { data, error: fetchError } = await propertiesApi.getAll(appliedFilters);
-      if (fetchError) throw new Error(fetchError.message);
-      setProperties(data || []);
-      return data;
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  useEffect(() => {
+    const fetchProperties = async () => {
+      setLoading(true);
+      try {
+        let query = supabase
+          .from('properties')
+          .select('*')
+          .order('created_at', { ascending: false });
 
-  const fetchPropertyById = useCallback(async (id) => {
-    setLoading(true);
-    try {
-      const data = await propertiesApi.getById(id);
-      return data;
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+        if (filters.status && filters.status !== 'all') {
+          query = query.eq('status', filters.status);
+        }
+        if (filters.purpose && filters.purpose !== 'all') {
+          query = query.eq('purpose', filters.purpose);
+        }
+        if (filters.propertyType && filters.propertyType !== 'all') {
+          query = query.eq('property_type', filters.propertyType);
+        }
+        if (filters.location) {
+          query = query.ilike('location', `%${filters.location}%`);
+        }
+        if (filters.bedrooms && filters.bedrooms !== 'all') {
+          query = query.gte('bedrooms', parseInt(filters.bedrooms));
+        }
 
-  const createProperty = useCallback(async (formData) => {
-    setLoading(true);
-    try {
-      const record = await propertiesApi.create(formData);
-      setProperties(prev => [record, ...prev]);
-      return record;
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+        const { data, error } = await query;
+        if (error) throw error;
+        setProperties(data || []);
+      } catch (err) {
+        console.error('useProperties error:', err);
+        setProperties([]);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const updateProperty = useCallback(async (id, formData) => {
-    setLoading(true);
-    try {
-      const record = await propertiesApi.update(id, formData);
-      setProperties(prev => prev.map(p => p.id === id ? record : p));
-      return record;
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+    fetchProperties();
+  }, [
+    filters.status,
+    filters.purpose,
+    filters.propertyType,
+    filters.location,
+    filters.bedrooms,
+  ]);
 
-  const deleteProperty = useCallback(async (id) => {
-    setLoading(true);
-    try {
-      await propertiesApi.delete(id);
-      setProperties(prev => prev.filter(p => p.id !== id));
-    } catch (err) {
-      setError(err.message);
-      throw err;
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  return { 
-    properties, 
-    loading, 
-    error, 
-    fetchProperties, 
-    fetchPropertyById, 
-    createProperty, 
-    updateProperty, 
-    deleteProperty 
-  };
+  return { properties, loading };
 };

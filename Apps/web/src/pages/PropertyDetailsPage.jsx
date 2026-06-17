@@ -88,6 +88,8 @@ const PropertyDetailsPage = () => {
   }
 
   const getImageUrl = (image) => {
+    if (!image) return '';
+    if (image.startsWith('http')) return image;
     return getFileUrl("property-images", image) || image;
   };
 
@@ -238,7 +240,7 @@ const PropertyDetailsPage = () => {
                 <h2 className="text-2xl font-bold mb-4">Location</h2>
                 <div className="aspect-video rounded-2xl overflow-hidden">
                   <iframe
-                    src={`https://www.openstreetmap.org/export/embed.html?bbox=3.3700%2C6.5400%2C3.3900%2C6.5600&layer=mapnik&marker=6.5500%2C3.3800`}
+                    src={`https://www.openstreetmap.org/export/embed.html?query=${encodeURIComponent(property.location)}&layer=mapnik`}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

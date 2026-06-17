@@ -217,6 +217,46 @@ const HomePage = () => {
           </div>
         </section>
 
+        {/* Latest Properties */}
+        <section className="py-24 bg-secondary/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">Latest Properties</h2>
+                <p className="text-muted-foreground text-lg max-w-2xl">Fresh listings just added to our portfolio. Be the first to explore these new opportunities.</p>
+              </div>
+              <Link to="/properties" aria-label="View all latest properties">
+                <Button variant="outline" className="group">
+                  View All Properties 
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </div>
+
+            {loading ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="bg-card rounded-2xl p-6 animate-pulse border">
+                    <div className="aspect-[4/3] bg-muted rounded-xl mb-4"></div>
+                    <div className="h-6 bg-muted rounded mb-2 w-3/4"></div>
+                    <div className="h-4 bg-muted rounded w-1/2"></div>
+                  </div>
+                ))}
+              </div>
+            ) : latestProperties.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {latestProperties.map((property) => (
+                  <PropertyCard key={property.id} property={property} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12 bg-muted rounded-2xl">
+                <p className="text-muted-foreground">No latest properties available at the moment.</p>
+              </div>
+            )}
+          </div>
+        </section>
+
         {/* Why Choose Us - Zig Zag Layout */}
         <section className="py-24 bg-secondary text-secondary-foreground overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
