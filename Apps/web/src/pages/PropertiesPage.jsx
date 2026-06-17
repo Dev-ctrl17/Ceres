@@ -86,7 +86,7 @@ const PropertiesPage = () => {
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {properties.map((property) => (
-                  <PropertyCard key={property.id} property={property} featured={property.isFeatured} className="property-card" />
+                  <PropertyCard key={property.id} property={property} featured={property.is_featured} className="property-card" />
                 ))}
               </div>
             )}

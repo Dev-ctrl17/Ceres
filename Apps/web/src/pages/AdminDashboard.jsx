@@ -35,7 +35,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -120,7 +120,7 @@ const PropertiesManager = () => {
   const [imagePreviews, setImagePreviews] = useState([]);
   const [existingImages, setExistingImages] = useState([]);
   const [uploading, setUploading] = useState(false);
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors }, control } = useForm();
 
   const MIN_IMAGES = 2;
   const MAX_IMAGES = 7;
@@ -279,6 +279,7 @@ const PropertiesManager = () => {
         status: data.status || "Available",
         // Store the first image as the primary image_url
         image_url: allImages[0] || "",
+        images: allImages,
         is_featured: false,
       };
 
@@ -385,41 +386,47 @@ const PropertiesManager = () => {
               />
               <div className="space-y-2">
                 <label className="text-sm font-medium">Type *</label>
-                <Select name="type" required defaultValue="Residential" onValueChange={(value) => register("type").onChange({ target: { value } })}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Residential">Residential</SelectItem>
-                    <SelectItem value="Commercial">Commercial</SelectItem>
-                    <SelectItem value="Shortlet">Shortlet</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Controller name="type" control={control} defaultValue="Residential" render={({ field }) => (
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Residential">Residential</SelectItem>
+                      <SelectItem value="Commercial">Commercial</SelectItem>
+                      <SelectItem value="Shortlet">Shortlet</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )} />
               </div>
               <div className="space-y-2">
                 <label className="text-sm font-medium">Purpose *</label>
-                <Select name="purpose" required defaultValue="Buy" onValueChange={(value) => register("purpose").onChange({ target: { value } })}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select purpose" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Buy">Buy</SelectItem>
-                    <SelectItem value="Rent">Rent</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Controller name="purpose" control={control} defaultValue="Buy" render={({ field }) => (
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select purpose" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Buy">Buy</SelectItem>
+                      <SelectItem value="Rent">Rent</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )} />
               </div>
               <div className="space-y-2 col-span-2">
                 <label className="text-sm font-medium">Status *</label>
-                <Select name="status" required defaultValue="Available" onValueChange={(value) => register("status").onChange({ target: { value } })}>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Available">Available</SelectItem>
-                    <SelectItem value="Sold">Sold</SelectItem>
-                    <SelectItem value="Rented">Rented</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Controller name="status" control={control} defaultValue="Available" render={({ field }) => (
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Available">Available</SelectItem>
+                      <SelectItem value="Sold">Sold</SelectItem>
+                      <SelectItem value="Rented">Rented</SelectItem>
+                    </SelectContent>
+                  </Select>
+                )} />
               </div>
 
               {/* ── Image upload section ── */}

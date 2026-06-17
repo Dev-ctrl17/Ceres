@@ -35,13 +35,13 @@ const PropertyCard = ({ property, featured = false }) => {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
-          {property.isVerified && (
+          {property.is_verified && (
             <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
               <CheckCircle className="w-3 h-3 mr-1" />
               Verified
             </Badge>
           )}
-          {property.isFeatured && (
+          {property.is_featured && (
             <Badge className="absolute top-3 right-3 bg-destructive text-destructive-foreground">
               Featured
             </Badge>
@@ -67,8 +67,8 @@ const PropertyCard = ({ property, featured = false }) => {
             <p className="text-2xl font-bold text-primary">
               {formatPrice(property.price)}
             </p>
-            {property.propertyType && (
-              <Badge variant="outline">{property.propertyType}</Badge>
+            {property.property_type && (
+              <Badge variant="outline">{property.property_type}</Badge>
             )}
           </div>
 

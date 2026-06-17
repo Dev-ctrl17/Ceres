@@ -280,7 +280,7 @@ export const propertiesApi = {
       query = query.ilike('location', `%${filters.location}%`);
     }
     if (filters.propertyType && filters.propertyType !== 'all') {
-      query = query.eq('propertyType', filters.propertyType);
+      query = query.eq('property_type', filters.propertyType);
     }
     if (filters.bedrooms && filters.bedrooms !== 'all') {
       query = query.gte('bedrooms', parseInt(filters.bedrooms));

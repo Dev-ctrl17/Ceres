@@ -91,7 +91,7 @@ const PropertyDetailsPage = () => {
     return getFileUrl("property-images", image) || image;
   };
 
-  const images = property.image_url ? [property.image_url] : [];
+  const images = property.images?.length ? property.images : property.image_url ? [property.image_url] : [];
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-NG', {
       style: 'currency',
@@ -164,7 +164,7 @@ const PropertyDetailsPage = () => {
                       <span>{property.location}</span>
                     </div>
                   </div>
-                  {property.isVerified && (
+                  {property.is_verified && (
                     <Badge className="bg-primary text-primary-foreground">
                       <CheckCircle className="w-4 h-4 mr-1" />
                       Verified
@@ -174,8 +174,8 @@ const PropertyDetailsPage = () => {
 
                 <div className="flex items-center space-x-6 mb-6">
                   <p className="text-4xl font-bold text-primary">{formatPrice(property.price)}</p>
-                  {property.propertyType && (
-                    <Badge variant="outline" className="text-base px-4 py-2">{property.propertyType}</Badge>
+                  {property.property_type && (
+                    <Badge variant="outline" className="text-base px-4 py-2">{property.property_type}</Badge>
                   )}
                 </div>
 
@@ -218,12 +218,12 @@ const PropertyDetailsPage = () => {
                 </div>
               )}
 
-              {property.videoTour && (
+              {property.video_tour && (
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold mb-4">Video Tour</h2>
                   <div className="aspect-video rounded-2xl overflow-hidden">
-                    <iframe
-                      src={property.videoTour}
+                      <iframe
+                        src={property.video_tour}
                       width="100%"
                       height="100%"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
