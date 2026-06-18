@@ -18,27 +18,27 @@ import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 
 const heroSlides = [
-  {
-    image: "https://www.image2url.com/r2/default/images/1781618469672-f363452b-534b-451c-9b4e-1f1b7efd15b8.jpeg",
-    title: "Find Your Dream Property",
-    subtitle: "Discover premium real estate across Nigeria — buy, rent, or invest with confidence.",
-    ctaText: "Browse Properties",
-    ctaLink: "/properties"
-  },
-  {
-    image: "https://www.image2url.com/r2/default/images/1781618477582-1005fa15-bd99-4786-bb20-160a0f75d002.jpeg",
-    title: "Verified Listings Only",
-    subtitle: "Every property is vetted and verified by our team of real estate professionals.",
-    ctaText: "Browse Properties",
-    ctaLink: "/properties"
-  },
-  {
-    image: "https://www.image2url.com/r2/default/images/1781618469713-68bb7539-44b8-46bd-9f07-d4868e145147.jpeg",
-    title: "Expert Guidance",
-    subtitle: "From search to signing — our agents are with you every step of the way.",
-    ctaText: "Browse Properties",
-    ctaLink: "/properties"
-  }
+    {
+      image: "https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg",
+      title: "Find Your Dream Property",
+      subtitle: "Discover premium real estate across Nigeria — buy, rent, or invest with confidence.",
+      ctaText: "Browse Properties",
+      ctaLink: "/properties"
+    },
+    {
+      image: "https://www.image2url.com/r2/default/images/1781791838490-d908b15e-9e31-41e6-88e8-06f7bef05dd2.jpeg",
+      title: "Verified Listings Only",
+      subtitle: "Every property is vetted and verified by our team of real estate professionals.",
+      ctaText: "Browse Properties",
+      ctaLink: "/properties"
+    },
+    {
+      image: "https://www.image2url.com/r2/default/images/1781791838479-a916452b-9681-4b5f-8c03-3c48e3557b68.jpeg",
+      title: "Expert Guidance",
+      subtitle: "From search to signing — our agents are with you every step of the way.",
+      ctaText: "Browse Properties",
+      ctaLink: "/properties"
+    }
 ];
 
 const propertyCards = [
@@ -182,7 +182,7 @@ const HomePage = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-32">
+        <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-48">
           <HeroSlider slides={heroSlides} />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-12">
@@ -220,30 +220,30 @@ const HomePage = () => {
                 Talk to an Agent
               </Button>
             </motion.div>
-
-            {/* Floating Property Type Cards */}
-            <motion.div
-              className="absolute bottom-12 left-0 right-0 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
-              variants={cardContainerVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                {propertyCards.map((card, index) => (
-                  <motion.button
-                    key={card.label}
-                    variants={cardItemVariants}
-                    onClick={() => navigate(card.link)}
-                    className="flex flex-col items-center justify-center p-6 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
-                  >
-                    <card.icon className="w-8 h-8 mb-3" />
-                    <span className="text-lg font-semibold">{card.label}</span>
-                    <span className="text-sm text-white/70 mt-1">{card.sublabel}</span>
-                  </motion.button>
-                ))}
-              </div>
-            </motion.div>
           </div>
+
+          {/* Floating Property Type Cards */}
+          <motion.div
+            className="absolute bottom-12 left-0 right-0 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+            variants={cardContainerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {propertyCards.map((card, index) => (
+                <motion.button
+                  key={card.label}
+                  variants={cardItemVariants}
+                  onClick={() => navigate(card.link)}
+                  className="flex flex-col items-center justify-center p-6 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                >
+                  <card.icon className="w-8 h-8 mb-3" />
+                  <span className="text-lg font-semibold">{card.label}</span>
+                  <span className="text-sm text-white/70 mt-1">{card.sublabel}</span>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
         </section>
 
         {/* Trust Bar */}

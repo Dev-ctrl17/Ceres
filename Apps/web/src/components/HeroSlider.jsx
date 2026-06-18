@@ -2,21 +2,30 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const HeroSlider = ({ slides }) => {
+const HeroSlider = ({ slides, onSlideChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
 
   const goToSlide = useCallback((index) => {
     setCurrentIndex(index);
-  }, []);
+    onSlideChange?.(index);
+  }, [onSlideChange]);
 
   const goToPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  }, [slides.length]);
+    setCurrentIndex((prev) => {
+      const next = prev === 0 ? slides.length - 1 : prev - 1;
+      onSlideChange?.(next);
+      return next;
+    });
+  }, [slides.length, onSlideChange]);
 
   const goToNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  }, [slides.length]);
+    setCurrentIndex((prev) => {
+      const next = prev === slides.length - 1 ? 0 : prev + 1;
+      onSlideChange?.(next);
+      return next;
+    });
+  }, [slides.length, onSlideChange]);
 
   useEffect(() => {
     if (isHovering) return;
@@ -27,6 +36,7 @@ const HeroSlider = ({ slides }) => {
   }, [isHovering, goToNext]);
 
   if (!slides || slides.length === 0) return null;
+
 
   return (
     <>

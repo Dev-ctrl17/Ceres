@@ -5,6 +5,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
+import HeroSlider from '@/components/HeroSlider.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -19,6 +20,7 @@ const PropertyDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [activeSliderIndex, setActiveSliderIndex] = useState(0);
 
   useEffect(() => {
     const fetchProperty = async () => {
@@ -124,36 +126,22 @@ const PropertyDetailsPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
               {images.length > 0 && (
-                <div className="mb-8">
+                <div className="mb-8 relative aspect-video rounded-2xl overflow-hidden">
+                  <HeroSlider
+                    slides={images.map((img) => ({
+                      image: getImageUrl(img),
+                      title: '',
+                      subtitle: '',
+                      ctaText: '',
+                      ctaLink: '',
+                    }))}
+                    onSlideChange={(index) => setActiveSliderIndex(index)}
+                  />
+                  {/* Invisible overlay to handle lightbox clicks on the slider */}
                   <div
-                    className="aspect-video rounded-2xl overflow-hidden cursor-pointer mb-4"
-                    onClick={() => { setCurrentImageIndex(0); setLightboxOpen(true); }}
-                  >
-                    <img
-                      src={getImageUrl(images[0])}
-                      alt={property.title}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                    />
-                  </div>
-                  {images.length > 1 && (
-                    <div className="grid grid-cols-4 gap-4">
-                      {images.slice(1, 5).map((image, index) => (
-                        <div
-                          key={index}
-                          className="aspect-video rounded-xl overflow-hidden cursor-pointer"
-                          onClick={() => { setCurrentImageIndex(index + 1); setLightboxOpen(true); }}
-                        >
-                          <img
-                            src={getImageUrl(image)}
-                            alt={`${property.title} ${index + 2}`}
-                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                          />
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                    className="absolute inset-0 z-10 cursor-pointer"
+                    onClick={() => { setCurrentImageIndex(activeSliderIndex); setLightboxOpen(true); }}
+                  />
                 </div>
               )}
 
