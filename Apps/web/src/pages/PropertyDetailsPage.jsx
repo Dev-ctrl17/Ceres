@@ -5,7 +5,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
-import HeroSlider from '@/components/HeroSlider.jsx';
+import ImageSlider from '@/components/ImageSlider.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -127,14 +127,8 @@ const PropertyDetailsPage = () => {
             <div className="lg:col-span-2">
               {images.length > 0 && (
                 <div className="mb-8 relative aspect-video rounded-2xl overflow-hidden">
-                  <HeroSlider
-                    slides={images.map((img) => ({
-                      image: getImageUrl(img),
-                      title: '',
-                      subtitle: '',
-                      ctaText: '',
-                      ctaLink: '',
-                    }))}
+                  <ImageSlider
+                    images={images.map((img) => getImageUrl(img))}
                     onSlideChange={(index) => setActiveSliderIndex(index)}
                   />
                   {/* Invisible overlay to handle lightbox clicks on the slider */}

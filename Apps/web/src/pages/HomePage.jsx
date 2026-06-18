@@ -194,34 +194,8 @@ const HomePage = () => {
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight" style={{ letterSpacing: '-0.02em' }}>
-                Nigeria's Most Trusted Property Platform
-              </h1>
-              <p className="text-xl text-slate-200 mb-10 max-w-2xl leading-relaxed">
-                Discover thousands of verified homes, commercial spaces, and investment properties — with expert guidance from search to signing.
-              </p>
             </motion.div>
 
-            <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-wrap gap-4 mb-12"
-            >
-              <Button
-                onClick={() => navigate('/properties')}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 text-base font-semibold"
-              >
-                Explore Properties
-              </Button>
-              <Button
-                onClick={() => navigate('/contact')}
-                variant="ghost"
-                className="border border-white/40 text-white hover:bg-white/10 h-12 px-8 text-base font-semibold"
-              >
-                Talk to an Agent
-              </Button>
-            </motion.div>
           </div>
 
           {/* Floating Property Type Cards */}
