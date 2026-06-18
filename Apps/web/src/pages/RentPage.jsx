@@ -129,7 +129,7 @@ const RentPage = () => {
     <>
       <Helmet>
         <title>Rent Property - Luxury Properties Ltd</title>
-        <meta name="description" content="Find rental properties including residential, commercial, and shortlets in Lagos." />
+        <meta name="description" content="Find rental properties including apartments, shortlets, and villas in Lagos." />
       </Helmet>
 
       <style>{animationStyles}</style>
@@ -150,7 +150,7 @@ const RentPage = () => {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white hero-animate" style={{ letterSpacing: '-0.02em' }}>Rental Properties</h1>
             <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay-1">
-              Discover quality rental properties from residential apartments to commercial spaces and luxury shortlets.
+              Discover quality rental properties from apartments to villas and luxury shortlets.
             </p>
           </div>
         </section>
@@ -160,9 +160,9 @@ const RentPage = () => {
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <TabsList className="grid w-full max-w-2xl mx-auto grid-cols-4 mb-12 tabs-list">
                 <TabsTrigger value="all" className="tab-trigger">All Rentals</TabsTrigger>
-                <TabsTrigger value="Residential" className="tab-trigger">Residential</TabsTrigger>
-                <TabsTrigger value="Commercial" className="tab-trigger">Commercial</TabsTrigger>
+                <TabsTrigger value="Apartment" className="tab-trigger">Apartment</TabsTrigger>
                 <TabsTrigger value="Shortlet" className="tab-trigger">Shortlets</TabsTrigger>
+                <TabsTrigger value="Villa" className="tab-trigger">Villa</TabsTrigger>
               </TabsList>
 
               <TabsContent value="all" className="tabs-content">
@@ -185,17 +185,9 @@ const RentPage = () => {
                 )}
               </TabsContent>
 
-              <TabsContent value="Residential" className="tabs-content">
+              <TabsContent value="Apartment" className="tabs-content">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filterByType('Residential').map((property) => (
-                    <PropertyCard key={property.id} property={property} className="property-card" />
-                  ))}
-                </div>
-              </TabsContent>
-
-              <TabsContent value="Commercial" className="tabs-content">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  {filterByType('Commercial').map((property) => (
+                  {filterByType('Apartment').map((property) => (
                     <PropertyCard key={property.id} property={property} className="property-card" />
                   ))}
                 </div>
@@ -204,6 +196,14 @@ const RentPage = () => {
               <TabsContent value="Shortlet" className="tabs-content">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {filterByType('Shortlet').map((property) => (
+                    <PropertyCard key={property.id} property={property} className="property-card" />
+                  ))}
+                </div>
+              </TabsContent>
+
+              <TabsContent value="Villa" className="tabs-content">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {filterByType('Villa').map((property) => (
                     <PropertyCard key={property.id} property={property} className="property-card" />
                   ))}
                 </div>

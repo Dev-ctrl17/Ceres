@@ -37,6 +37,17 @@ import {
 } from "@/components/ui/select";
 import { useForm, Controller } from "react-hook-form";
 
+const PROPERTY_TYPES = [
+  "Villa",
+  "Apartment",
+  "Shortlet",
+  "Duplex",
+  "Semi-Detached",
+  "Detached",
+  "Bungalow",
+  "Terrace",
+];
+
 const AdminDashboard = () => {
   const navigate = useNavigate();
   const { logout } = useAuth();
@@ -390,15 +401,15 @@ const PropertiesManager = () => {
               />
               <div className="space-y-2">
                 <label className="text-sm font-medium">Type *</label>
-                <Controller name="type" control={control} defaultValue="Residential" render={({ field }) => (
+                <Controller name="type" control={control} defaultValue="Villa" render={({ field }) => (
                   <Select onValueChange={field.onChange} value={field.value}>
                     <SelectTrigger>
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="Residential">Residential</SelectItem>
-                      <SelectItem value="Commercial">Commercial</SelectItem>
-                      <SelectItem value="Shortlet">Shortlet</SelectItem>
+                      {PROPERTY_TYPES.map((type) => (
+                        <SelectItem key={type} value={type}>{type}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 )} />

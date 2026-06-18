@@ -4,24 +4,78 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Search, Shield, TrendingUp, Award, Clock, 
-  ArrowRight, Building2, Key, Briefcase, Users 
+  ArrowRight, Building2, Key, Briefcase, Users,
+  Home, CheckCircle
 } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
-import PropertyFilter from '@/components/PropertyFilter.jsx';
+import HeroSlider from '@/components/HeroSlider.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 
+const heroSlides = [
+  {
+    image: "https://www.image2url.com/r2/default/images/1781618469672-f363452b-534b-451c-9b4e-1f1b7efd15b8.jpeg",
+    title: "Find Your Dream Property",
+    subtitle: "Discover premium real estate across Nigeria — buy, rent, or invest with confidence.",
+    ctaText: "Browse Properties",
+    ctaLink: "/properties"
+  },
+  {
+    image: "https://www.image2url.com/r2/default/images/1781618477582-1005fa15-bd99-4786-bb20-160a0f75d002.jpeg",
+    title: "Verified Listings Only",
+    subtitle: "Every property is vetted and verified by our team of real estate professionals.",
+    ctaText: "Browse Properties",
+    ctaLink: "/properties"
+  },
+  {
+    image: "https://www.image2url.com/r2/default/images/1781618469713-68bb7539-44b8-46bd-9f07-d4868e145147.jpeg",
+    title: "Expert Guidance",
+    subtitle: "From search to signing — our agents are with you every step of the way.",
+    ctaText: "Browse Properties",
+    ctaLink: "/properties"
+  }
+];
+
+const propertyCards = [
+  { icon: Home, label: "Buy", sublabel: "Own your dream", link: "/buy" },
+  { icon: Key, label: "Rent", sublabel: "Find your space", link: "/rent" },
+  { icon: Building2, label: "Commercial", sublabel: "Grow your business", link: "/properties?type=Commercial" },
+  { icon: TrendingUp, label: "Invest", sublabel: "Build your wealth", link: "/properties" },
+];
+
+const trustSignals = [
+  { icon: Shield, text: "100% Verified Listings" },
+  { icon: CheckCircle, text: "No Hidden Fees" },
+  { icon: Clock, text: "24/7 Support" },
+  { icon: Award, text: "15+ Years Experience" },
+  { icon: Users, text: "1,200+ Happy Clients" },
+];
+
+const cardContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const cardItemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+};
+
 const HomePage = () => {
   const navigate = useNavigate();
   const [featuredProperties, setFeaturedProperties] = useState([]);
   const [latestProperties, setLatestProperties] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filters, setFilters] = useState({});
   const [email, setEmail] = useState('');
   const [subscribing, setSubscribing] = useState(false);
 
@@ -48,7 +102,6 @@ const HomePage = () => {
           setFeaturedProperties(featuredResult.value.data || []);
         } else {
           console.error('Error fetching featured properties:', featuredResult.reason);
-          // isFeatured column may not exist, fetch latest available instead
           try {
             const { data } = await supabase
               .from('properties')
@@ -77,16 +130,6 @@ const HomePage = () => {
 
     fetchProperties();
   }, []);
-
-  const handleSearch = () => {
-    const searchParams = new URLSearchParams();
-    if (filters.location) searchParams.append('location', filters.location);
-    if (filters.propertyType && filters.propertyType !== 'all') searchParams.append('type', filters.propertyType);
-    if (filters.bedrooms && filters.bedrooms !== 'all') searchParams.append('beds', filters.bedrooms);
-    if (filters.status && filters.status !== 'all') searchParams.append('status', filters.status);
-    
-    navigate(`/properties?${searchParams.toString()}`);
-  };
 
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
@@ -139,17 +182,8 @@ const HomePage = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[90dvh] flex items-center justify-center pt-20 pb-32">
-          <div className="absolute inset-0 z-0">
-            <img 
-              src="https://www.image2url.com/r2/default/images/1781618469672-f363452b-534b-451c-9b4e-1f1b7efd15b8.jpeg" 
-              alt="Luxury modern home exterior" 
-              className="w-full h-full object-cover"
-              fetchpriority="high"
-            />
-            <div className="absolute inset-0 bg-slate-950/60 mix-blend-multiply" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-          </div>
+        <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-32">
+          <HeroSlider slides={heroSlides} />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-12">
             <motion.div 
@@ -159,23 +193,81 @@ const HomePage = () => {
               className="max-w-3xl"
             >
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-tight" style={{ letterSpacing: '-0.02em' }}>
-                Discover Your Next <span className="text-primary">Premium</span> Property
+                Nigeria's Most Trusted Property Platform
               </h1>
               <p className="text-xl text-slate-200 mb-10 max-w-2xl leading-relaxed">
-                Explore our exclusive collection of luxury homes, commercial spaces, and prime land across Nigeria's most sought-after locations.
+                Discover thousands of verified homes, commercial spaces, and investment properties — with expert guidance from search to signing.
               </p>
             </motion.div>
 
             <motion.div 
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mt-8"
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex flex-wrap gap-4 mb-12"
             >
-              <PropertyFilter filters={filters} setFilters={setFilters} onSearch={handleSearch} />
+              <Button
+                onClick={() => navigate('/properties')}
+                className="bg-primary text-primary-foreground hover:bg-primary/90 h-12 px-8 text-base font-semibold"
+              >
+                Explore Properties
+              </Button>
+              <Button
+                onClick={() => navigate('/contact')}
+                variant="ghost"
+                className="border border-white/40 text-white hover:bg-white/10 h-12 px-8 text-base font-semibold"
+              >
+                Talk to an Agent
+              </Button>
+            </motion.div>
+
+            {/* Floating Property Type Cards */}
+            <motion.div
+              className="absolute bottom-12 left-0 right-0 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+              variants={cardContainerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {propertyCards.map((card, index) => (
+                  <motion.button
+                    key={card.label}
+                    variants={cardItemVariants}
+                    onClick={() => navigate(card.link)}
+                    className="flex flex-col items-center justify-center p-6 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  >
+                    <card.icon className="w-8 h-8 mb-3" />
+                    <span className="text-lg font-semibold">{card.label}</span>
+                    <span className="text-sm text-white/70 mt-1">{card.sublabel}</span>
+                  </motion.button>
+                ))}
+              </div>
             </motion.div>
           </div>
         </section>
+
+        {/* Trust Bar */}
+        <motion.section
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="bg-primary text-primary-foreground py-6"
+        >
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-center flex-wrap gap-6">
+              {trustSignals.map((signal, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <signal.icon className="w-5 h-5 shrink-0" />
+                  <span className="font-medium text-sm whitespace-nowrap">{signal.text}</span>
+                  {index < trustSignals.length - 1 && (
+                    <div className="w-px h-6 bg-white/30 hidden md:block ml-3" />
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
 
         {/* Featured Properties */}
         <section className="py-24 bg-background">
