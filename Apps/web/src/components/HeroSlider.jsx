@@ -59,7 +59,7 @@ const HeroSlider = ({ slides, onSlideChange }) => {
       `}</style>
 
       <div
-        className="absolute inset-0 z-0"
+        className="relative w-full h-full overflow-hidden"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
       >
@@ -77,28 +77,30 @@ const HeroSlider = ({ slides, onSlideChange }) => {
           />
         ))}
 
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/50 z-10" />
+
         {/* Gradient overlays */}
         <div className="absolute inset-0 bg-slate-950/60 mix-blend-multiply z-[2]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent z-[3]" />
 
         {/* Navigation Arrows */}
         <button
           onClick={goToPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white hidden md:block"
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white hidden md:block"
           aria-label="Previous slide"
         >
           <ChevronLeft className="w-6 h-6" />
         </button>
         <button
           onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white hidden md:block"
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full bg-black/30 hover:bg-black/50 transition-colors text-white hidden md:block"
           aria-label="Next slide"
         >
           <ChevronRight className="w-6 h-6" />
         </button>
 
         {/* Caption Overlay - hidden on mobile */}
-        <div className="absolute inset-0 z-[5] flex items-center justify-start px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full left-1/2 -translate-x-1/2 hidden md:flex">
+        <div className="absolute inset-0 z-[15] flex items-center justify-start px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full left-1/2 -translate-x-1/2 hidden md:flex">
           <div
             key={currentIndex}
             className="max-w-3xl bg-black/50 backdrop-blur-sm p-8 md:p-10 rounded-2xl"
@@ -119,7 +121,7 @@ const HeroSlider = ({ slides, onSlideChange }) => {
         </div>
 
         {/* Dot Indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[6] flex gap-2">
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[16] flex gap-2">
           {slides.map((_, index) => (
             <button
               key={index}

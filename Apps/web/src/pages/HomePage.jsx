@@ -183,7 +183,9 @@ const HomePage = () => {
       <main>
         {/* Hero Section */}
         <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-48">
-          <HeroSlider slides={heroSlides} />
+          <div className="absolute inset-0 z-0">
+            <HeroSlider slides={heroSlides} />
+          </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-12">
             <motion.div 
@@ -224,7 +226,7 @@ const HomePage = () => {
 
           {/* Floating Property Type Cards */}
           <motion.div
-            className="absolute bottom-12 left-0 right-0 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+            className="absolute bottom-12 left-0 right-0 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10"
             variants={cardContainerVariants}
             initial="hidden"
             animate="visible"
