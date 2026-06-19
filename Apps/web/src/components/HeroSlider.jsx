@@ -77,12 +77,6 @@ const HeroSlider = ({ slides, onSlideChange }) => {
           />
         ))}
 
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/50 z-10" />
-
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-slate-950/60 mix-blend-multiply z-[2]" />
-
         {/* Navigation Arrows */}
         <button
           onClick={goToPrev}

@@ -44,8 +44,9 @@ const heroSlides = [
 const propertyCards = [
   { icon: Home, label: "Buy", sublabel: "Own your dream", link: "/buy" },
   { icon: Key, label: "Rent", sublabel: "Find your space", link: "/rent" },
-  { icon: Building2, label: "Commercial", sublabel: "Grow your business", link: "/properties?type=Commercial" },
+  { icon: Building2, label: "Sell", sublabel: "List your property", link: "/sell" },
   { icon: TrendingUp, label: "Invest", sublabel: "Build your wealth", link: "/properties" },
+  { icon: Shield, label: "Let Us Manage", sublabel: "We handle everything", link: "/services" },
 ];
 
 const trustSignals = [
@@ -205,7 +206,7 @@ const HomePage = () => {
             initial="hidden"
             animate="visible"
           >
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
               {propertyCards.map((card, index) => (
                 <motion.button
                   key={card.label}

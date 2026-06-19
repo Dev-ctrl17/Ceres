@@ -1,76 +1,59 @@
-# Luxury Properties Ltd - robots.txt
-# https://luxurypropertiesltd.com.ng
-
 User-agent: *
 Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /dashboard/
-Disallow: /auth/
-Disallow: /_next/
-Disallow: /assets/
-Disallow: /*.json$
-Disallow: /*?_escaped_fragment_
-Disallow: /*?sort=
-Disallow: /*?filter=
-Disallow: /*?page=
 
-# Google
-User-agent: Googlebot
+# OpenAI
+User-agent: GPTBot
 Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /dashboard/
-Disallow: /auth/
 
-# Bing
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft / Bing AI
 User-agent: Bingbot
 Allow: /
-Disallow: /api/
-Disallow: /admin/
 
-# Ahrefs (allow for backlink analysis)
-User-agent: AhrefsBot
+# Meta AI
+User-agent: meta-externalagent
 Allow: /
 
-# Semrush (allow for analysis)
-User-agent: SemrushBot
-Allow: /
-
-# MJ12bot (allow for Majestic analysis)
-User-agent: MJ12bot
-Allow: /
-
-# Sitemaps
-Sitemap: https://luxurypropertiesltd.com.ng/sitemap.xml
-
-# Crawl-delay for polite bots
-User-agent: *
-Crawl-delay: 2
-
-# Social Media Crawlers (allow fully)
 User-agent: FacebookBot
 Allow: /
 
-User-agent: Twitterbot
+# Apple AI
+User-agent: Applebot-Extended
 Allow: /
 
-User-agent: LinkedInBot
-Allow: /
-
-# AI/LLM Crawlers
-User-agent: GPTBot
-Allow: /llms.txt
-Disallow: /
-
-User-agent: ChatGPT-User
-Allow: /llms.txt
-Disallow: /
-
-User-agent: ClaudeBot
-Allow: /llms.txt
-Disallow: /
-
+# Amazon AI
 User-agent: Amazonbot
-Allow: /llms.txt
-Disallow: /
+Allow: /
+
+# Common Crawl (used to train many AI models)
+User-agent: CCBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://yourwebsite.com/sitemap.xml

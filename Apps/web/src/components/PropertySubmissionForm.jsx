@@ -16,7 +16,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 
@@ -40,39 +39,6 @@ const PropertySubmissionForm = () => {
     reset,
     formState: { errors },
   } = useForm();
-
-  const sendEmailNotification = async (submissionData, imageUrls) => {
-    try {
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-      // Only attempt email if EmailJS is configured
-      if (!serviceId || !templateId || !publicKey) {
-        console.warn("EmailJS not configured. Skipping email notification.");
-        return;
-      }
-
-      const templateParams = {
-        title: submissionData.title,
-        description: submissionData.description,
-        price: `₦${Number(submissionData.price).toLocaleString()}`,
-        location: submissionData.location,
-        property_type: submissionData.property_type,
-        owner_name: submissionData.owner_name,
-        owner_email: submissionData.owner_email,
-        owner_phone: submissionData.owner_phone,
-        image_url: imageUrls[0] || "No image uploaded",
-        to_email: "luxurypropertiesltd000@gmail.com",
-      };
-
-      await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      console.log("Email notification sent successfully");
-    } catch (emailError) {
-      // Don't block the submission flow if email fails
-      console.error("Failed to send email notification:", emailError);
-    }
-  };
 
   const onSubmit = async (data) => {
     if (!propertyType) {
@@ -123,9 +89,6 @@ const PropertySubmissionForm = () => {
         .insert(submissionData);
 
       if (error) throw error;
-
-      // Send email notification to luxurypropertiesltd000@gmail.com
-      await sendEmailNotification(submissionData, imageUrls);
 
       toast.success(
         "Property submitted successfully. Our team will review it shortly.",
