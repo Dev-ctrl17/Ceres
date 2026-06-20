@@ -50,29 +50,29 @@ const ReviewsPage = () => {
       <Header />
 
       <main>
-        <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center">
+        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://www.image2url.com/r2/default/images/1781315484156-19239477-a163-4063-9288-df5a0f6fe1b3.png"
               alt="Customer Reviews" 
               className="w-full h-full object-cover"
-  style={{ objectPosition: 'center', transform: 'scale(0.8)', transformOrigin: 'center' }}
-  loading="lazy"
+              style={{ objectPosition: 'center', transform: 'scale(0.8)', transformOrigin: 'center' }}
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ letterSpacing: '-0.02em' }}>Customer Reviews</h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white">Customer Reviews</h1>
+            <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
               See what our satisfied clients have to say about their experience with us.
             </p>
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="bg-card rounded-2xl p-6 animate-pulse">
                     <div className="h-6 bg-muted rounded mb-4"></div>
@@ -129,9 +129,9 @@ const ReviewsPage = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-12 text-center">Google Reviews</h2>
+        <section className="py-16 xs:py-18 sm:py-20 bg-muted">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <h2 className="heading-lg mb-8 xs:mb-8 sm:mb-10 md:mb-12 text-center">Google Reviews</h2>
             <div className="text-center">
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 We value your feedback. Leave us a review on Google to help others make informed decisions.

@@ -47,7 +47,7 @@ const AgentsPage = () => {
       <Header />
 
       <main>
-        <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center hero-section">
+        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://i.ibb.co/rKjnczKk/agent.jpg"
@@ -56,18 +56,18 @@ const AgentsPage = () => {
               loading="lazy"
             />
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white hero-animate" style={{ letterSpacing: '-0.02em' }}>Our Professional Agents</h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Our Professional Agents</h1>
+            <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay">
               Work with experienced professionals who understand the market and your needs.
             </p>
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
                 {[1, 2, 3].map((i) => (
                   <div key={i} className="bg-card rounded-2xl p-6 animate-pulse">
                     <div className="w-32 h-32 bg-muted rounded-xl mx-auto mb-4"></div>
@@ -81,7 +81,7 @@ const AgentsPage = () => {
                 <p className="text-xl text-muted-foreground">No agents available at the moment.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
                 {agents.map((agent, index) => {
                   const photoUrl = getAgentPhotoUrl(agent);
                   return (

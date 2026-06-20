@@ -268,7 +268,7 @@ const AboutPage = () => {
       <Header />
 
       <main>
-        <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center hero-section">
+        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://www.image2url.com/r2/default/images/1781619633951-48ac0036-1929-4e9c-a44e-9ea02995669f.jpeg"
@@ -280,16 +280,16 @@ const AboutPage = () => {
             />
             <div className="absolute inset-0 bg-black/30" />
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white hero-animate" style={{ letterSpacing: '-0.02em' }}>Best Luxury Real Estate Agency Nigeria</h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay-1">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Best Luxury Real Estate Agency Nigeria</h1>
+            <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay-1">
               Nigeria's premier luxury real estate agency — trusted by high-net-worth clients for exclusive properties, concierge service, and expert advisory.
             </p>
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-4xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold mb-6 section-title">Why We Are the Best Luxury Real Estate Agency in Nigeria</h2>
               <p className="text-muted-foreground leading-relaxed mb-6 content-paragraph">
@@ -317,9 +317,9 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-muted">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <section className="py-16 xs:py-18 sm:py-20 bg-muted">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xs:gap-6 sm:gap-8 md:gap-12">
               <Card className="card-hover mission-card">
                 <CardContent className="pt-8 pb-6 text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
@@ -365,11 +365,11 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-12 text-center section-title">Our Team</h2>
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <h2 className="heading-lg mb-8 xs:mb-8 sm:mb-10 md:mb-12 text-center section-title">Our Team</h2>
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
                 {[1, 2].map((i) => (
                   <div key={i} className="bg-card rounded-2xl p-6 animate-pulse">
                     <div className="w-32 h-32 bg-muted rounded-xl mx-auto mb-4"></div>
@@ -379,7 +379,7 @@ const AboutPage = () => {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
                 {teamMembers.map((member, index) => (
                   <Card key={member.id} className="text-center team-card" style={{ animationDelay: `${index * 0.15}s` }}>
                     <CardContent className="pt-8 pb-6">
@@ -412,10 +412,10 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-secondary">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-12 text-center section-title">Our Achievements</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <section className="py-16 xs:py-18 sm:py-20 bg-secondary">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <h2 className="heading-lg mb-8 xs:mb-8 sm:mb-10 md:mb-12 text-center section-title">Our Achievements</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
               {achievements.map((achievement, index) => (
                 <div key={index} className="text-center achievement-item">
                   <p className="text-2xl font-bold text-primary mb-2 transition-all duration-300">{achievement.split(' ')[0]}</p>
@@ -426,10 +426,10 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-6 section-title">Why Choose Luxury Properties Ltd?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-4xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <h2 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 section-title">Why Choose Luxury Properties Ltd?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 xs:gap-4 sm:gap-5 md:gap-6 mb-6 xs:mb-6 sm:mb-8">
               <div className="bg-card rounded-xl p-6 border why-choose-card">
                 <h3 className="text-lg font-semibold mb-3">Exclusive Luxury Listings</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -462,9 +462,9 @@ const AboutPage = () => {
           </div>
         </section>
 
-        <section className="py-20 epan-section">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-6 section-title">EPAN Initiative</h2>
+        <section className="py-16 xs:py-18 sm:py-20 epan-section">
+          <div className="max-w-4xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <h2 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 section-title">EPAN Initiative</h2>
             <p className="text-muted-foreground leading-relaxed mb-6">
               The Estate Professionals Association Network (EPAN) is our commitment to building a collaborative 
               community of real estate professionals. Through EPAN, we provide training, networking opportunities, 

@@ -38,7 +38,7 @@ const ContactPage = () => {
       <Header />
 
       <main>
-        <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center hero-section">
+        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://www.image2url.com/r2/default/images/1781315550242-096ff39c-0b74-48d1-afcd-d1bccdb33620.png"
@@ -47,20 +47,20 @@ const ContactPage = () => {
               loading="lazy"
             />
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-white hero-animate" style={{ letterSpacing: '-0.02em' }}>Contact Us</h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Contact Us</h1>
+            <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay">
               Have questions? We're here to help. Reach out to us through any of the channels below.
             </p>
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 xs:gap-10 sm:gap-12">
               <div>
-                <h2 className="text-3xl font-bold mb-8">Get in Touch</h2>
-                <div className="space-y-6 mb-8">
+                <h2 className="heading-lg mb-6 xs:mb-6 sm:mb-8">Get in Touch</h2>
+                <div className="space-y-4 xs:space-y-4 sm:space-y-5 md:space-y-6 mb-6 xs:mb-6 sm:mb-8">
                   <Card>
                     <CardContent className="p-6 flex items-start space-x-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">

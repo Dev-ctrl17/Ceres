@@ -12,8 +12,8 @@ import { Button } from "@/components/ui/button";
 
 const PropertyFilter = ({ filters, setFilters, onSearch }) => {
   return (
-    <div className="bg-card rounded-2xl shadow-lg p-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+    <div className="bg-card rounded-xl xs:rounded-xl sm:rounded-2xl shadow-lg p-4 xs:p-4 sm:p-5 md:p-6">
+      <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 xs:gap-3 sm:gap-4">
         <Input
           placeholder="Location"
           value={filters.location || ""}

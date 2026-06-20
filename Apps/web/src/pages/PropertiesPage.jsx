@@ -58,7 +58,7 @@ const PropertiesPage = () => {
       <Header />
 
       <main>
-        <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center hero-section">
+        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://www.image2url.com/r2/default/images/1781618537376-b115f9d3-7d9d-44a1-b434-f17755a0d94c.jpeg"
@@ -69,22 +69,22 @@ const PropertiesPage = () => {
             />
             <div className="absolute inset-0 bg-black/30" />
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 filter-section">
-            <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-white hero-animate" style={{ letterSpacing: '-0.02em' }}>Browse All Properties</h1>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 filter-section">
+            <h1 className="heading-lg mb-6 xs:mb-6 sm:mb-8 text-center text-white hero-animate">Browse All Properties</h1>
             <PropertyFilter filters={filters} setFilters={setFilters} onSearch={handleSearch} />
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between mb-8">
-              <p className="text-muted-foreground">
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between mb-6 xs:mb-6 sm:mb-8">
+              <p className="text-muted-foreground text-sm xs:text-sm sm:text-base">
                 {loading ? 'Loading...' : `${properties.length} properties found`}
               </p>
             </div>
 
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
                 {[1, 2, 3, 4, 5, 6].map((i) => (
                   <div key={i} className="bg-card rounded-2xl p-6 animate-pulse">
                     <div className="aspect-[4/3] bg-muted rounded-xl mb-4"></div>
@@ -94,11 +94,11 @@ const PropertiesPage = () => {
                 ))}
               </div>
             ) : properties.length === 0 ? (
-              <div className="text-center py-20">
-                <p className="text-xl text-muted-foreground">No properties found matching your criteria.</p>
+              <div className="text-center py-16 xs:py-16 sm:py-20">
+                <p className="text-base xs:text-base sm:text-xl text-muted-foreground">No properties found matching your criteria.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
                 {properties.map((property) => (
                   <PropertyCard key={property.id} property={property} featured={property.is_featured} className="property-card" />
                 ))}

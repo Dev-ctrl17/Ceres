@@ -10,10 +10,32 @@ module.exports = {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        md: "2rem",
+        lg: "2rem",
+        xl: "2rem",
+        "2xl": "2rem",
+      },
       screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
         "2xl": "1400px",
       },
+    },
+    screens: {
+      // Small Mobile: 320px – 480px (base/default)
+      "xs": "375px",     // iPhone SE/8 size
+      "sm": "481px",     // Mobile landscape
+      "md": "768px",     // Tablet Portrait
+      "lg": "992px",     // Tablet Landscape
+      "xl": "1025px",    // Small Laptop
+      "2xl": "1281px",   // Desktop
+      "3xl": "1441px",   // Large Desktop
+      "4xl": "1921px",   // Ultra-Wide
     },
     extend: {
       colors: {
@@ -68,20 +90,12 @@ module.exports = {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {

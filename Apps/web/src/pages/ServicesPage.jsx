@@ -120,7 +120,7 @@ const ServicesPage = () => {
       <Header />
 
       <main>
-        <section className="relative py-32 lg:py-44 min-h-[70vh] flex items-center justify-center hero-section">
+        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg"
@@ -131,23 +131,20 @@ const ServicesPage = () => {
             />
             <div className="absolute inset-0 bg-black/30" />
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1
-              className="text-4xl md:text-5xl font-bold mb-6 text-white hero-animate"
-              style={{ letterSpacing: "-0.02em" }}
-            >
+          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">
               Our Services
             </h1>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay">
+            <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay">
               Comprehensive real estate solutions tailored to meet your property
               needs.
             </p>
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-6 sm:gap-8 md:gap-12">
               {services.map((service, index) => (
                 <div key={index} className="flex items-start space-x-6 service-item">
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 icon-wrapper">
@@ -167,10 +164,10 @@ const ServicesPage = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-primary text-primary-foreground cta-section">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-bold mb-6">Ready to get started?</h2>
-            <p className="text-lg mb-8 opacity-90 leading-relaxed">
+        <section className="py-16 xs:py-18 sm:py-20 bg-primary text-primary-foreground cta-section">
+          <div className="max-w-4xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+            <h2 className="heading-md mb-4 xs:mb-4 sm:mb-5 md:mb-6">Ready to get started?</h2>
+            <p className="text-sm xs:text-sm sm:text-base md:text-lg mb-6 xs:mb-6 sm:mb-8 opacity-90 leading-relaxed">
               Contact us today to discuss how we can help you achieve your real
               estate goals.
             </p>
