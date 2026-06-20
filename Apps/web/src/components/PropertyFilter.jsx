@@ -33,11 +33,14 @@ const PropertyFilter = ({ filters, setFilters, onSearch }) => {
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="all">All Types</SelectItem>
-            <SelectItem value="Residential">Residential</SelectItem>
-            <SelectItem value="Commercial">Commercial</SelectItem>
-            <SelectItem value="Luxury">Luxury</SelectItem>
+            <SelectItem value="Villa">Villa</SelectItem>
+            <SelectItem value="Apartment">Apartment</SelectItem>
             <SelectItem value="Shortlet">Shortlet</SelectItem>
-            <SelectItem value="Land">Land</SelectItem>
+            <SelectItem value="Duplex">Duplex</SelectItem>
+            <SelectItem value="Semi-Detached">Semi-Detached</SelectItem>
+            <SelectItem value="Detached">Detached</SelectItem>
+            <SelectItem value="Bungalow">Bungalow</SelectItem>
+            <SelectItem value="Terrace">Terrace</SelectItem>
           </SelectContent>
         </Select>
 

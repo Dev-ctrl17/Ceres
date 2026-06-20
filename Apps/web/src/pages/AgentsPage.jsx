@@ -104,6 +104,9 @@ const AgentsPage = () => {
                           )}
                         </div>
                         <h3 className="text-xl font-semibold mb-1">{agent.name}</h3>
+                        {agent.position && (
+                          <p className="text-sm font-medium text-primary mb-1">{agent.position}</p>
+                        )}
                         {agent.specialization && (
                           <p className="text-sm text-muted-foreground mb-3">{agent.specialization}</p>
                         )}
@@ -113,9 +116,19 @@ const AgentsPage = () => {
                             <span className="font-medium">{agent.rating.toFixed(1)}</span>
                           </div>
                         )}
-                        {agent.listingsCount && (
+                        {agent.listingscount && (
                           <p className="text-sm text-muted-foreground mb-4">
-                            {agent.listingsCount} active listings
+                            {agent.listingscount} active listings
+                          </p>
+                        )}
+                        {agent.locations && (
+                          <p className="text-sm text-muted-foreground mb-4">
+                            📍 {agent.locations}
+                          </p>
+                        )}
+                        {agent.bio && (
+                          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                            {agent.bio}
                           </p>
                         )}
                         <div className="space-y-2 text-sm">

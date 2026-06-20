@@ -16,6 +16,8 @@ import {
   Trash2,
   LogOut,
   X,
+  Inbox,
+  Check,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -77,6 +79,7 @@ const AdminDashboard = () => {
 
 const TABS = [
   { id: "properties", label: "Properties", icon: Package },
+  { id: "submissions", label: "Submissions", icon: Inbox },
   { id: "agents", label: "Agents", icon: Users },
   { id: "team", label: "Team Members", icon: UsersRound },
   { id: "reviews", label: "Reviews", icon: Star },
@@ -89,6 +92,8 @@ const DashboardTabs = () => {
     switch (activeTab) {
       case "properties":
         return PropertiesManager;
+      case "submissions":
+        return SubmissionsManager;
       case "agents":
         return AgentsManager;
       case "reviews":
@@ -118,6 +123,249 @@ const DashboardTabs = () => {
         ))}
       </div>
       <ActiveComponent />
+    </div>
+  );
+};
+
+// ---------- Submissions Manager ----------
+const SubmissionsManager = () => {
+  const [submissions, setSubmissions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [processingId, setProcessingId] = useState(null);
+  const [filter, setFilter] = useState("Pending");
+
+  const fetchSubmissions = async () => {
+    setLoading(true);
+    try {
+      let query = supabase
+        .from("property_submissions")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (filter !== "all") {
+        query = query.eq("status", filter);
+      }
+
+      const { data, error } = await query;
+      if (error) throw error;
+      setSubmissions(data || []);
+    } catch (err) {
+      toast.error("Failed to load submissions");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchSubmissions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter]);
+
+  const getImageUrl = (img) => {
+    if (!img) return null;
+    return img.startsWith("http") ? img : getFileUrl("property-images", img) || img;
+  };
+
+  const handleApprove = async (submission) => {
+    if (!window.confirm(`Approve "${submission.title}" and publish it as a live listing?`)) {
+      return;
+    }
+    setProcessingId(submission.id);
+    try {
+      // Copy the submission's data into the live properties table.
+      // Field names already match since PropertySubmissionForm.jsx
+      // was built against the same schema as properties.
+      const images = submission.images?.length
+        ? submission.images
+        : submission.image_url
+        ? [submission.image_url]
+        : [];
+
+      const propertyData = {
+        title: submission.title,
+        description: submission.description || "",
+        price: submission.price,
+        location: submission.location,
+        address: submission.location,
+        property_type: submission.property_type,
+        purpose: "Buy",
+        status: "Available",
+        images,
+        image_url: images[0] || "",
+        is_verified: false,
+        is_featured: false,
+      };
+
+      const { error: insertError } = await supabase
+        .from("properties")
+        .insert(propertyData);
+
+      if (insertError) throw insertError;
+
+      const { error: updateError } = await supabase
+        .from("property_submissions")
+        .update({ status: "Approved" })
+        .eq("id", submission.id);
+
+      if (updateError) throw updateError;
+
+      toast.success("Submission approved and published!");
+      fetchSubmissions();
+    } catch (err) {
+      toast.error(err.message || "Failed to approve submission");
+    } finally {
+      setProcessingId(null);
+    }
+  };
+
+  const handleReject = async (submission) => {
+    if (!window.confirm(`Reject the submission "${submission.title}"?`)) return;
+    setProcessingId(submission.id);
+    try {
+      const { error } = await supabase
+        .from("property_submissions")
+        .update({ status: "Rejected" })
+        .eq("id", submission.id);
+
+      if (error) throw error;
+      toast.success("Submission rejected");
+      fetchSubmissions();
+    } catch (err) {
+      toast.error("Failed to reject submission");
+    } finally {
+      setProcessingId(null);
+    }
+  };
+
+  const handleDelete = async (submission) => {
+    if (!window.confirm(`Permanently delete this submission?`)) return;
+    setProcessingId(submission.id);
+    try {
+      const { error } = await supabase
+        .from("property_submissions")
+        .delete()
+        .eq("id", submission.id);
+
+      if (error) throw error;
+      toast.success("Submission deleted");
+      fetchSubmissions();
+    } catch (err) {
+      toast.error("Failed to delete submission");
+    } finally {
+      setProcessingId(null);
+    }
+  };
+
+  const statusBadgeColor = (status) => {
+    switch (status) {
+      case "Approved":
+        return "bg-green-100 text-green-700";
+      case "Rejected":
+        return "bg-red-100 text-red-700";
+      default:
+        return "bg-yellow-100 text-yellow-700";
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <h2 className="text-xl font-semibold">Property Submissions</h2>
+        <div className="flex gap-2">
+          {["Pending", "Approved", "Rejected", "all"].map((f) => (
+            <Button
+              key={f}
+              size="sm"
+              variant={filter === f ? "default" : "outline"}
+              onClick={() => setFilter(f)}
+            >
+              {f === "all" ? "All" : f}
+            </Button>
+          ))}
+        </div>
+      </div>
+
+      {loading ? (
+        <p className="text-sm text-gray-500">Loading submissions...</p>
+      ) : submissions.length === 0 ? (
+        <div className="bg-white p-8 rounded-lg shadow text-center text-gray-500">
+          No {filter !== "all" ? filter.toLowerCase() : ""} submissions found.
+        </div>
+      ) : (
+        <div className="grid gap-4">
+          {submissions.map((s) => {
+            const thumb = getImageUrl(s.images?.[0] || s.image_url);
+            return (
+              <div key={s.id} className="bg-white p-4 rounded-lg shadow">
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start gap-3 flex-1 min-w-0">
+                    <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
+                      {thumb ? (
+                        <img src={thumb} alt={s.title} className="w-full h-full object-cover" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
+                          No img
+                        </div>
+                      )}
+                    </div>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="font-semibold truncate">{s.title}</h3>
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${statusBadgeColor(s.status)}`}>
+                          {s.status}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-500">{s.location}</p>
+                      <p className="text-sm text-gray-500">
+                        {s.property_type} • ₦{Number(s.price).toLocaleString()}
+                      </p>
+                      <p className="text-xs text-gray-400 mt-1">
+                        Submitted by {s.owner_name} ({s.owner_email}, {s.owner_phone})
+                      </p>
+                      {s.description && (
+                        <p className="text-xs text-gray-400 mt-1 line-clamp-2">{s.description}</p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-2 flex-shrink-0">
+                    {s.status === "Pending" && (
+                      <>
+                        <Button
+                          size="sm"
+                          onClick={() => handleApprove(s)}
+                          disabled={processingId === s.id}
+                          className="bg-green-600 hover:bg-green-700"
+                        >
+                          <Check className="w-4 h-4 mr-1" />
+                          Approve
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleReject(s)}
+                          disabled={processingId === s.id}
+                        >
+                          <X className="w-4 h-4 mr-1" />
+                          Reject
+                        </Button>
+                      </>
+                    )}
+                    <Button
+                      size="sm"
+                      variant="destructive"
+                      onClick={() => handleDelete(s)}
+                      disabled={processingId === s.id}
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
@@ -633,6 +881,12 @@ const AgentsManager = () => {
     name: "",
     phone: "",
     email: "",
+    position: "",
+    specialization: "",
+    locations: "",
+    propertiesassigned: "",
+    listingscount: "",
+    bio: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -656,7 +910,17 @@ const AgentsManager = () => {
 
   const openCreate = () => {
     setEditing(null);
-    setFormValues({ name: "", phone: "", email: "" });
+    setFormValues({
+      name: "",
+      phone: "",
+      email: "",
+      position: "",
+      specialization: "",
+      locations: "",
+      propertiesassigned: "",
+      listingscount: "",
+      bio: "",
+    });
     setPhotoFile(null);
     setDialogOpen(true);
   };
@@ -667,6 +931,12 @@ const AgentsManager = () => {
       name: agent.name || "",
       phone: agent.phone || "",
       email: agent.email || "",
+      position: agent.position || "",
+      specialization: agent.specialization || "",
+      locations: agent.locations || "",
+      propertiesassigned: agent.propertiesassigned ?? "",
+      listingscount: agent.listingscount ?? "",
+      bio: agent.bio || "",
     });
     setPhotoFile(null);
     setDialogOpen(true);
@@ -698,6 +968,16 @@ const AgentsManager = () => {
         name: formValues.name,
         email: formValues.email,
         phone: formValues.phone,
+        position: formValues.position || null,
+        specialization: formValues.specialization || null,
+        locations: formValues.locations || null,
+        propertiesassigned: formValues.propertiesassigned
+          ? parseInt(formValues.propertiesassigned) || 0
+          : 0,
+        listingscount: formValues.listingscount
+          ? parseInt(formValues.listingscount) || 0
+          : 0,
+        bio: formValues.bio || null,
       };
 
       if (photoFile) {
@@ -811,6 +1091,65 @@ const AgentsManager = () => {
                 />
               </div>
               <div className="space-y-2">
+                <label className="text-sm font-medium">Position</label>
+                <Input
+                  name="position"
+                  placeholder="e.g. Senior Agent, Sales Manager"
+                  value={formValues.position}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Specialization</label>
+                <Input
+                  name="specialization"
+                  placeholder="e.g. Luxury Homes, Commercial Property"
+                  value={formValues.specialization}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Assigned Locations</label>
+                <Input
+                  name="locations"
+                  placeholder="e.g. Lagos, Abuja, Ikoyi"
+                  value={formValues.locations}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Number of Properties</label>
+                <Input
+                  name="propertiesassigned"
+                  type="number"
+                  min="0"
+                  placeholder="e.g. 25"
+                  value={formValues.propertiesassigned}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Active Listings Count</label>
+                <Input
+                  name="listingscount"
+                  type="number"
+                  min="0"
+                  placeholder="e.g. 12"
+                  value={formValues.listingscount}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Bio</label>
+                <Textarea
+                  name="bio"
+                  placeholder="Brief bio about the agent..."
+                  value={formValues.bio}
+                  onChange={handleInputChange}
+                  rows={3}
+                />
+              </div>
+              <div className="space-y-2">
                 <label className="text-sm font-medium">Photo</label>
                 <Input type="file" accept="image/*" onChange={handlePhotoChange} />
                 {photoFile && (
@@ -855,8 +1194,14 @@ const AgentsManager = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold">{a.name}</h3>
+                  {a.position && (
+                    <p className="text-sm text-gray-500">{a.position}</p>
+                  )}
                   <p className="text-sm text-gray-500">{a.phone}</p>
                   <p className="text-xs text-gray-400">{a.email}</p>
+                  {a.locations && (
+                    <p className="text-xs text-gray-400">📍 {a.locations}</p>
+                  )}
                 </div>
               </div>
               <div className="flex gap-2">
