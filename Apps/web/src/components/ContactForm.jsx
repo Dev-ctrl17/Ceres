@@ -34,6 +34,17 @@ const ContactForm = ({ propertyId = null }) => {
         .insert(leadData);
 
       if (error) throw error;
+
+      // Trigger email notification via Supabase Edge Function
+      try {
+        await supabase.functions.invoke("notify-lead-submission", {
+          body: leadData,
+        });
+      } catch (emailError) {
+        console.error("Email notification failed:", emailError);
+        // Don't block the form submission if email fails
+      }
+
       toast.success("Message sent successfully. We will contact you soon.");
       reset();
     } catch (error) {

@@ -90,6 +90,16 @@ const PropertySubmissionForm = () => {
 
       if (error) throw error;
 
+      // Trigger email notification via Supabase Edge Function
+      try {
+        await supabase.functions.invoke("notify-property-submission", {
+          body: submissionData,
+        });
+      } catch (emailError) {
+        console.error("Email notification failed:", emailError);
+        // Don't block the form submission if email fails
+      }
+
       toast.success(
         "Property submitted successfully. Our team will review it shortly.",
       );
