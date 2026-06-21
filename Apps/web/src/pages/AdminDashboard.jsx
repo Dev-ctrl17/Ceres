@@ -378,6 +378,8 @@ const PropertiesManager = () => {
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [existingImages, setExistingImages] = useState([]);
+  const [videoFile, setVideoFile] = useState(null);
+  const [existingVideoUrl, setExistingVideoUrl] = useState("");
   const [uploading, setUploading] = useState(false);
   const { register, handleSubmit, reset, formState: { errors }, control } = useForm();
 
@@ -415,6 +417,8 @@ const PropertiesManager = () => {
     setImageFiles([]);
     setImagePreviews([]);
     setExistingImages([]);
+    setVideoFile(null);
+    setExistingVideoUrl("");
     setDialogOpen(true);
   };
 
@@ -431,7 +435,6 @@ const PropertiesManager = () => {
       type: property.property_type || property.type,
       purpose: property.purpose || "Buy",
       status: property.status,
-      videoTour: "",
     });
     // Populate existing images — prefer the full images array, fall back to image_url
     setExistingImages(
@@ -440,6 +443,8 @@ const PropertiesManager = () => {
     );
     setImageFiles([]);
     setImagePreviews([]);
+    setVideoFile(null);
+    setExistingVideoUrl(property.video_tour || "");
     setDialogOpen(true);
   };
 
@@ -483,6 +488,36 @@ const PropertiesManager = () => {
     setExistingImages((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const handleVideoSelect = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const validTypes = ["video/mp4", "video/webm", "video/quicktime"];
+    if (!validTypes.includes(file.type)) {
+      toast.error("Only MP4, WebM, or MOV videos are allowed");
+      e.target.value = "";
+      return;
+    }
+
+    const maxSizeBytes = 100 * 1024 * 1024; // 100MB
+    if (file.size > maxSizeBytes) {
+      toast.error("Video must be under 100MB");
+      e.target.value = "";
+      return;
+    }
+
+    setVideoFile(file);
+    e.target.value = "";
+  };
+
+  const removeVideo = () => {
+    setVideoFile(null);
+  };
+
+  const removeExistingVideo = () => {
+    setExistingVideoUrl("");
+  };
+
   const onSubmit = async (data) => {
     const totalImages = existingImages.length + imageFiles.length;
 
@@ -523,6 +558,15 @@ const PropertiesManager = () => {
       // so we can merge them directly with the freshly converted URLs.
       const allImages = [...existingImages, ...uploadedUrls];
 
+      // Upload video tour if a new file was selected; otherwise keep
+      // whatever existing URL was already on the property (or none).
+      let videoTourUrl = existingVideoUrl;
+      if (videoFile) {
+        toast.info("Uploading video tour...");
+        const videoPath = await uploadFile("property-videos", videoFile, "properties");
+        videoTourUrl = getFileUrl("property-videos", videoPath) || videoPath;
+      }
+
       const submitData = {
         title: data.title,
         description: data.description,
@@ -539,6 +583,7 @@ const PropertiesManager = () => {
         image_url: allImages[0] || "",
         images: allImages,
         is_featured: data.is_featured || false,
+        video_tour: videoTourUrl || null,
       };
 
       if (editing) {
@@ -802,6 +847,76 @@ const PropertiesManager = () => {
 
                 <p className="text-xs text-muted-foreground mt-1">
                   JPG, PNG, GIF, WebP — max 10 MB each
+                </p>
+              </div>
+
+              {/* ── Video tour upload section (optional) ── */}
+              <div className="col-span-2">
+                <label className="text-sm font-medium mb-1 block">
+                  Video Tour
+                  <span className="text-muted-foreground font-normal ml-1">
+                    — optional
+                  </span>
+                </label>
+
+                {/* Existing video (edit mode) */}
+                {existingVideoUrl && !videoFile && (
+                  <div className="mb-3 flex items-center gap-3 p-2 border rounded-lg bg-muted/30">
+                    <video
+                      src={existingVideoUrl}
+                      className="w-24 h-16 object-cover rounded"
+                      muted
+                    />
+                    <span className="text-xs text-muted-foreground flex-1 truncate">
+                      Current video tour
+                    </span>
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="sm"
+                      onClick={removeExistingVideo}
+                    >
+                      <X className="w-3 h-3" />
+                    </Button>
+                  </div>
+                )}
+
+                {/* New video selected, not yet uploaded */}
+                {videoFile && (
+                  <div className="mb-3 flex items-center gap-3 p-2 border rounded-lg bg-muted/30">
+                    <span className="text-xs flex-1 truncate">
+                      {videoFile.name} ({(videoFile.size / (1024 * 1024)).toFixed(1)} MB)
+                    </span>
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="sm"
+                      onClick={removeVideo}
+                    >
+                      <X className="w-3 h-3" />
+                    </Button>
+                  </div>
+                )}
+
+                {!videoFile && !existingVideoUrl && (
+                  <label className="flex items-center justify-center w-full h-24 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                    <div className="text-center">
+                      <Plus className="w-6 h-6 mx-auto text-muted-foreground" />
+                      <p className="text-xs text-muted-foreground mt-1">
+                        Click to upload a video tour (optional)
+                      </p>
+                    </div>
+                    <input
+                      type="file"
+                      accept="video/mp4,video/webm,video/quicktime"
+                      className="hidden"
+                      onChange={handleVideoSelect}
+                    />
+                  </label>
+                )}
+
+                <p className="text-xs text-muted-foreground mt-1">
+                  MP4, WebM, or MOV — max 100 MB. Leave empty to skip.
                 </p>
               </div>
 

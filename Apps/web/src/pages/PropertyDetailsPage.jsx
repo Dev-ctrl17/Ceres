@@ -205,15 +205,24 @@ const PropertyDetailsPage = () => {
               {property.video_tour && (
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold mb-4">Video Tour</h2>
-                  <div className="aspect-video rounded-2xl overflow-hidden">
+                  <div className="aspect-video rounded-2xl overflow-hidden bg-black">
+                    {/^https?:\/\/.*\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(property.video_tour) ? (
+                      <video
+                        src={property.video_tour}
+                        controls
+                        className="w-full h-full"
+                        preload="metadata"
+                      />
+                    ) : (
                       <iframe
                         src={property.video_tour}
-                      width="100%"
-                      height="100%"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      title="Property Video Tour"
-                    ></iframe>
+                        width="100%"
+                        height="100%"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        title="Property Video Tour"
+                      ></iframe>
+                    )}
                   </div>
                 </div>
               )}
