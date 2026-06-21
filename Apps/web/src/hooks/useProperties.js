@@ -21,7 +21,10 @@ export const useProperties = (filters = {}) => {
           query = query.eq('purpose', filters.purpose);
         }
         if (filters.propertyType && filters.propertyType !== 'all') {
-          query = query.eq('property_type', filters.propertyType);
+          // Use partial match instead of exact match so combined types
+          // like "Terrace Duplex" still show up when filtering by "Duplex"
+          // or "Terrace" individually.
+          query = query.ilike('property_type', `%${filters.propertyType}%`);
         }
         if (filters.location) {
           query = query.ilike('location', `%${filters.location}%`);
