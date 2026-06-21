@@ -44,7 +44,7 @@ const PropertyCard = ({ property, featured = false }) => {
               Verified
             </Badge>
           )}
-          {property.is_featured && (
+          {featured && (
             <Badge className="absolute top-3 right-3 bg-destructive text-destructive-foreground">
               Featured
             </Badge>
