@@ -253,7 +253,7 @@ const HomePage = () => {
             </div>
 
             {loading ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="bg-card rounded-2xl p-6 animate-pulse border">
                     <div className="aspect-[4/3] bg-muted rounded-xl mb-4"></div>
@@ -263,7 +263,7 @@ const HomePage = () => {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {featuredProperties.map((property) => (
                   <PropertyCard key={property.id} property={property} featured={true} />
                 ))}
