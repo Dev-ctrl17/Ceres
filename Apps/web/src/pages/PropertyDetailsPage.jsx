@@ -231,7 +231,7 @@ const PropertyDetailsPage = () => {
                 <h2 className="text-2xl font-bold mb-4">Location</h2>
                 <div className="aspect-video rounded-2xl overflow-hidden">
                   <iframe
-                    src={`https://www.openstreetmap.org/export/embed.html?query=${encodeURIComponent(property.location)}&layer=mapnik`}
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}

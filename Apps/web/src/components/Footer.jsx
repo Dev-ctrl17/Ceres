@@ -183,7 +183,7 @@ const Footer = () => {
                   className="text-sm"
                   style={{ color: "rgba(255,255,255,0.8)" }}
                 >
-                  info@luxurypropertiesltd.com
+                  info@luxurypropertiesltd.com.ng
                 </span>
               </li>
               <li className="flex items-start space-x-3">

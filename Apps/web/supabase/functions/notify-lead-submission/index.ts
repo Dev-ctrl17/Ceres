@@ -188,11 +188,11 @@ serve(async (req) => {
       body: JSON.stringify({
         sender: {
           name: "Luxury Properties",
-          email: "luxurypropertiesltd000@gmail.com",
+          email: "info@luxurypropertiesltd.com.ng",
         },
         to: [
           {
-            email: "luxurypropertiesltd000@gmail.com",
+            email: "info@luxurypropertiesltd.com.ng",
             name: "Luxury Properties Admin",
           },
         ],
