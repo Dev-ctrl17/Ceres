@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { 
   Search, Shield, TrendingUp, Award, Clock, 
   ArrowRight, Building2, Key, Briefcase, Users,
-  Home, CheckCircle
+  Home, CheckCircle, Loader2, MailCheck, MailX
 } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -16,6 +16,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
+import { validateEmail } from '@/services/emailValidation';
 
 const heroSlides = [
     {
@@ -125,7 +126,18 @@ const HomePage = () => {
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
     setSubscribing(true);
+
     try {
+      // Step 1: Verify email via Mailboxlayer
+      const emailResult = await validateEmail(email);
+
+      if (!emailResult.valid) {
+        toast.error(emailResult.error || "Please enter a valid email address.");
+        setSubscribing(false);
+        return;
+      }
+
+      // Step 2: Subscribe to newsletter
       const { error } = await supabase
         .from('newsletter')
         .insert({ email });

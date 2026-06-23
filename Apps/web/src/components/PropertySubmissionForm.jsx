@@ -18,6 +18,8 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
+import { useEmailValidation } from "@/hooks/useEmailValidation";
+import { Loader2, MailCheck, MailX } from "lucide-react";
 
 const PROPERTY_TYPES = [
   "Villa",
@@ -33,6 +35,8 @@ const PROPERTY_TYPES = [
 const PropertySubmissionForm = () => {
   const [loading, setLoading] = useState(false);
   const [propertyType, setPropertyType] = useState("");
+  const [emailStatus, setEmailStatus] = useState(null); // 'verifying' | 'valid' | 'invalid' | null
+  const { verifyEmail, isVerifying, verificationError, clearError } = useEmailValidation();
   const {
     register,
     handleSubmit,
@@ -46,8 +50,27 @@ const PropertySubmissionForm = () => {
       return;
     }
 
+    // Clear previous email verification state
+    setEmailStatus(null);
+    clearError();
+
     setLoading(true);
+    setEmailStatus("verifying");
+
     try {
+      // Step 1: Verify email via Mailboxlayer
+      const emailResult = await verifyEmail(data.ownerEmail);
+
+      if (!emailResult.valid) {
+        setEmailStatus("invalid");
+        setLoading(false);
+        toast.error(emailResult.error || "Please enter a valid email address.");
+        return;
+      }
+
+      // Email is valid
+      setEmailStatus("valid");
+
       const submissionData = {
         title: data.title,
         description: data.description || "",
@@ -224,16 +247,49 @@ const PropertySubmissionForm = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="ownerEmail">Email</Label>
-              <Input
-                id="ownerEmail"
-                type="email"
-                {...register("ownerEmail", { required: "Email is required" })}
-                placeholder="your@email.com"
-                className="mt-2 text-foreground"
-              />
-              {errors.ownerEmail && (
+              <div className="relative mt-2">
+                <Input
+                  id="ownerEmail"
+                  type="email"
+                  {...register("ownerEmail", {
+                    required: "Email is required",
+                    onChange: () => {
+                      // Clear verification status when user changes email
+                      if (emailStatus) {
+                        setEmailStatus(null);
+                        clearError();
+                      }
+                    },
+                  })}
+                  placeholder="your@email.com"
+                  className={`text-foreground pr-10 ${
+                    emailStatus === "valid" ? "border-green-500 focus-visible:ring-green-500" : ""
+                  } ${
+                    emailStatus === "invalid" ? "border-red-500 focus-visible:ring-red-500" : ""
+                  }`}
+                />
+                {/* Email status indicator */}
+                <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                  {isVerifying && (
+                    <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                  )}
+                  {emailStatus === "valid" && !isVerifying && (
+                    <MailCheck className="h-4 w-4 text-green-500" />
+                  )}
+                  {emailStatus === "invalid" && !isVerifying && (
+                    <MailX className="h-4 w-4 text-red-500" />
+                  )}
+                </div>
+              </div>
+              {(verificationError || errors.ownerEmail) && (
                 <p className="text-sm text-destructive mt-1">
-                  {errors.ownerEmail.message}
+                  {verificationError || errors.ownerEmail?.message}
+                </p>
+              )}
+              {isVerifying && (
+                <p className="text-sm text-muted-foreground mt-1 flex items-center gap-1">
+                  <Loader2 className="h-3 w-3 animate-spin" />
+                  Verifying email...
                 </p>
               )}
             </div>

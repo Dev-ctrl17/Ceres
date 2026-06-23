@@ -8,11 +8,13 @@ import {
   Mail,
   Phone,
   MapPin,
+  Loader2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
+import { validateEmail } from "@/services/emailValidation";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +23,18 @@ const Footer = () => {
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
     try {
+      // Step 1: Verify email via Mailboxlayer
+      const emailResult = await validateEmail(email);
+
+      if (!emailResult.valid) {
+        toast.error(emailResult.error || "Please enter a valid email address.");
+        setLoading(false);
+        return;
+      }
+
+      // Step 2: Subscribe to newsletter
       const { error } = await supabase
         .from("newsletter")
         .insert({ email });
