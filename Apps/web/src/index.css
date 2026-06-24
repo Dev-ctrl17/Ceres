@@ -207,4 +207,75 @@
   .flex-responsive {
     @apply flex flex-col xs:flex-col sm:flex-row md:flex-row lg:flex-row;
   }
+
+  /* Speakable CSS class for voice search optimization */
+  .speakable {
+    speakable: auto;
+    speech-synthesis: text;
+    voice-family: natural;
+    voice-pitch: medium;
+    voice-rate: normal;
+    voice-volume: medium;
+  }
+
+  /* Ensure speakable content is accessible */
+  .speakable::before {
+    content: attr(data-speakable-text);
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  /* Improve image loading performance */
+  img {
+    decoding: async;
+    content-visibility: auto;
+  }
+
+  /* Optimize image rendering */
+  img[loading="lazy"] {
+    content-visibility: auto;
+    contain-intrinsic-size: 300px;
+  }
+
+  /* Service Worker registration indicator */
+  .sw-registered {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #10b981;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 12px;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .sw-registered.show {
+    opacity: 1;
+  }
+
+  /* Offline indicator */
+  .offline-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #ef4444;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .offline-indicator.show {
+    display: flex;
+  }
 }

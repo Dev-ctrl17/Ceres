@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:voice="http://schema.org/voice-search">
+  
+  <!-- Voice Search Optimized Pages for AI Assistants -->
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>1.0</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>daily</changefreq>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/faq</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.95</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <voice:content-type>question-answer</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/properties</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.9</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>daily</changefreq>
+    <voice:content-type>product-listings</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/buy</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.9</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <voice:content-type>buying-guide</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/rent</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.85</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <voice:content-type>rental-listings</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/sell</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.85</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <voice:content-type>selling-guide</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/services</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.8</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <voice:content-type>service-description</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/about</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.75</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <voice:content-type>company-info</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/contact</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.8</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <voice:content-type>contact-info</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.7</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <voice:content-type>articles</voice:content-type>
+  </url>
+  
+  <!-- Blog Posts - Voice Optimized -->
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/most-expensive-neighborhoods-lagos</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.7</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>article</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/luxury-property-lekki-guide</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.7</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>article</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/how-to-buy-luxury-property-nigeria</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.75</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>how-to-guide</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/ikoyi-real-estate-guide</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.7</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>article</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/banana-island-property-guide</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.7</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>article</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/victoria-island-luxury-real-estate</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.7</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>article</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/diaspora-guide-buy-property-nigeria</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.75</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>how-to-guide</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/luxury-real-estate-investment-roi-lagos</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.7</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>article</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/how-much-luxury-home-cost-lagos</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.75</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>price-guide</voice:content-type>
+  </url>
+  
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/best-areas-live-lagos-expats</loc>
+    <voice:speakable>true</voice:speakable>
+    <voice:priority>0.7</voice:priority>
+    <lastmod>2026-06-24</lastmod>
+    <voice:content-type>article</voice:content-type>
+  </url>
+  
+</urlset>

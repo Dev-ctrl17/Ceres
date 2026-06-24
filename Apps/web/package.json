@@ -4,10 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "next build && next start"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -48,6 +49,7 @@
     "framer-motion": "^11.15.0",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.469.0",
+    "next": "^14.2.35",
     "next-themes": "^0.4.6",
     "react": "^18.3.1",
     "react-day-picker": "^9.14.0",
