@@ -4,6 +4,7 @@ import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getFileUrl } from "@/lib/supabaseService";
+import { getImageProps } from "@/components/imgUtils.js";
 
 const PropertyCard = ({ property, featured = false }) => {
   // Prefer first image from images array, fall back to image_url
@@ -13,6 +14,15 @@ const PropertyCard = ({ property, featured = false }) => {
       ? firstImage
       : getFileUrl("property-images", firstImage) || firstImage
     : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800";
+
+  const imgProps = getImageProps({
+    src: imageUrl,
+    alt: property.title || 'Property image',
+    className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110",
+    loading: "lazy",
+    decoding: "async",
+    sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
+  });
 
   const formatPrice = (price) => {
     return new Intl.NumberFormat("en-NG", {
@@ -32,12 +42,18 @@ const PropertyCard = ({ property, featured = false }) => {
         }`}
       >
         <div className="relative overflow-hidden aspect-[4/3]">
-          <img
-            src={imageUrl}
-            alt={property.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            loading="lazy"
-          />
+          <picture>
+            <source srcSet={imageUrl} type="image/webp" />
+            <img
+              src={imageUrl}
+              alt={property.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
+              srcSet={imgProps.srcSet}
+              sizes={imgProps.sizes}
+            />
+          </picture>
           {property.is_verified && (
             <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
               <CheckCircle className="w-3 h-3 mr-1" />

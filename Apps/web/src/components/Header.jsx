@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext.jsx";
+import { getImageProps } from "@/components/imgUtils.js";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,7 +31,6 @@ const Header = () => {
     { name: "Sell", path: "/sell" },
     { name: "Properties", path: "/properties" },
     { name: "Services", path: "/services" },
-    { name: "Blog", path: "/blog" },
     { name: "EPAN", path: "/epan" },
     { name: "Agents", path: "/agents" },
     { name: "Reviews", path: "/reviews" },

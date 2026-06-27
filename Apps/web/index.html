@@ -1,25 +1,26 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) - Fully deferred to avoid blocking render -->
+    <!-- Google tag (gtag.js) - Defer to avoid blocking render -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E4JGVMVLV"></script>
     <script>
-      // Defer Google Analytics to load after page becomes interactive
-      window.addEventListener('load', function() {
-        var gaScript = document.createElement('script');
-        gaScript.async = true;
-        gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-0E4JGVMVLV';
-        document.head.appendChild(gaScript);
-        
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      // Defer analytics initialization to avoid blocking LCP
+      if (document.readyState === 'complete') {
         gtag('js', new Date());
         gtag('config', 'G-0E4JGVMVLV');
-      });
+      } else {
+        window.addEventListener('load', function() {
+          gtag('js', new Date());
+          gtag('config', 'G-0E4JGVMVLV');
+        });
+      }
     </script>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" type="image/png" href="https://www.image2url.com/r2/default/images/1781841393054-459cb254-b8bc-453c-ba68-8c9dfe2240e4.png" />
-    <link rel="shortcut icon" href="https://www.image2url.com/r2/default/images/1781841393054-459cb254-b8bc-453c-ba68-8c9dfe2240e4.png" />
+    <link rel="icon" type="image/png" href="/https://www.image2url.com/r2/default/images/1781841393054-459cb254-b8bc-453c-ba68-8c9dfe2240e4.png" />
+    <link rel="shortcut icon" href="/https://www.image2url.com/r2/default/images/1781841393054-459cb254-b8bc-453c-ba68-8c9dfe2240e4.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luxury Properties Ltd — Premium Real Estate in Nigeria</title>
     <meta name="description" content="Luxury Properties Ltd is Nigeria's premier luxury real estate agency. Buy, sell, or rent exclusive high-end properties in Lagos, Abuja, and across Nigeria. Concierge service, off-market listings, and expert advisory." />
@@ -86,7 +87,6 @@
         "https://www.linkedin.com/company/luxurypropertiesltd",
         "https://www.facebook.com/luxurypropertiesltd"
       ],
-      "googleBusinessProfile": "https://www.google.com/maps/search/Luxury+Properties+Ltd/@6.535036,2.8772119,9z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI2MDYyMS4wIKXMDSoASAFQAw%3D%3D",
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Luxury Property Services",
@@ -184,38 +184,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script>
-      // Register Service Worker for PWA support
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-              console.log('SW registered: ', registration);
-              // Show registration indicator
-              const indicator = document.createElement('div');
-              indicator.className = 'sw-registered show';
-              indicator.textContent = '✓ Offline Ready';
-              document.body.appendChild(indicator);
-              setTimeout(() => indicator.classList.remove('show'), 3000);
-            })
-            .catch((registrationError) => {
-              console.log('SW registration failed: ', registrationError);
-            });
-        });
-      }
-
-      // Offline/Online detection
-      window.addEventListener('online', () => {
-        const indicator = document.querySelector('.offline-indicator');
-        if (indicator) indicator.classList.remove('show');
-      });
-
-      window.addEventListener('offline', () => {
-        const indicator = document.createElement('div');
-        indicator.className = 'offline-indicator show';
-        indicator.innerHTML = '<span>⚠️</span> You are currently offline';
-        document.body.appendChild(indicator);
-      });
-    </script>
   </body>
 </html>

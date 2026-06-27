@@ -1,0 +1,189 @@
+import React from "react";
+import { Helmet } from "react-helmet";
+import Header from "@/components/Header.jsx";
+import Footer from "@/components/Footer.jsx";
+import {
+  Building2,
+  Key,
+  TrendingUp,
+  Home,
+  Briefcase,
+  Users,
+  Settings,
+  MapPin,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+
+const animationStyles = `
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  .hero-animate { animation: fadeInUp 1s ease-out forwards; }
+  .hero-animate-delay { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
+  .hero-image { animation: fadeIn 1.5s ease-out forwards; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change: transform; image-rendering: -webkit-optimize-contrast; }
+  .hero-image:hover { transform: scale(1.02); }
+  .hero-section { animation: fadeIn 0.5s ease-out; }
+  .service-item { opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease; padding: 16px; border-radius: 12px; }
+  .service-item:hover { transform: translateX(8px) scale(1.02); background-color: rgba(59,130,246,0.04); }
+  .service-item:nth-child(1) { animation-delay: 0.05s; }
+  .service-item:nth-child(2) { animation-delay: 0.1s; }
+  .service-item:nth-child(3) { animation-delay: 0.15s; }
+  .service-item:nth-child(4) { animation-delay: 0.2s; }
+  .service-item:nth-child(5) { animation-delay: 0.25s; }
+  .service-item:nth-child(6) { animation-delay: 0.3s; }
+  .service-item:nth-child(7) { animation-delay: 0.35s; }
+  .service-item:nth-child(8) { animation-delay: 0.4s; }
+  .cta-section { opacity: 0; animation: scaleIn 0.8s ease-out forwards; }
+  .cta-button { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .cta-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+  .icon-wrapper { transition: transform 0.3s ease, background-color 0.3s ease; }
+  .service-item:hover .icon-wrapper { transform: scale(1.15) rotate(-5deg); background-color: rgba(59,130,246,0.2); }
+`;
+
+const ServicesPage = () => {
+  const services = [
+    {
+      icon: Building2,
+      title: "Real Estate Brokerage",
+      description:
+        "Professional brokerage services connecting buyers, sellers, and renters with verified properties across Nigeria.",
+    },
+    {
+      icon: Key,
+      title: "Property Sales",
+      description:
+        "Expert guidance through the entire property sales process, from valuation to closing the deal.",
+    },
+    {
+      icon: Home,
+      title: "Property Leasing",
+      description:
+        "Comprehensive leasing services for residential and commercial properties with flexible terms.",
+    },
+    {
+      icon: TrendingUp,
+      title: "Luxury Property Marketing",
+      description:
+        "Specialized marketing strategies for high-end properties to reach premium buyers.",
+    },
+    {
+      icon: Briefcase,
+      title: "Shortlet Management",
+      description:
+        "Full-service management of short-term rental properties with guaranteed returns.",
+    },
+    {
+      icon: Users,
+      title: "Investment Advisory",
+      description:
+        "Strategic real estate investment advice to maximize returns and minimize risks.",
+    },
+    {
+      icon: Settings,
+      title: "Property Management",
+      description:
+        "Complete property management services including maintenance, tenant relations, and rent collection.",
+    },
+    {
+      icon: MapPin,
+      title: "Land Sales",
+      description:
+        "Verified land sales with proper documentation and legal support for secure transactions.",
+    },
+  ];
+
+  return (
+    <>
+      <Helmet>
+        <title>Our Services - Luxury Properties Ltd</title>
+        <meta
+          name="description"
+          content="Comprehensive real estate services including sales, leasing, management, and investment advisory."
+        />
+      </Helmet>
+
+      <style>{animationStyles}</style>
+
+      <Header />
+
+      <main>
+        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg"
+              alt="Our Services" 
+              className="w-full h-full object-cover hero-image"
+              loading="eager"
+              fetchpriority="high"
+            />
+            <div className="absolute inset-0 bg-black/30" />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">
+              Our Services
+            </h1>
+            <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay">
+              Comprehensive real estate solutions tailored to meet your property
+              needs.
+            </p>
+          </div>
+        </section>
+
+        <section className="py-16 xs:py-18 sm:py-20">
+          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 xs:gap-6 sm:gap-8 md:gap-12">
+              {services.map((service, index) => (
+                <div key={index} className="flex items-start space-x-6 service-item">
+                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0 icon-wrapper">
+                    <service.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="py-16 xs:py-18 sm:py-20 bg-primary text-primary-foreground cta-section">
+          <div className="max-w-4xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+            <h2 className="heading-md mb-4 xs:mb-4 sm:mb-5 md:mb-6">Ready to get started?</h2>
+            <p className="text-sm xs:text-sm sm:text-base md:text-lg mb-6 xs:mb-6 sm:mb-8 opacity-90 leading-relaxed">
+              Contact us today to discuss how we can help you achieve your real
+              estate goals.
+            </p>
+            <a
+              href="/contact"
+              className="inline-block bg-background text-foreground px-8 py-3 rounded-lg font-medium cta-button"
+            >
+              Contact Us
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </>
+  );
+};
+
+export default ServicesPage;

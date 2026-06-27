@@ -95,6 +95,72 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/nigerian-real-estate-buying-guide</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/amp/nigerian-real-estate-buying-guide</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/real-estate-news-market-trends</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/amp/real-estate-news-market-trends</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/real-estate-investment-tips-nigeria</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/amp/real-estate-investment-tips-nigeria</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/property-selling-guide-nigeria</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/amp/property-selling-guide-nigeria</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/market-trend-blog-post</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/blog/amp/market-trend-blog-post</loc>
+    <lastmod>2026-06-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- New SEO Content Pages -->
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/most-expensive-neighborhoods-lagos-2026</loc>
@@ -196,20 +262,6 @@
     <loc>https://luxurypropertiesltd.com.ng/blog/voice-search-optimized-faqs</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Landing Pages -->
-  <url>
-    <loc>https://luxurypropertiesltd.com.ng/landing/buy-luxury-property-lekki</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://luxurypropertiesltd.com.ng/landing/luxury-homes-for-sale-lagos</loc>
-    <lastmod>2026-06-16</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 

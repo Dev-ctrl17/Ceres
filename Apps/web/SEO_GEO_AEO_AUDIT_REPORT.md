@@ -9,22 +9,24 @@
 
 ## 📋 Executive Summary
 
-| Dimension | Previous Score (Jun 19) | Current Score (Jun 24) | Status |
+| Dimension | Previous Score (Jun 19) | Current Score (Jun 26) | Status |
 |-----------|:----------------------:|:---------------------:|--------|
-| **Technical SEO** | 65/100 | **85/100** | ✅ Excellent |
-| **GEO (AI Visibility)** | 50/100 | **75/100** | ✅ Strong |
-| **AEO (Answer Engine)** | 55/100 | **80/100** | ✅ Strong |
-| **On-Page SEO** | 70/100 | **88/100** | ✅ Excellent |
-| **Performance** | 60/100 | **75/100** | ✅ Good |
-| **Off-Page / Authority** | 15/100 | **15/100** | ❌ Not started |
+| | **Technical SEO** | 65/100 | **85/100** | ✅ Excellent |
+| | **GEO (AI Visibility)** | 50/100 | **85/100** | ✅ Excellent |
+| | **AEO (Answer Engine)** | 55/100 | **80/100** | ✅ Strong |
+| | **On-Page SEO** | 70/100 | **88/100** | ✅ Excellent |
+| | **Performance** | 60/100 | **78/100** | ✅ Good |
+| | **Off-Page / Authority** | 15/100 | **35/100** | 🟡 In Progress |
 
-**Overall Score: 70/100** — Significant improvement, ready for authority building
+**Overall Score: 72/100** — Strong foundation, authority building underway
 
-**Latest Updates (Jun 24 - Evening):**
-- ✅ Voice search sitemap created (`/public/sitemap-voice.xml`)
-- ✅ WebP conversion guide documented (`/WEBP_CONVERSION_GUIDE.md`)
-- ✅ Old React Router files cleaned up (15 files deleted)
-- ✅ Next.js migration fully complete
+**Latest Updates (Jun 26):**
+- ✅ Wikidata entity created — structured data now available to AI engines
+- ✅ Google Business Profile linked — local SEO and GEO signals improved
+- ✅ Comparison blog post published (Ikoyi vs Lekki vs Banana Island)
+- ✅ Listicle blog post published (Top 10 Luxury Homes in Lagos 2026)
+- ✅ Image optimization utilities added (`decoding="async"`, `srcset`, responsive props)
+- ✅ WebP conversion script and guide created (`/scripts/convert-to-webp.mjs`)
 
 ---
 

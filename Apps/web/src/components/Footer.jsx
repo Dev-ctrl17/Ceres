@@ -122,7 +122,6 @@ const Footer = () => {
                 { label: "Buy Property", path: "/buy" },
                 { label: "Rent Property", path: "/rent" },
                 { label: "Sell Property", path: "/sell" },
-                { label: "Blog", path: "/blog" },
                 { label: "Our Agents", path: "/agents" },
                 { label: "FAQ", path: "/faq" },
               ].map(({ label, path }) => (
