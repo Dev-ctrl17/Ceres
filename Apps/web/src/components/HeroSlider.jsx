@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const HeroSlider = ({ slides, onSlideChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState({});
+  const loadedRef = useRef(false);
 
   const goToSlide = useCallback((index) => {
     setCurrentIndex(index);
@@ -27,6 +29,18 @@ const HeroSlider = ({ slides, onSlideChange }) => {
     });
   }, [slides.length, onSlideChange]);
 
+  // Preload adjacent slides for smoother transitions without affecting LCP
+  useEffect(() => {
+    if (!slides || slides.length === 0 || loadedRef.current) return;
+    
+    // Preload the next slide's image (skip first slide - it's already preloaded in HTML)
+    const preloadNext = new window.Image();
+    const nextIndex = currentIndex === slides.length - 1 ? 0 : currentIndex + 1;
+    preloadNext.src = slides[nextIndex].image;
+    
+    loadedRef.current = true;
+  }, [slides, currentIndex]);
+
   useEffect(() => {
     if (isHovering) return;
     const interval = setInterval(() => {
@@ -35,8 +49,11 @@ const HeroSlider = ({ slides, onSlideChange }) => {
     return () => clearInterval(interval);
   }, [isHovering, goToNext]);
 
-  if (!slides || slides.length === 0) return null;
+  const handleImageLoad = useCallback((index) => {
+    setImagesLoaded(prev => ({ ...prev, [index]: true }));
+  }, []);
 
+  if (!slides || slides.length === 0) return null;
 
   return (
     <>
@@ -56,6 +73,17 @@ const HeroSlider = ({ slides, onSlideChange }) => {
         .slide-title { animation: fadeInLeft 0.8s ease-out 0.3s both; }
         .slide-subtitle { animation: fadeInRight 0.8s ease-out 0.5s both; }
         .slide-cta { animation: fadeInUp 0.8s ease-out 0.7s both; }
+        
+        /* Image transition optimization */
+        .hero-slide-img {
+          transition: opacity 0.8s ease-in-out;
+        }
+        .hero-slide-img.loading {
+          opacity: 0;
+        }
+        .hero-slide-img.loaded {
+          opacity: 1;
+        }
       `}</style>
 
       <div
@@ -66,16 +94,39 @@ const HeroSlider = ({ slides, onSlideChange }) => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="absolute inset-0 w-full h-full transition-opacity duration-800 ease-in-out"
+            className="hero-slide"
             style={{
-              backgroundImage: `url(${slide.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              opacity: index === currentIndex ? 1 : 0,
               zIndex: index === currentIndex ? 1 : 0,
             }}
-          />
+          >
+            {/* 
+              LCP Optimization: Use semantic <img> instead of CSS background-image
+              - First slide uses fetchpriority="high" for immediate discovery
+              - All slides use loading="eager" (not lazy) since hero images are above the fold
+              - decoding="async" allows the browser to decode the image off the main thread
+              - width/height prevent CLS
+            */}
+            <img
+              src={slide.image}
+              alt={slide.title || `Luxury real estate slide ${index + 1}`}
+              className={`hero-slide-img w-full h-full object-cover ${imagesLoaded[index] ? 'loaded' : 'loading'}`}
+              fetchpriority={index === 0 ? 'high' : 'auto'}
+              loading="eager"
+              decoding="async"
+              width="1920"
+              height="1080"
+              onLoad={() => handleImageLoad(index)}
+              onError={() => handleImageLoad(index)}
+              style={{
+                position: 'absolute',
+                inset: 0,
+              }}
+            />
+          </div>
         ))}
+
+        {/* Mobile-only background overlay for text readability */}
+        <div className="absolute inset-0 z-[5] bg-black/30 md:bg-transparent" />
 
         {/* Navigation Arrows */}
         <button
@@ -94,10 +145,10 @@ const HeroSlider = ({ slides, onSlideChange }) => {
         </button>
 
         {/* Caption Overlay - hidden on mobile */}
-        <div className="absolute inset-0 z-[15] flex items-center justify-start px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full left-1/2 -translate-x-1/2 hidden md:flex">
+        <div className="absolute inset-0 z-[15] flex items-center justify-start px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full left-1/2 -translate-x-1/2 hidden md:flex pointer-events-none">
           <div
             key={currentIndex}
-            className="max-w-3xl bg-black/50 backdrop-blur-sm p-8 md:p-10 rounded-2xl"
+            className="max-w-3xl bg-black/50 backdrop-blur-sm p-8 md:p-10 rounded-2xl pointer-events-auto"
           >
             <h1 className="slide-title text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">
               {slides[currentIndex].title}

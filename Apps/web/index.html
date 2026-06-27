@@ -1,26 +1,30 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) - Defer to avoid blocking render -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0E4JGVMVLV"></script>
+    <!-- Google tag (gtag.js) - Deferred via requestIdleCallback to avoid blocking render -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      // Defer analytics initialization to avoid blocking LCP
-      if (document.readyState === 'complete') {
+      // Defer analytics to after LCP using requestIdleCallback
+      const gtagId = 'G-0E4JGVMVLV';
+      const loadGA = () => {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${gtagId}`;
+        document.head.appendChild(script);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-0E4JGVMVLV');
+        gtag('config', gtagId);
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadGA, { timeout: 3000 });
       } else {
-        window.addEventListener('load', function() {
-          gtag('js', new Date());
-          gtag('config', 'G-0E4JGVMVLV');
-        });
+        window.addEventListener('load', loadGA);
       }
     </script>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="icon" type="image/png" href="/https://www.image2url.com/r2/default/images/1781841393054-459cb254-b8bc-453c-ba68-8c9dfe2240e4.png" />
-    <link rel="shortcut icon" href="/https://www.image2url.com/r2/default/images/1781841393054-459cb254-b8bc-453c-ba68-8c9dfe2240e4.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/og-image.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Luxury Properties Ltd — Premium Real Estate in Nigeria</title>
     <meta name="description" content="Luxury Properties Ltd is Nigeria's premier luxury real estate agency. Buy, sell, or rent exclusive high-end properties in Lagos, Abuja, and across Nigeria. Concierge service, off-market listings, and expert advisory." />
@@ -30,17 +34,30 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://lrmljudwbzjawafuztwp.supabase.co" />
-    <link rel="dns-prefetch" href="https://lrmljudwbzjawafuztwp.supabase.co" />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
-    <link rel="dns-prefetch" href="https://www.image2url.com" />
-    <link rel="dns-prefetch" href="https://i.ibb.co" />
     
-    <!-- Preload critical CSS to reduce render-blocking -->
-    <link rel="preload" href="/assets/index-qbjMrc1r.css" as="style" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="/assets/index-qbjMrc1r.css" /></noscript>
+    <!-- Google Fonts: Optimized with display=swap for FCP, wght restrictions for smaller payload -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" />
+    </noscript>
+
+    <!-- Vite will inject the CSS link automatically with correct hash -->
+    <!-- No hardcoded preload needed - Vite handles this via modulepreload and stylesheet injection -->
     
-    <!-- Load fonts with display=swap to avoid FOIT -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Inline critical CSS for hero section to prevent layout shift and render blocking -->
+    <style>
+      /* Critical hero styles - loaded immediately */
+      .hero-section { position: relative; min-height: 100dvh; display: flex; align-items: center; justify-content: center; }
+      .hero-overlay { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+      .hero-overlay img { width: 100%; height: 100%; object-fit: cover; }
+      .hero-content { position: relative; z-index: 10; max-width: 1280px; margin: 0 auto; width: 100%; padding: 0 1rem; }
+      #root { min-height: 100dvh; }
+      /* Prevent CLS for hero section */
+      .hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; }
+      .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+    </style>
 
     <!-- Hreflang Tags -->
     <link rel="alternate" hreflang="en-ng" href="https://luxurypropertiesltd.com.ng" />
@@ -60,7 +77,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Luxury Properties Ltd — Premium Real Estate in Nigeria" />
-    <meta name="twitter:description" content="Nigeria&#39;s premier luxury real estate agency. Exclusive high-end listings, concierge service, and off-market properties." />
+    <meta name="twitter:description" content="Nigeria's premier luxury real estate agency. Exclusive high-end listings, concierge service, and off-market properties." />
     <meta name="twitter:image" content="https://luxurypropertiesltd.com.ng/og-image.png" />
     <meta name="twitter:image:alt" content="Luxury Properties Ltd — Premium Luxury Real Estate in Nigeria" />
     <!-- JSON-LD Schema: RealEstateAgent + LocalBusiness -->
@@ -175,11 +192,22 @@
       ]
     }
     </script>
-    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-    <script src="https://elfsightcdn.com/platform.js" async defer></script>
+    <!-- Elfsight Google Reviews | Untitled Google Reviews - Deferred -->
+    <script>
+      // Defer Elfsight widget loading
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => {
+          const s = document.createElement('script');
+          s.src = 'https://elfsightcdn.com/platform.js';
+          s.async = true;
+          s.defer = true;
+          document.body.appendChild(s);
+        }, { timeout: 5000 });
+      }
+    </script>
     
-    <!-- Preload critical images -->
-    <link rel="preload" as="image" href="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png" imagesrcset="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png" imagesizes="160px" />
+    <!-- Preload LCP hero image for immediate discovery - first slide -->
+    <link rel="preload" as="image" href="https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg" fetchpriority="high" />
   </head>
   <body>
     <div id="root"></div>
