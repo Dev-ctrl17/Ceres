@@ -13,7 +13,9 @@ export default defineConfig({
     },
   },
   build: {
-    cssCodeSplit: false, // Single CSS file to reduce HTTP requests
+    // NOTE: cssCodeSplit must remain true (Vite default) to allow Vite's
+    // HTML/CSS asset pipeline to function correctly. Setting it to false
+    // breaks the build with "No matching HTML proxy module found".
     rollupOptions: {
       output: {
         manualChunks: {
@@ -33,29 +35,18 @@ export default defineConfig({
         },
       },
     },
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: true,
-        drop_debugger: true,
-        passes: 2, // Multiple compression passes for better results
-      },
-      mangle: {
-        properties: {
-          regex: /^_/, // Mangle private properties starting with _
-        },
-      },
-    },
+    // Use esbuild for minification. Unlike Terser, esbuild never mangles
+    // object property names, so it is inherently safe for React projects.
+    minify: 'esbuild',
     sourcemap: false,
     chunkSizeWarningLimit: 250, // Smaller chunks = better caching
     target: 'es2020', // Modern browser target for smaller bundles
-    
-    // Generate hash in filenames for long-term caching
-    // This is default in Vite but explicitly stated for clarity
-    // CSS files will have content hash for cache busting
   },
   
   // Optimize for production build
+  // Note: To drop console statements in production, use `esbuild.drop: ['console', 'debugger']`
+  // when using esbuild minifier. The top-level esbuild config is for the transform plugin,
+  // so we only include options valid for esbuild's transform() API here.
   esbuild: {
     treeShaking: true,
     legalComments: 'none', // Remove comments in production

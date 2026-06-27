@@ -36,28 +36,12 @@
     <link rel="preconnect" href="https://lrmljudwbzjawafuztwp.supabase.co" />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     
-    <!-- Google Fonts: Optimized with display=swap for FCP, wght restrictions for smaller payload -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" media="print" onload="this.media='all'" />
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" />
-    </noscript>
+    <!-- Google Fonts loaded via @import in src/index.css -->
 
     <!-- Vite will inject the CSS link automatically with correct hash -->
     <!-- No hardcoded preload needed - Vite handles this via modulepreload and stylesheet injection -->
     
-    <!-- Inline critical CSS for hero section to prevent layout shift and render blocking -->
-    <style>
-      /* Critical hero styles - loaded immediately */
-      .hero-section { position: relative; min-height: 100dvh; display: flex; align-items: center; justify-content: center; }
-      .hero-overlay { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
-      .hero-overlay img { width: 100%; height: 100%; object-fit: cover; }
-      .hero-content { position: relative; z-index: 10; max-width: 1280px; margin: 0 auto; width: 100%; padding: 0 1rem; }
-      #root { min-height: 100dvh; }
-      /* Prevent CLS for hero section */
-      .hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; }
-      .hero-slide img { width: 100%; height: 100%; object-fit: cover; }
-    </style>
+    <!-- Critical hero CSS moved to src/index.css -->
 
     <!-- Hreflang Tags -->
     <link rel="alternate" hreflang="en-ng" href="https://luxurypropertiesltd.com.ng" />
