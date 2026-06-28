@@ -11,7 +11,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, Bed, Bath, CheckCircle, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
-import { getFileUrl } from '@/lib/supabaseService';
+import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
 
 const PropertyDetailsPage = () => {
   const { id } = useParams();
@@ -89,10 +89,10 @@ const PropertyDetailsPage = () => {
     );
   }
 
-  const getImageUrl = (image) => {
+  const getImageUrl = (image, width = 800) => {
     if (!image) return '';
     if (image.startsWith('http')) return image;
-    return getFileUrl("property-images", image) || image;
+    return getOptimizedImageUrl("property-images", image, { width, quality: 75, format: 'webp' }) || getFileUrl("property-images", image) || image;
   };
 
   const images = property.images?.length ? property.images : property.image_url ? [property.image_url] : [];
@@ -128,7 +128,7 @@ const PropertyDetailsPage = () => {
               {images.length > 0 && (
                 <div className="mb-8 relative aspect-video rounded-2xl overflow-hidden">
                   <ImageSlider
-                    images={images.map((img) => getImageUrl(img))}
+                    images={images.map((img) => getImageUrl(img, 1200))}
                     onSlideChange={(index) => setActiveSliderIndex(index)}
                   />
                   {/* Invisible overlay to handle lightbox clicks on the slider */}
@@ -308,7 +308,7 @@ const PropertyDetailsPage = () => {
           
           <div className="max-w-6xl w-full">
             <img
-              src={getImageUrl(images[currentImageIndex])}
+              src={getImageUrl(images[currentImageIndex], 1200)}
               alt={`${property.title} ${currentImageIndex + 1}`}
               className="w-full h-auto rounded-xl max-h-[80vh] object-contain"
               loading="lazy"

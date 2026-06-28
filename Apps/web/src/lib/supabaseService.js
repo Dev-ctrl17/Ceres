@@ -182,6 +182,38 @@ export function getFileUrl(bucket, filePath) {
   return data.publicUrl;
 }
 
+/**
+ * Get an optimized image URL using Supabase's image transform endpoint.
+ * @param {string} bucket - Storage bucket name
+ * @param {string} filePath - File path in bucket
+ * @param {object} options - Transform options
+ * @param {number} [options.width=800] - Target width in pixels
+ * @param {number} [options.quality=75] - Quality (1-100)
+ * @param {string} [options.format='webp'] - Output format ('webp', 'avif', 'jpeg', 'png')
+ * @returns {string|null} - Optimized image URL
+ */
+export function getOptimizedImageUrl(bucket, filePath, options = {}) {
+  if (!filePath) return null;
+  
+  const { width = 800, quality = 75, format = 'webp' } = options;
+  
+  // If it's already an external URL, return as-is
+  if (filePath.startsWith('http')) return filePath;
+  
+  // Get the base public URL
+  const baseUrl = getFileUrl(bucket, filePath);
+  if (!baseUrl) return null;
+  
+  // Convert to Supabase render URL for on-the-fly transforms
+  // Format: https://[project-ref].supabase.co/storage/v1/render/image/public/[bucket]/[path]?width=...
+  const renderUrl = baseUrl.replace(
+    '/storage/v1/object/public/',
+    '/storage/v1/render/image/public/'
+  );
+  
+  return `${renderUrl}?width=${width}&quality=${quality}&format=${format}`;
+}
+
 // ============================================================
 // AUTH HELPERS
 // ============================================================

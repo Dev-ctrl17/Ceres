@@ -14,27 +14,6 @@ const ContactPage = () => {
         <meta name="description" content="Get in touch with Luxury Properties Ltd. We're here to help with all your real estate needs." />
       </Helmet>
 
-      <style>{`
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
-        .hero-animate { animation: fadeInUp 1s ease-out forwards; }
-        .hero-animate-delay { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
-        .hero-image { animation: fadeIn 1.5s ease-out forwards; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
-        .hero-image:hover { transform: scale(1.05); }
-        .hero-section { animation: fadeIn 0.5s ease-out; }
-        .contact-card { opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease; }
-        .contact-card:hover { transform: translateX(8px) scale(1.02); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .contact-card:nth-child(1) { animation-delay: 0.1s; }
-        .contact-card:nth-child(2) { animation-delay: 0.2s; }
-        .contact-card:nth-child(3) { animation-delay: 0.3s; }
-        .contact-card:nth-child(4) { animation-delay: 0.4s; }
-        .form-card { animation: scaleIn 0.8s ease-out forwards; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease; }
-        .form-card:hover { transform: translateY(-10px) scale(1.01); box-shadow: 0 25px 50px rgba(0,0,0,0.12); }
-        .section-fade { opacity: 0; animation: fadeInUp 0.8s ease-out forwards; }
-      `}</style>
-
       <Header />
 
       <main>
@@ -44,7 +23,8 @@ const ContactPage = () => {
               src="https://www.image2url.com/r2/default/images/1781315550242-096ff39c-0b74-48d1-afcd-d1bccdb33620.png"
               alt="Contact Us" 
               className="w-full h-full object-cover hero-image"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
             />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">

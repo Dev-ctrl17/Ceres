@@ -5,10 +5,8 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import { Toaster } from "@/components/ui/sonner";
 
-// Eager load - always needed on first page
-import HomePage from "./pages/HomePage.jsx";
-
-// Lazy load pages - only loaded when navigated to
+// Lazy load all pages for route-level code splitting
+const HomePage = lazy(() => import("./pages/HomePage.jsx"));
 const BuyPage = lazy(() => import("./pages/BuyPage.jsx"));
 const RentPage = lazy(() => import("./pages/RentPage.jsx"));
 const SellPage = lazy(() => import("./pages/SellPage.jsx"));

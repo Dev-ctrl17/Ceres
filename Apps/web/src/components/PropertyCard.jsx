@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getFileUrl } from "@/lib/supabaseService";
+import { getFileUrl, getOptimizedImageUrl } from "@/lib/supabaseService";
 import { getImageProps } from "@/components/imgUtils.js";
 
 const PropertyCard = ({ property, featured = false }) => {
@@ -12,8 +12,8 @@ const PropertyCard = ({ property, featured = false }) => {
   const imageUrl = firstImage
     ? firstImage.startsWith('http')
       ? firstImage
-      : getFileUrl("property-images", firstImage) || firstImage
-    : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800";
+      : getOptimizedImageUrl("property-images", firstImage, { width: 400, quality: 75, format: 'webp' }) || firstImage
+    : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=75&auto=format";
 
   const imgProps = getImageProps({
     src: imageUrl,

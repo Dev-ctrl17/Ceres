@@ -14,45 +14,6 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
-const animationStyles = `
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-  @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.8); }
-    to { opacity: 1; transform: scale(1); }
-  }
-  @keyframes slideInLeft {
-    from { opacity: 0; transform: translateX(-40px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  .hero-animate { animation: fadeInUp 1s ease-out forwards; }
-  .hero-animate-delay { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
-  .hero-image { animation: fadeIn 1.5s ease-out forwards; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); will-change: transform; image-rendering: -webkit-optimize-contrast; }
-  .hero-image:hover { transform: scale(1.02); }
-  .hero-section { animation: fadeIn 0.5s ease-out; }
-  .service-item { opacity: 0; animation: slideInLeft 0.6s ease-out forwards; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease; padding: 16px; border-radius: 12px; }
-  .service-item:hover { transform: translateX(8px) scale(1.02); background-color: rgba(59,130,246,0.04); }
-  .service-item:nth-child(1) { animation-delay: 0.05s; }
-  .service-item:nth-child(2) { animation-delay: 0.1s; }
-  .service-item:nth-child(3) { animation-delay: 0.15s; }
-  .service-item:nth-child(4) { animation-delay: 0.2s; }
-  .service-item:nth-child(5) { animation-delay: 0.25s; }
-  .service-item:nth-child(6) { animation-delay: 0.3s; }
-  .service-item:nth-child(7) { animation-delay: 0.35s; }
-  .service-item:nth-child(8) { animation-delay: 0.4s; }
-  .cta-section { opacity: 0; animation: scaleIn 0.8s ease-out forwards; }
-  .cta-button { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .cta-button:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-  .icon-wrapper { transition: transform 0.3s ease, background-color 0.3s ease; }
-  .service-item:hover .icon-wrapper { transform: scale(1.15) rotate(-5deg); background-color: rgba(59,130,246,0.2); }
-`;
-
 const ServicesPage = () => {
   const services = [
     {
@@ -114,8 +75,6 @@ const ServicesPage = () => {
           content="Comprehensive real estate services including sales, leasing, management, and investment advisory."
         />
       </Helmet>
-
-      <style>{animationStyles}</style>
 
       <Header />
 

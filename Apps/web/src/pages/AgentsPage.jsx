@@ -7,21 +7,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Phone, Star } from 'lucide-react';
 import { getFileUrl } from '@/lib/supabaseService';
 
-const animationStyles = `
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes scaleIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-  .hero-animate { animation: fadeInUp 1s ease-out forwards; }
-  .hero-animate-delay { animation: fadeInUp 1s ease-out 0.3s forwards; opacity: 0; }
-  .hero-image { animation: fadeIn 1.5s ease-out forwards; transition: transform 0.6s cubic-bezier(0.4,0,0.2,1); }
-  .hero-image:hover { transform: scale(1.05); }
-  .hero-section { animation: fadeIn 0.5s ease-out; }
-  .agent-card { opacity: 0; animation: scaleIn 0.6s ease-out forwards; transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), box-shadow 0.4s ease; }
-  .agent-card:hover { transform: translateY(-10px) scale(1.02); box-shadow: 0 25px 50px rgba(0,0,0,0.12); }
-  .agent-card img { transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
-  .agent-card:hover img { transform: scale(1.1); }
-`;
-
 const AgentsPage = () => {
   const { agents, loading } = useAgents();
 
@@ -42,8 +27,6 @@ const AgentsPage = () => {
         <meta name="description" content="Meet our team of professional real estate agents ready to help you find your perfect property." />
       </Helmet>
 
-      <style>{animationStyles}</style>
-
       <Header />
 
       <main>
@@ -53,7 +36,8 @@ const AgentsPage = () => {
               src="https://i.ibb.co/rKjnczKk/agent.jpg"
               alt="Our Professional Agents" 
               className="w-full h-full object-cover hero-image"
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
             />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">

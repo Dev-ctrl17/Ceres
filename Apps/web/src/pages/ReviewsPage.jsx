@@ -57,7 +57,8 @@ const ReviewsPage = () => {
               alt="Customer Reviews" 
               className="w-full h-full object-cover"
               style={{ objectPosition: 'center', transform: 'scale(0.8)', transformOrigin: 'center' }}
-              loading="lazy"
+              loading="eager"
+              fetchpriority="high"
             />
             <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
           </div>

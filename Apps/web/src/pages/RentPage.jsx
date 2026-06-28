@@ -6,118 +6,6 @@ import PropertyCard from '@/components/PropertyCard.jsx';
 import { useProperties } from '@/hooks/useProperties.js';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-const animationStyles = `
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .hero-animate {
-    animation: fadeInUp 1s ease-out forwards;
-  }
-
-  .hero-animate-delay-1 {
-    animation: fadeInUp 1s ease-out 0.3s forwards;
-    opacity: 0;
-  }
-
-  .hero-image {
-    animation: fadeIn 1.5s ease-out forwards;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-    image-rendering: -webkit-optimize-contrast;
-  }
-
-  .hero-image:hover {
-    transform: scale(1.02);
-  }
-
-  .hero-section {
-    animation: fadeIn 0.5s ease-out;
-  }
-
-  .tabs-section {
-    animation: fadeInUp 0.8s ease-out 0.2s forwards;
-    opacity: 0;
-  }
-
-  .tab-trigger {
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  }
-
-  .tab-trigger:hover {
-    transform: translateY(-2px);
-  }
-
-  .tab-trigger[data-state="active"] {
-    animation: scaleIn 0.3s ease-out;
-  }
-
-  .property-card {
-    opacity: 0;
-    animation: slideInUp 0.6s ease-out forwards;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-    transform-origin: center bottom;
-  }
-
-  .property-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-  }
-
-  .property-card:nth-child(1) { animation-delay: 0.05s; }
-  .property-card:nth-child(2) { animation-delay: 0.1s; }
-  .property-card:nth-child(3) { animation-delay: 0.15s; }
-  .property-card:nth-child(4) { animation-delay: 0.2s; }
-  .property-card:nth-child(5) { animation-delay: 0.25s; }
-  .property-card:nth-child(6) { animation-delay: 0.3s; }
-
-  .loading-skeleton {
-    animation: fadeIn 0.5s ease-out forwards;
-  }
-
-  .tabs-content {
-    animation: fadeInUp 0.5s ease-out forwards;
-  }
-
-  .tabs-list {
-    animation: scaleIn 0.6s ease-out forwards;
-  }
-`;
-
 const RentPage = () => {
   const [activeTab, setActiveTab] = useState('all');
   const { properties, loading } = useProperties({ status: 'Available', purpose: 'Rent' });
@@ -133,8 +21,6 @@ const RentPage = () => {
         <title>Rent Property - Luxury Properties Ltd</title>
         <meta name="description" content="Find rental properties including apartments, shortlets, and villas in Lagos." />
       </Helmet>
-
-      <style>{animationStyles}</style>
 
       <Header />
 

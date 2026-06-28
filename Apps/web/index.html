@@ -33,10 +33,14 @@
     <!-- Preconnect hints for critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://i.ibb.co" />
+    <link rel="preconnect" href="https://www.image2url.com" />
     <link rel="preconnect" href="https://lrmljudwbzjawafuztwp.supabase.co" />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
     
-    <!-- Google Fonts loaded via @import in src/index.css -->
+    <!-- Google Fonts: Non-blocking preload pattern (replaces render-blocking @import in index.css) -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" /></noscript>
 
     <!-- Vite will inject the CSS link automatically with correct hash -->
     <!-- No hardcoded preload needed - Vite handles this via modulepreload and stylesheet injection -->
