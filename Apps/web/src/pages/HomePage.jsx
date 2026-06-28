@@ -18,6 +18,30 @@ import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 import { validateEmail } from '@/services/emailValidation';
 
+// Framer Motion Variants - defined at module scope
+const cardContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const cardItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: 'easeOut',
+    },
+  },
+};
+
 const heroSlides = [
     {
       image: "https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg",
@@ -40,7 +64,7 @@ const heroSlides = [
       ctaText: "Browse Properties",
       ctaLink: "/properties"
     }
-];
+  ];
 
 const propertyCards = [
   { icon: Home, label: "Buy", sublabel: "Own your dream", link: "/buy" },
