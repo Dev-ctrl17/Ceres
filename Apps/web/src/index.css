@@ -410,8 +410,6 @@
     color: hsl(43 74% 22%);
     border-color: hsl(43 74% 75%);
   }
-
-  min-height: 100dvh;
 }
 
 @media (max-width: 480px) {
@@ -438,5 +436,4 @@
 /* Responsive flex wrap helper */
 .flex-responsive {
   @apply flex flex-col xs:flex-col sm:flex-row md:flex-row lg:flex-row;
-}
 }
