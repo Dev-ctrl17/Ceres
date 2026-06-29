@@ -35,9 +35,7 @@ const Footer = () => {
       }
 
       // Step 2: Subscribe to newsletter
-      const { error } = await supabase
-        .from("newsletter")
-        .insert({ email });
+      const { error } = await supabase.from("newsletter").insert({ email });
 
       if (error) {
         if (error.code === "23505") {
@@ -58,10 +56,26 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { href: "https://web.facebook.com/agene.sunday", icon: <Facebook className="w-4 h-4" />, label: "Facebook" },
-    { href: "https://www.instagram.com/luxurypropertiesltd/", icon: <Instagram className="w-4 h-4" />, label: "Instagram" },
-    { href: "https://twitter.com", icon: <Twitter className="w-4 h-4" />, label: "Twitter" },
-    { href: "https://linkedin.com", icon: <Linkedin className="w-4 h-4" />, label: "LinkedIn" },
+    {
+      href: "https://web.facebook.com/agene.sunday",
+      icon: <Facebook className="w-4 h-4" />,
+      label: "Facebook",
+    },
+    {
+      href: "https://www.instagram.com/luxurypropertiesltd/",
+      icon: <Instagram className="w-4 h-4" />,
+      label: "Instagram",
+    },
+    {
+      href: "https://twitter.com",
+      icon: <Twitter className="w-4 h-4" />,
+      label: "Twitter",
+    },
+    {
+      href: "https://linkedin.com",
+      icon: <Linkedin className="w-4 h-4" />,
+      label: "LinkedIn",
+    },
   ];
 
   return (
@@ -269,8 +283,9 @@ const Footer = () => {
           </p>
           <div className="flex space-x-6">
             {[
-              { label: "Privacy Policy", path: "/privacy" },
-              { label: "Terms of Service", path: "/terms" },
+              { label: "Privacy Policy", path: "/privacy-policy" },
+              { label: "Terms of Service", path: "/terms-conditions" },
+              { label: "Company Registration", path: "/company-registration" },
             ].map(({ label, path }) => (
               <Link
                 key={path}

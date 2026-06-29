@@ -56,4 +56,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://yourwebsite.com/sitemap.xml
+Sitemap: https://luxurypropertiesltd.com.ng/sitemap.xml

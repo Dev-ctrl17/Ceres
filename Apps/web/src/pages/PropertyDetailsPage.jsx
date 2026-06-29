@@ -6,12 +6,14 @@ import Footer from '@/components/Footer.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
 import ImageSlider from '@/components/ImageSlider.jsx';
+import PropertyEnquiryForm from '@/components/PropertyEnquiryForm.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, Bed, Bath, CheckCircle, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
+import { generatePropertySchema, generateBreadcrumbSchema, generateAEOContent } from '@/lib/structuredData';
 
 const PropertyDetailsPage = () => {
   const { id } = useParams();
@@ -112,11 +114,47 @@ const PropertyDetailsPage = () => {
           : [])
     : [];
 
+  // Generate structured data
+  const propertySchema = generatePropertySchema(property);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', item: 'https://luxurypropertiesltd.com.ng' },
+    { name: 'Properties', item: 'https://luxurypropertiesltd.com.ng/properties' },
+    { name: property.title, item: `https://luxurypropertiesltd.com.ng/properties/${property.id}` },
+  ]);
+
   return (
     <>
       <Helmet>
         <title>{`${property.title} - Luxury Properties Ltd`}</title>
         <meta name="description" content={property.description || `${property.title} in ${property.location}`} />
+        <link rel="canonical" href={`https://luxurypropertiesltd.com.ng/properties/${property.id}`} />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={`${property.title} - Luxury Properties Ltd`} />
+        <meta property="og:description" content={property.description?.substring(0, 160) || `${property.title} in ${property.location}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={`https://luxurypropertiesltd.com.ng/properties/${property.id}`} />
+        {images[0] && <meta property="og:image" content={images[0]} />}
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${property.title} - Luxury Properties Ltd`} />
+        <meta name="twitter:description" content={property.description?.substring(0, 160) || `${property.title} in ${property.location}`} />
+        {images[0] && <meta name="twitter:image" content={images[0]} />}
+        
+        {/* JSON-LD Structured Data */}
+        {propertySchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(propertySchema)}
+          </script>
+        )}
+        {breadcrumbSchema && (
+          <script type="application/ld+json">
+            {JSON.stringify(breadcrumbSchema)}
+          </script>
+        )}
       </Helmet>
 
       <Header />

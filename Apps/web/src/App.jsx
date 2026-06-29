@@ -21,6 +21,12 @@ const ContactPage = lazy(() => import("./pages/ContactPage.jsx"));
 const FAQPage = lazy(() => import("./pages/FAQPage.jsx"));
 const LoginPage = lazy(() => import("./pages/LoginPage.jsx"));
 const AdminDashboard = lazy(() => import("./pages/AdminDashboard.jsx"));
+const PrivacyPolicyPage = lazy(() => import("./pages/PrivacyPolicyPage.jsx"));
+const TermsConditionsPage = lazy(() => import("./pages/TermsConditionsPage.jsx"));
+const RefundPolicyPage = lazy(() => import("./pages/RefundPolicyPage.jsx"));
+const CookiePolicyPage = lazy(() => import("./pages/CookiePolicyPage.jsx"));
+const CompanyRegistrationPage = lazy(() => import("./pages/CompanyRegistrationPage.jsx"));
+const OfficeLocationsPage = lazy(() => import("./pages/OfficeLocationsPage.jsx"));
 
 // Loading fallback component
 const PageLoading = () => (
@@ -52,6 +58,12 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/faq" element={<FAQPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-conditions" element={<TermsConditionsPage />} />
+            <Route path="/refund-policy" element={<RefundPolicyPage />} />
+            <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+            <Route path="/company-registration" element={<CompanyRegistrationPage />} />
+            <Route path="/office-locations" element={<OfficeLocationsPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/admin"

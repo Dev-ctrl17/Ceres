@@ -8,6 +8,7 @@
     { "source": "/og-image.png", "destination": "/og-image.png" },
     { "source": "/llms.txt", "destination": "/llms.txt" },
     { "source": "/blog/amp/(.*)", "destination": "/blog/amp/$1" },
+    { "source": "/api/ssr-property", "destination": "/api/ssr-property.js" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [

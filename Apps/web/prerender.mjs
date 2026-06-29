@@ -14,6 +14,13 @@ const ROUTES = [
   '/agents', '/reviews', '/about', '/contact', '/faq'
 ];
 
+// Property IDs to pre-render for SEO (update this list with actual property IDs from your database)
+const PROPERTY_IDS = [
+  'sample-property-1',
+  'sample-property-2',
+  'sample-property-3'
+];
+
 console.log('[prerender] Building...');
 execSync('npx vite build', { stdio: 'inherit', cwd: __dirname });
 
