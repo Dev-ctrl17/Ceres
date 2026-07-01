@@ -21,8 +21,18 @@ const BuyPage = () => {
   return (
     <>
       <Helmet>
-        <title>Buy Property - Luxury Properties Ltd</title>
-        <meta name="description" content="Find your dream property with Luxury Properties Ltd. Browse verified listings and expert guidance." />
+        <title>Buy Property in Lagos & Abuja | Luxury Properties Ltd</title>
+        <meta name="description" content="Find your dream property in Lagos, Abuja, and across Nigeria. Browse verified luxury homes, apartments, and land for sale with Luxury Properties Ltd. Expert buying guidance." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/buy" />
+        <meta property="og:title" content="Buy Property in Lagos & Abuja | Luxury Properties Ltd" />
+        <meta property="og:description" content="Browse our curated selection of verified luxury properties for sale in Lagos, Abuja, and across Nigeria. Expert guidance through every step." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/buy" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Buy Property in Lagos & Abuja | Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Browse verified luxury properties for sale across Nigeria. Expert buying guidance from Luxury Properties Ltd." />
       </Helmet>
 
       <Header />

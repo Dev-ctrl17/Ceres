@@ -8,8 +8,17 @@ const CookiePolicyPage = () => {
     <>
       <Helmet>
         <title>Cookie Policy — Luxury Properties Ltd</title>
-        <meta name="description" content="Cookie Policy for Luxury Properties Ltd. Learn about how we use cookies and similar technologies to enhance your browsing experience." />
+        <meta name="description" content="Cookie Policy for Luxury Properties Ltd. Learn about how we use cookies and tracking technologies on our website." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/cookie-policy" />
+        <meta property="og:title" content="Cookie Policy — Luxury Properties Ltd" />
+        <meta property="og:description" content="Cookie Policy for Luxury Properties Ltd. Learn about how we use cookies." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/cookie-policy" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Cookie Policy — Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Cookie Policy for Luxury Properties Ltd." />
       </Helmet>
 
       <Header />

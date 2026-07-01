@@ -136,8 +136,13 @@ const Footer = () => {
                 { label: "Buy Property", path: "/buy" },
                 { label: "Rent Property", path: "/rent" },
                 { label: "Sell Property", path: "/sell" },
+                { label: "Our Services", path: "/services" },
                 { label: "Our Agents", path: "/agents" },
+                { label: "About Us", path: "/about" },
+                { label: "Reviews", path: "/reviews" },
+                { label: "EPAN Network", path: "/epan" },
                 { label: "FAQ", path: "/faq" },
+                { label: "Blog", path: "/blog" },
               ].map(({ label, path }) => (
                 <li key={path}>
                   <Link
@@ -281,11 +286,14 @@ const Footer = () => {
           <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
             © 2026 Luxury Properties Ltd. All rights reserved.
           </p>
-          <div className="flex space-x-6">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {[
               { label: "Privacy Policy", path: "/privacy-policy" },
               { label: "Terms of Service", path: "/terms-conditions" },
+              { label: "Refund Policy", path: "/refund-policy" },
+              { label: "Cookie Policy", path: "/cookie-policy" },
               { label: "Company Registration", path: "/company-registration" },
+              { label: "Office Locations", path: "/office-locations" },
             ].map(({ label, path }) => (
               <Link
                 key={path}

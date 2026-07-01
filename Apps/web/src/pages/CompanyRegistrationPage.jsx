@@ -7,9 +7,18 @@ const CompanyRegistrationPage = () => {
   return (
     <>
       <Helmet>
-        <title>Company Registration — Luxury Properties Ltd</title>
-        <meta name="description" content="Luxury Properties Ltd company registration details, CAC number, and official business information." />
+        <title>Company Registration — Luxury Properties Ltd | RC 9601729</title>
+        <meta name="description" content="Luxury Properties Ltd company registration details, CAC number RC 9601729, and official business information. Verified real estate company in Nigeria." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/company-registration" />
+        <meta property="og:title" content="Company Registration — Luxury Properties Ltd | RC 9601729" />
+        <meta property="og:description" content="Luxury Properties Ltd company registration details, CAC number RC 9601729, and official business information. Verified real estate company in Nigeria." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/company-registration" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Company Registration — Luxury Properties Ltd | RC 9601729" />
+        <meta name="twitter:description" content="Luxury Properties Ltd company registration details, CAC number RC 9601729, and official business information." />
       </Helmet>
 
       <Header />

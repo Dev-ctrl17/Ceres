@@ -33,6 +33,7 @@ const LoginPage = () => {
       <Helmet>
         <title>Admin Login - Luxury Properties Ltd</title>
         <meta name="description" content="Admin login portal for Luxury Properties Ltd" />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="min-h-screen flex items-center justify-center bg-muted px-4 py-12">
@@ -41,8 +42,8 @@ const LoginPage = () => {
             <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-primary-foreground font-bold text-2xl">LP</span>
             </div>
-            <CardTitle className="text-2xl">Admin Login</CardTitle>
-            <CardDescription>Enter your credentials to access the dashboard</CardDescription>
+            <h1 className="text-2xl font-bold">Admin Login</h1>
+            <p className="text-muted-foreground text-sm mt-2">Enter your credentials to access the dashboard</p>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">

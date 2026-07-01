@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /login
+Disallow: /admin
+Disallow: /api/
 
 # OpenAI
 User-agent: GPTBot
@@ -57,3 +60,6 @@ User-agent: cohere-ai
 Allow: /
 
 Sitemap: https://luxurypropertiesltd.com.ng/sitemap.xml
+
+# Crawl delay for polite crawling
+Crawl-delay: 10

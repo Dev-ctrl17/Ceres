@@ -1,9 +1,10 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import { Toaster } from "@/components/ui/sonner";
+import { setCsrfToken } from "./utils/csrf.js";
 
 // Lazy load all pages for route-level code splitting
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
@@ -27,6 +28,8 @@ const RefundPolicyPage = lazy(() => import("./pages/RefundPolicyPage.jsx"));
 const CookiePolicyPage = lazy(() => import("./pages/CookiePolicyPage.jsx"));
 const CompanyRegistrationPage = lazy(() => import("./pages/CompanyRegistrationPage.jsx"));
 const OfficeLocationsPage = lazy(() => import("./pages/OfficeLocationsPage.jsx"));
+const ClientSuccessPage = lazy(() => import("./pages/ClientSuccessPage.jsx"));
+const ClientSuccessDetailPage = lazy(() => import("./pages/ClientSuccessDetailPage.jsx"));
 
 // Loading fallback component
 const PageLoading = () => (
@@ -39,6 +42,11 @@ const PageLoading = () => (
 );
 
 function App() {
+  // Generate CSRF token once on app load
+  useEffect(() => {
+    setCsrfToken();
+  }, []);
+
   return (
     <AuthProvider>
       <Router>
@@ -64,6 +72,8 @@ function App() {
             <Route path="/cookie-policy" element={<CookiePolicyPage />} />
             <Route path="/company-registration" element={<CompanyRegistrationPage />} />
             <Route path="/office-locations" element={<OfficeLocationsPage />} />
+            <Route path="/client-success" element={<ClientSuccessPage />} />
+            <Route path="/client-success/:slug" element={<ClientSuccessDetailPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/admin"

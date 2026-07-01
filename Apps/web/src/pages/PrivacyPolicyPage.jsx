@@ -10,6 +10,15 @@ const PrivacyPolicyPage = () => {
         <title>Privacy Policy — Luxury Properties Ltd</title>
         <meta name="description" content="Privacy Policy for Luxury Properties Ltd. Learn how we collect, use, and protect your personal data in compliance with NDPA/NDPR." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/privacy-policy" />
+        <meta property="og:title" content="Privacy Policy — Luxury Properties Ltd" />
+        <meta property="og:description" content="Privacy Policy for Luxury Properties Ltd. Learn how we collect, use, and protect your personal data in compliance with NDPA/NDPR." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/privacy-policy" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Privacy Policy — Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Privacy Policy for Luxury Properties Ltd. Learn how we collect, use, and protect your personal data." />
       </Helmet>
 
       <Header />

@@ -10,6 +10,15 @@ const OfficeLocationsPage = () => {
         <title>Office Locations — Luxury Properties Ltd</title>
         <meta name="description" content="Visit our offices across Nigeria. Find Luxury Properties Ltd locations, contact details, and office hours in Lagos, Abuja, and Port Harcourt." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/office-locations" />
+        <meta property="og:title" content="Office Locations — Luxury Properties Ltd" />
+        <meta property="og:description" content="Visit our offices across Nigeria. Find Luxury Properties Ltd locations, contact details, and office hours in Lagos, Abuja, and Port Harcourt." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/office-locations" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Office Locations — Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Visit our offices across Nigeria. Find Luxury Properties Ltd locations and contact details." />
       </Helmet>
 
       <Header />

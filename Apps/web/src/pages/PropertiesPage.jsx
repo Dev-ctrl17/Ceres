@@ -30,8 +30,18 @@ const PropertiesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Browse Properties - Luxury Properties Ltd</title>
-        <meta name="description" content="Browse our complete collection of verified properties for sale and rent in Lagos." />
+        <title>Browse Properties for Sale & Rent in Lagos | Luxury Properties Ltd</title>
+        <meta name="description" content="Browse our complete collection of verified luxury properties for sale and rent in Lagos, Abuja, and across Nigeria. Filter by location, type, and budget." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/properties" />
+        <meta property="og:title" content="Browse Properties for Sale & Rent in Lagos | Luxury Properties Ltd" />
+        <meta property="og:description" content="Browse our complete collection of verified luxury properties for sale and rent across Nigeria. Filter by location, type, and budget." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/properties" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Browse Properties for Sale & Rent in Lagos | Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Browse verified luxury properties for sale and rent across Nigeria." />
       </Helmet>
 
       <Header />

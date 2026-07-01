@@ -23,8 +23,18 @@ const AgentsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Our Agents - Luxury Properties Ltd</title>
-        <meta name="description" content="Meet our team of professional real estate agents ready to help you find your perfect property." />
+        <title>Our Real Estate Agents in Lagos | Luxury Properties Ltd</title>
+        <meta name="description" content="Meet our team of professional real estate agents in Lagos. Experienced luxury property experts ready to help you find your perfect property." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/agents" />
+        <meta property="og:title" content="Our Real Estate Agents in Lagos | Luxury Properties Ltd" />
+        <meta property="og:description" content="Meet our team of professional real estate agents. Experienced luxury property experts ready to help you find your perfect property." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/agents" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Our Real Estate Agents in Lagos | Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Meet our team of professional real estate agents in Lagos." />
       </Helmet>
 
       <Header />

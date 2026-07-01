@@ -440,3 +440,36 @@ export const propertySubmissionsApi = {
   },
   delete: (id) => deleteRecord('propertySubmissions', id),
 };
+
+// --- Proposals (Client Success) ---
+export const proposalsApi = {
+  getAll: (filters = {}) => {
+    let query = supabase
+      .from('proposals')
+      .select('*')
+      .order('date_completed', { ascending: false });
+
+    // Only show published proposals by default
+    if (filters.publishedOnly !== false) {
+      query = query.eq('status', 'published');
+    }
+
+    // Filter by property type if provided
+    if (filters.propertyType) {
+      query = query.eq('property_type', filters.propertyType);
+    }
+
+    return query;
+  },
+  getBySlug: (slug) => {
+    return supabase
+      .from('proposals')
+      .select('*')
+      .eq('slug', slug)
+      .single();
+  },
+  getById: (id) => fetchById('proposals', id),
+  create: (data) => createRecord('proposals', data),
+  update: (id, data) => updateRecord('proposals', id, data),
+  delete: (id) => deleteRecord('proposals', id),
+};

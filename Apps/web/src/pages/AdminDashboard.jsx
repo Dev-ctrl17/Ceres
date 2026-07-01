@@ -4,7 +4,7 @@ import { useAuth } from "@/contexts/AuthContext.jsx";
 import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
 import supabase from "@/lib/supabaseClient";
-import { getFileUrl, uploadFile } from "@/lib/supabaseService";
+import { getFileUrl, uploadFile, uploadFiles } from "@/lib/supabaseService";
 import {
   Package,
   Users,
@@ -18,6 +18,7 @@ import {
   X,
   Inbox,
   Check,
+  Award,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -80,6 +81,7 @@ const AdminDashboard = () => {
 const TABS = [
   { id: "properties", label: "Properties", icon: Package },
   { id: "submissions", label: "Submissions", icon: Inbox },
+  { id: "proposals", label: "Client Success", icon: Award },
   { id: "agents", label: "Agents", icon: Users },
   { id: "team", label: "Team Members", icon: UsersRound },
   { id: "reviews", label: "Reviews", icon: Star },
@@ -98,6 +100,8 @@ const DashboardTabs = () => {
         return AgentsManager;
       case "reviews":
         return ReviewsManager;
+      case "proposals":
+        return ProposalsManager;
       case "testimonials":
         return TestimonialsManager;
       case "team":
@@ -1613,6 +1617,472 @@ const TestimonialsManager = () => {
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  );
+};
+
+// ---------- Proposals Manager ----------
+const ProposalsManager = () => {
+  const [proposals, setProposals] = useState([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [coverImageFile, setCoverImageFile] = useState(null);
+  const [galleryFiles, setGalleryFiles] = useState([]);
+  const [documentFile, setDocumentFile] = useState(null);
+  const [existingCoverImage, setExistingCoverImage] = useState("");
+  const [existingGallery, setExistingGallery] = useState([]);
+  const [existingDocument, setExistingDocument] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+  
+  const [coverImagePreview, setCoverImagePreview] = useState(null);
+  const [galleryPreviews, setGalleryPreviews] = useState([]);
+
+  const fetchProposals = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("proposals")
+        .select("*")
+        .order("date_completed", { ascending: false });
+
+      if (error) throw error;
+      setProposals(data || []);
+    } catch (err) {
+      toast.error("Failed to load proposals");
+    }
+  };
+
+  useEffect(() => {
+    fetchProposals();
+  }, []);
+
+  // Cleanup object URL previews on unmount
+  useEffect(() => {
+    return () => {
+      coverImagePreview && URL.revokeObjectURL(coverImagePreview);
+      galleryPreviews.forEach(preview => URL.revokeObjectURL(preview));
+    };
+  }, [coverImagePreview, galleryPreviews]);
+
+  const openCreate = () => {
+    setEditing(null);
+    reset({
+      title: "",
+      client_name: "",
+      summary: "",
+      description: "",
+      location: "",
+      result_highlight: "",
+      property_type: "",
+      date_completed: new Date().toISOString().split('T')[0],
+      slug: "",
+      status: "published",
+    });
+    setCoverImageFile(null);
+    setGalleryFiles([]);
+    setDocumentFile(null);
+    setExistingCoverImage("");
+    setExistingGallery([]);
+    setExistingDocument("");
+    setCoverImagePreview(null);
+    setGalleryPreviews([]);
+    setDialogOpen(true);
+  };
+
+  const openEdit = (proposal) => {
+    setEditing(proposal.id);
+    reset({
+      title: proposal.title,
+      client_name: proposal.client_name || "",
+      summary: proposal.summary,
+      description: proposal.description,
+      location: proposal.location || "",
+      result_highlight: proposal.result_highlight || "",
+      property_type: proposal.property_type || "",
+      date_completed: proposal.date_completed,
+      slug: proposal.slug,
+      status: proposal.status,
+    });
+    setExistingCoverImage(proposal.cover_image_url || "");
+    setExistingGallery(proposal.gallery || []);
+    setExistingDocument(proposal.document_url || "");
+    setCoverImageFile(null);
+    setGalleryFiles([]);
+    setDocumentFile(null);
+    setCoverImagePreview(null);
+    setGalleryPreviews([]);
+    setDialogOpen(true);
+  };
+
+  const handleCoverImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setCoverImageFile(file);
+      setCoverImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const handleGalleryChange = (e) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length > 0) {
+      setGalleryFiles(files);
+      setGalleryPreviews(files.map(file => URL.createObjectURL(file)));
+    }
+  };
+
+  const handleDocumentChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setDocumentFile(file);
+    }
+  };
+
+  const generateSlug = (title) => {
+    return title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+  };
+
+  const watchedTitle = watch("title");
+
+  useEffect(() => {
+    if (watchedTitle && !editing) {
+      reset({ ...watch(), slug: generateSlug(watchedTitle) });
+    }
+  }, [watchedTitle]);
+
+  const onSubmit = async (data) => {
+    // Validation: at least one of coverImageUrl or documentUrl must be provided
+    const hasCoverImage = existingCoverImage || coverImageFile;
+    const hasDocument = existingDocument || documentFile;
+    
+    if (!hasCoverImage && !hasDocument) {
+      toast.error("Please upload at least one image or PDF document");
+      return;
+    }
+
+    setUploading(true);
+    try {
+      let coverImageUrl = existingCoverImage;
+      let galleryUrls = [...existingGallery];
+      let documentUrl = existingDocument;
+
+      // Upload cover image
+      if (coverImageFile) {
+        toast.info("Uploading cover image...");
+        const coverPath = await uploadFile("proposal-files", coverImageFile, "proposals");
+        coverImageUrl = getFileUrl("proposal-files", coverPath);
+      }
+
+      // Upload gallery images
+      if (galleryFiles.length > 0) {
+        toast.info(`Uploading ${galleryFiles.length} gallery images...`);
+        const galleryPaths = await uploadFiles("proposal-files", galleryFiles, "proposals");
+        const newGalleryUrls = galleryPaths.map(path => getFileUrl("proposal-files", path));
+        galleryUrls = [...existingGallery, ...newGalleryUrls];
+      }
+
+      // Upload document
+      if (documentFile) {
+        toast.info("Uploading document...");
+        const docPath = await uploadFile("proposal-files", documentFile, "proposals");
+        documentUrl = getFileUrl("proposal-files", docPath);
+      }
+
+      const submitData = {
+        title: data.title,
+        client_name: data.client_name || null,
+        summary: data.summary,
+        description: data.description,
+        cover_image_url: coverImageUrl,
+        gallery: galleryUrls,
+        document_url: documentUrl,
+        property_type: data.property_type || null,
+        location: data.location || null,
+        result_highlight: data.result_highlight || null,
+        date_completed: data.date_completed,
+        slug: data.slug,
+        status: data.status,
+      };
+
+      if (editing) {
+        const { error } = await supabase
+          .from("proposals")
+          .update(submitData)
+          .eq("id", editing);
+
+        if (error) throw error;
+        toast.success("Proposal updated");
+      } else {
+        const { error } = await supabase.from("proposals").insert(submitData);
+        if (error) throw error;
+        toast.success("Proposal created");
+      }
+
+      setDialogOpen(false);
+      fetchProposals();
+    } catch (err) {
+      toast.error(err.message || "Operation failed");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this proposal?")) return;
+    try {
+      const { error } = await supabase
+        .from("proposals")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+      toast.success("Proposal deleted");
+      fetchProposals();
+    } catch (err) {
+      toast.error("Delete failed");
+    }
+  };
+
+  const getProposalImageUrl = (proposal) => {
+    if (proposal.cover_image_url) {
+      return proposal.cover_image_url.startsWith("http")
+        ? proposal.cover_image_url
+        : getFileUrl("proposal-files", proposal.cover_image_url);
+    }
+    return null;
+  };
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Client Success Proposals</h2>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={openCreate}>
+              <Plus className="w-4 h-4 mr-2" />
+              Add Proposal
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>{editing ? "Edit Proposal" : "Add New Proposal"}</DialogTitle>
+            </DialogHeader>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Title *</label>
+                  <Input
+                    placeholder="e.g. Sold 3-Bed Home in 14 Days"
+                    {...register("title", { required: true })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Slug *</label>
+                  <Input
+                    placeholder="auto-generated-from-title"
+                    {...register("slug", { required: true })}
+                  />
+                  <p className="text-xs text-muted-foreground">Auto-generated from title, but editable</p>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Client Name (optional)</label>
+                <Input
+                  placeholder="e.g. The Johnson Family"
+                  {...register("client_name")}
+                />
+                <p className="text-xs text-muted-foreground">Can be anonymized</p>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Summary *</label>
+                <Textarea
+                  placeholder="Short teaser shown on the card (1-2 sentences)"
+                  {...register("summary", { required: true })}
+                  rows={2}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Description *</label>
+                <Textarea
+                  placeholder="Full case study / proposal body"
+                  {...register("description", { required: true })}
+                  rows={6}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Cover Image</label>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleCoverImageChange}
+                />
+                {(coverImagePreview || existingCoverImage) && (
+                  <div className="mt-2">
+                    <img
+                      src={coverImagePreview || existingCoverImage}
+                      alt="Cover preview"
+                      className="w-full h-32 object-cover rounded-lg"
+                    />
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Gallery Images (optional)</label>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleGalleryChange}
+                />
+                {galleryPreviews.length > 0 && (
+                  <div className="grid grid-cols-4 gap-2 mt-2">
+                    {galleryPreviews.map((preview, index) => (
+                      <img
+                        key={index}
+                        src={preview}
+                        alt={`Gallery ${index + 1}`}
+                        className="w-full h-20 object-cover rounded"
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Document (PDF)</label>
+                <Input
+                  type="file"
+                  accept="application/pdf"
+                  onChange={handleDocumentChange}
+                />
+                {existingDocument && !documentFile && (
+                  <p className="text-xs text-green-600">Current document: {existingDocument}</p>
+                )}
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Property Type</label>
+                  <Input
+                    placeholder="e.g. Residential, Commercial"
+                    {...register("property_type")}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Location</label>
+                  <Input
+                    placeholder="e.g. Lekki, Lagos"
+                    {...register("location")}
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Result Highlight</label>
+                <Input
+                  placeholder="e.g. Sold 20% above asking"
+                  {...register("result_highlight")}
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Date Completed *</label>
+                  <Input
+                    type="date"
+                    {...register("date_completed", { required: true })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Status *</label>
+                  <Controller
+                    name="status"
+                    control={control}
+                    defaultValue="published"
+                    render={({ field }) => (
+                      <Select onValueChange={field.onChange} value={field.value}>
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="draft">Draft</SelectItem>
+                          <SelectItem value="published">Published</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    )}
+                  />
+                </div>
+              </div>
+
+              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                <p className="text-xs text-yellow-800">
+                  <strong>Note:</strong> At least one of Cover Image or Document (PDF) is required before publishing.
+                </p>
+              </div>
+
+              <Button type="submit" className="w-full" disabled={uploading}>
+                {uploading ? "Uploading..." : editing ? "Update Proposal" : "Create Proposal"}
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <div className="grid gap-4">
+        {proposals.map((p) => {
+          const imageUrl = getProposalImageUrl(p);
+          return (
+            <div
+              key={p.id}
+              className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
+            >
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
+                  {imageUrl ? (
+                    <img
+                      src={imageUrl}
+                      alt={p.title}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400">
+                      <FileText className="w-6 h-6" />
+                    </div>
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold truncate">{p.title}</h3>
+                  <p className="text-sm text-gray-500 line-clamp-1">{p.summary}</p>
+                  <div className="flex gap-3 text-xs text-gray-400 mt-1">
+                    <span>{p.status}</span>
+                    <span>{p.date_completed}</span>
+                    {p.location && <span>📍 {p.location}</span>}
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-2 flex-shrink-0">
+                <Button size="sm" variant="outline" onClick={() => openEdit(p)}>
+                  <Edit className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => handleDelete(p.id)}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

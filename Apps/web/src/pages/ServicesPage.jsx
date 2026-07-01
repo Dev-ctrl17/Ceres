@@ -69,11 +69,18 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Our Services - Luxury Properties Ltd</title>
-        <meta
-          name="description"
-          content="Comprehensive real estate services including sales, leasing, management, and investment advisory."
-        />
+        <title>Real Estate Services in Lagos | Luxury Properties Ltd</title>
+        <meta name="description" content="Comprehensive real estate services in Lagos including property sales, leasing, management, investment advisory, and luxury property marketing. Expert guidance from Luxury Properties Ltd." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/services" />
+        <meta property="og:title" content="Real Estate Services in Lagos | Luxury Properties Ltd" />
+        <meta property="og:description" content="Comprehensive real estate services including sales, leasing, management, and investment advisory from Nigeria's premier luxury agency." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/services" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Real Estate Services in Lagos | Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Comprehensive real estate services including sales, leasing, management, and investment advisory." />
       </Helmet>
 
       <Header />

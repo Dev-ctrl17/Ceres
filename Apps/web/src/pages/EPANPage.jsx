@@ -97,7 +97,17 @@ const EPANPage = () => {
     <>
       <Helmet>
         <title>EPAN - Elite Property Agents Network | Luxury Properties Ltd</title>
-        <meta name="description" content="Join the Elite Property Agents Network (EPAN). A professional community for real estate excellence founded by Luxury Properties Ltd." />
+        <meta name="description" content="Join the Elite Property Agents Network (EPAN). A professional community for real estate excellence founded by Luxury Properties Ltd. Access verified listings and grow your network." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/epan" />
+        <meta property="og:title" content="EPAN - Elite Property Agents Network | Luxury Properties Ltd" />
+        <meta property="og:description" content="Join the Elite Property Agents Network (EPAN). A professional community for real estate excellence founded by Luxury Properties Ltd." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/epan" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="EPAN - Elite Property Agents Network" />
+        <meta name="twitter:description" content="Join the Elite Property Agents Network. Founded by Luxury Properties Ltd." />
       </Helmet>
 
       <Header />

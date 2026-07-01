@@ -8,8 +8,17 @@ const RefundPolicyPage = () => {
     <>
       <Helmet>
         <title>Refund Policy — Luxury Properties Ltd</title>
-        <meta name="description" content="Refund Policy for Luxury Properties Ltd. Learn about our booking fees, deposit policies, and refund procedures for property transactions." />
+        <meta name="description" content="Refund Policy for Luxury Properties Ltd. Learn about our refund and cancellation terms for real estate services." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/refund-policy" />
+        <meta property="og:title" content="Refund Policy — Luxury Properties Ltd" />
+        <meta property="og:description" content="Refund Policy for Luxury Properties Ltd. Learn about our refund and cancellation terms." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/refund-policy" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Refund Policy — Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Refund Policy for Luxury Properties Ltd." />
       </Helmet>
 
       <Header />

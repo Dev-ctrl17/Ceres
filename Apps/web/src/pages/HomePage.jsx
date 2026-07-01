@@ -240,16 +240,19 @@ const HomePage = () => {
     <>
       <Helmet>
         <title>Luxury Properties Ltd - Premium Real Estate in Nigeria</title>
-        <meta
-          name="description"
-          content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes, commercial spaces, and land with Luxury Properties Ltd."
-        />
+        <meta name="description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes, commercial spaces, and land with Luxury Properties Ltd, Nigeria's premier luxury real estate agency." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng" />
+        <meta property="og:title" content="Luxury Properties Ltd - Premium Real Estate in Nigeria" />
+        <meta property="og:description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes with Nigeria's premier luxury real estate agency." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Luxury Properties Ltd - Premium Real Estate in Nigeria" />
+        <meta name="twitter:description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes." />
         {/* Preload only the first hero slide image — must match heroSlides[0].image exactly */}
-        <link
-          rel="preload"
-          as="image"
-          href="https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg"
-        />
+        <link rel="preload" as="image" href="https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg" />
       </Helmet>
 
       <Header />
@@ -267,7 +270,9 @@ const HomePage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="max-w-3xl"
-            ></motion.div>
+            >
+              <h1 className="sr-only">Luxury Properties Ltd — Nigeria's Premier Luxury Real Estate Agency</h1>
+            </motion.div>
           </div>
 
           {/* Floating Property Type Cards */}

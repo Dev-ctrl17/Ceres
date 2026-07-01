@@ -1,112 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Main Pages -->
+  <!-- Main Pages - Canonical URLs Only -->
   <url>
     <loc>https://luxurypropertiesltd.com.ng</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/properties</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/buy</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/rent</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/sell</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/services</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/agents</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/about</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/contact</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/faq</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/reviews</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/epan</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/office-locations</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/privacy-policy</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/terms-conditions</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/refund-policy</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/cookie-policy</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/company-registration</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
 
   <!-- Blog Index -->
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- Blog Posts -->
+  <!-- Blog Posts - Canonical Only -->
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/nigerian-real-estate-buying-guide</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://luxurypropertiesltd.com.ng/blog/amp/nigerian-real-estate-buying-guide</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <url>
@@ -115,24 +150,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://luxurypropertiesltd.com.ng/blog/amp/real-estate-news-market-trends</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/real-estate-investment-tips-nigeria</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://luxurypropertiesltd.com.ng/blog/amp/real-estate-investment-tips-nigeria</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
   </url>
 
   <url>
@@ -141,12 +164,6 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://luxurypropertiesltd.com.ng/blog/amp/property-selling-guide-nigeria</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
 
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/market-trend-blog-post</loc>
@@ -154,110 +171,119 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://luxurypropertiesltd.com.ng/blog/amp/market-trend-blog-post</loc>
-    <lastmod>2026-06-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
 
-  <!-- New SEO Content Pages -->
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/most-expensive-neighborhoods-lagos-2026</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/luxury-property-lekki-complete-guide</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/how-to-buy-luxury-property-nigeria</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/ikoyi-real-estate-guide</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/banana-island-property-guide</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/victoria-island-luxury-real-estate-guide</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/diaspora-guide-buy-property-nigeria-abroad</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/luxury-real-estate-investment-roi-lagos</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/luxury-home-cost-lagos-2026</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/best-areas-lagos-expats</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/documents-needed-buy-property-nigeria</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/off-market-properties-lagos</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/certificate-of-occupancy-vs-governors-consent</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/sell-luxury-property-fast-lagos</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/governors-consent-timeline-lagos-2026</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/luxury-concierge-real-estate-nigeria</loc>
     <lastmod>2026-06-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://luxurypropertiesltd.com.ng/blog/voice-search-optimized-faqs</loc>
     <lastmod>2026-06-16</lastmod>
@@ -265,12 +291,19 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- Static Assets -->
+  <!-- Landing Pages -->
   <url>
-    <loc>https://luxurypropertiesltd.com.ng/llms.txt</loc>
-    <lastmod>2026-06-15</lastmod>
+    <loc>https://luxurypropertiesltd.com.ng/landing/luxury-homes-for-sale-lagos</loc>
+    <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.2</priority>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/landing/buy-luxury-property-lekki</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>

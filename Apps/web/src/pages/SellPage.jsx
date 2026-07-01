@@ -27,8 +27,18 @@ const SellPage = () => {
   return (
     <>
       <Helmet>
-        <title>Sell Your Property - Luxury Properties Ltd</title>
-        <meta name="description" content="List your property with Luxury Properties Ltd and reach thousands of verified buyers." />
+        <title>Sell Your Property in Lagos | List with Luxury Properties Ltd</title>
+        <meta name="description" content="List your property with Luxury Properties Ltd and reach thousands of verified buyers across Nigeria. Professional valuation, marketing, and legal support." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/sell" />
+        <meta property="og:title" content="Sell Your Property in Lagos | List with Luxury Properties Ltd" />
+        <meta property="og:description" content="List your property with Nigeria's premier luxury real estate agency. Professional valuation, marketing, and legal support for a fast, secure sale." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/sell" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sell Your Property in Lagos | List with Luxury Properties Ltd" />
+        <meta name="twitter:description" content="List your property with Luxury Properties Ltd and reach thousands of verified buyers." />
       </Helmet>
 
       <Header />

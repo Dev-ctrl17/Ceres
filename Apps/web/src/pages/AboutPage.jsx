@@ -43,8 +43,14 @@ const AboutPage = () => {
       <Helmet>
         <title>Best Luxury Real Estate Agency Nigeria | Luxury Properties Ltd</title>
         <meta name="description" content="Luxury Properties Ltd is the best luxury real estate agency Nigeria has to offer. Exclusive high-end properties, concierge service, off-market listings, and expert advisory in Lagos, Abuja, and across Nigeria. 15+ years of excellence." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/about" />
         <meta property="og:title" content="Best Luxury Real Estate Agency Nigeria | Luxury Properties Ltd" />
         <meta property="og:description" content="Discover why Luxury Properties Ltd is recognized as the best luxury real estate agency Nigeria. Premium properties, concierge service, and unmatched market expertise." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/about" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Best Luxury Real Estate Agency Nigeria | Luxury Properties Ltd" />
         <meta name="twitter:description" content="Discover why Luxury Properties Ltd is recognized as the best luxury real estate agency Nigeria." />
       </Helmet>

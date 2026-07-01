@@ -10,6 +10,15 @@ const TermsConditionsPage = () => {
         <title>Terms & Conditions — Luxury Properties Ltd</title>
         <meta name="description" content="Terms and Conditions for using Luxury Properties Ltd services. Read our terms for property listings, enquiries, and website usage." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/terms-conditions" />
+        <meta property="og:title" content="Terms & Conditions — Luxury Properties Ltd" />
+        <meta property="og:description" content="Terms and Conditions for using Luxury Properties Ltd services." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/terms-conditions" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Terms & Conditions — Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Terms and Conditions for using Luxury Properties Ltd services." />
       </Helmet>
 
       <Header />

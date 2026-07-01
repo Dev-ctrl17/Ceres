@@ -18,8 +18,18 @@ const RentPage = () => {
   return (
     <>
       <Helmet>
-        <title>Rent Property - Luxury Properties Ltd</title>
-        <meta name="description" content="Find rental properties including apartments, shortlets, and villas in Lagos." />
+        <title>Rent Property in Lagos | Apartments, Shortlets & Villas | Luxury Properties Ltd</title>
+        <meta name="description" content="Find quality rental properties in Lagos including luxury apartments, shortlets, and villas. Browse verified rental listings from Luxury Properties Ltd." />
+        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/rent" />
+        <meta property="og:title" content="Rent Property in Lagos | Apartments, Shortlets & Villas | Luxury Properties Ltd" />
+        <meta property="og:description" content="Discover quality rental properties from apartments to villas and luxury shortlets in Lagos. Verified listings from Luxury Properties Ltd." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/rent" />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Rent Property in Lagos | Apartments, Shortlets & Villas | Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Find quality rental properties in Lagos including luxury apartments, shortlets, and villas." />
       </Helmet>
 
       <Header />
