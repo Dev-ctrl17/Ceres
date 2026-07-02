@@ -1634,7 +1634,7 @@ const ProposalsManager = () => {
   const [existingGallery, setExistingGallery] = useState([]);
   const [existingDocument, setExistingDocument] = useState("");
   const [uploading, setUploading] = useState(false);
-  const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, watch, formState: { errors }, control } = useForm();
   
   const [coverImagePreview, setCoverImagePreview] = useState(null);
   const [galleryPreviews, setGalleryPreviews] = useState([]);
