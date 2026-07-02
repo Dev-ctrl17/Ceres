@@ -7,7 +7,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { proposalsApi } from '@/lib/supabaseService';
+import { proposalsApi, getFileUrl } from '@/lib/supabaseService';
 import { toast } from 'sonner';
 
 const ClientSuccessDetailPage = () => {
@@ -45,6 +45,48 @@ const ClientSuccessDetailPage = () => {
       month: 'long',
       day: 'numeric'
     });
+  };
+
+  /**
+   * Safely parse gallery field - handles both array and JSON string formats
+   * @param {string|string[]|null|undefined} gallery - Gallery field from database
+   * @returns {string[]} Array of image URLs/paths
+   */
+  const parseGallery = (gallery) => {
+    if (!gallery) return [];
+    
+    // If it's already an array, return it
+    if (Array.isArray(gallery)) {
+      return gallery.filter(url => url && url.trim() !== '');
+    }
+    
+    // If it's a string, try to parse it as JSON
+    if (typeof gallery === 'string') {
+      try {
+        const parsed = JSON.parse(gallery);
+        if (Array.isArray(parsed)) {
+          return parsed.filter(url => url && url.trim() !== '');
+        }
+      } catch (e) {
+        // If JSON parsing fails, treat as empty array
+        console.warn('Failed to parse gallery JSON:', e);
+      }
+    }
+    
+    return [];
+  };
+
+  /**
+   * Resolve image URL - converts storage paths to full public URLs
+   * @param {string} url - URL or storage path
+   * @returns {string} Full public URL
+   */
+  const resolveImageUrl = (url) => {
+    if (!url) return null;
+    // If already a full URL, return as-is
+    if (url.startsWith('http')) return url;
+    // Otherwise, convert storage path to public URL
+    return getFileUrl('proposal-files', url) || url;
   };
 
   if (loading) {
@@ -92,10 +134,14 @@ const ClientSuccessDetailPage = () => {
     );
   }
 
-  const images = proposal.gallery?.length > 0 
-    ? proposal.gallery 
-    : proposal.cover_image_url 
-      ? [proposal.cover_image_url] 
+  // Parse gallery (handles both array and JSON string) and resolve URLs
+  const galleryImages = parseGallery(proposal.gallery).map(resolveImageUrl).filter(Boolean);
+  const coverImage = resolveImageUrl(proposal.cover_image_url);
+  
+  const images = galleryImages.length > 0 
+    ? galleryImages 
+    : coverImage 
+      ? [coverImage] 
       : [];
 
   return (
@@ -110,13 +156,13 @@ const ClientSuccessDetailPage = () => {
         <meta property="og:url" content={`https://luxurypropertiesltd.com.ng/client-success/${proposal.slug}`} />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
-        {proposal.cover_image_url && (
+        {coverImage && (
           <>
-            <meta property="og:image" content={proposal.cover_image_url} />
+            <meta property="og:image" content={coverImage} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
             <meta property="og:image:alt" content={proposal.title} />
-            <meta name="twitter:image" content={proposal.cover_image_url} />
+            <meta name="twitter:image" content={coverImage} />
             <meta name="twitter:image:alt" content={proposal.title} />
           </>
         )}

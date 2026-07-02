@@ -1773,14 +1773,14 @@ const ProposalsManager = () => {
       if (coverImageFile) {
         toast.info("Uploading cover image...");
         const coverPath = await uploadFile("proposal-files", coverImageFile, "proposals");
-        coverImageUrl = getFileUrl("proposal-files", coverPath);
+        coverImageUrl = getFileUrl("proposal-files", coverPath) || coverPath;
       }
 
       // Upload gallery images
       if (galleryFiles.length > 0) {
         toast.info(`Uploading ${galleryFiles.length} gallery images...`);
         const galleryPaths = await uploadFiles("proposal-files", galleryFiles, "proposals");
-        const newGalleryUrls = galleryPaths.map(path => getFileUrl("proposal-files", path));
+        const newGalleryUrls = galleryPaths.map(path => getFileUrl("proposal-files", path) || path);
         galleryUrls = [...existingGallery, ...newGalleryUrls];
       }
 
@@ -1788,7 +1788,7 @@ const ProposalsManager = () => {
       if (documentFile) {
         toast.info("Uploading document...");
         const docPath = await uploadFile("proposal-files", documentFile, "proposals");
-        documentUrl = getFileUrl("proposal-files", docPath);
+        documentUrl = getFileUrl("proposal-files", docPath) || docPath;
       }
 
       const submitData = {
