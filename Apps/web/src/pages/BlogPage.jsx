@@ -209,8 +209,16 @@ const BlogPage = () => {
 
       <main>
         {/* Hero Section */}
-        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 bg-secondary">
-          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+        <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <img
+              src="https://www.image2url.com/r2/default/images/1783547801870-2726b84f-3090-4a4f-a8da-526a99604c56.jpg"
+              alt="Luxury real estate insights and guides"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/60" />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white">
               Luxury Real Estate Insights & Guides
             </h1>
