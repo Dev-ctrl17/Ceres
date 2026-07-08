@@ -14,6 +14,7 @@ const SellPage = lazy(() => import("./pages/SellPage.jsx"));
 const PropertiesPage = lazy(() => import("./pages/PropertiesPage.jsx"));
 const PropertyDetailsPage = lazy(() => import("./pages/PropertyDetailsPage.jsx"));
 const ServicesPage = lazy(() => import("./pages/ServicesPage.jsx"));
+const BlogPage = lazy(() => import("./pages/BlogPage.jsx"));
 const EPANPage = lazy(() => import("./pages/EPANPage.jsx"));
 const AgentsPage = lazy(() => import("./pages/AgentsPage.jsx"));
 const ReviewsPage = lazy(() => import("./pages/ReviewsPage.jsx"));
@@ -60,6 +61,7 @@ function App() {
             <Route path="/properties" element={<PropertiesPage />} />
             <Route path="/properties/:id" element={<PropertyDetailsPage />} />
             <Route path="/services" element={<ServicesPage />} />
+            <Route path="/blog" element={<BlogPage />} />
             <Route path="/epan" element={<EPANPage />} />
             <Route path="/agents" element={<AgentsPage />} />
             <Route path="/reviews" element={<ReviewsPage />} />

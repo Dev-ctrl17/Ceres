@@ -240,7 +240,7 @@ const HomePage = () => {
     <>
       <Helmet>
         <title>Luxury Properties Ltd - Premium Real Estate in Nigeria</title>
-        <meta name="description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes, commercial spaces, and land with Luxury Properties Ltd, Nigeria's premier luxury real estate agency." />
+        <meta name="description" content="Nigeria's premier luxury real estate agency. Buy, sell, or rent exclusive properties in Lagos, Abuja, and across Nigeria. Concierge service and off-market listings." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng" />
         <meta property="og:title" content="Luxury Properties Ltd - Premium Real Estate in Nigeria" />
         <meta property="og:description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes with Nigeria's premier luxury real estate agency." />
@@ -262,17 +262,6 @@ const HomePage = () => {
         <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-48">
           <div className="absolute inset-0 z-0">
             <HeroSlider slides={heroSlides} />
-          </div>
-
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="max-w-3xl"
-            >
-              <h1 className="sr-only">Luxury Properties Ltd — Nigeria's Premier Luxury Real Estate Agency</h1>
-            </motion.div>
           </div>
 
           {/* Floating Property Type Cards */}
@@ -653,8 +642,32 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Newsletter Section */}
+        {/* Blog CTA Section */}
         <section className="py-24 bg-background border-t">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Latest Insights & Market Guides
+              </h2>
+              <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
+                Stay informed with our expert analysis of luxury real estate trends, 
+                buying guides, and investment strategies across Nigeria.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link to="/blog" className="inline-flex items-center bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                  Read Our Blog
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+                <Link to="/blog/nigerian-real-estate-buying-guide" className="inline-flex items-center bg-transparent border-2 border-primary text-primary px-8 py-3 rounded-lg font-medium hover:bg-primary/5 transition-colors">
+                  Buying Guide
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="py-24 bg-secondary/30">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
               <Search className="w-8 h-8 text-primary" />

@@ -11,7 +11,7 @@ const ContactPage = () => {
     <>
       <Helmet>
         <title>Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos</title>
-        <meta name="description" content="Get in touch with Luxury Properties Ltd. Contact our Lagos office for luxury real estate inquiries, property viewings, and expert advisory services." />
+        <meta name="description" content="Contact Luxury Properties Ltd in Lagos for luxury real estate inquiries, property viewings, and expert advisory services. Call, email, or visit our office." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/contact" />
         <meta property="og:title" content="Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos" />
         <meta property="og:description" content="Get in touch with Luxury Properties Ltd for all your luxury real estate needs in Lagos and across Nigeria." />

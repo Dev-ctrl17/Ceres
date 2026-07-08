@@ -70,7 +70,7 @@ const ServicesPage = () => {
     <>
       <Helmet>
         <title>Real Estate Services in Lagos | Luxury Properties Ltd</title>
-        <meta name="description" content="Comprehensive real estate services in Lagos including property sales, leasing, management, investment advisory, and luxury property marketing. Expert guidance from Luxury Properties Ltd." />
+        <meta name="description" content="Comprehensive real estate services in Lagos: sales, leasing, management, investment advisory, and luxury property marketing. Expert guidance from Luxury Properties Ltd." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/services" />
         <meta property="og:title" content="Real Estate Services in Lagos | Luxury Properties Ltd" />
         <meta property="og:description" content="Comprehensive real estate services including sales, leasing, management, and investment advisory from Nigeria's premier luxury agency." />

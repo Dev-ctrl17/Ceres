@@ -243,7 +243,7 @@ const FAQPage = () => {
     <>
       <Helmet>
         <title>FAQ - Luxury Properties Ltd | Premium Real Estate Nigeria</title>
-        <meta name="description" content="Find answers about buying luxury property in Lagos, off-market listings, concierge services, property costs, and more. Expert guidance from Luxury Properties Ltd." />
+        <meta name="description" content="Get answers about buying luxury property in Lagos, off-market listings, concierge services, and property costs. Expert guidance from Luxury Properties Ltd." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/faq" />
         <meta property="og:title" content="FAQ - Luxury Properties Ltd | Premium Real Estate Nigeria" />
         <meta property="og:description" content="Find answers about buying luxury property in Lagos, off-market listings, concierge services, property costs, and more." />
