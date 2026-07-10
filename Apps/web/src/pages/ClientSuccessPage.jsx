@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FileText, Image, ExternalLink, Filter, Calendar, MapPin, TrendingUp } from 'lucide-react';
+import { FileText, Image, ExternalLink, Filter, Calendar, MapPin, TrendingUp, Download, Eye } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Button } from '@/components/ui/button';

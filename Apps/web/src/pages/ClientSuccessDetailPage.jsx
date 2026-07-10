@@ -260,47 +260,138 @@ const ClientSuccessDetailPage = () => {
                </div>
              </div>
 
-             {/* Document Download */}
-             {proposal.document_url && (
-               <Card className="mb-8">
-                 <CardContent className="p-6">
-                   <div className="flex items-center justify-between">
-                     <div className="flex items-center gap-4">
-                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                         <FileText className="w-6 h-6 text-primary" />
-                       </div>
-                       <div>
-                         <h3 className="font-semibold mb-1">Full Proposal Document</h3>
-                         <p className="text-sm text-muted-foreground">View or download the complete proposal PDF</p>
-                       </div>
-                     </div>
-                     <div className="flex gap-2">
-                       <a
-                         href={proposal.document_url}
-                         download
-                         target="_blank"
-                         rel="noopener noreferrer"
-                       >
-                         <Button variant="outline">
-                           <Download className="w-4 h-4 mr-2" />
-                           Download
-                         </Button>
-                       </a>
-                       <a
-                         href={proposal.document_url}
-                         target="_blank"
-                         rel="noopener noreferrer"
-                       >
-                         <Button>
-                           <ExternalLink className="w-4 h-4 mr-2" />
-                           View PDF
-                         </Button>
-                       </a>
-                     </div>
-                   </div>
-                 </CardContent>
-               </Card>
-             )}
+              {/* Download Section - Always visible for all proposals */}
+              <Card className="mb-8">
+                <CardContent className="p-6">
+                  <h3 className="font-semibold mb-4">Download Proposal</h3>
+                  
+                  {/* PDF Download */}
+                  {proposal.document_url && (
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                          <FileText className="w-6 h-6 text-primary" />
+                        </div>
+                        <div>
+                          <h4 className="font-medium">Proposal Document (PDF)</h4>
+                          <p className="text-sm text-muted-foreground">Download the complete proposal</p>
+                        </div>
+                      </div>
+                      <div className="flex gap-2">
+                        <a
+                          href={proposal.document_url}
+                          download
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Button variant="outline" size="sm">
+                            <Download className="w-4 h-4 mr-2" />
+                            Download
+                          </Button>
+                        </a>
+                        <a
+                          href={proposal.document_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Button size="sm">
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            View
+                          </Button>
+                        </a>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Gallery Download */}
+                  {images.length > 0 && (
+                    <div className={`${proposal.document_url ? 'mb-4' : ''}`}>
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
+                          <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <Image className="w-6 h-6 text-primary" />
+                          </div>
+                          <div>
+                            <h4 className="font-medium">Gallery Images ({images.length})</h4>
+                            <p className="text-sm text-muted-foreground">Download all proposal images</p>
+                          </div>
+                        </div>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => {
+                            images.forEach((img, index) => {
+                              setTimeout(() => {
+                                const link = document.createElement('a');
+                                link.href = img;
+                                link.download = `${proposal.title.replace(/\s+/g, '_')}_image_${index + 1}`;
+                                document.body.appendChild(link);
+                                link.click();
+                                document.body.removeChild(link);
+                              }, index * 300);
+                            });
+                            toast.success(`Downloading ${images.length} images...`);
+                          }}
+                        >
+                          <Download className="w-4 h-4 mr-2" />
+                          Download All
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Case Study Download - Available for all proposals */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                        <FileText className="w-6 h-6 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium">Case Study Summary</h4>
+                        <p className="text-sm text-muted-foreground">Download proposal details as text file</p>
+                      </div>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        const content = `
+${proposal.title}
+${'='.repeat(proposal.title.length)}
+
+Client: ${proposal.client_name || 'N/A'}
+Location: ${proposal.location || 'N/A'}
+Property Type: ${proposal.property_type || 'N/A'}
+Date Completed: ${formatDate(proposal.date_completed)}
+Result Highlight: ${proposal.result_highlight || 'N/A'}
+
+SUMMARY
+-------
+${proposal.summary}
+
+CASE STUDY
+----------
+${proposal.description}
+                        `.trim();
+                        
+                        const blob = new Blob([content], { type: 'text/plain' });
+                        const url = URL.createObjectURL(blob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = `${proposal.title.replace(/\s+/g, '_')}_case_study.txt`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(url);
+                        toast.success('Downloading case study...');
+                      }}
+                    >
+                      <Download className="w-4 h-4 mr-2" />
+                      Download
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
 
              {/* CTA */}
             <div className="bg-primary/5 border border-primary/10 rounded-2xl p-8 text-center">
