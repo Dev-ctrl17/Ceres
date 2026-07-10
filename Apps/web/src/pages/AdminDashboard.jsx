@@ -574,8 +574,22 @@ const PropertiesManager = () => {
         videoTourUrl = getFileUrl("property-videos", videoPath) || videoPath;
       }
 
+      // Auto-generate a URL-safe slug from the title so property/brochure
+      // pages that link by slug (e.g. InvestmentBriefPage) actually work.
+      // Keep the existing slug on edit unless it was never set.
+      const generateSlug = (title) =>
+        (title || "")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+
+      const existingSlug = editing
+        ? properties.find((p) => p.id === editing)?.slug
+        : null;
+
       const submitData = {
         title: data.title,
+        slug: existingSlug || generateSlug(data.title),
         description: data.description,
         price: data.price,
         location: data.location,
@@ -2152,7 +2166,7 @@ const BrochuresManager = () => {
       title: "",
       description: "",
       status: "draft",
-      property_id: "",
+      property_id: "none",
       uploaded_by: null,
     });
     setPdfFile(null);
@@ -2168,7 +2182,7 @@ const BrochuresManager = () => {
       title: brochure.title,
       description: brochure.description || "",
       status: brochure.status,
-      property_id: brochure.property_id || "",
+      property_id: brochure.property_id || "none",
     });
     setPdfFile(null);
     setThumbnailFile(null);
@@ -2243,7 +2257,7 @@ const BrochuresManager = () => {
         toast.info("Uploading thumbnail...");
         const thumbPath = await uploadFile("brochures", thumbnailFile, "brochures");
         const thumbPublicUrl = getFileUrl("brochures", thumbPath);
-        if (thumbPublicUrl) thumbnailUrl = thumbPublicUrl;
+        thumbnailUrl = thumbPublicUrl || thumbPath;
       }
 
       setUploadProgress(90);
@@ -2257,7 +2271,7 @@ const BrochuresManager = () => {
         description: data.description || "",
         pdf_file: pdfPath,
         thumbnail: thumbnailUrl || null,
-        property_id: data.property_id || null,
+        property_id: data.property_id && data.property_id !== "none" ? data.property_id : null,
         status: data.status || "draft",
         uploaded_by: userId,
       };
@@ -2414,12 +2428,12 @@ const BrochuresManager = () => {
                   name="property_id"
                   control={control}
                   render={({ field }) => (
-                    <Select onValueChange={field.onChange} value={field.value || ""}>
+                    <Select onValueChange={field.onChange} value={field.value || "none"}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select a property (optional)" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">No property linked</SelectItem>
+                        <SelectItem value="none">No property linked</SelectItem>
                         {properties.map((p) => (
                           <SelectItem key={p.id} value={p.id}>
                             {p.title} — {p.location}

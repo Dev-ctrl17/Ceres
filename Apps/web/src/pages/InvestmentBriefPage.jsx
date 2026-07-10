@@ -23,9 +23,20 @@ const InvestmentBriefPage = () => {
     setLoading(true);
     setError(null);
     try {
+      // Note the "!inner" hint below: filtering on a nested/embedded
+      // column (property.slug) only actually restricts the parent rows
+      // when the embed is an inner join. Without it, PostgREST leaves
+      // the .eq("property.slug", ...) filter ineffective.
+      const propertyColumns =
+        "id, title, price, location, property_type, status, slug, description, bedrooms, bathrooms";
+
       let query = supabase
         .from("brochures")
-        .select("*, property:property_id(id, title, price, location, property_type, status, slug, description, bedrooms, bathrooms)");
+        .select(
+          slug
+            ? `*, property:property_id!inner(${propertyColumns})`
+            : `*, property:property_id(${propertyColumns})`
+        );
 
       if (slug) {
         // Fetch by property slug
