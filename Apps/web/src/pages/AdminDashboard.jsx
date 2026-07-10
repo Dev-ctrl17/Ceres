@@ -19,6 +19,7 @@ import {
   Inbox,
   Check,
   Award,
+  FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -81,6 +82,7 @@ const AdminDashboard = () => {
 const TABS = [
   { id: "properties", label: "Properties", icon: Package },
   { id: "submissions", label: "Submissions", icon: Inbox },
+  { id: "brochures", label: "Brochures", icon: FileText },
   { id: "proposals", label: "Client Success", icon: Award },
   { id: "agents", label: "Agents", icon: Users },
   { id: "team", label: "Team Members", icon: UsersRound },
@@ -100,6 +102,8 @@ const DashboardTabs = () => {
         return AgentsManager;
       case "reviews":
         return ReviewsManager;
+      case "brochures":
+        return BrochuresManager;
       case "proposals":
         return ProposalsManager;
       case "testimonials":
@@ -2083,6 +2087,458 @@ const ProposalsManager = () => {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+};
+
+// ---------- Brochures Manager (Investment Brief) ----------
+const BrochuresManager = () => {
+  const [brochures, setBrochures] = useState([]);
+  const [properties, setProperties] = useState([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [pdfFile, setPdfFile] = useState(null);
+  const [thumbnailFile, setThumbnailFile] = useState(null);
+  const [thumbnailPreview, setThumbnailPreview] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const { register, handleSubmit, reset, control } = useForm();
+
+  const fetchBrochures = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("brochures")
+        .select("*, property:property_id(id, title, location, property_type, slug)")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setBrochures(data || []);
+    } catch (err) {
+      toast.error("Failed to load brochures");
+    }
+  };
+
+  const fetchProperties = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("properties")
+        .select("id, title, location, property_type, slug, status")
+        .eq("status", "Available")
+        .order("title", { ascending: true });
+
+      if (error) throw error;
+      setProperties(data || []);
+    } catch (err) {
+      toast.error("Failed to load properties");
+    }
+  };
+
+  useEffect(() => {
+    fetchBrochures();
+    fetchProperties();
+  }, []);
+
+  // Cleanup object URL previews
+  useEffect(() => {
+    return () => {
+      thumbnailPreview && URL.revokeObjectURL(thumbnailPreview);
+    };
+  }, [thumbnailPreview]);
+
+  const openCreate = () => {
+    setEditing(null);
+    reset({
+      title: "",
+      description: "",
+      status: "draft",
+      property_id: "",
+      uploaded_by: null,
+    });
+    setPdfFile(null);
+    setThumbnailFile(null);
+    setThumbnailPreview(null);
+    setUploadProgress(0);
+    setDialogOpen(true);
+  };
+
+  const openEdit = (brochure) => {
+    setEditing(brochure.id);
+    reset({
+      title: brochure.title,
+      description: brochure.description || "",
+      status: brochure.status,
+      property_id: brochure.property_id || "",
+    });
+    setPdfFile(null);
+    setThumbnailFile(null);
+    setThumbnailPreview(null);
+    setUploadProgress(0);
+    setDialogOpen(true);
+  };
+
+  const handlePdfChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    // Validate PDF type
+    if (file.type !== "application/pdf") {
+      toast.error("Only PDF files are allowed");
+      e.target.value = "";
+      return;
+    }
+
+    // Validate file size (20MB max)
+    const maxSize = 20 * 1024 * 1024;
+    if (file.size > maxSize) {
+      toast.error("PDF file must be under 20MB");
+      e.target.value = "";
+      return;
+    }
+
+    setPdfFile(file);
+  };
+
+  const handleThumbnailChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+    if (!validTypes.includes(file.type)) {
+      toast.error("Only JPG, PNG, and WebP images are allowed");
+      e.target.value = "";
+      return;
+    }
+
+    setThumbnailFile(file);
+    setThumbnailPreview(URL.createObjectURL(file));
+  };
+
+  const onSubmit = async (data) => {
+    if (!editing && !pdfFile) {
+      toast.error("Please upload a PDF brochure");
+      return;
+    }
+
+    setUploading(true);
+    setUploadProgress(10);
+
+    try {
+      let pdfPath = editing ? (brochures.find(b => b.id === editing)?.pdf_file || "") : "";
+      let thumbnailUrl = editing ? (brochures.find(b => b.id === editing)?.thumbnail || "") : "";
+
+      // Upload PDF
+      if (pdfFile) {
+        setUploadProgress(30);
+        toast.info("Uploading PDF...");
+        pdfPath = await uploadFile("brochures", pdfFile, "brochures");
+        const pdfPublicUrl = getFileUrl("brochures", pdfPath);
+        if (pdfPublicUrl) pdfPath = pdfPublicUrl;
+        setUploadProgress(60);
+      }
+
+      // Upload thumbnail
+      if (thumbnailFile) {
+        setUploadProgress(75);
+        toast.info("Uploading thumbnail...");
+        const thumbPath = await uploadFile("brochures", thumbnailFile, "brochures");
+        const thumbPublicUrl = getFileUrl("brochures", thumbPath);
+        if (thumbPublicUrl) thumbnailUrl = thumbPublicUrl;
+      }
+
+      setUploadProgress(90);
+
+      // Get current user ID
+      const { data: userData } = await supabase.auth.getUser();
+      const userId = userData?.user?.id || null;
+
+      const submitData = {
+        title: data.title,
+        description: data.description || "",
+        pdf_file: pdfPath,
+        thumbnail: thumbnailUrl || null,
+        property_id: data.property_id || null,
+        status: data.status || "draft",
+        uploaded_by: userId,
+      };
+
+      if (editing) {
+        const { error } = await supabase
+          .from("brochures")
+          .update(submitData)
+          .eq("id", editing);
+
+        if (error) throw error;
+        toast.success("Brochure updated");
+      } else {
+        const { error } = await supabase
+          .from("brochures")
+          .insert(submitData);
+
+        if (error) throw error;
+        toast.success("Brochure created");
+      }
+
+      setUploadProgress(100);
+      setDialogOpen(false);
+      fetchBrochures();
+    } catch (err) {
+      toast.error(err.message || "Operation failed");
+    } finally {
+      setUploading(false);
+      setUploadProgress(0);
+    }
+  };
+
+  const handleDelete = async (brochure) => {
+    if (!window.confirm(`Delete the brochure "${brochure.title}"? This cannot be undone.`)) return;
+    try {
+      // Delete PDF file from storage if it's a stored path
+      if (brochure.pdf_file && !brochure.pdf_file.startsWith("http")) {
+        await supabase.storage.from("brochures").remove([brochure.pdf_file]);
+      }
+
+      const { error } = await supabase
+        .from("brochures")
+        .delete()
+        .eq("id", brochure.id);
+
+      if (error) throw error;
+      toast.success("Brochure deleted");
+      fetchBrochures();
+    } catch (err) {
+      toast.error("Delete failed");
+    }
+  };
+
+  const formatDate = (dateStr) => {
+    if (!dateStr) return "—";
+    return new Date(dateStr).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  const getThumbnailUrl = (brochure) => {
+    if (!brochure.thumbnail) return null;
+    return brochure.thumbnail.startsWith("http")
+      ? brochure.thumbnail
+      : getFileUrl("brochures", brochure.thumbnail);
+  };
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Investment Brochures</h2>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={openCreate}>
+              <Plus className="w-4 h-4 mr-2" />
+              Add Brochure
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>{editing ? "Edit Brochure" : "Add New Brochure"}</DialogTitle>
+            </DialogHeader>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">
+                  Brochure Title *
+                </label>
+                <Input
+                  placeholder="e.g. Luxury Living at Eko Atlantic"
+                  {...register("title", { required: true })}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Short Description</label>
+                <Textarea
+                  placeholder="Brief description of this investment brochure..."
+                  {...register("description")}
+                  rows={3}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">
+                  PDF Brochure *
+                </label>
+                <Input
+                  type="file"
+                  accept="application/pdf"
+                  onChange={handlePdfChange}
+                />
+                {editing && !pdfFile && (
+                  <p className="text-xs text-green-600">
+                    Current PDF: {brochures.find(b => b.id === editing)?.pdf_file?.split('/').pop() || "uploaded"}
+                  </p>
+                )}
+                <p className="text-xs text-muted-foreground">
+                  Only PDF files, max 20MB
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">
+                  Cover Image / Thumbnail
+                  <span className="text-muted-foreground font-normal ml-1">— optional</span>
+                </label>
+                <Input
+                  type="file"
+                  accept="image/jpeg,image/jpg,image/png,image/webp"
+                  onChange={handleThumbnailChange}
+                />
+                {(thumbnailPreview || (editing && getThumbnailUrl(brochures.find(b => b.id === editing)))) && (
+                  <div className="mt-2">
+                    <img
+                      src={thumbnailPreview || getThumbnailUrl(brochures.find(b => b.id === editing))}
+                      alt="Thumbnail preview"
+                      className="w-full h-40 object-cover rounded-lg"
+                    />
+                  </div>
+                )}
+                <p className="text-xs text-muted-foreground">
+                  JPG, PNG, or WebP. Auto-generated from PDF first page if not provided.
+                </p>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">
+                  Related Property
+                  <span className="text-muted-foreground font-normal ml-1">— optional</span>
+                </label>
+                <Controller
+                  name="property_id"
+                  control={control}
+                  render={({ field }) => (
+                    <Select onValueChange={field.onChange} value={field.value || ""}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select a property (optional)" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="">No property linked</SelectItem>
+                        {properties.map((p) => (
+                          <SelectItem key={p.id} value={p.id}>
+                            {p.title} — {p.location}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Status *</label>
+                <Controller
+                  name="status"
+                  control={control}
+                  defaultValue="draft"
+                  render={({ field }) => (
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="draft">Draft</SelectItem>
+                        <SelectItem value="published">Published</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+              </div>
+
+              {/* Upload progress bar */}
+              {uploading && (
+                <div className="space-y-1">
+                  <div className="flex justify-between text-xs text-muted-foreground">
+                    <span>Uploading...</span>
+                    <span>{uploadProgress}%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div
+                      className="bg-primary h-2 rounded-full transition-all duration-300"
+                      style={{ width: `${uploadProgress}%` }}
+                    />
+                  </div>
+                </div>
+              )}
+
+              <Button type="submit" className="w-full" disabled={uploading}>
+                {uploading ? "Uploading..." : editing ? "Update Brochure" : "Create Brochure"}
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <div className="grid gap-4">
+        {brochures.length === 0 ? (
+          <div className="bg-white p-8 rounded-lg shadow text-center text-gray-500">
+            No brochures found. Click "Add Brochure" to create one.
+          </div>
+        ) : (
+          brochures.map((b) => {
+            const thumbUrl = getThumbnailUrl(b);
+            return (
+              <div
+                key={b.id}
+                className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
+              >
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
+                    {thumbUrl ? (
+                      <img
+                        src={thumbUrl}
+                        alt={b.title}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-gray-400">
+                        <FileText className="w-6 h-6" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <h3 className="font-semibold truncate">{b.title}</h3>
+                      <span className={`text-xs px-2 py-0.5 rounded-full ${
+                        b.status === "published" 
+                          ? "bg-green-100 text-green-700" 
+                          : "bg-yellow-100 text-yellow-700"
+                      }`}>
+                        {b.status}
+                      </span>
+                    </div>
+                    {b.description && (
+                      <p className="text-sm text-gray-500 line-clamp-1">{b.description}</p>
+                    )}
+                    <div className="flex gap-3 text-xs text-gray-400 mt-1">
+                      {b.property && <span>🏠 {b.property.title}</span>}
+                      <span>📄 PDF</span>
+                      <span>📅 {formatDate(b.created_at)}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex gap-2 flex-shrink-0">
+                  <Button size="sm" variant="outline" onClick={() => openEdit(b)}>
+                    <Edit className="w-4 h-4" />
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="destructive"
+                    onClick={() => handleDelete(b)}
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            );
+          })
+        )}
       </div>
     </div>
   );

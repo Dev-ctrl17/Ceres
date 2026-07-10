@@ -441,6 +441,47 @@ export const propertySubmissionsApi = {
   delete: (id) => deleteRecord('propertySubmissions', id),
 };
 
+// --- Brochures (Investment Brief) ---
+export const brochuresApi = {
+  getAll: (filters = {}) => {
+    let query = supabase
+      .from('brochures')
+      .select('*, property:property_id(id, title, price, location, property_type, status, slug)')
+      .order('created_at', { ascending: false });
+
+    if (filters.status) {
+      query = query.eq('status', filters.status);
+    }
+
+    return query;
+  },
+  getPublished: () => {
+    return supabase
+      .from('brochures')
+      .select('*, property:property_id(id, title, price, location, property_type, status, slug)')
+      .eq('status', 'published')
+      .order('created_at', { ascending: false });
+  },
+  getById: (id) => {
+    return supabase
+      .from('brochures')
+      .select('*, property:property_id(id, title, price, location, property_type, status, slug)')
+      .eq('id', id)
+      .single();
+  },
+  getByPropertySlug: (slug) => {
+    return supabase
+      .from('brochures')
+      .select('*, property:property_id!inner(id, title, price, location, property_type, status, slug)')
+      .eq('property.slug', slug)
+      .eq('status', 'published')
+      .single();
+  },
+  create: (data) => createRecord('brochures', data),
+  update: (id, data) => updateRecord('brochures', id, data),
+  delete: (id) => deleteRecord('brochures', id),
+};
+
 // --- Proposals (Client Success) ---
 export const proposalsApi = {
   getAll: (filters = {}) => {

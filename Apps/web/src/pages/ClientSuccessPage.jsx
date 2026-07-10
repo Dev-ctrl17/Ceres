@@ -34,7 +34,7 @@ const ClientSuccessPage = () => {
       setProposals(data || []);
       
       // Extract unique property types for filter
-      const types = [...new Set(data?.map(p => p.propertyType).filter(Boolean) || [])];
+      const types = [...new Set(data?.map(p => p.property_type).filter(Boolean) || [])];
       setPropertyTypes(types);
     } catch (error) {
       toast.error('Failed to load proposals');

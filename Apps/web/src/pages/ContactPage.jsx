@@ -85,7 +85,7 @@ const ContactPage = () => {
                       <div>
                         <h3 className="font-semibold mb-1">Head Office Address</h3>
                         <p className="text-muted-foreground">
-                          9 Alfa Sanni Street, Pedro, Gbagada, Lagos, Nigeria
+                          Pedro, Gbagada, Lagos, Nigeria
                         </p>
                       </div>
                     </CardContent>

@@ -32,6 +32,7 @@ const CompanyRegistrationPage = lazy(() => import("./pages/CompanyRegistrationPa
 const OfficeLocationsPage = lazy(() => import("./pages/OfficeLocationsPage.jsx"));
 const ClientSuccessPage = lazy(() => import("./pages/ClientSuccessPage.jsx"));
 const ClientSuccessDetailPage = lazy(() => import("./pages/ClientSuccessDetailPage.jsx"));
+const InvestmentBriefPage = lazy(() => import("./pages/InvestmentBriefPage.jsx"));
 
 // Loading fallback component
 const PageLoading = () => (
@@ -78,6 +79,9 @@ function App() {
             <Route path="/office-locations" element={<OfficeLocationsPage />} />
             <Route path="/client-success" element={<ClientSuccessPage />} />
             <Route path="/client-success/:slug" element={<ClientSuccessDetailPage />} />
+            <Route path="/investment-brief" element={<InvestmentBriefPage />} />
+            <Route path="/investment-brief/:id" element={<InvestmentBriefPage />} />
+            <Route path="/investment-briefs/:slug" element={<InvestmentBriefPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route
               path="/admin"

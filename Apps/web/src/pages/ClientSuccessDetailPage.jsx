@@ -252,44 +252,57 @@ const ClientSuccessDetailPage = () => {
               </div>
             )}
 
-            {/* Description */}
-            <div className="prose prose-lg max-w-none mb-12">
-              <h2 className="text-2xl font-bold mb-4">Case Study</h2>
-              <div className="text-muted-foreground whitespace-pre-wrap leading-relaxed">
-                {proposal.description}
-              </div>
-            </div>
+             {/* Description */}
+             <div className="prose prose-lg max-w-none mb-12">
+               <h2 className="text-2xl font-bold mb-4">Case Study</h2>
+               <div className="text-muted-foreground whitespace-pre-wrap leading-relaxed">
+                 {proposal.description}
+               </div>
+             </div>
 
-            {/* Document Download */}
-            {proposal.document_url && (
-              <Card className="mb-8">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <FileText className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold mb-1">Full Proposal Document</h3>
-                        <p className="text-sm text-muted-foreground">Download or view the complete proposal PDF</p>
-                      </div>
-                    </div>
-                    <a
-                      href={proposal.document_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button>
-                        <Download className="w-4 h-4 mr-2" />
-                        View PDF
-                      </Button>
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+             {/* Document Download */}
+             {proposal.document_url && (
+               <Card className="mb-8">
+                 <CardContent className="p-6">
+                   <div className="flex items-center justify-between">
+                     <div className="flex items-center gap-4">
+                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                         <FileText className="w-6 h-6 text-primary" />
+                       </div>
+                       <div>
+                         <h3 className="font-semibold mb-1">Full Proposal Document</h3>
+                         <p className="text-sm text-muted-foreground">View or download the complete proposal PDF</p>
+                       </div>
+                     </div>
+                     <div className="flex gap-2">
+                       <a
+                         href={proposal.document_url}
+                         download
+                         target="_blank"
+                         rel="noopener noreferrer"
+                       >
+                         <Button variant="outline">
+                           <Download className="w-4 h-4 mr-2" />
+                           Download
+                         </Button>
+                       </a>
+                       <a
+                         href={proposal.document_url}
+                         target="_blank"
+                         rel="noopener noreferrer"
+                       >
+                         <Button>
+                           <ExternalLink className="w-4 h-4 mr-2" />
+                           View PDF
+                         </Button>
+                       </a>
+                     </div>
+                   </div>
+                 </CardContent>
+               </Card>
+             )}
 
-            {/* CTA */}
+             {/* CTA */}
             <div className="bg-primary/5 border border-primary/10 rounded-2xl p-8 text-center">
               <h3 className="text-2xl font-bold mb-4">Ready to Write Your Success Story?</h3>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">

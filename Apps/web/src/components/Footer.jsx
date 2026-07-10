@@ -227,7 +227,7 @@ const Footer = () => {
                   className="text-sm"
                   style={{ color: "rgba(255,255,255,0.8)" }}
                 >
-                  9 Alfa Sanni Street, Pedro, Gbagada, Lagos, Nigeria
+                  Pedro, Gbagada, Lagos, Nigeria
                 </span>
               </li>
             </ul>
