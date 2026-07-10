@@ -34,18 +34,22 @@ const ContactForm = ({ propertyId = null }) => {
     setEmailStatus("verifying");
 
     try {
-      // Step 1: Verify email via Mailboxlayer
-      const emailResult = await verifyEmail(data.email);
-
-      if (!emailResult.valid) {
-        setEmailStatus("invalid");
-        setLoading(false);
-        toast.error(emailResult.error || "Please enter a valid email address.");
-        return;
+      // Step 1: Try to verify email via Mailboxlayer (optional - don't block if fails)
+      let emailValid = true;
+      try {
+        const emailResult = await verifyEmail(data.email);
+        if (!emailResult.valid) {
+          setEmailStatus("invalid");
+          toast.warning("Email verification failed, but your message will still be sent.");
+          emailValid = false;
+        } else {
+          setEmailStatus("valid");
+        }
+      } catch (emailError) {
+        // Email verification failed - continue anyway
+        console.warn("Email verification skipped:", emailError);
+        toast.warning("Email verification service unavailable. Your message will still be sent.");
       }
-
-      // Email is valid - set status
-      setEmailStatus("valid");
 
       // Step 2: Prepare lead data
       const leadData = {
@@ -53,9 +57,9 @@ const ContactForm = ({ propertyId = null }) => {
         email: data.email,
         phone: data.phone || "",
         message: data.message || "",
-        propertyInterest: propertyId || "",
-        leadType: propertyId ? "Property Inquiry" : "Contact Form",
-        isContacted: false,
+        propertyinterest: propertyId || "",
+        leadtype: propertyId ? "Property Inquiry" : "Contact Form",
+        iscontacted: false,
       };
 
       // Step 3: Insert into Supabase

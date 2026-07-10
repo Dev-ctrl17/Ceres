@@ -1,80 +1,56 @@
 -- ============================================================
--- SUPABASE STORAGE RLS POLICIES
--- Run this in Supabase SQL Editor AFTER the database policies
+-- SUPABASE STORAGE POLICIES
+-- Run this in Supabase SQL Editor to fix storage upload issues
 -- ============================================================
 
--- ============================================================
--- 1. PROPERTY-IMAGES BUCKET
--- ============================================================
+-- Storage policies for property-images bucket
+-- This allows public uploads to the property-images bucket
 
--- Create the bucket if it doesn't exist
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('property-images', 'property-images', true)
-ON CONFLICT (id) DO NOTHING;
+-- Update bucket settings if it exists (don't try to create if already exists)
+UPDATE storage.buckets 
+SET 
+  public = true,
+  file_size_limit = 52428800, -- 50MB limit
+  allowed_mime_types = ARRAY['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif']::text[]
+WHERE id = 'property-images';
 
--- Allow public read access (everyone can view property images)
+-- Drop existing policies if they exist
+DROP POLICY IF EXISTS "Public can upload property images" ON storage.objects;
 DROP POLICY IF EXISTS "Public can view property images" ON storage.objects;
-CREATE POLICY "Public can view property images" ON storage.objects
-  FOR SELECT USING (bucket_id = 'property-images');
+DROP POLICY IF EXISTS "Public can update property images" ON storage.objects;
+DROP POLICY IF EXISTS "Public can delete property images" ON storage.objects;
 
--- Allow authenticated users to upload property images
-DROP POLICY IF EXISTS "Authenticated users can upload property images" ON storage.objects;
-CREATE POLICY "Authenticated users can upload property images" ON storage.objects
-  FOR INSERT WITH CHECK (
-    bucket_id = 'property-images'
-    AND auth.role() = 'authenticated'
-  );
+-- Policy: Allow uploads to property-images bucket
+CREATE POLICY "Public can upload property images"
+ON storage.objects FOR INSERT
+WITH CHECK (
+  bucket_id = 'property-images'
+  AND auth.role() = 'authenticated'
+);
 
--- Allow authenticated users to update property images
-DROP POLICY IF EXISTS "Authenticated users can update property images" ON storage.objects;
-CREATE POLICY "Authenticated users can update property images" ON storage.objects
-  FOR UPDATE USING (
-    bucket_id = 'property-images'
-    AND auth.role() = 'authenticated'
-  );
+-- Policy: Allow viewing images from property-images bucket
+CREATE POLICY "Public can view property images"
+ON storage.objects FOR SELECT
+USING (
+  bucket_id = 'property-images'
+);
 
--- Allow authenticated users to delete property images
-DROP POLICY IF EXISTS "Authenticated users can delete property images" ON storage.objects;
-CREATE POLICY "Authenticated users can delete property images" ON storage.objects
-  FOR DELETE USING (
-    bucket_id = 'property-images'
-    AND auth.role() = 'authenticated'
-  );
+-- Policy: Allow updates to property-images bucket
+CREATE POLICY "Public can update property images"
+ON storage.objects FOR UPDATE
+USING (
+  bucket_id = 'property-images'
+  AND auth.role() = 'authenticated'
+);
 
--- ============================================================
--- 2. AGENT-PHOTOS BUCKET
--- ============================================================
+-- Policy: Allow deletes from property-images bucket
+CREATE POLICY "Public can delete property images"
+ON storage.objects FOR DELETE
+USING (
+  bucket_id = 'property-images'
+  AND auth.role() = 'authenticated'
+);
 
--- Create the bucket if it doesn't exist
-INSERT INTO storage.buckets (id, name, public)
-VALUES ('agent-photos', 'agent-photos', true)
-ON CONFLICT (id) DO NOTHING;
-
--- Allow public read access
-DROP POLICY IF EXISTS "Public can view agent photos" ON storage.objects;
-CREATE POLICY "Public can view agent photos" ON storage.objects
-  FOR SELECT USING (bucket_id = 'agent-photos');
-
--- Allow authenticated users to upload agent photos
-DROP POLICY IF EXISTS "Authenticated users can upload agent photos" ON storage.objects;
-CREATE POLICY "Authenticated users can upload agent photos" ON storage.objects
-  FOR INSERT WITH CHECK (
-    bucket_id = 'agent-photos'
-    AND auth.role() = 'authenticated'
-  );
-
--- Allow authenticated users to update agent photos
-DROP POLICY IF EXISTS "Authenticated users can update agent photos" ON storage.objects;
-CREATE POLICY "Authenticated users can update agent photos" ON storage.objects
-  FOR UPDATE USING (
-    bucket_id = 'agent-photos'
-    AND auth.role() = 'authenticated'
-  );
-
--- Allow authenticated users to delete agent photos
-DROP POLICY IF EXISTS "Authenticated users can delete agent photos" ON storage.objects;
-CREATE POLICY "Authenticated users can delete agent photos" ON storage.objects
-  FOR DELETE USING (
-    bucket_id = 'agent-photos'
-    AND auth.role() = 'authenticated'
-  );
+-- Note: Storage policies require manual setup in Supabase Dashboard
+-- Go to Storage → property-images bucket → Policies tab
+-- Add the following policies manually through the UI

@@ -38,20 +38,24 @@ const EPANPage = () => {
     try {
       const description = `Company/Agency: ${data.company}\nYears of Experience: ${data.experience}\nSpecialization: ${data.specialization}\nMessage: ${data.message}`;
       
-      const { error } = await supabase.from('propertySubmissions').insert({
+      const { error } = await supabase.from('propertysubmissions').insert({
         title: `Agent Registration - ${data.fullName}`,
         description: description,
-        ownerName: data.fullName,
-        ownerEmail: data.email,
-        ownerPhone: data.phone,
+        ownername: data.fullName,
+        owneremail: data.email,
+        ownerphone: data.phone,
         status: 'Pending'
       });
       
-      if (error) throw error;
+      if (error) {
+        console.error('Agent registration error:', error);
+        throw error;
+      }
       toast.success('Registration submitted successfully. We will contact you soon.');
       resetAgent();
     } catch (error) {
-      toast.error('Failed to submit registration. Please try again.');
+      console.error('Agent registration failed:', error);
+      toast.error(`Failed to submit registration: ${error.message || 'Please try again.'}`);
     } finally {
       setAgentLoading(false);
     }
@@ -67,16 +71,20 @@ const EPANPage = () => {
         email: data.email,
         phone: data.phone,
         message: message,
-        leadType: 'Contact Form',
-        isContacted: false
+        leadtype: 'Contact Form',
+        iscontacted: false
       });
       
-      if (error) throw error;
+      if (error) {
+        console.error('Partner inquiry error:', error);
+        throw error;
+      }
       toast.success('Inquiry submitted successfully. Our partnership team will reach out.');
       resetPartner();
       setInquiryType('');
     } catch (error) {
-      toast.error('Failed to submit inquiry. Please try again.');
+      console.error('Partner inquiry failed:', error);
+      toast.error(`Failed to submit inquiry: ${error.message || 'Please try again.'}`);
     } finally {
       setPartnerLoading(false);
     }

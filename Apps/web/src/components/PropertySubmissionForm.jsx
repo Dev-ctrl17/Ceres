@@ -58,18 +58,22 @@ const PropertySubmissionForm = () => {
     setEmailStatus("verifying");
 
     try {
-      // Step 1: Verify email via Mailboxlayer
-      const emailResult = await verifyEmail(data.ownerEmail);
-
-      if (!emailResult.valid) {
-        setEmailStatus("invalid");
-        setLoading(false);
-        toast.error(emailResult.error || "Please enter a valid email address.");
-        return;
+      // Step 1: Try to verify email via Mailboxlayer (optional - don't block if fails)
+      let emailValid = true;
+      try {
+        const emailResult = await verifyEmail(data.ownerEmail);
+        if (!emailResult.valid) {
+          setEmailStatus("invalid");
+          toast.warning("Email verification failed, but your submission will still be processed.");
+          emailValid = false;
+        } else {
+          setEmailStatus("valid");
+        }
+      } catch (emailError) {
+        // Email verification failed - continue anyway
+        console.warn("Email verification skipped:", emailError);
+        toast.warning("Email verification service unavailable. Your submission will still be processed.");
       }
-
-      // Email is valid
-      setEmailStatus("valid");
 
       const submissionData = {
         title: data.title,
@@ -83,11 +87,17 @@ const PropertySubmissionForm = () => {
         status: "Pending",
       };
 
-      // Upload images to Supabase Storage before inserting
+      // Upload images to Supabase Storage before inserting (REQUIRED)
       let imageUrls = [];
       const files = data.images ? Array.from(data.images) : [];
 
-      if (files.length > 0) {
+      if (files.length === 0) {
+        toast.error("Please upload at least one image.");
+        setLoading(false);
+        return;
+      }
+
+      try {
         toast.info(`Uploading ${files.length} image(s)...`);
         const uploadPromises = files.map(async (file) => {
           const ext = file.name.split('.').pop();
@@ -102,13 +112,18 @@ const PropertySubmissionForm = () => {
           return urlData.publicUrl;
         });
         imageUrls = await Promise.all(uploadPromises);
+      } catch (uploadError) {
+        console.error("Image upload failed:", uploadError);
+        toast.error("Failed to upload images. Please try again.");
+        setLoading(false);
+        return;
       }
 
       submissionData.images = imageUrls;
-      submissionData.image_url = imageUrls[0] || "";
+      submissionData.imageurl = imageUrls[0] || "";
 
       const { error } = await supabase
-        .from("property_submissions")
+        .from("propertysubmissions")
         .insert(submissionData);
 
       if (error) throw error;
