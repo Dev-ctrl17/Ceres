@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import { Toaster } from "@/components/ui/sonner";
 import { setCsrfToken } from "./utils/csrf.js";
+import WhatsAppButton from "./components/WhatsAppButton.jsx";
 
 // Lazy load all pages for route-level code splitting
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
@@ -94,6 +95,7 @@ function App() {
           </Routes>
         </Suspense>
         <Toaster />
+        <WhatsAppButton />
       </Router>
     </AuthProvider>
   );
