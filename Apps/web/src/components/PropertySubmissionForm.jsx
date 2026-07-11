@@ -237,7 +237,7 @@ const PropertySubmissionForm = () => {
           className="mt-2 text-foreground"
         />
         <p className="text-sm text-muted-foreground mt-1">
-          Upload up to 20 images
+          Upload up to 50 images
         </p>
       </div>
 

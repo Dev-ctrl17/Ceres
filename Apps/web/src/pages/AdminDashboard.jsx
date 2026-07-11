@@ -391,7 +391,7 @@ const PropertiesManager = () => {
   const { register, handleSubmit, reset, formState: { errors }, control } = useForm();
 
   const MIN_IMAGES = 2;
-  const MAX_IMAGES = 7;
+  const MAX_IMAGES = 50;
 
   const fetchProperties = async () => {
     try {

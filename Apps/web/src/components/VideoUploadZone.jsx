@@ -59,7 +59,7 @@ const VideoUploadZone = ({
         <Film className="w-10 h-10 mx-auto text-muted-foreground mb-4" />
         <h3 className="text-lg font-medium mb-1">Drag & drop videos here</h3>
         <p className="text-sm text-muted-foreground mb-4">
-          MP4 or WebM up to 100MB each. Max 2 videos.
+          MP4 or WebM up to 100MB each. Max 5 videos.
         </p>
         <input
           type="file"
@@ -68,13 +68,13 @@ const VideoUploadZone = ({
           accept="video/mp4,video/webm"
           className="hidden"
           onChange={handleFileSelect}
-          disabled={totalVideos >= 2}
+          disabled={totalVideos >= 5}
         />
         <Button
           type="button"
           variant="secondary"
           onClick={() => document.getElementById("video-upload").click()}
-          disabled={totalVideos >= 2}
+          disabled={totalVideos >= 5}
         >
           Select Videos
         </Button>
