@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { Loader2, MailCheck, MailX } from "lucide-react";
+import { sendLeadNotification } from "@/services/formspreeService";
 
 const ContactForm = ({ propertyId = null }) => {
   const [loading, setLoading] = useState(false);
@@ -69,17 +70,21 @@ const ContactForm = ({ propertyId = null }) => {
 
       if (error) throw error;
 
-      // Step 4: Trigger email notification via Supabase Edge Function
-      try {
-        await supabase.functions.invoke("notify-lead-submission", {
-          body: leadData,
-        });
-      } catch (emailError) {
-        console.error("Email notification failed:", emailError);
-        // Don't block the form submission if email fails
-      }
+      // Send email notification
+      const emailResult = await sendLeadNotification({
+        name: leadData.name,
+        email: leadData.email,
+        phone: leadData.phone,
+        leadType: leadData.leadtype,
+        message: leadData.message,
+        propertyInterest: leadData.propertyinterest,
+      });
 
-      toast.success("Message sent successfully. We will contact you soon.");
+      if (emailResult.success) {
+        toast.success("Message sent successfully. We will contact you soon.");
+      } else {
+        toast.success("Message saved successfully. We will contact you soon.");
+      }
       reset();
       setEmailStatus(null);
     } catch (error) {

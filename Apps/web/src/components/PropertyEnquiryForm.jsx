@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 import { useEmailValidation } from '@/hooks/useEmailValidation';
 import { sanitizeFormData, validators } from '@/middleware/security';
+import { sendLeadNotification } from '@/services/formspreeService';
 
 const PropertyEnquiryForm = ({ propertyId, propertyTitle, onSuccess }) => {
   const [loading, setLoading] = useState(false);
@@ -72,16 +73,17 @@ const PropertyEnquiryForm = ({ propertyId, propertyTitle, onSuccess }) => {
       }
 
       // Send notification email
-      try {
-        await supabase.functions.invoke('notify-lead-submission', {
-          body: {
-            ...sanitized,
-            propertyTitle,
-            inquiryType: 'Property Viewing Request',
-          },
-        });
-      } catch (emailError) {
-        console.error('Email notification failed:', emailError);
+      const notificationResult = await sendLeadNotification({
+        name: sanitized.name,
+        email: sanitized.email,
+        phone: sanitized.phone,
+        leadType: 'Property Viewing Request',
+        message: sanitized.message || '',
+        propertyInterest: propertyTitle || propertyId || '',
+      });
+
+      if (!notificationResult.success) {
+        console.warn('Email notification failed:', notificationResult.error);
       }
 
       toast.success('Enquiry submitted successfully! We will contact you soon to confirm your viewing.');

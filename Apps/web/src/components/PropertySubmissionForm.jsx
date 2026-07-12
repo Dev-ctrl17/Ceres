@@ -20,6 +20,7 @@ import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { Loader2, MailCheck, MailX } from "lucide-react";
+import { sendPropertyNotification } from "@/services/formspreeService";
 
 const PROPERTY_TYPES = [
   "Villa",
@@ -128,19 +129,25 @@ const PropertySubmissionForm = () => {
 
       if (error) throw error;
 
-      // Trigger email notification via Supabase Edge Function
-      try {
-        await supabase.functions.invoke("notify-property-submission", {
-          body: submissionData,
-        });
-      } catch (emailError) {
-        console.error("Email notification failed:", emailError);
-        // Don't block the form submission if email fails
-      }
+      // Send email notification
+      const emailResult = await sendPropertyNotification({
+        title: submissionData.title,
+        price: submissionData.price,
+        location: submissionData.location,
+        property_type: submissionData.property_type,
+        description: submissionData.description,
+        owner_name: submissionData.owner_name,
+        owner_email: submissionData.owner_email,
+        owner_phone: submissionData.owner_phone,
+        image_url: submissionData.imageurl,
+        status: submissionData.status,
+      });
 
-      toast.success(
-        "Property submitted successfully. Our team will review it shortly.",
-      );
+      if (emailResult.success) {
+        toast.success("Property submitted successfully. Our team will review it shortly.");
+      } else {
+        toast.success("Property saved successfully. Our team will review it shortly.");
+      }
       reset();
       setPropertyType("");
     } catch (error) {

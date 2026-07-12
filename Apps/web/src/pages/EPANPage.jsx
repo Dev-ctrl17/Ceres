@@ -13,6 +13,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
+import { sendLeadNotification } from '@/services/formspreeService';
 
 const EPANPage = () => {
   const [agentLoading, setAgentLoading] = useState(false);
@@ -51,6 +52,16 @@ const EPANPage = () => {
         console.error('Agent registration error:', error);
         throw error;
       }
+
+      // Send email notification
+      await sendLeadNotification({
+        name: data.fullName,
+        email: data.email,
+        phone: data.phone,
+        leadType: 'Agent Registration',
+        message: description,
+      });
+      
       toast.success('Registration submitted successfully. We will contact you soon.');
       resetAgent();
     } catch (error) {
@@ -79,6 +90,16 @@ const EPANPage = () => {
         console.error('Partner inquiry error:', error);
         throw error;
       }
+
+      // Send email notification
+      await sendLeadNotification({
+        name: data.contactPerson,
+        email: data.email,
+        phone: data.phone,
+        leadType: 'Partnership Inquiry',
+        message: message,
+      });
+      
       toast.success('Inquiry submitted successfully. Our partnership team will reach out.');
       resetPartner();
       setInquiryType('');
