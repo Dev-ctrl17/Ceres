@@ -9,7 +9,7 @@ import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 import { useEmailValidation } from '@/hooks/useEmailValidation';
 import { sanitizeFormData, validators } from '@/middleware/security';
-import { sendLeadNotification } from '@/services/formspreeService';
+import { sendFormspreeNotification } from '@/hooks/useFormspree';
 
 const PropertyEnquiryForm = ({ propertyId, propertyTitle, onSuccess }) => {
   const [loading, setLoading] = useState(false);
@@ -20,11 +20,7 @@ const PropertyEnquiryForm = ({ propertyId, propertyTitle, onSuccess }) => {
     handleSubmit,
     reset,
     formState: { errors },
-    setValue,
-    watch,
   } = useForm();
-
-  const watchPreferredDate = watch('preferred_date');
 
   const onSubmit = async (data) => {
     setLoading(true);
@@ -72,14 +68,22 @@ const PropertyEnquiryForm = ({ propertyId, propertyTitle, onSuccess }) => {
         });
       }
 
-      // Send notification email
-      const notificationResult = await sendLeadNotification({
+      // Send notification email via Formspree (fire-and-forget after Supabase save)
+      const notificationResult = await sendFormspreeNotification({
+        _subject: `New Viewing Request: ${sanitized.name} - ${propertyTitle || propertyId || ''}`,
         name: sanitized.name,
         email: sanitized.email,
         phone: sanitized.phone,
         leadType: 'Property Viewing Request',
         message: sanitized.message || '',
         propertyInterest: propertyTitle || propertyId || '',
+        preferred_date: sanitized.preferred_date || '',
+        preferred_time: sanitized.preferred_time || '',
+        submitted_at: new Date().toLocaleString('en-NG', {
+          timeZone: 'Africa/Lagos',
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        }),
       });
 
       if (!notificationResult.success) {

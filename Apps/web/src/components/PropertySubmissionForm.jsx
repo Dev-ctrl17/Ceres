@@ -20,7 +20,7 @@ import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { Loader2, MailCheck, MailX } from "lucide-react";
-import { sendPropertyNotification } from "@/services/formspreeService";
+import { sendFormspreeNotification } from "@/hooks/useFormspree";
 
 const PROPERTY_TYPES = [
   "Villa",
@@ -60,13 +60,11 @@ const PropertySubmissionForm = () => {
 
     try {
       // Step 1: Try to verify email via Mailboxlayer (optional - don't block if fails)
-      let emailValid = true;
       try {
         const emailResult = await verifyEmail(data.ownerEmail);
         if (!emailResult.valid) {
           setEmailStatus("invalid");
           toast.warning("Email verification failed, but your submission will still be processed.");
-          emailValid = false;
         } else {
           setEmailStatus("valid");
         }
@@ -129,10 +127,12 @@ const PropertySubmissionForm = () => {
 
       if (error) throw error;
 
-      // Send email notification
-      const emailResult = await sendPropertyNotification({
+      // Send email notification via Formspree (fire-and-forget after Supabase save)
+      const formattedPrice = `₦${Number(submissionData.price).toLocaleString()}`;
+      const emailResult = await sendFormspreeNotification({
+        _subject: `New Property: ${submissionData.title} - ${formattedPrice}`,
         title: submissionData.title,
-        price: submissionData.price,
+        price: formattedPrice,
         location: submissionData.location,
         property_type: submissionData.property_type,
         description: submissionData.description,
@@ -141,6 +141,11 @@ const PropertySubmissionForm = () => {
         owner_phone: submissionData.owner_phone,
         image_url: submissionData.imageurl,
         status: submissionData.status,
+        submitted_at: new Date().toLocaleString('en-NG', {
+          timeZone: 'Africa/Lagos',
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        }),
       });
 
       if (emailResult.success) {

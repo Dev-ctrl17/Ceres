@@ -8,7 +8,7 @@ import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { Loader2, MailCheck, MailX } from "lucide-react";
-import { sendLeadNotification } from "@/services/formspreeService";
+import { sendFormspreeNotification } from "@/hooks/useFormspree";
 
 const ContactForm = ({ propertyId = null }) => {
   const [loading, setLoading] = useState(false);
@@ -36,13 +36,11 @@ const ContactForm = ({ propertyId = null }) => {
 
     try {
       // Step 1: Try to verify email via Mailboxlayer (optional - don't block if fails)
-      let emailValid = true;
       try {
         const emailResult = await verifyEmail(data.email);
         if (!emailResult.valid) {
           setEmailStatus("invalid");
           toast.warning("Email verification failed, but your message will still be sent.");
-          emailValid = false;
         } else {
           setEmailStatus("valid");
         }
@@ -70,14 +68,20 @@ const ContactForm = ({ propertyId = null }) => {
 
       if (error) throw error;
 
-      // Send email notification
-      const emailResult = await sendLeadNotification({
+      // Send email notification via Formspree (fire-and-forget after Supabase save)
+      const emailResult = await sendFormspreeNotification({
+        _subject: `New Lead: ${leadData.name} - ${leadData.leadtype}`,
         name: leadData.name,
         email: leadData.email,
         phone: leadData.phone,
         leadType: leadData.leadtype,
         message: leadData.message,
         propertyInterest: leadData.propertyinterest,
+        submitted_at: new Date().toLocaleString('en-NG', {
+          timeZone: 'Africa/Lagos',
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        }),
       });
 
       if (emailResult.success) {
