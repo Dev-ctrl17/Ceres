@@ -11,11 +11,17 @@ const AgentsPage = () => {
   const { agents, loading } = useAgents();
 
   const getAgentPhotoUrl = (agent) => {
+    // Admin form saves full public URL in 'photo', so return as-is
     if (agent.photo) {
-      return getFileUrl("agent-photos", agent.photo);
+      return agent.photo.startsWith("http")
+        ? agent.photo
+        : getFileUrl("agent-photos", agent.photo);
     }
+    // Fallback for 'image' field (legacy support)
     if (agent.image) {
-      return getFileUrl("agent-photos", agent.image);
+      return agent.image.startsWith("http")
+        ? agent.image
+        : getFileUrl("agent-photos", agent.image);
     }
     return null;
   };
@@ -79,9 +85,9 @@ const AgentsPage = () => {
                 {agents.map((agent, index) => {
                   const photoUrl = getAgentPhotoUrl(agent);
                   return (
-                    <Card key={agent.id} className="overflow-hidden agent-card" style={{ animationDelay: `${index * 0.1}s` }}>
-                      <CardContent className="p-6 text-center">
-                        <div className="w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden bg-muted">
+                    <Card key={agent.id} className="overflow-hidden agent-card hover:shadow-lg transition-shadow duration-300" style={{ animationDelay: `${index * 0.1}s` }}>
+                      <CardContent className="p-0">
+                        <div className="relative w-full aspect-[4/3] bg-muted">
                           {photoUrl ? (
                             <img
                               src={photoUrl}
@@ -90,54 +96,58 @@ const AgentsPage = () => {
                               loading="lazy"
                             />
                           ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-primary/10">
-                              <span className="text-4xl font-bold text-primary">
+                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-primary/5">
+                              <span className="text-6xl font-bold text-primary/40">
                                 {agent.name?.charAt(0) || '?'}
                               </span>
                             </div>
                           )}
+                          {agent.rating && (
+                            <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full flex items-center gap-1 shadow-sm">
+                              <Star className="w-3.5 h-3.5 text-primary fill-primary" />
+                              <span className="text-xs font-semibold">{agent.rating.toFixed(1)}</span>
+                            </div>
+                          )}
                         </div>
-                        <h3 className="text-xl font-semibold mb-1">{agent.name}</h3>
-                        {agent.position && (
-                          <p className="text-sm font-medium text-primary mb-1">{agent.position}</p>
-                        )}
-                        {agent.specialization && (
-                          <p className="text-sm text-muted-foreground mb-3">{agent.specialization}</p>
-                        )}
-                        {agent.rating && (
-                          <div className="flex items-center justify-center mb-3">
-                            <Star className="w-4 h-4 text-primary fill-primary mr-1" />
-                            <span className="font-medium">{agent.rating.toFixed(1)}</span>
+                        <div className="p-5">
+                          <h3 className="text-lg font-semibold mb-1">{agent.name}</h3>
+                          {agent.position && (
+                            <p className="text-sm font-medium text-primary mb-2">{agent.position}</p>
+                          )}
+                          {agent.specialization && (
+                            <p className="text-xs text-muted-foreground mb-3 line-clamp-2">{agent.specialization}</p>
+                          )}
+                          {agent.listingscount && (
+                            <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-3">
+                              <div className="w-1.5 h-1.5 rounded-full bg-primary"></div>
+                              <span>{agent.listingscount} active listings</span>
+                            </div>
+                          )}
+                          {agent.locations && (
+                            <p className="text-xs text-muted-foreground mb-3 flex items-start gap-1.5">
+                              <span className="text-sm leading-none">📍</span>
+                              <span className="line-clamp-1">{agent.locations}</span>
+                            </p>
+                          )}
+                          {agent.bio && (
+                            <p className="text-xs text-muted-foreground mb-4 line-clamp-2 leading-relaxed">
+                              {agent.bio}
+                            </p>
+                          )}
+                          <div className="space-y-2 text-xs border-t pt-3">
+                            {agent.email && (
+                              <div className="flex items-center gap-2 text-muted-foreground">
+                                <Mail className="w-3.5 h-3.5 flex-shrink-0" />
+                                <span className="truncate">{agent.email}</span>
+                              </div>
+                            )}
+                            {agent.phone && (
+                              <div className="flex items-center gap-2 text-muted-foreground">
+                                <Phone className="w-3.5 h-3.5 flex-shrink-0" />
+                                <span>{agent.phone}</span>
+                              </div>
+                            )}
                           </div>
-                        )}
-                        {agent.listingscount && (
-                          <p className="text-sm text-muted-foreground mb-4">
-                            {agent.listingscount} active listings
-                          </p>
-                        )}
-                        {agent.locations && (
-                          <p className="text-sm text-muted-foreground mb-4">
-                            📍 {agent.locations}
-                          </p>
-                        )}
-                        {agent.bio && (
-                          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                            {agent.bio}
-                          </p>
-                        )}
-                        <div className="space-y-2 text-sm">
-                          {agent.email && (
-                            <div className="flex items-center justify-center text-muted-foreground">
-                              <Mail className="w-4 h-4 mr-2" />
-                              <span>{agent.email}</span>
-                            </div>
-                          )}
-                          {agent.phone && (
-                            <div className="flex items-center justify-center text-muted-foreground">
-                              <Phone className="w-4 h-4 mr-2" />
-                              <span>{agent.phone}</span>
-                            </div>
-                          )}
                         </div>
                       </CardContent>
                     </Card>

@@ -9,6 +9,7 @@ import supabase from "@/lib/supabaseClient";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { Loader2, MailCheck, MailX } from "lucide-react";
 import { sendFormspreeNotification } from "@/hooks/useFormspree";
+import { sendWhatsAppNotification } from "@/hooks/useWhatsApp";
 
 const ContactForm = ({ propertyId = null }) => {
   const [loading, setLoading] = useState(false);
@@ -83,6 +84,25 @@ const ContactForm = ({ propertyId = null }) => {
           timeStyle: 'short',
         }),
       });
+
+      // Send WhatsApp notification (fire-and-forget, don't block on it)
+      const whatsappResult = await sendWhatsAppNotification({
+        type: 'contact_form',
+        name: leadData.name,
+        email: leadData.email,
+        phone: leadData.phone,
+        subject: leadData.leadtype,
+        message: leadData.message,
+        submitted_at: new Date().toLocaleString('en-NG', {
+          timeZone: 'Africa/Lagos',
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        }),
+      });
+
+      if (!whatsappResult.success) {
+        console.warn('WhatsApp notification failed:', whatsappResult.error);
+      }
 
       if (emailResult.success) {
         toast.success("Message sent successfully. We will contact you soon.");

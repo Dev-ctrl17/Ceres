@@ -10,6 +10,7 @@ import supabase from '@/lib/supabaseClient';
 import { useEmailValidation } from '@/hooks/useEmailValidation';
 import { sanitizeFormData, validators } from '@/middleware/security';
 import { sendFormspreeNotification } from '@/hooks/useFormspree';
+import { sendWhatsAppNotification } from '@/hooks/useWhatsApp';
 
 const PropertyEnquiryForm = ({ propertyId, propertyTitle, onSuccess }) => {
   const [loading, setLoading] = useState(false);
@@ -88,6 +89,27 @@ const PropertyEnquiryForm = ({ propertyId, propertyTitle, onSuccess }) => {
 
       if (!notificationResult.success) {
         console.warn('Email notification failed:', notificationResult.error);
+      }
+
+      // Send WhatsApp notification (fire-and-forget, don't block on it)
+      const whatsappResult = await sendWhatsAppNotification({
+        type: 'property_enquiry',
+        name: sanitized.name,
+        email: sanitized.email,
+        phone: sanitized.phone,
+        propertyInterest: propertyTitle || propertyId || '',
+        message: sanitized.message || '',
+        preferred_date: sanitized.preferred_date || '',
+        preferred_time: sanitized.preferred_time || '',
+        submitted_at: new Date().toLocaleString('en-NG', {
+          timeZone: 'Africa/Lagos',
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        }),
+      });
+
+      if (!whatsappResult.success) {
+        console.warn('WhatsApp notification failed:', whatsappResult.error);
       }
 
       toast.success('Enquiry submitted successfully! We will contact you soon to confirm your viewing.');

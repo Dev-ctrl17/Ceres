@@ -1,56 +1,33 @@
 -- ============================================================
--- SUPABASE STORAGE POLICIES
--- Run this in Supabase SQL Editor to fix storage upload issues
+-- SUPABASE STORAGE POLICIES - PUBLIC UPLOAD FIX
+-- ============================================================
+-- BUG FIX (July 2026): Allow public users to upload images
+-- Previously required auth.role() = 'authenticated', which blocked
+-- anonymous users on the Sell page from uploading property images.
 -- ============================================================
 
--- Storage policies for property-images bucket
--- This allows public uploads to the property-images bucket
-
--- Update bucket settings if it exists (don't try to create if already exists)
-UPDATE storage.buckets 
-SET 
-  public = true,
-  file_size_limit = 52428800, -- 50MB limit
-  allowed_mime_types = ARRAY['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif']::text[]
-WHERE id = 'property-images';
-
--- Drop existing policies if they exist
+-- Drop the old authenticated-only policy if it still exists
 DROP POLICY IF EXISTS "Public can upload property images" ON storage.objects;
-DROP POLICY IF EXISTS "Public can view property images" ON storage.objects;
-DROP POLICY IF EXISTS "Public can update property images" ON storage.objects;
-DROP POLICY IF EXISTS "Public can delete property images" ON storage.objects;
 
--- Policy: Allow uploads to property-images bucket
-CREATE POLICY "Public can upload property images"
-ON storage.objects FOR INSERT
-WITH CHECK (
-  bucket_id = 'property-images'
-  AND auth.role() = 'authenticated'
-);
+-- Create or replace the public upload policy
+-- Uses IF NOT EXISTS to avoid errors if already applied
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_policies 
+    WHERE schemaname = 'storage' 
+    AND tablename = 'objects' 
+    AND policyname = 'Anyone can upload property images'
+  ) THEN
+    CREATE POLICY "Anyone can upload property images"
+    ON storage.objects FOR INSERT
+    WITH CHECK (bucket_id = 'property-images');
+  END IF;
+END $$;
 
--- Policy: Allow viewing images from property-images bucket
-CREATE POLICY "Public can view property images"
-ON storage.objects FOR SELECT
-USING (
-  bucket_id = 'property-images'
-);
-
--- Policy: Allow updates to property-images bucket
-CREATE POLICY "Public can update property images"
-ON storage.objects FOR UPDATE
-USING (
-  bucket_id = 'property-images'
-  AND auth.role() = 'authenticated'
-);
-
--- Policy: Allow deletes from property-images bucket
-CREATE POLICY "Public can delete property images"
-ON storage.objects FOR DELETE
-USING (
-  bucket_id = 'property-images'
-  AND auth.role() = 'authenticated'
-);
-
--- Note: Storage policies require manual setup in Supabase Dashboard
--- Go to Storage → property-images bucket → Policies tab
--- Add the following policies manually through the UI
+-- ============================================================
+-- STATUS CHECK: Run this to verify the policy is active
+-- ============================================================
+-- SELECT policyname, roles, cmd, qual, with_check
+-- FROM pg_policies
+-- WHERE tablename = 'objects' AND policyname = 'Anyone can upload property images';

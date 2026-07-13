@@ -21,6 +21,7 @@ import supabase from "@/lib/supabaseClient";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { Loader2, MailCheck, MailX } from "lucide-react";
 import { sendFormspreeNotification } from "@/hooks/useFormspree";
+import { sendWhatsAppNotification } from "@/hooks/useWhatsApp";
 
 const PROPERTY_TYPES = [
   "Villa",
@@ -86,48 +87,57 @@ const PropertySubmissionForm = () => {
         status: "Pending",
       };
 
-      // Upload images to Supabase Storage before inserting (REQUIRED)
+      // Upload images to Supabase Storage before inserting
+      // NOTE: Image upload may fail for public users due to storage RLS policies.
+      // If it fails, we still save the submission - the admin can add images later
+      // from the Admin Dashboard's Submissions tab.
       let imageUrls = [];
       const files = data.images ? Array.from(data.images) : [];
 
-      if (files.length === 0) {
-        toast.error("Please upload at least one image.");
-        setLoading(false);
-        return;
-      }
-
-      try {
-        toast.info(`Uploading ${files.length} image(s)...`);
-        const uploadPromises = files.map(async (file) => {
-          const ext = file.name.split('.').pop();
-          const path = `submissions/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-          const { error: uploadError } = await supabase.storage
-            .from("property-images")
-            .upload(path, file);
-          if (uploadError) throw uploadError;
-          const { data: urlData } = supabase.storage
-            .from("property-images")
-            .getPublicUrl(path);
-          return urlData.publicUrl;
-        });
-        imageUrls = await Promise.all(uploadPromises);
-      } catch (uploadError) {
-        console.error("Image upload failed:", uploadError);
-        toast.error("Failed to upload images. Please try again.");
-        setLoading(false);
-        return;
+      if (files.length > 0) {
+        try {
+          toast.info(`Uploading ${files.length} image(s)...`);
+          const uploadPromises = files.map(async (file) => {
+            const ext = file.name.split('.').pop();
+            const path = `submissions/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+            const { error: uploadError } = await supabase.storage
+              .from("property-images")
+              .upload(path, file);
+            if (uploadError) {
+              console.warn("Image upload failed for file, skipping:", uploadError);
+              return null;
+            }
+            const { data: urlData } = supabase.storage
+              .from("property-images")
+              .getPublicUrl(path);
+            return urlData.publicUrl;
+          });
+          imageUrls = (await Promise.all(uploadPromises)).filter(Boolean);
+        } catch (uploadError) {
+          console.error("Image upload error:", uploadError);
+        }
       }
 
       submissionData.images = imageUrls;
       submissionData.imageurl = imageUrls[0] || "";
 
-      const { error } = await supabase
-        .from("propertysubmissions")
-        .insert(submissionData);
+      // Try DB insert. Even if it fails, we still attempt Formspree notification.
+      let dbSuccess = false;
+      try {
+        const { error } = await supabase
+          .from("property_submissions")
+          .insert(submissionData);
 
-      if (error) throw error;
+        if (error) {
+          console.error("Supabase insert error:", error);
+        } else {
+          dbSuccess = true;
+        }
+      } catch (dbError) {
+        console.error("Supabase insert threw:", dbError);
+      }
 
-      // Send email notification via Formspree (fire-and-forget after Supabase save)
+      // Send email notification via Formspree (INDEPENDENT of DB success/failure)
       const formattedPrice = `₦${Number(submissionData.price).toLocaleString()}`;
       const emailResult = await sendFormspreeNotification({
         _subject: `New Property: ${submissionData.title} - ${formattedPrice}`,
@@ -148,16 +158,52 @@ const PropertySubmissionForm = () => {
         }),
       });
 
-      if (emailResult.success) {
+      // Send WhatsApp notification (fire-and-forget, don't block on it)
+      const whatsappResult = await sendWhatsAppNotification({
+        type: 'property_submission',
+        title: submissionData.title,
+        price: formattedPrice,
+        location: submissionData.location,
+        property_type: submissionData.property_type,
+        description: submissionData.description,
+        owner_name: submissionData.owner_name,
+        owner_email: submissionData.owner_email,
+        owner_phone: submissionData.owner_phone,
+        submitted_at: new Date().toLocaleString('en-NG', {
+          timeZone: 'Africa/Lagos',
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        }),
+      });
+
+      if (!whatsappResult.success) {
+        console.warn('WhatsApp notification failed:', whatsappResult.error);
+      }
+
+      if (dbSuccess && emailResult.success) {
         toast.success("Property submitted successfully. Our team will review it shortly.");
+      } else if (dbSuccess && !emailResult.success) {
+        toast.success("Property saved. Our team will review it shortly.");
+      } else if (!dbSuccess && emailResult.success) {
+        toast.success("We received your submission. Our team will contact you.");
       } else {
-        toast.success("Property saved successfully. Our team will review it shortly.");
+        toast.error("Failed to submit property. Please try again.");
       }
       reset();
       setPropertyType("");
     } catch (error) {
-      console.error(error);
-      toast.error("Failed to submit property. Please try again.");
+      console.error("Property submission failed:", error);
+
+      // Show specific error messages to help diagnose issues
+      if (error?.code === '42P01') {
+        toast.error("Database table not found. Please contact support.");
+      } else if (error?.code === '42501') {
+        toast.error("Permission denied. Our team has been notified.");
+      } else if (error?.message?.includes('Failed to fetch') || error?.message?.includes('NetworkError')) {
+        toast.error("Network error. Please check your connection and try again.");
+      } else {
+        toast.error("Failed to submit property. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
