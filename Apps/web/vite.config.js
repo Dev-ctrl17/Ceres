@@ -12,6 +12,18 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  server: {
+    watch: {
+      // Exclude large directories from watching to reduce memory usage
+      ignored: [
+        '**/node_modules/**',
+        '**/dist/**',
+        '**/.git/**',
+        '**/build/**',
+        '**/coverage/**',
+      ],
+    },
+  },
   build: {
     // NOTE: cssCodeSplit must remain true (Vite default) to allow Vite's
     // HTML/CSS asset pipeline to function correctly. Setting it to false
