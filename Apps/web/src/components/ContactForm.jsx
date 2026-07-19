@@ -109,6 +109,12 @@ const ContactForm = ({ propertyId = null }) => {
       } else {
         toast.success("Message saved successfully. We will contact you soon.");
       }
+
+      // Fire Google Ads conversion event on successful form submission
+      if (typeof gtag === 'function') {
+        gtag('event', 'conversion', {'send_to': 'AW-18266097278/EKtWCKiq4tIcEP6M-oVE'});
+      }
+
       reset();
       setEmailStatus(null);
     } catch (error) {
