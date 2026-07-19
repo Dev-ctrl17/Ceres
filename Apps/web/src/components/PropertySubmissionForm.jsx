@@ -119,7 +119,7 @@ const PropertySubmissionForm = () => {
       }
 
       submissionData.images = imageUrls;
-      submissionData.imageurl = imageUrls[0] || "";
+      submissionData.image_url = imageUrls[0] || "";
 
       // Try DB insert. Even if it fails, we still attempt Formspree notification.
       let dbSuccess = false;
@@ -149,7 +149,7 @@ const PropertySubmissionForm = () => {
         owner_name: submissionData.owner_name,
         owner_email: submissionData.owner_email,
         owner_phone: submissionData.owner_phone,
-        image_url: submissionData.imageurl,
+        image_url: submissionData.image_url,
         status: submissionData.status,
         submitted_at: new Date().toLocaleString('en-NG', {
           timeZone: 'Africa/Lagos',
