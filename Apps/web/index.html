@@ -206,8 +206,14 @@
       }
     </script>
     
-    <!-- Preload LCP hero image for immediate discovery - first slide -->
-    <link rel="preload" as="image" href="https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg" fetchpriority="high" />
+    <!-- NOTE: Home page hero image preload removed from here.
+         This is a single-page app: index.html is served for every route,
+         so a global <link rel="preload"> here was firing (and wasting
+         bandwidth) on every page, not just Home. The Home page's own
+         hero <img loading="eager" fetchpriority="high"> already gives
+         the browser the priority hint it needs, scoped correctly to
+         just that route. -->
+
   </head>
   <body>
     <div id="root"></div>

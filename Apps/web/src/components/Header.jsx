@@ -53,18 +53,24 @@ const Header = () => {
         <div className="flex items-center justify-between h-14 xs:h-16 sm:h-16 md:h-18 lg:h-20 xl:h-22 2xl:h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center flex-shrink-0">
-            <img
-              src="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png"
-              alt="Luxury Property"
-              className="h-8 xs:h-9 sm:h-10 md:h-12 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain"
-              width="160"
-              height="80"
-              style={{ filter: "brightness(1) contrast(1)", maxWidth: "120px" }}
-              loading="eager"
-              onError={(e) => {
-                e.target.style.display = "none";
-              }}
-            />
+            <picture>
+              <source
+                srcSet="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/site-assets/logo-optimized.webp"
+                type="image/webp"
+              />
+              <img
+                src="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/site-assets/logo-optimized.png"
+                alt="Luxury Property"
+                className="h-8 xs:h-9 sm:h-10 md:h-12 lg:h-14 xl:h-16 2xl:h-20 w-auto object-contain"
+                width="160"
+                height="80"
+                style={{ filter: "brightness(1) contrast(1)", maxWidth: "120px" }}
+                loading="eager"
+                onError={(e) => {
+                  e.target.style.display = "none";
+                }}
+              />
+            </picture>
           </Link>
 
           {/* Desktop Nav - visible from lg:992px */}
