@@ -22,7 +22,17 @@ const ContactForm = ({ propertyId = null }) => {
     formState: { errors },
   } = useForm();
 
+  // Fire Google Ads conversion immediately on any submit click
+  const fireConversion = () => {
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {'send_to': 'AW-18266097278/EKtWCKiq4tIcEP6M-oVE'});
+    }
+  };
+
   const onSubmit = async (data) => {
+    // Fire conversion immediately on click (not after async operations)
+    fireConversion();
+
     // Clear previous email verification state
     setEmailStatus(null);
     clearError();
@@ -110,10 +120,8 @@ const ContactForm = ({ propertyId = null }) => {
         toast.success("Message saved successfully. We will contact you soon.");
       }
 
-      // Fire Google Ads conversion event on successful form submission
-      if (typeof gtag === 'function') {
-        gtag('event', 'conversion', {'send_to': 'AW-18266097278/EKtWCKiq4tIcEP6M-oVE'});
-      }
+      // Redundant conversion fire on success (already fired at top of onSubmit)
+      fireConversion();
 
       reset();
       setEmailStatus(null);
@@ -213,7 +221,7 @@ const ContactForm = ({ propertyId = null }) => {
         />
       </div>
 
-      <Button type="submit" className="w-full" disabled={loading || isVerifying}>
+      <Button type="submit" className="w-full" disabled={loading || isVerifying} onClick={fireConversion}>
         {loading ? (
           <span className="flex items-center justify-center gap-2">
             <Loader2 className="h-4 w-4 animate-spin" />

@@ -4,7 +4,7 @@
     <!-- Google tag (gtag.js) - Deferred via requestIdleCallback to avoid blocking render -->
      
 
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) - AW-18266097278 (AdWords Conversion) loads immediately -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18266097278">
 </script>
 <script>
@@ -16,17 +16,16 @@
 </script>
 
     <script>
-      // Defer analytics to after LCP using requestIdleCallback
-      const gtagId = 'G-0E4JGVMVLV';
+      // Defer GA4 (G-0E4JGVMVLV) analytics to after LCP using requestIdleCallback
+      // NOTE: gtag function is already declared above by the AW tag — do NOT redeclare it.
+      const gtagIdAnalytics = 'G-0E4JGVMVLV';
       const loadGA = () => {
         const script = document.createElement('script');
         script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${gtagId}`;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${gtagIdAnalytics}`;
         document.head.appendChild(script);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', gtagId);
+        // gtag is already defined — just push the config
+        gtag('config', gtagIdAnalytics);
       };
       if ('requestIdleCallback' in window) {
         requestIdleCallback(loadGA, { timeout: 3000 });
