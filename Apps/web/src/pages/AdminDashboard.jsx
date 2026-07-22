@@ -20,6 +20,7 @@ import {
   Check,
   Award,
   FileText,
+  HardHat,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -84,6 +85,7 @@ const TABS = [
   { id: "submissions", label: "Submissions", icon: Inbox },
   { id: "brochures", label: "Brochures", icon: FileText },
   { id: "proposals", label: "Client Success", icon: Award },
+  { id: "ongoing", label: "Ongoing Projects", icon: HardHat },
   { id: "agents", label: "Agents", icon: Users },
   { id: "team", label: "Team Members", icon: UsersRound },
   { id: "reviews", label: "Reviews", icon: Star },
@@ -106,6 +108,8 @@ const DashboardTabs = () => {
         return BrochuresManager;
       case "proposals":
         return ProposalsManager;
+      case "ongoing":
+        return OngoingProjectsManager;
       case "testimonials":
         return TestimonialsManager;
       case "team":
@@ -2780,6 +2784,317 @@ const TeamMembersManager = () => {
             </div>
           );
         })}
+      </div>
+    </div>
+  );
+};
+
+// ---------- Ongoing Projects Manager ----------
+const OngoingProjectsManager = () => {
+  const [projects, setProjects] = useState([]);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [editing, setEditing] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
+  const [existingImageUrl, setExistingImageUrl] = useState("");
+  const [uploading, setUploading] = useState(false);
+  const { register, handleSubmit, reset, control } = useForm();
+
+  const fetchProjects = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("ongoing_projects")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) throw error;
+      setProjects(data || []);
+    } catch (err) {
+      toast.error("Failed to load ongoing projects");
+    }
+  };
+
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  // Cleanup object URL previews on unmount
+  useEffect(() => {
+    return () => {
+      imagePreview && URL.revokeObjectURL(imagePreview);
+    };
+  }, [imagePreview]);
+
+  const openCreate = () => {
+    setEditing(null);
+    reset({
+      name: "",
+      estimated_delivery: "",
+      address: "",
+      description: "",
+      status: "In Progress",
+    });
+    setImageFile(null);
+    setImagePreview(null);
+    setExistingImageUrl("");
+    setDialogOpen(true);
+  };
+
+  const openEdit = (project) => {
+    setEditing(project.id);
+    reset({
+      name: project.name,
+      estimated_delivery: project.estimated_delivery,
+      address: project.address,
+      description: project.description || "",
+      status: project.status,
+    });
+    setExistingImageUrl(project.image_url || "");
+    setImageFile(null);
+    setImagePreview(null);
+    setDialogOpen(true);
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImageFile(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
+
+  const onSubmit = async (data) => {
+    setUploading(true);
+    try {
+      let imageUrl = existingImageUrl;
+
+      // Upload new image if selected
+      if (imageFile) {
+        toast.info("Uploading image...");
+        const imagePath = await uploadFile("ongoing-project-images", imageFile, "ongoing_projects");
+        imageUrl = getFileUrl("ongoing-project-images", imagePath) || imagePath;
+      }
+
+      const submitData = {
+        name: data.name,
+        estimated_delivery: data.estimated_delivery,
+        address: data.address,
+        description: data.description || null,
+        image_url: imageUrl || null,
+        status: data.status,
+      };
+
+      if (editing) {
+        const { error } = await supabase
+          .from("ongoing_projects")
+          .update(submitData)
+          .eq("id", editing);
+
+        if (error) throw error;
+        toast.success("Project updated");
+      } else {
+        const { error } = await supabase
+          .from("ongoing_projects")
+          .insert(submitData);
+
+        if (error) throw error;
+        toast.success("Project created");
+      }
+
+      setDialogOpen(false);
+      fetchProjects();
+    } catch (err) {
+      toast.error(err.message || "Operation failed");
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDelete = async (id) => {
+    if (!window.confirm("Delete this ongoing project?")) return;
+    try {
+      const { error } = await supabase
+        .from("ongoing_projects")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+      toast.success("Project deleted");
+      fetchProjects();
+    } catch (err) {
+      toast.error("Delete failed");
+    }
+  };
+
+  const getStatusBadgeColor = (status) => {
+    switch (status) {
+      case "Delivered":
+        return "bg-green-100 text-green-700";
+      case "Nearing Completion":
+        return "bg-blue-100 text-blue-700";
+      default:
+        return "bg-yellow-100 text-yellow-700";
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-xl font-semibold">Ongoing Projects</h2>
+        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+          <DialogTrigger asChild>
+            <Button onClick={openCreate}>
+              <Plus className="w-4 h-4 mr-2" />
+              Add Project
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle>
+                {editing ? "Edit Project" : "Add New Project"}
+              </DialogTitle>
+            </DialogHeader>
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Project Name *</label>
+                <Input
+                  placeholder="e.g. Eko Atlantic Towers"
+                  {...register("name", { required: true })}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Estimated Delivery *</label>
+                <Input
+                  type="date"
+                  {...register("estimated_delivery", { required: true })}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Address *</label>
+                <Input
+                  placeholder="e.g. 123 Marina, Lagos Island"
+                  {...register("address", { required: true })}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Description</label>
+                <Textarea
+                  placeholder="Short project summary (optional)"
+                  {...register("description")}
+                  rows={3}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">Status *</label>
+                <Controller
+                  name="status"
+                  control={control}
+                  defaultValue="In Progress"
+                  render={({ field }) => (
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="In Progress">In Progress</SelectItem>
+                        <SelectItem value="Nearing Completion">Nearing Completion</SelectItem>
+                        <SelectItem value="Delivered">Delivered</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-sm font-medium">
+                  Project Image
+                  <span className="text-muted-foreground font-normal ml-1">— optional</span>
+                </label>
+                <Input
+                  type="file"
+                  accept="image/jpeg,image/jpg,image/png,image/webp"
+                  onChange={handleImageChange}
+                />
+                {(imagePreview || existingImageUrl) && (
+                  <div className="mt-2">
+                    <img
+                      src={imagePreview || existingImageUrl}
+                      alt="Project preview"
+                      className="w-full h-40 object-cover rounded-lg"
+                    />
+                  </div>
+                )}
+                <p className="text-xs text-muted-foreground">
+                  JPG, PNG, or WebP. Recommended size: 1200×800px.
+                </p>
+              </div>
+
+              <Button type="submit" className="w-full" disabled={uploading}>
+                {uploading ? "Uploading..." : editing ? "Update Project" : "Create Project"}
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
+      </div>
+
+      <div className="grid gap-4">
+        {projects.length === 0 ? (
+          <div className="bg-white p-8 rounded-lg shadow text-center text-gray-500">
+            No ongoing projects found. Click "Add Project" to create one.
+          </div>
+        ) : (
+          projects.map((p) => (
+            <div
+              key={p.id}
+              className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
+            >
+              <div className="flex items-center gap-3 flex-1 min-w-0">
+                <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
+                  {p.image_url ? (
+                    <img
+                      src={p.image_url.startsWith("http") ? p.image_url : getFileUrl("ongoing-project-images", p.image_url)}
+                      alt={p.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-400">
+                      <HardHat className="w-6 h-6" />
+                    </div>
+                  )}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-semibold truncate">{p.name}</h3>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${getStatusBadgeColor(p.status)}`}>
+                      {p.status}
+                    </span>
+                  </div>
+                  <p className="text-sm text-gray-500 truncate">{p.address}</p>
+                  <div className="flex gap-3 text-xs text-gray-400 mt-1">
+                    <span>📅 Est. {p.estimated_delivery}</span>
+                    {p.description && <span className="truncate">{p.description}</span>}
+                  </div>
+                </div>
+              </div>
+              <div className="flex gap-2 flex-shrink-0">
+                <Button size="sm" variant="outline" onClick={() => openEdit(p)}>
+                  <Edit className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => handleDelete(p.id)}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

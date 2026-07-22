@@ -514,3 +514,23 @@ export const proposalsApi = {
   update: (id, data) => updateRecord('proposals', id, data),
   delete: (id) => deleteRecord('proposals', id),
 };
+
+// --- Ongoing Projects ---
+export const ongoingProjectsApi = {
+  getAll: (filters = {}) => {
+    let query = supabase
+      .from('ongoing_projects')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (filters.status && filters.status !== 'all') {
+      query = query.eq('status', filters.status);
+    }
+
+    return query;
+  },
+  getById: (id) => fetchById('ongoing_projects', id),
+  create: (data) => createRecord('ongoing_projects', data),
+  update: (id, data) => updateRecord('ongoing_projects', id, data),
+  delete: (id) => deleteRecord('ongoing_projects', id),
+};

@@ -36,6 +36,7 @@ const ContactPage = () => {
               loading="eager"
               fetchpriority="high"
             />
+            <div className="absolute inset-0 bg-black/50" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
             <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Contact Us</h1>
