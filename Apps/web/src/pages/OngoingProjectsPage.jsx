@@ -43,8 +43,11 @@ const OngoingProjectsPage = () => {
       
       <main>
         {/* Hero Section */}
-        <section className="relative py-24 bg-primary text-primary-foreground">
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
+        <section
+          className="relative py-24 text-white bg-cover bg-center"
+          style={{ backgroundImage: "url('https://www.image2url.com/r2/default/images/1784763338935-d269b047-afd7-4cf5-930c-63f36c97b567.png')" }}
+        >
+          <div className="absolute inset-0 bg-black/50" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-6">Ongoing Projects</h1>
