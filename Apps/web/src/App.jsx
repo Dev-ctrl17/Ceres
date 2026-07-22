@@ -35,6 +35,7 @@ const ClientSuccessPage = lazy(() => import("./pages/ClientSuccessPage.jsx"));
 const ClientSuccessDetailPage = lazy(() => import("./pages/ClientSuccessDetailPage.jsx"));
 const InvestmentBriefPage = lazy(() => import("./pages/InvestmentBriefPage.jsx"));
 const OngoingProjectsPage = lazy(() => import("./pages/OngoingProjectsPage.jsx"));
+const OngoingProjectDetailsPage = lazy(() => import("./pages/OngoingProjectDetailsPage.jsx"));
 
 // Loading fallback component
 const PageLoading = () => (
@@ -82,6 +83,7 @@ function App() {
             <Route path="/client-success" element={<ClientSuccessPage />} />
             <Route path="/client-success/:slug" element={<ClientSuccessDetailPage />} />
             <Route path="/ongoing-projects" element={<OngoingProjectsPage />} />
+            <Route path="/ongoing-projects/:id" element={<OngoingProjectDetailsPage />} />
             <Route path="/investment-brief" element={<InvestmentBriefPage />} />
             <Route path="/investment-brief/:id" element={<InvestmentBriefPage />} />
             <Route path="/investment-briefs/:slug" element={<InvestmentBriefPage />} />

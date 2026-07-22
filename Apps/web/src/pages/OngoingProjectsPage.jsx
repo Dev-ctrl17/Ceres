@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { HardHat, Calendar, MapPin, FileText } from 'lucide-react';
+import { HardHat, Calendar, MapPin, FileText, PlayCircle } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
@@ -82,54 +83,62 @@ const OngoingProjectsPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
-                      <div className="aspect-video bg-muted rounded-t-xl overflow-hidden relative">
-                        {(() => {
-                          const images = project.image_urls?.length ? project.image_urls : (project.image_url ? [project.image_url] : []);
-                          const resolve = (img) => img.startsWith('http') ? img : `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/ongoing-project-images/${img}`;
-                          return images.length > 0 ? (
-                            <img
-                              src={resolve(images[0])}
-                              alt={project.name}
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                              loading="lazy"
-                            />
-                          ) : (
-                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
-                              <HardHat className="w-16 h-16 text-primary/50" />
+                    <Link to={`/ongoing-projects/${project.id}`} className="block h-full">
+                      <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
+                        <div className="aspect-video bg-muted rounded-t-xl overflow-hidden relative">
+                          {(() => {
+                            const images = project.image_urls?.length ? project.image_urls : (project.image_url ? [project.image_url] : []);
+                            const resolve = (img) => img.startsWith('http') ? img : `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/ongoing-project-images/${img}`;
+                            return images.length > 0 ? (
+                              <img
+                                src={resolve(images[0])}
+                                alt={project.name}
+                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                                loading="lazy"
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
+                                <HardHat className="w-16 h-16 text-primary/50" />
+                              </div>
+                            );
+                          })()}
+                          {(project.image_urls?.length > 1) && (
+                            <div className="absolute bottom-3 left-3 px-2 py-1 rounded-md text-xs font-medium bg-black/60 text-white">
+                              +{project.image_urls.length - 1} more
                             </div>
-                          );
-                        })()}
-                        {(project.image_urls?.length > 1) && (
-                          <div className="absolute bottom-3 left-3 px-2 py-1 rounded-md text-xs font-medium bg-black/60 text-white">
-                            +{project.image_urls.length - 1} more
-                          </div>
-                        )}
-                        <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold shadow-lg ${statusBadgeColor(project.status)}`}>
-                          {project.status}
-                        </div>
-                      </div>
-                      <CardContent className="p-6">
-                        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                          {project.name}
-                        </h3>
-                        {project.description && (
-                          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
-                            {project.description}
-                          </p>
-                        )}
-                        <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
-                          <div className="flex items-center gap-1">
-                            <MapPin className="w-3 h-3" />
-                            <span>{project.address}</span>
-                          </div>
-                          <div className="flex items-center gap-1">
-                            <Calendar className="w-3 h-3" />
-                            <span>Est. {project.estimated_delivery || "Nil"}</span>
+                          )}
+                          {project.video_url && (
+                            <div className="absolute bottom-3 right-3 flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium bg-black/60 text-white">
+                              <PlayCircle className="w-3.5 h-3.5" />
+                              <span>Video</span>
+                            </div>
+                          )}
+                          <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold shadow-lg ${statusBadgeColor(project.status)}`}>
+                            {project.status}
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
+                        <CardContent className="p-6">
+                          <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                            {project.name}
+                          </h3>
+                          {project.description && (
+                            <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                              {project.description}
+                            </p>
+                          )}
+                          <div className="flex flex-wrap gap-3 text-xs text-muted-foreground">
+                            <div className="flex items-center gap-1">
+                              <MapPin className="w-3 h-3" />
+                              <span>{project.address}</span>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Calendar className="w-3 h-3" />
+                              <span>Est. {project.estimated_delivery || "Nil"}</span>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
                   </motion.div>
                 ))}
               </div>

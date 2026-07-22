@@ -23,6 +23,7 @@ import {
   HardHat,
   Image,
   Upload,
+  Video,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,6 +34,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
+  DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import {
@@ -2802,10 +2804,18 @@ const OngoingProjectsManager = () => {
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [existingImages, setExistingImages] = useState([]);
+  const [videoFile, setVideoFile] = useState(null);
+  const [existingVideoUrl, setExistingVideoUrl] = useState("");
+  const [videoLinkInput, setVideoLinkInput] = useState("");
   const [uploading, setUploading] = useState(false);
   const { register, handleSubmit, reset, control } = useForm();
 
   const MAX_IMAGES = 20;
+  // A video counts as "external" if it's a recognizable YouTube/Vimeo
+  // link rather than an uploaded file URL — used only to decide what
+  // preview to render in the admin form.
+  const isExternalVideoLink = (url) =>
+    !!url && /youtube\.com|youtu\.be|vimeo\.com/.test(url);
 
   const fetchProjects = async () => {
     try {
@@ -2844,6 +2854,9 @@ const OngoingProjectsManager = () => {
     setImageFiles([]);
     setImagePreviews([]);
     setExistingImages([]);
+    setVideoFile(null);
+    setExistingVideoUrl("");
+    setVideoLinkInput("");
     setDialogOpen(true);
   };
 
@@ -2863,6 +2876,9 @@ const OngoingProjectsManager = () => {
     );
     setImageFiles([]);
     setImagePreviews([]);
+    setVideoFile(null);
+    setExistingVideoUrl(project.video_url || "");
+    setVideoLinkInput("");
     setDialogOpen(true);
   };
 
@@ -2904,6 +2920,37 @@ const OngoingProjectsManager = () => {
     setExistingImages((prev) => prev.filter((_, i) => i !== index));
   };
 
+  const handleVideoSelect = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const validTypes = ["video/mp4", "video/webm", "video/quicktime"];
+    if (!validTypes.includes(file.type)) {
+      toast.error("Only MP4, WebM, or MOV videos are allowed");
+      e.target.value = "";
+      return;
+    }
+
+    const maxSizeBytes = 100 * 1024 * 1024; // 100MB
+    if (file.size > maxSizeBytes) {
+      toast.error("Video must be under 100MB");
+      e.target.value = "";
+      return;
+    }
+
+    setVideoFile(file);
+    setVideoLinkInput(""); // uploading a file takes priority over a pasted link
+    e.target.value = "";
+  };
+
+  const removeVideo = () => {
+    setVideoFile(null);
+  };
+
+  const removeExistingVideo = () => {
+    setExistingVideoUrl("");
+  };
+
   const onSubmit = async (data) => {
     setUploading(true);
     try {
@@ -2925,6 +2972,18 @@ const OngoingProjectsManager = () => {
       // existingImages are already full public URLs (set during openEdit)
       const allImages = [...existingImages, ...uploadedUrls];
 
+      // Video: an uploaded file takes priority; otherwise fall back to
+      // a pasted external link (YouTube/Vimeo), then to whatever video
+      // was already saved (if the admin didn't touch this field at all).
+      let videoUrl = existingVideoUrl;
+      if (videoFile) {
+        toast.info("Uploading video...");
+        const videoPath = await uploadFile("ongoing-project-videos", videoFile, "ongoing_projects");
+        videoUrl = getFileUrl("ongoing-project-videos", videoPath) || videoPath;
+      } else if (videoLinkInput.trim()) {
+        videoUrl = videoLinkInput.trim();
+      }
+
       const submitData = {
         name: data.name,
         // Empty date input → nil / no set delivery date
@@ -2934,6 +2993,7 @@ const OngoingProjectsManager = () => {
         image_urls: allImages,
         // Keep image_url in sync (first image) for any legacy readers
         image_url: allImages[0] || null,
+        video_url: videoUrl || null,
         status: data.status,
       };
 
@@ -3006,6 +3066,11 @@ const OngoingProjectsManager = () => {
               <DialogTitle>
                 {editing ? "Edit Project" : "Add New Project"}
               </DialogTitle>
+              <DialogDescription>
+                {editing
+                  ? "Update the details, images, and video for this ongoing project."
+                  : "Fill in the details below to add a new ongoing project."}
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">
@@ -3156,6 +3221,83 @@ const OngoingProjectsManager = () => {
                 </p>
               </div>
 
+              {/* ── Video section (optional) ── */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium">
+                  Project Video
+                  <span className="text-muted-foreground font-normal ml-1">— optional</span>
+                </label>
+
+                {/* Existing video (edit mode) */}
+                {existingVideoUrl && !videoFile && !videoLinkInput && (
+                  <div className="mb-3 flex items-center gap-3 p-2 border rounded-lg bg-muted/30">
+                    {isExternalVideoLink(existingVideoUrl) ? (
+                      <div className="w-24 h-16 flex items-center justify-center bg-muted rounded flex-shrink-0">
+                        <Video className="w-6 h-6 text-muted-foreground" />
+                      </div>
+                    ) : (
+                      <video src={existingVideoUrl} className="w-24 h-16 object-cover rounded" muted />
+                    )}
+                    <span className="text-xs text-muted-foreground flex-1 truncate">
+                      {isExternalVideoLink(existingVideoUrl)
+                        ? `Linked video: ${existingVideoUrl}`
+                        : "Current uploaded video"}
+                    </span>
+                    <Button type="button" variant="destructive" size="sm" onClick={removeExistingVideo}>
+                      <X className="w-3 h-3" />
+                    </Button>
+                  </div>
+                )}
+
+                {/* New video file selected, not yet uploaded */}
+                {videoFile && (
+                  <div className="mb-3 flex items-center gap-3 p-2 border rounded-lg bg-muted/30">
+                    <span className="text-xs flex-1 truncate">
+                      {videoFile.name} ({(videoFile.size / (1024 * 1024)).toFixed(1)} MB)
+                    </span>
+                    <Button type="button" variant="destructive" size="sm" onClick={removeVideo}>
+                      <X className="w-3 h-3" />
+                    </Button>
+                  </div>
+                )}
+
+                {/* Upload dropzone + "or paste a link" — only when there's no video set yet */}
+                {!videoFile && !existingVideoUrl && (
+                  <div className="space-y-2">
+                    <label className="flex items-center justify-center w-full h-24 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                      <div className="text-center">
+                        <Plus className="w-6 h-6 mx-auto text-muted-foreground" />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Click to upload a video file (optional)
+                        </p>
+                      </div>
+                      <input
+                        type="file"
+                        accept="video/mp4,video/webm,video/quicktime"
+                        className="hidden"
+                        onChange={handleVideoSelect}
+                      />
+                    </label>
+
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <div className="flex-1 h-px bg-border" />
+                      <span>or</span>
+                      <div className="flex-1 h-px bg-border" />
+                    </div>
+
+                    <Input
+                      placeholder="Paste a YouTube or Vimeo link"
+                      value={videoLinkInput}
+                      onChange={(e) => setVideoLinkInput(e.target.value)}
+                    />
+                  </div>
+                )}
+
+                <p className="text-xs text-muted-foreground mt-1">
+                  Upload MP4/WebM/MOV (max 100 MB), or paste a YouTube/Vimeo link. Leave empty to skip.
+                </p>
+              </div>
+
               <Button type="submit" className="w-full" disabled={uploading}>
                 {uploading ? "Uploading..." : editing ? "Update Project" : "Create Project"}
               </Button>
@@ -3204,6 +3346,9 @@ const OngoingProjectsManager = () => {
                     <span className={`text-xs px-2 py-0.5 rounded-full ${getStatusBadgeColor(p.status)}`}>
                       {p.status}
                     </span>
+                    {p.video_url && (
+                      <Video className="w-3.5 h-3.5 text-muted-foreground flex-shrink-0" />
+                    )}
                   </div>
                   <p className="text-sm text-gray-500 truncate">{p.address}</p>
                   <div className="flex gap-3 text-xs text-gray-400 mt-1">

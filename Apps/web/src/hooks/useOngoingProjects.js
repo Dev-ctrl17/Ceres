@@ -34,3 +34,44 @@ export const useOngoingProjects = (filters = {}) => {
 
   return { projects, loading };
 };
+
+// Fetch a single ongoing project by id — used by the project details page.
+export const useOngoingProject = (id) => {
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
+
+  useEffect(() => {
+    if (!id) return;
+
+    const fetchProject = async () => {
+      setLoading(true);
+      setNotFound(false);
+      try {
+        const { data, error } = await supabase
+          .from('ongoing_projects')
+          .select('*')
+          .eq('id', id)
+          .maybeSingle();
+
+        if (error) throw error;
+        if (!data) {
+          setNotFound(true);
+          setProject(null);
+        } else {
+          setProject(data);
+        }
+      } catch (err) {
+        console.error('useOngoingProject error:', err);
+        setProject(null);
+        setNotFound(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProject();
+  }, [id]);
+
+  return { project, loading, notFound };
+};
