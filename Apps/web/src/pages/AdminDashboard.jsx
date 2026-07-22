@@ -21,6 +21,8 @@ import {
   Award,
   FileText,
   HardHat,
+  Image,
+  Upload,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -90,6 +92,7 @@ const TABS = [
   { id: "team", label: "Team Members", icon: UsersRound },
   { id: "reviews", label: "Reviews", icon: Star },
   { id: "testimonials", label: "Testimonials", icon: MessageSquare },
+  { id: "backgrounds", label: "Page Backgrounds", icon: Image },
 ];
 
 const DashboardTabs = () => {
@@ -114,6 +117,8 @@ const DashboardTabs = () => {
         return TestimonialsManager;
       case "team":
         return TeamMembersManager;
+      case "backgrounds":
+        return BackgroundsManager;
       default:
         return PropertiesManager;
     }
@@ -2794,11 +2799,13 @@ const OngoingProjectsManager = () => {
   const [projects, setProjects] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState(null);
-  const [imageFile, setImageFile] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
-  const [existingImageUrl, setExistingImageUrl] = useState("");
+  const [imageFiles, setImageFiles] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
+  const [existingImages, setExistingImages] = useState([]);
   const [uploading, setUploading] = useState(false);
   const { register, handleSubmit, reset, control } = useForm();
+
+  const MAX_IMAGES = 20;
 
   const fetchProjects = async () => {
     try {
@@ -2818,12 +2825,12 @@ const OngoingProjectsManager = () => {
     fetchProjects();
   }, []);
 
-  // Cleanup object URL previews on unmount
+  // Cleanup object URL previews on unmount to avoid memory leaks
   useEffect(() => {
     return () => {
-      imagePreview && URL.revokeObjectURL(imagePreview);
+      imagePreviews.forEach((preview) => URL.revokeObjectURL(preview));
     };
-  }, [imagePreview]);
+  }, [imagePreviews]);
 
   const openCreate = () => {
     setEditing(null);
@@ -2834,9 +2841,9 @@ const OngoingProjectsManager = () => {
       description: "",
       status: "In Progress",
     });
-    setImageFile(null);
-    setImagePreview(null);
-    setExistingImageUrl("");
+    setImageFiles([]);
+    setImagePreviews([]);
+    setExistingImages([]);
     setDialogOpen(true);
   };
 
@@ -2844,43 +2851,89 @@ const OngoingProjectsManager = () => {
     setEditing(project.id);
     reset({
       name: project.name,
-      estimated_delivery: project.estimated_delivery,
+      estimated_delivery: project.estimated_delivery || "",
       address: project.address,
       description: project.description || "",
       status: project.status,
     });
-    setExistingImageUrl(project.image_url || "");
-    setImageFile(null);
-    setImagePreview(null);
+    // Prefer the full image_urls array, fall back to the legacy single image_url
+    setExistingImages(
+      project.image_urls?.length ? project.image_urls :
+      project.image_url ? [project.image_url] : []
+    );
+    setImageFiles([]);
+    setImagePreviews([]);
     setDialogOpen(true);
   };
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-      setImagePreview(URL.createObjectURL(file));
+  const handleFileSelect = (e) => {
+    const files = Array.from(e.target.files || []);
+    const totalImages = existingImages.length + imageFiles.length + files.length;
+
+    if (totalImages > MAX_IMAGES) {
+      toast.error(
+        `Maximum ${MAX_IMAGES} images allowed. You can add ${
+          MAX_IMAGES - existingImages.length - imageFiles.length
+        } more.`
+      );
+      return;
     }
+
+    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp"];
+    const invalidFiles = files.filter((f) => !validTypes.includes(f.type));
+    if (invalidFiles.length > 0) {
+      toast.error("Only JPG, PNG, GIF, and WebP images are allowed");
+      return;
+    }
+
+    const newPreviews = files.map((file) => URL.createObjectURL(file));
+    setImageFiles((prev) => [...prev, ...files]);
+    setImagePreviews((prev) => [...prev, ...newPreviews]);
+
+    // Reset the file input so the same file can be re-selected if needed
+    e.target.value = "";
+  };
+
+  const removeNewImage = (index) => {
+    URL.revokeObjectURL(imagePreviews[index]);
+    setImageFiles((prev) => prev.filter((_, i) => i !== index));
+    setImagePreviews((prev) => prev.filter((_, i) => i !== index));
+  };
+
+  const removeExistingImage = (index) => {
+    setExistingImages((prev) => prev.filter((_, i) => i !== index));
   };
 
   const onSubmit = async (data) => {
     setUploading(true);
     try {
-      let imageUrl = existingImageUrl;
+      // Upload any newly selected files and convert storage paths to
+      // full public URLs, mirroring the Properties image upload flow.
+      let uploadedUrls = [];
+      if (imageFiles.length > 0) {
+        toast.info(`Uploading ${imageFiles.length} image(s)...`);
 
-      // Upload new image if selected
-      if (imageFile) {
-        toast.info("Uploading image...");
-        const imagePath = await uploadFile("ongoing-project-images", imageFile, "ongoing_projects");
-        imageUrl = getFileUrl("ongoing-project-images", imagePath) || imagePath;
+        const uploadPromises = imageFiles.map((file) =>
+          uploadFile("ongoing-project-images", file, "ongoing_projects")
+        );
+        const uploadedPaths = await Promise.all(uploadPromises);
+        uploadedUrls = uploadedPaths.map(
+          (path) => getFileUrl("ongoing-project-images", path) || path
+        );
       }
+
+      // existingImages are already full public URLs (set during openEdit)
+      const allImages = [...existingImages, ...uploadedUrls];
 
       const submitData = {
         name: data.name,
-        estimated_delivery: data.estimated_delivery,
+        // Empty date input → nil / no set delivery date
+        estimated_delivery: data.estimated_delivery || null,
         address: data.address,
         description: data.description || null,
-        image_url: imageUrl || null,
+        image_urls: allImages,
+        // Keep image_url in sync (first image) for any legacy readers
+        image_url: allImages[0] || null,
         status: data.status,
       };
 
@@ -2964,10 +3017,13 @@ const OngoingProjectsManager = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium">Estimated Delivery *</label>
+                <label className="text-sm font-medium">
+                  Estimated Delivery
+                  <span className="text-muted-foreground font-normal ml-1">— optional, leave blank for Nil</span>
+                </label>
                 <Input
                   type="date"
-                  {...register("estimated_delivery", { required: true })}
+                  {...register("estimated_delivery")}
                 />
               </div>
 
@@ -3011,25 +3067,92 @@ const OngoingProjectsManager = () => {
 
               <div className="space-y-2">
                 <label className="text-sm font-medium">
-                  Project Image
+                  Project Images ({existingImages.length + imageFiles.length} / {MAX_IMAGES})
                   <span className="text-muted-foreground font-normal ml-1">— optional</span>
                 </label>
-                <Input
-                  type="file"
-                  accept="image/jpeg,image/jpg,image/png,image/webp"
-                  onChange={handleImageChange}
-                />
-                {(imagePreview || existingImageUrl) && (
-                  <div className="mt-2">
-                    <img
-                      src={imagePreview || existingImageUrl}
-                      alt="Project preview"
-                      className="w-full h-40 object-cover rounded-lg"
-                    />
+
+                {/* Existing images (edit mode) */}
+                {existingImages.length > 0 && (
+                  <div className="mb-3">
+                    <p className="text-xs text-muted-foreground mb-2">Existing images:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {existingImages.map((img, index) => {
+                        const imgUrl = img.startsWith("http")
+                          ? img
+                          : getFileUrl("ongoing-project-images", img) || img;
+                        return (
+                          <div key={`existing-${index}`} className="relative group">
+                            <img
+                              src={imgUrl}
+                              alt={`Existing ${index + 1}`}
+                              className="w-20 h-20 object-cover rounded-lg border"
+                            />
+                            <Button
+                              type="button"
+                              variant="destructive"
+                              size="sm"
+                              className="absolute -top-2 -right-2 w-5 h-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                              onClick={() => removeExistingImage(index)}
+                            >
+                              <X className="w-3 h-3" />
+                            </Button>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
                 )}
-                <p className="text-xs text-muted-foreground">
-                  JPG, PNG, or WebP. Recommended size: 1200×800px.
+
+                {/* New file previews (blob URLs — display only, not saved) */}
+                {imagePreviews.length > 0 && (
+                  <div className="mb-3">
+                    <p className="text-xs text-muted-foreground mb-2">New images to upload:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {imagePreviews.map((preview, index) => (
+                        <div key={`new-${index}`} className="relative group">
+                          <img
+                            src={preview}
+                            alt={`New ${index + 1}`}
+                            className="w-20 h-20 object-cover rounded-lg border"
+                          />
+                          <Button
+                            type="button"
+                            variant="destructive"
+                            size="sm"
+                            className="absolute -top-2 -right-2 w-5 h-5 p-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                            onClick={() => removeNewImage(index)}
+                          >
+                            <X className="w-3 h-3" />
+                          </Button>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* File picker — hidden when the max is reached */}
+                {existingImages.length + imageFiles.length < MAX_IMAGES && (
+                  <div className="mt-2">
+                    <label className="flex items-center justify-center w-full h-24 border-2 border-dashed border-gray-300 rounded-lg cursor-pointer hover:border-primary transition-colors">
+                      <div className="text-center">
+                        <Plus className="w-6 h-6 mx-auto text-muted-foreground" />
+                        <p className="text-xs text-muted-foreground mt-1">
+                          Click to upload images from your device
+                        </p>
+                      </div>
+                      <input
+                        type="file"
+                        accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                        multiple
+                        className="hidden"
+                        onChange={handleFileSelect}
+                      />
+                    </label>
+                  </div>
+                )}
+
+                <p className="text-xs text-muted-foreground mt-1">
+                  JPG, PNG, GIF, WebP — max 10 MB each. Recommended size: 1200×800px.
                 </p>
               </div>
 
@@ -3053,10 +3176,14 @@ const OngoingProjectsManager = () => {
               className="bg-white p-4 rounded-lg shadow flex items-center justify-between"
             >
               <div className="flex items-center gap-3 flex-1 min-w-0">
-                <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
-                  {p.image_url ? (
+                <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0 relative">
+                  {(p.image_urls?.length > 0 || p.image_url) ? (
                     <img
-                      src={p.image_url.startsWith("http") ? p.image_url : getFileUrl("ongoing-project-images", p.image_url)}
+                      src={
+                        p.image_urls?.length > 0
+                          ? (p.image_urls[0].startsWith("http") ? p.image_urls[0] : getFileUrl("ongoing-project-images", p.image_urls[0]))
+                          : (p.image_url.startsWith("http") ? p.image_url : getFileUrl("ongoing-project-images", p.image_url))
+                      }
                       alt={p.name}
                       className="w-full h-full object-cover"
                     />
@@ -3064,6 +3191,11 @@ const OngoingProjectsManager = () => {
                     <div className="w-full h-full flex items-center justify-center text-gray-400">
                       <HardHat className="w-6 h-6" />
                     </div>
+                  )}
+                  {p.image_urls?.length > 1 && (
+                    <span className="absolute bottom-0 right-0 bg-black/70 text-white text-[10px] px-1 rounded-tl">
+                      +{p.image_urls.length - 1}
+                    </span>
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -3075,7 +3207,7 @@ const OngoingProjectsManager = () => {
                   </div>
                   <p className="text-sm text-gray-500 truncate">{p.address}</p>
                   <div className="flex gap-3 text-xs text-gray-400 mt-1">
-                    <span>📅 Est. {p.estimated_delivery}</span>
+                    <span>📅 Est. {p.estimated_delivery || "Nil"}</span>
                     {p.description && <span className="truncate">{p.description}</span>}
                   </div>
                 </div>
@@ -3096,6 +3228,254 @@ const OngoingProjectsManager = () => {
           ))
         )}
       </div>
+    </div>
+  );
+};
+
+// ---------- Page Backgrounds Manager ----------
+// Lets the admin swap hero/section background images across the site.
+// Each slot below corresponds to a `section_key` in the `page_backgrounds`
+// table (see supabase-create-page-backgrounds.sql) and the key referenced
+// by usePageBackground() on the public page. defaultImage is only used as
+// a preview fallback here; the actual live fallback lives in each page file.
+const PAGE_BACKGROUND_SLOTS = [
+  {
+    key: "home_hero_slide_1",
+    label: "Home Page — Hero Slide 1",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg",
+  },
+  {
+    key: "home_hero_slide_2",
+    label: "Home Page — Hero Slide 2",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781791838490-d908b15e-9e31-41e6-88e8-06f7bef05dd2.jpeg",
+  },
+  {
+    key: "home_hero_slide_3",
+    label: "Home Page — Hero Slide 3",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781791838479-a916452b-9681-4b5f-8c03-3c48e3557b68.jpeg",
+  },
+  {
+    key: "properties_hero",
+    label: "Properties Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781618537376-b115f9d3-7d9d-44a1-b434-f17755a0d94c.jpeg",
+  },
+  {
+    key: "rent_hero",
+    label: "Rent Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781618476860-202949ba-8ed6-4e3d-ba06-ec71d84c6e04.jpeg",
+  },
+  {
+    key: "reviews_hero",
+    label: "Reviews Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781315484156-19239477-a163-4063-9288-df5a0f6fe1b3.png",
+  },
+  {
+    key: "sell_hero",
+    label: "Sell Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781618476695-08c4ab99-6c9e-4700-9de5-ed819f7d85bb.jpeg",
+  },
+  {
+    key: "services_hero",
+    label: "Services Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg",
+  },
+  {
+    key: "about_hero",
+    label: "About Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781619633951-48ac0036-1929-4e9c-a44e-9ea02995669f.jpeg",
+  },
+  {
+    key: "buy_hero",
+    label: "Buy Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781618484006-40ea0e34-24b2-418b-91c4-1f35fdd01ec8.jpeg",
+  },
+  {
+    key: "contact_hero",
+    label: "Contact Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1781315550242-096ff39c-0b74-48d1-afcd-d1bccdb33620.png",
+  },
+  {
+    key: "agents_hero",
+    label: "Agents Page — Hero",
+    defaultImage: "https://i.ibb.co/rKjnczKk/agent.jpg",
+  },
+  {
+    key: "blog_hero",
+    label: "Blog Page — Hero",
+    defaultImage:
+      "https://www.image2url.com/r2/default/images/1783547801870-2726b84f-3090-4a4f-a8da-526a99604c56.jpg",
+  },
+  {
+    key: "epan_hero",
+    label: "EPAN Page — Hero",
+    defaultImage: "https://i.ibb.co/5h4SDhF1/epan.jpg",
+  },
+  {
+    key: "epan_why_join",
+    label: 'EPAN Page — "Why Join EPAN" section',
+    defaultImage:
+      "https://images.unsplash.com/photo-1518603856140-e9cd33ef640f?q=80&w=2070&auto=format&fit=crop",
+  },
+];
+
+const BackgroundsManager = () => {
+  const [rows, setRows] = useState({}); // section_key -> row from page_backgrounds
+  const [loading, setLoading] = useState(true);
+  const [uploadingKey, setUploadingKey] = useState(null);
+
+  const fetchBackgrounds = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.from("page_backgrounds").select("*");
+      if (error) throw error;
+      const map = {};
+      (data || []).forEach((row) => {
+        map[row.section_key] = row;
+      });
+      setRows(map);
+    } catch (err) {
+      toast.error("Failed to load page backgrounds");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBackgrounds();
+  }, []);
+
+  const handleFileSelect = async (slot, e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+
+    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+    if (!validTypes.includes(file.type)) {
+      toast.error("Only JPG, PNG, or WebP images are allowed");
+      return;
+    }
+
+    setUploadingKey(slot.key);
+    try {
+      const path = await uploadFile("page-backgrounds", file, slot.key);
+      const publicUrl = getFileUrl("page-backgrounds", path) || path;
+
+      const { error } = await supabase.from("page_backgrounds").upsert(
+        {
+          section_key: slot.key,
+          label: slot.label,
+          image_url: publicUrl,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "section_key" }
+      );
+      if (error) throw error;
+
+      toast.success(`${slot.label} background updated`);
+      fetchBackgrounds();
+    } catch (err) {
+      toast.error(err.message || "Upload failed");
+    } finally {
+      setUploadingKey(null);
+    }
+  };
+
+  const handleReset = async (slot) => {
+    if (!window.confirm(`Reset "${slot.label}" to its default image?`)) return;
+    try {
+      const { error } = await supabase
+        .from("page_backgrounds")
+        .update({ image_url: null, updated_at: new Date().toISOString() })
+        .eq("section_key", slot.key);
+      if (error) throw error;
+      toast.success("Reset to default");
+      fetchBackgrounds();
+    } catch (err) {
+      toast.error("Reset failed");
+    }
+  };
+
+  return (
+    <div>
+      <h2 className="text-xl font-semibold mb-1">Page Backgrounds</h2>
+      <p className="text-sm text-gray-500 mb-4">
+        Swap hero and section background images across the site. Changes appear on the live pages as soon as they finish uploading.
+      </p>
+
+      {loading ? (
+        <div className="grid gap-4">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="bg-white p-4 rounded-lg shadow animate-pulse h-24" />
+          ))}
+        </div>
+      ) : (
+        <div className="grid gap-4">
+          {PAGE_BACKGROUND_SLOTS.map((slot) => {
+            const row = rows[slot.key];
+            const currentImage = row?.image_url || slot.defaultImage;
+            const isCustom = !!row?.image_url;
+            const isUploading = uploadingKey === slot.key;
+
+            return (
+              <div
+                key={slot.key}
+                className="bg-white p-4 rounded-lg shadow flex flex-col sm:flex-row sm:items-center gap-4"
+              >
+                <div className="w-full sm:w-32 h-20 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
+                  <img src={currentImage} alt={slot.label} className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="font-semibold">{slot.label}</h3>
+                    {isCustom ? (
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-green-100 text-green-700">
+                        Custom
+                      </span>
+                    ) : (
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-500">
+                        Default
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-gray-400 mt-1 truncate">{currentImage}</p>
+                </div>
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <label
+                    className={`inline-flex items-center gap-2 px-3 py-1.5 text-sm border rounded-md cursor-pointer hover:bg-gray-50 ${
+                      isUploading ? "opacity-50 pointer-events-none" : ""
+                    }`}
+                  >
+                    <Upload className="w-4 h-4" />
+                    {isUploading ? "Uploading..." : "Replace"}
+                    <input
+                      type="file"
+                      accept="image/jpeg,image/jpg,image/png,image/webp"
+                      className="hidden"
+                      onChange={(e) => handleFileSelect(slot, e)}
+                    />
+                  </label>
+                  {isCustom && (
+                    <Button type="button" variant="ghost" size="sm" onClick={() => handleReset(slot)}>
+                      Reset
+                    </Button>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };

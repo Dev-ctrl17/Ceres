@@ -6,8 +6,10 @@ import Footer from '@/components/Footer.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
 import PropertyFilter from '@/components/PropertyFilter.jsx';
 import { useProperties } from '@/hooks/useProperties.js';
+import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const PropertiesPage = () => {
+  const { getBackground } = usePageBackgrounds();
   const [searchParams] = useSearchParams();
   const [filters, setFilters] = useState({
     location: searchParams.get('location') || '',
@@ -50,7 +52,7 @@ const PropertiesPage = () => {
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://www.image2url.com/r2/default/images/1781618537376-b115f9d3-7d9d-44a1-b434-f17755a0d94c.jpeg"
+              src={getBackground('properties_hero', "https://www.image2url.com/r2/default/images/1781618537376-b115f9d3-7d9d-44a1-b434-f17755a0d94c.jpeg")}
               alt="Browse All Properties" 
               className="w-full h-full object-cover hero-image"
               loading="eager"

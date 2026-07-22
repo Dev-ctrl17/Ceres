@@ -5,8 +5,10 @@ import Footer from '@/components/Footer.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
+import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const ContactPage = () => {
+  const { getBackground } = usePageBackgrounds();
   return (
     <>
       <Helmet>
@@ -30,7 +32,7 @@ const ContactPage = () => {
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://www.image2url.com/r2/default/images/1781315550242-096ff39c-0b74-48d1-afcd-d1bccdb33620.png"
+              src={getBackground('contact_hero', "https://www.image2url.com/r2/default/images/1781315550242-096ff39c-0b74-48d1-afcd-d1bccdb33620.png")}
               alt="Contact Us" 
               className="w-full h-full object-cover hero-image"
               loading="eager"

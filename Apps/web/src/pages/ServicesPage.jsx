@@ -13,8 +13,10 @@ import {
   MapPin,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const ServicesPage = () => {
+  const { getBackground } = usePageBackgrounds();
   const services = [
     {
       icon: Building2,
@@ -89,7 +91,7 @@ const ServicesPage = () => {
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg"
+              src={getBackground('services_hero', "https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg")}
               alt="Our Services" 
               className="w-full h-full object-cover hero-image"
               loading="eager"

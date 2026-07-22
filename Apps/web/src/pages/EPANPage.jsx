@@ -14,8 +14,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 import { sendLeadNotification } from '@/services/formspreeService';
+import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const EPANPage = () => {
+  const { getBackground } = usePageBackgrounds();
   const [agentLoading, setAgentLoading] = useState(false);
   const [partnerLoading, setPartnerLoading] = useState(false);
   const [inquiryType, setInquiryType] = useState('');
@@ -146,7 +148,7 @@ const EPANPage = () => {
         <section className="relative min-h-[80dvh] flex items-center justify-center py-24">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/5h4SDhF1/epan.jpg" 
+              src={getBackground('epan_hero', "https://i.ibb.co/5h4SDhF1/epan.jpg")} 
               alt="Elite Property Agents Network" 
               className="w-full h-full object-cover"
               loading="lazy"
@@ -226,7 +228,7 @@ const EPANPage = () => {
         <section className="relative py-32 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1518603856140-e9cd33ef640f?q=80&w=2070&auto=format&fit=crop" 
+              src={getBackground('epan_why_join', "https://images.unsplash.com/photo-1518603856140-e9cd33ef640f?q=80&w=2070&auto=format&fit=crop")} 
               alt="Modern architecture" 
               className="w-full h-full object-cover"
               loading="lazy"

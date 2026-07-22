@@ -5,8 +5,10 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const BlogPage = () => {
+  const { getBackground } = usePageBackgrounds();
   const blogPosts = [
     {
       title: "Nigerian Real Estate Buying Guide",
@@ -212,7 +214,7 @@ const BlogPage = () => {
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
-              src="https://www.image2url.com/r2/default/images/1783547801870-2726b84f-3090-4a4f-a8da-526a99604c56.jpg"
+              src={getBackground('blog_hero', "https://www.image2url.com/r2/default/images/1783547801870-2726b84f-3090-4a4f-a8da-526a99604c56.jpg")}
               alt="Luxury real estate insights and guides"
               className="w-full h-full object-cover"
             />

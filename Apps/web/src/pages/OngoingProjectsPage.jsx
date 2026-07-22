@@ -84,16 +84,25 @@ const OngoingProjectsPage = () => {
                   >
                     <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
                       <div className="aspect-video bg-muted rounded-t-xl overflow-hidden relative">
-                        {project.image_url ? (
-                          <img
-                            src={project.image_url.startsWith('http') ? project.image_url : `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/ongoing-project-images/${project.image_url}`}
-                            alt={project.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            loading="lazy"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
-                            <HardHat className="w-16 h-16 text-primary/50" />
+                        {(() => {
+                          const images = project.image_urls?.length ? project.image_urls : (project.image_url ? [project.image_url] : []);
+                          const resolve = (img) => img.startsWith('http') ? img : `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/ongoing-project-images/${img}`;
+                          return images.length > 0 ? (
+                            <img
+                              src={resolve(images[0])}
+                              alt={project.name}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                              loading="lazy"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
+                              <HardHat className="w-16 h-16 text-primary/50" />
+                            </div>
+                          );
+                        })()}
+                        {(project.image_urls?.length > 1) && (
+                          <div className="absolute bottom-3 left-3 px-2 py-1 rounded-md text-xs font-medium bg-black/60 text-white">
+                            +{project.image_urls.length - 1} more
                           </div>
                         )}
                         <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-semibold shadow-lg ${statusBadgeColor(project.status)}`}>
@@ -116,7 +125,7 @@ const OngoingProjectsPage = () => {
                           </div>
                           <div className="flex items-center gap-1">
                             <Calendar className="w-3 h-3" />
-                            <span>Est. {project.estimated_delivery}</span>
+                            <span>Est. {project.estimated_delivery || "Nil"}</span>
                           </div>
                         </div>
                       </CardContent>

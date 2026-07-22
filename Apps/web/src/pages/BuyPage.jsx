@@ -7,9 +7,11 @@ import ContactForm from '@/components/ContactForm.jsx';
 import { useProperties } from '@/hooks/useProperties.js';
 import { Calculator, Home, FileText, CheckCircle } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const BuyPage = () => {
   const { properties, loading } = useProperties({ status: 'Available', purpose: 'Buy' });
+  const { getBackground } = usePageBackgrounds();
 
   const buyingSteps = [
     { icon: Home, title: 'Browse Properties', description: 'Explore our verified listings and find your dream property' },
@@ -41,7 +43,7 @@ const BuyPage = () => {
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://www.image2url.com/r2/default/images/1781618484006-40ea0e34-24b2-418b-91c4-1f35fdd01ec8.jpeg"
+              src={getBackground('buy_hero', "https://www.image2url.com/r2/default/images/1781618484006-40ea0e34-24b2-418b-91c4-1f35fdd01ec8.jpeg")}
               alt="Find your dream property" 
               className="w-full h-full object-cover hero-image"
               loading="eager"

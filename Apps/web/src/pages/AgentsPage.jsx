@@ -6,9 +6,11 @@ import { useAgents } from '@/hooks/useAgents.js';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Phone, Star } from 'lucide-react';
 import { getFileUrl } from '@/lib/supabaseService';
+import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const AgentsPage = () => {
   const { agents, loading } = useAgents();
+  const { getBackground } = usePageBackgrounds();
 
   const getAgentPhotoUrl = (agent) => {
     // Admin form saves full public URL in 'photo', so return as-is
@@ -61,7 +63,7 @@ const AgentsPage = () => {
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/rKjnczKk/agent.jpg"
+              src={getBackground('agents_hero', "https://i.ibb.co/rKjnczKk/agent.jpg")}
               alt="Our Professional Agents" 
               className="w-full h-full object-cover hero-image"
               loading="eager"

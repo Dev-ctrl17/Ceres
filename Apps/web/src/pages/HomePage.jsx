@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -29,6 +29,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { validateEmail } from "@/services/emailValidation";
+import { usePageBackgrounds } from "@/hooks/usePageBackgrounds";
 
 // Framer Motion Variants - defined at module scope
 const cardContainerVariants = {
@@ -54,9 +55,10 @@ const cardItemVariants = {
   },
 };
 
-const heroSlides = [
+const heroSlideDefaults = [
   {
-    image:
+    key: "home_hero_slide_1",
+    defaultImage:
       "https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg",
     title: "Find Your Dream Property",
     subtitle:
@@ -65,7 +67,8 @@ const heroSlides = [
     ctaLink: "/properties",
   },
   {
-    image:
+    key: "home_hero_slide_2",
+    defaultImage:
       "https://www.image2url.com/r2/default/images/1781791838490-d908b15e-9e31-41e6-88e8-06f7bef05dd2.jpeg",
     title: "Verified Listings Only",
     subtitle:
@@ -74,7 +77,8 @@ const heroSlides = [
     ctaLink: "/properties",
   },
   {
-    image:
+    key: "home_hero_slide_3",
+    defaultImage:
       "https://www.image2url.com/r2/default/images/1781791838479-a916452b-9681-4b5f-8c03-3c48e3557b68.jpeg",
     title: "Expert Guidance",
     subtitle:
@@ -117,6 +121,15 @@ const trustSignals = [
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const { getBackground } = usePageBackgrounds();
+  const heroSlides = useMemo(
+    () =>
+      heroSlideDefaults.map(({ key, defaultImage, ...rest }) => ({
+        ...rest,
+        image: getBackground(key, defaultImage),
+      })),
+    [getBackground]
+  );
   const [featuredProperties, setFeaturedProperties] = useState([]);
   const [latestProperties, setLatestProperties] = useState([]);
   const [loading, setLoading] = useState(true);
