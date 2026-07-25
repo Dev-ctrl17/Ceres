@@ -1,6 +1,5 @@
 import React, { Suspense, lazy, useEffect } from "react";
-import { Route, Routes, BrowserRouter as Router, useLocation } from "react-router-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
@@ -48,70 +47,47 @@ const PageLoading = () => (
   </div>
 );
 
-// Wraps every route in a fade/slide transition on navigation.
-// Must live inside <Router> so useLocation() works, and the
-// AnimatePresence key is the pathname so React remounts (and
-// therefore animates) on every route change.
-const pageTransition = {
-  initial: { opacity: 0, y: 12 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -12 },
-  transition: { duration: 0.25, ease: "easeInOut" },
-};
-
 const AnimatedRoutes = () => {
-  const location = useLocation();
-
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={location.pathname}
-        initial={pageTransition.initial}
-        animate={pageTransition.animate}
-        exit={pageTransition.exit}
-        transition={pageTransition.transition}
-      >
-        <Routes location={location}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/buy" element={<BuyPage />} />
-          <Route path="/rent" element={<RentPage />} />
-          <Route path="/sell" element={<SellPage />} />
-          <Route path="/properties" element={<PropertiesPage />} />
-          <Route path="/properties/:id" element={<PropertyDetailsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/epan" element={<EPANPage />} />
-          <Route path="/agents" element={<AgentsPage />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/faq" element={<FAQPage />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="/terms-conditions" element={<TermsConditionsPage />} />
-          <Route path="/refund-policy" element={<RefundPolicyPage />} />
-          <Route path="/cookie-policy" element={<CookiePolicyPage />} />
-          <Route path="/company-registration" element={<CompanyRegistrationPage />} />
-          <Route path="/office-locations" element={<OfficeLocationsPage />} />
-          <Route path="/client-success" element={<ClientSuccessPage />} />
-          <Route path="/client-success/:slug" element={<ClientSuccessDetailPage />} />
-          <Route path="/ongoing-projects" element={<OngoingProjectsPage />} />
-          <Route path="/ongoing-projects/:id" element={<OngoingProjectDetailsPage />} />
-          <Route path="/investment-brief" element={<InvestmentBriefPage />} />
-          <Route path="/investment-brief/:id" element={<InvestmentBriefPage />} />
-          <Route path="/investment-briefs/:slug" element={<InvestmentBriefPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
-      </motion.div>
-    </AnimatePresence>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/buy" element={<BuyPage />} />
+      <Route path="/rent" element={<RentPage />} />
+      <Route path="/sell" element={<SellPage />} />
+      <Route path="/properties" element={<PropertiesPage />} />
+      <Route path="/properties/:id" element={<PropertyDetailsPage />} />
+      <Route path="/services" element={<ServicesPage />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/:slug" element={<BlogPostPage />} />
+      <Route path="/epan" element={<EPANPage />} />
+      <Route path="/agents" element={<AgentsPage />} />
+      <Route path="/reviews" element={<ReviewsPage />} />
+      <Route path="/about" element={<AboutPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/faq" element={<FAQPage />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+      <Route path="/terms-conditions" element={<TermsConditionsPage />} />
+      <Route path="/refund-policy" element={<RefundPolicyPage />} />
+      <Route path="/cookie-policy" element={<CookiePolicyPage />} />
+      <Route path="/company-registration" element={<CompanyRegistrationPage />} />
+      <Route path="/office-locations" element={<OfficeLocationsPage />} />
+      <Route path="/client-success" element={<ClientSuccessPage />} />
+      <Route path="/client-success/:slug" element={<ClientSuccessDetailPage />} />
+      <Route path="/ongoing-projects" element={<OngoingProjectsPage />} />
+      <Route path="/ongoing-projects/:id" element={<OngoingProjectDetailsPage />} />
+      <Route path="/investment-brief" element={<InvestmentBriefPage />} />
+      <Route path="/investment-brief/:id" element={<InvestmentBriefPage />} />
+      <Route path="/investment-briefs/:slug" element={<InvestmentBriefPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/admin"
+        element={
+          <ProtectedRoute>
+            <AdminDashboard />
+          </ProtectedRoute>
+        }
+      />
+    </Routes>
   );
 };
 
