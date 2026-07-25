@@ -24,6 +24,13 @@ import {
   Image,
   Upload,
   Video,
+  BarChart3,
+  Activity,
+  Globe,
+  Monitor,
+  Download,
+  Search,
+  RefreshCw,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -95,6 +102,7 @@ const TABS = [
   { id: "reviews", label: "Reviews", icon: Star },
   { id: "testimonials", label: "Testimonials", icon: MessageSquare },
   { id: "backgrounds", label: "Page Backgrounds", icon: Image },
+  { id: "analytics", label: "Analytics", icon: BarChart3 },
 ];
 
 const DashboardTabs = () => {
@@ -121,6 +129,8 @@ const DashboardTabs = () => {
         return TeamMembersManager;
       case "backgrounds":
         return BackgroundsManager;
+      case "analytics":
+        return AnalyticsManager;
       default:
         return PropertiesManager;
     }
@@ -3621,6 +3631,313 @@ const BackgroundsManager = () => {
           })}
         </div>
       )}
+    </div>
+  );
+};
+
+// ---------- Analytics Manager (Visitor Tracking) ----------
+const AnalyticsManager = () => {
+  const [overview, setOverview] = useState({ today: 0, week: 0, month: 0, liveNow: 0 });
+  const [visitors, setVisitors] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [countryData, setCountryData] = useState([]);
+  const [deviceData, setDeviceData] = useState([]);
+  const [browserData, setBrowserData] = useState([]);
+  const [pageData, setPageData] = useState([]);
+  const [liveVisitors, setLiveVisitors] = useState([]);
+  const [exporting, setExporting] = useState(false);
+
+  const fetchAllData = async () => {
+    setLoading(true);
+    try {
+      const { visitorTrackingApi } = await import('@/lib/visitorTracking');
+
+      const [overviewRes, visitorsRes, countries, devices, browsers, pages, live] = await Promise.all([
+        visitorTrackingApi.getOverview(),
+        visitorTrackingApi.getRecentVisitors(100, 0, searchQuery),
+        visitorTrackingApi.getVisitorsByCountry(),
+        visitorTrackingApi.getDeviceBreakdown(),
+        visitorTrackingApi.getBrowserBreakdown(),
+        visitorTrackingApi.getPageAnalytics(),
+        visitorTrackingApi.getLiveVisitors(),
+      ]);
+
+      setOverview(overviewRes);
+      setVisitors(visitorsRes);
+      setCountryData(countries);
+      setDeviceData(devices);
+      setBrowserData(browsers);
+      setPageData(pages);
+      setLiveVisitors(live);
+    } catch (err) {
+      console.error('Analytics fetch error:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAllData();
+    const interval = setInterval(fetchAllData, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (searchQuery !== undefined) {
+      const delay = setTimeout(() => fetchAllData(), 500);
+      return () => clearTimeout(delay);
+    }
+  }, [searchQuery]);
+
+  const handleExport = async () => {
+    setExporting(true);
+    try {
+      const { visitorTrackingApi } = await import('@/lib/visitorTracking');
+      const csv = await visitorTrackingApi.exportToCSV();
+      if (!csv) {
+        toast.error('No data to export');
+        return;
+      }
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `visitors-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      toast.success('CSV exported');
+    } catch (err) {
+      toast.error('Export failed');
+    } finally {
+      setExporting(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="space-y-4">
+        <h2 className="text-xl font-semibold">Visitor Analytics</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {[1,2,3,4].map(i => (
+            <div key={i} className="bg-white p-6 rounded-lg shadow animate-pulse h-24" />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold">Visitor Analytics</h2>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm" onClick={fetchAllData}>
+            <RefreshCw className="w-4 h-4 mr-1" />
+            Refresh
+          </Button>
+          <Button variant="outline" size="sm" onClick={handleExport} disabled={exporting}>
+            <Download className="w-4 h-4 mr-1" />
+            {exporting ? 'Exporting...' : 'Export CSV'}
+          </Button>
+        </div>
+      </div>
+
+      {/* Overview Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="bg-white p-6 rounded-lg shadow">
+          <div className="flex items-center gap-3">
+            <Activity className="w-8 h-8 text-blue-500" />
+            <div>
+              <p className="text-2xl font-bold">{overview.today}</p>
+              <p className="text-sm text-gray-500">Today</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow">
+          <div className="flex items-center gap-3">
+            <Activity className="w-8 h-8 text-green-500" />
+            <div>
+              <p className="text-2xl font-bold">{overview.week}</p>
+              <p className="text-sm text-gray-500">This Week</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow">
+          <div className="flex items-center gap-3">
+            <Activity className="w-8 h-8 text-purple-500" />
+            <div>
+              <p className="text-2xl font-bold">{overview.month}</p>
+              <p className="text-sm text-gray-500">This Month</p>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white p-6 rounded-lg shadow">
+          <div className="flex items-center gap-3">
+            <Activity className="w-8 h-8 text-red-500" />
+            <div>
+              <p className="text-2xl font-bold">{overview.liveNow}</p>
+              <p className="text-sm text-gray-500">Live Now</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Live Visitors */}
+      <div className="bg-white p-6 rounded-lg shadow">
+        <h3 className="font-semibold mb-3 flex items-center gap-2">
+          <Activity className="w-5 h-5 text-red-500" />
+          Live Visitors ({liveVisitors.length})
+        </h3>
+        {liveVisitors.length === 0 ? (
+          <p className="text-sm text-gray-400">No visitors currently active</p>
+        ) : (
+          <div className="space-y-2">
+            {liveVisitors.slice(0, 10).map((v, i) => (
+              <div key={v.session_id || i} className="flex items-center justify-between text-sm border-b pb-1">
+                <span className="truncate flex-1">{v.current_page || 'Unknown'}</span>
+                <span className="text-xs text-gray-400 ml-2">
+                  {v.last_activity ? new Date(v.last_activity).toLocaleTimeString() : ''}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Charts Row */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Countries */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h3 className="font-semibold mb-3 flex items-center gap-2">
+            <Globe className="w-5 h-5" />
+            Top Countries
+          </h3>
+          <div className="space-y-2">
+            {countryData.slice(0, 8).map((c, i) => (
+              <div key={c.country} className="flex items-center justify-between text-sm">
+                <span>{c.country}</span>
+                <span className="text-gray-500">{c.count}</span>
+              </div>
+            ))}
+            {countryData.length === 0 && (
+              <p className="text-sm text-gray-400">No data yet</p>
+            )}
+          </div>
+        </div>
+
+        {/* Devices */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h3 className="font-semibold mb-3 flex items-center gap-2">
+            <Monitor className="w-5 h-5" />
+            Devices
+          </h3>
+          <div className="space-y-2">
+            {deviceData.map((d, i) => (
+              <div key={d.device} className="flex items-center justify-between text-sm">
+                <span className="capitalize">{d.device}</span>
+                <span className="text-gray-500">{d.count}</span>
+              </div>
+            ))}
+            {deviceData.length === 0 && (
+              <p className="text-sm text-gray-400">No data yet</p>
+            )}
+          </div>
+        </div>
+
+        {/* Browsers */}
+        <div className="bg-white p-6 rounded-lg shadow">
+          <h3 className="font-semibold mb-3">Browsers</h3>
+          <div className="space-y-2">
+            {browserData.map((b, i) => (
+              <div key={b.browser} className="flex items-center justify-between text-sm">
+                <span>{b.browser}</span>
+                <span className="text-gray-500">{b.count}</span>
+              </div>
+            ))}
+            {browserData.length === 0 && (
+              <p className="text-sm text-gray-400">No data yet</p>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Page Analytics */}
+      <div className="bg-white p-6 rounded-lg shadow">
+        <h3 className="font-semibold mb-3">Top Pages</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b text-left text-gray-500">
+                <th className="pb-2 font-medium">Page</th>
+                <th className="pb-2 font-medium">Views</th>
+                <th className="pb-2 font-medium">Avg Time</th>
+                <th className="pb-2 font-medium">Bounces</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pageData.slice(0, 10).map((p, i) => (
+                <tr key={p.page_url || i} className="border-b last:border-0">
+                  <td className="py-2 truncate max-w-xs">{p.page_title || p.page_url}</td>
+                  <td className="py-2">{p.total_views || 0}</td>
+                  <td className="py-2">{Math.round((p.total_time || 0) / Math.max(p.total_views || 1, 1))}s</td>
+                  <td className="py-2">{p.bounces || 0}</td>
+                </tr>
+              ))}
+              {pageData.length === 0 && (
+                <tr><td colSpan="4" className="py-4 text-center text-gray-400">No page views yet</td></tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Visitors Table */}
+      <div className="bg-white p-6 rounded-lg shadow">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="font-semibold">Recent Visitors ({visitors.length})</h3>
+          <div className="relative w-64">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <Input
+              placeholder="Search by country, city, browser..."
+              value={searchQuery}
+              onChange={e => setSearchQuery(e.target.value)}
+              className="pl-9"
+            />
+          </div>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b text-left text-gray-500">
+                <th className="pb-2 font-medium">Country</th>
+                <th className="pb-2 font-medium">Device</th>
+                <th className="pb-2 font-medium">Browser</th>
+                <th className="pb-2 font-medium">OS</th>
+                <th className="pb-2 font-medium">Page</th>
+                <th className="pb-2 font-medium">Visited</th>
+              </tr>
+            </thead>
+            <tbody>
+              {visitors.map((v, i) => (
+                <tr key={v.id || i} className="border-b last:border-0 hover:bg-gray-50">
+                  <td className="py-2">{v.country || '—'}</td>
+                  <td className="py-2 capitalize">{v.device_type || '—'}</td>
+                  <td className="py-2">{v.browser || '—'}</td>
+                  <td className="py-2">{v.os || '—'}</td>
+                  <td className="py-2 truncate max-w-xs">{v.landing_page ? new URL(v.landing_page).pathname : '—'}</td>
+                  <td className="py-2 text-xs text-gray-400">
+                    {v.created_at ? new Date(v.created_at).toLocaleString() : '—'}
+                  </td>
+                </tr>
+              ))}
+              {visitors.length === 0 && (
+                <tr><td colSpan="6" className="py-4 text-center text-gray-400">No visitors yet</td></tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };

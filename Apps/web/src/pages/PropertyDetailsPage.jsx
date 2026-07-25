@@ -10,7 +10,7 @@ import PropertyEnquiryForm from '@/components/PropertyEnquiryForm.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MapPin, Bed, Bath, CheckCircle, MessageCircle, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Bed, Bath, CheckCircle, MessageCircle, Phone, Calendar, FileText, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
 import { generatePropertySchema, generateBreadcrumbSchema, generateAEOContent } from '@/lib/structuredData';
@@ -284,19 +284,46 @@ const PropertyDetailsPage = () => {
               <Card className="sticky top-24 mb-8">
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold mb-6">Interested in this property?</h3>
-                  <ContactForm propertyId={property.id} />
-                  <div className="mt-6 pt-6 border-t">
-                    <a
-                      href={`https://wa.me/2347039726375?text=I'm interested in ${property.title}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button variant="outline" className="w-full">
-                        <MessageCircle className="w-4 h-4 mr-2" />
-                        WhatsApp Us
-                      </Button>
-                    </a>
-                  </div>
+                  
+                  {/* Primary CTA: Call Now */}
+                  <a
+                    href="tel:+2349056201176"
+                    className="w-full inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground font-bold text-base px-6 py-4 rounded-xl mb-4 transition-all duration-300 hover:bg-primary/90 hover:scale-[1.02] shadow-lg"
+                  >
+                    <Phone className="w-5 h-5" />
+                    Call Now — +234 905 620 1176
+                  </a>
+
+                  {/* WhatsApp Now */}
+                  <a
+                    href={`https://wa.me/2347039726375?text=I'm%20interested%20in%20${encodeURIComponent(property.title)}%20in%20${encodeURIComponent(property.location || '')}%20-%20₦${property.price?.toLocaleString() || ''}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white font-bold text-base px-6 py-4 rounded-xl mb-4 transition-all duration-300 hover:scale-[1.02] shadow-lg"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    WhatsApp Now
+                  </a>
+
+                  {/* Book Inspection */}
+                  <Link
+                    to={`/contact?property=${property.id}&inquiry=inspection`}
+                    className="w-full inline-flex items-center justify-center gap-3 bg-transparent border-2 border-primary text-primary font-bold text-base px-6 py-4 rounded-xl mb-4 transition-all duration-300 hover:bg-primary/5 hover:scale-[1.02]"
+                  >
+                    <Calendar className="w-5 h-5" />
+                    Book Inspection
+                  </Link>
+
+                  {/* Request Details - opens contact form inline */}
+                  <details className="group mb-4">
+                    <summary className="w-full inline-flex items-center justify-center gap-3 bg-muted hover:bg-muted/80 text-foreground font-bold text-base px-6 py-4 rounded-xl transition-all duration-300 cursor-pointer list-none hover:scale-[1.02]">
+                      <FileText className="w-5 h-5" />
+                      Request Details
+                    </summary>
+                    <div className="mt-4 pt-4 border-t">
+                      <ContactForm propertyId={property.id} />
+                    </div>
+                  </details>
                 </CardContent>
               </Card>
             </div>

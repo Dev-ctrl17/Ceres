@@ -83,27 +83,21 @@ const AboutPage = () => {
         <section className="py-16 xs:py-18 sm:py-20">
           <div className="max-w-4xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6 section-title">Why We Are the Best Luxury Real Estate Agency in Nigeria</h2>
+              <h2 className="text-3xl font-bold mb-6 section-title">Where Exceptional Properties Meet Exceptional People</h2>
               <p className="text-muted-foreground leading-relaxed mb-6 content-paragraph">
-                Luxury Properties Ltd is widely recognized as the <strong>best luxury real estate agency Nigeria</strong> has to offer. 
-                Since our establishment, we have dedicated ourselves to providing trusted, professional, and innovative 
-                real estate solutions to discerning clients across the country. As the premier luxury real estate agency 
-                in Nigeria, we specialize in high-end properties in Lagos, Abuja, and Port Harcourt — from luxury penthouses 
-                in Ikoyi to waterfront estates in Lekki and Banana Island.
+              At Luxury Properties Ltd, we understand that luxury real estate is more than acquiring a property—it's about embracing a lifestyle, creating a legacy, and making investments that stand the test of time.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6 content-paragraph">
-                What sets us apart as the best luxury real estate agency in Nigeria is our commitment to exclusivity, 
-                discretion, and white-glove service. Our clients gain access to off-market luxury properties not listed 
-                on public portals, comprehensive concierge real estate services, and expert advisory from a team with 
-                over 15 years of combined experience in the Nigerian luxury property market. With a 98% client success 
-                rate and over 500 premium properties sold, our track record speaks for itself.
+              As one of Nigeria's leading luxury real estate companies, we are dedicated to connecting discerning clients with the country's most prestigious residential and investment properties. From the exclusive neighborhoods of Ikoyi, Victoria Island, Lekki, and Banana Island in Lagos to premium developments in Abuja and Port Harcourt, we offer access to exceptional homes and investment opportunities that reflect sophistication, elegance, and enduring value.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6 content-paragraph">
+              Every client we serve has unique aspirations. That's why we take a personalized approach to every transaction, providing expert guidance, market intelligence, and tailored solutions that align with your lifestyle and financial goals. Whether you're searching for your dream home, expanding your investment portfolio, or selling a premium property, our experienced team is committed to delivering results with professionalism, discretion, and integrity.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-6 content-paragraph">
+              Our carefully cultivated network provides access to exclusive listings, including premium off-market opportunities that are not publicly advertised. Combined with our commitment to transparency and exceptional service, we make every real estate journey seamless, rewarding, and stress-free.
               </p>
               <p className="text-muted-foreground leading-relaxed content-paragraph">
-                Our team of experienced luxury property professionals brings together decades of combined expertise in 
-                the high-end real estate industry. From the moment you engage with us, you benefit from our deep market 
-                intelligence, extensive network of exclusive listings, and unwavering commitment to transparency, 
-                integrity, and exceptional customer service. We don't just find properties — we curate bespoke real 
-                estate experiences tailored to your unique lifestyle and investment goals.
+              At Luxury Properties Ltd, we don't simply broker property transactions—we build lasting relationships founded on trust, excellence, and an unwavering commitment to exceeding expectations.
               </p>
             </div>
           </div>
@@ -117,11 +111,9 @@ const AboutPage = () => {
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
                     <Target className="w-8 h-8 text-primary icon-animate" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">Our Mission</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    To remain the best luxury real estate agency Nigeria by providing exceptional high-end property services 
-                    that exceed client expectations through professionalism, innovation, and unwavering commitment to quality. 
-                    We connect discerning buyers with the finest luxury homes, apartments, and investment properties across Nigeria.
+              <h3 className="text-xl font-semibold mb-3">Our Mission</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                    To deliver world-class luxury real estate solutions through exceptional service, expert market knowledge, and innovative strategies that help our clients buy, sell, and invest with confidence.
                   </p>
                 </CardContent>
               </Card>
@@ -131,11 +123,9 @@ const AboutPage = () => {
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
                     <Eye className="w-8 h-8 text-primary icon-animate" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">Our Vision</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    To be globally recognized as the definitive best luxury real estate agency Nigeria — the undisputed 
-                    authority in premium property transactions, known for unparalleled integrity, innovation, and exceptional 
-                    results in high-end real estate.
+              <h3 className="text-xl font-semibold mb-3">Our Vision</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                    To be the most trusted and respected luxury real estate company in Nigeria, recognized for delivering outstanding client experiences, exceptional properties, and lasting value.
                   </p>
                 </CardContent>
               </Card>
@@ -145,12 +135,22 @@ const AboutPage = () => {
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
                     <Award className="w-8 h-8 text-primary icon-animate" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">Our Values</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Integrity, transparency, professionalism, and client satisfaction are at the core of everything we do. 
-                    As the best luxury real estate agency Nigeria, we uphold the highest standards in every transaction, 
-                    ensuring our clients receive nothing less than exceptional service and premium results.
-                  </p>
+              <h3 className="text-xl font-semibold mb-3">Our Core Values</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                <strong>Integrity</strong> — We conduct every transaction with honesty, transparency, and professionalism.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                <strong>Excellence</strong> — We are committed to delivering exceptional service and consistently exceeding client expectations.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                <strong>Client-Centric Service</strong> — Every decision we make begins with understanding our clients' needs and delivering personalized solutions.
+              </p>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                <strong>Discretion</strong> — We respect our clients' privacy and handle every transaction with the highest level of confidentiality.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                <strong>Innovation</strong> — We leverage modern technology, market intelligence, and strategic marketing to create better outcomes for our clients.
+              </p>
                 </CardContent>
               </Card>
             </div>

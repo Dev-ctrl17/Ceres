@@ -60,9 +60,9 @@ const heroSlideDefaults = [
     key: "home_hero_slide_1",
     defaultImage:
       "https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg",
-    title: "Find Your Dream Property",
+    title: "Luxury Homes in Ikoyi, Banana Island, Parkview & Victoria Island",
     subtitle:
-      "Discover premium real estate across Nigeria — buy, rent, or invest with confidence.",
+      "Book a private inspection today. Verified titles. Direct developer listings. Nigeria's most prestigious addresses, now at your fingertips.",
     ctaText: "Browse Properties",
     ctaLink: "/properties",
   },
@@ -70,9 +70,9 @@ const heroSlideDefaults = [
     key: "home_hero_slide_2",
     defaultImage:
       "https://www.image2url.com/r2/default/images/1781791838490-d908b15e-9e31-41e6-88e8-06f7bef05dd2.jpeg",
-    title: "Verified Listings Only",
+    title: "100% Verified Luxury Properties in Lagos",
     subtitle:
-      "Every property is vetted and verified by our team of real estate professionals.",
+      "Every listing is physically inspected and legally vetted. No hidden fees. No title issues. Just premium real estate you can trust.",
     ctaText: "Browse Properties",
     ctaLink: "/properties",
   },
@@ -80,9 +80,9 @@ const heroSlideDefaults = [
     key: "home_hero_slide_3",
     defaultImage:
       "https://www.image2url.com/r2/default/images/1781791838479-a916452b-9681-4b5f-8c03-3c48e3557b68.jpeg",
-    title: "Expert Guidance",
+    title: "Your Trusted Real Estate Partner Since 2010",
     subtitle:
-      "From search to signing — our agents are with you every step of the way.",
+      "From search to signing — our award-winning agents guide you through every step. 1,200+ happy clients. 15+ years of excellence.",
     ctaText: "Browse Properties",
     ctaLink: "/properties",
   },
@@ -279,22 +279,22 @@ const HomePage = () => {
 
           {/* Floating Property Type Cards */}
           <motion.div
-            className="absolute bottom-12 left-0 right-0 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10"
+            className="absolute bottom-8 sm:bottom-12 left-0 right-0 px-3 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10"
             variants={cardContainerVariants}
             initial="hidden"
             animate="visible"
           >
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 sm:gap-4">
               {propertyCards.map((card, index) => (
                 <motion.button
                   key={card.label}
                   variants={cardItemVariants}
                   onClick={() => navigate(card.link)}
-                  className="flex flex-col items-center justify-center p-6 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  className="flex flex-col items-center justify-center p-3 sm:p-6 rounded-xl sm:rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                 >
-                  <card.icon className="w-8 h-8 mb-3" />
-                  <span className="text-lg font-semibold">{card.label}</span>
-                  <span className="text-sm text-white/70 mt-1">
+                  <card.icon className="w-6 h-6 sm:w-8 sm:h-8 mb-1 sm:mb-3" />
+                  <span className="text-sm sm:text-lg font-semibold text-center">{card.label}</span>
+                  <span className="text-xs sm:text-sm text-white/70 mt-0.5 sm:mt-1 text-center hidden sm:block">
                     {card.sublabel}
                   </span>
                 </motion.button>
