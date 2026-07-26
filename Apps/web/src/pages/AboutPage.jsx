@@ -73,9 +73,9 @@ const AboutPage = () => {
             <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
-            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Best Real Estate Advisory Company In Nigeria</h1>
+            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">NIGERIA'S HEADING LUXURY REAL ESTATE ADVISORY COMPANY</h1>
             <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay-1">
-              Nigeria's premier luxury real estate advisory company — trusted by high-net-worth clients for exclusive properties, concierge service, and expert advisory.
+            Luxury properties Ltd is Nigeria's trusted real estate ADVISORY firm,  delivering exceptional property solutions to discerning clients, investors, and high-net-worth individuals.  We provide exclusive access to premium properties,  personalized concierge service,  and strategic real estate expertise that transforms every investment into a lasting legacy.
             </p>
           </div>
         </section>
