@@ -43,7 +43,7 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>Best Real Estate Adversary Company In Nigeria | Luxury Properties Ltd</title>
+        <title>Best Real Estate Advisory Company In Nigeria | Luxury Properties Ltd</title>
         <meta name="description" content="Discover why Luxury Properties Ltd is the best luxury real estate agency Nigeria. Exclusive high-end properties, concierge service, and expert advisory in Lagos, Abuja. 15+ years excellence." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/about" />
         <meta property="og:title" content="Best Luxury Real Estate Agency Nigeria | Luxury Properties Ltd" />
@@ -73,9 +73,9 @@ const AboutPage = () => {
             <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
-            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Best Real Estate Adversary Company In Nigeria</h1>
+            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Best Real Estate Advisory Company In Nigeria</h1>
             <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay-1">
-              Nigeria's premier luxury real estate adversary company — trusted by high-net-worth clients for exclusive properties, concierge service, and expert advisory.
+              Nigeria's premier luxury real estate advisory company — trusted by high-net-worth clients for exclusive properties, concierge service, and expert advisory.
             </p>
           </div>
         </section>
