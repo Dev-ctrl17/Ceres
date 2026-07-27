@@ -26,46 +26,83 @@
 
 export const config = {
   // Run on every route except static assets and API routes.
-  matcher: '/((?!assets|api|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|svg|webp|ico|css|js|woff2?)).*)',
+  matcher:
+    "/((?!assets|api|favicon.ico|robots.txt|sitemap.xml|.*\\.(?:png|jpg|jpeg|svg|webp|ico|css|js|woff2?)).*)",
 };
 
 // Known search engine + social/link-preview crawler user-agent fragments.
 // Matching is case-insensitive substring matching against the request's
 // User-Agent header.
+
 const BOT_USER_AGENTS = [
-  'googlebot',
-  'bingbot',
-  'yandex',
-  'baiduspider',
-  'facebookexternalhit',
-  'twitterbot',
-  'rogerbot',
-  'linkedinbot',
-  'embedly',
-  'quora link preview',
-  'showyoubot',
-  'outbrain',
-  'pinterest',
-  'pinterestbot',
-  'slackbot',
-  'vkshare',
-  'w3c_validator',
-  'redditbot',
-  'applebot',
-  'whatsapp',
-  'flipboard',
-  'tumblr',
-  'bitlybot',
-  'skypeuripreview',
-  'nuzzel',
-  'discordbot',
-  'google page speed',
-  'qwantify',
-  'bitrix link preview',
-  'xing-contenttabreceiver',
-  'chrome-lighthouse',
-  'telegrambot',
-  'developers.google.com/+/web/snippet',
+  // --- Traditional search engines (you already have most of these) ---
+  "googlebot",
+  "bingbot",
+  "yandex",
+  "baiduspider",
+  "duckduckbot",
+  "sogou",
+  "seznambot",
+  "facebookexternalhit",
+  "twitterbot",
+  "rogerbot",
+  "linkedinbot",
+  "embedly",
+  "quora link preview",
+  "showyoubot",
+  "outbrain",
+  "pinterest",
+  "pinterestbot",
+  "slackbot",
+  "vkshare",
+  "w3c_validator",
+  "redditbot",
+  "applebot",
+  "whatsapp",
+  "flipboard",
+  "tumblr",
+  "bitlybot",
+  "skypeuripreview",
+  "nuzzel",
+  "discordbot",
+  "google page speed",
+  "qwantify",
+  "bitrix link preview",
+  "xing-contenttabreceiver",
+  "chrome-lighthouse",
+  "telegrambot",
+  "developers.google.com/+/web/snippet",
+
+  // --- AI crawlers / LLM training & retrieval bots (this is what was missing) ---
+  "gptbot", // OpenAI training crawler
+  "oai-searchbot", // OpenAI ChatGPT search
+  "chatgpt-user", // ChatGPT browsing plugin/agent
+  "claudebot", // Anthropic training crawler
+  "claude-web", // Anthropic web-browsing agent
+  "anthropic-ai", // Anthropic (older UA string)
+  "perplexitybot", // Perplexity AI
+  "perplexity-user", // Perplexity user-triggered fetch
+  "ccbot", // Common Crawl (feeds many LLMs' training data)
+  "google-extended", // Google's AI-training-specific token (Bard/Gemini)
+  "applebot-extended", // Apple's AI-training-specific token
+  "bytespider", // ByteDance/TikTok AI crawler
+  "diffbot", // Diffbot (used by many AI/data pipelines)
+  "youbot", // You.com
+  "amazonbot", // Amazon (Alexa/AI training)
+  "meta-externalagent", // Meta AI crawler
+  "facebookbot", // Meta AI training (distinct from externalhit)
+  "cohere-ai", // Cohere
+  "mistralai-user", // Mistral
+  "timpibot", // Timpi search
+  "omgili", // Webz.io / omgili (used in many LLM datasets)
+  "ia_archiver", // Internet Archive (feeds some training sets)
+
+  // --- SEO / auditing / monitoring tools worth rendering for (optional but common) ---
+  "ahrefsbot",
+  "semrushbot",
+  "mj12bot",
+  "dotbot",
+  "screaming frog",
 ];
 
 function isBot(userAgent) {
@@ -75,7 +112,7 @@ function isBot(userAgent) {
 }
 
 export default async function middleware(request) {
-  const userAgent = request.headers.get('user-agent') || '';
+  const userAgent = request.headers.get("user-agent") || "";
 
   // Not a recognized crawler -> let the normal SPA serve as usual.
   if (!isBot(userAgent)) {
@@ -86,7 +123,9 @@ export default async function middleware(request) {
   const prerenderToken = process.env.PRERENDER_TOKEN;
 
   if (!prerenderToken) {
-    console.error('PRERENDER_TOKEN environment variable is not set — skipping prerender.');
+    console.error(
+      "PRERENDER_TOKEN environment variable is not set — skipping prerender.",
+    );
     return;
   }
 
@@ -95,8 +134,8 @@ export default async function middleware(request) {
 
     const prerenderResponse = await fetch(prerenderUrl, {
       headers: {
-        'X-Prerender-Token': prerenderToken,
-        'User-Agent': userAgent,
+        "X-Prerender-Token": prerenderToken,
+        "User-Agent": userAgent,
       },
     });
 
@@ -105,12 +144,12 @@ export default async function middleware(request) {
     return new Response(body, {
       status: prerenderResponse.status,
       headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-        'X-Prerendered': 'true',
+        "Content-Type": "text/html; charset=utf-8",
+        "X-Prerendered": "true",
       },
     });
   } catch (err) {
-    console.error('Prerender.io request failed:', err);
+    console.error("Prerender.io request failed:", err);
     // Fall through to normal SPA rendering rather than showing an error
     // to the crawler.
     return;
