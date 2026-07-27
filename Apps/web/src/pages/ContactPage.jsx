@@ -24,6 +24,18 @@ const ContactPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos" />
         <meta name="twitter:description" content="Contact Luxury Properties Ltd for luxury real estate inquiries." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://luxurypropertiesltd.com.ng/contact"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

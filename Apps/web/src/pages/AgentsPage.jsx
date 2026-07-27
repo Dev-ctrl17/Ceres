@@ -55,6 +55,18 @@ const AgentsPage = () => {
         <meta name="twitter:description" content="Meet our team of professional real estate agents in Lagos." />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Agents", "item": "https://luxurypropertiesltd.com.ng/agents"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

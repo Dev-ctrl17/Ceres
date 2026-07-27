@@ -19,6 +19,18 @@ const TermsConditionsPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Terms & Conditions — Luxury Properties Ltd" />
         <meta name="twitter:description" content="Terms and Conditions for using Luxury Properties Ltd services." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Terms & Conditions", "item": "https://luxurypropertiesltd.com.ng/terms-conditions"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

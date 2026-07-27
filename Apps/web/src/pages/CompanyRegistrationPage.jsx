@@ -19,6 +19,18 @@ const CompanyRegistrationPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Company Registration — Luxury Properties Ltd | RC 9601729" />
         <meta name="twitter:description" content="Luxury Properties Ltd company registration details, CAC number RC 9601729, and official business information." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Company Registration", "item": "https://luxurypropertiesltd.com.ng/company-registration"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

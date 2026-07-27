@@ -19,6 +19,18 @@ const CookiePolicyPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Cookie Policy — Luxury Properties Ltd" />
         <meta name="twitter:description" content="Cookie Policy for Luxury Properties Ltd." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Cookie Policy", "item": "https://luxurypropertiesltd.com.ng/cookie-policy"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

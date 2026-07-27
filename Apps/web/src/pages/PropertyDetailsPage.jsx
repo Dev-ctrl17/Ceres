@@ -106,6 +106,15 @@ const PropertyDetailsPage = () => {
     }).format(price);
   };
 
+  // Generate dynamic SEO title and description
+  const bedrooms = property.bedrooms ? `${property.bedrooms}-Bed ` : '';
+  const propertyType = property.property_type || 'Property';
+  const location = property.location || property.city || 'Lagos';
+  const seoTitle = `${bedrooms}${propertyType} in ${location} | Luxury Properties Ltd`;
+  const seoDescription = property.description 
+    ? `${property.description.substring(0, 155)}...` 
+    : `${formatPrice(property.price)} ${propertyType} in ${location}. ${property.bedrooms || 'Multiple'} bedrooms, ${property.bathrooms || 'multiple'} bathrooms. Contact Luxury Properties Ltd for viewing.`;
+
   const amenitiesList = property.amenities
     ? (Array.isArray(property.amenities)
         ? property.amenities
@@ -125,13 +134,13 @@ const PropertyDetailsPage = () => {
   return (
     <>
       <Helmet>
-        <title>{`${property.title} - Luxury Properties Ltd`}</title>
-        <meta name="description" content={property.description || `${property.title} in ${property.location}`} />
+        <title>{seoTitle}</title>
+        <meta name="description" content={seoDescription} />
         <link rel="canonical" href={`https://luxurypropertiesltd.com.ng/properties/${property.id}`} />
         
         {/* Open Graph */}
-        <meta property="og:title" content={`${property.title} - Luxury Properties Ltd`} />
-        <meta property="og:description" content={property.description?.substring(0, 160) || `${property.title} in ${property.location}`} />
+        <meta property="og:title" content={seoTitle} />
+        <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://luxurypropertiesltd.com.ng/properties/${property.id}`} />
         {images[0] && <meta property="og:image" content={images[0]} />}
@@ -140,8 +149,8 @@ const PropertyDetailsPage = () => {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${property.title} - Luxury Properties Ltd`} />
-        <meta name="twitter:description" content={property.description?.substring(0, 160) || `${property.title} in ${property.location}`} />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content={seoDescription} />
         {images[0] && <meta name="twitter:image" content={images[0]} />}
         
         {/* JSON-LD Structured Data */}

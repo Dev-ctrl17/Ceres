@@ -255,6 +255,18 @@ const FAQPage = () => {
         <meta name="twitter:title" content="FAQ - Luxury Properties Ltd | Premium Real Estate Nigeria" />
         <meta name="twitter:description" content="Answers about buying luxury property in Lagos, off-market listings, and concierge services." />
         <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://luxurypropertiesltd.com.ng/faq"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

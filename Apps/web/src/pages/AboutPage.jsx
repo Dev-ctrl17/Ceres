@@ -43,18 +43,62 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>Best Real Estate Advisory Company In Nigeria | Luxury Properties Ltd</title>
-        <meta name="description" content="Discover why Luxury Properties Ltd is the best luxury real estate agency Nigeria. Exclusive high-end properties, concierge service, and expert advisory in Lagos, Abuja. 15+ years excellence." />
+        <title>About Us | Luxury Properties Ltd - Nigeria's Leading Real Estate Agency</title>
+        <meta name="description" content="Learn about Luxury Properties Ltd, Nigeria's premier luxury real estate agency. 15+ years of excellence, 1,200+ happy clients, and 500+ properties sold in Lagos, Abuja, and Port Harcourt." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/about" />
-        <meta property="og:title" content="Best Luxury Real Estate Agency Nigeria | Luxury Properties Ltd" />
-        <meta property="og:description" content="Discover why Luxury Properties Ltd is recognized as the best luxury real estate agency Nigeria. Premium properties, concierge service, and unmatched market expertise." />
+        <meta property="og:title" content="About Luxury Properties Ltd | Nigeria's Leading Real Estate Agency" />
+        <meta property="og:description" content="Discover why Luxury Properties Ltd is Nigeria's most trusted luxury real estate agency. Premium properties, concierge service, and expert advisory since 2010." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://luxurypropertiesltd.com.ng/about" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Best Luxury Real Estate Agency Nigeria | Luxury Properties Ltd" />
-        <meta name="twitter:description" content="Discover why Luxury Properties Ltd is recognized as the best luxury real estate agency Nigeria." />
+        <meta name="twitter:title" content="About Luxury Properties Ltd | Nigeria's Leading Real Estate Agency" />
+        <meta name="twitter:description" content="Learn about Nigeria's premier luxury real estate agency. 15+ years of excellence in Lagos, Abuja, and Port Harcourt." />
+
+        {/* JSON-LD Organization Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Luxury Properties Ltd",
+            "description": "Premium luxury real estate agency in Nigeria. Exclusive high-end listings, concierge service, and off-market properties in Lagos, Abuja, and across Nigeria.",
+            "url": "https://luxurypropertiesltd.com.ng",
+            "logo": "https://luxurypropertiesltd.com.ng/favicon.svg",
+            "telephone": "+234-9056201176",
+            "email": "info@luxurypropertiesltd.com.ng",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Pedro, Gbagada",
+              "addressLocality": "Lagos",
+              "addressRegion": "Lagos State",
+              "addressCountry": "NG"
+            },
+            "sameAs": [
+              "https://www.instagram.com/luxurypropertiesltd",
+              "https://www.linkedin.com/company/luxurypropertiesltd",
+              "https://www.facebook.com/luxurypropertiesltd"
+            ],
+            "foundingDate": "2010",
+            "numberOfEmployees": {
+              "@type": "QuantitativeValue",
+              "minValue": 50,
+              "maxValue": 200
+            }
+          })}
+        </script>
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "About", "item": "https://luxurypropertiesltd.com.ng/about"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />
@@ -72,8 +116,8 @@ const AboutPage = () => {
             />
             <div className="absolute inset-0 bg-black/30" />
           </div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
-            <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">NIGERIA'S HEADING LUXURY REAL ESTATE ADVISORY COMPANY</h1>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
+              <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Nigeria's Leading Luxury Real Estate Advisory Company</h1>
             <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay-1">
             Luxury properties Ltd is Nigeria's trusted real estate ADVISORY firm,  delivering exceptional property solutions to discerning clients, investors, and high-net-worth individuals.  We provide exclusive access to premium properties,  personalized concierge service,  and strategic real estate expertise that transforms every investment into a lasting legacy.
             </p>

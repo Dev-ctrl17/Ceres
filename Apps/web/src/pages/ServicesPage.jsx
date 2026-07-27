@@ -71,18 +71,30 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Real Estate Services in Lagos | Luxury Properties Ltd</title>
-        <meta name="description" content="Comprehensive real estate services in Lagos: sales, leasing, management, investment advisory, and luxury property marketing. Expert guidance from Luxury Properties Ltd." />
+        <title>Real Estate Services | Property Management & Advisory | Luxury Properties Ltd</title>
+        <meta name="description" content="Comprehensive real estate services including property management, investment advisory, and concierge services. Expert support for buyers, sellers, and investors." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/services" />
-        <meta property="og:title" content="Real Estate Services in Lagos | Luxury Properties Ltd" />
-        <meta property="og:description" content="Comprehensive real estate services including sales, leasing, management, and investment advisory from Nigeria's premier luxury agency." />
+        <meta property="og:title" content="Real Estate Services | Property Management & Advisory | Luxury Properties Ltd" />
+        <meta property="og:description" content="Comprehensive real estate services including property management, investment advisory, and concierge services." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://luxurypropertiesltd.com.ng/services" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Real Estate Services in Lagos | Luxury Properties Ltd" />
-        <meta name="twitter:description" content="Comprehensive real estate services including sales, leasing, management, and investment advisory." />
+        <meta name="twitter:title" content="Real Estate Services | Property Management & Advisory | Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Comprehensive real estate services for buyers, sellers, and investors." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://luxurypropertiesltd.com.ng/services"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

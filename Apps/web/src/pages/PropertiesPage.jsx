@@ -44,6 +44,18 @@ const PropertiesPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Browse Properties for Sale & Rent in Lagos | Luxury Properties Ltd" />
         <meta name="twitter:description" content="Browse verified luxury properties for sale and rent across Nigeria." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Properties", "item": "https://luxurypropertiesltd.com.ng/properties"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

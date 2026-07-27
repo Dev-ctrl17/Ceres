@@ -139,6 +139,18 @@ const EPANPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="EPAN - Elite Property Agents Network" />
         <meta name="twitter:description" content="Join the Elite Property Agents Network. Founded by Luxury Properties Ltd." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "EPAN", "item": "https://luxurypropertiesltd.com.ng/epan"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

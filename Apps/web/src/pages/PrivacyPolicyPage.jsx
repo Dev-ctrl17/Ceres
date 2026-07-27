@@ -19,6 +19,18 @@ const PrivacyPolicyPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Privacy Policy — Luxury Properties Ltd" />
         <meta name="twitter:description" content="Privacy Policy for Luxury Properties Ltd. Learn how we collect, use, and protect your personal data." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://luxurypropertiesltd.com.ng/privacy-policy"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

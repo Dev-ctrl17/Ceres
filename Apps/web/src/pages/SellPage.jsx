@@ -39,6 +39,18 @@ const SellPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Sell Your Property in Lagos | List with Luxury Properties Ltd" />
         <meta name="twitter:description" content="List your property with Luxury Properties Ltd and reach thousands of verified buyers." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Sell", "item": "https://luxurypropertiesltd.com.ng/sell"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

@@ -24,6 +24,17 @@ const PropertyCard = ({ property, featured = false }) => {
     sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
   });
 
+  // Generate descriptive alt text for better SEO and accessibility
+  const getImageAltText = () => {
+    if (!property) return 'Property image';
+    const parts = [];
+    if (property.bedrooms) parts.push(`${property.bedrooms}-bedroom`);
+    if (property.property_type) parts.push(property.property_type);
+    parts.push('in');
+    if (property.location) parts.push(property.location);
+    return parts.join(' ') || property.title || 'Property image';
+  };
+
   const formatPrice = (price) => {
     return new Intl.NumberFormat("en-NG", {
       style: "currency",
@@ -46,7 +57,7 @@ const PropertyCard = ({ property, featured = false }) => {
             <source srcSet={imageUrl} type="image/webp" />
             <img
               src={imageUrl}
-              alt={property.title}
+              alt={getImageAltText()}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
               decoding="async"

@@ -55,6 +55,18 @@ const ReviewsPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Customer Reviews - Luxury Properties Ltd" />
         <meta name="twitter:description" content="Read genuine client testimonials about Luxury Properties Ltd." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Reviews", "item": "https://luxurypropertiesltd.com.ng/reviews"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />

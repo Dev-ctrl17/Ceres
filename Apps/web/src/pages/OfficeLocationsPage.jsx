@@ -19,6 +19,18 @@ const OfficeLocationsPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Office Locations — Luxury Properties Ltd" />
         <meta name="twitter:description" content="Visit our offices across Nigeria. Find Luxury Properties Ltd locations and contact details." />
+
+        {/* JSON-LD BreadcrumbList Schema */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Office Locations", "item": "https://luxurypropertiesltd.com.ng/office-locations"}
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Header />
