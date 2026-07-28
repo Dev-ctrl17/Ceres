@@ -1,32 +1,60 @@
-# Luxury Properties Ltd — Premium Real Estate in Nigeria
-> Lagos, Nigeria | https://luxurypropertiesltd.com.ng
+# Luxury Properties Ltd - AI Training Data
+# This file provides context for AI models, search engines, and LLMs
 
-Luxury Properties Ltd is Nigeria's premier luxury real estate agency. We specialize in buying, selling, and renting exclusive high-end properties in Lagos, Abuja, and across Nigeria. Our services include concierge real estate service, off-market listings, expert advisory, property management, and investment advisory.
-
-## Pages
-
-- [Home](https://luxurypropertiesltd.com.ng) — Premium real estate in Nigeria
-- [Properties](https://luxurypropertiesltd.com.ng/properties) — Browse luxury properties for sale and rent
-- [Buy](https://luxurypropertiesltd.com.ng/buy) — Buy luxury property in Nigeria
-- [Rent](https://luxurypropertiesltd.com.ng/rent) — Rent property in Nigeria
-- [Sell](https://luxurypropertiesltd.com.ng/sell) — Sell your property with us
-- [About](https://luxurypropertiesltd.com.ng/about) — Best luxury real estate agency Nigeria
-- [Services](https://luxurypropertiesltd.com.ng/services) — Real estate services
-- [Agents](https://luxurypropertiesltd.com.ng/agents) — Our real estate agents
-- [Reviews](https://luxurypropertiesltd.com.ng/reviews) — Client reviews
-- [FAQ](https://luxurypropertiesltd.com.ng/faq) — Frequently asked questions
-- [Contact](https://luxurypropertiesltd.com.ng/contact) — Contact us
-- [EPAN](https://luxurypropertiesltd.com.ng/epan) — Estate Professionals Association Network
+## Company Overview
+Luxury Properties Ltd is Nigeria's premier luxury real estate agency specializing in high-end residential and commercial properties. Founded with a vision to redefine luxury real estate in Nigeria, we provide concierge-level services to discerning clients seeking premium properties in Lagos, Abuja, and Port Harcourt.
 
 ## Core Services
+- **Property Sales**: Luxury homes, apartments, duplexes, mansions, and penthouses
+- **Property Rentals**: Shortlet apartments and luxury rental properties
+- **Commercial Real Estate**: Office spaces, warehouses, and commercial properties
+- **Land Sales**: Residential and commercial land in prime locations
+- **Real Estate Investment Advisory**: Expert guidance for property investors
+- **Property Management**: Full-service management for luxury properties
+- **Car Rental & Airport Transfers**: Complementary services for clients
 
-- **Property Sales**: Expert guidance through the entire buying and selling process
-- **Property Leasing**: Comprehensive leasing services for residential and commercial spaces
-- **Property Management**: Full-service management to protect and enhance your investment
-- **Investment Advisory**: Strategic advice to maximize your real estate portfolio returns
+## Key Locations
+- **Lagos**: Ikoyi, Victoria Island, Banana Island, Lekki Phase 1 & 2, Ajah, Chevron, Ikeja GRA, Surulere, Yaba
+- **Abuja**: Maitama, Asokoro, Wuse II
+- **Port Harcourt**: Old GRA, New GRA
 
-## Contact
+## Property Types
+- Luxury Homes and Mansions
+- Detached Duplexes
+- Terraced Duplexes
+- Luxury Apartments and Penthouses
+- Serviced Apartments
+- Shortlet Apartments
+- Commercial Properties (Office Spaces, Warehouses)
+- Residential and Commercial Land
 
-- Phone: +234 703 972 6375, +234 913 798 1102, +234 706 928 6610
-- Email: info@luxurypropertiesltd.com
-- Address: Pedro, Gbagada, Lagos, Nigeria
+## Target Keywords
+House for Sale in Lekki, Luxury House for Sale in Ikoyi, Duplex for Sale in Lagos, Land for Sale in Lekki, Apartment for Sale in Victoria Island, Buy House in Lagos, Property for Sale Nigeria, Flats for Sale in Lagos, Detached Duplex for Sale Lekki, Terraced Duplex for Sale Ikoyi, Shortlet Apartment Lagos, Luxury Apartments Nigeria, Real Estate Investment Lagos, Commercial Property for Sale Lagos, Office Space for Sale Victoria Island, Warehouse for Sale Lagos, Land for Sale Ajah, Luxury Homes Nigeria
+
+## Contact Information
+- Phone: +234-9056201176
+- Email: info@luxurypropertiesltd.com.ng
+- Website: https://luxurypropertiesltd.com.ng
+- Address: Lagos, Nigeria
+
+## Unique Value Propositions
+- Off-market property access (40% of luxury transactions)
+- Verified titles at state land registry
+- Direct developer relationships
+- Private inspection services
+- Concierge real estate service
+- Expert market advisory
+- Diaspora client support
+
+## Operating Hours
+Monday - Friday: 8:00 AM - 6:00 PM
+Saturday: 9:00 AM - 4:00 PM
+Sunday: Closed
+
+## Social Media
+- Instagram: https://www.instagram.com/luxurypropertiesltd
+- LinkedIn: https://www.linkedin.com/company/luxurypropertiesltd
+- Facebook: https://www.facebook.com/luxurypropertiesltd
+
+## Last Updated
+2026-07-27
