@@ -1,60 +1,60 @@
-# Luxury Properties Ltd - AI Training Data
-# This file provides context for AI models, search engines, and LLMs
+# Luxury Properties Ltd
+
+> Nigeria's premier luxury real estate agency specializing in high-end residential and commercial properties in Lagos, Abuja, and Port Harcourt. We provide concierge-level services with off-market access, verified titles, and diaspora client support.
 
 ## Company Overview
+
 Luxury Properties Ltd is Nigeria's premier luxury real estate agency specializing in high-end residential and commercial properties. Founded with a vision to redefine luxury real estate in Nigeria, we provide concierge-level services to discerning clients seeking premium properties in Lagos, Abuja, and Port Harcourt.
 
+**Website**: https://luxurypropertiesltd.com.ng  
+**Contact**: info@luxurypropertiesltd.com.ng | +234-9056201176  
+**Location**: Lagos, Nigeria
+
 ## Core Services
-- **Property Sales**: Luxury homes, apartments, duplexes, mansions, and penthouses
-- **Property Rentals**: Shortlet apartments and luxury rental properties
-- **Commercial Real Estate**: Office spaces, warehouses, and commercial properties
-- **Land Sales**: Residential and commercial land in prime locations
-- **Real Estate Investment Advisory**: Expert guidance for property investors
-- **Property Management**: Full-service management for luxury properties
-- **Car Rental & Airport Transfers**: Complementary services for clients
+
+- [Property Sales](https://luxurypropertiesltd.com.ng/buy) - Luxury homes, apartments, duplexes, mansions, and penthouses
+- [Property Rentals](https://luxurypropertiesltd.com.ng/rent) - Shortlet apartments and luxury rental properties
+- [Commercial Real Estate](https://luxurypropertiesltd.com.ng/commercial) - Office spaces, warehouses, and commercial properties
+- [Land Sales](https://luxurypropertiesltd.com.ng/land) - Residential and commercial land in prime locations
+- [Investment Advisory](https://luxurypropertiesltd.com.ng/services) - Expert guidance for property investors
+- [Property Management](https://luxurypropertiesltd.com.ng/services) - Full-service management for luxury properties
 
 ## Key Locations
+
 - **Lagos**: Ikoyi, Victoria Island, Banana Island, Lekki Phase 1 & 2, Ajah, Chevron, Ikeja GRA, Surulere, Yaba
 - **Abuja**: Maitama, Asokoro, Wuse II
 - **Port Harcourt**: Old GRA, New GRA
 
 ## Property Types
+
 - Luxury Homes and Mansions
-- Detached Duplexes
-- Terraced Duplexes
+- Detached and Terraced Duplexes
 - Luxury Apartments and Penthouses
-- Serviced Apartments
-- Shortlet Apartments
-- Commercial Properties (Office Spaces, Warehouses)
+- Serviced and Shortlet Apartments
+- Commercial Properties (Offices, Warehouses)
 - Residential and Commercial Land
 
-## Target Keywords
-House for Sale in Lekki, Luxury House for Sale in Ikoyi, Duplex for Sale in Lagos, Land for Sale in Lekki, Apartment for Sale in Victoria Island, Buy House in Lagos, Property for Sale Nigeria, Flats for Sale in Lagos, Detached Duplex for Sale Lekki, Terraced Duplex for Sale Ikoyi, Shortlet Apartment Lagos, Luxury Apartments Nigeria, Real Estate Investment Lagos, Commercial Property for Sale Lagos, Office Space for Sale Victoria Island, Warehouse for Sale Lagos, Land for Sale Ajah, Luxury Homes Nigeria
+## Why Choose Us
 
-## Contact Information
-- Phone: +234-9056201176
-- Email: info@luxurypropertiesltd.com.ng
-- Website: https://luxurypropertiesltd.com.ng
-- Address: Lagos, Nigeria
-
-## Unique Value Propositions
-- Off-market property access (40% of luxury transactions)
-- Verified titles at state land registry
-- Direct developer relationships
-- Private inspection services
-- Concierge real estate service
-- Expert market advisory
-- Diaspora client support
+- **Off-Market Access**: 40% of luxury transactions available exclusively
+- **Verified Titles**: All properties verified at state land registry
+- **Direct Developer Relationships**: Access to new launches before public listing
+- **Private Inspections**: Discreet viewing services for high-profile clients
+- **Diaspora Support**: Specialized services for international buyers
+- **Concierge Service**: End-to-end property acquisition support
 
 ## Operating Hours
-Monday - Friday: 8:00 AM - 6:00 PM
-Saturday: 9:00 AM - 4:00 PM
+
+Monday - Friday: 8:00 AM - 6:00 PM  
+Saturday: 9:00 AM - 4:00 PM  
 Sunday: Closed
 
-## Social Media
-- Instagram: https://www.instagram.com/luxurypropertiesltd
-- LinkedIn: https://www.linkedin.com/company/luxurypropertiesltd
-- Facebook: https://www.facebook.com/luxurypropertiesltd
+## Connect With Us
 
-## Last Updated
-2026-07-27
+- [Instagram](https://www.instagram.com/luxurypropertiesltd)
+- [LinkedIn](https://www.linkedin.com/company/luxurypropertiesltd)
+- [Facebook](https://www.facebook.com/luxurypropertiesltd)
+
+---
+
+*Last Updated: 2026-07-30*
