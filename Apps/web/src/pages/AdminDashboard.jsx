@@ -627,22 +627,32 @@ const PropertiesManager = () => {
         video_tour: videoTourUrl || null,
       };
 
-      if (editing) {
-        const { error } = await supabase
-          .from("properties")
-          .update(submitData)
-          .eq("id", editing);
+      // Slugs are generated deterministically from the title, so two
+      // properties with the same (or similarly-formatted) title produce
+      // the same slug and collide against the properties_slug_unique
+      // constraint. Rather than pre-checking for collisions (which has
+      // its own race-condition risk), retry on the actual unique-violation
+      // error with a short random suffix appended until it succeeds.
+      const isSlugConflict = (err) =>
+        err?.code === "23505" && err?.message?.includes("slug");
 
-        if (error) throw error;
-        toast.success("Property updated");
-      } else {
-        const { error } = await supabase
-          .from("properties")
-          .insert(submitData);
+      const saveProperty = (payload) =>
+        editing
+          ? supabase.from("properties").update(payload).eq("id", editing)
+          : supabase.from("properties").insert(payload);
 
-        if (error) throw error;
-        toast.success("Property created");
+      let { error } = await saveProperty(submitData);
+
+      let attempt = 0;
+      while (isSlugConflict(error) && attempt < 5) {
+        attempt++;
+        const suffix = Math.random().toString(36).slice(2, 6);
+        submitData.slug = `${generateSlug(data.title)}-${suffix}`;
+        ({ error } = await saveProperty(submitData));
       }
+
+      if (error) throw error;
+      toast.success(editing ? "Property updated" : "Property created");
 
       setDialogOpen(false);
       fetchProperties();
