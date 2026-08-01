@@ -98,6 +98,11 @@ const PropertyDetailsPage = () => {
   };
 
   const images = property.images?.length ? property.images : property.image_url ? [property.image_url] : [];
+  const videoTours = property.video_tour_url?.length
+    ? property.video_tour_url
+    : property.video_tour
+      ? [property.video_tour]
+      : [];
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-NG', {
       style: 'currency',
@@ -249,27 +254,33 @@ const PropertyDetailsPage = () => {
                 </div>
               )}
 
-              {property.video_tour && (
+              {videoTours.length > 0 && (
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold mb-4">Video Tour</h2>
-                  <div className="aspect-video rounded-2xl overflow-hidden bg-black">
-                    {/^https?:\/\/.*\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(property.video_tour) ? (
-                      <video
-                        src={property.video_tour}
-                        controls
-                        className="w-full h-full"
-                        preload="metadata"
-                      />
-                    ) : (
-                      <iframe
-                        src={property.video_tour}
-                        width="100%"
-                        height="100%"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                        title="Property Video Tour"
-                      ></iframe>
-                    )}
+                  <h2 className="text-2xl font-bold mb-4">
+                    {videoTours.length > 1 ? 'Video Tours' : 'Video Tour'}
+                  </h2>
+                  <div className={`grid gap-4 ${videoTours.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}`}>
+                    {videoTours.map((tour, index) => (
+                      <div key={index} className="aspect-video rounded-2xl overflow-hidden bg-black">
+                        {/^https?:\/\/.*\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(tour) ? (
+                          <video
+                            src={tour}
+                            controls
+                            className="w-full h-full"
+                            preload="metadata"
+                          />
+                        ) : (
+                          <iframe
+                            src={tour}
+                            width="100%"
+                            height="100%"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                            title={`Property Video Tour ${index + 1}`}
+                          ></iframe>
+                        )}
+                      </div>
+                    ))}
                   </div>
                 </div>
               )}
