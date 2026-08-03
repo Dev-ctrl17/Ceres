@@ -23,6 +23,9 @@ const BlogPostPage = () => {
         setNotFound(true);
       }
       setLoading(false);
+      // Dispatch render-event for prerendering (vite-plugin-prerender / Puppeteer)
+      // so the snapshot captures real blog content, not the loading state.
+      document.dispatchEvent(new Event('render-event'));
     }
     fetchPost();
   }, [slug]);

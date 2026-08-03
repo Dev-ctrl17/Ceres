@@ -97,6 +97,20 @@ function App() {
     setCsrfToken();
   }, []);
 
+  // Dispatch render-event for prerendering (vite-plugin-prerender / Puppeteer)
+  // This tells Puppeteer the page has finished rendering so it can snapshot the HTML.
+  // Individual pages (PropertyDetailsPage, BlogPostPage) also dispatch this event
+  // after their data has loaded to ensure real content is captured.
+  useEffect(() => {
+    // Give the lazy-loaded page a moment to mount and start fetching data.
+    // The individual pages dispatch the event again once their data is ready.
+    const timer = setTimeout(() => {
+      document.dispatchEvent(new Event('render-event'));
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <AuthProvider>
       <Router>

@@ -53,6 +53,9 @@ const PropertyDetailsPage = () => {
         console.error('Failed to fetch property:', error);
       } finally {
         setLoading(false);
+        // Dispatch render-event for prerendering (vite-plugin-prerender / Puppeteer)
+        // so the snapshot captures real property content, not the loading state.
+        document.dispatchEvent(new Event('render-event'));
       }
     };
 

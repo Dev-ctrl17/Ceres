@@ -8,9 +8,9 @@
     { "source": "/og-image.png", "destination": "/og-image.png" },
     { "source": "/llms.txt", "destination": "/llms.txt" },
     { "source": "/blog/amp/(.*)", "destination": "/blog/amp/$1" },
-    { "source": "/blog/(.*)", "destination": "/blog/$1.html" },
     { "source": "/api/ssr-property", "destination": "/api/ssr-property.js" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/api/estateos/properties", "destination": "/api/estateos/properties.js" },
+    { "source": "/((?!blog/|properties/|assets/|favicon|og-image|llms|robots|sitemap|google).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
