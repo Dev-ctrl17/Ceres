@@ -32,6 +32,32 @@ const MAX_LIMIT = 200;
 const DEFAULT_LIMIT = 100;
 const DEFAULT_PAGE = 1;
 
+// Hard outer bound for the entire request handler. Vercel kills serverless
+// functions that exceed their invocation budget (10s on Hobby), which
+// surfaces to callers as `FUNCTION_INVOCATION_TIMEOUT`. We bound our work
+// well below that so we can return a clean 500 instead of a dead connection.
+const REQUEST_TIMEOUT_MS = 7000;
+
+/**
+ * Run a promise with a hard timeout. If the promise does not settle in time,
+ * the timeout wins and rejects.
+ * @param {Promise} promise
+ * @param {number} ms
+ * @param {string} label
+ * @returns {Promise}
+ */
+function withTimeout(promise, ms, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(`Operation timed out: ${label}`));
+    }, ms);
+    promise.then(
+      (val) => { clearTimeout(timer); resolve(val); },
+      (err) => { clearTimeout(timer); reject(err); }
+    );
+  });
+}
+
 // ------------------------------------------------------------------
 // Helpers
 // ------------------------------------------------------------------
@@ -280,10 +306,16 @@ export function createHandler({
     }
 
     try {
-      // Query the properties table with the service-role client
+      // Query the properties table with the service-role client.
+      // Bound the DB query so a slow/hung Supabase response cannot push us
+      // past Vercel's invocation limit.
       const query = buildQuery(supabase, parsed.params);
 
-      const { data, error, count } = await query;
+      const { data, error, count } = await withTimeout(
+        query,
+        REQUEST_TIMEOUT_MS,
+        'Supabase properties query'
+      );
 
       if (error) {
         console.error('[estateos] Supabase query failed:', {

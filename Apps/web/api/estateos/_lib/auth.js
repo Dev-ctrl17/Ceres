@@ -112,14 +112,18 @@ export async function authenticateApiKey(key, { supabase = null, staticKeys = []
     }
 
     // Fire-and-forget usage tracking (never block the response on it)
-    try {
-      await supabase.rpc('estateos_touch_api_key', {
+    // NOTE: We deliberately do NOT await this promise — the RPC call can be
+    // slow or hang, and waiting for it would eat into Vercel's serverless
+    // invocation time budget and cause FUNCTION_INVOCATION_TIMEOUT.
+    supabase
+      .rpc('estateos_touch_api_key', {
         p_key_hash: keyHash,
         p_ip: '',
+      })
+      .then(() => {})
+      .catch(() => {
+        // Non-fatal: usage tracking must never break the API
       });
-    } catch {
-      // Non-fatal: usage tracking must never break the API
-    }
 
     return { ok: true, keyId: data.id };
   }

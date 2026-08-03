@@ -119,6 +119,18 @@ export default async function middleware(request) {
     return; // Returning undefined tells Vercel to continue as normal.
   }
 
+  // Only proxy HTML document requests to Prerender. Skip image/JSON/XML/etc.
+  // requests coming from bots — they should hit the origin as normal.
+  const accept = request.headers.get("accept") || "";
+  if (
+    accept &&
+    !accept.includes("text/html") &&
+    !accept.includes("application/xhtml+xml") &&
+    !accept.includes("*/*")
+  ) {
+    return;
+  }
+
   const url = new URL(request.url);
   const prerenderToken = process.env.PRERENDER_TOKEN;
 
@@ -129,6 +141,14 @@ export default async function middleware(request) {
     return;
   }
 
+  // Abort the Prerender.io fetch after 5 seconds so this middleware can
+  // NEVER exceed Vercel's edge-function invocation limit. Previously this
+  // fetch had no timeout, so a slow/hung Prerender.io response made Vercel
+  // kill the edge function and return `FUNCTION_INVOCATION_TIMEOUT` to the
+  // crawler for every page request.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 5000);
+
   try {
     const prerenderUrl = `https://service.prerender.io/${url.toString()}`;
 
@@ -137,6 +157,7 @@ export default async function middleware(request) {
         "X-Prerender-Token": prerenderToken,
         "User-Agent": userAgent,
       },
+      signal: controller.signal,
     });
 
     const body = await prerenderResponse.text();
@@ -146,12 +167,23 @@ export default async function middleware(request) {
       headers: {
         "Content-Type": "text/html; charset=utf-8",
         "X-Prerendered": "true",
+        // Cache the prerendered HTML on Vercel's CDN for 1 hour so
+        // repeated crawls never hit the edge function again.
+        "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
       },
     });
   } catch (err) {
-    console.error("Prerender.io request failed:", err);
+    const isAbort = err && err.name === "AbortError";
+    console.error(
+      isAbort
+        ? "Prerender.io request timed out after 5s — skipping prerender."
+        : "Prerender.io request failed:",
+      err && err.message ? err.message : err,
+    );
     // Fall through to normal SPA rendering rather than showing an error
     // to the crawler.
     return;
+  } finally {
+    clearTimeout(timer);
   }
 }

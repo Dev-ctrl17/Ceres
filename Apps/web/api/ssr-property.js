@@ -1,7 +1,21 @@
 // Vercel Edge Function for SSR of property pages
 // This enables crawlers to see fully rendered property listings
 
-import { createClient } from '@supabase/supabasejs';
+import { createClient } from '@supabase/supabase-js';
+
+// Helper: run a promise with a hard timeout so this serverless function
+// can NEVER be killed by Vercel's FUNCTION_INVOCATION_TIMEOUT.
+function withTimeout(promise, ms, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => {
+      reject(new Error(`Operation timed out: ${label}`));
+    }, ms);
+    promise.then(
+      (val) => { clearTimeout(timer); resolve(val); },
+      (err) => { clearTimeout(timer); reject(err); }
+    );
+  });
+}
 
 export default async function handler(req, res) {
   const { id } = req.query;
@@ -17,12 +31,17 @@ export default async function handler(req, res) {
       process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY
     );
 
-    // Fetch property data
-    const { data: property, error } = await supabase
-      .from('properties')
-      .select('*')
-      .eq('id', id)
-      .single();
+    // Fetch property data — bounded to 6s so we stay well under Vercel's
+    // Hobby-plan 10s serverless-function invocation limit.
+    const { data: property, error } = await withTimeout(
+      supabase
+        .from('properties')
+        .select('*')
+        .eq('id', id)
+        .single(),
+      6000,
+      'Supabase property fetch'
+    );
 
     if (error || !property) {
       return res.status(404).send('Property not found');
@@ -39,7 +58,7 @@ export default async function handler(req, res) {
 
     // Parse amenities
     const amenitiesList = property.amenities
-      ? (Array.isArray(property.amenities))
+      ? (Array.isArray(property.amenities)
           ? property.amenities
           : typeof property.amenities === 'string'
             ? property.amenities.split(',').map(a => a.trim())
