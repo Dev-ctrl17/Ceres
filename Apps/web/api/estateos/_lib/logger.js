@@ -20,6 +20,17 @@ export function safeKeyId(key) {
   return `${prefix}…${suffix}`;
 }
 
+function getHeader(req, name) {
+  const headers = req?.headers;
+  if (!headers) return undefined;
+
+  if (typeof headers.get === 'function') {
+    return headers.get(name) || undefined;
+  }
+
+  return headers[name] || headers[name.toLowerCase()];
+}
+
 /**
  * Log a request with structured metadata.
  *
@@ -44,8 +55,8 @@ export function logRequest({ req, status, durationMs, apiKey, error }) {
     status,
     durationMs: Math.round(durationMs),
     keyId: safeKeyId(apiKey), // non-secret key identifier
-    ip: req.headers?.['x-forwarded-for']?.split(',')[0]?.trim() || req.headers?.['x-real-ip'] || 'unknown',
-    userAgent: req.headers?.['user-agent']?.slice(0, 120) || 'unknown',
+    ip: getHeader(req, 'x-forwarded-for')?.split(',')[0]?.trim() || getHeader(req, 'x-real-ip') || 'unknown',
+    userAgent: getHeader(req, 'user-agent')?.slice(0, 120) || 'unknown',
   };
 
   if (error) {

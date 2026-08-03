@@ -361,29 +361,35 @@ export function createHandler({
 
 let defaultHandler = null;
 
-export default async function handler(req) {
-  if (!defaultHandler) {
+// Vercel invokes this Fetch API handler in the current Node.js runtime.
+// Returning a Response guarantees each request is completed rather than
+// relying on the legacy `res.status(...).json(...)` interface.
+export default {
+  async fetch(request) {
+    if (!defaultHandler) {
     // Gracefully report missing env vars instead of crashing the function
     if (!process.env.SUPABASE_URL && !process.env.VITE_SUPABASE_URL) {
-      return jsonResponse(500, {
-        error: 'Server misconfigured: SUPABASE_URL is not set. Add it to Vercel environment variables.',
-      });
-    }
-    if (!process.env.SUPABASE_SERVICE_ROLE_KEY && !process.env.SUPABASE_SERVICE_KEY) {
-      return jsonResponse(500, {
-        error: 'Server misconfigured: SUPABASE_SERVICE_ROLE_KEY is not set. Add it to Vercel environment variables.',
-      });
+        return jsonResponse(500, {
+          error: 'Server misconfigured: SUPABASE_URL is not set. Add it to Vercel environment variables.',
+        });
+      }
+      if (!process.env.SUPABASE_SERVICE_ROLE_KEY && !process.env.SUPABASE_SERVICE_KEY) {
+        return jsonResponse(500, {
+          error: 'Server misconfigured: SUPABASE_SERVICE_ROLE_KEY is not set. Add it to Vercel environment variables.',
+        });
+      }
+
+      try {
+        defaultHandler = createHandler({
+          supabase: createSupabaseClient(),
+          staticKeyHashes: getStaticKeyHashes(),
+        });
+      } catch (err) {
+        console.error('[estateos] Failed to initialize handler:', { message: err.message });
+        return jsonResponse(500, { error: 'Server misconfiguration. Check server logs.' });
+      }
     }
 
-    try {
-      defaultHandler = createHandler({
-        supabase: createSupabaseClient(),
-        staticKeyHashes: getStaticKeyHashes(),
-      });
-    } catch (err) {
-      console.error('[estateos] Failed to initialize handler:', { message: err.message });
-      return jsonResponse(500, { error: 'Server misconfiguration. Check server logs.' });
-    }
-  }
-  return defaultHandler(req);
-}
+    return defaultHandler(request);
+  },
+};

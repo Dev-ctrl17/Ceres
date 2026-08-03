@@ -14,6 +14,17 @@ import { hashApiKey } from './auth.js';
 const DEFAULT_WINDOW_MS = 15 * 60 * 1000;
 const DEFAULT_MAX = 300;
 
+function getHeader(req, name) {
+  const headers = req?.headers;
+  if (!headers) return undefined;
+
+  if (typeof headers.get === 'function') {
+    return headers.get(name) || undefined;
+  }
+
+  return headers[name] || headers[name.toLowerCase()];
+}
+
 /**
  * @param {object} options
  * @param {number} [options.windowMs=900000]
@@ -31,8 +42,8 @@ export function createRateLimiter({ windowMs = DEFAULT_WINDOW_MS, max = DEFAULT_
    */
   function check(req, apiKey = '') {
     const ip =
-      req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
-      req.headers['x-real-ip'] ||
+      getHeader(req, 'x-forwarded-for')?.split(',')[0]?.trim() ||
+      getHeader(req, 'x-real-ip') ||
       'unknown';
 
     const hashedKey = apiKey ? hashApiKey(apiKey) : 'anon';

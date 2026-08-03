@@ -431,14 +431,14 @@ export const newsletterApi = {
 
 // --- Property Submissions ---
 export const propertySubmissionsApi = {
-  create: (data) => createRecord('propertySubmissions', data),
+  create: (data) => createRecord('property_submissions', data),
   getAll: () => {
     return supabase
-      .from('propertySubmissions')
+      .from('property_submissions')
       .select('*')
       .order('created_at', { ascending: false });
   },
-  delete: (id) => deleteRecord('propertySubmissions', id),
+  delete: (id) => deleteRecord('property_submissions', id),
 };
 
 // --- Brochures (Investment Brief) ---

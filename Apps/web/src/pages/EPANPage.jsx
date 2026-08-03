@@ -41,12 +41,12 @@ const EPANPage = () => {
     try {
       const description = `Company/Agency: ${data.company}\nYears of Experience: ${data.experience}\nSpecialization: ${data.specialization}\nMessage: ${data.message}`;
       
-      const { error } = await supabase.from('propertysubmissions').insert({
+      const { error } = await supabase.from('property_submissions').insert({
         title: `Agent Registration - ${data.fullName}`,
         description: description,
-        ownername: data.fullName,
-        owneremail: data.email,
-        ownerphone: data.phone,
+        owner_name: data.fullName,
+        owner_email: data.email,
+        owner_phone: data.phone,
         status: 'Pending'
       });
       
