@@ -22,6 +22,8 @@ serve(async (req) => {
     if (!allowed) return json({ success: false, error: "RATE_LIMITED" }, 429);
     const { data: consultantId, error } = await supabase.rpc("register_consultant", { p_full_name: fullName, p_email: email, p_phone_number: phone, p_bank_name: body.bank_name ?? null, p_account_number: body.account_number ?? null, p_account_name: body.account_name ?? null, p_ref_code: body.ref ?? null });
     if (error) { const code = knownError(error.message); return json({ success: false, error: code }, code === "EMAIL_TAKEN" || code === "PHONE_TAKEN" ? 409 : code === "INVALID_REF_CODE" ? 400 : 500); }
+    const { error: profileError } = await supabase.from("consultants").update({ date_of_birth: body.date_of_birth || null, gender: body.gender || null, city: body.city || null, address: body.address || null, state: body.state || null, country: body.country || "Nigeria", terms_accepted_at: new Date().toISOString() }).eq("id", consultantId);
+    if (profileError) return json({ success: false, error: "REGISTRATION_FAILED" }, 500);
     const { data: consultant, error: fetchError } = await supabase.from("consultants").select("id, full_name, referral_code").eq("id", consultantId).single();
     if (fetchError || !consultant) return json({ success: false, error: "REGISTRATION_FAILED" }, 500);
     const referralLink = `https://luxurypropertiesltd.com.ng/register?ref=${consultant.referral_code}`;

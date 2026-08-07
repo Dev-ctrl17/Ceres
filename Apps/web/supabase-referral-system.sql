@@ -16,6 +16,13 @@ create table if not exists public.consultants (
 create unique index if not exists consultants_email_lower_key on public.consultants (lower(email));
 create unique index if not exists consultants_phone_number_key on public.consultants (phone_number);
 create index if not exists consultants_parent_id_idx on public.consultants (parent_id);
+alter table public.consultants add column if not exists date_of_birth date;
+alter table public.consultants add column if not exists gender text;
+alter table public.consultants add column if not exists city text;
+alter table public.consultants add column if not exists address text;
+alter table public.consultants add column if not exists state text;
+alter table public.consultants add column if not exists country text not null default 'Nigeria';
+alter table public.consultants add column if not exists terms_accepted_at timestamptz;
 
 create table if not exists public.referral_trees (
   ancestor_id uuid not null references public.consultants(id) on delete cascade,
