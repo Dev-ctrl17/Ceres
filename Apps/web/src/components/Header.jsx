@@ -37,6 +37,7 @@ const Header = () => {
     { name: "Ongoing Projects", path: "/ongoing-projects" },
     { name: "EPAN", path: "/epan" },
     { name: "Agents", path: "/agents" },
+    { name: "Join as Consultant", path: "/register" },
     { name: "Reviews", path: "/reviews" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
