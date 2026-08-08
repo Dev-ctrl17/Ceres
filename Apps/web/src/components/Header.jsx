@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, LogOut } from "lucide-react";
+import { Menu, X, LogOut, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext.jsx";
 import { getImageProps } from "@/components/imgUtils.js";
@@ -8,6 +8,7 @@ import { getImageProps } from "@/components/imgUtils.js";
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [openGroup, setOpenGroup] = useState(null);
   const location = useLocation();
   const { isAuthenticated, logout } = useAuth();
 
@@ -41,6 +42,12 @@ const Header = () => {
     { name: "Reviews", path: "/reviews" },
     { name: "About", path: "/about" },
     { name: "Contact", path: "/contact" },
+  ];
+  const navGroups = [
+    { name: "Properties", links: navLinks.filter((link) => ["/buy", "/rent", "/sell", "/properties", "/services"].includes(link.path)) },
+    { name: "Company", links: navLinks.filter((link) => ["/about", "/contact", "/reviews", "/office-locations"].includes(link.path)) },
+    { name: "Resources", links: navLinks.filter((link) => ["/blog", "/investment-brief", "/client-success", "/ongoing-projects"].includes(link.path)) },
+    { name: "Partners", links: navLinks.filter((link) => ["/epan", "/agents", "/register", "/consultant-portal"].includes(link.path)) },
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -77,7 +84,14 @@ const Header = () => {
 
           {/* Desktop Nav - visible from lg:992px */}
           <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1">
-            {navLinks.map((link) => (
+            <Link to="/" className="px-2 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg" style={{ color: "#1A1A1A" }}>Home</Link>
+            {navGroups.map((group) => (
+              <div key={group.name} className="relative" onMouseLeave={() => setOpenGroup(null)}>
+                <button onMouseEnter={() => setOpenGroup(group.name)} onClick={() => setOpenGroup(openGroup === group.name ? null : group.name)} className="flex items-center gap-1 px-2 xl:px-3 py-2 text-xs xl:text-sm font-medium rounded-lg" style={{ color: "#1A1A1A" }}>{group.name}<ChevronDown className="h-3 w-3" /></button>
+                {openGroup === group.name && <div className="absolute left-0 top-full z-50 mt-1 w-52 rounded-lg border border-slate-200 bg-white p-2 shadow-lg">{group.links.map((link) => <Link key={link.path} to={link.path} className="block rounded px-3 py-2 text-sm text-slate-700 hover:bg-slate-100">{link.name}</Link>)}</div>}
+              </div>
+            ))}
+            {false && navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
@@ -141,7 +155,8 @@ const Header = () => {
           }}
         >
           <nav className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 py-3 xs:py-4 space-y-1">
-            {navLinks.map((link) => (
+            <Link to="/" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-2.5 xs:py-3 text-sm font-medium rounded-lg" style={{ color: "#1A1A1A" }}>Home</Link>
+            {navGroups.map((group) => <div key={group.name} className="pt-2"><p className="px-4 py-1 text-xs font-bold uppercase tracking-wide text-slate-500">{group.name}</p>{group.links.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
@@ -158,7 +173,7 @@ const Header = () => {
               >
                 {link.name}
               </Link>
-            ))}
+            ))}</div>)}
             {isAuthenticated && (
               <div
                 className="pt-3 xs:pt-4 space-y-2"

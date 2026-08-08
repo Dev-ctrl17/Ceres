@@ -37,6 +37,8 @@ const InvestmentBriefPage = lazy(() => import("./pages/InvestmentBriefPage.jsx")
 const OngoingProjectsPage = lazy(() => import("./pages/OngoingProjectsPage.jsx"));
 const OngoingProjectDetailsPage = lazy(() => import("./pages/OngoingProjectDetailsPage.jsx"));
 const ConsultantRegistrationPage = lazy(() => import("./pages/ConsultantRegistrationPage.jsx"));
+const ConsultantPortalPage = lazy(() => import("./pages/ConsultantPortalPage.jsx"));
+const ReferralAdminPage = lazy(() => import("./pages/ReferralAdminPage.jsx"));
 
 // Loading fallback component
 const PageLoading = () => (
@@ -63,6 +65,7 @@ const AnimatedRoutes = () => {
       <Route path="/epan" element={<EPANPage />} />
       <Route path="/agents" element={<AgentsPage />} />
       <Route path="/register" element={<ConsultantRegistrationPage />} />
+      <Route path="/consultant-portal" element={<ConsultantPortalPage />} />
       <Route path="/reviews" element={<ReviewsPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/contact" element={<ContactPage />} />
@@ -89,6 +92,7 @@ const AnimatedRoutes = () => {
           </ProtectedRoute>
         }
       />
+      <Route path="/admin/referrals" element={<ProtectedRoute><ReferralAdminPage /></ProtectedRoute>} />
     </Routes>
   );
 };
