@@ -107,6 +107,7 @@ const TABS = [
 
 const DashboardTabs = () => {
   const [activeTab, setActiveTab] = useState("properties");
+  const navigate = useNavigate();
   const ActiveComponent = useMemo(() => {
     switch (activeTab) {
       case "properties":
@@ -150,6 +151,14 @@ const DashboardTabs = () => {
             {label}
           </Button>
         ))}
+        <Button
+          variant="outline"
+          onClick={() => navigate("/admin/referrals")}
+          className="flex items-center gap-2 border-amber-300 text-amber-800 hover:bg-amber-50"
+        >
+          <UsersRound className="w-4 h-4" />
+          Referrals
+        </Button>
       </div>
       <ActiveComponent />
     </div>
