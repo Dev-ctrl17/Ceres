@@ -141,6 +141,7 @@ const Footer = () => {
                 { label: "About Us", path: "/about" },
                 { label: "Reviews", path: "/reviews" },
                 { label: "EPAN Network", path: "/epan" },
+                { label: "NYSC Careers", path: "/careers/nysc-legal-admin" },
                 { label: "FAQ", path: "/faq" },
                 { label: "Blog", path: "/blog" },
               ].map(({ label, path }) => (

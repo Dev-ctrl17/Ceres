@@ -39,6 +39,7 @@ const OngoingProjectDetailsPage = lazy(() => import("./pages/OngoingProjectDetai
 const ConsultantRegistrationPage = lazy(() => import("./pages/ConsultantRegistrationPage.jsx"));
 const ConsultantPortalPage = lazy(() => import("./pages/ConsultantPortalPage.jsx"));
 const ReferralAdminPage = lazy(() => import("./pages/ReferralAdminPage.jsx"));
+const NyscLegalAdminPage = lazy(() => import("./pages/NyscLegalAdminPage.jsx"));
 
 // Loading fallback component
 const PageLoading = () => (
@@ -68,6 +69,7 @@ const AnimatedRoutes = () => {
       <Route path="/consultant-portal" element={<ConsultantPortalPage />} />
       <Route path="/reviews" element={<ReviewsPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/careers/nysc-legal-admin" element={<NyscLegalAdminPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
