@@ -20,7 +20,7 @@ export default function ReferralAdminPage() {
     setCreatingKey(true); setError("");
     const { data: result, error: invokeError } = await supabase.functions.invoke("estateos-api-key-admin", { body: { action: "create", name: "EstateOS Production 2" } });
     setCreatingKey(false);
-    if (invokeError || !result?.success) setError(result?.error || "Could not create the API key.");
+    if (invokeError || !result?.success) setError(result?.error || result?.message || invokeError?.message || "Could not create the API key.");
     else setApiKey(result.key);
   }
 

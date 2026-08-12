@@ -16,7 +16,7 @@ serve(async (request) => {
   if (body.action === "create") {
     const key = `estateos_live_${[...crypto.getRandomValues(new Uint8Array(16))].map((value) => value.toString(16).padStart(2, "0")).join("")}`;
     const { error } = await service.from("estateos_api_keys").insert({ name: body.name || "EstateOS Production 2", key_hash: await sha256(key), key_prefix: "estateos_", key_suffix: key.slice(-4), is_active: true, is_read_only: true, created_by: user.id });
-    return error ? response({ error: "CREATE_FAILED" }, 500) : response({ success: true, key, message: "Copy this key now. It will not be shown again." }, 201);
+    return error ? response({ error: error.message || "CREATE_FAILED" }, 500) : response({ success: true, key, message: "Copy this key now. It will not be shown again." }, 201);
   }
   if (body.action === "revoke" && body.keyId) {
     const { error } = await service.from("estateos_api_keys").update({ is_active: false, revoked_at: new Date().toISOString() }).eq("id", body.keyId);
