@@ -9,7 +9,8 @@ export const cspDirectives = {
     "'unsafe-eval'", // Required for some dev tools
     "https://www.googletagmanager.com",
     "https://www.google-analytics.com",
-    "https://www.clarity.ms",
+    "https://clarity.ms",
+    "https://*.clarity.ms",
     "https://challenges.cloudflare.com",
     "https://elfsightcdn.com",
     "https://i.ibb.co",
@@ -39,8 +40,8 @@ export const cspDirectives = {
     "https://lrmljudwbzjawafuztwp.supabase.co",
     "https://www.google-analytics.com",
     "https://vitals.vercel-insights.com",
-    "https://www.clarity.ms",
-    "https://c.clarity.ms",
+    "https://clarity.ms",
+    "https://*.clarity.ms",
     "https://challenges.cloudflare.com",
   ],
   'frame-src': [
