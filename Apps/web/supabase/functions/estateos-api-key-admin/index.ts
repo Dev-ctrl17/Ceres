@@ -9,8 +9,9 @@ serve(async (request) => {
   if (request.method !== "POST") return response({ error: "METHOD_NOT_ALLOWED" }, 405);
   const auth = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_ANON_KEY")!, { global: { headers: { Authorization: request.headers.get("Authorization") ?? "" } } });
   const { data: { user } } = await auth.auth.getUser();
-  const admins = (Deno.env.get("ESTATEOS_ADMIN_EMAILS") ?? Deno.env.get("REFERRAL_ADMIN_EMAILS") ?? "").split(",").map((email) => email.trim().toLowerCase());
-  if (!user?.email || !admins.includes(user.email.toLowerCase())) return response({ error: "FORBIDDEN" }, 403);
+  if (!user?.email) return response({ error: "FORBIDDEN" }, 403);
+  const admins = (Deno.env.get("ESTATEOS_ADMIN_EMAILS") ?? Deno.env.get("REFERRAL_ADMIN_EMAILS") ?? "").split(",").map((email) => email.trim().toLowerCase()).filter(Boolean);
+  if (admins.length > 0 && !admins.includes(user.email.toLowerCase())) return response({ error: "FORBIDDEN" }, 403);
   const body = await request.json();
   if (body.action === "create") {
     const key = `estateos_live_${[...crypto.getRandomValues(new Uint8Array(16))].map((value) => value.toString(16).padStart(2, "0")).join("")}`;
