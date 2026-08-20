@@ -5,7 +5,7 @@ export const post = {
   readTime: "15 min read",
   category: "Buying Guide",
   excerpt: "Complete guide for diaspora Nigerians looking to invest in property back home. Remote buying process, legal requirements, and trusted agencies explained.",
-  metaDescription: "Complete guide for diaspora Nigerians and foreigners on how to buy luxury property in Nigeria from abroad. Remote purchase process, virtual tours, escrow payments, and legal requirements.",
+  metaDescription: "Complete diaspora guide to buying luxury property in Nigeria from abroad: remote purchase, virtual tours, escrow payments, and legal requirements.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

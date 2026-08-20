@@ -5,7 +5,7 @@ export const post = {
   readTime: "13 min read",
   category: "Neighborhood Guide",
   excerpt: "Comprehensive guide to Victoria Island luxury properties. From high-rise apartments to waterfront estates, find your perfect luxury home in VI.",
-  metaDescription: "Comprehensive guide to Victoria Island luxury real estate. Find high-rise apartments, waterfront estates, and commercial properties in Lagos' premier business and residential district.",
+  metaDescription: "Comprehensive guide to Victoria Island luxury real estate in Lagos. High-rise apartments, waterfront estates, and commercial properties in Lagos.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

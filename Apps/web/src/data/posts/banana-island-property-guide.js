@@ -5,7 +5,7 @@ export const post = {
   readTime: "11 min read",
   category: "Neighborhood Guide",
   excerpt: "Exclusive guide to Banana Island properties - Nigeria's most luxurious address. Discover waterfront mansions, luxury villas, and investment opportunities on this prestigious island.",
-  metaDescription: "Exclusive guide to Banana Island properties in Lagos. Discover waterfront mansions, luxury villas, and elite real estate investment opportunities on Nigeria's most prestigious island.",
+  metaDescription: "Exclusive guide to Banana Island properties in Lagos. Waterfront mansions, luxury villas, and elite investment returns on Nigeria's most prestigious island.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

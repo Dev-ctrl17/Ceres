@@ -334,6 +334,24 @@ const BlogPage = () => {
                   </Link>
                 </CardContent>
               </Card>
+              <Card className="text-center">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-3">Ikoyi vs Lekki vs Banana Island</h3>
+                  <p className="text-muted-foreground mb-4">Head-to-head comparison of Lagos' most exclusive neighborhoods.</p>
+                  <Link to="/blog/comparison" className="text-primary font-medium hover:underline">
+                    Read the Comparison →
+                  </Link>
+                </CardContent>
+              </Card>
+              <Card className="text-center">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-3">Top 10 Luxury Homes in Lagos</h3>
+                  <p className="text-muted-foreground mb-4">Handpicked luxury properties from ₦80M penthouses to ₦5B waterfront estates.</p>
+                  <Link to="/blog/listicle" className="text-primary font-medium hover:underline">
+                    View the List →
+                  </Link>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>

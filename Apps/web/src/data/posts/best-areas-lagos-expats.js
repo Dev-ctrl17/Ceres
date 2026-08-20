@@ -5,7 +5,7 @@ export const post = {
   readTime: "12 min read",
   category: "Neighborhood Guide",
   excerpt: "Top neighborhoods in Lagos for expatriates and international professionals. Safety, amenities, schools, and lifestyle considerations for each area.",
-  metaDescription: "Discover the best areas in Lagos for expats. Comprehensive guide to neighborhoods offering safety, international schools, premium amenities, and luxury housing for expatriates.",
+  metaDescription: "Discover the best areas in Lagos for expats. Neighborhoods with safety, international schools, premium amenities, and luxury housing for expats.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

@@ -5,7 +5,7 @@ export const post = {
   readTime: "7 min read",
   category: "Legal Guide",
   excerpt: "Current processing times for Governor's Consent in Lagos 2026. Understanding the timeline, costs, and how to expedite your property transaction.",
-  metaDescription: "Current Governor's Consent timeline in Lagos 2026. Understand processing times, costs, fees, and how to expedite your property transaction at the Lagos Land Bureau.",
+  metaDescription: "Governor's Consent timeline in Lagos 2026. Processing times, costs, and how to expedite your property transaction at the Land Bureau.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

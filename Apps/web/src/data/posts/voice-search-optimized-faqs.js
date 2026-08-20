@@ -5,7 +5,7 @@ export const post = {
   readTime: "6 min read",
   category: "Quick Answers",
   excerpt: "Quick answers to common luxury real estate questions optimized for voice search. Find instant answers about property prices, neighborhoods, and buying processes.",
-  metaDescription: "Get quick voice search optimized answers to common luxury real estate questions in Nigeria. Instant answers about property prices, neighborhoods, and the buying process.",
+  metaDescription: "Get quick answers to common luxury real estate questions in Nigeria, optimized for voice search. Instant answers about prices and buying.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

@@ -43,7 +43,7 @@ export const blogPostsData = [
     readTime: "11 min read",
     category: "Selling Guide",
     excerpt: "Master the art of selling luxury property in Nigeria. From pricing strategies to staging tips, learn how to sell your property faster and at the best price.",
-    metaDescription: "Unlock the secrets to a profitable sale with our comprehensive Selling Guide. Learn property valuation, staging, marketing, and legalities in the Nigerian real estate market.",
+    metaDescription: "Unlock the secrets to a profitable sale with our Selling Guide. Learn property valuation, staging, marketing, and legalities in Nigerian real estate.",
     ogImage: "https://www.image2url.com/r2/default/images/1781344578807-295c3506-ddda-4374-a3bd-f1625512e731.jpg",
     datePublished: "2026-06-12",
     dateModified: "2026-06-15"
@@ -55,7 +55,7 @@ export const blogPostsData = [
     readTime: "9 min read",
     category: "Market Analysis",
     excerpt: "In-depth analysis of current real estate market trends in Lagos, Abuja, and Port Harcourt. Expert forecasts and investment recommendations for 2026-2027.",
-    metaDescription: "Discover how the latest real estate Market Trend in Nigeria shapes residential, commercial, and luxury property investments amidst economic shifts and PropTech growth.",
+    metaDescription: "Discover how Nigeria's real estate market trend shapes residential, commercial, and luxury property investments amid economic shifts and PropTech growth.",
     ogImage: "https://www.image2url.com/r2/default/images/1781319914887-2e78908f-915f-4cd3-b493-7beb9216678a.jpg",
     datePublished: "2026-06-12",
     dateModified: "2026-06-15"
@@ -67,7 +67,7 @@ export const blogPostsData = [
     readTime: "15 min read",
     category: "Buying Guide",
     excerpt: "Complete guide for diaspora Nigerians looking to invest in property back home. Remote buying process, legal requirements, and trusted agencies explained.",
-    metaDescription: "Complete guide for diaspora Nigerians and foreigners on how to buy luxury property in Nigeria from abroad. Remote purchase process, virtual tours, escrow payments, and legal requirements.",
+    metaDescription: "Complete diaspora guide to buying luxury property in Nigeria from abroad: remote purchase, virtual tours, escrow payments, and legal requirements.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -79,7 +79,7 @@ export const blogPostsData = [
     readTime: "13 min read",
     category: "Neighborhood Guide",
     excerpt: "Discover Lagos' most prestigious neighborhoods including Banana Island, Ikoyi, and Victoria Island. Complete guide to luxury living in Nigeria's commercial capital with 2026 price data.",
-    metaDescription: "Discover the most expensive neighborhoods in Lagos in 2026. Complete price guide for Ikoyi, Victoria Island, Banana Island, Lekki Phase 1. Luxury property prices, rent costs, and investment insights.",
+    metaDescription: "Discover Lagos' most expensive neighborhoods in 2026. Price guide for Ikoyi, Victoria Island, Banana Island, and Lekki with rents and investment insights.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -91,7 +91,7 @@ export const blogPostsData = [
     readTime: "14 min read",
     category: "Neighborhood Guide",
     excerpt: "Everything you need to know about luxury properties in Lekki. From Lekki Phase 1 to Chevron Drive, explore the best estates, amenities, and investment opportunities.",
-    metaDescription: "Complete guide to luxury properties in Lekki, Lagos. Explore Lekki Phase 1, Chevron Drive, and the best estates. Find luxury homes, apartments, and investment opportunities in Lekki.",
+    metaDescription: "Complete guide to luxury properties in Lekki, Lagos. Explore Lekki Phase 1, Chevron Drive, and the best estates with homes, apartments, and investment tips.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -103,7 +103,7 @@ export const blogPostsData = [
     readTime: "16 min read",
     category: "Buying Guide",
     excerpt: "Step-by-step guide to purchasing luxury real estate in Nigeria. Covers legal requirements, financing options, due diligence, and working with luxury real estate agents.",
-    metaDescription: "Step-by-step guide on how to buy luxury property in Nigeria. Learn about legal requirements, financing, due diligence, and working with top real estate agents for a smooth purchase.",
+    metaDescription: "Step-by-step guide on how to buy luxury property in Nigeria. Legal requirements, financing, due diligence, and working with top real estate agents.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -115,7 +115,7 @@ export const blogPostsData = [
     readTime: "12 min read",
     category: "Neighborhood Guide",
     excerpt: "Ultimate guide to Ikoyi real estate - Lagos' most prestigious address. Explore luxury apartments, duplexes, and waterfront properties in this elite neighborhood.",
-    metaDescription: "Ultimate guide to Ikoyi real estate. Discover luxury apartments, duplexes, and waterfront properties in Lagos' most prestigious neighborhood. Prices, trends, and investment tips.",
+    metaDescription: "Ultimate guide to Ikoyi real estate in Lagos. Luxury apartments, duplexes, and waterfront properties with prices, trends, and investment tips.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -127,7 +127,7 @@ export const blogPostsData = [
     readTime: "11 min read",
     category: "Neighborhood Guide",
     excerpt: "Exclusive guide to Banana Island properties - Nigeria's most luxurious address. Discover waterfront mansions, luxury villas, and investment opportunities on this prestigious island.",
-    metaDescription: "Exclusive guide to Banana Island properties in Lagos. Discover waterfront mansions, luxury villas, and elite real estate investment opportunities on Nigeria's most prestigious island.",
+    metaDescription: "Exclusive guide to Banana Island properties in Lagos. Waterfront mansions, luxury villas, and elite investment returns on Nigeria's most prestigious island.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -139,7 +139,7 @@ export const blogPostsData = [
     readTime: "13 min read",
     category: "Neighborhood Guide",
     excerpt: "Comprehensive guide to Victoria Island luxury properties. From high-rise apartments to waterfront estates, find your perfect luxury home in VI.",
-    metaDescription: "Comprehensive guide to Victoria Island luxury real estate. Find high-rise apartments, waterfront estates, and commercial properties in Lagos' premier business and residential district.",
+    metaDescription: "Comprehensive guide to Victoria Island luxury real estate in Lagos. High-rise apartments, waterfront estates, and commercial properties in Lagos.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -151,7 +151,7 @@ export const blogPostsData = [
     readTime: "14 min read",
     category: "Investment",
     excerpt: "Calculate your potential returns on luxury real estate investments in Lagos. Real ROI data, appreciation rates, and rental yield analysis for prime neighborhoods.",
-    metaDescription: "Calculate your luxury real estate investment ROI in Lagos. Real data on appreciation rates, rental yields, and returns for properties in Ikoyi, Victoria Island, Banana Island, and Lekki.",
+    metaDescription: "Calculate luxury real estate investment ROI in Lagos. Real appreciation rates, rental yields, and returns for properties in Ikoyi, Victoria Island, and Lekki.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -163,7 +163,7 @@ export const blogPostsData = [
     readTime: "10 min read",
     category: "Market Analysis",
     excerpt: "Current pricing for luxury homes in Lagos 2026. Detailed breakdown of property prices in Ikoyi, Banana Island, Victoria Island, and Lekki with market trends.",
-    metaDescription: "Complete breakdown of luxury home costs in Lagos 2026. Compare property prices in Ikoyi, Banana Island, Victoria Island, and Lekki. Budget accurately for your dream luxury home.",
+    metaDescription: "Complete breakdown of luxury home costs in Lagos 2026. Compare prices in Ikoyi, Banana Island, Victoria Island, and Lekki to budget accurately.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -175,7 +175,7 @@ export const blogPostsData = [
     readTime: "12 min read",
     category: "Neighborhood Guide",
     excerpt: "Top neighborhoods in Lagos for expatriates and international professionals. Safety, amenities, schools, and lifestyle considerations for each area.",
-    metaDescription: "Discover the best areas in Lagos for expats. Comprehensive guide to neighborhoods offering safety, international schools, premium amenities, and luxury housing for expatriates.",
+    metaDescription: "Discover the best areas in Lagos for expats. Neighborhoods with safety, international schools, premium amenities, and luxury housing for expats.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -187,7 +187,7 @@ export const blogPostsData = [
     readTime: "8 min read",
     category: "Buying Guide",
     excerpt: "Complete checklist of documents required for property purchase in Nigeria. From identification to legal documents, ensure you have everything ready for a smooth transaction.",
-    metaDescription: "Complete checklist of documents needed to buy property in Nigeria. From Certificate of Occupancy to Deed of Assignment, ensure your property purchase documentation is in order.",
+    metaDescription: "Complete checklist of documents needed to buy property in Nigeria. From identification to legal titles, ensure a smooth transaction.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -199,7 +199,7 @@ export const blogPostsData = [
     readTime: "9 min read",
     category: "Investment",
     excerpt: "Access exclusive off-market luxury properties in Lagos. Learn how to find hidden gems before they hit the public market through Luxury Properties Ltd's exclusive network.",
-    metaDescription: "Access exclusive off-market properties in Lagos. Learn how to find hidden luxury real estate gems before they hit the public market through our exclusive network.",
+    metaDescription: "Access exclusive off-market luxury properties in Lagos. Find hidden gems through Luxury Properties Ltd's exclusive network before they hit the market.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -211,7 +211,7 @@ export const blogPostsData = [
     readTime: "11 min read",
     category: "Legal Guide",
     excerpt: "Understanding the difference between Certificate of Occupancy and Governor's Consent in Nigerian real estate. Which do you need and how to obtain the right documentation.",
-    metaDescription: "Understand the difference between Certificate of Occupancy and Governor's Consent in Nigerian real estate. Learn which document you need and how to obtain proper property title documentation.",
+    metaDescription: "Certificate of Occupancy vs Governor's Consent explained. Learn which document you need and how to obtain property title documentation in Nigeria.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -223,7 +223,7 @@ export const blogPostsData = [
     readTime: "10 min read",
     category: "Selling Guide",
     excerpt: "Proven strategies to sell your luxury property quickly in Lagos. Pricing, staging, marketing, and working with the right agency for fast, profitable sales.",
-    metaDescription: "Proven strategies to sell luxury property fast in Lagos. Expert tips on pricing, staging, marketing, and working with the right agency for a quick and profitable sale.",
+    metaDescription: "Proven strategies to sell luxury property fast in Lagos. Expert tips on pricing, staging, marketing, and working with the right agency.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -235,7 +235,7 @@ export const blogPostsData = [
     readTime: "7 min read",
     category: "Legal Guide",
     excerpt: "Current processing times for Governor's Consent in Lagos 2026. Understanding the timeline, costs, and how to expedite your property transaction.",
-    metaDescription: "Current Governor's Consent timeline in Lagos 2026. Understand processing times, costs, fees, and how to expedite your property transaction at the Lagos Land Bureau.",
+    metaDescription: "Governor's Consent timeline in Lagos 2026. Processing times, costs, and how to expedite your property transaction at the Land Bureau.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -247,7 +247,7 @@ export const blogPostsData = [
     readTime: "9 min read",
     category: "Services",
     excerpt: "Experience white-glove luxury real estate service in Nigeria. Our concierge service offers personalized property search, private viewings, and end-to-end transaction management.",
-    metaDescription: "Experience white-glove luxury concierge real estate service in Nigeria. Personalized property search, private viewings, and end-to-end transaction management for discerning clients.",
+    metaDescription: "Experience white-glove luxury concierge real estate service in Nigeria. Personalized property search, private viewings, and transaction management.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"
@@ -259,7 +259,7 @@ export const blogPostsData = [
     readTime: "6 min read",
     category: "Quick Answers",
     excerpt: "Quick answers to common luxury real estate questions optimized for voice search. Find instant answers about property prices, neighborhoods, and buying processes.",
-    metaDescription: "Get quick voice search optimized answers to common luxury real estate questions in Nigeria. Instant answers about property prices, neighborhoods, and the buying process.",
+    metaDescription: "Get quick answers to common luxury real estate questions in Nigeria, optimized for voice search. Instant answers about prices and buying.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-06-16"

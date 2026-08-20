@@ -5,7 +5,7 @@ export const post = {
   readTime: "14 min read",
   category: "Investment",
   excerpt: "Calculate your potential returns on luxury real estate investments in Lagos. Real ROI data, appreciation rates, and rental yield analysis for prime neighborhoods.",
-  metaDescription: "Calculate your luxury real estate investment ROI in Lagos. Real data on appreciation rates, rental yields, and returns for properties in Ikoyi, Victoria Island, Banana Island, and Lekki.",
+  metaDescription: "Calculate luxury real estate investment ROI in Lagos. Real appreciation rates, rental yields, and returns for properties in Ikoyi, Victoria Island, and Lekki.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

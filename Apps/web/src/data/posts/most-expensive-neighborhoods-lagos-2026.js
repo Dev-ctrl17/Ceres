@@ -5,7 +5,7 @@ export const post = {
   readTime: "13 min read",
   category: "Neighborhood Guide",
   excerpt: "Discover Lagos' most prestigious neighborhoods including Banana Island, Ikoyi, and Victoria Island. Complete guide to luxury living in Nigeria's commercial capital with 2026 price data.",
-  metaDescription: "Discover the most expensive neighborhoods in Lagos in 2026. Complete price guide for Ikoyi, Victoria Island, Banana Island, Lekki Phase 1. Luxury property prices, rent costs, and investment insights.",
+  metaDescription: "Discover Lagos' most expensive neighborhoods in 2026. Price guide for Ikoyi, Victoria Island, Banana Island, and Lekki with rents and investment insights.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

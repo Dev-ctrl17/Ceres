@@ -5,7 +5,7 @@ export const post = {
   readTime: "11 min read",
   category: "Selling Guide",
   excerpt: "Master the art of selling luxury property in Nigeria. From pricing strategies to staging tips, learn how to sell your property faster and at the best price.",
-  metaDescription: "Unlock the secrets to a profitable sale with our comprehensive Selling Guide. Learn property valuation, staging, marketing, and legalities in the Nigerian real estate market.",
+  metaDescription: "Unlock the secrets to a profitable sale with our Selling Guide. Learn property valuation, staging, marketing, and legalities in Nigerian real estate.",
   ogImage: "https://www.image2url.com/r2/default/images/1781344578807-295c3506-ddda-4374-a3bd-f1625512e731.jpg",
   datePublished: "2026-06-12",
   dateModified: "2026-06-15",

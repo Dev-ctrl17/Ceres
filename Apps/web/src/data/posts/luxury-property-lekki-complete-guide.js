@@ -5,7 +5,7 @@ export const post = {
   readTime: "14 min read",
   category: "Neighborhood Guide",
   excerpt: "Everything you need to know about luxury properties in Lekki. From Lekki Phase 1 to Chevron Drive, explore the best estates, amenities, and investment opportunities.",
-  metaDescription: "Complete guide to luxury properties in Lekki, Lagos. Explore Lekki Phase 1, Chevron Drive, and the best estates. Find luxury homes, apartments, and investment opportunities in Lekki.",
+  metaDescription: "Complete guide to luxury properties in Lekki, Lagos. Explore Lekki Phase 1, Chevron Drive, and the best estates with homes, apartments, and investment tips.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

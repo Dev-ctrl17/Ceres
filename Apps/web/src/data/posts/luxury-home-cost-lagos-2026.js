@@ -5,7 +5,7 @@ export const post = {
   readTime: "10 min read",
   category: "Market Analysis",
   excerpt: "Current pricing for luxury homes in Lagos 2026. Detailed breakdown of property prices in Ikoyi, Banana Island, Victoria Island, and Lekki with market trends.",
-  metaDescription: "Complete breakdown of luxury home costs in Lagos 2026. Compare property prices in Ikoyi, Banana Island, Victoria Island, and Lekki. Budget accurately for your dream luxury home.",
+  metaDescription: "Complete breakdown of luxury home costs in Lagos 2026. Compare prices in Ikoyi, Banana Island, Victoria Island, and Lekki to budget accurately.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

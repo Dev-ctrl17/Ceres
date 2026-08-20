@@ -10,7 +10,15 @@
     { "source": "/blog/amp/(.*)", "destination": "/blog/amp/$1" },
     { "source": "/api/ssr-property", "destination": "/api/ssr-property.js" },
     { "source": "/api/estateos/properties", "destination": "/api/estateos/properties.js" },
-    { "source": "/((?!api/|assets/|favicon|og-image|llms|robots|sitemap|google).*)", "destination": "/index.html" }
+    { "source": "/blog/:slug", "destination": "/blog/:slug.html" },
+    { "source": "/landing/:slug", "destination": "/landing/:slug.html" },
+    { "source": "/((?!api/|assets/|favicon|og-image|llms|robots|sitemap|google|blog/|landing/).*)", "destination": "/index.html" }
+  ],
+  "redirects": [
+    { "source": "/homes", "destination": "/properties", "permanent": true },
+    { "source": "/listings", "destination": "/properties", "permanent": true },
+    { "source": "/referrals", "destination": "/dashboard/referrals", "permanent": true },
+    { "source": "/properties/lekki-penthouse-old", "destination": "/properties/lekki-penthouse", "permanent": true }
   ],
   "headers": [
     {

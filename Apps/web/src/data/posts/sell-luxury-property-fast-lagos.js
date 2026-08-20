@@ -5,7 +5,7 @@ export const post = {
   readTime: "10 min read",
   category: "Selling Guide",
   excerpt: "Proven strategies to sell your luxury property quickly in Lagos. Pricing, staging, marketing, and working with the right agency for fast, profitable sales.",
-  metaDescription: "Proven strategies to sell luxury property fast in Lagos. Expert tips on pricing, staging, marketing, and working with the right agency for a quick and profitable sale.",
+  metaDescription: "Proven strategies to sell luxury property fast in Lagos. Expert tips on pricing, staging, marketing, and working with the right agency.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

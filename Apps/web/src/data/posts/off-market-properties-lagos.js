@@ -5,7 +5,7 @@ export const post = {
   readTime: "9 min read",
   category: "Investment",
   excerpt: "Access exclusive off-market luxury properties in Lagos. Learn how to find hidden gems before they hit the public market through Luxury Properties Ltd's exclusive network.",
-  metaDescription: "Access exclusive off-market properties in Lagos. Learn how to find hidden luxury real estate gems before they hit the public market through our exclusive network.",
+  metaDescription: "Access exclusive off-market luxury properties in Lagos. Find hidden gems through Luxury Properties Ltd's exclusive network before they hit the market.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

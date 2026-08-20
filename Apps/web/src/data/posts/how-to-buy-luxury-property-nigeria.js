@@ -5,7 +5,7 @@ export const post = {
   readTime: "16 min read",
   category: "Buying Guide",
   excerpt: "Step-by-step guide to purchasing luxury real estate in Nigeria. Covers legal requirements, financing options, due diligence, and working with luxury real estate agents.",
-  metaDescription: "Step-by-step guide on how to buy luxury property in Nigeria. Learn about legal requirements, financing, due diligence, and working with top real estate agents for a smooth purchase.",
+  metaDescription: "Step-by-step guide on how to buy luxury property in Nigeria. Legal requirements, financing, due diligence, and working with top real estate agents.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

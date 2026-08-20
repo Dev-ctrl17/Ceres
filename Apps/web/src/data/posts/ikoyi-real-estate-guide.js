@@ -5,7 +5,7 @@ export const post = {
   readTime: "12 min read",
   category: "Neighborhood Guide",
   excerpt: "Ultimate guide to Ikoyi real estate - Lagos' most prestigious address. Explore luxury apartments, duplexes, and waterfront properties in this elite neighborhood.",
-  metaDescription: "Ultimate guide to Ikoyi real estate. Discover luxury apartments, duplexes, and waterfront properties in Lagos' most prestigious neighborhood. Prices, trends, and investment tips.",
+  metaDescription: "Ultimate guide to Ikoyi real estate in Lagos. Luxury apartments, duplexes, and waterfront properties with prices, trends, and investment tips.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

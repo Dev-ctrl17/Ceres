@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
+import { relatedPosts } from '@/data/relatedPosts.js';
 
 const ContentImage = ({ src, alt, caption }) => (
   <figure className="my-8">
@@ -161,6 +162,8 @@ const renderContent = (block) => {
 const BlogPostLayout = ({ post }) => {
   if (!post) return null;
 
+  const related = relatedPosts[post.slug] || null;
+
   return (
     <article className="max-w-4xl mx-auto">
       {/* Breadcrumb */}
@@ -204,6 +207,25 @@ const BlogPostLayout = ({ post }) => {
       <div className="prose prose-lg max-w-none">
         {post.content.map(renderContent)}
       </div>
+
+      {/* Related Guides — contextual internal links to keep readers on-site */}
+      {related && related.length > 0 && (
+        <nav aria-label="Related guides" className="mt-12 pt-8 border-t border-border">
+          <h2 className="text-2xl font-bold mb-6 text-foreground">Continue Exploring Luxury Property Guides</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {related.map(([url, label]) => (
+              <li key={url}>
+                <Link
+                  to={url}
+                  className="block h-full rounded-lg border border-border bg-muted/40 p-4 text-primary font-medium hover:bg-primary/5 hover:border-primary/40 transition-colors"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </article>
   );
 };

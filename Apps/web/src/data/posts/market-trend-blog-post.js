@@ -5,7 +5,7 @@ export const post = {
   readTime: "9 min read",
   category: "Market Analysis",
   excerpt: "In-depth analysis of current real estate market trends in Lagos, Abuja, and Port Harcourt. Expert forecasts and investment recommendations for 2026-2027.",
-  metaDescription: "Discover how the latest real estate Market Trend in Nigeria shapes residential, commercial, and luxury property investments amidst economic shifts and PropTech growth.",
+  metaDescription: "Discover how Nigeria's real estate market trend shapes residential, commercial, and luxury property investments amid economic shifts and PropTech growth.",
   ogImage: "https://www.image2url.com/r2/default/images/1781319914887-2e78908f-915f-4cd3-b493-7beb9216678a.jpg",
   datePublished: "2026-06-12",
   dateModified: "2026-06-15",

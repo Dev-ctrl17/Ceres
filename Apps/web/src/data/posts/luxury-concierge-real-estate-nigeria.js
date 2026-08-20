@@ -5,7 +5,7 @@ export const post = {
   readTime: "9 min read",
   category: "Services",
   excerpt: "Experience white-glove luxury real estate service in Nigeria. Our concierge service offers personalized property search, private viewings, and end-to-end transaction management.",
-  metaDescription: "Experience white-glove luxury concierge real estate service in Nigeria. Personalized property search, private viewings, and end-to-end transaction management for discerning clients.",
+  metaDescription: "Experience white-glove luxury concierge real estate service in Nigeria. Personalized property search, private viewings, and transaction management.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",

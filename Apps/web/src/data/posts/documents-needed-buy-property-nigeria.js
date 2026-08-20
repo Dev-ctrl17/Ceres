@@ -5,7 +5,7 @@ export const post = {
   readTime: "8 min read",
   category: "Buying Guide",
   excerpt: "Complete checklist of documents required for property purchase in Nigeria. From identification to legal documents, ensure you have everything ready for a smooth transaction.",
-  metaDescription: "Complete checklist of documents needed to buy property in Nigeria. From Certificate of Occupancy to Deed of Assignment, ensure your property purchase documentation is in order.",
+  metaDescription: "Complete checklist of documents needed to buy property in Nigeria. From identification to legal titles, ensure a smooth transaction.",
   ogImage: "",
   datePublished: "2026-06-16",
   dateModified: "2026-06-16",
