@@ -43,8 +43,8 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | Luxury Properties Ltd - Nigeria's Leading Real Estate Agency</title>
-        <meta name="description" content="Learn about Luxury Properties Ltd, Nigeria's premier luxury real estate agency. 15+ years of excellence, 1,200+ happy clients, and 500+ properties sold in Lagos, Abuja, and Port Harcourt." />
+        <title>About Us | Luxury Properties Ltd — Nigeria Luxury Real Estate</title>
+        <meta name="description" content="Meet Luxury Properties Ltd — Nigeria's premium luxury real estate agency. 15+ years, 500+ sales, off-market access in Lagos, Abuja & Port Harcourt." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/about" />
         <meta property="og:title" content="About Luxury Properties Ltd | Nigeria's Leading Real Estate Agency" />
         <meta property="og:description" content="Discover why Luxury Properties Ltd is Nigeria's most trusted luxury real estate agency. Premium properties, concierge service, and expert advisory since 2010." />

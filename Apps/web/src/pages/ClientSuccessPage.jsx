@@ -55,7 +55,7 @@ const ClientSuccessPage = () => {
   return (
     <>
       <Helmet>
-        <title>Client Success Stories — Luxury Properties Ltd</title>
+        <title>Client Success Stories | Luxury Properties Nigeria</title>
         <meta name="description" content="Explore our client success stories and case studies. See how we've helped families and investors achieve their real estate goals across Nigeria." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/client-success" />
         <meta property="og:title" content="Client Success Stories — Luxury Properties Ltd" />

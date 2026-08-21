@@ -1,0 +1,22 @@
+﻿{
+  "cleanUrls": false,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/googlec5d3e468141d2edd.html", "destination": "/googlec5d3e468141d2edd.html" },
+    { "source": "/og-image.png", "destination": "/og-image.png" },
+    { "source": "/llms.txt", "destination": "/llms.txt" },
+    { "source": "/blog/amp/(.*)", "destination": "/blog/amp/$1" },
+    { "source": "/api/ssr-property", "destination": "/api/ssr-property.js" },
+    { "source": "/api/estateos/properties", "destination": "/api/estateos/properties.js" },
+    { "source": "/blog/:slug", "destination": "/blog/:slug.html" },
+    { "source": "/landing/:slug", "destination": "/landing/:slug.html" },
+    {
+      "source": "/properties/:uuid([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})",
+      "destination": "/api/propertyRedirect.js?uuid=$1"
+    },
+    { "source": "/((?!api/|assets/|favicon|og-image|llms|robots|sitemap|google|blog/|landing/).*)", "destination": "/index.html" }
+  ],
+  "redirects": [
+    { "source": "/homes", "destination": "/properties", "permanent": true },

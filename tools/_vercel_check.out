@@ -1,0 +1,1 @@
+BOM=false::JSON_VALID::keys=cleanUrls,trailingSlash,rewrites,redirects,headers; rewrites=12; redirects=4; headers=10

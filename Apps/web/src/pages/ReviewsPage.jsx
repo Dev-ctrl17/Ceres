@@ -43,7 +43,7 @@ const ReviewsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Customer Reviews - Luxury Properties Ltd | Client Testimonials</title>
+        <title>Client Reviews | Luxury Properties</title>
         <meta name="description" content="Read what our clients say about their experience with Luxury Properties Ltd. Genuine testimonials from property buyers, sellers, and investors across Nigeria." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/reviews" />
         <meta property="og:title" content="Customer Reviews - Luxury Properties Ltd | Client Testimonials" />

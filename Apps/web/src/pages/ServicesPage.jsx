@@ -71,8 +71,8 @@ const ServicesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Real Estate Services | Property Management & Advisory | Luxury Properties Ltd</title>
-        <meta name="description" content="Comprehensive real estate services including property management, investment advisory, and concierge services. Expert support for buyers, sellers, and investors." />
+        <title>Real Estate Services | Luxury Properties Ltd Nigeria</title>
+        <meta name="description" content="Luxury real estate services in Nigeria: property management, investment advisory, off-market sourcing, concierge buying and corporate portfolio acquisition." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/services" />
         <meta property="og:title" content="Real Estate Services | Property Management & Advisory | Luxury Properties Ltd" />
         <meta property="og:description" content="Comprehensive real estate services including property management, investment advisory, and concierge services." />

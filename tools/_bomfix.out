@@ -1,0 +1,4 @@
+vercel.json: BOM=true size=6079
+  -> BOM stripped, JSON now valid, new size=6076
+package.json: BOM=false size=2687
+  -> JSON valid

@@ -25,7 +25,7 @@ const OngoingProjectsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Ongoing Projects — Luxury Properties Ltd</title>
+        <title>Ongoing Luxury Real Estate Projects Nigeria 2026 | Luxury Properties</title>
         <meta name="description" content="Explore our ongoing property development projects across Nigeria. Stay updated on estimated delivery dates, locations, and project status." />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/ongoing-projects" />
         <meta property="og:title" content="Ongoing Projects — Luxury Properties Ltd" />
