@@ -11,11 +11,19 @@ create table if not exists public.consultants (
   account_name text,
   referral_code text not null unique,
   parent_id uuid references public.consultants(id) on delete set null,
+  is_team_leader boolean not null default false,
+  referred_by uuid references public.consultants(id) on delete set null,
+  auth_user_id uuid references auth.users(id) on delete set null,
   created_at timestamptz not null default now()
 );
 create unique index if not exists consultants_email_lower_key on public.consultants (lower(email));
 create unique index if not exists consultants_phone_number_key on public.consultants (phone_number);
 create index if not exists consultants_parent_id_idx on public.consultants (parent_id);
+alter table public.consultants add column if not exists is_team_leader boolean not null default false;
+alter table public.consultants add column if not exists referred_by uuid references public.consultants(id) on delete set null;
+alter table public.consultants add column if not exists auth_user_id uuid references auth.users(id) on delete set null;
+create index if not exists consultants_referred_by_idx on public.consultants (referred_by);
+create unique index if not exists consultants_auth_user_id_key on public.consultants (auth_user_id) where auth_user_id is not null;
 alter table public.consultants add column if not exists date_of_birth date;
 alter table public.consultants add column if not exists gender text;
 alter table public.consultants add column if not exists city text;
@@ -60,22 +68,27 @@ create table if not exists public.referral_registration_rate_limits (
   attempt_count integer not null default 0 check (attempt_count >= 0)
 );
 
-create or replace function public.register_consultant(p_full_name text, p_email text, p_phone_number text, p_bank_name text, p_account_number text, p_account_name text, p_ref_code text default null)
+create or replace function public.register_consultant(p_full_name text, p_email text, p_phone_number text, p_bank_name text, p_account_number text, p_account_name text, p_ref_code text default null, p_is_team_leader boolean default false, p_auth_user_id uuid default null)
 returns uuid language plpgsql security definer set search_path = public as $$
 declare v_parent_id uuid; v_new_id uuid; v_code text;
 begin
+  if p_is_team_leader and nullif(trim(p_ref_code), '') is not null then raise exception 'TEAM_LEADER_CANNOT_BE_REFERRED'; end if;
+  if not p_is_team_leader and nullif(trim(p_ref_code), '') is null then raise exception 'REFERRAL_REQUIRED'; end if;
   if exists (select 1 from consultants where lower(email) = lower(trim(p_email))) then raise exception 'EMAIL_TAKEN'; end if;
   if exists (select 1 from consultants where phone_number = trim(p_phone_number)) then raise exception 'PHONE_TAKEN'; end if;
   if nullif(trim(p_ref_code), '') is not null then
-    select id into v_parent_id from consultants where referral_code = upper(trim(p_ref_code));
+    select id into v_parent_id from consultants where referral_code = upper(trim(p_ref_code)) and is_team_leader for update;
     if v_parent_id is null then raise exception 'INVALID_REF_CODE'; end if;
+    if (select count(*) from consultants where referred_by = v_parent_id) >= 5 then raise exception 'REFERRAL_LIMIT_REACHED'; end if;
   end if;
   loop
     v_code := upper(substr(md5(random()::text || clock_timestamp()::text), 1, 8));
     exit when not exists (select 1 from consultants where referral_code = v_code);
   end loop;
-  insert into consultants (full_name, email, phone_number, bank_name, account_number, account_name, referral_code, parent_id)
-  values (trim(p_full_name), lower(trim(p_email)), trim(p_phone_number), nullif(trim(p_bank_name), ''), nullif(trim(p_account_number), ''), nullif(trim(p_account_name), ''), v_code, v_parent_id) returning id into v_new_id;
+  if p_is_team_leader and p_auth_user_id is null then raise exception 'AUTH_USER_REQUIRED'; end if;
+  if not p_is_team_leader and p_auth_user_id is not null then raise exception 'INVALID_AUTH_USER'; end if;
+  insert into consultants (full_name, email, phone_number, bank_name, account_number, account_name, referral_code, parent_id, is_team_leader, referred_by, auth_user_id)
+  values (trim(p_full_name), lower(trim(p_email)), trim(p_phone_number), nullif(trim(p_bank_name), ''), nullif(trim(p_account_number), ''), nullif(trim(p_account_name), ''), v_code, v_parent_id, p_is_team_leader, v_parent_id, p_auth_user_id) returning id into v_new_id;
   insert into referral_trees (ancestor_id, descendant_id, depth) values (v_new_id, v_new_id, 0);
   if v_parent_id is not null then
     -- Parent's self row becomes depth 1, so this creates no duplicate row.
@@ -126,13 +139,25 @@ end;
 $$;
 
 revoke all on function public.register_consultant(text, text, text, text, text, text, text) from public, anon, authenticated;
+revoke all on function public.register_consultant(text, text, text, text, text, text, text, boolean, uuid) from public, anon, authenticated;
 revoke all on function public.process_referral_commission(uuid) from public, anon, authenticated;
 revoke all on function public.consume_referral_registration_rate_limit(text) from public, anon, authenticated;
 grant execute on function public.register_consultant(text, text, text, text, text, text, text) to service_role;
+grant execute on function public.register_consultant(text, text, text, text, text, text, text, boolean, uuid) to service_role;
 grant execute on function public.process_referral_commission(uuid) to service_role;
 grant execute on function public.consume_referral_registration_rate_limit(text) to service_role;
 
 alter table public.consultants enable row level security;
+drop policy if exists consultants_team_leader_select on public.consultants;
+create or replace function public.current_team_leader_id()
+returns uuid language sql security definer set search_path = public as $$
+  select id from public.consultants where auth_user_id = auth.uid() and is_team_leader limit 1;
+$$;
+revoke all on function public.current_team_leader_id() from public, anon, authenticated;
+grant execute on function public.current_team_leader_id() to authenticated;
+create policy consultants_team_leader_select on public.consultants for select to authenticated using (
+  auth_user_id = auth.uid() or referred_by = public.current_team_leader_id()
+);
 alter table public.referral_trees enable row level security;
 alter table public.referral_deals enable row level security;
 alter table public.referral_commissions enable row level security;

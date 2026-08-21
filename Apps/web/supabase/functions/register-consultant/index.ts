@@ -13,6 +13,9 @@ serve(async (req) => {
     const body = await req.json();
     const fullName = body.full_name?.trim(); const email = body.email?.trim().toLowerCase(); const phone = body.phone_number?.trim();
     if (!fullName || !email || !phone || !/^\S+@\S+\.\S+$/.test(email)) return json({ success: false, error: "MISSING_REQUIRED_FIELDS" }, 400);
+    const isTeamLeader = body.is_team_leader === true;
+    if (isTeamLeader && (typeof body.password !== "string" || body.password.length < 8)) return json({ success: false, error: "PASSWORD_TOO_SHORT" }, 400);
+    if (!isTeamLeader && body.password) return json({ success: false, error: "PASSWORD_NOT_ALLOWED" }, 400);
     if (!turnstileSecret || !rateLimitSalt) return json({ success: false, error: "SECURITY_CONFIGURATION_MISSING" }, 503);
     const clientIp = getClientIp(req);
     const captchaValid = await verifyTurnstile(body.turnstile_token, clientIp);
@@ -20,18 +23,25 @@ serve(async (req) => {
     const { data: allowed, error: rateLimitError } = await supabase.rpc("consume_referral_registration_rate_limit", { p_ip_hash: await hashIp(clientIp) });
     if (rateLimitError) return json({ success: false, error: "RATE_LIMIT_UNAVAILABLE" }, 503);
     if (!allowed) return json({ success: false, error: "RATE_LIMITED" }, 429);
-    const { data: consultantId, error } = await supabase.rpc("register_consultant", { p_full_name: fullName, p_email: email, p_phone_number: phone, p_bank_name: body.bank_name ?? null, p_account_number: body.account_number ?? null, p_account_name: body.account_name ?? null, p_ref_code: body.ref ?? null });
-    if (error) { const code = knownError(error.message); return json({ success: false, error: code }, code === "EMAIL_TAKEN" || code === "PHONE_TAKEN" ? 409 : code === "INVALID_REF_CODE" ? 400 : 500); }
+    let authUserId: string | null = null;
+    if (isTeamLeader) {
+      const { data: authUser, error: authError } = await supabase.auth.admin.createUser({ email, password: body.password, email_confirm: true });
+      if (authError || !authUser.user) return json({ success: false, error: authError?.message || "AUTH_ACCOUNT_FAILED" }, 400);
+      authUserId = authUser.user.id;
+    }
+    const { data: consultantId, error } = await supabase.rpc("register_consultant", { p_full_name: fullName, p_email: email, p_phone_number: phone, p_bank_name: body.bank_name ?? null, p_account_number: body.account_number ?? null, p_account_name: body.account_name ?? null, p_ref_code: body.ref ?? null, p_is_team_leader: isTeamLeader, p_auth_user_id: authUserId });
+    if (error) { if (authUserId) await supabase.auth.admin.deleteUser(authUserId); const code = knownError(error.message); return json({ success: false, error: code }, code === "EMAIL_TAKEN" || code === "PHONE_TAKEN" ? 409 : ["INVALID_REF_CODE", "PASSWORD_TOO_SHORT", "REFERRAL_REQUIRED", "REFERRAL_LIMIT_REACHED"].includes(code) ? 400 : 500); }
     const { error: profileError } = await supabase.from("consultants").update({ date_of_birth: body.date_of_birth || null, gender: body.gender || null, city: body.city || null, address: body.address || null, state: body.state || null, country: body.country || "Nigeria", terms_accepted_at: new Date().toISOString() }).eq("id", consultantId);
-    if (profileError) return json({ success: false, error: "REGISTRATION_FAILED" }, 500);
+    if (profileError) { await cleanupRegistration(consultantId, authUserId); return json({ success: false, error: "REGISTRATION_FAILED" }, 500); }
     const { data: consultant, error: fetchError } = await supabase.from("consultants").select("id, full_name, referral_code").eq("id", consultantId).single();
-    if (fetchError || !consultant) return json({ success: false, error: "REGISTRATION_FAILED" }, 500);
+    if (fetchError || !consultant) { await cleanupRegistration(consultantId, authUserId); return json({ success: false, error: "REGISTRATION_FAILED" }, 500); }
     const referralLink = `https://luxurypropertiesltd.com.ng/register?ref=${consultant.referral_code}`;
     const message = `Join Luxury Properties Ltd as a consultant: ${referralLink}`;
     return json({ success: true, data: { consultant, referralLink, whatsappShareUrl: `https://wa.me/?text=${encodeURIComponent(message)}` } }, 201);
   } catch (error) { return json({ success: false, error: "INVALID_REQUEST" }, 400); }
 });
-function knownError(message: string) { return ["EMAIL_TAKEN", "PHONE_TAKEN", "INVALID_REF_CODE"].find((code) => message.includes(code)) ?? "REGISTRATION_FAILED"; }
+async function cleanupRegistration(consultantId: string, authUserId: string | null) { await supabase.from("consultants").delete().eq("id", consultantId); if (authUserId) await supabase.auth.admin.deleteUser(authUserId); }
+function knownError(message: string) { return ["EMAIL_TAKEN", "PHONE_TAKEN", "INVALID_REF_CODE", "AUTH_USER_REQUIRED", "INVALID_AUTH_USER", "TEAM_LEADER_CANNOT_BE_REFERRED", "REFERRAL_REQUIRED", "REFERRAL_LIMIT_REACHED"].find((code) => message.includes(code)) ?? "REGISTRATION_FAILED"; }
 function json(payload: unknown, status = 200) { return new Response(JSON.stringify(payload), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } }); }
 function getClientIp(req: Request) { return req.headers.get("x-forwarded-for")?.split(",")[0].trim() || req.headers.get("x-real-ip") || "unknown"; }
 async function hashIp(ip: string) { const bytes = new TextEncoder().encode(`${rateLimitSalt}:${ip}`); const digest = await crypto.subtle.digest("SHA-256", bytes); return [...new Uint8Array(digest)].map((value) => value.toString(16).padStart(2, "0")).join(""); }
