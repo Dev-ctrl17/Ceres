@@ -17,6 +17,10 @@ function withTimeout(promise, ms, label) {
   });
 }
 
+// Matches a legacy UUID used in the pre-slug public URL form:
+// /properties/<uuid>. Genuine slug URLs never match.
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
 export default async function handler(req, res) {
   const { id } = req.query;
   
@@ -31,17 +35,38 @@ export default async function handler(req, res) {
       process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY
     );
 
-    // Fetch property data — bounded to 6s so we stay well under Vercel's
-    // Hobby-plan 10s serverless-function invocation limit.
+    // Public property URLs are now slug-based. `id` may still be a legacy
+    // UUID (old shared link / search-index entry). Resolve by slug first;
+    // if that yields nothing and `id` is a UUID, 301-redirect to the
+    // canonical slug URL so link equity is preserved.
     const { data: property, error } = await withTimeout(
       supabase
         .from('properties')
         .select('*')
-        .eq('id', id)
+        .eq('slug', id)
         .single(),
       6000,
-      'Supabase property fetch'
+      'Supabase property fetch (by slug)'
     );
+
+    if (!property && UUID_RE.test(id)) {
+      const { data: legacy } = await withTimeout(
+        supabase
+          .from('properties')
+          .select('id, slug')
+          .eq('id', id)
+          .single(),
+        6000,
+        'Supabase legacy UUID lookup'
+      );
+      if (legacy?.slug) {
+        res.writeHead(301, {
+          Location: `https://luxurypropertiesltd.com.ng/properties/${legacy.slug}`,
+          'Cache-Control': 'public, max-age=300, s-maxage=86400',
+        });
+        return res.end();
+      }
+    }
 
     if (error || !property) {
       return res.status(404).send('Property not found');
@@ -75,7 +100,7 @@ export default async function handler(req, res) {
       "name": property.title,
       "description": property.description || `${property.title} in ${property.location}`,
       "image": images.map(img => img.startsWith('http') ? img : `https://luxurypropertiesltd.com.ng${img}`),
-      "url": `https://luxurypropertiesltd.com.ng/properties/${property.id}`,
+            "url": `https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}`,
       "offers": {
         "@type": "Offer",
         "priceCurrency": "NGN",
@@ -120,13 +145,13 @@ export default async function handler(req, res) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${property.title} - Luxury Properties Ltd</title>
   <meta name="description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
-  <link rel="canonical" href="https://luxurypropertiesltd.com.ng/properties/${property.id}" />
+    <link rel="canonical" href="https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}" />
   
   <!-- Open Graph -->
   <meta property="og:title" content="${property.title} - Luxury Properties Ltd" />
   <meta property="og:description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://luxurypropertiesltd.com.ng/properties/${property.id}" />
+    <meta property="og:url" content="https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}" />
   <meta property="og:image" content="${primaryImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -154,7 +179,7 @@ export default async function handler(req, res) {
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
       {"@type": "ListItem", "position": 2, "name": "Properties", "item": "https://luxurypropertiesltd.com.ng/properties"},
-      {"@type": "ListItem", "position": 3, "name": "${property.title.replace(/"/g, '\\"')}", "item": "https://luxurypropertiesltd.com.ng/properties/${property.id}"}
+      {"@type": "ListItem", "position": 3, "name": "${property.title.replace(/"/g, '\\"')}", "item": "https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}"}
     ]
   }
   </script>
@@ -184,7 +209,7 @@ export default async function handler(req, res) {
         ${amenitiesList.map(a => `<div class="amenity"><span>✓</span> ${a}</div>`).join('')}
       </div>
     ` : ''}
-    <p><em>View full details at <a href="https://luxurypropertiesltd.com.ng/properties/${property.id}">luxurypropertiesltd.com.ng/properties/${property.id}</a></em></p>
+        <p><em>View full details at <a href="https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}">luxurypropertiesltd.com.ng/properties/${property.slug || property.id}</a></em></p>
   </div>
 </body>
 </html>`;

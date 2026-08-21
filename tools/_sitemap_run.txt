@@ -1,0 +1,2 @@
+﻿[generate-sitemap] Found 19 property slugs.
+[generate-sitemap] Wrote C:\Users\BELLO IREBAMI\Desktop\Javascript\Apps\web\public\sitemap.xml

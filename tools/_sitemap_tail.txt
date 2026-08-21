@@ -1,0 +1,51 @@
+﻿- Dynamic Property Pages (canonical slug URLs) -->
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/properties/-long-lease-investment-opportunity</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/properties/4-bedroom-fully-detached-duplex-1-bedroom-bq</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/properties/4-bedroom-fully-detached-duplex-2-bedroom-bq</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/properties/4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/properties/4-bedroom-terrace-duplex</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/properties/5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://luxurypropertiesltd.com.ng/properties/5-bedroom-fully-detached-with-bq</loc>
+    <lastmod>2026-08-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+ 

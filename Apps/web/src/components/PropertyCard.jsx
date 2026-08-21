@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -44,7 +44,7 @@ const PropertyCard = ({ property, featured = false }) => {
   };
 
   return (
-    <Link to={`/properties/${property.id}`}>
+        <Link to={`/properties/${property.slug}`}>
       <Card
         className={`group overflow-hidden transition-all duration-300 ${
           featured

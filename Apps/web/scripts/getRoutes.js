@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+﻿import { createClient } from '@supabase/supabase-js';
 import { readFileSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -37,7 +37,7 @@ const STATIC_ROUTES = ['/', '/about', '/contact', '/blog'];
 /**
  * Fetch all routes to prerender:
  * - Static routes: /, /about, /contact, /blog
- * - Dynamic property routes: /properties/:id for every row in the `properties` table
+  * - Dynamic property routes: /properties/:slug for every row in the `properties` table
  * - Dynamic blog routes: /blog/:slug for every post in the local blogPostsData
  */
 export async function getAllRoutes() {
@@ -49,13 +49,13 @@ export async function getAllRoutes() {
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
       const { data: properties, error } = await supabase
         .from('properties')
-        .select('id');
+        .select('slug');
 
       if (error) {
         console.warn('[getRoutes] Failed to fetch properties from Supabase:', error.message);
       } else if (properties && properties.length > 0) {
         properties.forEach(prop => {
-          if (prop.id) routes.push(`/properties/${prop.id}`);
+          if (prop.slug) routes.push(`/properties/${prop.slug}`);
         });
         console.log(`[getRoutes] Found ${properties.length} property routes`);
       } else {

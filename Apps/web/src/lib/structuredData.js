@@ -15,7 +15,7 @@ export const generatePropertySchema = (property) => {
     "@type": "Residence",
     "name": property.title,
     "description": property.description || `${property.title} in ${property.location}`,
-    "url": `https://luxurypropertiesltd.com.ng/properties/${property.id}`,
+    "url": `https://luxurypropertiesltd.com.ng/properties/${property.slug}`,
     "image": images.map(img => 
       img.startsWith('http') ? img : `https://luxurypropertiesltd.com.ng${img}`
     ),
@@ -193,7 +193,7 @@ export const generateItemListSchema = (properties, listName) => {
           "price": property.price,
           "availability": "https://schema.org/InStock",
         },
-        "url": `https://luxurypropertiesltd.com.ng/properties/${property.id}`,
+        "url": `https://luxurypropertiesltd.com.ng/properties/${property.slug}`,
       },
     })),
   };

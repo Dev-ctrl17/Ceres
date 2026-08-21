@@ -1,4 +1,4 @@
-{
+﻿{
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
@@ -12,6 +12,10 @@
     { "source": "/api/estateos/properties", "destination": "/api/estateos/properties.js" },
     { "source": "/blog/:slug", "destination": "/blog/:slug.html" },
     { "source": "/landing/:slug", "destination": "/landing/:slug.html" },
+    {
+      "source": "/properties/:uuid([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})",
+      "destination": "/api/propertyRedirect.js?uuid=$1"
+    },
     { "source": "/((?!api/|assets/|favicon|og-image|llms|robots|sitemap|google|blog/|landing/).*)", "destination": "/index.html" }
   ],
   "redirects": [

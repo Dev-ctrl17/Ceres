@@ -1,0 +1,83 @@
+﻿[36mvite v7.3.5 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 2169 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                                                        [39m[1m[2m 14.16 kB[22m[1m[22m[2m Γöé gzip:  3.52 kB[22m
+[2mdist/[22m[35massets/index-D-zOtFHT.css                                         [39m[1m[2m116.05 kB[22m[1m[22m[2m Γöé gzip: 19.63 kB[22m
+[2mdist/[22m[36massets/label-BJO207wl.js                                          [39m[1m[2m  0.41 kB[22m[1m[22m[2m Γöé gzip:  0.28 kB[22m
+[2mdist/[22m[36massets/textarea-DMJd0c04.js                                       [39m[1m[2m  0.53 kB[22m[1m[22m[2m Γöé gzip:  0.36 kB[22m
+[2mdist/[22m[36massets/usePageBackgrounds-CmEaX9-l.js                             [39m[1m[2m  0.61 kB[22m[1m[22m[2m Γöé gzip:  0.40 kB[22m
+[2mdist/[22m[36massets/useProperties-BKLAonQh.js                                  [39m[1m[2m  0.83 kB[22m[1m[22m[2m Γöé gzip:  0.46 kB[22m
+[2mdist/[22m[36massets/useOngoingProjects-DNYCHPmA.js                             [39m[1m[2m  0.92 kB[22m[1m[22m[2m Γöé gzip:  0.48 kB[22m
+[2mdist/[22m[36massets/card-uFwIwqLa.js                                           [39m[1m[2m  1.05 kB[22m[1m[22m[2m Γöé gzip:  0.39 kB[22m
+[2mdist/[22m[36massets/supabaseService-Dl9Upxwo.js                                [39m[1m[2m  1.85 kB[22m[1m[22m[2m Γöé gzip:  0.77 kB[22m
+[2mdist/[22m[36massets/victoria-island-luxury-real-estate-guide-CAQxtg0x.js       [39m[1m[2m  2.20 kB[22m[1m[22m[2m Γöé gzip:  1.09 kB[22m
+[2mdist/[22m[36massets/luxury-home-cost-lagos-2026-C4vWlwuN.js                    [39m[1m[2m  2.26 kB[22m[1m[22m[2m Γöé gzip:  1.08 kB[22m
+[2mdist/[22m[36massets/sell-luxury-property-fast-lagos-DZdqIZYg.js                [39m[1m[2m  2.30 kB[22m[1m[22m[2m Γöé gzip:  1.06 kB[22m
+[2mdist/[22m[36massets/off-market-properties-lagos-CYUbqGSx.js                    [39m[1m[2m  2.35 kB[22m[1m[22m[2m Γöé gzip:  0.97 kB[22m
+[2mdist/[22m[36massets/luxury-concierge-real-estate-nigeria-DU3tuwgK.js           [39m[1m[2m  2.38 kB[22m[1m[22m[2m Γöé gzip:  1.02 kB[22m
+[2mdist/[22m[36massets/LoginPage-DqLd4K9j.js                                      [39m[1m[2m  2.46 kB[22m[1m[22m[2m Γöé gzip:  1.06 kB[22m
+[2mdist/[22m[36massets/best-areas-lagos-expats-CDKkQzqv.js                        [39m[1m[2m  2.49 kB[22m[1m[22m[2m Γöé gzip:  1.14 kB[22m
+[2mdist/[22m[36massets/luxury-real-estate-investment-roi-lagos-7S4VTbNn.js        [39m[1m[2m  2.50 kB[22m[1m[22m[2m Γöé gzip:  1.15 kB[22m
+[2mdist/[22m[36massets/governors-consent-timeline-lagos-2026-BpX1NKJ4.js          [39m[1m[2m  2.56 kB[22m[1m[22m[2m Γöé gzip:  1.14 kB[22m
+[2mdist/[22m[36massets/banana-island-property-guide-B5yyplaE.js                   [39m[1m[2m  2.59 kB[22m[1m[22m[2m Γöé gzip:  1.21 kB[22m
+[2mdist/[22m[36massets/ikoyi-real-estate-guide-AG4LjbiO.js                        [39m[1m[2m  2.69 kB[22m[1m[22m[2m Γöé gzip:  1.23 kB[22m
+[2mdist/[22m[36massets/documents-needed-buy-property-nigeria-CHGpa1De.js          [39m[1m[2m  2.71 kB[22m[1m[22m[2m Γöé gzip:  1.20 kB[22m
+[2mdist/[22m[36massets/voice-search-optimized-faqs-B0m2VNIh.js                    [39m[1m[2m  2.90 kB[22m[1m[22m[2m Γöé gzip:  1.07 kB[22m
+[2mdist/[22m[36massets/certificate-of-occupancy-vs-governors-consent-C4a63YPu.js  [39m[1m[2m  3.08 kB[22m[1m[22m[2m Γöé gzip:  1.22 kB[22m
+[2mdist/[22m[36massets/select-Df5nZHaD.js                                         [39m[1m[2m  3.15 kB[22m[1m[22m[2m Γöé gzip:  1.16 kB[22m
+[2mdist/[22m[36massets/ReferralAdminPage-CCRmL_WV.js                              [39m[1m[2m  3.25 kB[22m[1m[22m[2m Γöé gzip:  1.32 kB[22m
+[2mdist/[22m[36massets/useWhatsApp-DDruxCL4.js                                    [39m[1m[2m  3.78 kB[22m[1m[22m[2m Γöé gzip:  1.51 kB[22m
+[2mdist/[22m[36massets/visitorTracking-DnMTgA7Q.js                                [39m[1m[2m  3.96 kB[22m[1m[22m[2m Γöé gzip:  1.39 kB[22m
+[2mdist/[22m[36massets/PropertyCard--K9t0ug9.js                                   [39m[1m[2m  4.05 kB[22m[1m[22m[2m Γöé gzip:  1.61 kB[22m
+[2mdist/[22m[36massets/how-to-buy-luxury-property-nigeria-CaBynhx9.js             [39m[1m[2m  4.06 kB[22m[1m[22m[2m Γöé gzip:  1.62 kB[22m
+[2mdist/[22m[36massets/luxury-property-lekki-complete-guide-C_q8mTQv.js           [39m[1m[2m  4.08 kB[22m[1m[22m[2m Γöé gzip:  1.64 kB[22m
+[2mdist/[22m[36massets/ContactForm-C8rATmRs.js                                    [39m[1m[2m  4.19 kB[22m[1m[22m[2m Γöé gzip:  1.73 kB[22m
+[2mdist/[22m[36massets/ConsultantPortalPage-D3EGunN0.js                           [39m[1m[2m  4.33 kB[22m[1m[22m[2m Γöé gzip:  1.65 kB[22m
+[2mdist/[22m[36massets/ConsultantRegistrationPage-CXyPjDJE.js                     [39m[1m[2m  5.15 kB[22m[1m[22m[2m Γöé gzip:  1.85 kB[22m
+[2mdist/[22m[36massets/ServicesPage-CMr4iPSf.js                                   [39m[1m[2m  5.70 kB[22m[1m[22m[2m Γöé gzip:  2.04 kB[22m
+[2mdist/[22m[36massets/OngoingProjectsPage-CnOuGybo.js                            [39m[1m[2m  5.82 kB[22m[1m[22m[2m Γöé gzip:  1.99 kB[22m
+[2mdist/[22m[36massets/ContactPage-J00FbGtP.js                                    [39m[1m[2m  6.16 kB[22m[1m[22m[2m Γöé gzip:  1.98 kB[22m
+[2mdist/[22m[36massets/ReviewsPage-BzJJ59gD.js                                    [39m[1m[2m  6.20 kB[22m[1m[22m[2m Γöé gzip:  2.43 kB[22m
+[2mdist/[22m[36massets/ClientSuccessPage-CT8hLBsW.js                              [39m[1m[2m  6.23 kB[22m[1m[22m[2m Γöé gzip:  2.16 kB[22m
+[2mdist/[22m[36massets/BuyPage-BNHruaou.js                                        [39m[1m[2m  6.52 kB[22m[1m[22m[2m Γöé gzip:  2.20 kB[22m
+[2mdist/[22m[36massets/PropertiesPage-DNS8yCeZ.js                                 [39m[1m[2m  6.74 kB[22m[1m[22m[2m Γöé gzip:  2.17 kB[22m
+[2mdist/[22m[36massets/nigerian-real-estate-buying-guide-DpSjnWu5.js              [39m[1m[2m  6.87 kB[22m[1m[22m[2m Γöé gzip:  2.72 kB[22m
+[2mdist/[22m[36massets/most-expensive-neighborhoods-lagos-2026-CY_Ow7yt.js        [39m[1m[2m  7.01 kB[22m[1m[22m[2m Γöé gzip:  2.52 kB[22m
+[2mdist/[22m[36massets/OngoingProjectDetailsPage-DcO3t8Kj.js                      [39m[1m[2m  7.03 kB[22m[1m[22m[2m Γöé gzip:  2.32 kB[22m
+[2mdist/[22m[36massets/TermsConditionsPage-jqWuGiSP.js                            [39m[1m[2m  7.74 kB[22m[1m[22m[2m Γöé gzip:  2.44 kB[22m
+[2mdist/[22m[36massets/diaspora-guide-buy-property-nigeria-abroad-D7hiNaXw.js     [39m[1m[2m  7.74 kB[22m[1m[22m[2m Γöé gzip:  2.97 kB[22m
+[2mdist/[22m[36massets/property-selling-guide-nigeria-D0FOMGQw.js                 [39m[1m[2m  7.86 kB[22m[1m[22m[2m Γöé gzip:  2.99 kB[22m
+[2mdist/[22m[36massets/real-estate-investment-tips-nigeria-BFeAq1jj.js            [39m[1m[2m  7.91 kB[22m[1m[22m[2m Γöé gzip:  3.03 kB[22m
+[2mdist/[22m[36massets/market-trend-blog-post-Bs6x8j1_.js                         [39m[1m[2m  7.95 kB[22m[1m[22m[2m Γöé gzip:  3.05 kB[22m
+[2mdist/[22m[36massets/RefundPolicyPage-DVqN7S3w.js                               [39m[1m[2m  8.12 kB[22m[1m[22m[2m Γöé gzip:  2.47 kB[22m
+[2mdist/[22m[36massets/real-estate-news-market-trends-aL_DiAEr.js                 [39m[1m[2m  8.26 kB[22m[1m[22m[2m Γöé gzip:  3.22 kB[22m
+[2mdist/[22m[36massets/RentPage-BJhMcsNv.js                                       [39m[1m[2m  8.33 kB[22m[1m[22m[2m Γöé gzip:  2.81 kB[22m
+[2mdist/[22m[36massets/AgentsPage-C-1xiNYZ.js                                     [39m[1m[2m  8.43 kB[22m[1m[22m[2m Γöé gzip:  2.77 kB[22m
+[2mdist/[22m[36massets/OfficeLocationsPage-CgkG1fXZ.js                            [39m[1m[2m  9.88 kB[22m[1m[22m[2m Γöé gzip:  2.36 kB[22m
+[2mdist/[22m[36massets/CookiePolicyPage-O3PDaaAF.js                               [39m[1m[2m 10.27 kB[22m[1m[22m[2m Γöé gzip:  2.84 kB[22m
+[2mdist/[22m[36massets/ClientSuccessDetailPage-CMSTHKYJ.js                        [39m[1m[2m 10.27 kB[22m[1m[22m[2m Γöé gzip:  3.07 kB[22m
+[2mdist/[22m[36massets/Footer-bXfXfn3X.js                                         [39m[1m[2m 11.50 kB[22m[1m[22m[2m Γöé gzip:  3.79 kB[22m
+[2mdist/[22m[36massets/CompanyRegistrationPage-BYoSkZy-.js                        [39m[1m[2m 11.55 kB[22m[1m[22m[2m Γöé gzip:  2.38 kB[22m
+[2mdist/[22m[36massets/PrivacyPolicyPage-CC37c0KO.js                              [39m[1m[2m 11.78 kB[22m[1m[22m[2m Γöé gzip:  3.23 kB[22m
+[2mdist/[22m[36massets/SellPage-B68oP589.js                                       [39m[1m[2m 12.57 kB[22m[1m[22m[2m Γöé gzip:  4.19 kB[22m
+[2mdist/[22m[36massets/InvestmentBriefPage-CyMPppRK.js                            [39m[1m[2m 13.46 kB[22m[1m[22m[2m Γöé gzip:  3.93 kB[22m
+[2mdist/[22m[36massets/PropertyDetailsPage-BPw9OLqY.js                            [39m[1m[2m 14.54 kB[22m[1m[22m[2m Γöé gzip:  4.75 kB[22m
+[2mdist/[22m[36massets/BlogPage--TtFKO5T.js                                       [39m[1m[2m 14.74 kB[22m[1m[22m[2m Γöé gzip:  4.13 kB[22m
+[2mdist/[22m[36massets/NyscLegalAdminPage-BzTLXGMu.js                             [39m[1m[2m 15.54 kB[22m[1m[22m[2m Γöé gzip:  4.01 kB[22m
+[2mdist/[22m[36massets/AboutPage-BUu-kd9_.js                                      [39m[1m[2m 15.85 kB[22m[1m[22m[2m Γöé gzip:  4.60 kB[22m
+[2mdist/[22m[36massets/FAQPage-Bigv5mkg.js                                        [39m[1m[2m 16.86 kB[22m[1m[22m[2m Γöé gzip:  4.54 kB[22m
+[2mdist/[22m[36massets/Helmet-BzuKssNM.js                                         [39m[1m[2m 17.41 kB[22m[1m[22m[2m Γöé gzip:  6.47 kB[22m
+[2mdist/[22m[36massets/EPANPage-DmqlJ5tw.js                                       [39m[1m[2m 17.71 kB[22m[1m[22m[2m Γöé gzip:  5.12 kB[22m
+[2mdist/[22m[36massets/input-C0cvlfE9.js                                          [39m[1m[2m 22.73 kB[22m[1m[22m[2m Γöé gzip:  7.78 kB[22m
+[2mdist/[22m[36massets/BlogPostPage-Bf8WT85t.js                                   [39m[1m[2m 23.72 kB[22m[1m[22m[2m Γöé gzip:  5.39 kB[22m
+[2mdist/[22m[36massets/HomePage-bA5mhIeR.js                                       [39m[1m[2m 26.78 kB[22m[1m[22m[2m Γöé gzip:  7.88 kB[22m
+[2mdist/[22m[36massets/index.esm-CAyxifHe.js                                      [39m[1m[2m 29.72 kB[22m[1m[22m[2m Γöé gzip: 10.86 kB[22m
+[2mdist/[22m[36massets/index-D1R8ni_S.js                                          [39m[1m[2m 54.88 kB[22m[1m[22m[2m Γöé gzip: 16.36 kB[22m
+[2mdist/[22m[36massets/AdminDashboard-C6sph1Ll.js                                 [39m[1m[2m 79.01 kB[22m[1m[22m[2m Γöé gzip: 16.86 kB[22m
+[2mdist/[22m[36massets/vendor-radix-D-kVOW3a.js                                   [39m[1m[2m 89.76 kB[22m[1m[22m[2m Γöé gzip: 30.64 kB[22m
+[2mdist/[22m[36massets/vendor-ui-CmIoWGRo.js                                      [39m[1m[2m129.59 kB[22m[1m[22m[2m Γöé gzip: 43.21 kB[22m
+[2mdist/[22m[36massets/vendor-react-dQtqU7CL.js                                   [39m[1m[2m162.56 kB[22m[1m[22m[2m Γöé gzip: 53.37 kB[22m
+[2mdist/[22m[36massets/vendor-supabase-CPBQX_2L.js                                [39m[1m[2m209.99 kB[22m[1m[22m[2m Γöé gzip: 54.77 kB[22m
+[32mΓ£ô built in 30.48s[39m

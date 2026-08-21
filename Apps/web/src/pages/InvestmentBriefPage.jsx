@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
@@ -313,7 +313,7 @@ const InvestmentBriefPage = () => {
 
                 {/* CTA Buttons */}
                 <div className="space-y-3">
-                  <Link to={`/properties/${property.id}`}>
+                                    <Link to={`/properties/${property.slug}`}>
                     <Button className="w-full">
                       <ExternalLink className="w-4 h-4 mr-2" />
                       View Property Details

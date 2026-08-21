@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from "react";
+﻿import React, { Suspense, lazy, useEffect } from "react";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
@@ -59,7 +59,7 @@ const AnimatedRoutes = () => {
       <Route path="/rent" element={<RentPage />} />
       <Route path="/sell" element={<SellPage />} />
       <Route path="/properties" element={<PropertiesPage />} />
-      <Route path="/properties/:id" element={<PropertyDetailsPage />} />
+      <Route path="/properties/:slug" element={<PropertyDetailsPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />

@@ -1,0 +1,16 @@
+OK   src/App.jsx line 62: already correct
+FIXED src/components/PropertyCard.jsx line 47: "    <Link to={`/properties/${p" -> "    <Link to={`/properties/${p"
+FIXED src/pages/InvestmentBriefPage.jsx line 316: "                              " -> "                  <Link to={`/"
+OK   scripts/getRoutes.js line 50: already correct
+OK   vercel.json line 14: already correct
+FIXED src/lib/structuredData.js line 18: "        \"url\": `https://luxury" -> "    \"url\": `https://luxuryprop"
+FIXED src/lib/structuredData.js line 194: "                    \"availabil" -> "          \"availability\": \"htt"
+FIXED api/ssr-property.js line 38: "        // Public property URL" -> "    // Public property URLs ar"
+FIXED src/pages/PropertyDetailsPage.jsx line 32: "                // Legacy UUID" -> "        // Legacy UUID redirec"
+FIXED src/pages/PropertyDetailsPage.jsx line 64: "                    .neq('id'," -> "          .neq('id', record.id"
+FIXED src/pages/PropertyDetailsPage.jsx line 82: "    }, [slug, navigate]);" -> "  }, [slug, navigate]);"
+FIXED src/pages/PropertyDetailsPage.jsx line 158: "        { name: property.title" -> "    { name: property.title, it"
+FIXED src/pages/PropertyDetailsPage.jsx line 166: "                <link rel=\"can" -> "        <link rel=\"canonical\" "
+FIXED src/pages/PropertyDetailsPage.jsx line 172: "                <meta property" -> "        <meta property=\"og:url"
+SKIP src/pages/AdminDashboard.jsx idx1798 (line 1799): token 'const generateSlug = (title) => {' NOT present on this line; current: ""
+done. changed=11

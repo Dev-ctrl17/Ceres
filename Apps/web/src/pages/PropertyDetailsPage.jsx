@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -14,9 +14,11 @@ import { MapPin, Bed, Bath, CheckCircle, MessageCircle, Phone, Calendar, FileTex
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
 import { generatePropertySchema, generateBreadcrumbSchema, generateAEOContent } from '@/lib/structuredData';
+import { isUUID } from '@/lib/slug.js';
 
 const PropertyDetailsPage = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
+  const navigate = useNavigate();
   const [property, setProperty] = useState(null);
   const [similarProperties, setSimilarProperties] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,10 +29,27 @@ const PropertyDetailsPage = () => {
   useEffect(() => {
     const fetchProperty = async () => {
       try {
+        // Legacy UUID redirect (edge func /api/propertyRedirect.js on prod;
+        // this guard covers local dev + non-Vercel hosts).
+        if (isUUID(slug)) {
+          const { data: legacy, error: legacyError } = await supabase
+            .from('properties')
+            .select('slug')
+            .eq('id', slug)
+            .single();
+          if (legacy?.slug) {
+            navigate(`/properties/${legacy.slug}`, { replace: true });
+            return;
+          }
+          if (legacyError) {
+            console.error('Failed to resolve legacy UUID to slug:', legacyError);
+          }
+        }
+
         const { data: record, error } = await supabase
           .from('properties')
           .select('*')
-          .eq('id', id)
+          .eq('slug', slug)
           .single();
 
         if (error) throw error;
@@ -42,7 +61,7 @@ const PropertyDetailsPage = () => {
           .from('properties')
           .select('*')
           .eq('property_type', record.property_type)
-          .neq('id', id)
+          .neq('id', record.id)
           .order('created_at', { ascending: false })
           .limit(3);
 
@@ -60,7 +79,7 @@ const PropertyDetailsPage = () => {
     };
 
     fetchProperty();
-  }, [id]);
+  }, [slug, navigate]);
 
   if (loading) {
     return (
@@ -136,7 +155,7 @@ const PropertyDetailsPage = () => {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', item: 'https://luxurypropertiesltd.com.ng' },
     { name: 'Properties', item: 'https://luxurypropertiesltd.com.ng/properties' },
-    { name: property.title, item: `https://luxurypropertiesltd.com.ng/properties/${property.id}` },
+    { name: property.title, item: `https://luxurypropertiesltd.com.ng/properties/${property.slug}` },
   ]);
 
   return (
@@ -144,13 +163,13 @@ const PropertyDetailsPage = () => {
       <Helmet>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
-        <link rel="canonical" href={`https://luxurypropertiesltd.com.ng/properties/${property.id}`} />
+        <link rel="canonical" href={`https://luxurypropertiesltd.com.ng/properties/${property.slug}`} />
         
         {/* Open Graph */}
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://luxurypropertiesltd.com.ng/properties/${property.id}`} />
+        <meta property="og:url" content={`https://luxurypropertiesltd.com.ng/properties/${property.slug}`} />
         {images[0] && <meta property="og:image" content={images[0]} />}
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />

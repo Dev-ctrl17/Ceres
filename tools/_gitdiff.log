@@ -1,0 +1,52 @@
+﻿diff --git a/Apps/web/src/components/PropertyCard.jsx b/Apps/web/src/components/PropertyCard.jsx
+index 95af7e1..2458906 100644
+--- a/Apps/web/src/components/PropertyCard.jsx
++++ b/Apps/web/src/components/PropertyCard.jsx
+@@ -1,4 +1,4 @@
+-import React from "react";
++∩╗┐import React from "react";
+ import { Link } from "react-router-dom";
+ import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
+ import { Card, CardContent } from "@/components/ui/card";
+@@ -44,7 +44,7 @@ const PropertyCard = ({ property, featured = false }) => {
+   };
+ 
+   return (
+-    <Link to={`/properties/${property.id}`}>
++    <Link to={`/properties/${property.slug`}>`
+       <Card
+         className={`group overflow-hidden transition-all duration-300 ${
+           featured
+@@ -124,4 +124,4 @@ const PropertyCard = ({ property, featured = false }) => {
+   );
+ };
+ 
+-export default PropertyCard;
+\ No newline at end of file
++export default PropertyCard;
+diff --git a/Apps/web/src/pages/InvestmentBriefPage.jsx b/Apps/web/src/pages/InvestmentBriefPage.jsx
+index 220f20c..492ce12 100644
+--- a/Apps/web/src/pages/InvestmentBriefPage.jsx
++++ b/Apps/web/src/pages/InvestmentBriefPage.jsx
+@@ -1,4 +1,4 @@
+-import React, { useState, useEffect } from "react";
++∩╗┐import React, { useState, useEffect } from "react";
+ import { useParams, Link } from "react-router-dom";
+ import Header from "@/components/Header.jsx";
+ import Footer from "@/components/Footer.jsx";
+@@ -313,7 +313,7 @@ const InvestmentBriefPage = () => {
+ 
+                 {/* CTA Buttons */}
+                 <div className="space-y-3">
+-                  <Link to={`/properties/${property.id}`}>
++                  <Link to={`/properties/${property.slug`}>`
+                     <Button className="w-full">
+                       <ExternalLink className="w-4 h-4 mr-2" />
+                       View Property Details
+@@ -378,4 +378,4 @@ const InvestmentBriefPage = () => {
+   );
+ };
+ 
+-export default InvestmentBriefPage;
+\ No newline at end of file
++export default InvestmentBriefPage;
