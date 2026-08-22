@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-labelledby="title desc">
+  <title id="title">Default team member avatar</title>
+  <desc id="desc">A neutral silhouette used when a team member photo is unavailable.</desc>
+  <rect width="400" height="400" fill="#f3efe5"/>
+  <circle cx="200" cy="145" r="70" fill="#b18a3b"/>
+  <path d="M80 350c12-91 58-137 120-137s108 46 120 137z" fill="#b18a3b"/>
+</svg>

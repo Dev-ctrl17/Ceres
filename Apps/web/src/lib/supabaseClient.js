@@ -9,7 +9,7 @@ if (supabaseUrl) {
 }
 
 if (!supabaseUrl || !supabaseAnonKey) {
-  console.error(
+  throw new Error(
     "Missing Supabase environment variables. Make sure VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY are set in your .env file."
   );
 }

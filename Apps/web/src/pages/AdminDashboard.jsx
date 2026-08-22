@@ -2644,6 +2644,11 @@ const TeamMembersManager = () => {
 
   const onSubmit = async (data) => {
     try {
+      if (!editing && !photoFile) {
+        toast.error("Please select a team member photo before creating the profile");
+        return;
+      }
+
       const memberData = {
         name: data.name,
         position: data.position || "",
@@ -2655,12 +2660,13 @@ const TeamMembersManager = () => {
           const photoPath = await uploadFile(
             "team-photos",
             photoFile,
-            "teammembers"
+            "teammembers",
+            { requireAuth: true }
           );
-          // Convert path → public URL before saving
-          memberData.photo = getFileUrl("team-photos", photoPath) || photoPath;
+          memberData.photo = photoPath;
         } catch (uploadErr) {
-          toast.error("Photo upload failed, but member will be saved");
+          toast.error("Photo upload failed. The team member was not saved.");
+          throw uploadErr;
         }
       }
 
@@ -2703,10 +2709,7 @@ const TeamMembersManager = () => {
 
   const getPhotoUrl = (member) => {
     if (!member.photo) return null;
-    // If already a full URL return as-is, otherwise convert
-    return member.photo.startsWith("http")
-      ? member.photo
-      : getFileUrl("team-photos", member.photo);
+    return getFileUrl("team-photos", member.photo);
   };
 
   return (
@@ -2725,6 +2728,9 @@ const TeamMembersManager = () => {
               <DialogTitle>
                 {editing ? "Edit Team Member" : "Add Team Member"}
               </DialogTitle>
+              <DialogDescription>
+                Add a profile photo and the team member details shown on the About page.
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">

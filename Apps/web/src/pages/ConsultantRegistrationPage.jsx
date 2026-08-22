@@ -26,10 +26,32 @@ export default function ConsultantRegistrationPage() {
 
   useEffect(() => {
     if (!TURNSTILE_SITE_KEY || !turnstileElement.current) return undefined;
-    const render = () => window.turnstile?.render(turnstileElement.current, { sitekey: TURNSTILE_SITE_KEY, callback: setTurnstileToken, "expired-callback": () => setTurnstileToken("") });
-    if (window.turnstile) { render(); return undefined; }
-    const script = document.createElement("script"); script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"; script.async = true; script.onload = render; document.head.appendChild(script);
-    return () => script.remove();
+    let widgetId = null;
+    let disposed = false;
+    let injectedScript = false;
+    const render = () => {
+      if (disposed || widgetId !== null || !turnstileElement.current || !window.turnstile) return;
+      widgetId = window.turnstile.render(turnstileElement.current, {
+        sitekey: TURNSTILE_SITE_KEY,
+        callback: setTurnstileToken,
+        "expired-callback": () => setTurnstileToken(""),
+      });
+    };
+    const script = document.createElement("script");
+    if (window.turnstile) {
+      render();
+    } else {
+      injectedScript = true;
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+      script.async = true;
+      script.onload = render;
+      document.head.appendChild(script);
+    }
+    return () => {
+      disposed = true;
+      if (widgetId !== null && window.turnstile) window.turnstile.remove(widgetId);
+      if (injectedScript) script.remove();
+    };
   }, []);
 
   async function submit(event) {

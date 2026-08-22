@@ -137,10 +137,20 @@ export async function deleteRecord(table, id) {
 /**
  * Upload a file to Supabase Storage
  */
-export async function uploadFile(bucket, file, path = '') {
+export async function uploadFile(bucket, file, path = '', { requireAuth = false } = {}) {
+  if (requireAuth) {
+    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+    if (sessionError) throw new Error(`Unable to verify admin session: ${sessionError.message}`);
+    if (!session?.access_token) throw new Error('You must be signed in to upload this file.');
+  }
+
+  const safeName = file.name
+    .trim()
+    .replace(/\s+/g, '_')
+    .replace(/[^a-zA-Z0-9._-]/g, '-');
   const filePath = path
-    ? `${path}/${Date.now()}_${file.name}`
-    : `${Date.now()}_${file.name}`;
+    ? `${path}/${Date.now()}_${safeName}`
+    : `${Date.now()}_${safeName}`;
 
   const { data, error } = await supabase.storage
     .from(bucket)
@@ -178,6 +188,12 @@ export async function deleteFile(bucket, filePath) {
  */
 export function getFileUrl(bucket, filePath) {
   if (!filePath) return null;
+  if (/^https?:\/\//i.test(filePath)) {
+    const storageObject = filePath.match(/\/storage\/v1\/object\/(?:public\/|authenticated\/)?([^/]+)\/(.+)$/);
+    if (!storageObject) return filePath;
+    if (storageObject[1] !== bucket) return filePath;
+    filePath = decodeURIComponent(storageObject[2]);
+  }
   const { data } = supabase.storage.from(bucket).getPublicUrl(filePath);
   return data.publicUrl;
 }
@@ -197,8 +213,8 @@ export function getOptimizedImageUrl(bucket, filePath, options = {}) {
   
   const { width = 800, quality = 75, format = 'webp' } = options;
   
-  // If it's already an external URL, return as-is
-  if (filePath.startsWith('http')) return filePath;
+  // Non-Supabase URLs cannot use Supabase image transforms.
+  if (/^https?:\/\//i.test(filePath) && !filePath.includes('/storage/v1/')) return filePath;
   
   // Get the base public URL
   const baseUrl = getFileUrl(bucket, filePath);

@@ -10,8 +10,14 @@ import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const AboutPage = () => {
   const [teamMembers, setTeamMembers] = useState([]);
+  const [failedPhotos, setFailedPhotos] = useState(() => new Set());
   const [loading, setLoading] = useState(true);
   const { getBackground } = usePageBackgrounds();
+
+  const getBioText = (bio) => bio
+    ?.replace(/<[^>]*>/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -150,8 +156,8 @@ const AboutPage = () => {
         <section className="py-16 xs:py-18 sm:py-20 bg-muted">
           <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xs:gap-6 sm:gap-8 md:gap-12">
-              <Card className="card-hover mission-card">
-                <CardContent className="pt-8 pb-6 text-center">
+              <Card className="card-hover mission-card h-full">
+                <CardContent className="flex h-full flex-col items-center pt-8 pb-6 text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
                     <Target className="w-8 h-8 text-primary icon-animate" />
                   </div>
@@ -162,8 +168,8 @@ const AboutPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="card-hover vision-card">
-                <CardContent className="pt-8 pb-6 text-center">
+              <Card className="card-hover vision-card h-full">
+                <CardContent className="flex h-full flex-col items-center pt-8 pb-6 text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
                     <Eye className="w-8 h-8 text-primary icon-animate" />
                   </div>
@@ -174,8 +180,8 @@ const AboutPage = () => {
                 </CardContent>
               </Card>
 
-              <Card className="card-hover values-card">
-                <CardContent className="pt-8 pb-6 text-center">
+              <Card className="card-hover values-card h-full">
+                <CardContent className="flex h-full flex-col items-center pt-8 pb-6 text-center">
                   <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
                     <Award className="w-8 h-8 text-primary icon-animate" />
                   </div>
@@ -215,30 +221,35 @@ const AboutPage = () => {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
+              <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-4 xs:gap-5 sm:gap-6 md:gap-8">
                 {teamMembers.map((member, index) => (
-                  <Card key={member.id} className="text-center team-card" style={{ animationDelay: `${index * 0.15}s` }}>
+                  <Card key={member.id} className="w-full max-w-sm text-center team-card" style={{ animationDelay: `${index * 0.15}s` }}>
                     <CardContent className="pt-8 pb-6">
                       <div className="w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden bg-muted">
-                        {member.photo ? (
+                        {member.photo && !failedPhotos.has(member.id) ? (
                           <img
                             src={getOptimizedImageUrl("team-photos", member.photo, { width: 400, quality: 75, format: 'webp' }) || getFileUrl("team-photos", member.photo) || member.photo}
                             alt={member.name}
                             className="w-full h-full object-cover"
                             loading="lazy"
+                              onError={(event) => {
+                                console.warn('Team member photo failed to load', {
+                                  memberId: member.id,
+                                  name: member.name,
+                                  photo: member.photo,
+                                  requestedUrl: event.currentTarget.src,
+                                });
+                                setFailedPhotos((current) => new Set(current).add(member.id));
+                              }}
                           />
                         ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-primary/10">
-                            <span className="text-4xl font-bold text-primary">
-                              {member.name.charAt(0)}
-                            </span>
-                          </div>
+                          <img src="/default-team-avatar.svg" alt="" className="w-full h-full object-cover" />
                         )}
                       </div>
                       <h3 className="text-lg font-semibold mb-1 transition-colors duration-300 hover:text-primary">{member.name}</h3>
                       <p className="text-sm text-muted-foreground mb-3">{member.position}</p>
-                      {member.bio && (
-                        <p className="text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
+                      {getBioText(member.bio) && (
+                        <p className="text-sm leading-relaxed text-muted-foreground">{getBioText(member.bio)}</p>
                       )}
                     </CardContent>
                   </Card>

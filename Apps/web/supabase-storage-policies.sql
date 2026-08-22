@@ -25,6 +25,34 @@ BEGIN
   END IF;
 END $$;
 
+    -- Team member photos are publicly displayed on the About page. Keep reads
+    -- public, while restricting uploads, updates, and deletes to signed-in admins.
+    INSERT INTO storage.buckets (id, name, public)
+    VALUES ('team-photos', 'team-photos', true)
+    ON CONFLICT (id) DO UPDATE SET public = true;
+
+    DROP POLICY IF EXISTS "Public can read team photos" ON storage.objects;
+    DROP POLICY IF EXISTS "Admins can upload team photos" ON storage.objects;
+    DROP POLICY IF EXISTS "Admins can update team photos" ON storage.objects;
+    DROP POLICY IF EXISTS "Admins can delete team photos" ON storage.objects;
+
+    CREATE POLICY "Public can read team photos"
+    ON storage.objects FOR SELECT
+    USING (bucket_id = 'team-photos');
+
+    CREATE POLICY "Admins can upload team photos"
+    ON storage.objects FOR INSERT TO authenticated
+    WITH CHECK (bucket_id = 'team-photos');
+
+    CREATE POLICY "Admins can update team photos"
+    ON storage.objects FOR UPDATE TO authenticated
+    USING (bucket_id = 'team-photos')
+    WITH CHECK (bucket_id = 'team-photos');
+
+    CREATE POLICY "Admins can delete team photos"
+    ON storage.objects FOR DELETE TO authenticated
+    USING (bucket_id = 'team-photos');
+
 -- ============================================================
 -- STATUS CHECK: Run this to verify the policy is active
 -- ============================================================
