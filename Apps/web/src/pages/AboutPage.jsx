@@ -211,27 +211,33 @@ const AboutPage = () => {
           <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
             <h2 className="heading-lg mb-8 xs:mb-8 sm:mb-10 md:mb-12 text-center section-title">Our Team</h2>
             {loading ? (
-              <div className="grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 xs:gap-5 sm:gap-6 md:gap-8">
-                {[1, 2].map((i) => (
-                  <div key={i} className="bg-card rounded-2xl p-6 animate-pulse">
-                    <div className="w-32 h-32 bg-muted rounded-xl mx-auto mb-4"></div>
-                    <div className="h-6 bg-muted rounded mb-2"></div>
-                    <div className="h-4 bg-muted rounded w-2/3 mx-auto"></div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 md:gap-8">
+                {[1, 2, 3, 4].map((i) => (
+                  <div key={i} className="rounded-[28px] border border-border/80 bg-white p-5 shadow-[0_18px_45px_rgba(17,24,39,0.06)] animate-pulse">
+                    <div className="mx-auto mb-5 h-44 w-44 rounded-[24px] bg-muted"></div>
+                    <div className="mb-3 h-7 w-3/4 rounded bg-muted mx-auto"></div>
+                    <div className="mx-auto mb-4 h-3.5 w-2/3 rounded bg-muted"></div>
+                    <div className="h-16 w-full rounded bg-muted"></div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-4 xs:gap-5 sm:gap-6 md:gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 md:gap-8">
                 {teamMembers.map((member, index) => (
-                  <Card key={member.id} className="w-full max-w-sm text-center team-card" style={{ animationDelay: `${index * 0.15}s` }}>
-                    <CardContent className="pt-8 pb-6">
-                      <div className="w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden bg-muted">
-                        {member.photo && !failedPhotos.has(member.id) ? (
-                          <img
-                            src={getOptimizedImageUrl("team-photos", member.photo, { width: 400, quality: 75, format: 'webp' }) || getFileUrl("team-photos", member.photo) || member.photo}
-                            alt={member.name}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
+                  <Card
+                    key={member.id}
+                    className="group h-full overflow-hidden border-0 bg-transparent p-0 text-left shadow-none transition-all duration-300 hover:-translate-y-0.5"
+                    style={{ animationDelay: `${index * 0.15}s` }}
+                  >
+                    <CardContent className="flex h-full flex-col p-0">
+                      <div className="mb-5 overflow-hidden rounded-[18px] bg-[#f1ece3]">
+                        <div className="aspect-[4/5] w-full">
+                          {member.photo && !failedPhotos.has(member.id) ? (
+                            <img
+                              src={getOptimizedImageUrl("team-photos", member.photo, { width: 500, quality: 75, format: 'webp' }) || getFileUrl("team-photos", member.photo) || member.photo}
+                              alt={member.name}
+                              className="h-full w-full object-cover"
+                              loading="lazy"
                               onError={(event) => {
                                 console.warn('Team member photo failed to load', {
                                   memberId: member.id,
@@ -241,16 +247,29 @@ const AboutPage = () => {
                                 });
                                 setFailedPhotos((current) => new Set(current).add(member.id));
                               }}
-                          />
-                        ) : (
-                          <img src="/default-team-avatar.svg" alt="" className="w-full h-full object-cover" />
+                            />
+                          ) : (
+                            <img src="/default-team-avatar.svg" alt="" className="h-full w-full object-cover" />
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="flex flex-1 flex-col items-start text-left">
+                        <h3 className="mb-2 font-serif text-[2.1rem] leading-[0.95] tracking-[-0.05em] text-foreground sm:text-[2.4rem]">
+                          {member.name}
+                        </h3>
+                        <div className="mb-3 flex items-center gap-3">
+                          <span className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#8b6a38]">
+                            {member.position}
+                          </span>
+                          <span className="h-px w-10 bg-[#d5c29c]" />
+                        </div>
+                        {getBioText(member.bio) && (
+                          <p className="max-w-[30ch] text-[0.98rem] leading-7 text-[#4b4a48]">
+                            {getBioText(member.bio)}
+                          </p>
                         )}
                       </div>
-                      <h3 className="text-lg font-semibold mb-1 transition-colors duration-300 hover:text-primary">{member.name}</h3>
-                      <p className="text-sm text-muted-foreground mb-3">{member.position}</p>
-                      {getBioText(member.bio) && (
-                        <p className="text-sm leading-relaxed text-muted-foreground">{getBioText(member.bio)}</p>
-                      )}
                     </CardContent>
                   </Card>
                 ))}
