@@ -3,10 +3,62 @@ import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
-import { Target, Eye, Award } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
+
+const TeamMemberCard = ({ member, index, failedPhotos, setFailedPhotos, getMemberBio }) => {
+  const isReversed = index % 2 !== 0;
+
+  return (
+    <Card
+      className="group overflow-hidden rounded-[12px] border border-[#E5DFD3] bg-white p-0 text-left shadow-[0_8px_24px_rgba(30,28,25,0.05),0_18px_45px_rgba(30,28,25,0.04)] transition-shadow duration-300 hover:shadow-[0_10px_30px_rgba(30,28,25,0.08),0_22px_52px_rgba(30,28,25,0.06)]"
+      style={{ animationDelay: `${index * 0.15}s` }}
+    >
+      <div className={`grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] ${isReversed ? 'lg:[&>div:first-child]:order-2' : ''}`}>
+        <div className="relative aspect-[4/5] overflow-hidden bg-[#f1ece3] lg:aspect-auto lg:min-h-[560px]">
+          {member.photo && !failedPhotos.has(member.id) ? (
+            <img
+              src={getOptimizedImageUrl("team-photos", member.photo, { width: 700, quality: 80, format: 'webp' }) || getFileUrl("team-photos", member.photo) || member.photo}
+              alt={`${member.name} - ${member.position || 'Team member'}`}
+              className="h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.02]"
+              loading="lazy"
+              onError={(event) => {
+                console.warn('Team member photo failed to load', {
+                  memberId: member.id,
+                  name: member.name,
+                  photo: member.photo,
+                  requestedUrl: event.currentTarget.src,
+                });
+                setFailedPhotos((current) => new Set(current).add(member.id));
+              }}
+            />
+          ) : (
+            <img src="/default-team-avatar.svg" alt="" className="h-full w-full object-cover object-[center_20%]" />
+          )}
+          <span className="absolute left-6 top-6 h-8 w-8 border-l border-t border-[#A9754B]/80" aria-hidden="true" />
+        </div>
+
+        <CardContent className="flex flex-col justify-center p-7 sm:p-10 lg:p-14 xl:p-16">
+          <span className="mb-5 block h-px w-12 bg-[#A9754B]" aria-hidden="true" />
+          <h3 className="font-serif text-3xl font-semibold leading-tight text-[#1E1C19] sm:text-4xl lg:text-[2.5rem]">
+            {member.name}
+          </h3>
+          {member.position && (
+            <p className="mt-4 text-xs font-bold uppercase tracking-[0.24em] text-[#A9754B] sm:text-sm">
+              {member.position}
+            </p>
+          )}
+          {getMemberBio(member.bio) && (
+            <p className="mt-8 max-w-[55ch] font-sans text-[15px] leading-[1.85] text-[#3A3733] sm:text-base">
+              {getMemberBio(member.bio)}
+            </p>
+          )}
+        </CardContent>
+      </div>
+    </Card>
+  );
+};
 
 const AboutPage = () => {
   const [teamMembers, setTeamMembers] = useState([]);
@@ -18,6 +70,13 @@ const AboutPage = () => {
     ?.replace(/<[^>]*>/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
+
+  const getMemberBio = (bio) => getBioText(bio)
+      ?.replace(/^At Luxury Properties Ltd[,\s]*/i, '')
+      .replace(/Luxury Properties Ltd/gi, '')
+      .replace(/\s+/g, ' ')
+      .replace(/\s+([,.])/g, '$1')
+      .trim();
 
   useEffect(() => {
     const fetchTeam = async () => {
@@ -125,7 +184,7 @@ const AboutPage = () => {
             <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">
               <h1 className="heading-lg mb-4 xs:mb-4 sm:mb-5 md:mb-6 text-white hero-animate">Nigeria's Leading Luxury Real Estate Advisory Company</h1>
             <p className="text-base xs:text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed hero-animate-delay-1">
-            Luxury properties Ltd is Nigeria's trusted real estate ADVISORY firm,  delivering exceptional property solutions to discerning clients, investors, and high-net-worth individuals.  We provide exclusive access to premium properties,  personalized concierge service,  and strategic real estate expertise that transforms every investment into a lasting legacy.
+            Luxury properties Ltd is Nigeria's trusted real estate ADVISORY firm,  delivering exceptional property solutions to discerning clients, investors, and high-net-worth individuals.
             </p>
           </div>
         </section>
@@ -155,123 +214,89 @@ const AboutPage = () => {
 
         <section className="py-16 xs:py-18 sm:py-20 bg-muted">
           <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 xs:gap-6 sm:gap-8 md:gap-12">
-              <Card className="card-hover mission-card h-full">
-                <CardContent className="flex h-full flex-col items-center pt-8 pb-6 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
-                    <Target className="w-8 h-8 text-primary icon-animate" />
-                  </div>
-              <h3 className="text-xl font-semibold mb-3">Our Mission</h3>
-              <p className="text-muted-foreground leading-relaxed">
+            <div className="grid grid-cols-1 gap-6 xs:gap-6 sm:gap-8 md:gap-10">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              <Card className="card-hover mission-card h-full border border-border/70 bg-card shadow-[0_8px_24px_rgba(43,43,43,0.05)]">
+                <CardContent className="flex flex-col p-8 text-left">
+                  <span className="mb-5 h-px w-10 bg-[#A9754B]" aria-hidden="true" />
+                  <h3 className="mb-3 text-xl font-semibold">Our Mission</h3>
+                  <p className="text-muted-foreground leading-relaxed">
                     To deliver world-class luxury real estate solutions through exceptional service, expert market knowledge, and innovative strategies that help our clients buy, sell, and invest with confidence.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card className="card-hover vision-card h-full">
-                <CardContent className="flex h-full flex-col items-center pt-8 pb-6 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
-                    <Eye className="w-8 h-8 text-primary icon-animate" />
-                  </div>
-              <h3 className="text-xl font-semibold mb-3">Our Vision</h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <Card className="card-hover vision-card h-full border border-border/70 bg-card shadow-[0_8px_24px_rgba(43,43,43,0.05)]">
+                <CardContent className="flex flex-col p-8 text-left">
+                  <span className="mb-5 h-px w-10 bg-[#A9754B]" aria-hidden="true" />
+                  <h3 className="mb-3 text-xl font-semibold">Our Vision</h3>
+                  <p className="text-muted-foreground leading-relaxed">
                     To be the most trusted and respected luxury real estate company in Nigeria, recognized for delivering outstanding client experiences, exceptional properties, and lasting value.
                   </p>
                 </CardContent>
               </Card>
+              </div>
 
-              <Card className="card-hover values-card h-full">
-                <CardContent className="flex h-full flex-col items-center pt-8 pb-6 text-center">
-                  <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 icon-wrapper">
-                    <Award className="w-8 h-8 text-primary icon-animate" />
+              <Card className="card-hover values-card w-full border border-border/70 bg-card shadow-[0_8px_24px_rgba(43,43,43,0.05)]">
+                <CardContent className="flex flex-col p-8 text-left">
+                  <span className="mb-5 h-px w-10 bg-[#A9754B]" aria-hidden="true" />
+                  <h3 className="mb-6 text-xl font-semibold">Our Core Values</h3>
+                  <div className="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-3">
+                    <p className="border-t border-[#A9754B]/45 pt-4 text-muted-foreground leading-relaxed">
+                      <strong>Integrity</strong> — We conduct every transaction with honesty, transparency, and professionalism.
+                    </p>
+                    <p className="border-t border-[#A9754B]/45 pt-4 text-muted-foreground leading-relaxed">
+                      <strong>Excellence</strong> — We are committed to delivering exceptional service and consistently exceeding client expectations.
+                    </p>
+                    <p className="border-t border-[#A9754B]/45 pt-4 text-muted-foreground leading-relaxed">
+                      <strong>Client-Centric Service</strong> — Every decision we make begins with understanding our clients' needs and delivering personalized solutions.
+                    </p>
+                    <p className="border-t border-[#A9754B]/45 pt-4 text-muted-foreground leading-relaxed">
+                      <strong>Discretion</strong> — We respect our clients' privacy and handle every transaction with the highest level of confidentiality.
+                    </p>
+                    <p className="border-t border-[#A9754B]/45 pt-4 text-muted-foreground leading-relaxed">
+                      <strong>Innovation</strong> — We leverage modern technology, market intelligence, and strategic marketing to create better outcomes for our clients.
+                    </p>
                   </div>
-              <h3 className="text-xl font-semibold mb-3">Our Core Values</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                <strong>Integrity</strong> — We conduct every transaction with honesty, transparency, and professionalism.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                <strong>Excellence</strong> — We are committed to delivering exceptional service and consistently exceeding client expectations.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                <strong>Client-Centric Service</strong> — Every decision we make begins with understanding our clients' needs and delivering personalized solutions.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                <strong>Discretion</strong> — We respect our clients' privacy and handle every transaction with the highest level of confidentiality.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                <strong>Innovation</strong> — We leverage modern technology, market intelligence, and strategic marketing to create better outcomes for our clients.
-              </p>
                 </CardContent>
               </Card>
             </div>
           </div>
         </section>
 
-        <section className="py-16 xs:py-18 sm:py-20">
-          <div className="max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8">
-            <h2 className="heading-lg mb-8 xs:mb-8 sm:mb-10 md:mb-12 text-center section-title">Our Team</h2>
+        <section className="bg-[#fafafa] py-16 xs:py-20 sm:py-24 lg:py-28">
+          <div className="mx-auto max-w-[1200px] px-4 xs:px-5 sm:px-6 lg:px-8">
+            <div className="mb-10 max-w-2xl sm:mb-14 lg:mb-16">
+              <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-[#A9754B]">Our Team</p>
+              <h2 className="font-serif text-3xl font-semibold leading-tight text-[#1E1C19] sm:text-4xl lg:text-[2.75rem]">
+                Meet the people behind Luxury Properties Ltd.
+              </h2>
+              <span className="mt-6 block h-px w-12 bg-[#A9754B]" aria-hidden="true" />
+            </div>
             {loading ? (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 md:gap-8">
+              <div className="mx-auto max-w-[1200px] animate-pulse">
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="rounded-[28px] border border-border/80 bg-white p-5 shadow-[0_18px_45px_rgba(17,24,39,0.06)] animate-pulse">
-                    <div className="mx-auto mb-5 h-44 w-44 rounded-[24px] bg-muted"></div>
-                    <div className="mb-3 h-7 w-3/4 rounded bg-muted mx-auto"></div>
-                    <div className="mx-auto mb-4 h-3.5 w-2/3 rounded bg-muted"></div>
-                    <div className="h-16 w-full rounded bg-muted"></div>
+                  <div key={i} className="mb-8 grid grid-cols-1 overflow-hidden rounded-[12px] border border-[#E5DFD3] bg-white last:mb-0 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+                    <div className="aspect-[4/5] bg-muted lg:aspect-auto lg:min-h-[560px]"></div>
+                    <div className="space-y-5 p-8 sm:p-12">
+                      <div className="h-4 w-24 rounded bg-muted"></div>
+                      <div className="h-10 w-3/4 rounded bg-muted"></div>
+                      <div className="h-24 w-full rounded bg-muted"></div>
+                    </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 sm:gap-6 md:gap-8">
+              <div className="mx-auto max-w-[1200px] space-y-8 lg:space-y-10">
                 {teamMembers.map((member, index) => (
-                  <Card
+                  <TeamMemberCard
                     key={member.id}
-                    className="group h-full overflow-hidden border-0 bg-transparent p-0 text-left shadow-none transition-all duration-300 hover:-translate-y-0.5"
-                    style={{ animationDelay: `${index * 0.15}s` }}
-                  >
-                    <CardContent className="flex h-full flex-col p-0">
-                      <div className="mb-5 overflow-hidden rounded-[18px] bg-[#f1ece3]">
-                        <div className="aspect-[4/5] w-full">
-                          {member.photo && !failedPhotos.has(member.id) ? (
-                            <img
-                              src={getOptimizedImageUrl("team-photos", member.photo, { width: 500, quality: 75, format: 'webp' }) || getFileUrl("team-photos", member.photo) || member.photo}
-                              alt={member.name}
-                              className="h-full w-full object-cover"
-                              loading="lazy"
-                              onError={(event) => {
-                                console.warn('Team member photo failed to load', {
-                                  memberId: member.id,
-                                  name: member.name,
-                                  photo: member.photo,
-                                  requestedUrl: event.currentTarget.src,
-                                });
-                                setFailedPhotos((current) => new Set(current).add(member.id));
-                              }}
-                            />
-                          ) : (
-                            <img src="/default-team-avatar.svg" alt="" className="h-full w-full object-cover" />
-                          )}
-                        </div>
-                      </div>
-
-                      <div className="flex flex-1 flex-col items-start text-left">
-                        <h3 className="mb-2 font-serif text-[2.1rem] leading-[0.95] tracking-[-0.05em] text-foreground sm:text-[2.4rem]">
-                          {member.name}
-                        </h3>
-                        <div className="mb-3 flex items-center gap-3">
-                          <span className="text-[0.62rem] font-medium uppercase tracking-[0.22em] text-[#8b6a38]">
-                            {member.position}
-                          </span>
-                          <span className="h-px w-10 bg-[#d5c29c]" />
-                        </div>
-                        {getBioText(member.bio) && (
-                          <p className="max-w-[30ch] text-[0.98rem] leading-7 text-[#4b4a48]">
-                            {getBioText(member.bio)}
-                          </p>
-                        )}
-                      </div>
-                    </CardContent>
-                  </Card>
+                    member={member}
+                    index={index}
+                    failedPhotos={failedPhotos}
+                    setFailedPhotos={setFailedPhotos}
+                    getMemberBio={getMemberBio}
+                  />
                 ))}
               </div>
             )}
