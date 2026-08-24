@@ -12,11 +12,11 @@ const TeamMemberCard = ({ member, index, failedPhotos, setFailedPhotos, getMembe
 
   return (
     <Card
-      className="group overflow-hidden rounded-[12px] border border-[#E5DFD3] bg-white p-0 text-left shadow-[0_8px_24px_rgba(30,28,25,0.05),0_18px_45px_rgba(30,28,25,0.04)] transition-shadow duration-300 hover:shadow-[0_10px_30px_rgba(30,28,25,0.08),0_22px_52px_rgba(30,28,25,0.06)]"
+      className="group w-full min-w-0 overflow-hidden rounded-[12px] border border-[#E5DFD3] bg-white p-0 text-left shadow-[0_8px_24px_rgba(30,28,25,0.05),0_18px_45px_rgba(30,28,25,0.04)] transition-shadow duration-300 hover:shadow-[0_10px_30px_rgba(30,28,25,0.08),0_22px_52px_rgba(30,28,25,0.06)] md:min-h-[400px]"
       style={{ animationDelay: `${index * 0.15}s` }}
     >
-      <div className={`grid grid-cols-1 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] ${isReversed ? 'lg:[&>div:first-child]:order-2' : ''}`}>
-        <div className="relative aspect-[4/5] overflow-hidden bg-[#f1ece3] lg:aspect-auto lg:min-h-[560px]">
+      <div className={`grid min-w-0 grid-cols-1 md:min-h-[400px] md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] ${isReversed ? 'md:[&>div:first-child]:order-2' : ''}`}>
+        <div className="relative aspect-[4/5] min-w-0 overflow-hidden bg-[#f1ece3] md:aspect-auto md:min-h-[400px]">
           {member.photo && !failedPhotos.has(member.id) ? (
             <img
               src={getOptimizedImageUrl("team-photos", member.photo, { width: 700, quality: 80, format: 'webp' }) || getFileUrl("team-photos", member.photo) || member.photo}
@@ -39,7 +39,7 @@ const TeamMemberCard = ({ member, index, failedPhotos, setFailedPhotos, getMembe
           <span className="absolute left-6 top-6 h-8 w-8 border-l border-t border-[#A9754B]/80" aria-hidden="true" />
         </div>
 
-        <CardContent className="flex flex-col justify-center p-7 sm:p-10 lg:p-14 xl:p-16">
+        <CardContent className="flex min-w-0 flex-1 flex-col justify-center overflow-visible p-7 sm:p-9 lg:p-12">
           <span className="mb-5 block h-px w-12 bg-[#A9754B]" aria-hidden="true" />
           <h3 className="font-serif text-3xl font-semibold leading-tight text-[#1E1C19] sm:text-4xl lg:text-[2.5rem]">
             {member.name}
@@ -265,7 +265,7 @@ const AboutPage = () => {
         </section>
 
         <section className="bg-[#fafafa] py-16 xs:py-20 sm:py-24 lg:py-28">
-          <div className="mx-auto max-w-[1200px] px-4 xs:px-5 sm:px-6 lg:px-8">
+          <div className="mx-auto w-full max-w-[1400px] px-4 xs:px-5 sm:px-6 lg:px-8">
             <div className="mb-10 max-w-2xl sm:mb-14 lg:mb-16">
               <p className="mb-4 text-xs font-bold uppercase tracking-[0.28em] text-[#A9754B]">Our Team</p>
               <h2 className="font-serif text-3xl font-semibold leading-tight text-[#1E1C19] sm:text-4xl lg:text-[2.75rem]">
@@ -274,10 +274,10 @@ const AboutPage = () => {
               <span className="mt-6 block h-px w-12 bg-[#A9754B]" aria-hidden="true" />
             </div>
             {loading ? (
-              <div className="mx-auto max-w-[1200px] animate-pulse">
+              <div className="grid w-full grid-cols-1 gap-6 animate-pulse md:grid-cols-2 lg:gap-8">
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="mb-8 grid grid-cols-1 overflow-hidden rounded-[12px] border border-[#E5DFD3] bg-white last:mb-0 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
-                    <div className="aspect-[4/5] bg-muted lg:aspect-auto lg:min-h-[560px]"></div>
+                  <div key={i} className="grid w-full min-w-0 grid-cols-1 overflow-hidden rounded-[12px] border border-[#E5DFD3] bg-white md:min-h-[400px] md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+                    <div className="aspect-[4/5] bg-muted md:aspect-auto md:min-h-[400px]"></div>
                     <div className="space-y-5 p-8 sm:p-12">
                       <div className="h-4 w-24 rounded bg-muted"></div>
                       <div className="h-10 w-3/4 rounded bg-muted"></div>
@@ -287,7 +287,7 @@ const AboutPage = () => {
                 ))}
               </div>
             ) : (
-              <div className="mx-auto max-w-[1200px] space-y-8 lg:space-y-10">
+              <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
                 {teamMembers.map((member, index) => (
                   <TeamMemberCard
                     key={member.id}
