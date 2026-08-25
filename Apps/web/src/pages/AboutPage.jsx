@@ -95,11 +95,9 @@ const AboutPage = () => {
     .trim();
 
   const getMemberBio = (bio) => getBioText(bio)
-      ?.replace(/^At Luxury Properties Ltd[,\s]*/i, '')
-      .replace(/Luxury Properties Ltd/gi, '')
-      .replace(/\s+/g, ' ')
-      .replace(/\s+([,.])/g, '$1')
-      .trim();
+    ?.replace(/\s+/g, ' ')
+    .replace(/\s+([,.])/g, '$1')
+    .trim();
 
   useEffect(() => {
     const fetchTeam = async () => {
