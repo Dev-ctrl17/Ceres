@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { useSearchParams } from 'react-router-dom';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import EarnBigButton from '@/components/EarnBigButton.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
 import PropertyFilter from '@/components/PropertyFilter.jsx';
 import { useProperties } from '@/hooks/useProperties.js';
@@ -107,6 +108,9 @@ const PropertiesPage = () => {
                 ))}
               </div>
             )}
+            <div className="mt-12 flex justify-center">
+              <EarnBigButton variant="inline" />
+            </div>
           </div>
         </section>
       </main>

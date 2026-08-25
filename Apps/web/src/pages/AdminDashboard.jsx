@@ -98,6 +98,7 @@ const TABS = [
   { id: "proposals", label: "Client Success", icon: Award },
   { id: "ongoing", label: "Ongoing Projects", icon: HardHat },
   { id: "agents", label: "Agents", icon: Users },
+  { id: "agent-applications", label: "Agent Applications", icon: Inbox },
   { id: "team", label: "Team Members", icon: UsersRound },
   { id: "reviews", label: "Reviews", icon: Star },
   { id: "testimonials", label: "Testimonials", icon: MessageSquare },
@@ -116,6 +117,8 @@ const DashboardTabs = () => {
         return SubmissionsManager;
       case "agents":
         return AgentsManager;
+      case "agent-applications":
+        return AgentApplicationsManager;
       case "reviews":
         return ReviewsManager;
       case "brochures":
@@ -2594,6 +2597,103 @@ const BrochuresManager = () => {
           })
         )}
       </div>
+    </div>
+  );
+};
+
+// ---------- Agent Applications Manager ----------
+const AgentApplicationsManager = () => {
+  const [applications, setApplications] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+  const fetchApplications = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from("agent_applications")
+        .select("*")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      setApplications(data || []);
+    } catch (err) {
+      toast.error("Failed to load agent applications");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchApplications();
+  }, []);
+
+  const updateStatus = async (id, status) => {
+    try {
+      const { error } = await supabase
+        .from("agent_applications")
+        .update({ status })
+        .eq("id", id);
+      if (error) throw error;
+      setApplications((current) => current.map((application) => (
+        application.id === id ? { ...application, status } : application
+      )));
+      toast.success(`Application marked ${status.toLowerCase()}`);
+    } catch (err) {
+      toast.error("Failed to update application status");
+    }
+  };
+
+  const getPhotoUrl = (application) => application.photo_url
+    ? (application.photo_url.startsWith("http") ? application.photo_url : getFileUrl("agent-photos", application.photo_url))
+    : null;
+
+  if (loading) return <p className="text-sm text-gray-500">Loading agent applications...</p>;
+
+  return (
+    <div>
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-xl font-semibold">Agent Applications</h2>
+        <Button variant="outline" onClick={fetchApplications}><RefreshCw className="h-4 w-4" />Refresh</Button>
+      </div>
+      {applications.length === 0 ? (
+        <div className="rounded-lg bg-white p-8 text-center text-sm text-gray-500">No agent applications yet.</div>
+      ) : (
+        <div className="grid gap-4">
+          {applications.map((application) => {
+            const photoUrl = getPhotoUrl(application);
+            return (
+              <div key={application.id} className="flex flex-col gap-4 rounded-lg bg-white p-4 shadow sm:flex-row sm:items-center sm:justify-between">
+                <div className="flex min-w-0 items-center gap-4">
+                  {photoUrl ? (
+                    <button type="button" className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg" onClick={() => setSelectedPhoto(photoUrl)} aria-label={`Open ${application.full_name}'s photo`}>
+                      <img src={photoUrl} alt={application.full_name} className="h-full w-full object-cover" />
+                    </button>
+                  ) : <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-gray-100 text-xs text-gray-400">No photo</div>}
+                  <div className="min-w-0">
+                    <h3 className="truncate font-semibold">{application.full_name}</h3>
+                    <p className="truncate text-sm text-gray-500">{application.email} · {application.phone}</p>
+                    <p className="text-xs text-gray-400">{application.company || "Independent"} · {application.specialization || "General real estate"}</p>
+                  </div>
+                </div>
+                <Select value={application.status || "Pending"} onValueChange={(value) => updateStatus(application.id, value)}>
+                  <SelectTrigger className="w-full sm:w-36"><SelectValue /></SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Pending">Pending</SelectItem>
+                    <SelectItem value="Approved">Approved</SelectItem>
+                    <SelectItem value="Rejected">Rejected</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            );
+          })}
+        </div>
+      )}
+      <Dialog open={Boolean(selectedPhoto)} onOpenChange={(open) => !open && setSelectedPhoto(null)}>
+        <DialogContent className="max-w-2xl">
+          <DialogHeader><DialogTitle>Applicant photo</DialogTitle></DialogHeader>
+          {selectedPhoto && <img src={selectedPhoto} alt="Applicant full size" className="max-h-[70vh] w-full object-contain" />}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

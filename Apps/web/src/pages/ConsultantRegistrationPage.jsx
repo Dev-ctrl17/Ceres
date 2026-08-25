@@ -8,6 +8,51 @@ import supabase from "@/lib/supabaseClient";
 const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY;
 const initialForm = { first_name: "", last_name: "", phone_number: "", email: "", confirm_email: "", password: "", confirm_password: "", date_of_birth: "", gender: "", city: "", address: "", state: "", country: "Nigeria", bank_name: "", account_number: "", account_name: "", accepted_terms: false };
 const fieldClass = "mt-1 w-full rounded-md border border-slate-200 bg-slate-100 px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-100";
+const registrationErrorMessages = {
+  EMAIL_TAKEN: "This email address is already registered. Try logging in instead.",
+  PHONE_TAKEN: "This phone number is already registered.",
+  CAPTCHA_FAILED: "Security check failed. Please try the verification again.",
+  RATE_LIMITED: "Too many attempts. Please wait a few minutes and try again.",
+  INVALID_REF_CODE: "This referral link is invalid or has expired.",
+  PASSWORD_TOO_SHORT: "Password must be at least 8 characters.",
+  REFERRAL_LIMIT_REACHED: "This referrer has reached their referral limit.",
+};
+
+async function getInvocationErrorCode(invokeError) {
+  const context = invokeError?.context;
+  if (!context) return null;
+
+  try {
+    const response = typeof context.clone === "function" ? context.clone() : context;
+    if (typeof response.json === "function") {
+      const body = await response.json();
+      return body?.error || body?.code || null;
+    }
+  } catch {
+    // Some SDK versions expose a consumed response; try its text body next.
+  }
+
+  try {
+    const response = typeof context.clone === "function" ? context.clone() : context;
+    if (typeof response.text === "function") {
+      const text = await response.text();
+      if (!text) return null;
+      try {
+        const body = JSON.parse(text);
+        return body?.error || body?.code || null;
+      } catch {
+        return text;
+      }
+    }
+  } catch {
+    return null;
+  }
+  return null;
+}
+
+function getRegistrationErrorMessage(errorCode) {
+  return registrationErrorMessages[errorCode] || "Registration failed. Please try again.";
+}
 
 function Field({ label, name, type = "text", form, setForm, required = false, children }) {
   return <label className="block text-xs font-medium text-slate-700">{label}{required && " *"}{children || <input className={fieldClass} required={required} type={type} value={form[name]} onChange={(event) => setForm((current) => ({ ...current, [name]: event.target.value }))} />}</label>;
@@ -66,9 +111,19 @@ export default function ConsultantRegistrationPage() {
     const { confirm_email, confirm_password, accepted_terms, first_name, last_name, password, ...payload } = form;
     const body = { ...payload, full_name: `${first_name} ${last_name}`.trim(), ref: referralCode || null, is_team_leader: isTeamLeader, turnstile_token: turnstileToken };
     if (isTeamLeader) body.password = password;
-    const { data, error: invokeError } = await supabase.functions.invoke("register-consultant", { body });
+    let data = null;
+    let invokeError = null;
+    try {
+      ({ data, error: invokeError } = await supabase.functions.invoke("register-consultant", { body }));
+    } catch (error) {
+      invokeError = error;
+    }
     setLoading(false);
-    if (invokeError || !data?.success) return setError(data?.error || invokeError?.message || "Registration failed. Please try again.");
+    const errorCode = data?.error || await getInvocationErrorCode(invokeError);
+    if (invokeError || !data?.success) {
+      console.error("Consultant registration error:", errorCode || invokeError);
+      return setError(getRegistrationErrorMessage(errorCode));
+    }
     setResult(data.data);
   }
 

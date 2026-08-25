@@ -18,6 +18,7 @@ const ServicesPage = lazy(() => import("./pages/ServicesPage.jsx"));
 const BlogPage = lazy(() => import("./pages/BlogPage.jsx"));
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage.jsx"));
 const EPANPage = lazy(() => import("./pages/EPANPage.jsx"));
+const LuxuryAgentPage = lazy(() => import("./pages/LuxuryAgentPage.jsx"));
 const AgentsPage = lazy(() => import("./pages/AgentsPage.jsx"));
 const ReviewsPage = lazy(() => import("./pages/ReviewsPage.jsx"));
 const AboutPage = lazy(() => import("./pages/AboutPage.jsx"));
@@ -64,6 +65,7 @@ const AnimatedRoutes = () => {
       <Route path="/blog" element={<BlogPage />} />
       <Route path="/blog/:slug" element={<BlogPostPage />} />
       <Route path="/epan" element={<EPANPage />} />
+      <Route path="/become-an-agent" element={<LuxuryAgentPage />} />
       <Route path="/agents" element={<AgentsPage />} />
       <Route path="/register" element={<ConsultantRegistrationPage />} />
       <Route path="/consultant-portal" element={<ConsultantPortalPage />} />

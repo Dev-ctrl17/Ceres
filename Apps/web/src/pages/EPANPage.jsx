@@ -15,19 +15,12 @@ import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 import { sendLeadNotification } from '@/services/formspreeService';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
+import EarnBigButton from '@/components/EarnBigButton.jsx';
 
 const EPANPage = () => {
   const { getBackground } = usePageBackgrounds();
-  const [agentLoading, setAgentLoading] = useState(false);
   const [partnerLoading, setPartnerLoading] = useState(false);
   const [inquiryType, setInquiryType] = useState('');
-
-  const { 
-    register: registerAgent, 
-    handleSubmit: handleSubmitAgent, 
-    reset: resetAgent,
-    formState: { errors: agentErrors } 
-  } = useForm();
 
   const { 
     register: registerPartner, 
@@ -35,44 +28,6 @@ const EPANPage = () => {
     reset: resetPartner,
     formState: { errors: partnerErrors } 
   } = useForm();
-
-  const onAgentSubmit = async (data) => {
-    setAgentLoading(true);
-    try {
-      const description = `Company/Agency: ${data.company}\nYears of Experience: ${data.experience}\nSpecialization: ${data.specialization}\nMessage: ${data.message}`;
-      
-      const { error } = await supabase.from('property_submissions').insert({
-        title: `Agent Registration - ${data.fullName}`,
-        description: description,
-        owner_name: data.fullName,
-        owner_email: data.email,
-        owner_phone: data.phone,
-        status: 'Pending'
-      });
-      
-      if (error) {
-        console.error('Agent registration error:', error);
-        throw error;
-      }
-
-      // Send email notification
-      await sendLeadNotification({
-        name: data.fullName,
-        email: data.email,
-        phone: data.phone,
-        leadType: 'Agent Registration',
-        message: description,
-      });
-      
-      toast.success('Registration submitted successfully. We will contact you soon.');
-      resetAgent();
-    } catch (error) {
-      console.error('Agent registration failed:', error);
-      toast.error(`Failed to submit registration: ${error.message || 'Please try again.'}`);
-    } finally {
-      setAgentLoading(false);
-    }
-  };
 
   const onPartnerSubmit = async (data) => {
     setPartnerLoading(true);
@@ -154,6 +109,7 @@ const EPANPage = () => {
       </Helmet>
 
       <Header />
+      <EarnBigButton variant="floating" />
 
       <main>
         {/* Hero Section */}
@@ -207,6 +163,7 @@ const EPANPage = () => {
               new benchmarks for excellence in the Nigerian property market. By joining EPAN, you align yourself with 
               a community that values integrity, innovation, and exceptional service delivery.
             </p>
+            <div className="mt-8"><EarnBigButton variant="inline" /></div>
           </div>
         </section>
 
@@ -297,107 +254,13 @@ const EPANPage = () => {
         <section id="join-forms" className="py-24 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">Join the Network</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Start a Partnership Conversation</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Select the appropriate form below to register as an agent or inquire about corporate partnerships.
+                Tell us how you would like to work with the Elite Property Agents Network.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Agent Registration Form */}
-              <Card className="border-border/50 shadow-lg">
-                <CardContent className="p-8 md:p-10">
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-bold mb-2">Agent Registration</h3>
-                    <p className="text-muted-foreground">Register to become an official EPAN member.</p>
-                  </div>
-
-                  <form onSubmit={handleSubmitAgent(onAgentSubmit)} className="space-y-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="fullName">Full Name</Label>
-                      <Input 
-                        id="fullName" 
-                        {...registerAgent('fullName', { required: 'Full name is required' })} 
-                        placeholder="John Doe"
-                        className="bg-background"
-                      />
-                      {agentErrors.fullName && <p className="text-sm text-destructive">{agentErrors.fullName.message}</p>}
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="agentEmail">Email Address</Label>
-                        <Input 
-                          id="agentEmail" 
-                          type="email"
-                          {...registerAgent('email', { required: 'Email is required' })} 
-                          placeholder="john@example.com"
-                          className="bg-background"
-                        />
-                        {agentErrors.email && <p className="text-sm text-destructive">{agentErrors.email.message}</p>}
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="agentPhone">Phone Number</Label>
-                        <Input 
-                          id="agentPhone" 
-                          {...registerAgent('phone', { required: 'Phone is required' })} 
-                          placeholder="+234..."
-                          className="bg-background"
-                        />
-                        {agentErrors.phone && <p className="text-sm text-destructive">{agentErrors.phone.message}</p>}
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="company">Company / Agency Name</Label>
-                      <Input 
-                        id="company" 
-                        {...registerAgent('company')} 
-                        placeholder="Independent or Agency Name"
-                        className="bg-background"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="experience">Years of Experience</Label>
-                        <Input 
-                          id="experience" 
-                          type="number"
-                          {...registerAgent('experience')} 
-                          placeholder="e.g. 5"
-                          className="bg-background"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="specialization">Specialization</Label>
-                        <Input 
-                          id="specialization" 
-                          {...registerAgent('specialization')} 
-                          placeholder="e.g. Luxury Residential"
-                          className="bg-background"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="agentMessage">Additional Information</Label>
-                      <Textarea 
-                        id="agentMessage" 
-                        {...registerAgent('message')} 
-                        placeholder="Tell us about your goals..."
-                        rows={4}
-                        className="bg-background"
-                      />
-                    </div>
-
-                    <Button type="submit" className="w-full bg-primary text-primary-foreground h-12 text-lg" disabled={agentLoading}>
-                      {agentLoading ? 'Submitting...' : 'Submit Registration'}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-
+            <div className="grid grid-cols-1 gap-12">
               {/* Partnership Inquiry Form */}
               <Card className="border-border/50 shadow-lg bg-secondary/30">
                 <CardContent className="p-8 md:p-10">

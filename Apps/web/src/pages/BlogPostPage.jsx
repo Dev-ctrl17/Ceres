@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import EarnBigButton from '@/components/EarnBigButton.jsx';
 import BlogPostLayout from '@/components/BlogPostLayout.jsx';
 import { blogPostsData, loadPostContent } from '@/data/blogPosts.js';
 
@@ -219,6 +220,7 @@ const BlogPostPage = () => {
                   Contact Us
                 </button>
               </Link>
+              <EarnBigButton variant="inline" />
             </div>
           </div>
         </section>
