@@ -1,5 +1,5 @@
 import { execSync, spawn } from 'child_process';
-import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync, rmSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
-const WAIT_MS = 4000;
+const WAIT_MS = 1500;
 
 // Load .env for Supabase credentials (getAllRoutes needs them)
 function loadEnv() {
@@ -35,6 +35,7 @@ function loadEnv() {
 loadEnv();
 
 console.log('[prerender] Building...');
+rmSync(resolve(__dirname, 'dist'), { recursive: true, force: true });
 execSync('node --max-old-space-size=4096 node_modules/vite/bin/vite.js build', { stdio: 'inherit', cwd: __dirname });
 
 console.log(`[prerender] Starting preview on :${PORT}...`);
@@ -48,12 +49,21 @@ await new Promise(r => setTimeout(r, WAIT_MS));
 const routes = await getAllRoutes();
 console.log(`[prerender] Prerendering ${routes.length} routes...\n`);
 
-// Use Puppeteer directly to render each route, waiting for the render-event
+// Use Puppeteer directly to render each route, waiting for real page content.
 const puppeteer = require('puppeteer');
+const executablePath = await puppeteer.executablePath();
 
 const browser = await puppeteer.launch({
   headless: true,
-  args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage']
+  executablePath,
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-gpu',
+    '--no-first-run',
+    '--no-default-browser-check',
+  ]
 });
 
 let successCount = 0;
@@ -65,28 +75,15 @@ for (const route of routes) {
     // Set a reasonable viewport
     await page.setViewport({ width: 1280, height: 720 });
 
-    // Wait for the render-event to be dispatched by the app
-    await page.evaluateOnNewDocument(() => {
-      window.__PRERENDER_STATUS = {};
-      document.addEventListener('render-event', () => {
-        window.__PRERENDER_STATUS.__DOCUMENT_EVENT_RESOLVED = true;
-      });
-    });
-
     // Navigate to the route
-    await page.goto(`${BASE_URL}${route}`, { waitUntil: 'networkidle0', timeout: 30000 });
+    await page.goto(`${BASE_URL}${route}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
-    // Wait for the render-event to fire (with a timeout fallback)
-    try {
-      await page.waitForFunction(
-        () => window.__PRERENDER_STATUS && window.__PRERENDER_STATUS.__DOCUMENT_EVENT_RESOLVED === true,
-        { timeout: 20000 }
-      );
-    } catch (e) {
-      console.warn(`  ⚠️  ${route}: render-event not fired, using fallback wait`);
-      await new Promise(r => setTimeout(r, 3000));
-    }
-
+    // Require actual page content before capturing. Async pages expose a
+    // false marker while loading; static pages only need their visible H1.
+    await page.waitForFunction(
+      () => document.querySelector('h1') && !document.querySelector('[data-prerender-ready="false"]'),
+      { timeout: 20000 }
+    );
     // Get the rendered HTML
     const html = await page.content();
 

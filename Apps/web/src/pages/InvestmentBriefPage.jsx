@@ -320,21 +320,21 @@ const InvestmentBriefPage = () => {
                     </Button>
                   </Link>
 
-                  <Link to={`/contact?property=${property.id}&type=enquiry`}>
+                  <Link to={`/contact?property=${encodeURIComponent(property.slug)}&inquiry=enquiry`}>
                     <Button variant="outline" className="w-full">
                       <Mail className="w-4 h-4 mr-2" />
                       Apply Now
                     </Button>
                   </Link>
 
-                  <Link to={`/contact?property=${property.id}&type=agent`}>
+                  <Link to={`/contact?property=${encodeURIComponent(property.slug)}&inquiry=agent`}>
                     <Button variant="outline" className="w-full">
                       <Phone className="w-4 h-4 mr-2" />
                       Contact Agent
                     </Button>
                   </Link>
 
-                  <Link to={`/contact?property=${property.id}&type=inspection`}>
+                  <Link to={`/contact?property=${encodeURIComponent(property.slug)}&inquiry=inspection`}>
                     <Button variant="outline" className="w-full">
                       <Calendar className="w-4 h-4 mr-2" />
                       Schedule Inspection

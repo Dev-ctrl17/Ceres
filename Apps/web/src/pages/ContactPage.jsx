@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -8,12 +9,15 @@ import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const ContactPage = () => {
+  const { search } = useLocation();
+  const hasInquiry = new URLSearchParams(search).has('inquiry');
   const { getBackground } = usePageBackgrounds();
   return (
     <>
       <Helmet>
         <title>Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos</title>
         <meta name="description" content="Contact Luxury Properties Ltd in Lagos for luxury real estate inquiries, property viewings, and expert advisory services. Call, email, or visit our office." />
+        {hasInquiry && <meta name="robots" content="noindex, nofollow" />}
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/contact" />
         <meta property="og:title" content="Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos" />
         <meta property="og:description" content="Get in touch with Luxury Properties Ltd for all your luxury real estate needs in Lagos and across Nigeria." />

@@ -100,7 +100,7 @@ export default async function handler(req, res) {
       "name": property.title,
       "description": property.description || `${property.title} in ${property.location}`,
       "image": images.map(img => img.startsWith('http') ? img : `https://luxurypropertiesltd.com.ng${img}`),
-            "url": `https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}`,
+            "url": `https://luxurypropertiesltd.com.ng/properties/${property.slug}`,
       "offers": {
         "@type": "Offer",
         "priceCurrency": "NGN",
@@ -145,13 +145,13 @@ export default async function handler(req, res) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${property.title} - Luxury Properties Ltd</title>
   <meta name="description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
-    <link rel="canonical" href="https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}" />
+    <link rel="canonical" href="https://luxurypropertiesltd.com.ng/properties/${property.slug}" />
   
   <!-- Open Graph -->
   <meta property="og:title" content="${property.title} - Luxury Properties Ltd" />
   <meta property="og:description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
   <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}" />
+    <meta property="og:url" content="https://luxurypropertiesltd.com.ng/properties/${property.slug}" />
   <meta property="og:image" content="${primaryImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -179,7 +179,7 @@ export default async function handler(req, res) {
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
       {"@type": "ListItem", "position": 2, "name": "Properties", "item": "https://luxurypropertiesltd.com.ng/properties"},
-      {"@type": "ListItem", "position": 3, "name": "${property.title.replace(/"/g, '\\"')}", "item": "https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}"}
+      {"@type": "ListItem", "position": 3, "name": "${property.title.replace(/"/g, '\\"')}", "item": "https://luxurypropertiesltd.com.ng/properties/${property.slug}"}
     ]
   }
   </script>
@@ -209,7 +209,7 @@ export default async function handler(req, res) {
         ${amenitiesList.map(a => `<div class="amenity"><span>✓</span> ${a}</div>`).join('')}
       </div>
     ` : ''}
-        <p><em>View full details at <a href="https://luxurypropertiesltd.com.ng/properties/${property.slug || property.id}">luxurypropertiesltd.com.ng/properties/${property.slug || property.id}</a></em></p>
+        <p><em>View full details at <a href="https://luxurypropertiesltd.com.ng/properties/${property.slug}">luxurypropertiesltd.com.ng/properties/${property.slug}</a></em></p>
   </div>
 </body>
 </html>`;

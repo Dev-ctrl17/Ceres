@@ -270,7 +270,7 @@ const HomePage = () => {
 
       <Header />
 
-      <main>
+      <main data-prerender-ready={loading ? 'false' : 'true'}>
         {/* Hero Section */}
         <section className="relative min-h-[100dvh] flex items-center justify-center pt-20 pb-48">
           <div className="absolute inset-0 z-0">

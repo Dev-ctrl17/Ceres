@@ -31,13 +31,36 @@ loadEnv();
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY;
 
-// Static routes to always prerender
-const STATIC_ROUTES = ['/', '/about', '/contact', '/blog'];
+// Static routes to always prerender. Keep this list in sync with public routes
+// so every core page receives its own HTML document at build time.
+const STATIC_ROUTES = [
+  '/',
+  '/about',
+  '/contact',
+  '/properties',
+  '/buy',
+  '/sell',
+  '/rent',
+  '/agents',
+  '/services',
+  '/faq',
+  '/reviews',
+  '/ongoing-projects',
+  '/client-success',
+  '/investment-brief',
+  '/company-registration',
+  '/office-locations',
+  '/refund-policy',
+  '/cookie-policy',
+  '/terms-conditions',
+  '/privacy-policy',
+  '/blog',
+];
 
 /**
  * Fetch all routes to prerender:
- * - Static routes: /, /about, /contact, /blog
-  * - Dynamic property routes: /properties/:slug for every row in the `properties` table
+ * - Static routes: all public core pages plus /blog
+  * - Dynamic property routes: /properties/:slug for every available row in the `properties` table
  * - Dynamic blog routes: /blog/:slug for every post in the local blogPostsData
  */
 export async function getAllRoutes() {
@@ -49,13 +72,14 @@ export async function getAllRoutes() {
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
       const { data: properties, error } = await supabase
         .from('properties')
-        .select('slug');
+        .select('slug, status')
+        .eq('status', 'Available');
 
       if (error) {
         console.warn('[getRoutes] Failed to fetch properties from Supabase:', error.message);
       } else if (properties && properties.length > 0) {
         properties.forEach(prop => {
-          if (prop.slug) routes.push(`/properties/${prop.slug}`);
+          if (prop.slug) routes.push(`/properties/${encodeURIComponent(prop.slug)}`);
         });
         console.log(`[getRoutes] Found ${properties.length} property routes`);
       } else {
@@ -81,8 +105,9 @@ export async function getAllRoutes() {
     console.warn('[getRoutes] Failed to load blog posts data:', err.message);
   }
 
-  console.log(`[getRoutes] Total routes to prerender: ${routes.length}`);
-  return routes;
+  const uniqueRoutes = [...new Set(routes)];
+  console.log(`[getRoutes] Total routes to prerender: ${uniqueRoutes.length}`);
+  return uniqueRoutes;
 }
 
 export default getAllRoutes;

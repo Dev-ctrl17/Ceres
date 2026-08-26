@@ -19,6 +19,7 @@
     { "source": "/((?!api/|assets/|favicon|og-image|llms|robots|sitemap|google|blog/|landing/).*)", "destination": "/index.html" }
   ],
   "redirects": [
+    { "source": "/sitemap", "destination": "/sitemap.xml", "permanent": true },
     { "source": "/homes", "destination": "/properties", "permanent": true },
     { "source": "/listings", "destination": "/properties", "permanent": true },
     { "source": "/referrals", "destination": "/dashboard/referrals", "permanent": true },

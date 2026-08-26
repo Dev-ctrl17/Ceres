@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "npm --prefix Apps/web run dev",
     "build": "npm --prefix Apps/web run build",
+    "prerender": "npm --prefix Apps/web run prerender",
     "start": "npm --prefix Apps/web run preview",
     "lint": "npm --prefix Apps/web run build"
   },

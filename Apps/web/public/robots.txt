@@ -3,6 +3,7 @@ Allow: /
 Disallow: /login
 Disallow: /admin
 Disallow: /api/
+Disallow: /contact?inquiry=
 
 # OpenAI
 User-agent: GPTBot

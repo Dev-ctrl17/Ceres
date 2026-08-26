@@ -138,7 +138,7 @@ const PropertyDetailsPage = () => {
   const bedrooms = property.bedrooms ? `${property.bedrooms}-Bed ` : '';
   const propertyType = property.property_type || 'Property';
   const location = property.location || property.city || 'Lagos';
-  const seoTitle = `${bedrooms}${propertyType} in ${location} | Luxury Properties Ltd`;
+  const seoTitle = `${property.title} | ${location} | Luxury Properties Ltd`;
   const seoDescription = property.description 
     ? `${property.description.substring(0, 155)}...` 
     : `${formatPrice(property.price)} ${propertyType} in ${location}. ${property.bedrooms || 'Multiple'} bedrooms, ${property.bathrooms || 'multiple'} bathrooms. Contact Luxury Properties Ltd for viewing.`;
@@ -196,7 +196,7 @@ const PropertyDetailsPage = () => {
 
       <Header />
 
-      <main className="py-12">
+      <main className="py-12" data-prerender-ready="true">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
@@ -350,7 +350,7 @@ const PropertyDetailsPage = () => {
 
                   {/* Book Inspection */}
                   <Link
-                    to={`/contact?property=${property.id}&inquiry=inspection`}
+                    to={`/contact?property=${encodeURIComponent(property.slug)}&inquiry=inspection`}
                     className="w-full inline-flex items-center justify-center gap-3 bg-transparent border-2 border-primary text-primary font-bold text-base px-6 py-4 rounded-xl mb-4 transition-all duration-300 hover:bg-primary/5 hover:scale-[1.02]"
                   >
                     <Calendar className="w-5 h-5" />
