@@ -7,7 +7,6 @@ import ContactForm from '@/components/ContactForm.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
 import ImageSlider from '@/components/ImageSlider.jsx';
 import PropertyEnquiryForm from '@/components/PropertyEnquiryForm.jsx';
-import EarnBigButton from '@/components/EarnBigButton.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -369,7 +368,6 @@ const PropertyDetailsPage = () => {
                   </details>
                   <div className="border-t pt-4 text-center">
                     <p className="mb-3 text-sm text-muted-foreground">Know someone looking for a home?</p>
-                    <EarnBigButton variant="inline" className="w-full" />
                   </div>
                 </CardContent>
               </Card>

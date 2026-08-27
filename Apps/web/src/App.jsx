@@ -41,6 +41,8 @@ const ConsultantRegistrationPage = lazy(() => import("./pages/ConsultantRegistra
 const ConsultantPortalPage = lazy(() => import("./pages/ConsultantPortalPage.jsx"));
 const ReferralAdminPage = lazy(() => import("./pages/ReferralAdminPage.jsx"));
 const NyscLegalAdminPage = lazy(() => import("./pages/NyscLegalAdminPage.jsx"));
+const ProspectReferralForm = lazy(() => import("./pages/ProspectReferralPage.jsx"));
+const ProspectReferralAdminPage = lazy(() => import("./pages/ProspectReferralAdminPage.jsx"));
 
 // Loading fallback component
 const PageLoading = () => (
@@ -66,6 +68,7 @@ const AnimatedRoutes = () => {
       <Route path="/blog/:slug" element={<BlogPostPage />} />
       <Route path="/epan" element={<EPANPage />} />
       <Route path="/become-an-agent" element={<LuxuryAgentPage />} />
+      <Route path="/refer-and-earn" element={<ProspectReferralForm />} />
       <Route path="/agents" element={<AgentsPage />} />
       <Route path="/register" element={<ConsultantRegistrationPage />} />
       <Route path="/consultant-portal" element={<ConsultantPortalPage />} />
@@ -97,6 +100,7 @@ const AnimatedRoutes = () => {
         }
       />
       <Route path="/admin/referrals" element={<ProtectedRoute><ReferralAdminPage /></ProtectedRoute>} />
+      <Route path="/admin/prospect-referrals" element={<ProtectedRoute><ProspectReferralAdminPage /></ProtectedRoute>} />
     </Routes>
   );
 };

@@ -162,6 +162,14 @@ const DashboardTabs = () => {
           <UsersRound className="w-4 h-4" />
           Referrals
         </Button>
+        <Button
+          variant="outline"
+          onClick={() => navigate("/admin/prospect-referrals")}
+          className="flex items-center gap-2 border-amber-300 text-amber-800 hover:bg-amber-50"
+        >
+          <Inbox className="w-4 h-4" />
+          Prospect Referrals
+        </Button>
       </div>
       <ActiveComponent />
     </div>

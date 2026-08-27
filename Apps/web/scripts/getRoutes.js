@@ -55,6 +55,7 @@ const STATIC_ROUTES = [
   '/terms-conditions',
   '/privacy-policy',
   '/blog',
+  '/refer-and-earn',
 ];
 
 /**

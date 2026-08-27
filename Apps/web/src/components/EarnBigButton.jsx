@@ -13,7 +13,7 @@ const EarnBigButton = ({ variant = "inline", className = "" }) => {
   const isFloating = variant === "floating";
   return (
     <Link
-      to="/register"
+      to="/refer-and-earn"
       className={`${placementClasses[variant] || placementClasses.inline} ${className}`}
       data-analytics={`earn_big_click_${variant}`}
       aria-label={isFloating ? "Earn Big and become a consultant" : undefined}

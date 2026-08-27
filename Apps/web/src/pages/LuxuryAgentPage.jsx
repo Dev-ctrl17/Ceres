@@ -128,7 +128,6 @@ const LuxuryAgentPage = () => {
         })}</script>
       </Helmet>
       <Header />
-      <EarnBigButton variant="floating" />
       <main>
         <section className="relative flex min-h-[75dvh] items-center justify-center py-24">
           <div className="absolute inset-0">
@@ -156,7 +155,7 @@ const LuxuryAgentPage = () => {
 
         <section id="application" className="bg-secondary/40 py-24">
           <div className="mx-auto grid max-w-7xl gap-12 px-4 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
-            <div className="pt-4"><p className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold-primary">Take the next step</p><h2 className="mb-6 text-3xl font-bold md:text-4xl">Bring your ambition to the table.</h2><p className="mb-8 text-lg leading-relaxed text-muted-foreground">Tell us about yourself and our team will review your application. Approved agents receive the support and access to make every client conversation count.</p><EarnBigButton variant="inline" className="bg-primary text-primary-foreground hover:bg-primary/90" /></div>
+            <div className="pt-4"><p className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold-primary">Take the next step</p><h2 className="mb-6 text-3xl font-bold md:text-4xl">Bring your ambition to the table.</h2><p className="mb-8 text-lg leading-relaxed text-muted-foreground">Tell us about yourself and our team will review your application. Approved agents receive the support and access to make every client conversation count.</p></div>
             <Card className="border-border/50 shadow-lg"><CardContent className="p-8 md:p-10"><h3 className="mb-2 text-2xl font-bold">Agent Registration</h3><p className="mb-8 text-muted-foreground">Submit your details to join Luxury Properties Ltd.</p>
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="space-y-2"><Label htmlFor="fullName">Full Name *</Label><Input id="fullName" {...register('fullName', { required: 'Full name is required' })} placeholder="John Doe" />{errors.fullName && <p className="text-sm text-destructive">{errors.fullName.message}</p>}</div>

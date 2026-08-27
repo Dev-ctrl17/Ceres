@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
-import EarnBigButton from "./EarnBigButton.jsx";
+import ProspectReferralCTA from "./ProspectReferralCTA.jsx";
 const groups = [
   {
     label: "Listings",
@@ -116,13 +116,13 @@ export default function Header() {
             <Phone className="h-4 w-4" />
             Private Concierge
           </Link>
+          <ProspectReferralCTA />
           <Link
             to="/sell"
             className="rounded-full bg-stone-900 px-5 py-2.5 text-sm font-semibold text-amber-300"
           >
             List Property
           </Link>
-          <EarnBigButton variant="nav" />
         </div>
         <button className="lg:hidden" onClick={() => setMobile(!mobile)}>
           {mobile ? <X /> : <Menu />}
@@ -147,13 +147,13 @@ export default function Header() {
               ))}
             </div>
           ))}
+          <ProspectReferralCTA className="w-full" />
           <Link
             to="/sell"
             className="block rounded-full bg-stone-900 p-3 text-center text-sm font-semibold text-amber-300"
           >
             List Property
           </Link>
-          <EarnBigButton variant="nav" className="block w-full py-3 text-center" />
         </nav>
       )}
     </header>

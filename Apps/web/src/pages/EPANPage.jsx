@@ -15,7 +15,6 @@ import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 import { sendLeadNotification } from '@/services/formspreeService';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
-import EarnBigButton from '@/components/EarnBigButton.jsx';
 
 const EPANPage = () => {
   const { getBackground } = usePageBackgrounds();
@@ -109,7 +108,6 @@ const EPANPage = () => {
       </Helmet>
 
       <Header />
-      <EarnBigButton variant="floating" />
 
       <main>
         {/* Hero Section */}
@@ -163,7 +161,6 @@ const EPANPage = () => {
               new benchmarks for excellence in the Nigerian property market. By joining EPAN, you align yourself with 
               a community that values integrity, innovation, and exceptional service delivery.
             </p>
-            <div className="mt-8"><EarnBigButton variant="inline" /></div>
           </div>
         </section>
 
