@@ -4,26 +4,28 @@ import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getFileUrl, getOptimizedImageUrl } from "@/lib/supabaseService";
-import { getImageProps } from "@/components/imgUtils.js";
 
 const PropertyCard = ({ property, featured = false }) => {
   // Prefer first image from images array, fall back to image_url
   const firstImage = property.images?.length ? property.images[0] : property.image_url;
-  const imageUrl = firstImage
-    ? getOptimizedImageUrl("property-images", firstImage, { width: 400, quality: 75, format: 'webp' }) || firstImage
-    : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=75&auto=format";
-  const avifImageUrl = firstImage
-    ? getOptimizedImageUrl("property-images", firstImage, { width: 400, quality: 70, format: 'avif' })
-    : null;
-
-  const imgProps = getImageProps({
-    src: imageUrl,
-    alt: property.title || 'Property image',
-    className: "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110",
-    loading: "lazy",
-    decoding: "async",
-    sizes: "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw",
-  });
+  const imageWidths = [320, 400, 640];
+  const supportsSupabaseTransforms = firstImage &&
+    (!/^https?:\/\//i.test(firstImage) || firstImage.includes('/storage/v1/'));
+  const webpSources = supportsSupabaseTransforms
+    ? imageWidths.map((width) => ({
+        width,
+        url: getOptimizedImageUrl("property-images", firstImage, { width, quality: 75, format: 'webp' }),
+      }))
+    : [];
+  const avifSources = supportsSupabaseTransforms
+    ? imageWidths.map((width) => ({
+        width,
+        url: getOptimizedImageUrl("property-images", firstImage, { width, quality: 70, format: 'avif' }),
+      }))
+    : [];
+  const imageUrl = webpSources[1]?.url || firstImage || "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=75&auto=format";
+  const webpSrcSet = webpSources.filter(({ url }) => url).map(({ url, width }) => `${url} ${width}w`).join(', ');
+  const avifSrcSet = avifSources.filter(({ url }) => url).map(({ url, width }) => `${url} ${width}w`).join(', ');
 
   // Generate descriptive alt text for better SEO and accessibility
   const getImageAltText = () => {
@@ -55,16 +57,16 @@ const PropertyCard = ({ property, featured = false }) => {
       >
         <div className="relative overflow-hidden aspect-[4/3]">
           <picture>
-            {avifImageUrl && <source srcSet={avifImageUrl} type="image/avif" />}
-            <source srcSet={imageUrl} type="image/webp" />
+            {avifSrcSet && <source srcSet={avifSrcSet} type="image/avif" />}
+            {webpSrcSet && <source srcSet={webpSrcSet} type="image/webp" />}
             <img
               src={imageUrl}
               alt={getImageAltText()}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               loading="lazy"
               decoding="async"
-              srcSet={imgProps.srcSet}
-              sizes={imgProps.sizes}
+              srcSet={webpSrcSet || undefined}
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </picture>
           {property.is_verified && (
