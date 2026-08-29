@@ -72,7 +72,7 @@ const PropertyCard = ({ property, featured = false }) => {
             </Badge>
           )}
           {featured && (
-            <Badge className="absolute top-3 right-3 bg-destructive text-destructive-foreground">
+            <Badge className="absolute top-3 right-3 bg-stone-900 text-white">
               Featured
             </Badge>
           )}

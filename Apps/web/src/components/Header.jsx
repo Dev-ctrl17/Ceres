@@ -124,12 +124,19 @@ export default function Header() {
             List Property
           </Link>
         </div>
-        <button className="lg:hidden" onClick={() => setMobile(!mobile)}>
+        <button
+          type="button"
+          className="lg:hidden"
+          onClick={() => setMobile(!mobile)}
+          aria-label={mobile ? "Close menu" : "Open menu"}
+          aria-expanded={mobile}
+          aria-controls="mobile-navigation"
+        >
           {mobile ? <X /> : <Menu />}
         </button>
       </div>
       {mobile && (
-        <nav className="space-y-3 border-t bg-white p-5 lg:hidden">
+        <nav id="mobile-navigation" className="space-y-3 border-t bg-white p-5 lg:hidden">
           {groups.map((g) => (
             <div key={g.label}>
               <p className="text-xs font-bold uppercase text-amber-700">
