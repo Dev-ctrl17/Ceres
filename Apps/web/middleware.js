@@ -1,4 +1,4 @@
-// Vercel Edge Middleware — Prerender.io integration
+// Vercel Edge Middleware — optional Prerender.io integration
 //
 // Vercel serves this middleware for every matching request BEFORE your
 // static SPA files. When a search engine or social-media crawler bot is
@@ -10,14 +10,14 @@
 // Regular human visitors are completely unaffected — they still get the
 // normal fast client-rendered SPA.
 //
-// SETUP:
+// SETUP (currently disabled by default):
 // 1. Place this file at the ROOT of your project (same level as
 //    package.json / vercel.json), named exactly `middleware.js`.
 // 2. In Vercel dashboard -> Project -> Settings -> Environment Variables,
 //    add: PRERENDER_TOKEN = xcFP7j4na15ouZnzje90
 //    (Don't hardcode the token in this file for a production deploy —
 //    env var keeps it out of your git history.)
-// 3. Redeploy. Vercel automatically picks up middleware.js with no
+// 3. Set PRERENDER_ENABLED=true, then redeploy. Vercel automatically picks up middleware.js with no
 //    extra config needed.
 // 4. Test: curl -A "Googlebot" https://luxurypropertiesltd.com.ng/buy
 //    You should get back full rendered HTML with the real Buy page
@@ -105,6 +105,10 @@ const BOT_USER_AGENTS = [
   "screaming frog",
 ];
 
+// Keep the integration available for a later rollback, but never make an
+// external prerender request unless it is explicitly enabled.
+const PRERENDER_ENABLED = process.env.PRERENDER_ENABLED === "true";
+
 function isBot(userAgent) {
   if (!userAgent) return false;
   const ua = userAgent.toLowerCase();
@@ -112,6 +116,10 @@ function isBot(userAgent) {
 }
 
 export default async function middleware(request) {
+  if (!PRERENDER_ENABLED) {
+    return;
+  }
+
   const userAgent = request.headers.get("user-agent") || "";
 
   // Not a recognized crawler -> let the normal SPA serve as usual.
