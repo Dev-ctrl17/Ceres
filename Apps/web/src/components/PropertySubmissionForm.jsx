@@ -102,7 +102,7 @@ const PropertySubmissionForm = () => {
             const path = `submissions/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
             const { error: uploadError } = await supabase.storage
               .from("property-images")
-              .upload(path, file);
+              .upload(path, file, { cacheControl: "604800" });
             if (uploadError) {
               console.warn("Image upload failed for file, skipping:", uploadError);
               return null;
