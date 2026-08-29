@@ -34,18 +34,7 @@ export default defineConfig({
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
           // Icons are used by the shared header; animations are route-level.
           'vendor-icons': ['lucide-react'],
-          'vendor-motion': ['framer-motion'],
           'vendor-supabase': ['@supabase/supabase-js'],
-          'vendor-radix': [
-            '@radix-ui/react-accordion',
-            '@radix-ui/react-dialog',
-            '@radix-ui/react-dropdown-menu',
-            '@radix-ui/react-popover',
-            '@radix-ui/react-select',
-            '@radix-ui/react-slot',
-            '@radix-ui/react-toast',
-            '@radix-ui/react-label',
-          ],
         },
       },
     },
