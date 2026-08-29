@@ -32,7 +32,9 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-ui': ['framer-motion', 'lucide-react'],
+          // Icons are used by the shared header; animations are route-level.
+          'vendor-icons': ['lucide-react'],
+          'vendor-motion': ['framer-motion'],
           'vendor-supabase': ['@supabase/supabase-js'],
           'vendor-radix': [
             '@radix-ui/react-accordion',
