@@ -110,14 +110,12 @@ const ContactForm = ({ propertyId = null }) => {
         toast.success("Message saved successfully. We will contact you soon.");
       }
 
-      // Fire Google Ads conversion event for this successful lead submission.
-      // Guarded since gtag is loaded asynchronously (see index.html) and may
-      // not be ready yet on very fast/early submissions.
-      if (typeof window.gtag === "function") {
-        window.gtag("event", "conversion", {
-          send_to: "AW-18266097278/EKtWCKiq4tIcEP6M-oVE",
-        });
-      }
+      // Forward the conversion event to the single GTM data layer.
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "generate_lead",
+        send_to: "AW-18266097278/EKtWCKiq4tIcEP6M-oVE",
+      });
 
       reset();
       setEmailStatus(null);

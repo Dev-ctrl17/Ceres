@@ -1,24 +1,17 @@
 <!doctype html>
 <html lang="en-NG">
   <head>
-    <!-- One deferred Google loader for Ads and both GA4 measurement IDs. -->
+    <!-- Optional single GTM container. Configure VITE_GTM_CONTAINER_ID in Vercel. -->
     <script>
-      const loadGoogleTag = () => {
-        if (window.__googleTagLoaded) return;
-        window.__googleTagLoaded = true;
+      const gtmId = '%VITE_GTM_CONTAINER_ID%';
+      if (gtmId && !gtmId.startsWith('%')) {
         window.dataLayer = window.dataLayer || [];
-        window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
-        window.gtag('js', new Date());
-        ['AW-18266097278', 'G-0E4JGVMVLV', 'G-WR5YZE0MNV'].forEach((id) => window.gtag('config', id));
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18266097278';
-        document.head.appendChild(script);
-      };
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadGoogleTag, { timeout: 3000 });
-      } else {
-        window.addEventListener('load', loadGoogleTag, { once: true });
+        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        const firstScript = document.getElementsByTagName('script')[0];
+        const gtmScript = document.createElement('script');
+        gtmScript.async = true;
+        gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
+        firstScript.parentNode.insertBefore(gtmScript, firstScript);
       }
     </script>
 
