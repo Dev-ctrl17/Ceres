@@ -110,7 +110,7 @@ const HeroSlider = ({ slides, onSlideChange }) => {
               src={slide.image}
               alt={slide.title || `Luxury real estate slide ${index + 1}`}
               className={`hero-slide-img w-full h-full object-cover ${imagesLoaded[index] ? 'loaded' : 'loading'}`}
-              fetchpriority={index === 0 ? 'high' : 'auto'}
+              fetchpriority={slide.title === '100% Verified Luxury Properties in Lagos' ? 'high' : 'auto'}
               loading="eager"
               decoding="async"
               width="1920"

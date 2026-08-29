@@ -264,8 +264,8 @@ const HomePage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Luxury Properties Ltd - Premium Real Estate in Nigeria" />
         <meta name="twitter:description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes." />
-        {/* Preload only the first hero slide image — must match heroSlides[0].image exactly */}
-        <link rel="preload" as="image" href="https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg" />
+        {/* Preload the audited hero slide image so it is discovered before React paints */}
+        <link rel="preload" as="image" href="https://www.image2url.com/r2/default/images/1781791838490-d908b15e-9e31-41e6-88e8-06f7bef05dd2.jpeg" fetchpriority="high" />
       </Helmet>
 
       <Header />
