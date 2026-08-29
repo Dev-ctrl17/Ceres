@@ -1,48 +1,26 @@
 <!doctype html>
 <html lang="en-NG">
   <head>
-    <!-- Google tag (gtag.js) - Deferred via requestIdleCallback to avoid blocking render -->
-     
-
-    <!-- Google tag (gtag.js) - AW-18266097278 (AdWords Conversion) loads immediately -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18266097278">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-18266097278');
-</script>
-
+    <!-- One deferred Google loader for Ads and both GA4 measurement IDs. -->
     <script>
-      // Defer GA4 (G-0E4JGVMVLV) analytics to after LCP using requestIdleCallback
-      // NOTE: gtag function is already declared above by the AW tag — do NOT redeclare it.
-      const gtagIdAnalytics = 'G-0E4JGVMVLV';
-      const loadGA = () => {
+      const loadGoogleTag = () => {
+        if (window.__googleTagLoaded) return;
+        window.__googleTagLoaded = true;
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
+        window.gtag('js', new Date());
+        ['AW-18266097278', 'G-0E4JGVMVLV', 'G-WR5YZE0MNV'].forEach((id) => window.gtag('config', id));
         const script = document.createElement('script');
         script.async = true;
-        script.src = `https://www.googletagmanager.com/gtag/js?id=${gtagIdAnalytics}`;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=AW-18266097278';
         document.head.appendChild(script);
-        // gtag is already defined — just push the config
-        gtag('config', gtagIdAnalytics);
       };
       if ('requestIdleCallback' in window) {
-        requestIdleCallback(loadGA, { timeout: 3000 });
+        requestIdleCallback(loadGoogleTag, { timeout: 3000 });
       } else {
-        window.addEventListener('load', loadGA);
+        window.addEventListener('load', loadGoogleTag, { once: true });
       }
     </script>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WR5YZE0MNV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-WR5YZE0MNV');
-</script>
 
 <script type="text/javascript">
   (function(c,l,a,r,i,t,y){
