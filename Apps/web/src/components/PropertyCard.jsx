@@ -10,10 +10,11 @@ const PropertyCard = ({ property, featured = false }) => {
   // Prefer first image from images array, fall back to image_url
   const firstImage = property.images?.length ? property.images[0] : property.image_url;
   const imageUrl = firstImage
-    ? firstImage.startsWith('http')
-      ? firstImage
-      : getOptimizedImageUrl("property-images", firstImage, { width: 400, quality: 75, format: 'webp' }) || firstImage
+    ? getOptimizedImageUrl("property-images", firstImage, { width: 400, quality: 75, format: 'webp' }) || firstImage
     : "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=75&auto=format";
+  const avifImageUrl = firstImage
+    ? getOptimizedImageUrl("property-images", firstImage, { width: 400, quality: 70, format: 'avif' })
+    : null;
 
   const imgProps = getImageProps({
     src: imageUrl,
@@ -54,6 +55,7 @@ const PropertyCard = ({ property, featured = false }) => {
       >
         <div className="relative overflow-hidden aspect-[4/3]">
           <picture>
+            {avifImageUrl && <source srcSet={avifImageUrl} type="image/avif" />}
             <source srcSet={imageUrl} type="image/webp" />
             <img
               src={imageUrl}

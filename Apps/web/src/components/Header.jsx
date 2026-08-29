@@ -54,11 +54,11 @@ export default function Header() {
         >
           <picture>
             <source
-              srcSet="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/site-assets/logo-optimized.webp"
+              srcSet="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/site-assets/logo-optimized.webp?width=120&quality=80&format=webp"
               type="image/webp"
             />
             <img
-              src="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/site-assets/logo-optimized.png"
+              src="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/site-assets/logo-optimized.webp?width=120&quality=80&format=webp"
               alt="Luxury Properties Ltd"
               className="h-12 w-auto object-contain"
               width="120"
