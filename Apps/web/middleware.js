@@ -116,6 +116,16 @@ function isBot(userAgent) {
 }
 
 export default async function middleware(request) {
+  const prerenderToken = process.env.PRERENDER_TOKEN;
+  console.log("[prerender] runtime check", {
+    enabled: PRERENDER_ENABLED,
+    tokenPresent: !!prerenderToken,
+    tokenLength: prerenderToken ? prerenderToken.length : 0,
+    tokenPreview: prerenderToken
+      ? `${prerenderToken.slice(0, 4)}...${prerenderToken.slice(-4)}`
+      : "missing",
+  });
+
   if (!PRERENDER_ENABLED) {
     return;
   }
@@ -140,7 +150,6 @@ export default async function middleware(request) {
   }
 
   const url = new URL(request.url);
-  const prerenderToken = process.env.PRERENDER_TOKEN;
 
   if (!prerenderToken) {
     console.error(
