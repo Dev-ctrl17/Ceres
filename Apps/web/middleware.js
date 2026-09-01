@@ -14,7 +14,7 @@
 // 1. Place this file at the ROOT of your project (same level as
 //    package.json / vercel.json), named exactly `middleware.js`.
 // 2. In Vercel dashboard -> Project -> Settings -> Environment Variables,
-//    add: PRERENDER_TOKEN = xcFP7j4na15ouZnzje90
+//    add: PRERENDER_TOKEN = q3Q6RZfgc1h8Oa6cLsF4
 //    (Don't hardcode the token in this file for a production deploy —
 //    env var keeps it out of your git history.)
 // 3. Set PRERENDER_ENABLED=true, then redeploy. Vercel automatically picks up middleware.js with no
