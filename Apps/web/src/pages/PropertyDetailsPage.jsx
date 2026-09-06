@@ -10,11 +10,58 @@ import PropertyEnquiryForm from '@/components/PropertyEnquiryForm.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { MapPin, Bed, Bath, CheckCircle, MessageCircle, Phone, Calendar, FileText, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Bed, Bath, CheckCircle, MessageCircle, Phone, Calendar, FileText, X, ChevronLeft, ChevronRight, Banknote, Home } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
 import { generatePropertySchema, generateBreadcrumbSchema, generateAEOContent } from '@/lib/structuredData';
 import { isUUID } from '@/lib/slug.js';
+
+const parsePropertyDescription = (description) => {
+  const lines = String(description || '')
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const featurePattern = /^(?:✨|⭐|•|-|–)\s*/;
+  const locationPattern = /^(?:📍|location\s*:?)\s*/i;
+  const pricePattern = /^(?:💰|price\s*:?)\s*/i;
+  const contactPattern = /^(?:📞|contact|enquir)/i;
+  const appointmentPattern = /^(?:strictly|appointment)/i;
+  const features = lines
+    .filter((line) => featurePattern.test(line))
+    .map((line) => line.replace(featurePattern, '').trim())
+    .filter(Boolean);
+  const locationLine = lines.find((line) => locationPattern.test(line));
+  const priceLine = lines.find((line) => pricePattern.test(line));
+  const contactIndex = lines.findIndex((line) => contactPattern.test(line));
+  const contactLines = contactIndex >= 0
+    ? lines.slice(contactIndex).filter((line) => !appointmentPattern.test(line))
+    : [];
+  const appointmentLine = lines.find((line) => appointmentPattern.test(line));
+  const structured = Boolean(features.length || locationLine || priceLine || contactLines.length);
+  const titleLine = lines.find((line) => {
+    const letters = line.replace(/[^a-z]/gi, '');
+    return letters.length > 8 && line === line.toUpperCase() && !featurePattern.test(line);
+  });
+  const excluded = new Set([
+    ...features.map((feature) => lines.find((line) => line.includes(feature))),
+    locationLine,
+    priceLine,
+    appointmentLine,
+    ...contactLines,
+  ].filter(Boolean));
+  const overview = lines.filter((line) => line !== titleLine && !excluded.has(line));
+
+  return {
+    structured,
+    titleLine,
+    overview,
+    features,
+    location: locationLine?.replace(locationPattern, '').trim(),
+    price: priceLine?.replace(pricePattern, '').trim(),
+    contactLines,
+  };
+};
 
 const PropertyDetailsPage = () => {
   const { slug } = useParams();
@@ -149,6 +196,7 @@ const PropertyDetailsPage = () => {
           ? property.amenities.split(',').map(a => a.trim())
           : [])
     : [];
+  const descriptionSections = parsePropertyDescription(property.description);
 
   // Generate structured data
   const propertySchema = generatePropertySchema(property);
@@ -256,10 +304,97 @@ const PropertyDetailsPage = () => {
               </div>
 
               {property.description && (
-                <div className="mb-8">
-                  <h2 className="text-2xl font-bold mb-4">Description</h2>
-                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{property.description}</p>
-                </div>
+                descriptionSections.structured ? (
+                  <section className="mb-10 space-y-6" aria-labelledby="property-overview-heading">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary mb-3">
+                        Private Residence Brief
+                      </p>
+                      <h2 id="property-overview-heading" className="text-2xl sm:text-3xl font-bold mb-4">
+                        A considered home in {location}
+                      </h2>
+                      {descriptionSections.titleLine && (
+                        <p className="text-sm font-medium uppercase tracking-wide text-muted-foreground mb-4">
+                          {descriptionSections.titleLine}
+                        </p>
+                      )}
+                      <div className="space-y-3 text-muted-foreground leading-8">
+                        {descriptionSections.overview.map((paragraph, index) => (
+                          <p key={index}>{paragraph}</p>
+                        ))}
+                      </div>
+                    </div>
+
+                    {descriptionSections.features.length > 0 && (
+                      <div className="rounded-2xl border border-primary/20 bg-primary/[0.04] p-5 sm:p-6">
+                        <div className="flex items-center gap-3 mb-5">
+                          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+                            <Home className="h-5 w-5" />
+                          </div>
+                          <div>
+                            <h3 className="text-lg font-semibold">Key features</h3>
+                            <p className="text-sm text-muted-foreground">What makes this residence stand out</p>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3">
+                          {descriptionSections.features.map((feature, index) => (
+                            <div key={index} className="flex items-start gap-3 text-sm sm:text-base">
+                              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                              <span>{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {(descriptionSections.location || descriptionSections.price) && (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        {descriptionSections.location && (
+                          <div className="rounded-xl border bg-card p-4">
+                            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                              <MapPin className="h-4 w-4 text-primary" />
+                              Location
+                            </div>
+                            <p className="font-medium">{descriptionSections.location}</p>
+                          </div>
+                        )}
+                        {descriptionSections.price && (
+                          <div className="rounded-xl border bg-card p-4">
+                            <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                              <Banknote className="h-4 w-4 text-primary" />
+                              Asking price
+                            </div>
+                            <p className="font-semibold text-primary">{descriptionSections.price}</p>
+                          </div>
+                        )}
+                      </div>
+                    )}
+
+                    {descriptionSections.contactLines.length > 0 && (
+                      <div className="rounded-2xl bg-slate-950 p-5 sm:p-6 text-white">
+                        <div className="flex items-start gap-3">
+                          <Phone className="mt-1 h-5 w-5 shrink-0 text-primary" />
+                          <div>
+                            <h3 className="font-semibold text-lg">Arrange a private inspection</h3>
+                            <div className="mt-2 space-y-1 text-sm text-slate-300">
+                              {descriptionSections.contactLines.map((line, index) => (
+                                <p key={index}>{line.replace(/^📞\s*/, '')}</p>
+                              ))}
+                            </div>
+                            <p className="mt-3 text-sm text-primary">
+                              {appointmentLine || 'Appointments are strictly by arrangement.'}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </section>
+                ) : (
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-bold mb-4">Description</h2>
+                    <p className="text-muted-foreground leading-relaxed whitespace-pre-line">{property.description}</p>
+                  </div>
+                )
               )}
 
               {amenitiesList.length > 0 && (

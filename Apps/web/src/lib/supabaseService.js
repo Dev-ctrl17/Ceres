@@ -153,9 +153,10 @@ export async function uploadFile(
     .trim()
     .replace(/\s+/g, '_')
     .replace(/[^a-zA-Z0-9._-]/g, '-');
+  const uniquePrefix = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
   const filePath = path
-    ? `${path}/${fileName ? safeName : `${Date.now()}_${safeName}`}`
-    : `${fileName ? safeName : `${Date.now()}_${safeName}`}`;
+    ? `${path}/${fileName ? safeName : `${uniquePrefix}_${safeName}`}`
+    : `${fileName ? safeName : `${uniquePrefix}_${safeName}`}`;
 
   const { data, error } = await supabase.storage
     .from(bucket)
