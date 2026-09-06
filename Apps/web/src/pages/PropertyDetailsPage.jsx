@@ -60,6 +60,7 @@ const parsePropertyDescription = (description) => {
     location: locationLine?.replace(locationPattern, '').trim(),
     price: priceLine?.replace(pricePattern, '').trim(),
     contactLines,
+    appointmentLine,
   };
 };
 
@@ -382,7 +383,7 @@ const PropertyDetailsPage = () => {
                               ))}
                             </div>
                             <p className="mt-3 text-sm text-primary">
-                              {appointmentLine || 'Appointments are strictly by arrangement.'}
+                              {descriptionSections.appointmentLine || 'Appointments are strictly by arrangement.'}
                             </p>
                           </div>
                         </div>
