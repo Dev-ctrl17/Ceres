@@ -4,7 +4,17 @@ import { useAuth } from "@/contexts/AuthContext.jsx";
 import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
 import supabase from "@/lib/supabaseClient";
-import { getFileUrl, uploadFile, uploadFiles } from "@/lib/supabaseService";
+import {
+  deleteFile,
+  getFileUrl,
+  getStoragePath,
+  uploadFile,
+  uploadFiles,
+} from "@/lib/supabaseService";
+import {
+  getPropertyImageName,
+  getUniqueUploadFolder,
+} from "@/lib/propertyImageNaming";
 import {
   Package,
   Users,
@@ -581,30 +591,50 @@ const PropertiesManager = () => {
 
     setUploading(true);
     try {
-      // Upload new local files to Supabase Storage and convert returned
-      // storage paths → full public URLs before saving to the database.
+      // Re-upload the complete image list so every image uses the current
+      // property title and its position in the listing.
       let uploadedUrls = [];
-      if (imageFiles.length > 0) {
-        toast.info(`Uploading ${imageFiles.length} image(s)...`);
+      const oldImagePaths = existingImages
+        .map((image) => getStoragePath("property-images", image))
+        .filter(Boolean);
 
-        const uploadPromises = imageFiles.map((file) =>
-          uploadFile("property-images", file, "properties")
+      if (existingImages.length > 0 || imageFiles.length > 0) {
+        toast.info(`Uploading ${existingImages.length + imageFiles.length} image(s)...`);
+        const uploadFolder = getUniqueUploadFolder("properties");
+        const imageFilesToUpload = [];
+
+        for (const imageUrl of existingImages) {
+          const response = await fetch(getFileUrl("property-images", imageUrl));
+          if (!response.ok) {
+            throw new Error("Unable to prepare an existing property image for renaming");
+          }
+          const blob = await response.blob();
+          const fileName = imageUrl.split("/").pop()?.split("?")[0] || "image.jpg";
+          imageFilesToUpload.push({
+            file: new File([blob], fileName, { type: blob.type || "image/jpeg" }),
+            originalPath: getStoragePath("property-images", imageUrl),
+          });
+        }
+
+        imageFiles.forEach((file) => {
+          imageFilesToUpload.push({ file, originalPath: null });
+        });
+
+        const uploadedPaths = await Promise.all(
+          imageFilesToUpload.map(({ file }, index) =>
+            uploadFile("property-images", file, uploadFolder, {
+              fileName: getPropertyImageName(data.title, file.name, index),
+            })
+          )
         );
 
-        // uploadFile returns storage paths, e.g. "properties/uuid.jpg"
-        const uploadedPaths = await Promise.all(uploadPromises);
+        uploadedUrls = uploadedPaths.map(
+          (path) => getFileUrl("property-images", path) || path
+        );
 
-        // Convert each path to a full public URL using getFileUrl
-        uploadedUrls = uploadedPaths.map((path) => {
-          // If getFileUrl returns null/undefined fall back to the raw path
-          // so we never accidentally store an empty string
-          return getFileUrl("property-images", path) || path;
-        });
       }
 
-      // existingImages are already full public URLs (set during openEdit),
-      // so we can merge them directly with the freshly converted URLs.
-      const allImages = [...existingImages, ...uploadedUrls];
+      const allImages = uploadedUrls.length > 0 ? uploadedUrls : existingImages;
 
       // Upload video tour if a new file was selected; otherwise keep
       // whatever existing URL was already on the property (or none).
@@ -672,6 +702,13 @@ const PropertiesManager = () => {
       }
 
       if (error) throw error;
+
+      if (editing && oldImagePaths.length > 0) {
+        await Promise.all(
+          oldImagePaths.map((path) => deleteFile("property-images", path))
+        );
+      }
+
       toast.success(editing ? "Property updated" : "Property created");
 
       setDialogOpen(false);
@@ -730,6 +767,9 @@ const PropertiesManager = () => {
               <DialogTitle>
                 {editing ? "Edit Property" : "Add Property"}
               </DialogTitle>
+              <DialogDescription>
+                Enter the property details, pricing, and images.
+              </DialogDescription>
             </DialogHeader>
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -1229,6 +1269,9 @@ const AgentsManager = () => {
               <DialogTitle>
                 {editing ? "Edit Agent" : "Add New Agent"}
               </DialogTitle>
+              <DialogDescription>
+                Enter the agent's contact and professional information.
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={onSubmit} className="space-y-4">
               <div className="space-y-2">
@@ -1488,6 +1531,9 @@ const ReviewsManager = () => {
               <DialogTitle>
                 {editing ? "Edit Review" : "Add Review"}
               </DialogTitle>
+              <DialogDescription>
+                Add or update a customer review.
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <Input
@@ -1642,6 +1688,9 @@ const TestimonialsManager = () => {
               <DialogTitle>
                 {editing ? "Edit Testimonial" : "Add Testimonial"}
               </DialogTitle>
+              <DialogDescription>
+                Add or update a customer testimonial.
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <Input
@@ -1938,6 +1987,9 @@ const ProposalsManager = () => {
           <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editing ? "Edit Proposal" : "Add New Proposal"}</DialogTitle>
+              <DialogDescription>
+                Enter the client success proposal details.
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
@@ -2406,6 +2458,9 @@ const BrochuresManager = () => {
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editing ? "Edit Brochure" : "Add New Brochure"}</DialogTitle>
+              <DialogDescription>
+                Upload and describe an investment brochure.
+              </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">
@@ -2698,7 +2753,10 @@ const AgentApplicationsManager = () => {
       )}
       <Dialog open={Boolean(selectedPhoto)} onOpenChange={(open) => !open && setSelectedPhoto(null)}>
         <DialogContent className="max-w-2xl">
-          <DialogHeader><DialogTitle>Applicant photo</DialogTitle></DialogHeader>
+          <DialogHeader>
+            <DialogTitle>Applicant photo</DialogTitle>
+            <DialogDescription>View the selected applicant photo.</DialogDescription>
+          </DialogHeader>
           {selectedPhoto && <img src={selectedPhoto} alt="Applicant full size" className="max-h-[70vh] w-full object-contain" />}
         </DialogContent>
       </Dialog>

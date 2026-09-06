@@ -137,20 +137,25 @@ export async function deleteRecord(table, id) {
 /**
  * Upload a file to Supabase Storage
  */
-export async function uploadFile(bucket, file, path = '', { requireAuth = false } = {}) {
+export async function uploadFile(
+  bucket,
+  file,
+  path = '',
+  { requireAuth = false, fileName = null } = {},
+) {
   if (requireAuth) {
     const { data: { session }, error: sessionError } = await supabase.auth.getSession();
     if (sessionError) throw new Error(`Unable to verify admin session: ${sessionError.message}`);
     if (!session?.access_token) throw new Error('You must be signed in to upload this file.');
   }
 
-  const safeName = file.name
+  const safeName = (fileName || file.name)
     .trim()
     .replace(/\s+/g, '_')
     .replace(/[^a-zA-Z0-9._-]/g, '-');
   const filePath = path
-    ? `${path}/${Date.now()}_${safeName}`
-    : `${Date.now()}_${safeName}`;
+    ? `${path}/${fileName ? safeName : `${Date.now()}_${safeName}`}`
+    : `${fileName ? safeName : `${Date.now()}_${safeName}`}`;
 
   const { data, error } = await supabase.storage
     .from(bucket)
@@ -196,6 +201,18 @@ export function getFileUrl(bucket, filePath) {
   }
   const { data } = supabase.storage.from(bucket).getPublicUrl(filePath);
   return data.publicUrl;
+}
+
+export function getStoragePath(bucket, filePath) {
+  if (!filePath) return null;
+  if (!/^https?:\/\//i.test(filePath)) return filePath;
+
+  const storageObject = filePath.match(
+    /\/storage\/v1\/object\/(?:public\/|authenticated\/)?([^/]+)\/(.+)$/,
+  );
+
+  if (!storageObject || storageObject[1] !== bucket) return null;
+  return decodeURIComponent(storageObject[2]);
 }
 
 /**

@@ -18,6 +18,11 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
+import { getFileUrl, uploadFile } from "@/lib/supabaseService";
+import {
+  getPropertyImageName,
+  getUniqueUploadFolder,
+} from "@/lib/propertyImageNaming";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { Loader2, MailCheck, MailX } from "lucide-react";
 import { sendFormspreeNotification } from "@/hooks/useFormspree";
@@ -97,20 +102,20 @@ const PropertySubmissionForm = () => {
       if (files.length > 0) {
         try {
           toast.info(`Uploading ${files.length} image(s)...`);
-          const uploadPromises = files.map(async (file) => {
-            const ext = file.name.split('.').pop();
-            const path = `submissions/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
-            const { error: uploadError } = await supabase.storage
-              .from("property-images")
-              .upload(path, file, { cacheControl: "604800" });
-            if (uploadError) {
+          const uploadFolder = getUniqueUploadFolder("submissions");
+          const uploadPromises = files.map(async (file, index) => {
+            try {
+              const path = await uploadFile(
+                "property-images",
+                file,
+                uploadFolder,
+                { fileName: getPropertyImageName(data.title, file.name, index) }
+              );
+              return getFileUrl("property-images", path) || path;
+            } catch (uploadError) {
               console.warn("Image upload failed for file, skipping:", uploadError);
               return null;
             }
-            const { data: urlData } = supabase.storage
-              .from("property-images")
-              .getPublicUrl(path);
-            return urlData.publicUrl;
           });
           imageUrls = (await Promise.all(uploadPromises)).filter(Boolean);
         } catch (uploadError) {
