@@ -155,3 +155,4 @@ preview.kill('SIGTERM');
 
 console.log(`\n[prerender] Done! ${successCount} succeeded, ${failCount} failed.`);
 if (failCount > 0) process.exit(1);
+process.exit(0);
