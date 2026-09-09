@@ -56,12 +56,15 @@ const STATIC_ROUTES = [
   '/privacy-policy',
   '/blog',
   '/refer-and-earn',
+  '/epan',
+  '/become-an-agent',
+  '/careers/nysc-legal-admin',
 ];
 
 /**
  * Fetch all routes to prerender:
  * - Static routes: all public core pages plus /blog
-  * - Dynamic property routes: /properties/:slug for every available row in the `properties` table
+   * - Dynamic property routes: /properties/:slug for every row with a slug in the `properties` table
  * - Dynamic blog routes: /blog/:slug for every post in the local blogPostsData
  */
 export async function getAllRoutes() {
@@ -73,8 +76,7 @@ export async function getAllRoutes() {
       const supabase = createClient(supabaseUrl, supabaseAnonKey);
       const { data: properties, error } = await supabase
         .from('properties')
-        .select('slug, status')
-        .eq('status', 'Available');
+        .select('slug');
 
       if (error) {
         console.warn('[getRoutes] Failed to fetch properties from Supabase:', error.message);

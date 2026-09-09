@@ -118,6 +118,10 @@ const LuxuryAgentPage = () => {
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://luxurypropertiesltd.com.ng/become-an-agent" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Become a Luxury Properties Agent | Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Build your luxury real estate career with premium listings, trusted brand support, and strong earning potential." />
+        <meta name="twitter:image" content="https://luxurypropertiesltd.com.ng/og-image.png" />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'BreadcrumbList',

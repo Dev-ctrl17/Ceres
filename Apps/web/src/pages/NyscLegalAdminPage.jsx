@@ -134,6 +134,14 @@ export default function NyscLegalAdminPage() {
           content="Luxury Properties Ltd is seeking a serving NYSC Corps Member with a Law background for Legal & Administrative Support in Pedro Gbagada, Lagos, Nigeria."
         />
         <link rel="canonical" href="https://luxurypropertiesltd.com.ng/careers/nysc-legal-admin" />
+        <meta property="og:title" content="NYSC Corps Member - Legal & Administrative Support | Luxury Properties Ltd" />
+        <meta property="og:description" content="Luxury Properties Ltd is seeking a serving NYSC Corps Member with a Law background for Legal & Administrative Support in Pedro Gbagada, Lagos, Nigeria." />
+        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/careers/nysc-legal-admin" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="NYSC Corps Member - Legal & Administrative Support | Luxury Properties Ltd" />
+        <meta name="twitter:description" content="Luxury Properties Ltd is seeking a serving NYSC Corps Member with a Law background for Legal & Administrative Support in Pedro Gbagada, Lagos, Nigeria." />
+        <meta name="twitter:image" content="https://luxurypropertiesltd.com.ng/og-image.png" />
       </Helmet>
 
       {/* Main Header */}

@@ -89,8 +89,7 @@ export default function Header() {
                   className={`h-4 w-4 ${open === g.label ? "rotate-180" : ""}`}
                 />
               </button>
-              {open === g.label && (
-                <div className="absolute left-0 top-full mt-2 w-72 rounded-2xl border bg-white p-2 shadow-xl">
+              <div className={`absolute left-0 top-full mt-2 w-72 rounded-2xl border bg-white p-2 shadow-xl ${open === g.label ? "block" : "hidden"}`}>
                   {g.items.map(([name, to]) => (
                     <Link
                       key={to}
@@ -103,8 +102,7 @@ export default function Header() {
                       </span>
                     </Link>
                   ))}
-                </div>
-              )}
+              </div>
             </div>
           ))}
         </nav>

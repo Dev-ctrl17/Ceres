@@ -11,6 +11,40 @@ const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
 const WAIT_MS = 1500;
 
+function validateRenderedHtml(html, route) {
+  const title = html.match(/<title[^>]*>\s*([^<]+?)\s*<\/title>/i)?.[1]?.trim();
+  const description = html.match(/<meta\s+[^>]*name=["']description["'][^>]*content=["']([^"']+)["'][^>]*>/i)?.[1]?.trim();
+  const h1 = html.match(/<h1\b[^>]*>\s*([\s\S]*?)\s*<\/h1>/i)?.[1]
+    ?.replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const hasMeta = (attribute, value) => new RegExp(`<meta\\s+[^>]*${attribute}=["']${value}["'][^>]*>`, 'i').test(html);
+  const socialTags = [
+    ['property', 'og:title'],
+    ['property', 'og:description'],
+    ['property', 'og:url'],
+    ['name', 'twitter:card'],
+    ['name', 'twitter:title'],
+    ['name', 'twitter:description'],
+    ['name', 'twitter:image'],
+  ];
+
+  if (!title || !description || !h1) {
+    throw new Error(`Missing page metadata for ${route} (title: ${Boolean(title)}, description: ${Boolean(description)}, h1: ${Boolean(h1)})`);
+  }
+
+  if (!route.startsWith('/blog/')) {
+    const missingSocialTags = socialTags.filter(([attribute, value]) => !hasMeta(attribute, value));
+    if (missingSocialTags.length > 0) {
+      throw new Error(`Missing social metadata for ${route}: ${missingSocialTags.map(([, value]) => value).join(', ')}`);
+    }
+  }
+
+  if (!/<a\s+[^>]*href=["'][^"']+["']/i.test(html)) {
+    throw new Error(`No crawlable anchor links found for ${route}`);
+  }
+}
+
 // Load .env for Supabase credentials (getAllRoutes needs them)
 function loadEnv() {
   const envPath = resolve(__dirname, '.env');
@@ -43,7 +77,19 @@ const preview = spawn(process.platform === 'win32' ? 'npx.cmd' : 'npx', ['vite',
   stdio: 'pipe', cwd: __dirname, shell: true
 });
 
-await new Promise(r => setTimeout(r, WAIT_MS));
+await new Promise(async (resolveReady) => {
+  const deadline = Date.now() + 20000;
+  while (Date.now() < deadline) {
+    try {
+      await fetch(`${BASE_URL}/`);
+      resolveReady();
+      return;
+    } catch {
+      await new Promise(resolveRetry => setTimeout(resolveRetry, WAIT_MS));
+    }
+  }
+  throw new Error(`Preview server did not become ready on ${BASE_URL}`);
+});
 
 // Get all routes to prerender
 const routes = await getAllRoutes();
@@ -86,6 +132,7 @@ for (const route of routes) {
     );
     // Get the rendered HTML
     const html = await page.content();
+    validateRenderedHtml(html, route);
 
     // Write the HTML to the appropriate output path
     const outPath = route === '/'
