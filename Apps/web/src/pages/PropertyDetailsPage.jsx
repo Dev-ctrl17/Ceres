@@ -132,13 +132,19 @@ const PropertyDetailsPage = () => {
   if (loading) {
     return (
       <>
+        <Helmet>
+          <title>Loading property details | Luxury Properties Ltd</title>
+          <meta name="description" content="Loading luxury property details from our verified listings." />
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <Header />
-        <div className="min-h-screen flex items-center justify-center">
+        <main className="min-h-screen flex items-center justify-center" data-prerender-ready="false">
           <div className="text-center">
+            <h1 className="text-2xl font-bold mb-4">Loading property details...</h1>
             <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-muted-foreground">Loading property details...</p>
+            <p className="text-muted-foreground">Loading the verified listing details.</p>
           </div>
-        </div>
+        </main>
         <Footer />
       </>
     );
@@ -147,15 +153,21 @@ const PropertyDetailsPage = () => {
   if (!property) {
     return (
       <>
+        <Helmet>
+          <title>Property not found | Luxury Properties Ltd</title>
+          <meta name="description" content="The property you requested is not available. Browse our current luxury listings in Lagos, Abuja, and across Nigeria." />
+          <meta name="robots" content="noindex, nofollow" />
+        </Helmet>
         <Header />
-        <div className="min-h-screen flex items-center justify-center">
+        <main className="min-h-screen flex items-center justify-center" data-prerender-ready="true">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Property not found</h1>
+            <p className="text-muted-foreground mb-6">This listing may have been sold, moved, or is no longer available.</p>
             <Link to="/properties">
               <Button>Browse Properties</Button>
             </Link>
           </div>
-        </div>
+        </main>
         <Footer />
       </>
     );
@@ -184,11 +196,15 @@ const PropertyDetailsPage = () => {
   // Generate dynamic SEO title and description
   const bedrooms = property.bedrooms ? `${property.bedrooms}-Bed ` : '';
   const propertyType = property.property_type || 'Property';
-  const location = property.location || property.city || 'Lagos';
-  const seoTitle = `${property.title} | ${location} | Luxury Properties Ltd`;
-  const seoDescription = property.description 
-    ? `${property.description.substring(0, 155)}...` 
-    : `${formatPrice(property.price)} ${propertyType} in ${location}. ${property.bedrooms || 'Multiple'} bedrooms, ${property.bathrooms || 'multiple'} bathrooms. Contact Luxury Properties Ltd for viewing.`;
+  const location = property.location || property.city || property.state || 'Lagos';
+  const propertyTitle = String(property.title || `${bedrooms}${propertyType} in ${location}`).trim() || `${propertyType} in ${location}`;
+  const seoTitle = `${propertyTitle} | ${location} | Luxury Properties Ltd`;
+  const fallbackDescription = property.price
+    ? `${formatPrice(property.price)} ${propertyType} in ${location}. ${property.bedrooms || 'Multiple'} bedrooms, ${property.bathrooms || 'multiple'} bathrooms. Contact Luxury Properties Ltd for viewing.`
+    : `${propertyType} in ${location}. Contact Luxury Properties Ltd for verified details and viewing arrangements.`;
+  const seoDescription = property.description
+    ? `${String(property.description).replace(/\s+/g, ' ').trim().substring(0, 155)}...`
+    : fallbackDescription;
 
   const amenitiesList = property.amenities
     ? (Array.isArray(property.amenities)
@@ -204,7 +220,7 @@ const PropertyDetailsPage = () => {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', item: 'https://luxurypropertiesltd.com.ng' },
     { name: 'Properties', item: 'https://luxurypropertiesltd.com.ng/properties' },
-    { name: property.title, item: `https://luxurypropertiesltd.com.ng/properties/${property.slug}` },
+    { name: propertyTitle, item: `https://luxurypropertiesltd.com.ng/properties/${property.slug}` },
   ]);
 
   return (
@@ -263,12 +279,22 @@ const PropertyDetailsPage = () => {
               )}
 
               <div className="mb-8">
+                <nav aria-label="Breadcrumb" className="mb-5 text-sm text-muted-foreground">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <Link to="/" className="hover:text-primary">Home</Link>
+                    <span>/</span>
+                    <Link to="/properties" className="hover:text-primary">Properties</Link>
+                    <span>/</span>
+                    <span className="text-foreground font-medium">{propertyTitle}</span>
+                  </div>
+                </nav>
+
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h1 className="text-3xl font-bold mb-2">{property.title}</h1>
+                    <h1 className="text-3xl font-bold mb-2">{propertyTitle}</h1>
                     <div className="flex items-center text-muted-foreground mb-4">
                       <MapPin className="w-5 h-5 mr-2" />
-                      <span>{property.location}</span>
+                      <span>{property.location || location}</span>
                     </div>
                   </div>
                   {property.is_verified && (
@@ -279,11 +305,18 @@ const PropertyDetailsPage = () => {
                   )}
                 </div>
 
-                <div className="flex items-center space-x-6 mb-6">
-                  <p className="text-4xl font-bold text-primary">{formatPrice(property.price)}</p>
+                <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
+                  <p className="text-4xl font-bold text-primary">{property.price ? formatPrice(property.price) : 'Price on request'}</p>
                   {property.property_type && (
                     <Badge variant="outline" className="text-base px-4 py-2">{property.property_type}</Badge>
                   )}
+                </div>
+
+                <div className="mb-6">
+                  <Link to="/properties" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80">
+                    <ChevronLeft className="h-4 w-4" />
+                    Back to all properties
+                  </Link>
                 </div>
 
                 {(property.bedrooms || property.bathrooms) && (

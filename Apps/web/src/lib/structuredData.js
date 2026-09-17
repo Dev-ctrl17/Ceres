@@ -153,10 +153,20 @@ export const generateOrganizationSchema = () => {
 export const generateFAQSchema = (faqs) => {
   if (!faqs || faqs.length === 0) return null;
 
+  const validFaqs = faqs
+    .filter((faq) => faq && typeof faq.question === 'string' && typeof faq.answer === 'string')
+    .map((faq) => ({
+      question: faq.question.trim(),
+      answer: faq.answer.trim(),
+    }))
+    .filter((faq) => faq.question && faq.answer);
+
+  if (validFaqs.length === 0) return null;
+
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
+    "mainEntity": validFaqs.map((faq) => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {

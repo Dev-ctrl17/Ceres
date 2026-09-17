@@ -5,6 +5,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import BlogPostLayout from '@/components/BlogPostLayout.jsx';
 import { blogPostsData, loadPostContent } from '@/data/blogPosts.js';
+import { generateFAQSchema } from '@/lib/structuredData';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -128,18 +129,7 @@ const BlogPostPage = () => {
         {/* JSON-LD FAQ Schema */}
         {post.faqSchema && post.faqSchema.length > 0 && (
           <script type="application/ld+json">
-            {JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              "mainEntity": post.faqSchema.map(faq => ({
-                "@type": "Question",
-                "name": faq.question,
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": faq.answer
-                }
-              }))
-            })}
+            {JSON.stringify(generateFAQSchema(post.faqSchema))}
           </script>
         )}
       </Helmet>
