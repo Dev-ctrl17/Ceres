@@ -3,6 +3,8 @@ import { writeFileSync, mkdirSync, existsSync, readFileSync, rmSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
+import chromium from '@sparticuz/chromium';
+import puppeteer from 'puppeteer-core';
 import { getAllRoutes } from './scripts/getRoutes.js';
 
 const require = createRequire(import.meta.url);
@@ -95,22 +97,64 @@ await new Promise(async (resolveReady) => {
 const routes = await getAllRoutes();
 console.log(`[prerender] Prerendering ${routes.length} routes...\n`);
 
-// Use Puppeteer directly to render each route, waiting for real page content.
-const puppeteer = require('puppeteer');
-const executablePath = await puppeteer.executablePath();
+async function resolveBrowserLaunchConfig() {
+  const isLocal = process.env.IS_LOCAL === 'true' || process.platform === 'win32' || process.platform === 'darwin';
 
-const browser = await puppeteer.launch({
-  headless: true,
-  executablePath,
-  args: [
-    '--no-sandbox',
-    '--disable-setuid-sandbox',
-    '--disable-dev-shm-usage',
-    '--disable-gpu',
-    '--no-first-run',
-    '--no-default-browser-check',
-  ]
-});
+  if (isLocal) {
+    const candidates = [
+      process.env.PUPPETEER_EXECUTABLE_PATH,
+      process.env.CHROME_BIN,
+      'C:/Program Files/Google/Chrome/Application/chrome.exe',
+      'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+      'C:/Program Files/Chromium/Application/chrome.exe',
+      resolve(__dirname, '.local-chromium/chrome-win/chrome.exe'),
+      resolve(__dirname, '.local-chromium/chromium/chrome-win/chrome.exe'),
+      resolve(__dirname, '.local-chromium/chromium/chrome-linux/chrome'),
+      resolve(__dirname, '.local-chromium/chrome-linux/chrome'),
+    ].filter(Boolean);
+
+    const executablePath = candidates.find(candidate => existsSync(candidate));
+
+    if (!executablePath) {
+      throw new Error(
+        'No local Chrome/Chromium executable was found. For local Windows/macOS runs, install a browser and set IS_LOCAL=true or PUPPETEER_EXECUTABLE_PATH. For Vercel/Linux, keep the serverless @sparticuz/chromium path.'
+      );
+    }
+
+    return {
+      args: await puppeteer.defaultArgs(),
+      defaultViewport: {
+        width: 1280,
+        height: 720,
+        deviceScaleFactor: 1,
+        isMobile: false,
+        hasTouch: false,
+        isLandscape: true,
+      },
+      executablePath,
+      headless: true,
+      ignoreHTTPSErrors: true,
+    };
+  }
+
+  chromium.setGraphicsMode = false;
+  return {
+    args: await puppeteer.defaultArgs({ args: chromium.args, headless: 'shell' }),
+    defaultViewport: {
+      width: 1280,
+      height: 720,
+      deviceScaleFactor: 1,
+      isMobile: false,
+      hasTouch: false,
+      isLandscape: true,
+    },
+    executablePath: await chromium.executablePath(),
+    headless: 'shell',
+    ignoreHTTPSErrors: true,
+  };
+}
+
+const browser = await puppeteer.launch(await resolveBrowserLaunchConfig());
 
 let successCount = 0;
 let failCount = 0;
