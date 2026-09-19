@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+const toCssUrl = (value) => {
+  if (!value) return 'none';
+  return `url(${String(value).replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/#/g, '%23').replace(/\?/g, '%3F')})`;
+};
+
 const ImageSlider = ({ images, onSlideChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
@@ -47,7 +52,7 @@ const ImageSlider = ({ images, onSlideChange }) => {
           key={index}
           className="absolute inset-0 w-full h-full transition-opacity duration-800 ease-in-out"
           style={{
-            backgroundImage: `url(${src})`,
+            backgroundImage: toCssUrl(src),
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: index === currentIndex ? 1 : 0,

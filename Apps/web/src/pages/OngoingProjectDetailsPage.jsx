@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { HardHat, Calendar, MapPin, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import { getFileUrl } from '@/lib/supabaseService';
 import { useOngoingProject } from '@/hooks/useOngoingProjects';
 
 const statusBadgeColor = (status) => {
@@ -39,10 +40,11 @@ const getEmbedUrl = (url) => {
   return null; // not a recognized embed link — treat as a direct video file
 };
 
-const resolveImage = (img) =>
-  img.startsWith('http')
-    ? img
-    : `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/ongoing-project-images/${img}`;
+const resolveImage = (img) => {
+  if (!img) return null;
+  if (img.startsWith('http')) return img;
+  return getFileUrl('ongoing-project-images', img) || img;
+};
 
 const OngoingProjectDetailsPage = () => {
   const { id } = useParams();

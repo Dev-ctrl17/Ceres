@@ -22,7 +22,14 @@ const LoginPage = () => {
       toast.success('Login successful');
       navigate('/admin');
     } catch (error) {
-      toast.error('Invalid email or password');
+      const message = (error?.message || '').toLowerCase();
+      if (message.includes('invalid login credentials') || message.includes('invalid_credentials') || message.includes('invalid email or password')) {
+        toast.error('Invalid email or password');
+      } else if (message.includes('email not confirmed') || message.includes('confirm your email') || message.includes('not confirmed')) {
+        toast.error('Please confirm your email before signing in.');
+      } else {
+        toast.error(error?.message || 'Login failed. Please try again.');
+      }
     } finally {
       setLoading(false);
     }

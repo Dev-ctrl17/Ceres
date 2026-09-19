@@ -5,6 +5,21 @@
  * Includes an <OptimizedImage> component for consistent image optimization.
  */
 
+function encodeSupabasePathForUrl(url) {
+  if (!url) return url;
+
+  const [base, query = ''] = String(url).split('?');
+  const protocolMatch = base.match(/^https?:\/\/[^/]+/i);
+  const prefix = protocolMatch ? protocolMatch[0] : '';
+  const pathname = protocolMatch ? base.slice(prefix.length) : base;
+  const encodedPath = pathname
+    .split('/')
+    .map((segment) => encodeURIComponent(segment))
+    .join('/');
+
+  return `${prefix}${encodedPath}${query ? `?${query}` : ''}`;
+}
+
 /**
  * Generate a complete srcset string for an image URL at various widths.
  * @param {string} baseUrl - The base image URL (without size suffix)
@@ -13,7 +28,8 @@
  */
 export function generateSrcset(baseUrl, widths = [320, 640, 960, 1280, 1920]) {
   if (!baseUrl || baseUrl.startsWith('data:')) return '';
-  return widths.map(w => `${baseUrl}?w=${w} ${w}w`).join(', ');
+  const safeBaseUrl = encodeSupabasePathForUrl(baseUrl);
+  return widths.map(w => `${safeBaseUrl}?w=${w} ${w}w`).join(', ');
 }
 
 /**
@@ -52,7 +68,8 @@ export function getImageProps({ src, alt, className = '', loading = 'lazy', deco
   // Generate srcset - for external URLs, we pass through as-is
   if (src && !src.startsWith('data:')) {
     const widths = [320, 640, 960, 1280, 1920];
-    props.srcSet = widths.map(w => `${src}?w=${w} ${w}w`).join(', ');
+    const safeSrc = encodeSupabasePathForUrl(src);
+    props.srcSet = widths.map(w => `${safeSrc}?w=${w} ${w}w`).join(', ');
   }
 
   return props;

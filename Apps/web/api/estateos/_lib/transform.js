@@ -156,7 +156,12 @@ export function normalizeImages(images, origin = DEFAULT_ORIGIN) {
 
     // Supabase storage path (e.g. properties/abc/photo.jpg)
     if (raw.includes('supabase') || raw.startsWith('storage/')) {
-      normalized.push(`https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/${raw.replace(/^\/+/, '')}`);
+      const safePath = String(raw)
+        .replace(/^\/+/, '')
+        .split('/')
+        .map((segment) => encodeURIComponent(segment))
+        .join('/');
+      normalized.push(`https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/${safePath}`);
       continue;
     }
 

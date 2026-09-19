@@ -151,8 +151,8 @@ export async function uploadFile(
 
   const safeName = (fileName || file.name)
     .trim()
-    .replace(/\s+/g, '_')
-    .replace(/[^a-zA-Z0-9._-]/g, '-');
+    .replace(/[^a-zA-Z0-9.\-_]/g, '_')
+    .replace(/_+/g, '_');
   const uniquePrefix = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
   const filePath = path
     ? `${path}/${fileName ? safeName : `${uniquePrefix}_${safeName}`}`
@@ -192,16 +192,41 @@ export async function deleteFile(bucket, filePath) {
 /**
  * Get the public URL for a file
  */
+export function normalizeSupabaseStoragePath(filePath) {
+  if (!filePath) return filePath;
+  const asString = String(filePath).trim();
+
+  if (/^https?:\/\//i.test(asString)) {
+    const storageObject = asString.match(/\/storage\/v1\/(?:object|render\/image)\/(?:public\/|authenticated\/)?[^/]+\/(.+)$/);
+    if (storageObject) {
+      return storageObject[1]
+        .split('/')
+        .map((segment) => encodeURIComponent(decodeURIComponent(segment)))
+        .join('/');
+    }
+
+    return asString;
+  }
+
+  return asString
+    .replace(/^\/+/, '')
+    .split('/')
+    .map((segment) => encodeURIComponent(decodeURIComponent(segment)))
+    .join('/');
+}
+
 export function getFileUrl(bucket, filePath) {
   if (!filePath) return null;
   if (/^https?:\/\//i.test(filePath)) {
-    const storageObject = filePath.match(/\/storage\/v1\/object\/(?:public\/|authenticated\/)?([^/]+)\/(.+)$/);
+    const storageObject = filePath.match(/\/storage\/v1\/(?:object|render\/image)\/(?:public\/|authenticated\/)?([^/]+)\/(.+)$/);
     if (!storageObject) return filePath;
     if (storageObject[1] !== bucket) return filePath;
-    filePath = decodeURIComponent(storageObject[2]);
+    filePath = storageObject[2];
   }
-  const { data } = supabase.storage.from(bucket).getPublicUrl(filePath);
-  return data.publicUrl;
+
+  const normalizedPath = normalizeSupabaseStoragePath(filePath);
+  const { data } = supabase.storage.from(bucket).getPublicUrl(normalizedPath);
+  return data?.publicUrl ?? null;
 }
 
 export function getStoragePath(bucket, filePath) {
@@ -209,11 +234,19 @@ export function getStoragePath(bucket, filePath) {
   if (!/^https?:\/\//i.test(filePath)) return filePath;
 
   const storageObject = filePath.match(
-    /\/storage\/v1\/object\/(?:public\/|authenticated\/)?([^/]+)\/(.+)$/,
+    /\/storage\/v1\/(?:object|render\/image)\/(?:public\/|authenticated\/)?([^/]+)\/(.+)$/,
   );
 
   if (!storageObject || storageObject[1] !== bucket) return null;
   return decodeURIComponent(storageObject[2]);
+}
+
+export function encodeSupabaseStoragePath(filePath) {
+  if (!filePath) return filePath;
+  return String(filePath)
+    .split('/')
+    .map((segment) => encodeURIComponent(segment))
+    .join('/');
 }
 
 /**
@@ -228,24 +261,17 @@ export function getStoragePath(bucket, filePath) {
  */
 export function getOptimizedImageUrl(bucket, filePath, options = {}) {
   if (!filePath) return null;
-  
+
   const { width = 800, quality = 75, format = 'webp' } = options;
-  
-  // Non-Supabase URLs cannot use Supabase image transforms.
+
   if (/^https?:\/\//i.test(filePath) && !filePath.includes('/storage/v1/')) return filePath;
-  
-  // Get the base public URL
-  const baseUrl = getFileUrl(bucket, filePath);
-  if (!baseUrl) return null;
-  
-  // Convert to Supabase render URL for on-the-fly transforms
-  // Format: https://[project-ref].supabase.co/storage/v1/render/image/public/[bucket]/[path]?width=...
-  const renderUrl = baseUrl.replace(
-    '/storage/v1/object/public/',
-    '/storage/v1/render/image/public/'
-  );
-  
-  return `${renderUrl}?width=${width}&quality=${quality}&format=${format}`;
+
+  const normalizedPath = normalizeSupabaseStoragePath(filePath);
+  const { data } = supabase.storage.from(bucket).getPublicUrl(normalizedPath, {
+    transform: { width, quality, format },
+  });
+
+  return data?.publicUrl ?? null;
 }
 
 // ============================================================

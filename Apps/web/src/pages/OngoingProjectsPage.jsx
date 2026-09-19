@@ -6,6 +6,7 @@ import { HardHat, Calendar, MapPin, FileText, PlayCircle } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
+import { getFileUrl } from '@/lib/supabaseService';
 import { useOngoingProjects } from '@/hooks/useOngoingProjects';
 
 const statusBadgeColor = (status) => {
@@ -91,7 +92,11 @@ const OngoingProjectsPage = () => {
                         <div className="aspect-video bg-muted rounded-t-xl overflow-hidden relative">
                           {(() => {
                             const images = project.image_urls?.length ? project.image_urls : (project.image_url ? [project.image_url] : []);
-                            const resolve = (img) => img.startsWith('http') ? img : `${import.meta.env.VITE_SUPABASE_URL}/storage/v1/object/public/ongoing-project-images/${img}`;
+                            const resolve = (img) => {
+                              if (!img) return '';
+                              if (img.startsWith('http')) return img;
+                              return getFileUrl('ongoing-project-images', img) || img;
+                            };
                             return images.length > 0 ? (
                               <img
                                 src={resolve(images[0])}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { getFileUrl } from '@/lib/supabaseService';
 import ProspectReferralCTA from "./ProspectReferralCTA.jsx";
 const groups = [
   {
@@ -54,11 +55,11 @@ export default function Header() {
         >
           <picture>
             <source
-              srcSet="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/site-assets/logo-optimized.webp"
+              srcSet={getFileUrl('site-assets', 'logo-optimized.webp') || 'https://placehold.co/120x64?text=LP'}
               type="image/webp"
             />
             <img
-              src="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/site-assets/logo-optimized.webp"
+              src={getFileUrl('site-assets', 'logo-optimized.webp') || 'https://placehold.co/120x64?text=LP'}
               alt="Luxury Properties Ltd"
               className="h-12 w-auto object-contain"
               width="120"
