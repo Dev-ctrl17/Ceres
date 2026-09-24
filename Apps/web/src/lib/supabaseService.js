@@ -161,7 +161,7 @@ export async function uploadFile(
   const { data, error } = await supabase.storage
     .from(bucket)
     .upload(filePath, file, {
-      cacheControl: '604800',
+      cacheControl: '31536000',
       upsert: false,
     });
 

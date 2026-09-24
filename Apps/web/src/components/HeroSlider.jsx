@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const HeroSlider = ({ slides, onSlideChange }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState({});
   const loadedRef = useRef(false);
 
   const goToSlide = useCallback((index) => {
@@ -49,10 +48,6 @@ const HeroSlider = ({ slides, onSlideChange }) => {
     return () => clearInterval(interval);
   }, [isHovering, goToNext]);
 
-  const handleImageLoad = useCallback((index) => {
-    setImagesLoaded(prev => ({ ...prev, [index]: true }));
-  }, []);
-
   if (!slides || slides.length === 0) return null;
 
   return (
@@ -78,12 +73,6 @@ const HeroSlider = ({ slides, onSlideChange }) => {
         .hero-slide-img {
           transition: opacity 0.8s ease-in-out;
         }
-        .hero-slide-img.loading {
-          opacity: 0;
-        }
-        .hero-slide-img.loaded {
-          opacity: 1;
-        }
       `}</style>
 
       <div
@@ -102,21 +91,21 @@ const HeroSlider = ({ slides, onSlideChange }) => {
             {/* 
               LCP Optimization: Use semantic <img> instead of CSS background-image
               - First slide uses fetchpriority="high" for immediate discovery
-              - All slides use loading="eager" (not lazy) since hero images are above the fold
+              - Later slides are lazy so only the first slide competes for first paint
               - decoding="async" allows the browser to decode the image off the main thread
               - width/height prevent CLS
             */}
             <img
               src={slide.image}
               alt={slide.title || `Luxury real estate slide ${index + 1}`}
-              className={`hero-slide-img w-full h-full object-cover ${imagesLoaded[index] ? 'loaded' : 'loading'}`}
-              fetchpriority={slide.title === '100% Verified Luxury Properties in Lagos' ? 'high' : 'auto'}
-              loading="eager"
+              className="hero-slide-img w-full h-full object-cover"
+              fetchpriority={index === 0 ? 'high' : 'auto'}
+              loading={index === 0 ? 'eager' : 'lazy'}
               decoding="async"
               width="1920"
               height="1080"
-              onLoad={() => handleImageLoad(index)}
-              onError={() => handleImageLoad(index)}
+              srcSet={`${slide.image.replace(/-(?:640|1024|1600)\.webp$/, '')}-640.webp 640w, ${slide.image.replace(/-(?:640|1024|1600)\.webp$/, '')}-1024.webp 1024w, ${slide.image.replace(/-(?:640|1024|1600)\.webp$/, '')}-1600.webp 1600w`}
+              sizes="100vw"
               style={{
                 position: 'absolute',
                 inset: 0,
@@ -178,17 +167,18 @@ const HeroSlider = ({ slides, onSlideChange }) => {
         </div>
 
         {/* Dot Indicators */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-[16] flex gap-2">
+        <div className="absolute bottom-28 sm:bottom-6 left-1/2 -translate-x-1/2 z-[30] flex gap-3">
           {slides.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`relative flex h-11 w-11 items-center justify-center rounded-full transition-all duration-300 before:block before:h-3 before:w-3 before:rounded-full ${
                 index === currentIndex
-                  ? 'bg-primary w-6'
-                  : 'bg-white/50 hover:bg-white/80'
+                  ? 'before:bg-primary before:w-6'
+                  : 'before:bg-white/50 hover:before:bg-white/80'
               }`}
               aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentIndex ? 'true' : undefined}
             />
           ))}
         </div>

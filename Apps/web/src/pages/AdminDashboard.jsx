@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/AuthContext.jsx";
 import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
 import supabase from "@/lib/supabaseClient";
+import { uniqueSlug } from "@/lib/slug.js";
 import {
   deleteFile,
   getFileUrl,
@@ -648,19 +649,16 @@ const PropertiesManager = () => {
       // Auto-generate a URL-safe slug from the title so property/brochure
       // pages that link by slug (e.g. InvestmentBriefPage) actually work.
       // Keep the existing slug on edit unless it was never set.
-      const generateSlug = (title) =>
-        (title || "")
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-+|-+$/g, "");
-
       const existingSlug = editing
         ? properties.find((p) => p.id === editing)?.slug
         : null;
+      const takenSlugs = new Set(
+        properties.filter((p) => p.id !== editing).map((p) => p.slug).filter(Boolean),
+      );
 
       const submitData = {
         title: data.title,
-        slug: existingSlug || generateSlug(data.title),
+        slug: existingSlug || uniqueSlug(data.title, takenSlugs),
         description: data.description,
         price: data.price,
         location: data.location,
@@ -677,29 +675,12 @@ const PropertiesManager = () => {
         video_tour: videoTourUrl || null,
       };
 
-      // Slugs are generated deterministically from the title, so two
-      // properties with the same (or similarly-formatted) title produce
-      // the same slug and collide against the properties_slug_unique
-      // constraint. Rather than pre-checking for collisions (which has
-      // its own race-condition risk), retry on the actual unique-violation
-      // error with a short random suffix appended until it succeeds.
-      const isSlugConflict = (err) =>
-        err?.code === "23505" && err?.message?.includes("slug");
-
       const saveProperty = (payload) =>
         editing
           ? supabase.from("properties").update(payload).eq("id", editing)
           : supabase.from("properties").insert(payload);
 
-      let { error } = await saveProperty(submitData);
-
-      let attempt = 0;
-      while (isSlugConflict(error) && attempt < 5) {
-        attempt++;
-        const suffix = Math.random().toString(36).slice(2, 6);
-        submitData.slug = `${generateSlug(data.title)}-${suffix}`;
-        ({ error } = await saveProperty(submitData));
-      }
+      const { error } = await saveProperty(submitData);
 
       if (error) throw error;
 

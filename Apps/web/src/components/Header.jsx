@@ -63,7 +63,7 @@ export default function Header() {
               alt="Luxury Properties Ltd"
               className="h-12 w-auto object-contain"
               width="120"
-              height="64"
+              height="80"
             />
           </picture>
         </Link>

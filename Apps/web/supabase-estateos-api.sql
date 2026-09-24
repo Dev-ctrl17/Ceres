@@ -141,10 +141,10 @@ BEGIN
 
     -- Generic update marker (if none of the above, still record updated)
     IF NOT EXISTS (
-      SELECT 1 FROM estateos_property_changes
-      WHERE property_id = NEW.id
-        AND changed_at > NOW() - INTERVAL '1 second'
-        AND change_type IN ('created', 'price_changed', 'media_changed', 'sold', 'rented', 'status_changed')
+      SELECT 1 FROM estateos_property_changes AS changes
+      WHERE changes.property_id = NEW.id
+        AND changes.changed_at > NOW() - INTERVAL '1 second'
+        AND changes.change_type IN ('created', 'price_changed', 'media_changed', 'sold', 'rented', 'status_changed')
     ) THEN
       INSERT INTO estateos_property_changes
         (property_id, change_type, old_status, new_status, old_price, new_price, changed_at)

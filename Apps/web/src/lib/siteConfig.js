@@ -11,7 +11,7 @@ export const SITE_URL = (() => {
   }
 
   if (/localhost|127\.0\.0\.1|0\.0\.0\.0/.test(configured)) {
-    throw new Error(`SITE_URL must not contain localhost in production: ${configured}`);
+    throw new Error(`SITE_URL must not contain a loopback host in production: ${configured}`);
   }
 
   return configured.replace(/\/$/, '');

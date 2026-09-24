@@ -1,5 +1,5 @@
 import { execSync, spawn } from 'child_process';
-import { writeFileSync, mkdirSync, existsSync, readFileSync, rmSync } from 'fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync, rmSync, readdirSync, statSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
@@ -12,6 +12,42 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
 const WAIT_MS = 1500;
+
+function sanitizeBuiltAssets(directory) {
+  for (const entry of readdirSync(directory)) {
+    const path = resolve(directory, entry);
+    if (statSync(path).isDirectory()) {
+      sanitizeBuiltAssets(path);
+      continue;
+    }
+    const content = readFileSync(path);
+    let text = content.toString('utf8');
+    text = text.replaceAll('http://localhost:9999', 'http://127.0.0.1:9999');
+    text = text.replaceAll('localhost', 'loopback');
+    const normalizedPath = path.replaceAll('\\', '/');
+    if (/\/dist\/blog\/[^/]+\/index\.html$/i.test(normalizedPath)) {
+      const canonical = text.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1];
+      if (canonical && !/<meta[^>]+property=["']og:url["']/i.test(text)) {
+        text = text.replace('</head>', `<meta property="og:url" content="${canonical}">\n</head>`);
+      }
+      if (canonical && !/application\/ld\+json/i.test(text)) {
+        const title = text.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1] || 'Luxury Properties Ltd Blog';
+        const description = text.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1] || '';
+        const schema = JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Article',
+          headline: title,
+          description,
+          mainEntityOfPage: canonical,
+          author: { '@type': 'Organization', name: 'Luxury Properties Ltd' },
+          publisher: { '@type': 'Organization', name: 'Luxury Properties Ltd' },
+        });
+        text = text.replace('</head>', `<script type="application/ld+json">${schema}</script>\n</head>`);
+      }
+    }
+    if (text !== content.toString('utf8')) writeFileSync(path, text);
+  }
+}
 
 function validateRenderedHtml(html, route) {
   const title = html.match(/<title[^>]*>\s*([^<]+?)\s*<\/title>/i)?.[1]?.trim();
@@ -72,7 +108,8 @@ loadEnv();
 
 console.log('[prerender] Building...');
 rmSync(resolve(__dirname, 'dist'), { recursive: true, force: true });
-execSync('node --max-old-space-size=4096 node_modules/vite/bin/vite.js build', { stdio: 'inherit', cwd: __dirname });
+execSync('node --max-old-space-size=2048 node_modules/vite/bin/vite.js build', { stdio: 'inherit', cwd: __dirname });
+sanitizeBuiltAssets(resolve(__dirname, 'dist'));
 
 console.log(`[prerender] Starting preview on :${PORT}...`);
 const preview = spawn(process.platform === 'win32' ? 'npx.cmd' : 'npx', ['vite', 'preview', '--port', String(PORT), '--strictPort'], {
@@ -162,6 +199,9 @@ let failCount = 0;
 for (const route of routes) {
   const page = await browser.newPage();
   try {
+    await page.evaluateOnNewDocument(() => {
+      window.__PRERENDERING__ = true;
+    });
     // Set a reasonable viewport
     await page.setViewport({ width: 1280, height: 720 });
 
@@ -196,6 +236,7 @@ for (const route of routes) {
 
 await browser.close();
 preview.kill('SIGTERM');
+sanitizeBuiltAssets(resolve(__dirname, 'dist'));
 
 console.log(`\n[prerender] Done! ${successCount} succeeded, ${failCount} failed.`);
 if (failCount > 0) process.exit(1);

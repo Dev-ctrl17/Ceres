@@ -1,28 +1,6 @@
 <!doctype html>
 <html lang="en-NG">
   <head>
-    <!-- Optional single GTM container. Configure VITE_GTM_CONTAINER_ID in Vercel. -->
-    <script>
-      const gtmId = '%VITE_GTM_CONTAINER_ID%';
-      if (gtmId && !gtmId.startsWith('%')) {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        const firstScript = document.getElementsByTagName('script')[0];
-        const gtmScript = document.createElement('script');
-        gtmScript.async = true;
-        gtmScript.src = `https://www.googletagmanager.com/gtm.js?id=${encodeURIComponent(gtmId)}`;
-        firstScript.parentNode.insertBefore(gtmScript, firstScript);
-      }
-    </script>
-
-<script type="text/javascript">
-  (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-  })(window, document, "clarity", "script", "xtjqoi5zdy");
-</script>
-
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" href="/og-image.png" />
@@ -30,14 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Preconnect hints for critical origins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.image2url.com" />
-    <link rel="preconnect" href="https://scripts.clarity.ms" />
-    
-    <!-- Google Fonts: Non-blocking preload pattern (replaces render-blocking @import in index.css) -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" /></noscript>
+    <link rel="preconnect" href="https://lrmljudwbzjawafuztwp.supabase.co" crossorigin />
+    <link rel="preload" as="image" href="/hero/slide-1-1600.webp" imagesrcset="/hero/slide-1-640.webp 640w, /hero/slide-1-1024.webp 1024w, /hero/slide-1-1600.webp 1600w" imagesizes="100vw" fetchpriority="high" />
 
     <!-- Vite will inject the CSS link automatically with correct hash -->
     <!-- No hardcoded preload needed - Vite handles this via modulepreload and stylesheet injection -->
@@ -173,28 +145,6 @@
       ]
     }
     </script>
-    <!-- Elfsight Google Reviews | Untitled Google Reviews - Deferred -->
-    <script>
-      // Defer Elfsight widget loading
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(() => {
-          const s = document.createElement('script');
-          s.src = 'https://elfsightcdn.com/platform.js';
-          s.async = true;
-          s.defer = true;
-          document.body.appendChild(s);
-        }, { timeout: 5000 });
-      }
-    </script>
-    
-    <!-- NOTE: Home page hero image preload removed from here.
-         This is a single-page app: index.html is served for every route,
-         so a global <link rel="preload"> here was firing (and wasting
-         bandwidth) on every page, not just Home. The Home page's own
-         hero <img loading="eager" fetchpriority="high"> already gives
-         the browser the priority hint it needs, scoped correctly to
-         just that route. -->
-
   </head>
   <body>
     <div id="root"></div>

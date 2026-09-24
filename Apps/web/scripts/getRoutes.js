@@ -95,6 +95,29 @@ export async function getAllRoutes() {
     console.warn('[getRoutes] Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY — skipping property routes');
   }
 
+  if (supabaseUrl && supabaseAnonKey) {
+    try {
+      const supabase = createClient(supabaseUrl, supabaseAnonKey);
+      const [{ data: proposals }, { data: projects }, { data: brochures }] = await Promise.all([
+        supabase.from('proposals').select('slug').eq('status', 'published'),
+        supabase.from('ongoing_projects').select('id'),
+        supabase.from('brochures').select('id').eq('status', 'published'),
+      ]);
+      (proposals || []).forEach(item => {
+        if (item.slug) routes.push(`/client-success/${encodeURIComponent(item.slug)}`);
+      });
+      (projects || []).forEach(item => {
+        if (item.id) routes.push(`/ongoing-projects/${encodeURIComponent(item.id)}`);
+      });
+      (brochures || []).forEach(item => {
+        if (item.id) routes.push(`/investment-brief/${encodeURIComponent(item.id)}`);
+      });
+      console.log(`[getRoutes] Found ${proposals?.length || 0} client success, ${projects?.length || 0} project, and ${brochures?.length || 0} brochure routes`);
+    } catch (err) {
+      console.warn('[getRoutes] Failed to enumerate secondary public routes:', err.message);
+    }
+  }
+
   // --- Fetch blog slugs from local data ---
   try {
     const { blogPostsData } = await import('../src/data/blogPosts.js');

@@ -53,8 +53,6 @@ const AgentsPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Our Real Estate Agents in Lagos | Luxury Properties Ltd" />
         <meta name="twitter:description" content="Meet our team of professional real estate agents in Lagos." />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
         {/* JSON-LD BreadcrumbList Schema */}
         <script type="application/ld+json">

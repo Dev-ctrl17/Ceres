@@ -59,7 +59,7 @@ const heroSlideDefaults = [
   {
     key: "home_hero_slide_1",
     defaultImage:
-      "https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg",
+      "/hero/slide-1-1600.webp",
     title: "Luxury Homes in Ikoyi, Banana Island, Parkview & Victoria Island",
     subtitle:
       "Book a private inspection today. Verified titles. Direct developer listings. Nigeria's most prestigious addresses, now at your fingertips.",
@@ -69,7 +69,7 @@ const heroSlideDefaults = [
   {
     key: "home_hero_slide_2",
     defaultImage:
-      "https://www.image2url.com/r2/default/images/1781791838490-d908b15e-9e31-41e6-88e8-06f7bef05dd2.jpeg",
+      "/hero/slide-2-1600.webp",
     title: "100% Verified Luxury Properties in Lagos",
     subtitle:
       "Every listing is physically inspected and legally vetted. No hidden fees. No title issues. Just premium real estate you can trust.",
@@ -79,7 +79,7 @@ const heroSlideDefaults = [
   {
     key: "home_hero_slide_3",
     defaultImage:
-      "https://www.image2url.com/r2/default/images/1781791838479-a916452b-9681-4b5f-8c03-3c48e3557b68.jpeg",
+      "/hero/slide-3-1600.webp",
     title: "Your Trusted Real Estate Partner Since 2010",
     subtitle:
       "From search to signing — our award-winning agents guide you through every step. 1,200+ happy clients. 15+ years of excellence.",
@@ -265,7 +265,6 @@ const HomePage = () => {
         <meta name="twitter:title" content="Luxury Properties Ltd - Premium Real Estate in Nigeria" />
         <meta name="twitter:description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes." />
         {/* Preload the audited hero slide image so it is discovered before React paints */}
-        <link rel="preload" as="image" href="https://www.image2url.com/r2/default/images/1781791838490-d908b15e-9e31-41e6-88e8-06f7bef05dd2.jpeg" fetchpriority="high" />
       </Helmet>
 
       <Header />
@@ -290,7 +289,7 @@ const HomePage = () => {
                   key={card.label}
                   variants={cardItemVariants}
                   onClick={() => navigate(card.link)}
-                  className="flex flex-col items-center justify-center p-3 sm:p-6 rounded-xl sm:rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  className="flex min-h-11 flex-col items-center justify-center p-3 sm:p-6 rounded-xl sm:rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 hover:scale-105 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                 >
                   <card.icon className="w-6 h-6 sm:w-8 sm:h-8 mb-1 sm:mb-3" />
                   <span className="text-sm sm:text-lg font-semibold text-center">{card.label}</span>
@@ -341,7 +340,7 @@ const HomePage = () => {
                   luxury living and exceptional investment opportunities.
                 </p>
               </div>
-              <Link to="/properties" aria-label="View all properties">
+              <Link to="/properties" aria-label="View All Properties">
                 <Button variant="outline" className="group">
                   View All Properties
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -389,7 +388,7 @@ const HomePage = () => {
                   explore these new opportunities.
                 </p>
               </div>
-              <Link to="/properties" aria-label="View all latest properties">
+              <Link to="/properties" aria-label="View All Properties">
                 <Button variant="outline" className="group">
                   View All Properties
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -570,7 +569,7 @@ const HomePage = () => {
                     </p>
                     <Link
                       to="/services"
-                      className="text-primary font-medium hover:underline inline-flex items-center mt-auto"
+                      className="text-[hsl(43_74%_22%)] font-medium hover:underline inline-flex items-center mt-auto min-h-11"
                     >
                       View {service.title}{" "}
                       <ArrowRight className="w-4 h-4 ml-1" />
@@ -601,7 +600,7 @@ const HomePage = () => {
                   <Link to="/epan" aria-label="Become an EPAN member">
                     <Button
                       size="lg"
-                      className="bg-primary text-primary-foreground hover:bg-primary/90"
+                      className="bg-white text-[hsl(43_74%_22%)] hover:bg-stone-100"
                     >
                       Become a Member
                     </Button>
@@ -662,16 +661,16 @@ const HomePage = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Latest Insights & Market Guides
               </h2>
-              <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
+              <p className="text-xl text-[hsl(240_3.8%_28%)] mb-10 leading-relaxed">
                 Stay informed with our expert analysis of luxury real estate trends, 
                 buying guides, and investment strategies across Nigeria.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link to="/blog" className="inline-flex items-center bg-primary text-primary-foreground px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                <Link to="/blog" className="inline-flex items-center bg-[hsl(43_74%_22%)] text-white px-8 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity min-h-11">
                   Read Our Blog
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
-                <Link to="/blog/nigerian-real-estate-buying-guide" className="inline-flex items-center bg-transparent border-2 border-primary text-primary px-8 py-3 rounded-lg font-medium hover:bg-primary/5 transition-colors">
+                <Link to="/blog/nigerian-real-estate-buying-guide" className="inline-flex items-center bg-[hsl(43_74%_22%)] border-2 border-[hsl(43_74%_22%)] text-white px-8 py-3 rounded-lg font-medium hover:bg-[hsl(43_74%_16%)] transition-colors min-h-11">
                   Buying Guide
                 </Link>
               </div>
@@ -710,7 +709,7 @@ const HomePage = () => {
                 type="submit"
                 size="lg"
                 disabled={subscribing}
-                className="h-12 px-8"
+                className="h-12 px-8 bg-[hsl(43_74%_22%)] text-white hover:bg-[hsl(43_74%_16%)]"
                 aria-label="Subscribe to newsletter"
               >
                 {subscribing ? "Subscribing..." : "Subscribe"}
