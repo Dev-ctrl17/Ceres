@@ -1,0 +1,33 @@
+{
+  "$schema": "https://agentreadiness.dev/schemas/ai-catalog.json",
+  "version": "1.0",
+  "name": "Luxury Properties Ltd",
+  "description": "Verified luxury properties, real estate services, market guides, and contact resources for Nigeria.",
+  "url": "https://www.luxurypropertiesltd.com.ng/",
+  "resources": [
+    {
+      "name": "Property listings",
+      "description": "Browse verified luxury properties for sale and rent in Nigeria.",
+      "url": "https://www.luxurypropertiesltd.com.ng/properties",
+      "type": "collection"
+    },
+    {
+      "name": "Real estate blog",
+      "description": "Read Nigerian luxury real estate guides, market insights, and investment advice.",
+      "url": "https://www.luxurypropertiesltd.com.ng/blog",
+      "type": "collection"
+    },
+    {
+      "name": "Real estate services",
+      "description": "Explore property sales, leasing, management, and investment advisory services.",
+      "url": "https://www.luxurypropertiesltd.com.ng/services",
+      "type": "service"
+    },
+    {
+      "name": "Contact Luxury Properties Ltd",
+      "description": "Contact the team for property viewings, advisory, and real estate enquiries.",
+      "url": "https://www.luxurypropertiesltd.com.ng/contact",
+      "type": "contact"
+    }
+  ]
+}

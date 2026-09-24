@@ -55,7 +55,7 @@ const OngoingProjectDetailsPage = () => {
     return (
       <>
         <Header />
-        <main className="min-h-[60vh] flex items-center justify-center bg-background">
+        <main className="min-h-[60vh] flex items-center justify-center bg-background" data-prerender-ready="false">
           <div className="text-center">
             <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-muted-foreground text-sm">Loading project...</p>
@@ -70,7 +70,7 @@ const OngoingProjectDetailsPage = () => {
     return (
       <>
         <Header />
-        <main className="min-h-[60vh] flex items-center justify-center bg-background">
+        <main className="min-h-[60vh] flex items-center justify-center bg-background" data-prerender-ready="true">
           <div className="text-center px-4">
             <HardHat className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
             <h1 className="text-2xl font-semibold mb-2">Project Not Found</h1>
@@ -120,7 +120,7 @@ const OngoingProjectDetailsPage = () => {
 
       <Header />
 
-      <main>
+      <main data-prerender-ready="true">
         <section className="py-8 bg-background border-b">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <Link
