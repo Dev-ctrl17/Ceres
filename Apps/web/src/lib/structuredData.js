@@ -1,5 +1,6 @@
 // Structured Data (JSON-LD) generators for SEO/AEO/GEO
 // Automatically generates schema.org markup for property listings
+import { SITE_URL, buildAbsoluteUrl, buildImageUrl } from './siteConfig.js';
 
 export const generatePropertySchema = (property) => {
   if (!property) return null;
@@ -15,10 +16,8 @@ export const generatePropertySchema = (property) => {
     "@type": "Residence",
     "name": property.title,
     "description": property.description || `${property.title} in ${property.location}`,
-    "url": `https://luxurypropertiesltd.com.ng/properties/${property.slug}`,
-    "image": images.map(img => 
-      img.startsWith('http') ? img : `https://luxurypropertiesltd.com.ng${img}`
-    ),
+    "url": buildAbsoluteUrl(`/properties/${property.slug}`),
+    "image": images.map(img => buildImageUrl(img)),
     "offers": {
       "@type": "Offer",
       "priceCurrency": "NGN",
@@ -116,8 +115,8 @@ export const generateOrganizationSchema = () => {
     "@type": ["RealEstateAgent", "LocalBusiness", "Organization"],
     "name": "Luxury Properties Ltd",
     "description": "Premium luxury real estate agency in Nigeria. Exclusive high-end listings, concierge service, and off-market properties in Lagos, Abuja, and across Nigeria.",
-    "url": "https://luxurypropertiesltd.com.ng",
-    "logo": "https://luxurypropertiesltd.com.ng/favicon.svg",
+    "url": "https://www.luxurypropertiesltd.com.ng",
+    "logo": "https://www.luxurypropertiesltd.com.ng/favicon.svg",
     "telephone": "+234-9056201176",
     "email": "info@luxurypropertiesltd.com.ng",
     "address": {
@@ -203,7 +202,7 @@ export const generateItemListSchema = (properties, listName) => {
           "price": property.price,
           "availability": "https://schema.org/InStock",
         },
-        "url": `https://luxurypropertiesltd.com.ng/properties/${property.slug}`,
+        "url": buildAbsoluteUrl(`/properties/${property.slug}`),
       },
     })),
   };

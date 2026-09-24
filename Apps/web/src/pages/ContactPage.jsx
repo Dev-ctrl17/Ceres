@@ -18,11 +18,11 @@ const ContactPage = () => {
         <title>Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos</title>
         <meta name="description" content="Contact Luxury Properties Ltd in Lagos for luxury real estate inquiries, property viewings, and expert advisory services. Call, email, or visit our office." />
         {hasInquiry && <meta name="robots" content="noindex, nofollow" />}
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/contact" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/contact" />
         <meta property="og:title" content="Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos" />
         <meta property="og:description" content="Get in touch with Luxury Properties Ltd for all your luxury real estate needs in Lagos and across Nigeria." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/contact" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/contact" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -35,8 +35,8 @@ const ContactPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://luxurypropertiesltd.com.ng/contact"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://www.luxurypropertiesltd.com.ng/contact"}
             ]
           })}
         </script>

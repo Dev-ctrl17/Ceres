@@ -9,11 +9,11 @@ const PrivacyPolicyPage = () => {
       <Helmet>
         <title>Privacy Policy — Luxury Properties Ltd</title>
         <meta name="description" content="Privacy Policy for Luxury Properties Ltd. Learn how we collect, use, and protect your personal data in compliance with NDPA/NDPR." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/privacy-policy" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/privacy-policy" />
         <meta property="og:title" content="Privacy Policy — Luxury Properties Ltd" />
         <meta property="og:description" content="Privacy Policy for Luxury Properties Ltd. Learn how we collect, use, and protect your personal data in compliance with NDPA/NDPR." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/privacy-policy" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/privacy-policy" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -26,8 +26,8 @@ const PrivacyPolicyPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://luxurypropertiesltd.com.ng/privacy-policy"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://www.luxurypropertiesltd.com.ng/privacy-policy"}
             ]
           })}
         </script>

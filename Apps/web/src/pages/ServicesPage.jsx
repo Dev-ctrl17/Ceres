@@ -73,11 +73,11 @@ const ServicesPage = () => {
       <Helmet>
         <title>Real Estate Services | Luxury Properties Ltd Nigeria</title>
         <meta name="description" content="Luxury real estate services in Nigeria: property management, investment advisory, off-market sourcing, concierge buying and corporate portfolio acquisition." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/services" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/services" />
         <meta property="og:title" content="Real Estate Services | Property Management & Advisory | Luxury Properties Ltd" />
         <meta property="og:description" content="Comprehensive real estate services including property management, investment advisory, and concierge services." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/services" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/services" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -90,8 +90,8 @@ const ServicesPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://luxurypropertiesltd.com.ng/services"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Services", "item": "https://www.luxurypropertiesltd.com.ng/services"}
             ]
           })}
         </script>

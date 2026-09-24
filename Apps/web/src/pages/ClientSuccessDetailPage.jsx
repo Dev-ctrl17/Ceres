@@ -149,11 +149,11 @@ const ClientSuccessDetailPage = () => {
       <Helmet>
         <title>{proposal.title} — Luxury Properties Ltd</title>
         <meta name="description" content={proposal.summary} />
-        <link rel="canonical" href={`https://luxurypropertiesltd.com.ng/client-success/${proposal.slug}`} />
+        <link rel="canonical" href={`https://www.luxurypropertiesltd.com.ng/client-success/${proposal.slug}`} />
         <meta property="og:title" content={proposal.title} />
         <meta property="og:description" content={proposal.summary} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://luxurypropertiesltd.com.ng/client-success/${proposal.slug}`} />
+        <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/client-success/${proposal.slug}`} />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         {coverImage && (

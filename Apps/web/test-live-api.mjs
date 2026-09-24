@@ -1,7 +1,7 @@
 // Quick live test for the EstateOS API endpoint
 // Run: node test-live-api.mjs
 
-const API_URL = 'https://luxurypropertiesltd.com.ng/api/estateos/properties';
+const API_URL = 'https://www.luxurypropertiesltd.com.ng/api/estateos/properties';
 const API_KEY = 'estateos_live_c440d4596ca80129c9f3796c7affa5e1';
 
 async function main() {

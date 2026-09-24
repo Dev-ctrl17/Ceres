@@ -19,7 +19,7 @@
 //    env var keeps it out of your git history.)
 // 3. Set PRERENDER_ENABLED=true, then redeploy. Vercel automatically picks up middleware.js with no
 //    extra config needed.
-// 4. Test: curl -A "Googlebot" https://luxurypropertiesltd.com.ng/buy
+// 4. Test: curl -A "Googlebot" https://www.luxurypropertiesltd.com.ng/buy
 //    You should get back full rendered HTML with the real Buy page
 //    title/meta, not the generic homepage shell.
 // 5. Back in the Prerender.io dashboard, click "Verify Integration".

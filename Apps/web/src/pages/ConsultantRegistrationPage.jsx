@@ -210,7 +210,7 @@ export default function ConsultantRegistrationPage() {
         <title>Registration Form | Luxury Properties Ltd</title>
         <link
           rel="canonical"
-          href="https://luxurypropertiesltd.com.ng/register"
+          href="https://www.luxurypropertiesltd.com.ng/register"
         />
       </Helmet>
       <Header />

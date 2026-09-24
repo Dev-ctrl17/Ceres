@@ -195,11 +195,11 @@ const BlogPage = () => {
       <Helmet>
         <title>Luxury Real Estate Blog Nigeria | Market Insights & Guides | Luxury Properties Ltd</title>
         <meta name="description" content="Expert insights on luxury real estate in Nigeria. Market trends, buying guides, investment tips, and neighborhood guides for Lagos, Abuja, and Port Harcourt." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/blog" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/blog" />
         <meta property="og:title" content="Luxury Real Estate Blog Nigeria | Market Insights & Guides" />
         <meta property="og:description" content="Expert insights on luxury real estate in Nigeria. Market trends, buying guides, investment tips, and neighborhood guides." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/blog" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/blog" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />

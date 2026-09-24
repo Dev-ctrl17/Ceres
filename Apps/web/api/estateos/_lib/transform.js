@@ -10,7 +10,7 @@
 export const ESTATEOS_STATUSES = ['DRAFT', 'PRIVATE', 'ACTIVE', 'SOLD', 'RENTED', 'ARCHIVED'];
 
 // Fallback absolute site URL used to resolve relative image paths
-const DEFAULT_ORIGIN = 'https://luxurypropertiesltd.com.ng';
+const DEFAULT_ORIGIN = 'https://www.luxurypropertiesltd.com.ng';
 
 /**
  * Normalize a legacy / free-text status into the EstateOS status enum.

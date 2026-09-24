@@ -35,7 +35,7 @@ serve(async (req) => {
     if (profileError) { await cleanupRegistration(consultantId, authUserId); return json({ success: false, error: "REGISTRATION_FAILED" }, 500); }
     const { data: consultant, error: fetchError } = await supabase.from("consultants").select("id, full_name, referral_code").eq("id", consultantId).single();
     if (fetchError || !consultant) { await cleanupRegistration(consultantId, authUserId); return json({ success: false, error: "REGISTRATION_FAILED" }, 500); }
-    const referralLink = `https://luxurypropertiesltd.com.ng/register?ref=${consultant.referral_code}`;
+    const referralLink = `https://www.luxurypropertiesltd.com.ng/register?ref=${consultant.referral_code}`;
     const message = `Join Luxury Properties Ltd as a consultant: ${referralLink}`;
     return json({ success: true, data: { consultant, referralLink, whatsappShareUrl: `https://wa.me/?text=${encodeURIComponent(message)}` } }, 201);
   } catch (error) { return json({ success: false, error: "INVALID_REQUEST" }, 400); }

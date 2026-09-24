@@ -73,7 +73,7 @@ const BlogPostPage = () => {
     );
   }
 
-  const canonicalUrl = `https://luxurypropertiesltd.com.ng/blog/${post.slug}`;
+  const canonicalUrl = `https://www.luxurypropertiesltd.com.ng/blog/${post.slug}`;
 
   return (
     <>
@@ -107,18 +107,18 @@ const BlogPostPage = () => {
             },
             "headline": post.title,
             "description": post.metaDescription,
-            "image": post.ogImage || "https://luxurypropertiesltd.com.ng/og-image.png",
+            "image": post.ogImage || "https://www.luxurypropertiesltd.com.ng/og-image.png",
             "author": {
               "@type": "Organization",
               "name": "Luxury Properties Ltd",
-              "url": "https://luxurypropertiesltd.com.ng"
+              "url": "https://www.luxurypropertiesltd.com.ng"
             },
             "publisher": {
               "@type": "Organization",
               "name": "Luxury Properties Ltd",
               "logo": {
                 "@type": "ImageObject",
-                "url": "https://luxurypropertiesltd.com.ng/favicon.svg"
+                "url": "https://www.luxurypropertiesltd.com.ng/favicon.svg"
               }
             },
             "datePublished": post.datePublished,

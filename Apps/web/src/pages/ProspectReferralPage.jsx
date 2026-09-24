@@ -91,7 +91,7 @@ export default function ProspectReferralForm() {
       <Helmet>
         <title>Refer & Earn | Luxury Properties Ltd</title>
         <meta name="description" content="Refer a promising property prospect to Luxury Properties Ltd." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/refer-and-earn" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/refer-and-earn" />
       </Helmet>
       <Header />
       <main className="prospect-referral-main">

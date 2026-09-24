@@ -218,9 +218,9 @@ const PropertyDetailsPage = () => {
   // Generate structured data
   const propertySchema = generatePropertySchema(property);
   const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: 'https://luxurypropertiesltd.com.ng' },
-    { name: 'Properties', item: 'https://luxurypropertiesltd.com.ng/properties' },
-    { name: propertyTitle, item: `https://luxurypropertiesltd.com.ng/properties/${property.slug}` },
+    { name: 'Home', item: 'https://www.luxurypropertiesltd.com.ng' },
+    { name: 'Properties', item: 'https://www.luxurypropertiesltd.com.ng/properties' },
+    { name: propertyTitle, item: `https://www.luxurypropertiesltd.com.ng/properties/${property.slug}` },
   ]);
 
   return (
@@ -228,13 +228,13 @@ const PropertyDetailsPage = () => {
       <Helmet>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
-        <link rel="canonical" href={`https://luxurypropertiesltd.com.ng/properties/${property.slug}`} />
+        <link rel="canonical" href={`https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`} />
         
         {/* Open Graph */}
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://luxurypropertiesltd.com.ng/properties/${property.slug}`} />
+        <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`} />
         {images[0] && <meta property="og:image" content={images[0]} />}
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />

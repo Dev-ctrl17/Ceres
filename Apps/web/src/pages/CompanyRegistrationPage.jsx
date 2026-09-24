@@ -9,11 +9,11 @@ const CompanyRegistrationPage = () => {
       <Helmet>
         <title>Company Registration — Luxury Properties Ltd | RC 9601729</title>
         <meta name="description" content="Luxury Properties Ltd company registration details, CAC number RC 9601729, and official business information. Verified real estate company in Nigeria." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/company-registration" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/company-registration" />
         <meta property="og:title" content="Company Registration — Luxury Properties Ltd | RC 9601729" />
         <meta property="og:description" content="Luxury Properties Ltd company registration details, CAC number RC 9601729, and official business information. Verified real estate company in Nigeria." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/company-registration" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/company-registration" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -26,8 +26,8 @@ const CompanyRegistrationPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "Company Registration", "item": "https://luxurypropertiesltd.com.ng/company-registration"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Company Registration", "item": "https://www.luxurypropertiesltd.com.ng/company-registration"}
             ]
           })}
         </script>

@@ -244,11 +244,11 @@ const FAQPage = () => {
       <Helmet>
         <title>FAQ — Luxury Real Estate in Nigeria</title>
         <meta name="description" content="Get answers about buying luxury property in Lagos, off-market listings, concierge services, and property costs. Expert guidance from Luxury Properties Ltd." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/faq" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/faq" />
         <meta property="og:title" content="FAQ — Luxury Real Estate in Nigeria" />
         <meta property="og:description" content="Find answers about buying luxury property in Lagos, off-market listings, concierge services, property costs, and more." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/faq" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/faq" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -262,8 +262,8 @@ const FAQPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://luxurypropertiesltd.com.ng/faq"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://www.luxurypropertiesltd.com.ng/faq"}
             ]
           })}
         </script>

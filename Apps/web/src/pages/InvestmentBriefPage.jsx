@@ -5,6 +5,7 @@ import Footer from "@/components/Footer.jsx";
 import BrochureViewer from "@/components/BrochureViewer.jsx";
 import supabase from "@/lib/supabaseClient";
 import { getFileUrl } from "@/lib/supabaseService";
+import { buildAbsoluteUrl } from "@/lib/siteConfig.js";
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { FileText, Calendar, Home, MapPin, Tag, ArrowLeft, ExternalLink, Phone, Mail } from "lucide-react";
@@ -170,10 +171,8 @@ const InvestmentBriefPage = () => {
         {thumbUrl && <meta property="og:image" content={thumbUrl} />}
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link
-          rel="canonical"
-          href={`${window.location.origin}/investment-brief/${brochure.id}`}
-        />
+        <link rel="canonical" href={buildAbsoluteUrl('/investment-brief')} />
+        <meta property="og:url" content={buildAbsoluteUrl('/investment-brief')} />
       </Helmet>
 
       <Header />

@@ -1,4 +1,4 @@
-// Sitemap generator for https://luxurypropertiesltd.com.ng
+// Sitemap generator for https://www.luxurypropertiesltd.com.ng
 //
 // Keeps every hand-maintained static <url> entry in public/sitemap.xml
 // untouched (byte-for-byte) and appends one canonical <url> per live
@@ -20,7 +20,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SITEMAP_PATH = resolve(__dirname, '../public/sitemap.xml');
-const DOMAIN = 'https://luxurypropertiesltd.com.ng';
+const DOMAIN = 'https://www.luxurypropertiesltd.com.ng';
 const LAST_MOD = new Date().toISOString().split('T')[0];
 
 // Load .env manually (same helper as scripts/getRoutes.js).

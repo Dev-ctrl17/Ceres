@@ -61,7 +61,7 @@ export default async function handler(req, res) {
       );
       if (legacy?.slug) {
         res.writeHead(301, {
-          Location: `https://luxurypropertiesltd.com.ng/properties/${legacy.slug}`,
+          Location: `https://www.luxurypropertiesltd.com.ng/properties/${legacy.slug}`,
           'Cache-Control': 'public, max-age=300, s-maxage=86400',
         });
         return res.end();
@@ -91,7 +91,7 @@ export default async function handler(req, res) {
       : [];
 
     const images = property.images?.length ? property.images : property.image_url ? [property.image_url] : [];
-    const primaryImage = images[0] || 'https://luxurypropertiesltd.com.ng/og-image.png';
+    const primaryImage = images[0] || 'https://www.luxurypropertiesltd.com.ng/og-image.png';
 
     // Build JSON-LD structured data
     const jsonLd = {
@@ -99,8 +99,8 @@ export default async function handler(req, res) {
       "@type": "Residence",
       "name": property.title,
       "description": property.description || `${property.title} in ${property.location}`,
-      "image": images.map(img => img.startsWith('http') ? img : `https://luxurypropertiesltd.com.ng${img}`),
-            "url": `https://luxurypropertiesltd.com.ng/properties/${property.slug}`,
+      "image": images.map(img => img.startsWith('http') ? img : `https://www.luxurypropertiesltd.com.ng${img}`),
+            "url": `https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`,
       "offers": {
         "@type": "Offer",
         "priceCurrency": "NGN",
@@ -145,13 +145,13 @@ export default async function handler(req, res) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${property.title} - Luxury Properties Ltd</title>
   <meta name="description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
-    <link rel="canonical" href="https://luxurypropertiesltd.com.ng/properties/${property.slug}" />
+    <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/properties/${property.slug}" />
   
   <!-- Open Graph -->
   <meta property="og:title" content="${property.title} - Luxury Properties Ltd" />
   <meta property="og:description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
   <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://luxurypropertiesltd.com.ng/properties/${property.slug}" />
+    <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/properties/${property.slug}" />
   <meta property="og:image" content="${primaryImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -177,9 +177,9 @@ export default async function handler(req, res) {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-      {"@type": "ListItem", "position": 2, "name": "Properties", "item": "https://luxurypropertiesltd.com.ng/properties"},
-      {"@type": "ListItem", "position": 3, "name": "${property.title.replace(/"/g, '\\"')}", "item": "https://luxurypropertiesltd.com.ng/properties/${property.slug}"}
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+      {"@type": "ListItem", "position": 2, "name": "Properties", "item": "https://www.luxurypropertiesltd.com.ng/properties"},
+      {"@type": "ListItem", "position": 3, "name": "${property.title.replace(/"/g, '\\"')}", "item": "https://www.luxurypropertiesltd.com.ng/properties/${property.slug}"}
     ]
   }
   </script>
@@ -209,7 +209,7 @@ export default async function handler(req, res) {
         ${amenitiesList.map(a => `<div class="amenity"><span>✓</span> ${a}</div>`).join('')}
       </div>
     ` : ''}
-        <p><em>View full details at <a href="https://luxurypropertiesltd.com.ng/properties/${property.slug}">luxurypropertiesltd.com.ng/properties/${property.slug}</a></em></p>
+        <p><em>View full details at <a href="https://www.luxurypropertiesltd.com.ng/properties/${property.slug}">luxurypropertiesltd.com.ng/properties/${property.slug}</a></em></p>
   </div>
 </body>
 </html>`;

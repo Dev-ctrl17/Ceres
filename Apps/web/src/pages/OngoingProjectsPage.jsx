@@ -28,11 +28,11 @@ const OngoingProjectsPage = () => {
       <Helmet>
         <title>Ongoing Luxury Real Estate Projects Nigeria 2026 | Luxury Properties</title>
         <meta name="description" content="Explore our ongoing property development projects across Nigeria. Stay updated on estimated delivery dates, locations, and project status." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/ongoing-projects" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/ongoing-projects" />
         <meta property="og:title" content="Ongoing Projects — Luxury Properties Ltd" />
         <meta property="og:description" content="Explore our ongoing property development projects across Nigeria. Stay updated on estimated delivery dates, locations, and project status." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/ongoing-projects" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/ongoing-projects" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />

@@ -9,11 +9,11 @@ const RefundPolicyPage = () => {
       <Helmet>
         <title>Refund Policy — Luxury Properties Ltd</title>
         <meta name="description" content="Refund Policy for Luxury Properties Ltd. Learn about our refund and cancellation terms for real estate services." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/refund-policy" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/refund-policy" />
         <meta property="og:title" content="Refund Policy — Luxury Properties Ltd" />
         <meta property="og:description" content="Refund Policy for Luxury Properties Ltd. Learn about our refund and cancellation terms." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/refund-policy" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/refund-policy" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -26,8 +26,8 @@ const RefundPolicyPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "Refund Policy", "item": "https://luxurypropertiesltd.com.ng/refund-policy"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Refund Policy", "item": "https://www.luxurypropertiesltd.com.ng/refund-policy"}
             ]
           })}
         </script>

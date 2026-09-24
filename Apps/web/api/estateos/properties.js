@@ -270,7 +270,7 @@ export function createHandler({
       });
     }
 
-    const url = new URL(req.url || '/api/estateos/properties', 'https://luxurypropertiesltd.com.ng');
+    const url = new URL(req.url || '/api/estateos/properties', 'https://www.luxurypropertiesltd.com.ng');
     const authHeader = req.headers?.authorization || req.headers?.get?.('authorization');
 
     // Extract raw key for rate-limit keying + safe logging identifier.

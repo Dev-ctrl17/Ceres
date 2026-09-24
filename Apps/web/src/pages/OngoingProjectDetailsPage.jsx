@@ -107,14 +107,14 @@ const OngoingProjectDetailsPage = () => {
           name="description"
           content={project.description || `Details for ${project.name}, an ongoing property development by Luxury Properties Ltd.`}
         />
-        <link rel="canonical" href={`https://luxurypropertiesltd.com.ng/ongoing-projects/${project.id}`} />
+        <link rel="canonical" href={`https://www.luxurypropertiesltd.com.ng/ongoing-projects/${project.id}`} />
         <meta property="og:title" content={`${project.name} — Ongoing Projects`} />
         <meta
           property="og:description"
           content={project.description || `Details for ${project.name}, an ongoing property development by Luxury Properties Ltd.`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://luxurypropertiesltd.com.ng/ongoing-projects/${project.id}`} />
+        <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/ongoing-projects/${project.id}`} />
         {images[0] && <meta property="og:image" content={resolveImage(images[0])} />}
       </Helmet>
 

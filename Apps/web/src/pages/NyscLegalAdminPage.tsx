@@ -43,7 +43,7 @@ export const NyscLegalAdminPageTSX: React.FC = () => {
   const pageUrl: string =
     typeof window !== "undefined"
       ? window.location.href
-      : "https://luxurypropertiesltd.com.ng/careers/nysc-legal-admin";
+      : "https://www.luxurypropertiesltd.com.ng/careers/nysc-legal-admin";
 
   const whatsappMessage: string = encodeURIComponent(
     "Hello Luxury Properties Ltd, I am a serving NYSC Corps Member (Law background) interested in applying for the NYSC Legal & Administrative Support position in Pedro Gbagada, Lagos. Please guide me on submitting my application."
@@ -133,7 +133,7 @@ export const NyscLegalAdminPageTSX: React.FC = () => {
           name="description"
           content="Luxury Properties Ltd is seeking a serving NYSC Corps Member with a Law background for Legal & Administrative Support in Pedro Gbagada, Lagos, Nigeria."
         />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/careers/nysc-legal-admin" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/careers/nysc-legal-admin" />
       </Helmet>
 
       {/* Main Header */}

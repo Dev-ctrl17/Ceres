@@ -254,11 +254,11 @@ const HomePage = () => {
       <Helmet>
         <title>Luxury Properties Ltd - Premium Real Estate in Nigeria</title>
         <meta name="description" content="Nigeria's premier luxury real estate agency. Buy, sell, or rent exclusive properties in Lagos, Abuja, and across Nigeria. Concierge service and off-market listings." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng" />
         <meta property="og:title" content="Luxury Properties Ltd - Premium Real Estate in Nigeria" />
         <meta property="og:description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes with Nigeria's premier luxury real estate agency." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />

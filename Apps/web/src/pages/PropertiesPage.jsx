@@ -34,11 +34,11 @@ const PropertiesPage = () => {
       <Helmet>
         <title>Luxury Homes for Sale in Lagos | Luxury Properties Ltd</title>
         <meta name="description" content="Browse our complete collection of verified luxury properties for sale and rent in Lagos, Abuja, and across Nigeria. Filter by location, type, and budget." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/properties" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/properties" />
         <meta property="og:title" content="Browse Properties for Sale & Rent in Lagos | Luxury Properties Ltd" />
         <meta property="og:description" content="Browse our complete collection of verified luxury properties for sale and rent across Nigeria. Filter by location, type, and budget." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/properties" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/properties" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -51,8 +51,8 @@ const PropertiesPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "Properties", "item": "https://luxurypropertiesltd.com.ng/properties"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Properties", "item": "https://www.luxurypropertiesltd.com.ng/properties"}
             ]
           })}
         </script>

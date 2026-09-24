@@ -9,11 +9,11 @@ const TermsConditionsPage = () => {
       <Helmet>
         <title>Terms & Conditions — Luxury Properties Ltd</title>
         <meta name="description" content="Terms and Conditions for using Luxury Properties Ltd services. Read our terms for property listings, enquiries, and website usage." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/terms-conditions" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/terms-conditions" />
         <meta property="og:title" content="Terms & Conditions — Luxury Properties Ltd" />
         <meta property="og:description" content="Terms and Conditions for using Luxury Properties Ltd services." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/terms-conditions" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/terms-conditions" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -26,8 +26,8 @@ const TermsConditionsPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "Terms & Conditions", "item": "https://luxurypropertiesltd.com.ng/terms-conditions"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "Terms & Conditions", "item": "https://www.luxurypropertiesltd.com.ng/terms-conditions"}
             ]
           })}
         </script>

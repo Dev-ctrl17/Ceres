@@ -20,7 +20,7 @@ import { createClient } from '@supabase/supabase-js';
 // Mirrors src/lib/slug.js — duplicated here so this edge function carries
 // no dependency on the client bundle.
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const DOMAIN = 'https://luxurypropertiesltd.com.ng';
+const DOMAIN = 'https://www.luxurypropertiesltd.com.ng';
 
 export default async function (req, res) {
   const uuid = req.query?.uuid;

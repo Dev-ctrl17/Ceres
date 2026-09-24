@@ -83,11 +83,11 @@ const EPANPage = () => {
       <Helmet>
         <title>EPAN - Elite Property Agents Network | Luxury Properties Ltd</title>
         <meta name="description" content="Join the Elite Property Agents Network (EPAN). A professional community for real estate excellence founded by Luxury Properties Ltd. Access verified listings and grow your network." />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/epan" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/epan" />
         <meta property="og:title" content="EPAN - Elite Property Agents Network | Luxury Properties Ltd" />
         <meta property="og:description" content="Join the Elite Property Agents Network (EPAN). A professional community for real estate excellence founded by Luxury Properties Ltd." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/epan" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/epan" />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -100,8 +100,8 @@ const EPANPage = () => {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
-              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://luxurypropertiesltd.com.ng"},
-              {"@type": "ListItem", "position": 2, "name": "EPAN", "item": "https://luxurypropertiesltd.com.ng/epan"}
+              {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
+              {"@type": "ListItem", "position": 2, "name": "EPAN", "item": "https://www.luxurypropertiesltd.com.ng/epan"}
             ]
           })}
         </script>

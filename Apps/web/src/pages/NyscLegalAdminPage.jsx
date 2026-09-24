@@ -43,7 +43,7 @@ export default function NyscLegalAdminPage() {
   const pageUrl =
     typeof window !== "undefined"
       ? window.location.href
-      : "https://luxurypropertiesltd.com.ng/careers/nysc-legal-admin";
+      : "https://www.luxurypropertiesltd.com.ng/careers/nysc-legal-admin";
 
   const whatsappMessage = encodeURIComponent(
     "Hello Luxury Properties Ltd, I am a serving NYSC Corps Member (Law background) interested in applying for the NYSC Legal & Administrative Support position in Pedro Gbagada, Lagos. Please guide me on submitting my application."
@@ -133,15 +133,15 @@ export default function NyscLegalAdminPage() {
           name="description"
           content="Luxury Properties Ltd is seeking a serving NYSC Corps Member with a Law background for Legal & Administrative Support in Pedro Gbagada, Lagos, Nigeria."
         />
-        <link rel="canonical" href="https://luxurypropertiesltd.com.ng/careers/nysc-legal-admin" />
+        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/careers/nysc-legal-admin" />
         <meta property="og:title" content="NYSC Corps Member - Legal & Administrative Support | Luxury Properties Ltd" />
         <meta property="og:description" content="Luxury Properties Ltd is seeking a serving NYSC Corps Member with a Law background for Legal & Administrative Support in Pedro Gbagada, Lagos, Nigeria." />
-        <meta property="og:url" content="https://luxurypropertiesltd.com.ng/careers/nysc-legal-admin" />
+        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/careers/nysc-legal-admin" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="NYSC Corps Member - Legal & Administrative Support | Luxury Properties Ltd" />
         <meta name="twitter:description" content="Luxury Properties Ltd is seeking a serving NYSC Corps Member with a Law background for Legal & Administrative Support in Pedro Gbagada, Lagos, Nigeria." />
-        <meta name="twitter:image" content="https://luxurypropertiesltd.com.ng/og-image.png" />
+        <meta name="twitter:image" content="https://www.luxurypropertiesltd.com.ng/og-image.png" />
       </Helmet>
 
       {/* Main Header */}
