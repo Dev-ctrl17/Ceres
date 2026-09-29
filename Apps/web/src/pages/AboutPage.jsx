@@ -161,9 +161,10 @@ const AboutPage = () => {
               "addressCountry": "NG"
             },
             "sameAs": [
-              "https://www.instagram.com/luxurypropertiesltd",
-              "https://www.linkedin.com/company/luxurypropertiesltd",
-              "https://www.facebook.com/luxurypropertiesltd"
+              "https://www.instagram.com/dmluxurypropertiesltd/",
+              "https://www.linkedin.com/company/luxury-properties-ltd/posts/?feedView=all",
+              "https://web.facebook.com/luxurypropertiesLtd",
+              "https://www.youtube.com/@luxuryproperties_ltd"
             ],
             "foundingDate": "2010",
             "numberOfEmployees": {

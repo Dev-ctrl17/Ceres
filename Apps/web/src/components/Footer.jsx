@@ -5,6 +5,7 @@ import {
   Instagram,
   Twitter,
   Linkedin,
+  Youtube,
   Mail,
   Phone,
   MapPin,
@@ -57,12 +58,12 @@ const Footer = () => {
 
   const socialLinks = [
     {
-      href: "https://web.facebook.com/agene.sunday",
+      href: "https://web.facebook.com/luxurypropertiesLtd",
       icon: <Facebook className="w-4 h-4" />,
       label: "Facebook",
     },
     {
-      href: "https://www.instagram.com/luxurypropertiesltd/",
+      href: "https://www.instagram.com/dmluxurypropertiesltd/",
       icon: <Instagram className="w-4 h-4" />,
       label: "Instagram",
     },
@@ -72,9 +73,14 @@ const Footer = () => {
       label: "Twitter",
     },
     {
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/company/luxury-properties-ltd/posts/?feedView=all",
       icon: <Linkedin className="w-4 h-4" />,
       label: "LinkedIn",
+    },
+    {
+      href: "https://www.youtube.com/@luxuryproperties_ltd",
+      icon: <Youtube className="w-4 h-4" />,
+      label: "YouTube",
     },
   ];
 
