@@ -1,0 +1,198 @@
+REFERRAL SYSTEM OVERVIEW
+========================
+
+Scope
+-----
+The repository contains two related but distinct referral implementations:
+
+1. The referral flow integrated into Apps/web.
+2. A standalone referral-system package with its own frontend and Express API.
+
+They should not be assumed to share the same database schema or commission rules.
+This summary is based on the checked-in source files; it does not confirm which
+SQL has been applied to a live Supabase project or which endpoints are deployed.
+
+1. Integrated Apps/web referral flow
+------------------------------------
+
+Registration page:
+- The main site's consultant registration page is
+  Apps/web/src/pages/ConsultantRegistrationPage.jsx.
+- It reads an optional `ref` query parameter from /register?ref=CODE.
+- With no referral code, the registrant is treated as a team leader. Team
+  leaders set a password and receive a Supabase Auth account.
+- With a referral code, the registrant is a referred consultant and does not
+  set a password in this form.
+- The form collects identity/contact details, address, bank details, and
+  acceptance of terms. It confirms the email and, for team leaders, password.
+- Submission invokes the Supabase Edge Function named `register-consultant`;
+  it does not submit to the standalone Express `/api/register` endpoint.
+
+Registration safeguards and behavior:
+- The Edge Function is in Apps/web/supabase/functions/register-consultant/.
+- It checks required fields and email format, verifies Cloudflare Turnstile,
+  and consumes an IP-hash rate limit. The SQL rate limiter allows up to five
+  attempts in a 15-minute window.
+- The database RPC creates a unique 8-character referral code and inserts the
+  consultant and closure-table relationships.
+- Team leaders cannot themselves be registered with a referral code.
+  Non-team-leaders must provide one.
+- Referral codes must belong to an existing team leader. A team leader may
+  have at most five directly referred consultants.
+- After registration, the function returns the consultant, a referral link,
+  and a WhatsApp share URL.
+- If a team leader Auth account was created but consultant registration fails,
+  the function attempts to delete that Auth account.
+
+Main-site data model and referral hierarchy:
+- The SQL is Apps/web/supabase-referral-system.sql.
+- `consultants` stores contact, bank, referral-code, team-leader, and Auth
+  account details. `referred_by` identifies the referring team leader.
+- `referral_trees` stores ancestor/descendant pairs with depth 0 through 4.
+  Depth 0 is self; depth 1 is the direct parent; depths 2-4 are higher uplines.
+- `referral_deals` stores property, deal amount, closing consultant, and status.
+- `referral_commissions` stores pending/disbursed commission records by deal,
+  consultant, generation level, and amount.
+- Although the tree table supports four levels, the registration RPC only lets
+  referrals attach to team leaders, and team leaders cannot be referred. The
+  intended registration flow therefore appears to create one-level teams, not
+  an actively growing four-generation network.
+
+Main-site commission calculation:
+- The SQL function is `process_referral_commission(deal_id)`. It reads and locks
+  the deal, rejects a deal already having commission rows, and selects ancestor
+  rows for the closing consultant at depths 1-4.
+- Payouts are fixed NGN amounts based on the deal amount:
+
+  Deal amount at least NGN 1,000,000,000:
+    Depth 1: NGN 900,000
+    Depth 2: NGN 400,000
+    Depth 3: NGN 200,000
+    Depth 4: NGN 100,000
+
+  Deal amount at least NGN 500,000,000 but below NGN 1,000,000,000:
+    Depth 1: NGN 700,000
+    Depth 2: NGN 300,000
+    Depth 3: NGN 150,000
+    Depth 4: NGN 70,000
+
+  Deal amount at least NGN 100,000,000 but below NGN 500,000,000:
+    Depth 1: NGN 500,000
+    Depth 2: NGN 250,000
+    Depth 3: NGN 100,000
+    Depth 4: NGN 50,000
+
+- Deals below NGN 100,000,000 are rejected by this function.
+- The function inserts commissions for ancestors only; it does not insert a
+  commission row for the closer. If there are no ancestor rows, it still marks
+  the deal verified with no commission rows.
+- The schema includes `pending` and `disbursed` statuses, but this function
+  only creates pending rows. No actual bank transfer or payout is implemented
+  in this function.
+
+Main-site dashboards:
+- A team leader can sign in to the consultant portal. The portal calls the
+  `consultant-dashboard` Edge Function and shows the team leader's direct
+  referrals, some related deals, and commission totals.
+- Referral administration calls `admin-referral-dashboard`. The function
+  allows emails listed in `REFERRAL_ADMIN_EMAILS`, and returns consultant/deal
+  counts, pending commission totals, team leader groups, and unassigned
+  consultants.
+- The portal's team referral list is based on direct `referred_by` links.
+
+2. Standalone referral-system package
+-------------------------------------
+
+Location and components:
+- README: referral-system/README.md.
+- Database SQL: referral-system/supabase/migrations/001_initial_schema.sql.
+- Express API: referral-system/backend/.
+- Separate React/Vite registration UI: referral-system/frontend/.
+- Alternative registration Edge Function:
+  referral-system/supabase/functions/register-consultant/index.ts.
+
+Registration behavior:
+- The standalone form reads `?ref=CODE`, collects name, phone, email, and
+  optional bank details, then posts to `/api/register` by default.
+- The Express service validates required fields and duplicate email/phone,
+  validates the optional referral code, and calls the `register_consultant`
+  database RPC. The referral code is optional in this implementation.
+- The RPC creates a user with a unique 8-character code and builds up to four
+  ancestor levels in `referral_trees`.
+- The successful response includes a new referral link and a WhatsApp message
+  link. The frontend displays the link with copy and WhatsApp-share controls.
+
+Standalone data model:
+- `users`: consultant profiles, referral code, and optional `parent_id`.
+- `referral_trees`: closure table for self and up to four ancestor levels.
+- `deals`: property deal, closing user, amount, and status.
+- `commissions`: one pending/disbursed commission row per deal and user.
+
+Standalone commission behavior:
+- The intended split in README and `backend/src/lib/types.ts` is:
+  depth 1 = 50%, depth 2 = 20%, depth 3 = 15%, depth 4 = 15% of the supplied
+  commission pool.
+- The Express endpoint is `POST /api/commissions/process`; it requires the
+  `x-admin-key` header to match `COMMISSION_ADMIN_KEY`.
+- The Express service rejects missing/already-processed deals, looks up the
+  closer's ancestors, inserts pending commission rows, and marks the deal
+  verified. If there are no uplines, it inserts a 50% row for the closer.
+- The standalone SQL RPC `process_deal_commission(deal_id, pool)` is a separate
+  path from the Express service. It inserts rows for ancestor depths 1-4 and
+  marks the deal verified, but does not include the service's no-upline
+  fallback for the closer.
+- Neither path transfers money; commission rows remain pending until another
+  payout process changes their status.
+
+3. Cross-check points
+---------------------
+
+1. Which implementation is intended to govern the live site: Apps/web's
+   Supabase referral flow or the standalone `referral-system` package? The main
+   site's registration page invokes its own Edge Function, not the standalone
+   Express endpoint.
+
+2. The commission descriptions can be misleading. In both closure tables,
+   depth 0 is the closer/consultant themself and depth 1 is their direct parent.
+   The main-site SQL assigns depth-1 money to that parent, not to the closer.
+   The standalone README calls depth 1 the closer, but its SQL/service normally
+   select `ancestor_id` at depth 1, which is the closer's parent. Only the
+   standalone Express service explicitly pays the closer 50% when no uplines
+   exist.
+
+3. The main-site commission rule is fixed NGN payouts based on deal value; the
+   standalone package uses percentages of a commission pool. These are not the
+   same compensation plan.
+
+4. The main-site SQL has four depth levels, but its registration rules restrict
+   referrals to team leaders and prevent team leaders from being referred.
+   Confirm whether multi-generation commissions are expected or whether the
+   four-level tree is legacy/future structure.
+
+5. Do not apply both SQL schemas to one Supabase project unchanged. Both define
+   `public.referral_trees`, but one references `public.users` and the other
+   references `public.consultants`. Both also define a `register_consultant`
+   RPC name with different signatures and behavior. Confirm the deployed
+   schema before changing or running either script.
+
+6. The main-site SQL exposes `process_referral_commission` to `service_role`,
+   but no caller for this RPC was found in the searched Apps/web source. The
+   dashboards read commission records; they do not perform payouts.
+
+7. The main-site SQL caps each team leader at five direct referrals, whereas
+   the standalone package has no such cap. The standalone package also allows
+   an optional referrer; the main-site flow requires a referral for non-leaders.
+
+8. The standalone Express commission endpoint is protected by a shared admin
+   key, while the main-site SQL commission RPC is restricted to the Supabase
+   service role. Check the production authentication and who can invoke each
+   path before relying on either.
+
+Configuration references:
+- Standalone backend requires SUPABASE_URL and
+  SUPABASE_SERVICE_ROLE_KEY; commission processing also requires
+  COMMISSION_ADMIN_KEY.
+- Main-site registration requires Turnstile configuration and a
+  REGISTRATION_RATE_LIMIT_SALT, plus Supabase service credentials.
+- The source files show implementation and expected configuration, not proof
+  that all functions or SQL scripts are deployed in production.

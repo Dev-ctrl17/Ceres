@@ -658,7 +658,11 @@ const PropertiesManager = () => {
 
       const submitData = {
         title: data.title,
-        slug: existingSlug || uniqueSlug(data.title, takenSlugs),
+        slug: existingSlug || uniqueSlug(
+          data.title,
+          takenSlugs,
+          [data.location, data.bedrooms && `${data.bedrooms}-bedroom`, data.type].filter(Boolean).join(' '),
+        ),
         description: data.description,
         price: data.price,
         location: data.location,

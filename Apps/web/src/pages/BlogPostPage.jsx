@@ -6,6 +6,7 @@ import Footer from '@/components/Footer.jsx';
 import BlogPostLayout from '@/components/BlogPostLayout.jsx';
 import { blogPostsData, loadPostContent } from '@/data/blogPosts.js';
 import { generateFAQSchema } from '@/lib/structuredData';
+import { buildImageUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from '@/lib/siteConfig.js';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -73,65 +74,53 @@ const BlogPostPage = () => {
     );
   }
 
-  const canonicalUrl = `https://www.luxurypropertiesltd.com.ng/blog/${post.slug}`;
+  const canonicalUrl = getCanonicalUrl(`/blog/${post.slug}`);
+  const title = buildSeoTitle(post.title);
+  const description = buildSeoDescription(post.metaDescription, 'Explore verified luxury real estate insights from Luxury Properties Ltd.');
+  const socialImage = buildImageUrl(post.ogImage || '/og-image.png');
+  const faqSchema = post.faqSchema?.length ? generateFAQSchema(post.faqSchema) : null;
+  const schemaGraph = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': `${canonicalUrl}#article`,
+        mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+        headline: post.title,
+        description,
+        image: socialImage,
+        author: { '@id': `${getCanonicalUrl('/')}#organization` },
+        publisher: { '@id': `${getCanonicalUrl('/')}#organization` },
+        datePublished: post.datePublished || undefined,
+        dateModified: post.dateModified || undefined,
+      },
+      ...(faqSchema ? [{ '@type': faqSchema['@type'], mainEntity: faqSchema.mainEntity }] : []),
+    ],
+  };
 
   return (
     <>
       <Helmet>
-        <title>{post.title} | Luxury Properties Ltd</title>
-        <meta name="description" content={post.metaDescription} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.metaDescription} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
-        {post.ogImage && <meta property="og:image" content={post.ogImage} />}
+        <meta property="og:image" content={socialImage} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
-        <meta name="twitter:description" content={post.metaDescription} />
-        {post.ogImage && <meta name="twitter:image" content={post.ogImage} />}
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={socialImage} />
         <meta property="article:published_time" content={post.datePublished} />
         <meta property="article:modified_time" content={post.dateModified} />
         <meta property="article:author" content="Luxury Properties Ltd" />
 
         {/* JSON-LD Article Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": canonicalUrl
-            },
-            "headline": post.title,
-            "description": post.metaDescription,
-            "image": post.ogImage || "https://www.luxurypropertiesltd.com.ng/og-image.png",
-            "author": {
-              "@type": "Organization",
-              "name": "Luxury Properties Ltd",
-              "url": "https://www.luxurypropertiesltd.com.ng"
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Luxury Properties Ltd",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://www.luxurypropertiesltd.com.ng/favicon.svg"
-              }
-            },
-            "datePublished": post.datePublished,
-            "dateModified": post.dateModified
-          })}
-        </script>
-
-        {/* JSON-LD FAQ Schema */}
-        {post.faqSchema && post.faqSchema.length > 0 && (
-          <script type="application/ld+json">
-            {JSON.stringify(generateFAQSchema(post.faqSchema))}
-          </script>
-        )}
+        <script type="application/ld+json">{JSON.stringify(schemaGraph)}</script>
       </Helmet>
 
       <Header />

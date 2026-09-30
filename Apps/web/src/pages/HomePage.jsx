@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Helmet } from "react-helmet";
+import { buildSeoDescription } from "@/lib/siteConfig.js";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
@@ -253,7 +254,7 @@ const HomePage = () => {
     <>
       <Helmet>
         <title>Luxury Properties Ltd - Premium Real Estate in Nigeria</title>
-        <meta name="description" content="Nigeria's premier luxury real estate agency. Buy, sell, or rent exclusive properties in Lagos, Abuja, and across Nigeria. Concierge service and off-market listings." />
+        <meta name="description" content={buildSeoDescription("Buy, sell, or rent verified luxury homes in Lagos, Abuja, and across Nigeria with expert advice, private client service, and access to exclusive property listings.")} />
         <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng" />
         <meta property="og:title" content="Luxury Properties Ltd - Premium Real Estate in Nigeria" />
         <meta property="og:description" content="Discover premium real estate properties across Nigeria. Buy, sell, or rent luxury homes with Nigeria's premier luxury real estate agency." />

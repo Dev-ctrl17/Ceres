@@ -13,8 +13,17 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Bed, Bath, CheckCircle, MessageCircle, Phone, Calendar, FileText, X, ChevronLeft, ChevronRight, Banknote, Home } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
-import { generatePropertySchema, generateBreadcrumbSchema, generateAEOContent } from '@/lib/structuredData';
+import { generatePropertySchema, generateAEOContent } from '@/lib/structuredData';
 import { isUUID } from '@/lib/slug.js';
+import { buildSeoDescription, buildSeoTitle, getCanonicalUrl } from '@/lib/siteConfig.js';
+
+const relatedListingLinks = [
+  ['Certificate of Occupancy properties', '/properties/c-of-o'],
+  ['5-bedroom detached home with BQ', '/properties/5-bedroom-fully-detached-with-bq'],
+  ['Detached home with swimming pool', '/properties/luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool'],
+  ["Governor's Consent listing", '/properties/governors-consent-2'],
+  ['4-bedroom detached duplex with BQ', '/properties/4-bedroom-fully-detached-duplex-1-bedroom-bq'],
+];
 
 const parsePropertyDescription = (description) => {
   const lines = String(description || '')
@@ -194,17 +203,25 @@ const PropertyDetailsPage = () => {
   };
 
   // Generate dynamic SEO title and description
-  const bedrooms = property.bedrooms ? `${property.bedrooms}-Bed ` : '';
-  const propertyType = property.property_type || 'Property';
+  const bedrooms = Number(property.bedrooms) > 0 ? `${Number(property.bedrooms)} Bed ` : '';
+  const rawPropertyType = property.property_type || 'Property';
+  const propertyType = String(rawPropertyType).toUpperCase() === String(rawPropertyType)
+    ? String(rawPropertyType).toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase())
+    : rawPropertyType;
   const location = property.location || property.city || property.state || 'Lagos';
   const propertyTitle = String(property.title || `${bedrooms}${propertyType} in ${location}`).trim() || `${propertyType} in ${location}`;
-  const seoTitle = `${propertyTitle} | ${location} | Luxury Properties Ltd`;
+  const propertySlug = String(property.slug || '');
+  const consentListingNumber = propertySlug.match(/-(\d+)$/)?.[1];
+  const isConsentListing = /governors?-consent/i.test(propertySlug) || /governor['’]?s consent/i.test(propertyTitle);
+  const isConsentPlan = /governors?-consent-approved-building-plan/i.test(propertySlug);
+  const listingTitle = isConsentListing
+    ? `Governor's Consent ${isConsentPlan ? `Building Plan ${consentListingNumber || ''}` : consentListingNumber ? `Listing ${consentListingNumber}` : 'Property'} in ${location}`
+    : `${bedrooms}${propertyType} in ${location}`;
+  const seoTitle = buildSeoTitle(listingTitle);
   const fallbackDescription = property.price
     ? `${formatPrice(property.price)} ${propertyType} in ${location}. ${property.bedrooms || 'Multiple'} bedrooms, ${property.bathrooms || 'multiple'} bathrooms. Contact Luxury Properties Ltd for viewing.`
     : `${propertyType} in ${location}. Contact Luxury Properties Ltd for verified details and viewing arrangements.`;
-  const seoDescription = property.description
-    ? `${String(property.description).replace(/\s+/g, ' ').trim().substring(0, 155)}...`
-    : fallbackDescription;
+  const seoDescription = buildSeoDescription(property.description || fallbackDescription, fallbackDescription);
 
   const amenitiesList = property.amenities
     ? (Array.isArray(property.amenities)
@@ -216,11 +233,12 @@ const PropertyDetailsPage = () => {
   const descriptionSections = parsePropertyDescription(property.description);
 
   // Generate structured data
-  const propertySchema = generatePropertySchema(property);
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: 'Home', item: 'https://www.luxurypropertiesltd.com.ng' },
-    { name: 'Properties', item: 'https://www.luxurypropertiesltd.com.ng/properties' },
-    { name: propertyTitle, item: `https://www.luxurypropertiesltd.com.ng/properties/${property.slug}` },
+  const canonicalUrl = getCanonicalUrl(`/properties/${property.slug}`);
+  const socialImage = images[0] ? getImageUrl(images[0], 1200) : getCanonicalUrl('/og-image.png');
+  const propertySchema = generatePropertySchema(property, [
+    { name: 'Home', item: getCanonicalUrl('/') },
+    { name: 'Properties', item: getCanonicalUrl('/properties') },
+    { name: propertyTitle, item: canonicalUrl },
   ]);
 
   return (
@@ -228,14 +246,14 @@ const PropertyDetailsPage = () => {
       <Helmet>
         <title>{seoTitle}</title>
         <meta name="description" content={seoDescription} />
-        <link rel="canonical" href={`https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`} />
+        <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph */}
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`} />
-        {images[0] && <meta property="og:image" content={images[0]} />}
+        <meta property="og:image" content={socialImage} />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         
@@ -243,17 +261,12 @@ const PropertyDetailsPage = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />
-        {images[0] && <meta name="twitter:image" content={images[0]} />}
+        <meta name="twitter:image" content={socialImage} />
         
         {/* JSON-LD Structured Data */}
         {propertySchema && (
           <script type="application/ld+json">
             {JSON.stringify(propertySchema)}
-          </script>
-        )}
-        {breadcrumbSchema && (
-          <script type="application/ld+json">
-            {JSON.stringify(breadcrumbSchema)}
           </script>
         )}
       </Helmet>
@@ -553,6 +566,18 @@ const PropertyDetailsPage = () => {
               </div>
             </section>
           )}
+          <nav aria-label="More property listings" className="mt-12 border-t pt-6">
+            <h2 className="text-xl font-semibold mb-4">Browse More Verified Listings</h2>
+            <ul className="flex flex-wrap gap-x-6 gap-y-3">
+              {relatedListingLinks.map(([label, path]) => (
+                <li key={path}>
+                  <Link className="text-primary underline-offset-4 hover:underline" to={new URL(getCanonicalUrl(path)).pathname}>
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </main>
 

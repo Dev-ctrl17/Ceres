@@ -16,6 +16,25 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { validateEmail } from "@/services/emailValidation";
+import { getCanonicalUrl } from "@/lib/siteConfig.js";
+
+const browseLinks = [
+  ["Luxury Apartments in Nigeria", "/landing/luxury-apartments-nigeria"],
+  ["Shortlet Apartments in Lagos", "/landing/shortlet-apartments-lagos"],
+  ["Houses for Sale in Lekki", "/landing/houses-for-sale-lekki"],
+  ["Duplexes for Sale in Lagos", "/landing/duplex-for-sale-lagos"],
+  ["Land for Sale in Ajah", "/landing/land-for-sale-ajah"],
+  ["Banana Island Properties", "/landing/banana-island-luxury-properties"],
+  ["Victoria Island Apartments", "/landing/apartment-for-sale-victoria-island"],
+  ["Buy Luxury Property in Lekki", "/landing/buy-luxury-property-lekki"],
+  ["Luxury Houses in Ikoyi", "/landing/luxury-house-for-sale-ikoyi"],
+  ["Commercial Property in Lagos", "/landing/commercial-property-lagos"],
+  ["Luxury Homes for Sale in Lagos", "/landing/luxury-homes-for-sale-lagos"],
+  ["Luxury Homes in Nigeria", "/landing/luxury-homes-nigeria"],
+  ["Real Estate Investment in Lagos", "/landing/real-estate-investment-lagos"],
+  ["Voice Search Real Estate FAQs", "/blog/voice-search-optimized-faqs"],
+  ["Buying Property in Nigeria from Abroad", "/blog/diaspora-guide-buy-property-nigeria-abroad"],
+];
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -284,6 +303,25 @@ const Footer = () => {
             </form>
           </div>
         </div>
+
+        <nav aria-label="Popular property searches" className="mt-10 border-t pt-8" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
+          <h2 className="text-base font-semibold mb-4" style={{ color: "#D4AF37" }}>
+            Popular Searches
+          </h2>
+          <ul className="flex flex-wrap gap-x-5 gap-y-3">
+            {browseLinks.map(([label, path]) => (
+              <li key={path}>
+                <Link
+                  to={new URL(getCanonicalUrl(path)).pathname}
+                  className="text-sm underline-offset-4 hover:underline"
+                  style={{ color: "rgba(255,255,255,0.8)" }}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         {/* Bottom Bar */}
         <div

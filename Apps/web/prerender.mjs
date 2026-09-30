@@ -6,12 +6,59 @@ import { createRequire } from 'module';
 import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 import { getAllRoutes } from './scripts/getRoutes.js';
+import { buildImageUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from './src/lib/siteConfig.js';
 
 const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
 const WAIT_MS = 1500;
+
+function escapeAttribute(value) {
+  return String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
+}
+
+function setMetaTag(html, attribute, name, value) {
+  const pattern = new RegExp(`<meta\\s+${attribute}=["']${name}["'][^>]*>`, 'i');
+  const tag = `<meta ${attribute}="${name}" content="${escapeAttribute(value)}">`;
+  return pattern.test(html) ? html.replace(pattern, tag) : html.replace('</head>', `${tag}\n</head>`);
+}
+
+function normalizeStaticMetadata(html, filePath) {
+  const canonical = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1];
+  if (!canonical) return html;
+
+  const normalizedCanonical = getCanonicalUrl(canonical);
+  const originalTitle = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1]?.trim() || '';
+  const originalDescription = html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1] || '';
+  if (originalTitle.length > 60) console.warn(`[seo-guard] Title exceeds 60 characters in ${filePath}: ${originalTitle.length}`);
+  if (originalDescription.length < 120 || originalDescription.length > 155) {
+    console.warn(`[seo-guard] Description must be 120-155 characters in ${filePath}: ${originalDescription.length}`);
+  }
+
+  const title = buildSeoTitle(originalTitle);
+  const description = buildSeoDescription(originalDescription);
+  const image = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']*)["']/i)?.[1];
+  const socialImage = buildImageUrl(image || '/og-image.png');
+  const isBlog = /[\\/]blog[\\/]/i.test(filePath)
+    && !/[\\/]blog[\\/](?:index\.html|comparison[\\/]index\.html|listicle[\\/]index\.html)$/i.test(filePath);
+  const canonicalTag = `<link rel="canonical" href="${escapeAttribute(normalizedCanonical)}">`;
+  let output = html.replace(/<title[^>]*>[\s\S]*?<\/title>/i, `<title>${escapeAttribute(title)}</title>`);
+  output = output.replace(/<link[^>]+rel=["']canonical["'][^>]+href=["'][^"']+["'][^>]*>/i, canonicalTag);
+  output = output.replace(/https?:\/\/(?:www\.)?luxurypropertiesltd\.com\.ng[^\s"'<>},\]]*/gi, (url) => getCanonicalUrl(url));
+  output = setMetaTag(output, 'name', 'description', description);
+  output = setMetaTag(output, 'property', 'og:title', title);
+  output = setMetaTag(output, 'property', 'og:description', description);
+  output = setMetaTag(output, 'property', 'og:image', socialImage);
+  output = setMetaTag(output, 'property', 'og:url', normalizedCanonical);
+  output = setMetaTag(output, 'property', 'og:type', isBlog ? 'article' : 'website');
+  output = setMetaTag(output, 'property', 'og:site_name', 'Luxury Properties Ltd');
+  output = setMetaTag(output, 'property', 'og:locale', 'en_NG');
+  output = setMetaTag(output, 'name', 'twitter:card', 'summary_large_image');
+  output = setMetaTag(output, 'name', 'twitter:title', title);
+  output = setMetaTag(output, 'name', 'twitter:description', description);
+  return setMetaTag(output, 'name', 'twitter:image', socialImage);
+}
 
 function sanitizeBuiltAssets(directory) {
   for (const entry of readdirSync(directory)) {
@@ -25,6 +72,7 @@ function sanitizeBuiltAssets(directory) {
     text = text.replaceAll('http://localhost:9999', 'http://127.0.0.1:9999');
     text = text.replaceAll('localhost', 'loopback');
     const normalizedPath = path.replaceAll('\\', '/');
+    if (/\.html$/i.test(path)) text = normalizeStaticMetadata(text, normalizedPath);
     if (/\/dist\/blog\/[^/]+\/index\.html$/i.test(normalizedPath)) {
       const canonical = text.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1];
       if (canonical && !/<meta[^>]+property=["']og:url["']/i.test(text)) {
@@ -69,6 +117,11 @@ function validateRenderedHtml(html, route) {
 
   if (!title || !description || !h1) {
     throw new Error(`Missing page metadata for ${route} (title: ${Boolean(title)}, description: ${Boolean(description)}, h1: ${Boolean(h1)})`);
+  }
+
+  if (title.length > 60) console.warn(`[seo-guard] Title exceeds 60 characters in ${route}: ${title.length}`);
+  if (description.length < 120 || description.length > 155) {
+    console.warn(`[seo-guard] Description must be 120-155 characters in ${route}: ${description.length}`);
   }
 
   if (!route.startsWith('/blog/')) {

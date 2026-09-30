@@ -11,8 +11,8 @@ export const relatedPosts = {
       "Documents Needed to Buy Property"
     ],
     [
-      "/landing/luxury-homes-for-sale-lagos",
-      "Luxury Homes for Sale in Lagos"
+      "/landing/buy-luxury-property-lekki",
+      "Buy Luxury Property in Lekki"
     ]
   ],
   "real-estate-news-market-trends": [
@@ -67,8 +67,8 @@ export const relatedPosts = {
       "Luxury Home Costs 2026"
     ],
     [
-      "/landing/real-estate-investment-lagos",
-      "Investment Opportunities in Lagos"
+      "/landing/commercial-property-lagos",
+      "Commercial Property in Lagos"
     ]
   ],
   "diaspora-guide-buy-property-nigeria-abroad": [
@@ -81,8 +81,8 @@ export const relatedPosts = {
       "Documents Needed to Buy Property"
     ],
     [
-      "/landing/luxury-homes-nigeria",
-      "Luxury Homes in Nigeria"
+      "/blog/voice-search-optimized-faqs",
+      "Real Estate Questions Answered"
     ]
   ],
   "most-expensive-neighborhoods-lagos-2026": [
@@ -95,8 +95,8 @@ export const relatedPosts = {
       "Banana Island Property Guide"
     ],
     [
-      "/blog/luxury-home-cost-lagos-2026",
-      "Luxury Home Costs 2026"
+      "/properties/5-bedroom-fully-detached-with-bq",
+      "5-Bedroom Detached Home with BQ"
     ]
   ],
   "luxury-property-lekki-complete-guide": [
@@ -105,12 +105,12 @@ export const relatedPosts = {
       "Buy Luxury Property in Lekki"
     ],
     [
-      "/blog/best-areas-lagos-expats",
-      "Best Areas in Lagos for Expats"
+      "/properties/4-bedroom-fully-detached-duplex-1-bedroom-bq",
+      "4-Bedroom Detached Duplex with BQ"
     ],
     [
-      "/blog/most-expensive-neighborhoods-lagos-2026",
-      "Most Expensive Neighborhoods in Lagos"
+      "/properties/luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool",
+      "Detached Home with Swimming Pool"
     ]
   ],
   "how-to-buy-luxury-property-nigeria": [
@@ -123,8 +123,8 @@ export const relatedPosts = {
       "Documents Needed to Buy Property"
     ],
     [
-      "/landing/luxury-homes-for-sale-lagos",
-      "Luxury Homes in Lagos"
+      "/blog/diaspora-guide-buy-property-nigeria-abroad",
+      "Buying Property in Nigeria from Abroad"
     ]
   ],
   "ikoyi-real-estate-guide": [
@@ -133,8 +133,8 @@ export const relatedPosts = {
       "Most Expensive Neighborhoods in Lagos"
     ],
     [
-      "/blog/victoria-island-luxury-real-estate-guide",
-      "Victoria Island Guide"
+      "/properties/5-bedroom-fully-detached-with-bq",
+      "5-Bedroom Detached Home with BQ"
     ],
     [
       "/landing/luxury-house-for-sale-ikoyi",
@@ -143,8 +143,8 @@ export const relatedPosts = {
   ],
   "banana-island-property-guide": [
     [
-      "/blog/most-expensive-neighborhoods-lagos-2026",
-      "Most Expensive Neighborhoods in Lagos"
+      "/blog/voice-search-optimized-faqs",
+      "Real Estate Questions Answered"
     ],
     [
       "/blog/ikoyi-real-estate-guide",
@@ -241,16 +241,16 @@ export const relatedPosts = {
   ],
   "certificate-of-occupancy-vs-governors-consent": [
     [
-      "/blog/governors-consent-timeline-lagos-2026",
-      "Governor's Consent Timeline 2026"
+      "/properties/c-of-o",
+      "Browse Properties with a C of O"
     ],
     [
       "/blog/documents-needed-buy-property-nigeria",
       "Documents Needed to Buy Property"
     ],
     [
-      "/blog/how-to-buy-luxury-property-nigeria",
-      "How to Buy Luxury Property"
+      "/properties/governors-consent-2",
+      "Governor's Consent Property Listing"
     ]
   ],
   "sell-luxury-property-fast-lagos": [
@@ -277,8 +277,8 @@ export const relatedPosts = {
       "Documents Needed to Buy Property"
     ],
     [
-      "/blog/how-to-buy-luxury-property-nigeria",
-      "How to Buy Luxury Property"
+      "/properties/governors-consent-2",
+      "Governor's Consent Property Listing"
     ]
   ],
   "luxury-concierge-real-estate-nigeria": [

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { relatedPosts } from '@/data/relatedPosts.js';
+import { getCanonicalUrl } from '@/lib/siteConfig.js';
 
 const ContentImage = ({ src, alt, caption }) => (
   <figure className="my-8">
@@ -122,7 +123,7 @@ const ContentCTA = ({ title, text, buttonText, buttonLink }) => (
       {text}
     </p>
     <Link
-      to={buttonLink}
+      to={new URL(getCanonicalUrl(buttonLink)).pathname}
       className="inline-block bg-background text-foreground px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
     >
       {buttonText}
@@ -216,7 +217,7 @@ const BlogPostLayout = ({ post }) => {
             {related.map(([url, label]) => (
               <li key={url}>
                 <Link
-                  to={url}
+                  to={new URL(getCanonicalUrl(url)).pathname}
                   className="block h-full rounded-lg border border-border bg-muted/40 p-4 text-primary font-medium hover:bg-primary/5 hover:border-primary/40 transition-colors"
                 >
                   {label}

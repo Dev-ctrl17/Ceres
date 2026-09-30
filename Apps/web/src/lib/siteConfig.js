@@ -18,14 +18,55 @@ export const SITE_URL = (() => {
 })();
 
 export function buildAbsoluteUrl(path = '/') {
+  return getCanonicalUrl(path);
+}
+
+export function getCanonicalUrl(path = '/') {
   const safePath = path === undefined || path === null || path === '' ? '/' : String(path);
-  const normalizedPath = safePath.startsWith('/') ? safePath : `/${safePath}`;
+  const parsed = new URL(safePath, DEFAULT_SITE_URL);
+  const normalizedPath = parsed.pathname === '/' ? '/' : parsed.pathname.replace(/\/+$/, '');
+  return `${DEFAULT_SITE_URL}${normalizedPath}`;
+}
 
-  if (normalizedPath === '/') {
-    return SITE_URL;
+export function buildSeoTitle(title, maxLength = 60) {
+  let clean = String(title || '')
+    .replace(/\p{Extended_Pictographic}/gu, '')
+    .replace(/\s+/g, ' ')
+    .replace(/Luxury Properties Ltd/gi, '')
+    .replace(/[|:]+/g, ' ')
+    .replace(/^[\s–-]+|[\s–-]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (clean && clean === clean.toUpperCase() && /[A-Z]/.test(clean)) {
+    clean = clean.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
   }
+  clean = clean.replace(/\b[A-Z]{2,}\b/g, (word) => `${word[0]}${word.slice(1).toLowerCase()}`);
 
-  return `${SITE_URL}${normalizedPath.replace(/\/$/, '')}`;
+  const suffix = '| Luxury Properties Ltd';
+  const budget = Math.max(1, maxLength - suffix.length - 1);
+  if (clean.length > budget) {
+    clean = `${clean.slice(0, Math.max(1, budget - 3)).trimEnd()}...`;
+  }
+  return `${clean || 'Luxury Real Estate'} ${suffix}`;
+}
+
+export function buildSeoDescription(description, fallback = '') {
+  const cleanText = (value) => String(value || '')
+    .replace(/\p{Extended_Pictographic}/gu, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  let clean = cleanText(description);
+
+  if (clean.length < 120) {
+    const supplement = cleanText(fallback) || 'Contact Luxury Properties Ltd for verified details and private viewing arrangements.';
+    clean = `${clean}${clean ? ' ' : ''}${supplement}`;
+  }
+  while (clean.length < 120) {
+    clean = `${clean}${clean ? ' ' : ''}Contact Luxury Properties Ltd for verified information and private viewing arrangements.`;
+  }
+  if (clean.length > 155) clean = `${clean.slice(0, 152).trimEnd()}...`;
+  return clean;
 }
 
 export function buildImageUrl(path = '/') {

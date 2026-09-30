@@ -1,11 +1,29 @@
 ﻿import React, { Suspense, lazy, useEffect } from "react";
-import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import { Route, Routes, BrowserRouter as Router, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import { Toaster } from "@/components/ui/sonner";
 import { setCsrfToken } from "./utils/csrf.js";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
+import { getCanonicalUrl } from "./lib/siteConfig.js";
+import { generateOrganizationSchema } from "./lib/structuredData.js";
+
+const RouteCanonicalMetadata = () => {
+  const { pathname, search } = useLocation();
+  const canonicalUrl = getCanonicalUrl(pathname);
+  const isContactVariant = pathname === '/contact' && Boolean(search);
+
+  return (
+    <Helmet>
+      <link rel="canonical" href={canonicalUrl} />
+      <meta property="og:url" content={canonicalUrl} />
+      {isContactVariant && <meta name="robots" content="noindex,follow" />}
+      <script type="application/ld+json">{JSON.stringify(generateOrganizationSchema())}</script>
+    </Helmet>
+  );
+};
 
 // Lazy load all pages for route-level code splitting
 const HomePage = lazy(() => import("./pages/HomePage.jsx"));
@@ -128,6 +146,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <RouteCanonicalMetadata />
         <ScrollToTop />
         <Suspense fallback={<PageLoading />}>
           <AnimatedRoutes />

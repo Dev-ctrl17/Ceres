@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
 import PropertyFilter from '@/components/PropertyFilter.jsx';
 import { useProperties } from '@/hooks/useProperties.js';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
+import { getCanonicalUrl } from '@/lib/siteConfig.js';
+
+const featuredListingLinks = [
+  ['Certificate of Occupancy properties', '/properties/c-of-o'],
+  ['5-bedroom detached home with BQ', '/properties/5-bedroom-fully-detached-with-bq'],
+  ['Detached home with swimming pool', '/properties/luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool'],
+  ["Governor's Consent listing", '/properties/governors-consent-2'],
+  ['4-bedroom detached duplex with BQ', '/properties/4-bedroom-fully-detached-duplex-1-bedroom-bq'],
+];
 
 const PropertiesPage = () => {
   const { getBackground } = usePageBackgrounds();
@@ -107,8 +116,21 @@ const PropertiesPage = () => {
                 ))}
               </div>
             )}
-            <div className="mt-12 flex justify-center">
-            </div>
+            <nav aria-label="Featured property listings" className="mt-14 border-t pt-8">
+              <h2 className="text-2xl font-semibold mb-5">Featured Property Listings</h2>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {featuredListingLinks.map(([label, path]) => (
+                  <li key={path}>
+                    <Link
+                      className="block border border-border rounded-md p-4 text-primary hover:bg-muted/40 transition-colors"
+                      to={new URL(getCanonicalUrl(path)).pathname}
+                    >
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
           </div>
         </section>
       </main>

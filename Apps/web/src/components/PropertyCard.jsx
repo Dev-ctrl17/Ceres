@@ -4,6 +4,8 @@ import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getFileUrl, getOptimizedImageUrl } from "@/lib/supabaseService";
+import { getCanonicalUrl } from "@/lib/siteConfig.js";
+import { getCurrentPropertySlug } from "@/lib/slug.js";
 
 const PropertyCard = ({ property, featured = false }) => {
   // Prefer first image from images array, fall back to image_url
@@ -47,7 +49,7 @@ const PropertyCard = ({ property, featured = false }) => {
   };
 
   return (
-        <Link to={`/properties/${property.slug}`}>
+        <Link to={new URL(getCanonicalUrl(`/properties/${getCurrentPropertySlug(property.slug)}`)).pathname}>
       <Card
         className={`group overflow-hidden transition-all duration-300 ${
           featured

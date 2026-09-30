@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
+import { buildSeoDescription } from '@/lib/siteConfig.js';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { CheckCircle, Share2, HeartHandshake as Handshake, Network, TrendingUp, GraduationCap, Globe, Award, ArrowRight } from 'lucide-react';
@@ -82,7 +83,7 @@ const EPANPage = () => {
     <>
       <Helmet>
         <title>EPAN - Elite Property Agents Network | Luxury Properties Ltd</title>
-        <meta name="description" content="Join the Elite Property Agents Network (EPAN). A professional community for real estate excellence founded by Luxury Properties Ltd. Access verified listings and grow your network." />
+        <meta name="description" content={buildSeoDescription("Join Nigeria's Elite Property Agents Network for verified listings, professional training, market insights, and connections to grow your luxury real estate business.")} />
         <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/epan" />
         <meta property="og:title" content="EPAN - Elite Property Agents Network | Luxury Properties Ltd" />
         <meta property="og:description" content="Join the Elite Property Agents Network (EPAN). A professional community for real estate excellence founded by Luxury Properties Ltd." />

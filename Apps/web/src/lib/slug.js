@@ -24,26 +24,38 @@ export const generateSlug = (title) =>
  */
 export const isUUID = (value) => typeof value === 'string' && UUID_RE.test(value);
 
+const CURRENT_PROPERTY_SLUGS = {
+  'governor-s-consent-approved-building-plan': 'governors-consent',
+  'governor-s-consent-approved-building-plan-0f6d': 'governors-consent-approved-building-plan-2',
+  'governor-s-consent-approved-building-plan-dhu4': 'governors-consent-approved-building-plan-3',
+  'governor-s-consent-approved-building-plan-253k': 'governors-consent-approved-building-plan-4',
+  '-long-lease-investment-opportunity': 'long-lease-investment-opportunity',
+};
+
+export const getCurrentPropertySlug = (slug) => CURRENT_PROPERTY_SLUGS[slug] || slug;
+
 /**
  * Build a URL-safe slug, guaranteeing uniqueness against a Set of
  * already-taken slugs by appending "-2", "-3", etc.
  */
-export const uniqueSlug = (title, taken) => {
-  const base = generateSlug(title);
-  if (!base) {
-    // Empty title (e.g. untitled draft) — fall back to a random-ish suffix.
-    const fallback = Math.random().toString(36).slice(2, 10);
-    if (!taken.has(fallback)) {
-      taken.add(fallback);
-      return fallback;
-    }
-  }
+export const uniqueSlug = (title, taken, disambiguator = '') => {
+  const base = generateSlug(title) || generateSlug(disambiguator) || 'property-listing';
   if (!taken.has(base)) {
     taken.add(base);
     return base;
   }
+
+  const readableSuffix = generateSlug(disambiguator);
+  let candidate = readableSuffix && !base.endsWith(`-${readableSuffix}`)
+    ? `${base}-${readableSuffix}`
+    : `${base}-2`;
+  if (!taken.has(candidate)) {
+    taken.add(candidate);
+    return candidate;
+  }
+
   let counter = 2;
-  let candidate = `${base}-${counter}`;
+  candidate = `${base}-${counter}`;
   while (taken.has(candidate)) {
     counter++;
     candidate = `${base}-${counter}`;

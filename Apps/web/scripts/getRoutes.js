@@ -1,4 +1,5 @@
 ﻿import { createClient } from '@supabase/supabase-js';
+import { generateSlug, getCurrentPropertySlug } from '../src/lib/slug.js';
 import { readFileSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -33,7 +34,7 @@ const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY;
 
 // Static routes to always prerender. Keep this list in sync with public routes
 // so every core page receives its own HTML document at build time.
-const STATIC_ROUTES = [
+export const STATIC_ROUTES = [
   '/',
   '/about',
   '/contact',
@@ -82,7 +83,9 @@ export async function getAllRoutes() {
         console.warn('[getRoutes] Failed to fetch properties from Supabase:', error.message);
       } else if (properties && properties.length > 0) {
         properties.forEach(prop => {
-          if (prop.slug) routes.push(`/properties/${encodeURIComponent(prop.slug)}`);
+          if (prop.slug && prop.slug === generateSlug(prop.slug) && prop.slug === getCurrentPropertySlug(prop.slug)) {
+            routes.push(`/properties/${encodeURIComponent(prop.slug)}`);
+          }
         });
         console.log(`[getRoutes] Found ${properties.length} property routes`);
       } else {

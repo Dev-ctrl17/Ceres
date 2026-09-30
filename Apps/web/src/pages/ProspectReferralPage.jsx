@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet";
+import { buildSeoDescription } from "@/lib/siteConfig.js";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
@@ -90,7 +91,7 @@ export default function ProspectReferralForm() {
     <div className="prospect-referral-page">
       <Helmet>
         <title>Refer & Earn | Luxury Properties Ltd</title>
-        <meta name="description" content="Refer a promising property prospect to Luxury Properties Ltd." />
+        <meta name="description" content={buildSeoDescription("Refer a property buyer or seller to Luxury Properties Ltd. Our private client team handles introductions discreetly and keeps you informed as each opportunity progresses.")} />
         <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/refer-and-earn" />
       </Helmet>
       <Header />

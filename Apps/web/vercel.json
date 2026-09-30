@@ -2,6 +2,8 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/landing/shortlet-apartments-lagos", "destination": "/landing/shortlet-apartment-lagos.html" },
+    { "source": "/landing/houses-for-sale-lekki", "destination": "/landing/house-for-sale-lekki.html" },
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/googlec5d3e468141d2edd.html", "destination": "/googlec5d3e468141d2edd.html" },
@@ -19,13 +21,19 @@
     { "source": "/((?!api/|assets/|favicon|og-image|ai-catalog|llms|robots|sitemap|google|blog/|landing/).*)", "destination": "/index.html" }
   ],
   "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "luxurypropertiesltd.com.ng" }],
+      "destination": "https://www.luxurypropertiesltd.com.ng/:path*",
+      "permanent": true
+    },
     { "source": "/sitemap", "destination": "/sitemap.xml", "permanent": true },
     { "source": "/homes", "destination": "/properties", "permanent": true },
     { "source": "/listings", "destination": "/properties", "permanent": true },
     { "source": "/referrals", "destination": "/dashboard/referrals", "permanent": true },
     { "source": "/properties/lekki-penthouse-old", "destination": "/properties/lekki-penthouse", "permanent": true },
     { "source": "/properties/-long-lease-investment-opportunity", "destination": "/properties/long-lease-investment-opportunity", "permanent": true },
-    { "source": "/properties/governor-s-consent-approved-building-plan", "destination": "/properties/governors-consent-approved-building-plan", "permanent": true },
+    { "source": "/properties/governor-s-consent-approved-building-plan", "destination": "/properties/governors-consent", "permanent": true },
     { "source": "/properties/governor-s-consent-approved-building-plan-0f6d", "destination": "/properties/governors-consent-approved-building-plan-2", "permanent": true },
     { "source": "/properties/governor-s-consent-approved-building-plan-dhu4", "destination": "/properties/governors-consent-approved-building-plan-3", "permanent": true },
     { "source": "/properties/governor-s-consent-approved-building-plan-253k", "destination": "/properties/governors-consent-approved-building-plan-4", "permanent": true }

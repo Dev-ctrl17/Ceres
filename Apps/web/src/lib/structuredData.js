@@ -1,97 +1,68 @@
 // Structured Data (JSON-LD) generators for SEO/AEO/GEO
 // Automatically generates schema.org markup for property listings
-import { SITE_URL, buildAbsoluteUrl, buildImageUrl } from './siteConfig.js';
+import { buildAbsoluteUrl, buildImageUrl, getCanonicalUrl } from './siteConfig.js';
 
-export const generatePropertySchema = (property) => {
+const ORGANIZATION_ID = `${getCanonicalUrl('/')}#organization`;
+
+export const generatePropertySchema = (property, breadcrumbItems = []) => {
   if (!property) return null;
 
-  const images = property.images?.length 
-    ? property.images 
-    : property.image_url 
-      ? [property.image_url] 
-      : [];
+  const url = getCanonicalUrl(`/properties/${property.slug}`);
+  const title = String(property.title || '').trim() || 'Luxury Property';
+  const propertyType = String(property.property_type || '').toLowerCase();
+  const schemaType = propertyType.includes('apartment')
+    ? 'Apartment'
+    : /house|duplex|villa|terrace/.test(propertyType)
+      ? 'House'
+      : 'Residence';
+  const sourceImages = Array.isArray(property.images) ? property.images : [];
+  const images = [...sourceImages, property.image_url]
+    .filter((image) => typeof image === 'string' && image.trim())
+    .map((image) => buildImageUrl(image.trim()));
+  if (images.length === 0) images.push(getCanonicalUrl('/og-image.png'));
 
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "Residence",
-    "name": property.title,
-    "description": property.description || `${property.title} in ${property.location}`,
-    "url": buildAbsoluteUrl(`/properties/${property.slug}`),
-    "image": images.map(img => buildImageUrl(img)),
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "NGN",
-      "price": property.price,
-      "availability": "https://schema.org/InStock",
-      "priceValidUntil": new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // 30 days from now
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": property.address || property.location,
-      "addressLocality": property.city || "Lagos",
-      "addressRegion": property.state || "Lagos State",
-      "addressCountry": "NG",
+  const listing = {
+    '@type': schemaType,
+    '@id': `${url}#listing`,
+    name: title,
+    url,
+    image: [...new Set(images)],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: String(property.city || property.location || 'Lagos').trim(),
+      addressRegion: String(property.state || 'Lagos State').trim(),
+      addressCountry: 'NG',
     },
   };
-
-  // Add optional fields only if they exist
-  if (property.bedrooms) {
-    schema.numberOfRooms = property.bedrooms;
+  const description = String(property.description || '').replace(/\s+/g, ' ').trim();
+  if (description) listing.description = description;
+  if (property.address) listing.address.streetAddress = String(property.address).trim();
+  if (Number(property.bedrooms) > 0) listing.numberOfBedrooms = Number(property.bedrooms);
+  if (Number(property.bathrooms) > 0) listing.numberOfBathroomsTotal = Number(property.bathrooms);
+  if (Number(property.area_sqm) > 0) {
+    listing.floorSize = { '@type': 'QuantitativeValue', value: Number(property.area_sqm), unitCode: 'MTK' };
   }
 
-  if (property.area_sqm) {
-    schema.floorSize = {
-      "@type": "QuantitativeValue",
-      "value": property.area_sqm,
-      "unitText": "SQM",
+  const graph = [listing];
+  const price = Number(String(property.price || '').replace(/[^\d.]/g, ''));
+  if (Number.isFinite(price) && price > 0) {
+    listing.offers = {
+      '@type': 'Offer',
+      url,
+      priceCurrency: 'NGN',
+      price,
+      availability: 'https://schema.org/InStock',
+      seller: { '@id': ORGANIZATION_ID },
     };
   }
 
-  if (property.latitude && property.longitude) {
-    schema.geo = {
-      "@type": "GeoCoordinates",
-      "latitude": property.latitude,
-      "longitude": property.longitude,
-    };
+  const breadcrumb = generateBreadcrumbSchema(breadcrumbItems);
+  if (breadcrumb) {
+    const { '@context': context, ...breadcrumbEntity } = breadcrumb;
+    graph.push(breadcrumbEntity);
   }
 
-  if (property.year_built) {
-    schema.yearBuilt = property.year_built;
-  }
-
-  if (property.property_type) {
-    schema.additionalProperty = {
-      "@type": "Property",
-      "name": "Property Type",
-      "value": property.property_type,
-    };
-  }
-
-  if (property.tenure) {
-    schema.additionalProperty = {
-      ...schema.additionalProperty,
-      "name": "Tenure",
-      "value": property.tenure,
-    };
-  }
-
-  // Add amenities as features
-  if (property.amenities?.length > 0) {
-    const amenities = Array.isArray(property.amenities) 
-      ? property.amenities 
-      : typeof property.amenities === 'string'
-        ? property.amenities.split(',').map(a => a.trim())
-        : [];
-    
-    if (amenities.length > 0) {
-      schema.feature = amenities.map(amenity => ({
-        "@type": "PropertyFeature",
-        "name": amenity,
-      }));
-    }
-  }
-
-  return schema;
+  return { '@context': 'https://schema.org', '@graph': graph };
 };
 
 export const generateBreadcrumbSchema = (items) => {
@@ -104,7 +75,7 @@ export const generateBreadcrumbSchema = (items) => {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": item.item,
+      "item": getCanonicalUrl(item.item),
     })),
   };
 };
@@ -112,10 +83,11 @@ export const generateBreadcrumbSchema = (items) => {
 export const generateOrganizationSchema = () => {
   return {
     "@context": "https://schema.org",
-    "@type": ["RealEstateAgent", "LocalBusiness", "Organization"],
+    "@type": "RealEstateAgent",
+    "@id": ORGANIZATION_ID,
     "name": "Luxury Properties Ltd",
     "description": "Premium luxury real estate agency in Nigeria. Exclusive high-end listings, concierge service, and off-market properties in Lagos, Abuja, and across Nigeria.",
-    "url": "https://www.luxurypropertiesltd.com.ng",
+    "url": getCanonicalUrl('/'),
     "logo": "https://www.luxurypropertiesltd.com.ng/favicon.svg",
     "telephone": "+234-9056201176",
     "email": "info@luxurypropertiesltd.com.ng",

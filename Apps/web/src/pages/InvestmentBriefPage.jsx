@@ -5,7 +5,7 @@ import Footer from "@/components/Footer.jsx";
 import BrochureViewer from "@/components/BrochureViewer.jsx";
 import supabase from "@/lib/supabaseClient";
 import { getFileUrl } from "@/lib/supabaseService";
-import { buildAbsoluteUrl } from "@/lib/siteConfig.js";
+import { buildAbsoluteUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from "@/lib/siteConfig.js";
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { FileText, Calendar, Home, MapPin, Tag, ArrowLeft, ExternalLink, Phone, Mail } from "lucide-react";
@@ -154,25 +154,31 @@ const InvestmentBriefPage = () => {
   const pdfUrl = getPdfUrl();
   const thumbUrl = getThumbnailUrl();
   const property = brochure.property;
+  const canonicalUrl = getCanonicalUrl('/investment-brief');
+  const seoTitle = buildSeoTitle(`${brochure.title} Investment Brief`);
+  const seoDescription = buildSeoDescription(
+    brochure.description || `Review the investment brief for ${brochure.title}, including property details, location, pricing, and viewing information.`,
+    'Contact Luxury Properties Ltd for verified details and a private investment consultation.',
+  );
+  const socialImage = thumbUrl || getCanonicalUrl('/og-image.png');
 
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>{brochure.title} | Investment Brief | Ceres Properties</title>
-        <meta
-          name="description"
-          content={brochure.description || `Investment brochure for ${brochure.title}`}
-        />
-        <meta property="og:title" content={`${brochure.title} | Investment Brief`} />
-        <meta
-          property="og:description"
-          content={brochure.description || `View our investment brochure for ${brochure.title}`}
-        />
-        {thumbUrl && <meta property="og:image" content={thumbUrl} />}
+        <title>{seoTitle}</title>
+        <meta name="description" content={seoDescription} />
+        <meta property="og:title" content={seoTitle} />
+        <meta property="og:description" content={seoDescription} />
+        <meta property="og:image" content={socialImage} />
         <meta property="og:type" content="article" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="canonical" href={buildAbsoluteUrl('/investment-brief')} />
-        <meta property="og:url" content={buildAbsoluteUrl('/investment-brief')} />
+        <meta name="twitter:title" content={seoTitle} />
+        <meta name="twitter:description" content={seoDescription} />
+        <meta name="twitter:image" content={socialImage} />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <Header />
