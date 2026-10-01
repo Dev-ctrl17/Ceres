@@ -15,7 +15,10 @@ import supabase from '@/lib/supabaseClient';
 import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
 import { generatePropertySchema, generateAEOContent } from '@/lib/structuredData';
 import { isUUID } from '@/lib/slug.js';
-import { buildSeoDescription, buildSeoTitle, getCanonicalUrl } from '@/lib/siteConfig.js';
+import { getCanonicalUrl } from '@/lib/siteConfig.js';
+import { buildPropertySeo } from '@/lib/propertySeo.js';
+
+const PROPERTY_IMAGE_PLACEHOLDER = '/property-image-placeholder.svg';
 
 const relatedListingLinks = [
   ['Certificate of Occupancy properties', '/properties/c-of-o'],
@@ -81,7 +84,12 @@ const PropertyDetailsPage = () => {
   const [loading, setLoading] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [lightboxImageFailed, setLightboxImageFailed] = useState(false);
   const [activeSliderIndex, setActiveSliderIndex] = useState(0);
+
+  useEffect(() => {
+    setLightboxImageFailed(false);
+  }, [currentImageIndex, lightboxOpen]);
 
   useEffect(() => {
     const fetchProperty = async () => {
@@ -113,17 +121,44 @@ const PropertyDetailsPage = () => {
 
         setProperty(record);
 
-        // Fetch similar properties
-        const { data: similar, error: similarError } = await supabase
+
+        const targetPrice = Number(String(record.price || '').replace(/[^\d.]/g, ''));
+        let similarQuery = supabase
           .from('properties')
           .select('*')
-          .eq('property_type', record.property_type)
           .neq('id', record.id)
-          .order('created_at', { ascending: false })
-          .limit(3);
+          .order('created_at', { ascending: false });
+        if (record.location) similarQuery = similarQuery.ilike('location', `%${record.location}%`);
+        if (targetPrice > 0) {
+          similarQuery = similarQuery.gte('price', targetPrice * 0.5).lte('price', targetPrice * 1.5);
+        }
 
+        const { data: nearbyMatches, error: similarError } = await similarQuery.limit(4);
         if (!similarError) {
-          setSimilarProperties(similar || []);
+          let recommendations = nearbyMatches || [];
+          if (recommendations.length < 4 && record.location) {
+            const { data: areaMatches } = await supabase
+              .from('properties')
+              .select('*')
+              .ilike('location', `%${record.location}%`)
+              .neq('id', record.id)
+              .order('created_at', { ascending: false })
+              .limit(8);
+            const ids = new Set(recommendations.map((item) => item.id));
+            recommendations = [...recommendations, ...(areaMatches || []).filter((item) => !ids.has(item.id))];
+          }
+          if (recommendations.length < 4 && record.property_type) {
+            const { data: typeMatches } = await supabase
+              .from('properties')
+              .select('*')
+              .eq('property_type', record.property_type)
+              .neq('id', record.id)
+              .order('created_at', { ascending: false })
+              .limit(8);
+            const ids = new Set(recommendations.map((item) => item.id));
+            recommendations = [...recommendations, ...(typeMatches || []).filter((item) => !ids.has(item.id))];
+          }
+          setSimilarProperties(recommendations.slice(0, 4));
         }
       } catch (error) {
         console.error('Failed to fetch property:', error);
@@ -202,26 +237,9 @@ const PropertyDetailsPage = () => {
     }).format(price);
   };
 
-  // Generate dynamic SEO title and description
-  const bedrooms = Number(property.bedrooms) > 0 ? `${Number(property.bedrooms)} Bed ` : '';
-  const rawPropertyType = property.property_type || 'Property';
-  const propertyType = String(rawPropertyType).toUpperCase() === String(rawPropertyType)
-    ? String(rawPropertyType).toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase())
-    : rawPropertyType;
-  const location = property.location || property.city || property.state || 'Lagos';
-  const propertyTitle = String(property.title || `${bedrooms}${propertyType} in ${location}`).trim() || `${propertyType} in ${location}`;
-  const propertySlug = String(property.slug || '');
-  const consentListingNumber = propertySlug.match(/-(\d+)$/)?.[1];
-  const isConsentListing = /governors?-consent/i.test(propertySlug) || /governor['’]?s consent/i.test(propertyTitle);
-  const isConsentPlan = /governors?-consent-approved-building-plan/i.test(propertySlug);
-  const listingTitle = isConsentListing
-    ? `Governor's Consent ${isConsentPlan ? `Building Plan ${consentListingNumber || ''}` : consentListingNumber ? `Listing ${consentListingNumber}` : 'Property'} in ${location}`
-    : `${bedrooms}${propertyType} in ${location}`;
-  const seoTitle = buildSeoTitle(listingTitle);
-  const fallbackDescription = property.price
-    ? `${formatPrice(property.price)} ${propertyType} in ${location}. ${property.bedrooms || 'Multiple'} bedrooms, ${property.bathrooms || 'multiple'} bathrooms. Contact Luxury Properties Ltd for viewing.`
-    : `${propertyType} in ${location}. Contact Luxury Properties Ltd for verified details and viewing arrangements.`;
-  const seoDescription = buildSeoDescription(property.description || fallbackDescription, fallbackDescription);
+  const propertySeo = buildPropertySeo(property);
+  const propertyTitle = propertySeo.listingName || 'Luxury Property';
+  const location = propertySeo.area || property.location || property.city || property.state || '';
 
   const amenitiesList = property.amenities
     ? (Array.isArray(property.amenities)
@@ -238,19 +256,19 @@ const PropertyDetailsPage = () => {
   const propertySchema = generatePropertySchema(property, [
     { name: 'Home', item: getCanonicalUrl('/') },
     { name: 'Properties', item: getCanonicalUrl('/properties') },
-    { name: propertyTitle, item: canonicalUrl },
+    { name: propertySeo.heading, item: canonicalUrl },
   ]);
 
   return (
     <>
       <Helmet>
-        <title>{seoTitle}</title>
-        <meta name="description" content={seoDescription} />
+        <title>{propertySeo.title}</title>
+        <meta name="description" content={propertySeo.description} />
         <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph */}
-        <meta property="og:title" content={seoTitle} />
-        <meta property="og:description" content={seoDescription} />
+        <meta property="og:title" content={propertySeo.title} />
+        <meta property="og:description" content={propertySeo.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`} />
         <meta property="og:image" content={socialImage} />
@@ -259,8 +277,8 @@ const PropertyDetailsPage = () => {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={seoTitle} />
-        <meta name="twitter:description" content={seoDescription} />
+        <meta name="twitter:title" content={propertySeo.title} />
+        <meta name="twitter:description" content={propertySeo.description} />
         <meta name="twitter:image" content={socialImage} />
         
         {/* JSON-LD Structured Data */}
@@ -277,19 +295,19 @@ const PropertyDetailsPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
-              {images.length > 0 && (
-                <div className="mb-8 relative aspect-video rounded-2xl overflow-hidden">
-                  <ImageSlider
-                    images={images.map((img) => getImageUrl(img, 1200))}
-                    onSlideChange={(index) => setActiveSliderIndex(index)}
-                  />
-                  {/* Invisible overlay to handle lightbox clicks on the slider */}
+              <div className="mb-8 relative aspect-video rounded-2xl overflow-hidden">
+                <ImageSlider
+                  images={images.map((img) => getImageUrl(img, 1200))}
+                  alt={propertyTitle}
+                  onSlideChange={(index) => setActiveSliderIndex(index)}
+                />
+                {images.length > 0 && (
                   <div
                     className="absolute inset-0 z-10 cursor-pointer"
                     onClick={() => { setCurrentImageIndex(activeSliderIndex); setLightboxOpen(true); }}
                   />
-                </div>
-              )}
+                )}
+              </div>
 
               <div className="mb-8">
                 <nav aria-label="Breadcrumb" className="mb-5 text-sm text-muted-foreground">
@@ -298,16 +316,17 @@ const PropertyDetailsPage = () => {
                     <span>/</span>
                     <Link to="/properties" className="hover:text-primary">Properties</Link>
                     <span>/</span>
-                    <span className="text-foreground font-medium">{propertyTitle}</span>
+                    <span className="text-foreground font-medium">{propertySeo.heading}</span>
                   </div>
                 </nav>
 
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h1 className="text-3xl font-bold mb-2">{propertyTitle}</h1>
+                    <h1 className="text-3xl font-bold mb-2">{propertySeo.heading}</h1>
+                    <p className="text-lg text-muted-foreground mb-3">{propertyTitle}</p>
                     <div className="flex items-center text-muted-foreground mb-4">
                       <MapPin className="w-5 h-5 mr-2" />
-                      <span>{property.location || location}</span>
+                      <span>{location}</span>
                     </div>
                   </div>
                   {property.is_verified && (
@@ -332,15 +351,15 @@ const PropertyDetailsPage = () => {
                   </Link>
                 </div>
 
-                {(property.bedrooms || property.bathrooms) && (
+                {(Number(property.bedrooms) > 0 || Number(property.bathrooms) > 0) && (
                   <div className="flex items-center space-x-6 text-muted-foreground mb-8">
-                    {property.bedrooms && (
+                    {Number(property.bedrooms) > 0 && (
                       <div className="flex items-center">
                         <Bed className="w-5 h-5 mr-2" />
                         <span>{property.bedrooms} Bedrooms</span>
                       </div>
                     )}
-                    {property.bathrooms && (
+                    {Number(property.bathrooms) > 0 && (
                       <div className="flex items-center">
                         <Bath className="w-5 h-5 mr-2" />
                         <span>{property.bathrooms} Bathrooms</span>
@@ -493,7 +512,7 @@ const PropertyDetailsPage = () => {
                 <h2 className="text-2xl font-bold mb-4">Location</h2>
                 <div className="aspect-video rounded-2xl overflow-hidden">
                   <iframe
-                    src={`https://www.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
+                    src={`https://www.google.com/maps?q=${encodeURIComponent(property.location || location)}&output=embed`}
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -612,10 +631,11 @@ const PropertyDetailsPage = () => {
           
           <div className="max-w-6xl w-full">
             <img
-              src={getImageUrl(images[currentImageIndex], 1200)}
+              src={lightboxImageFailed ? PROPERTY_IMAGE_PLACEHOLDER : getImageUrl(images[currentImageIndex], 1200)}
               alt={`${property.title} ${currentImageIndex + 1}`}
               className="w-full h-auto rounded-xl max-h-[80vh] object-contain"
               loading="lazy"
+              onError={() => setLightboxImageFailed(true)}
             />
             <div className="flex justify-center space-x-4 mt-6">
               {images.map((_, index) => (

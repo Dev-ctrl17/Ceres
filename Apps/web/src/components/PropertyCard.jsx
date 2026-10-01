@@ -1,4 +1,4 @@
-﻿import React from "react";
+﻿import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,10 +6,19 @@ import { Badge } from "@/components/ui/badge";
 import { getFileUrl, getOptimizedImageUrl } from "@/lib/supabaseService";
 import { getCanonicalUrl } from "@/lib/siteConfig.js";
 import { getCurrentPropertySlug } from "@/lib/slug.js";
+import { getPropertyArea, getPropertyListingName } from "@/lib/propertySeo.js";
 
-const PropertyCard = ({ property, featured = false }) => {
+const PLACEHOLDER_IMAGE = "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg";
+const LOCAL_PLACEHOLDER_IMAGE = "/property-image-placeholder.svg";
+
+const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
   // Prefer first image from images array, fall back to image_url
   const firstImage = property.images?.length ? property.images[0] : property.image_url;
+  const rawImageUrl = firstImage ? getFileUrl("property-images", firstImage) || firstImage : "";
+  const [imageSource, setImageSource] = useState(firstImage ? "optimized" : "placeholder");
+  useEffect(() => {
+    setImageSource(firstImage ? "optimized" : "placeholder");
+  }, [firstImage]);
   const imageWidths = [320, 400, 640];
   const supportsSupabaseTransforms = firstImage &&
     (!/^https?:\/\//i.test(firstImage) || firstImage.includes('/storage/v1/'));
@@ -25,19 +34,44 @@ const PropertyCard = ({ property, featured = false }) => {
         url: getOptimizedImageUrl("property-images", firstImage, { width, quality: 70, format: 'avif' }),
       }))
     : [];
-  const imageUrl = webpSources[1]?.url || firstImage || "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=400&q=75&auto=format";
+  const imageUrl = imageSource === "optimized"
+    ? webpSources[1]?.url || rawImageUrl || PLACEHOLDER_IMAGE
+    : imageSource === "original"
+      ? rawImageUrl || PLACEHOLDER_IMAGE
+      : imageSource === "local-placeholder"
+        ? LOCAL_PLACEHOLDER_IMAGE
+        : PLACEHOLDER_IMAGE;
   const webpSrcSet = webpSources.filter(({ url }) => url).map(({ url, width }) => `${url} ${width}w`).join(', ');
   const avifSrcSet = avifSources.filter(({ url }) => url).map(({ url, width }) => `${url} ${width}w`).join(', ');
+  const area = getPropertyArea(property.address || property.location, property.city || property.location);
+  const listingName = getPropertyListingName(property);
+  const hasBedrooms = Number(property.bedrooms) > 0;
+  const hasBathrooms = Number(property.bathrooms) > 0;
+
+  const handleImageError = () => {
+    if (imageSource === "optimized" && rawImageUrl && rawImageUrl !== imageUrl) {
+      setImageSource("original");
+      return;
+    }
+    if (imageSource === "original") {
+      setImageSource("placeholder");
+      onImageUnavailable?.(property);
+      return;
+    }
+    if (imageSource === "placeholder") {
+      setImageSource("local-placeholder");
+    }
+  };
 
   // Generate descriptive alt text for better SEO and accessibility
   const getImageAltText = () => {
     if (!property) return 'Property image';
     const parts = [];
-    if (property.bedrooms) parts.push(`${property.bedrooms}-bedroom`);
+    if (hasBedrooms) parts.push(`${property.bedrooms}-bedroom`);
     if (property.property_type) parts.push(property.property_type);
     parts.push('in');
-    if (property.location) parts.push(property.location);
-    return parts.join(' ') || property.title || 'Property image';
+    if (area) parts.push(area);
+    return parts.join(' ') || listingName || 'Property image';
   };
 
   const formatPrice = (price) => {
@@ -59,15 +93,19 @@ const PropertyCard = ({ property, featured = false }) => {
       >
         <div className="relative overflow-hidden aspect-[4/3]">
           <picture>
-            {avifSrcSet && <source srcSet={avifSrcSet} type="image/avif" />}
-            {webpSrcSet && <source srcSet={webpSrcSet} type="image/webp" />}
+            {imageSource === "optimized" && avifSrcSet && <source srcSet={avifSrcSet} type="image/avif" />}
+            {imageSource === "optimized" && webpSrcSet && <source srcSet={webpSrcSet} type="image/webp" />}
             <img
               src={imageUrl}
               alt={getImageAltText()}
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              loading="lazy"
+              loading={featured ? "eager" : "lazy"}
               decoding="async"
-              srcSet={webpSrcSet || undefined}
+              width={800}
+              height={600}
+              fetchPriority={featured ? "high" : "auto"}
+              onError={handleImageError}
+              srcSet={imageSource === "optimized" ? webpSrcSet || undefined : undefined}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </picture>
@@ -91,11 +129,11 @@ const PropertyCard = ({ property, featured = false }) => {
         <CardContent className="p-5">
           <div className="mb-3">
             <h3 className="text-lg font-semibold mb-1 line-clamp-1 group-hover:text-primary transition-colors">
-              {property.title}
+              {listingName}
             </h3>
             <div className="flex items-center text-sm text-muted-foreground">
               <MapPin className="w-4 h-4 mr-1" />
-              <span className="line-clamp-1">{property.location}</span>
+              <span className="line-clamp-1">{area || property.location}</span>
             </div>
           </div>
 
@@ -108,15 +146,15 @@ const PropertyCard = ({ property, featured = false }) => {
             )}
           </div>
 
-          {(property.bedrooms || property.bathrooms) && (
+          {(hasBedrooms || hasBathrooms) && (
             <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-              {property.bedrooms && (
+              {hasBedrooms && (
                 <div className="flex items-center">
                   <Bed className="w-4 h-4 mr-1" />
                   <span>{property.bedrooms} Beds</span>
                 </div>
               )}
-              {property.bathrooms && (
+              {hasBathrooms && (
                 <div className="flex items-center">
                   <Bath className="w-4 h-4 mr-1" />
                   <span>{property.bathrooms} Baths</span>

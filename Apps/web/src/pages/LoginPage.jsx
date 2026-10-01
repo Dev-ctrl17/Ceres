@@ -40,7 +40,6 @@ const LoginPage = () => {
       <Helmet>
         <title>Admin Login - Luxury Properties Ltd</title>
         <meta name="description" content="Admin login portal for Luxury Properties Ltd" />
-        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="min-h-screen flex items-center justify-center bg-muted px-4 py-12">

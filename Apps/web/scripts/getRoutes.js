@@ -5,6 +5,9 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+const REDIRECTED_PROPERTY_SLUGS = new Set([
+  'exquiisite-5-bedroom-fully-detached-smart-luxury-residence',
+]);
 
 // Load .env file manually (Vite loads it for config, but this script may also be run standalone)
 function loadEnv() {
@@ -83,10 +86,12 @@ export async function getAllRoutes() {
         console.warn('[getRoutes] Failed to fetch properties from Supabase:', error.message);
       } else if (properties && properties.length > 0) {
         properties.forEach(prop => {
-          if (prop.slug && prop.slug === generateSlug(prop.slug) && prop.slug === getCurrentPropertySlug(prop.slug)) {
+          if (prop.slug && !REDIRECTED_PROPERTY_SLUGS.has(prop.slug) && prop.slug === generateSlug(prop.slug) && prop.slug === getCurrentPropertySlug(prop.slug)) {
             routes.push(`/properties/${encodeURIComponent(prop.slug)}`);
           }
         });
+        const listingPages = Math.ceil(properties.length / 24);
+        for (let page = 2; page <= listingPages; page++) routes.push(`/properties/page/${page}`);
         console.log(`[getRoutes] Found ${properties.length} property routes`);
       } else {
         console.warn('[getRoutes] No properties found in Supabase');

@@ -7,6 +7,7 @@ import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 import { getAllRoutes } from './scripts/getRoutes.js';
 import { buildImageUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from './src/lib/siteConfig.js';
+import { blogPostsData } from './src/data/blogPosts.js';
 
 const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -19,32 +20,37 @@ function escapeAttribute(value) {
 }
 
 function setMetaTag(html, attribute, name, value) {
-  const pattern = new RegExp(`<meta\\s+${attribute}=["']${name}["'][^>]*>`, 'i');
+  const pattern = new RegExp(`<meta\\b(?=[^>]*\\b${attribute}\\s*=["']${name}["'])[^>]*>`, 'gi');
   const tag = `<meta ${attribute}="${name}" content="${escapeAttribute(value)}">`;
-  return pattern.test(html) ? html.replace(pattern, tag) : html.replace('</head>', `${tag}\n</head>`);
+  return html.replace(pattern, '').replace('</head>', `${tag}\n</head>`);
 }
 
 function normalizeStaticMetadata(html, filePath) {
-  const canonical = html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1];
+  const canonicalTags = [...html.matchAll(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/gi)];
+  const canonical = canonicalTags.at(-1)?.[1];
   if (!canonical) return html;
 
   const normalizedCanonical = getCanonicalUrl(canonical);
-  const originalTitle = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1]?.trim() || '';
-  const originalDescription = html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1] || '';
+  const originalTitle = [...html.matchAll(/<title[^>]*>([\s\S]*?)<\/title>/gi)].at(-1)?.[1]?.trim() || '';
+  const descriptionTags = [...html.matchAll(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/gi)];
+  const originalDescription = descriptionTags.at(-1)?.[1] || '';
+  const isProperty = new URL(normalizedCanonical).pathname.startsWith('/properties/');
   if (originalTitle.length > 60) console.warn(`[seo-guard] Title exceeds 60 characters in ${filePath}: ${originalTitle.length}`);
   if (originalDescription.length < 120 || originalDescription.length > 155) {
     console.warn(`[seo-guard] Description must be 120-155 characters in ${filePath}: ${originalDescription.length}`);
   }
 
-  const title = buildSeoTitle(originalTitle);
-  const description = buildSeoDescription(originalDescription);
-  const image = html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']*)["']/i)?.[1];
+  const title = isProperty ? originalTitle : buildSeoTitle(originalTitle);
+  const description = isProperty ? originalDescription : buildSeoDescription(originalDescription);
+  const imageTags = [...html.matchAll(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']*)["']/gi)];
+  const image = imageTags.at(-1)?.[1];
   const socialImage = buildImageUrl(image || '/og-image.png');
   const isBlog = /[\\/]blog[\\/]/i.test(filePath)
     && !/[\\/]blog[\\/](?:index\.html|comparison[\\/]index\.html|listicle[\\/]index\.html)$/i.test(filePath);
   const canonicalTag = `<link rel="canonical" href="${escapeAttribute(normalizedCanonical)}">`;
-  let output = html.replace(/<title[^>]*>[\s\S]*?<\/title>/i, `<title>${escapeAttribute(title)}</title>`);
-  output = output.replace(/<link[^>]+rel=["']canonical["'][^>]+href=["'][^"']+["'][^>]*>/i, canonicalTag);
+  let output = html.replace(/<title[^>]*>[\s\S]*?<\/title>/gi, '');
+  output = output.replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, '');
+  output = output.replace('</head>', `<title>${escapeAttribute(title)}</title>\n${canonicalTag}\n</head>`);
   output = output.replace(/https?:\/\/(?:www\.)?luxurypropertiesltd\.com\.ng[^\s"'<>},\]]*/gi, (url) => getCanonicalUrl(url));
   output = setMetaTag(output, 'name', 'description', description);
   output = setMetaTag(output, 'property', 'og:title', title);
@@ -57,7 +63,33 @@ function normalizeStaticMetadata(html, filePath) {
   output = setMetaTag(output, 'name', 'twitter:card', 'summary_large_image');
   output = setMetaTag(output, 'name', 'twitter:title', title);
   output = setMetaTag(output, 'name', 'twitter:description', description);
-  return setMetaTag(output, 'name', 'twitter:image', socialImage);
+  output = setMetaTag(output, 'name', 'twitter:image', socialImage);
+
+  const blogSlug = new URL(normalizedCanonical).pathname.split('/').filter(Boolean).at(-1);
+  const post = blogPostsData.find((item) => item.slug === blogSlug);
+  if (post?.datePublished) {
+    output = output.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (tag, open, json, close) => {
+      try {
+        const schema = JSON.parse(json);
+        const enrichArticle = (value) => {
+          if (!value || typeof value !== 'object') return;
+          if (Array.isArray(value)) return value.forEach(enrichArticle);
+          if (['Article', 'BlogPosting', 'NewsArticle'].includes(value['@type'])) {
+            value.image ||= buildImageUrl(post.ogImage || '/og-image.png');
+            value.datePublished ||= post.datePublished;
+            if (post.dateModified) value.dateModified ||= post.dateModified;
+          }
+          Object.values(value).forEach(enrichArticle);
+        };
+        enrichArticle(schema);
+        return `${open}${JSON.stringify(schema)}${close}`;
+      } catch {
+        return tag;
+      }
+    });
+  }
+
+  return output;
 }
 
 function sanitizeBuiltAssets(directory) {
@@ -81,14 +113,25 @@ function sanitizeBuiltAssets(directory) {
       if (canonical && !/application\/ld\+json/i.test(text)) {
         const title = text.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1] || 'Luxury Properties Ltd Blog';
         const description = text.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1] || '';
+        const slug = new URL(canonical).pathname.split('/').filter(Boolean).at(-1);
+        const post = blogPostsData.find((item) => item.slug === slug);
+        const published = post?.datePublished;
+        const modified = post?.dateModified;
         const schema = JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'Article',
-          headline: title,
-          description,
+          headline: post?.title || title,
+          description: post?.metaDescription || description,
+          image: buildImageUrl(post?.ogImage || '/og-image.png'),
           mainEntityOfPage: canonical,
-          author: { '@type': 'Organization', name: 'Luxury Properties Ltd' },
-          publisher: { '@type': 'Organization', name: 'Luxury Properties Ltd' },
+          author: { '@type': 'Organization', name: 'Luxury Properties Ltd', url: getCanonicalUrl('/') },
+          publisher: {
+            '@type': 'Organization',
+            name: 'Luxury Properties Ltd',
+            logo: { '@type': 'ImageObject', url: getCanonicalUrl('/favicon.svg') },
+          },
+          ...(published ? { datePublished: published } : {}),
+          ...(modified ? { dateModified: modified } : {}),
         });
         text = text.replace('</head>', `<script type="application/ld+json">${schema}</script>\n</head>`);
       }
@@ -100,7 +143,8 @@ function sanitizeBuiltAssets(directory) {
 function validateRenderedHtml(html, route) {
   const title = html.match(/<title[^>]*>\s*([^<]+?)\s*<\/title>/i)?.[1]?.trim();
   const description = html.match(/<meta\s+[^>]*name=["']description["'][^>]*content=["']([^"']+)["'][^>]*>/i)?.[1]?.trim();
-  const h1 = html.match(/<h1\b[^>]*>\s*([\s\S]*?)\s*<\/h1>/i)?.[1]
+  const h1Matches = [...html.matchAll(/<h1\b[^>]*>\s*([\s\S]*?)\s*<\/h1>/gi)];
+  const h1 = h1Matches[0]?.[1]
     ?.replace(/<[^>]+>/g, '')
     .replace(/\s+/g, ' ')
     .trim();
@@ -115,8 +159,8 @@ function validateRenderedHtml(html, route) {
     ['name', 'twitter:image'],
   ];
 
-  if (!title || !description || !h1) {
-    throw new Error(`Missing page metadata for ${route} (title: ${Boolean(title)}, description: ${Boolean(description)}, h1: ${Boolean(h1)})`);
+  if (!title || !description || !h1 || h1Matches.length !== 1) {
+    throw new Error(`Invalid page metadata for ${route} (title: ${Boolean(title)}, description: ${Boolean(description)}, h1 count: ${h1Matches.length})`);
   }
 
   if (title.length > 60) console.warn(`[seo-guard] Title exceeds 60 characters in ${route}: ${title.length}`);

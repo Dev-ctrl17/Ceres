@@ -132,6 +132,7 @@ const HomePage = () => {
     [getBackground]
   );
   const [featuredProperties, setFeaturedProperties] = useState([]);
+  const [unavailableFeaturedIds, setUnavailableFeaturedIds] = useState(() => new Set());
   const [latestProperties, setLatestProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState("");
@@ -141,14 +142,14 @@ const HomePage = () => {
     const fetchProperties = async () => {
       try {
         const [featuredResult, latestResult] = await Promise.allSettled([
-          // "Featured" = top 5 most expensive Available properties.
+          // Select a larger candidate pool so listings without images can be skipped.
           // No manual toggle needed — this is fully automatic.
           supabase
             .from("properties")
             .select("*")
             .eq("status", "Available")
             .order("price", { ascending: false })
-            .limit(5),
+            .limit(30),
           supabase
             .from("properties")
             .select("*")
@@ -184,6 +185,11 @@ const HomePage = () => {
 
     fetchProperties();
   }, []);
+
+  const visibleFeaturedProperties = featuredProperties
+    .filter((property) => property.slug && (property.image_url || property.images?.some(Boolean)))
+    .filter((property) => !unavailableFeaturedIds.has(property.id))
+    .slice(0, 5);
 
   const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
@@ -364,11 +370,14 @@ const HomePage = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {featuredProperties.map((property) => (
+                {visibleFeaturedProperties.map((property) => (
                   <PropertyCard
                     key={property.id}
                     property={property}
                     featured={true}
+                    onImageUnavailable={(failedProperty) => {
+                      setUnavailableFeaturedIds((current) => new Set(current).add(failedProperty.id));
+                    }}
                   />
                 ))}
               </div>

@@ -1,0 +1,3134 @@
+{
+  "checkedAt": "2026-10-01T00:20:12.353Z",
+  "propertyCount": 26,
+  "rawUrlCount": 327,
+  "rawFailures": 0,
+  "cardFailures": 2,
+  "rawResults": [
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078361400.jpg",
+      "listings": [
+        "4-Bedroom Terrace Duplex [4-bedroom-terrace-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "application/octet-stream"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635373_mop2.jpeg",
+      "listings": [
+        "4-Bedroom Terrace Duplex [4-bedroom-terrace-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop3.jpeg",
+      "listings": [
+        "4-Bedroom Terrace Duplex [4-bedroom-terrace-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop4.jpeg",
+      "listings": [
+        "4-Bedroom Terrace Duplex [4-bedroom-terrace-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop5.jpeg",
+      "listings": [
+        "4-Bedroom Terrace Duplex [4-bedroom-terrace-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop6.jpeg",
+      "listings": [
+        "4-Bedroom Terrace Duplex [4-bedroom-terrace-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop7.jpeg",
+      "listings": [
+        "4-Bedroom Terrace Duplex [4-bedroom-terrace-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785005436664_7493.jpg",
+      "listings": [
+        "Luxurious 4 bedroom fully detached with Bq and Massive Swimming pool [luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785005436666_7495.jpg",
+      "listings": [
+        "Luxurious 4 bedroom fully detached with Bq and Massive Swimming pool [luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785005436667_7497.jpg",
+      "listings": [
+        "Luxurious 4 bedroom fully detached with Bq and Massive Swimming pool [luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785005436667_7499.jpg",
+      "listings": [
+        "Luxurious 4 bedroom fully detached with Bq and Massive Swimming pool [luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538190_7733.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538192_7736.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538192_7739.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538192_7742.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538192_7745.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538192_7748.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538192_7751.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538192_7754.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538192_7757.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538193_7763.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538193_7766.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538193_7769.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785107538193_7772.jpg",
+      "listings": [
+        "Governor’s Consent, Approved building plan [governor-s-consent-approved-building-plan]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782777669570.jpg",
+      "listings": [
+        "Governor's Consent [governors-consent]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "application/octet-stream"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782781052172_WhatsApp%20Image%202026-06-30%20at%2012.52.04%20AM.jpeg",
+      "listings": [
+        "Governor's Consent [governors-consent]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "listings": [
+        "5 Bedroom Fully Detached with BQ [5-bedroom-fully-detached-with-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "listings": [
+        "5 Bedroom Fully Detached with BQ [5-bedroom-fully-detached-with-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "listings": [
+        "5 Bedroom Fully Detached with BQ [5-bedroom-fully-detached-with-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "listings": [
+        "5 Bedroom Fully Detached with BQ [5-bedroom-fully-detached-with-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "listings": [
+        "5 Bedroom Fully Detached with BQ [5-bedroom-fully-detached-with-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "listings": [
+        "5 Bedroom Fully Detached with BQ [5-bedroom-fully-detached-with-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "listings": [
+        "5 Bedroom Fully Detached with BQ [5-bedroom-fully-detached-with-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248729_4795.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248731_4801.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248731_4846.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248731_4849.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248731_4851.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248731_4853.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248731_4855.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4857.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4859.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4861.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4863.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4865.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4867.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4869.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4871.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4873.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4875.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4877.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4879.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4881.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4883.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4885.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4887.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248732_4889.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4891.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4893.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4895.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4897.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4899.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4901.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4903.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4905.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4907.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4909.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4911.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4913.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783805248733_4915.jpg",
+      "listings": [
+        "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE [exquisite-5-bedroom-fully-detached-smart-luxury-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782778088945.jpg",
+      "listings": [
+        "C of O [c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "application/octet-stream"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771533_WhatsApp%20Image%202026-06-30%20at%2012.44.57%20AM.jpeg",
+      "listings": [
+        "C of O [c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.44.59%20AM.jpeg",
+      "listings": [
+        "C of O [c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.45.01%20AM.jpeg",
+      "listings": [
+        "C of O [c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.45.06%20AM.jpeg",
+      "listings": [
+        "C of O [c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.12%20AM.jpeg",
+      "listings": [
+        "C of O [c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.14%20AM.jpeg",
+      "listings": [
+        "C of O [c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.49%20PM%20(1).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.49%20PM%20(2).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.49%20PM%20(3).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.49%20PM%20(4).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.49%20PM.jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.50%20PM%20(1).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.50%20PM%20(2).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.50%20PM%20(3).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.50%20PM%20(4).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.50%20PM.jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.51%20PM%20(1).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.51%20PM%20(2).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.51%20PM%20(3).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.51%20PM%20(4).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.51%20PM.jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582463_WhatsApp%20Image%202026-07-11%20at%209.50.52%20PM%20(1).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582463_WhatsApp%20Image%202026-07-11%20at%209.50.52%20PM%20(2).jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783808582463_WhatsApp%20Image%202026-07-11%20at%209.50.52%20PM.jpeg",
+      "listings": [
+        " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ [4-bedroom-fully-detached-duplex-1-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.15%20PM%20(1).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.15%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.16%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.17%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.19%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.20%20PM%20(1).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.20%20PM%20(2).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.20%20PM%20(3).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.20%20PM%20(4).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.20%20PM%20(5).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.20%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.21%20PM%20(1).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.21%20PM%20(2).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.21%20PM%20(3).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.21%20PM%20(4).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.21%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.22%20PM%20(1).jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.22%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ  [4-bedroom-fully-detached-duplex-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256553_WhatsApp%20Image%202026-07-11%20at%209.57.41%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256554_WhatsApp%20Image%202026-07-11%20at%209.57.42%20PM%20(1).jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256554_WhatsApp%20Image%202026-07-11%20at%209.57.42%20PM%20(2).jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256554_WhatsApp%20Image%202026-07-11%20at%209.57.42%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256554_WhatsApp%20Image%202026-07-11%20at%209.57.43%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256554_WhatsApp%20Image%202026-07-11%20at%209.58.08%20PM%20(1).jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256554_WhatsApp%20Image%202026-07-11%20at%209.58.08%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256554_WhatsApp%20Image%202026-07-11%20at%209.58.09%20PM%20(1).jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812256554_WhatsApp%20Image%202026-07-11%20at%209.58.09%20PM.jpeg",
+      "listings": [
+        "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ  [4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813472_WhatsApp%20Image%202026-07-11%20at%2010.01.44%20PM%20(1).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813472_WhatsApp%20Image%202026-07-11%20at%2010.01.44%20PM%20(2).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813472_WhatsApp%20Image%202026-07-11%20at%2010.01.44%20PM%20(3).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813472_WhatsApp%20Image%202026-07-11%20at%2010.01.44%20PM%20(4).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.44%20PM.jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.45%20PM%20(1).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.45%20PM%20(2).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.45%20PM%20(3).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.45%20PM.jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.46%20PM%20(1).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.46%20PM%20(2).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.46%20PM%20(3).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.46%20PM%20(4).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.46%20PM.jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.47%20PM%20(1).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.47%20PM%20(2).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.47%20PM%20(3).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.47%20PM%20(4).jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1783812813473_WhatsApp%20Image%202026-07-11%20at%2010.01.47%20PM.jpeg",
+      "listings": [
+        "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ  [5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419342_5331.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419345_5334.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419345_5341.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5348.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5351.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5354.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5357.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5360.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5363.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5366.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5369.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5372.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5375.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5378.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419346_5381.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5384.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5387.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5390.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5393.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5396.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5399.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5402.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5405.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5408.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5411.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5414.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5417.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_5420.jpg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_10251211_175641.jpg.jpeg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1784043419347_WhatsApp%20Image%202026-07-14%20at%202.39.30%20PM.jpeg",
+      "listings": [
+        "Direct Letting [direct-letting]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782413719157.jpg",
+      "listings": [
+        "🏡 LONG LEASE INVESTMENT OPPORTUNITY [long-lease-investment-opportunity]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "application/octet-stream"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401768_1000609596.jpg",
+      "listings": [
+        "🏡 LONG LEASE INVESTMENT OPPORTUNITY [long-lease-investment-opportunity]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401769_1000609608.jpg",
+      "listings": [
+        "🏡 LONG LEASE INVESTMENT OPPORTUNITY [long-lease-investment-opportunity]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609615.jpg",
+      "listings": [
+        "🏡 LONG LEASE INVESTMENT OPPORTUNITY [long-lease-investment-opportunity]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609618.jpg",
+      "listings": [
+        "🏡 LONG LEASE INVESTMENT OPPORTUNITY [long-lease-investment-opportunity]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609621.jpg",
+      "listings": [
+        "🏡 LONG LEASE INVESTMENT OPPORTUNITY [long-lease-investment-opportunity]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609602.jpg",
+      "listings": [
+        "🏡 LONG LEASE INVESTMENT OPPORTUNITY [long-lease-investment-opportunity]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782779115749.jpg",
+      "listings": [
+        "Governor's Consent [governors-consent-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "application/octet-stream"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931883_WhatsApp%20Image%202026-06-30%20at%2012.37.26%20AM.jpeg",
+      "listings": [
+        "Governor's Consent [governors-consent-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM%20(1).jpeg",
+      "listings": [
+        "Governor's Consent [governors-consent-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM.jpeg",
+      "listings": [
+        "Governor's Consent [governors-consent-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.29%20AM.jpeg",
+      "listings": [
+        "Governor's Consent [governors-consent-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.32%20AM.jpeg",
+      "listings": [
+        "Governor's Consent [governors-consent-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.33%20AM.jpeg",
+      "listings": [
+        "Governor's Consent [governors-consent-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597684303.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107157_photo_6012722909396275005_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107159_photo_6012722909396275006_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107159_photo_6012722909396275007_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107159_photo_6012722909396275008_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107159_photo_6012722909396275009_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107159_photo_6012722909396275010_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275011_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275012_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275013_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275014_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275015_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275016_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275017_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275018_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275019_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598107160_photo_6012722909396275020_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-2]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598495904.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703322_photo_6012793565903260949_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703323_photo_6012793565903260950_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703323_photo_6012793565903260951_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260952_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260953_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260954_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260955_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260956_y.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260957_y.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260958_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260959_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260947_x.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785598703324_photo_6012793565903260948_y.jpg",
+      "listings": [
+        "JUST LISTED | COMING SOON TO GBAGADA PHASE 1 [just-listed-coming-soon-to-gbagada-phase-1]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785592347238.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785593967164_photo_6012722909396274920_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785593967165_photo_6012722909396274921_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785593967165_photo_6012722909396274922_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785593967165_photo_6012722909396274923_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785593967165_photo_6012722909396274924_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785593967165_photo_6012722909396274925_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785593967165_photo_6012722909396274926_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785593967165_photo_6012722909396274927_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-3]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754541_photo_6019418351093878215_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754541_photo_6019418351093878216_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754541_photo_6019418351093878217_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754541_photo_6019418351093878218_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754542_photo_6019418351093878219_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754542_photo_6019418351093878220_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754542_photo_6019418351093878221_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754542_photo_6019418351093878222_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785845754542_photo_6019418351093878223_y.jpg",
+      "listings": [
+        "The pantheon terraces  [the-pantheon-terraces]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785596493483.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239132_photo_6012722909396274988_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274989_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274990_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274991_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274992_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274993_y%20(1).jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274993_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274994_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274995_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274996_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239134_photo_6012722909396274997_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239135_photo_6012722909396274998_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239135_photo_6012722909396274999_y%20(1).jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239135_photo_6012722909396274999_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239135_photo_6012722909396275000_y%20(1).jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239135_photo_6012722909396275000_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239135_photo_6012722909396275001_y%20(1).jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785597239135_photo_6012722909396275001_y.jpg",
+      "listings": [
+        "Governor's Consent, Approved building plan [governors-consent-approved-building-plan-4]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.41%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.40%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.02.01%20PM%20(1).jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.02.01%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.58%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.56%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.55%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.53%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.52%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.50%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.47%20PM%20(1).jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.47%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.44%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.42%20PM.jpeg",
+      "listings": [
+        "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX [luxury-5-bedroom-fully-detached-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_2.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_3.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_4.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_7.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_8.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_9.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_10.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_11.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_12.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_13.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_14.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_15.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_16.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_17.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_18.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_19.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_20.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_21.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_22.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_23.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_24.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_25.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_26.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_27.jpg",
+      "listings": [
+        "LUXURY CONTEMPORARY RESIDENCE [luxury-contemporary-residence]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_2.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_3.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_5.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_7.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_8.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_9.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_10.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_11.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_12.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_13.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_14.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_15.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_16.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_17.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_18.jpg",
+      "listings": [
+        "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX [exclusive-5-bedroom-fully-detached-luxury-duplex]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_1.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_2.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_3.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_4.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_5.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_6.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_7.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_8.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_9.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_10.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_11.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_12.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_13.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_14.jpeg",
+      "listings": [
+        "Lagos State C of O  [lagos-state-c-of-o]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    },
+    {
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1789910851675.jpg",
+      "listings": [
+        "Luxury 2 bedroom Short-let apartment [no-slug]"
+      ],
+      "host": "Supabase Storage",
+      "status": 200,
+      "contentType": "image/jpeg"
+    }
+  ],
+  "cardResults": [
+    {
+      "title": "4-Bedroom Terrace Duplex",
+      "slug": "4-bedroom-terrace-duplex",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1782078361400.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Luxurious 4 bedroom fully detached with Bq and Massive Swimming pool",
+      "slug": "luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1785005436664_7493.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Governor’s Consent, Approved building plan",
+      "slug": "governor-s-consent-approved-building-plan",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1785107538190_7733.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Governor's Consent",
+      "slug": "governors-consent",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1782777669570.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "5 Bedroom Fully Detached with BQ",
+      "slug": "5-bedroom-fully-detached-with-bq",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE",
+      "slug": "exquisite-5-bedroom-fully-detached-smart-luxury-residence",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1783805248729_4795.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "C of O",
+      "slug": "c-of-o",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1782778088945.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": " 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ",
+      "slug": "4-bedroom-fully-detached-duplex-1-bedroom-bq",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1783808582462_WhatsApp%20Image%202026-07-11%20at%209.50.49%20PM%20(1).jpeg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ ",
+      "slug": "4-bedroom-fully-detached-duplex-2-bedroom-bq",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1783809340311_WhatsApp%20Image%202026-07-11%20at%209.53.15%20PM%20(1).jpeg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ ",
+      "slug": "4-bedroom-semi-detached-duplex-2-kitchens-2-bedroom-bq",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1783812256553_WhatsApp%20Image%202026-07-11%20at%209.57.41%20PM.jpeg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ ",
+      "slug": "5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1783812813472_WhatsApp%20Image%202026-07-11%20at%2010.01.44%20PM%20(1).jpeg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Clean and affordable 4 bedroom terrace",
+      "slug": null,
+      "status": "MISSING",
+      "url": ""
+    },
+    {
+      "title": "Direct Letting",
+      "slug": "direct-letting",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1784043419342_5331.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "2 bedroom furnished apartment",
+      "slug": null,
+      "status": "MISSING",
+      "url": ""
+    },
+    {
+      "title": "🏡 LONG LEASE INVESTMENT OPPORTUNITY",
+      "slug": "long-lease-investment-opportunity",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1782413719157.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Governor's Consent",
+      "slug": "governors-consent-2",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1782779115749.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Governor's Consent, Approved building plan",
+      "slug": "governors-consent-approved-building-plan-2",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1785597684303.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "JUST LISTED | COMING SOON TO GBAGADA PHASE 1",
+      "slug": "just-listed-coming-soon-to-gbagada-phase-1",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1785598495904.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Governor's Consent, Approved building plan",
+      "slug": "governors-consent-approved-building-plan-3",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1785592347238.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "The pantheon terraces ",
+      "slug": "the-pantheon-terraces",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1785845754541_photo_6019418351093878215_y.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Governor's Consent, Approved building plan",
+      "slug": "governors-consent-approved-building-plan-4",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1785596493483.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX",
+      "slug": "luxury-5-bedroom-fully-detached-duplex",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1787427017629_WhatsApp%20Image%202026-08-21%20at%203.01.41%20PM.jpeg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "LUXURY CONTEMPORARY RESIDENCE",
+      "slug": "luxury-contemporary-residence",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX",
+      "slug": "exclusive-5-bedroom-fully-detached-luxury-duplex",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Lagos State C of O ",
+      "slug": "lagos-state-c-of-o",
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/4cadb07b-e979-4f5d-9546-2afc72bbc121/lagos_state_c_of_o_1.jpeg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    },
+    {
+      "title": "Luxury 2 bedroom Short-let apartment",
+      "slug": null,
+      "url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/render/image/public/property-images/properties/1789910851675.jpg?width=400&format=webp&quality=75",
+      "status": 200,
+      "contentType": "image/webp"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title description">
+  <title id="title">Photo coming soon</title>
+  <desc id="description">Luxury Properties Ltd placeholder for a property photo that is not available.</desc>
+  <rect width="1200" height="900" fill="#071827"/>
+  <rect x="38" y="38" width="1124" height="824" fill="none" stroke="#c7a35b" stroke-width="3"/>
+  <path d="M530 360 600 300l70 60v94h-42v-62h-56v62h-42z" fill="none" stroke="#c7a35b" stroke-width="5" stroke-linejoin="round"/>
+  <text x="600" y="510" fill="#ffffff" font-family="Georgia,serif" font-size="34" text-anchor="middle" letter-spacing="3">LUXURY PROPERTIES LTD</text>
+  <line x1="465" y1="550" x2="735" y2="550" stroke="#c7a35b" stroke-width="2"/>
+  <text x="600" y="615" fill="#d6dce3" font-family="Arial,sans-serif" font-size="28" text-anchor="middle">PHOTO COMING SOON</text>
+</svg>

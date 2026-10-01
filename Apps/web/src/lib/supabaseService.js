@@ -1,4 +1,6 @@
 import supabase from './supabaseClient';
+import { normalizeSupabaseStoragePath } from './supabaseStoragePath.js';
+export { normalizeSupabaseStoragePath } from './supabaseStoragePath.js';
 
 // ============================================================
 // GENERIC CRUD HELPERS
@@ -192,29 +194,6 @@ export async function deleteFile(bucket, filePath) {
 /**
  * Get the public URL for a file
  */
-export function normalizeSupabaseStoragePath(filePath) {
-  if (!filePath) return filePath;
-  const asString = String(filePath).trim();
-
-  if (/^https?:\/\//i.test(asString)) {
-    const storageObject = asString.match(/\/storage\/v1\/(?:object|render\/image)\/(?:public\/|authenticated\/)?[^/]+\/(.+)$/);
-    if (storageObject) {
-      return storageObject[1]
-        .split('/')
-        .map((segment) => encodeURIComponent(decodeURIComponent(segment)))
-        .join('/');
-    }
-
-    return asString;
-  }
-
-  return asString
-    .replace(/^\/+/, '')
-    .split('/')
-    .map((segment) => encodeURIComponent(decodeURIComponent(segment)))
-    .join('/');
-}
-
 export function getFileUrl(bucket, filePath) {
   if (!filePath) return null;
   if (/^https?:\/\//i.test(filePath)) {

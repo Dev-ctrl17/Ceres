@@ -304,10 +304,10 @@ const InvestmentBriefPage = () => {
 
                   {/* Bedrooms / Bathrooms */}
                   <div className="flex gap-4 text-sm text-gray-600">
-                    {property.bedrooms && (
+                    {Number(property.bedrooms) > 0 && (
                       <span>{property.bedrooms} Bed</span>
                     )}
-                    {property.bathrooms && (
+                    {Number(property.bathrooms) > 0 && (
                       <span>{property.bathrooms} Bath</span>
                     )}
                   </div>

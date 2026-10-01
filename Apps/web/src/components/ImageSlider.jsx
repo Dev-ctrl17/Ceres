@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const toCssUrl = (value) => {
-  if (!value) return 'none';
-  return `url(${String(value).replace(/\(/g, '%28').replace(/\)/g, '%29').replace(/#/g, '%23').replace(/\?/g, '%3F')})`;
-};
+const PLACEHOLDER_IMAGE = 'https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg';
+const LOCAL_PLACEHOLDER_IMAGE = '/property-image-placeholder.svg';
 
-const ImageSlider = ({ images, onSlideChange }) => {
+const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
+  const [failedImages, setFailedImages] = useState(() => new Map());
+  const galleryImages = images?.length ? images : [null];
 
   const goToSlide = useCallback((index) => {
     setCurrentIndex(index);
@@ -17,19 +17,19 @@ const ImageSlider = ({ images, onSlideChange }) => {
 
   const goToPrev = useCallback(() => {
     setCurrentIndex((prev) => {
-      const next = prev === 0 ? images.length - 1 : prev - 1;
+      const next = prev === 0 ? galleryImages.length - 1 : prev - 1;
       onSlideChange?.(next);
       return next;
     });
-  }, [images.length, onSlideChange]);
+  }, [galleryImages.length, onSlideChange]);
 
   const goToNext = useCallback(() => {
     setCurrentIndex((prev) => {
-      const next = prev === images.length - 1 ? 0 : prev + 1;
+      const next = prev === galleryImages.length - 1 ? 0 : prev + 1;
       onSlideChange?.(next);
       return next;
     });
-  }, [images.length, onSlideChange]);
+  }, [galleryImages.length, onSlideChange]);
 
   useEffect(() => {
     if (isHovering) return;
@@ -39,30 +39,38 @@ const ImageSlider = ({ images, onSlideChange }) => {
     return () => clearInterval(interval);
   }, [isHovering, goToNext]);
 
-  if (!images || images.length === 0) return null;
-
   return (
     <div
       className="relative w-full h-full overflow-hidden"
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      {images.map((src, index) => (
-        <div
-          key={index}
-          className="absolute inset-0 w-full h-full transition-opacity duration-800 ease-in-out"
-          style={{
-            backgroundImage: toCssUrl(src),
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: index === currentIndex ? 1 : 0,
-            zIndex: index === currentIndex ? 1 : 0,
-          }}
-        />
-      ))}
+      {galleryImages.map((src, index) => {
+        const stage = failedImages.get(index) || (src ? 'original' : 'placeholder');
+        const imageSrc = stage === 'original' ? src : stage === 'local' ? LOCAL_PLACEHOLDER_IMAGE : PLACEHOLDER_IMAGE;
+        return (
+          <img
+            key={index}
+            src={imageSrc}
+            alt={stage === 'original' ? alt : 'Property photo coming soon'}
+            width={1200}
+            height={675}
+            loading={index === currentIndex ? 'eager' : 'lazy'}
+            decoding="async"
+            onError={() => {
+              setFailedImages((previous) => new Map(previous).set(index, stage === 'original' ? 'placeholder' : 'local'));
+            }}
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-800 ease-in-out"
+            style={{
+              opacity: index === currentIndex ? 1 : 0,
+              zIndex: index === currentIndex ? 1 : 0,
+            }}
+          />
+        );
+      })}
 
       {/* Navigation Arrows - only show if more than 1 image */}
-      {images.length > 1 && (
+      {galleryImages.length > 1 && (
         <>
           <button
             onClick={(e) => { e.stopPropagation(); goToPrev(); }}
@@ -82,9 +90,9 @@ const ImageSlider = ({ images, onSlideChange }) => {
       )}
 
       {/* Dot Indicators - only show if more than 1 image */}
-      {images.length > 1 && (
+      {galleryImages.length > 1 && (
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-          {images.map((_, index) => (
+          {galleryImages.map((_, index) => (
             <button
               key={index}
               onClick={(e) => { e.stopPropagation(); goToSlide(index); }}

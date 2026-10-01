@@ -42,7 +42,7 @@ const OngoingProjectsPage = () => {
 
       <Header />
       
-      <main>
+      <main data-prerender-ready={loading ? 'false' : 'true'}>
         {/* Hero Section */}
         <section
           className="relative py-24 text-white bg-cover bg-center"

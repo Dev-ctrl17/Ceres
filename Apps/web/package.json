@@ -5,9 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "node --max-old-space-size=4096 node_modules/vite/bin/vite.js",
-    "build": "node scripts/generate-sitemap.mjs && node prerender.mjs",
+    "build": "node scripts/generate-sitemap.mjs && node prerender.mjs && node scripts/validate-sitemap.mjs && node scripts/audit-internal-links.mjs && node scripts/validate-structured-data.mjs",
     "preview": "vite preview",
     "sitemap": "node scripts/generate-sitemap.mjs",
+    "seo:check": "node scripts/validate-sitemap.mjs && node scripts/audit-internal-links.mjs && node scripts/validate-structured-data.mjs",
+    "indexnow": "node scripts/submit-indexnow.mjs",
+    "images:check": "node scripts/check-property-images.mjs",
+    "images:check:report": "node scripts/check-property-images.mjs --report",
+    "images:placeholder:upload": "node scripts/upload-property-placeholder.mjs",
     "prerender": "node prerender.mjs"
   },
   "dependencies": {
@@ -57,6 +62,7 @@
     "react-resizable-panels": "^4.7.2",
     "react-router-dom": "^6.28.0",
     "recharts": "^3.10.1",
+    "sharp": "^0.35.5",
     "sonner": "^2.0.7",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",

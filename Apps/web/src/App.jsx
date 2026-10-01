@@ -13,13 +13,14 @@ import { generateOrganizationSchema } from "./lib/structuredData.js";
 const RouteCanonicalMetadata = () => {
   const { pathname, search } = useLocation();
   const canonicalUrl = getCanonicalUrl(pathname);
-  const isContactVariant = pathname === '/contact' && Boolean(search);
+  const isNoindexRoute = /^\/(?:login|admin(?:\/|$)|consultant-portal(?:\/|$)|register(?:\/|$)|refer-and-earn(?:\/|$)|thank-you(?:\/|$))/.test(pathname);
+  const isNoindexVariant = isNoindexRoute || Boolean(search);
 
   return (
     <Helmet>
       <link rel="canonical" href={canonicalUrl} />
       <meta property="og:url" content={canonicalUrl} />
-      {isContactVariant && <meta name="robots" content="noindex,follow" />}
+      {isNoindexVariant && <meta name="robots" content="noindex, follow" />}
       <script type="application/ld+json">{JSON.stringify(generateOrganizationSchema())}</script>
     </Helmet>
   );
@@ -80,6 +81,7 @@ const AnimatedRoutes = () => {
       <Route path="/rent" element={<RentPage />} />
       <Route path="/sell" element={<SellPage />} />
       <Route path="/properties" element={<PropertiesPage />} />
+      <Route path="/properties/page/:page" element={<PropertiesPage />} />
       <Route path="/properties/:slug" element={<PropertyDetailsPage />} />
       <Route path="/services" element={<ServicesPage />} />
       <Route path="/blog" element={<BlogPage />} />

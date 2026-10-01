@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
@@ -15,10 +15,13 @@ const featuredListingLinks = [
   ['Detached home with swimming pool', '/properties/luxurious-4-bedroom-fully-detached-with-bq-and-massive-swimming-pool'],
   ["Governor's Consent listing", '/properties/governors-consent-2'],
   ['4-bedroom detached duplex with BQ', '/properties/4-bedroom-fully-detached-duplex-1-bedroom-bq'],
+  ['Long-lease investment opportunity', '/properties/long-lease-investment-opportunity'],
 ];
 
 const PropertiesPage = () => {
   const { getBackground } = usePageBackgrounds();
+  const { page: pageParam } = useParams();
+  const page = Math.max(1, Number.parseInt(pageParam, 10) || 1);
   const [searchParams] = useSearchParams();
   const [filters, setFilters] = useState({
     location: searchParams.get('location') || '',
@@ -32,7 +35,9 @@ const PropertiesPage = () => {
     bedrooms: searchParams.get('beds') || '',
     status: searchParams.get('status') || '',
   });
-  const { properties, loading } = useProperties(appliedFilters);
+  const { properties, loading, total } = useProperties({ ...appliedFilters, page });
+  const canonicalUrl = getCanonicalUrl(page > 1 ? `/properties/page/${page}` : '/properties');
+  const pageCount = Math.ceil(total / 24);
 
   const handleSearch = () => {
     setAppliedFilters(filters);
@@ -43,11 +48,11 @@ const PropertiesPage = () => {
       <Helmet>
         <title>Luxury Homes for Sale in Lagos | Luxury Properties Ltd</title>
         <meta name="description" content="Browse our complete collection of verified luxury properties for sale and rent in Lagos, Abuja, and across Nigeria. Filter by location, type, and budget." />
-        <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/properties" />
+        <link rel="canonical" href={canonicalUrl} />
         <meta property="og:title" content="Browse Properties for Sale & Rent in Lagos | Luxury Properties Ltd" />
         <meta property="og:description" content="Browse our complete collection of verified luxury properties for sale and rent across Nigeria. Filter by location, type, and budget." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/properties" />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -69,7 +74,7 @@ const PropertiesPage = () => {
 
       <Header />
 
-      <main>
+      <main data-prerender-ready={loading ? 'false' : 'true'}>
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
@@ -115,6 +120,20 @@ const PropertiesPage = () => {
                   <PropertyCard key={property.id} property={property} featured={property.is_featured} className="property-card" />
                 ))}
               </div>
+            )}
+            {pageCount > 1 && (
+              <nav aria-label="Property listing pages" className="mt-10 flex flex-wrap items-center justify-center gap-2">
+                {Array.from({ length: pageCount }, (_, index) => index + 1).map((pageNumber) => (
+                  <a
+                    key={pageNumber}
+                    href={pageNumber === 1 ? '/properties' : `/properties/page/${pageNumber}`}
+                    aria-current={pageNumber === page ? 'page' : undefined}
+                    className={`min-w-10 rounded-md border px-3 py-2 text-center ${pageNumber === page ? 'border-primary bg-primary text-primary-foreground' : 'border-border hover:bg-muted'}`}
+                  >
+                    {pageNumber}
+                  </a>
+                ))}
+              </nav>
             )}
             <nav aria-label="Featured property listings" className="mt-14 border-t pt-8">
               <h2 className="text-2xl font-semibold mb-5">Featured Property Listings</h2>

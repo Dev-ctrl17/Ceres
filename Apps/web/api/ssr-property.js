@@ -90,23 +90,22 @@ export default async function handler(req, res) {
             : [])
       : [];
 
-    const images = property.images?.length ? property.images : property.image_url ? [property.image_url] : [];
+    const images = (property.images?.length ? property.images : property.image_url ? [property.image_url] : [])
+      .filter((image) => typeof image === 'string' && image.trim())
+      .map((image) => image.startsWith('http') ? image : `https://www.luxurypropertiesltd.com.ng/${image.replace(/^\/+/, '')}`);
     const primaryImage = images[0] || 'https://www.luxurypropertiesltd.com.ng/og-image.png';
+    const location = String(property.location || property.city || 'Nigeria').trim();
+    const propertyName = String(property.title || `Property in ${location}`).trim();
+    const price = Number(String(property.price ?? '').replace(/[^\d.]/g, ''));
 
     // Build JSON-LD structured data
     const jsonLd = {
       "@context": "https://schema.org/",
       "@type": "Residence",
-      "name": property.title,
-      "description": property.description || `${property.title} in ${property.location}`,
-      "image": images.map(img => img.startsWith('http') ? img : `https://www.luxurypropertiesltd.com.ng${img}`),
-            "url": `https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`,
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "NGN",
-        "price": property.price,
-        "availability": "https://schema.org/InStock"
-      },
+      "name": propertyName,
+      "description": String(property.description || `${propertyName} in ${location}`).trim(),
+      "image": images.length ? images : [primaryImage],
+      "url": `https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": property.address || property.location,
@@ -126,6 +125,14 @@ export default async function handler(req, res) {
         "longitude": property.longitude
       } : undefined
     };
+    if (Number.isFinite(price) && price > 0) {
+      jsonLd.offers = {
+        "@type": "Offer",
+        "priceCurrency": "NGN",
+        "price": price,
+        "availability": "https://schema.org/InStock"
+      };
+    }
 
     // Remove undefined values from JSON-LD
     Object.keys(jsonLd).forEach(key => {
@@ -215,6 +222,7 @@ export default async function handler(req, res) {
 </html>`;
 
     res.setHeader('Content-Type', 'text/html');
+    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400');
     res.setHeader('X-Robots-Tag', 'index, follow, max-snippet:-1, max-image-preview:large');
     res.status(200).send(html);
   } catch (error) {

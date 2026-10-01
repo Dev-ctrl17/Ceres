@@ -16,6 +16,7 @@ import {
   getPropertyImageName,
   getUniqueUploadFolder,
 } from "@/lib/propertyImageNaming";
+import { isSupportedPropertyImage, preparePropertyImage } from "@/lib/propertyImageProcessing.js";
 import {
   Package,
   Users,
@@ -74,6 +75,8 @@ const PROPERTY_TYPES = [
   "Bungalow",
   "Terrace",
 ];
+const PROPERTY_IMAGE_PLACEHOLDER = "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg";
+const LOCAL_PROPERTY_IMAGE_PLACEHOLDER = "/property-image-placeholder.svg";
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -437,12 +440,14 @@ const PropertiesManager = () => {
   const [imageFiles, setImageFiles] = useState([]);
   const [imagePreviews, setImagePreviews] = useState([]);
   const [existingImages, setExistingImages] = useState([]);
+  const [imageErrorIds, setImageErrorIds] = useState(() => new Set());
+  const [localPlaceholderIds, setLocalPlaceholderIds] = useState(() => new Set());
   const [videoFile, setVideoFile] = useState(null);
   const [existingVideoUrl, setExistingVideoUrl] = useState("");
   const [uploading, setUploading] = useState(false);
   const { register, handleSubmit, reset, formState: { errors }, control } = useForm();
 
-  const MIN_IMAGES = 2;
+  const MIN_IMAGES = 1;
   const MAX_IMAGES = 50;
 
   const fetchProperties = async () => {
@@ -507,8 +512,9 @@ const PropertiesManager = () => {
     setDialogOpen(true);
   };
 
-  const handleFileSelect = (e) => {
-    const files = Array.from(e.target.files || []);
+  const handleFileSelect = async (e) => {
+    const input = e.currentTarget;
+    const files = Array.from(input.files || []);
     const totalImages = existingImages.length + imageFiles.length + files.length;
 
     if (totalImages > MAX_IMAGES) {
@@ -520,21 +526,25 @@ const PropertiesManager = () => {
       return;
     }
 
-    // Validate file types
-    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp"];
-    const invalidFiles = files.filter((f) => !validTypes.includes(f.type));
+    const invalidFiles = files.filter((file) =>
+      !isSupportedPropertyImage(file) || file.size > 10 * 1024 * 1024
+    );
     if (invalidFiles.length > 0) {
-      toast.error("Only JPG, PNG, GIF, and WebP images are allowed");
+      toast.error("Choose JPG, PNG, or WebP images under 10 MB");
+      input.value = "";
       return;
     }
 
-    // Create local blob previews for the UI
-    const newPreviews = files.map((file) => URL.createObjectURL(file));
-    setImageFiles((prev) => [...prev, ...files]);
-    setImagePreviews((prev) => [...prev, ...newPreviews]);
-
-    // Reset the file input so the same file can be re-selected if needed
-    e.target.value = "";
+    try {
+      const preparedFiles = await Promise.all(files.map((file) => preparePropertyImage(file)));
+      const newPreviews = preparedFiles.map((file) => URL.createObjectURL(file));
+      setImageFiles((prev) => [...prev, ...preparedFiles]);
+      setImagePreviews((prev) => [...prev, ...newPreviews]);
+    } catch (error) {
+      toast.error(error.message || "Unable to validate the selected images");
+    } finally {
+      input.value = "";
+    }
   };
 
   const removeNewImage = (index) => {
@@ -621,13 +631,14 @@ const PropertiesManager = () => {
           imageFilesToUpload.push({ file, originalPath: null });
         });
 
-        const uploadedPaths = await Promise.all(
-          imageFilesToUpload.map(({ file }, index) =>
-            uploadFile("property-images", file, uploadFolder, {
-              fileName: getPropertyImageName(data.title, file.name, index),
-            })
-          )
+        const preparedFiles = await Promise.all(
+          imageFilesToUpload.map(({ file }) => preparePropertyImage(file))
         );
+        const uploadedPaths = await Promise.all(preparedFiles.map((file, index) =>
+          uploadFile("property-images", file, uploadFolder, {
+            fileName: getPropertyImageName(data.title, file.name, index),
+          })
+        ));
 
         uploadedUrls = uploadedPaths.map(
           (path) => getFileUrl("property-images", path) || path
@@ -918,7 +929,7 @@ const PropertiesManager = () => {
                       </div>
                       <input
                         type="file"
-                        accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                        accept="image/jpeg,image/png,image/webp"
                         multiple
                         className="hidden"
                         onChange={handleFileSelect}
@@ -928,7 +939,7 @@ const PropertiesManager = () => {
                 )}
 
                 <p className="text-xs text-muted-foreground mt-1">
-                  JPG, PNG, GIF, WebP — max 10 MB each
+                  JPG, PNG, WebP — converted to WebP, max 10 MB each
                 </p>
               </div>
 
@@ -1026,21 +1037,35 @@ const PropertiesManager = () => {
               <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
                 {(() => {
                   const url = getPropertyImageUrl(p);
-                  return url ? (
+                  const imageFailed = imageErrorIds.has(p.id);
+                  const hasStoredImage = Boolean(p.image_url || p.images?.some(Boolean));
+                  return (
                     <img
-                      src={url}
-                      alt={p.title}
+                      src={imageFailed || !url
+                        ? localPlaceholderIds.has(p.id) ? LOCAL_PROPERTY_IMAGE_PLACEHOLDER : PROPERTY_IMAGE_PLACEHOLDER
+                        : url}
+                      alt={imageFailed || !hasStoredImage ? `Photo coming soon for ${p.title}` : p.title}
                       className="w-full h-full object-cover"
+                      onError={() => {
+                        if (!imageFailed && url) {
+                          setImageErrorIds((current) => new Set(current).add(p.id));
+                        } else if (!localPlaceholderIds.has(p.id)) {
+                          setLocalPlaceholderIds((current) => new Set(current).add(p.id));
+                        }
+                      }}
                     />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
-                      No img
-                    </div>
                   );
                 })()}
               </div>
               <div>
-                <h3 className="font-semibold">{p.title}</h3>
+                <div className="flex flex-wrap items-center gap-2">
+                  <h3 className="font-semibold">{p.title}</h3>
+                  {(!(p.image_url || p.images?.some(Boolean)) || imageErrorIds.has(p.id)) && (
+                    <span className="rounded border border-amber-300 bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900">
+                      Missing image
+                    </span>
+                  )}
+                </div>
                 <p className="text-sm text-gray-500">{p.location}</p>
                 <p className="text-xs text-gray-400">
                   ₦{p.price?.toLocaleString()} | {p.bedrooms || "?"} bed /{" "}

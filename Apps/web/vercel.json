@@ -32,6 +32,7 @@
     { "source": "/listings", "destination": "/properties", "permanent": true },
     { "source": "/referrals", "destination": "/dashboard/referrals", "permanent": true },
     { "source": "/properties/lekki-penthouse-old", "destination": "/properties/lekki-penthouse", "permanent": true },
+    { "source": "/properties/exquiisite-5-bedroom-fully-detached-smart-luxury-residence", "destination": "/properties/exquisite-5-bedroom-fully-detached-smart-luxury-residence", "permanent": true },
     { "source": "/properties/-long-lease-investment-opportunity", "destination": "/properties/long-lease-investment-opportunity", "permanent": true },
     { "source": "/properties/governor-s-consent-approved-building-plan", "destination": "/properties/governors-consent", "permanent": true },
     { "source": "/properties/governor-s-consent-approved-building-plan-0f6d", "destination": "/properties/governors-consent-approved-building-plan-2", "permanent": true },

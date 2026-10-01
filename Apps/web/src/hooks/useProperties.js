@@ -3,15 +3,18 @@ import supabase from '@/lib/supabaseClient';
 
 export const useProperties = (filters = {}) => {
   const [properties, setProperties] = useState([]);
+  const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProperties = async () => {
       setLoading(true);
       try {
+        const page = Math.max(1, Number.parseInt(filters.page, 10) || 1);
+        const pageSize = 24;
         let query = supabase
           .from('properties')
-          .select('*')
+          .select('*', { count: 'exact' })
           .order('created_at', { ascending: false });
 
         if (filters.status && filters.status !== 'all') {
@@ -33,12 +36,14 @@ export const useProperties = (filters = {}) => {
           query = query.gte('bedrooms', parseInt(filters.bedrooms));
         }
 
-        const { data, error } = await query;
+        const { data, count, error } = await query.range((page - 1) * pageSize, page * pageSize - 1);
         if (error) throw error;
         setProperties(data || []);
+        setTotal(count || 0);
       } catch (err) {
         console.error('useProperties error:', err);
         setProperties([]);
+        setTotal(0);
       } finally {
         setLoading(false);
       }
@@ -51,7 +56,8 @@ export const useProperties = (filters = {}) => {
     filters.propertyType,
     filters.location,
     filters.bedrooms,
+    filters.page,
   ]);
 
-  return { properties, loading };
+  return { properties, loading, total };
 };

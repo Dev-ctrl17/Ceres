@@ -75,6 +75,7 @@ const BlogPostPage = () => {
   }
 
   const canonicalUrl = getCanonicalUrl(`/blog/${post.slug}`);
+  const postMetadata = blogPostsData.find((item) => item.slug === post.slug) || {};
   const title = buildSeoTitle(post.title);
   const description = buildSeoDescription(post.metaDescription, 'Explore verified luxury real estate insights from Luxury Properties Ltd.');
   const socialImage = buildImageUrl(post.ogImage || '/og-image.png');
@@ -91,8 +92,8 @@ const BlogPostPage = () => {
         image: socialImage,
         author: { '@id': `${getCanonicalUrl('/')}#organization` },
         publisher: { '@id': `${getCanonicalUrl('/')}#organization` },
-        datePublished: post.datePublished || undefined,
-        dateModified: post.dateModified || undefined,
+        datePublished: post.datePublished || postMetadata.datePublished || undefined,
+        dateModified: post.dateModified || postMetadata.dateModified || undefined,
       },
       ...(faqSchema ? [{ '@type': faqSchema['@type'], mainEntity: faqSchema.mainEntity }] : []),
     ],

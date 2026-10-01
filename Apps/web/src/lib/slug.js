@@ -30,6 +30,7 @@ const CURRENT_PROPERTY_SLUGS = {
   'governor-s-consent-approved-building-plan-dhu4': 'governors-consent-approved-building-plan-3',
   'governor-s-consent-approved-building-plan-253k': 'governors-consent-approved-building-plan-4',
   '-long-lease-investment-opportunity': 'long-lease-investment-opportunity',
+  'exquiisite-5-bedroom-fully-detached-smart-luxury-residence': 'exquisite-5-bedroom-fully-detached-smart-luxury-residence',
 };
 
 export const getCurrentPropertySlug = (slug) => CURRENT_PROPERTY_SLUGS[slug] || slug;

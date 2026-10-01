@@ -1,6 +1,7 @@
 // Structured Data (JSON-LD) generators for SEO/AEO/GEO
 // Automatically generates schema.org markup for property listings
 import { buildAbsoluteUrl, buildImageUrl, getCanonicalUrl } from './siteConfig.js';
+import { buildPropertySeo } from './propertySeo.js';
 
 const ORGANIZATION_ID = `${getCanonicalUrl('/')}#organization`;
 
@@ -8,7 +9,7 @@ export const generatePropertySchema = (property, breadcrumbItems = []) => {
   if (!property) return null;
 
   const url = getCanonicalUrl(`/properties/${property.slug}`);
-  const title = String(property.title || '').trim() || 'Luxury Property';
+  const title = buildPropertySeo(property).heading;
   const propertyType = String(property.property_type || '').toLowerCase();
   const schemaType = propertyType.includes('apartment')
     ? 'Apartment'
