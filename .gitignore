@@ -1,2 +1,15 @@
-pocketbase/pb_data/
+.env
+.env.*
+node_modules/
+Apps/web/backup/
+Apps/web/backup-compress/
+Apps/web/compare/
+Apps/web/hashes.json
+Apps/web/property-image-audit.json
+Apps/web/dedupe-report.csv
+Apps/web/deletion-manifest.csv
+Apps/web/deferred-candidates.csv
+Apps/web/compression-plan.csv
+Apps/web/cleanup-log.csv
+Apps/web/compress-log.csv
 node_modules/

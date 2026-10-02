@@ -110,10 +110,7 @@ const ContactForm = ({ propertyId = null }) => {
         toast.success("Message saved successfully. We will contact you soon.");
       }
 
-      // Forward the conversion event to the single GTM data layer.
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        event: "generate_lead",
+      window.gtag("event", "conversion", {
         send_to: "AW-18266097278/EKtWCKiq4tIcEP6M-oVE",
       });
 
