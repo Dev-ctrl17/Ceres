@@ -10,6 +10,25 @@ import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { FileText, Calendar, Home, MapPin, Tag, ArrowLeft, ExternalLink, Phone, Mail } from "lucide-react";
 
+const InvestmentBriefFallbackMetadata = () => (
+  <Helmet>
+    <title>Investment Brief | Luxury Properties Ltd</title>
+    <meta name="description" content="Explore property investment briefs from Luxury Properties Ltd, with key details, pricing, and private consultation options for investors in Nigeria." />
+    <meta property="og:title" content="Investment Brief | Luxury Properties Ltd" />
+    <meta property="og:description" content="Explore property investment briefs from Luxury Properties Ltd, with key details, pricing, and private consultation options for investors in Nigeria." />
+    <meta property="og:image" content={getCanonicalUrl('/og-image.png')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={getCanonicalUrl('/investment-brief')} />
+    <meta property="og:site_name" content="Luxury Properties Ltd" />
+    <meta property="og:locale" content="en_NG" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Investment Brief | Luxury Properties Ltd" />
+    <meta name="twitter:description" content="Explore property investment briefs from Luxury Properties Ltd, with key details, pricing, and private consultation options for investors in Nigeria." />
+    <meta name="twitter:image" content={getCanonicalUrl('/og-image.png')} />
+    <link rel="canonical" href={getCanonicalUrl('/investment-brief')} />
+  </Helmet>
+);
+
 const InvestmentBriefPage = () => {
   const { slug, id } = useParams();
   const [brochure, setBrochure] = useState(null);
@@ -109,6 +128,7 @@ const InvestmentBriefPage = () => {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
+        <InvestmentBriefFallbackMetadata />
         <Header />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center justify-center min-h-[60vh]">
@@ -126,6 +146,7 @@ const InvestmentBriefPage = () => {
   if (error || !brochure) {
     return (
       <div className="min-h-screen bg-gray-50">
+        <InvestmentBriefFallbackMetadata />
         <Header />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-center justify-center min-h-[60vh]">

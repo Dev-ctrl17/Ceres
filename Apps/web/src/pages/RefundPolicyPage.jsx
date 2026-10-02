@@ -8,7 +8,7 @@ const RefundPolicyPage = () => {
     <>
       <Helmet>
         <title>Refund Policy — Luxury Properties Ltd</title>
-        <meta name="description" content="Refund Policy for Luxury Properties Ltd. Learn about our refund and cancellation terms for real estate services." />
+        <meta name="description" content="Review our refund and cancellation terms for Luxury Properties Ltd property viewings, bookings, and real estate services in Nigeria." />
         <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/refund-policy" />
         <meta property="og:title" content="Refund Policy — Luxury Properties Ltd" />
         <meta property="og:description" content="Refund Policy for Luxury Properties Ltd. Learn about our refund and cancellation terms." />

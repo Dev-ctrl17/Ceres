@@ -8,7 +8,7 @@ const TermsConditionsPage = () => {
     <>
       <Helmet>
         <title>Terms & Conditions — Luxury Properties Ltd</title>
-        <meta name="description" content="Terms and Conditions for using Luxury Properties Ltd services. Read our terms for property listings, enquiries, and website usage." />
+        <meta name="description" content="Review the terms governing use of the Luxury Properties Ltd website, property listings, enquiries, and real estate services across Nigeria." />
         <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/terms-conditions" />
         <meta property="og:title" content="Terms & Conditions — Luxury Properties Ltd" />
         <meta property="og:description" content="Terms and Conditions for using Luxury Properties Ltd services." />

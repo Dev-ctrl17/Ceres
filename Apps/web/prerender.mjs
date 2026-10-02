@@ -142,7 +142,8 @@ function sanitizeBuiltAssets(directory) {
 
 function validateRenderedHtml(html, route) {
   const title = html.match(/<title[^>]*>\s*([^<]+?)\s*<\/title>/i)?.[1]?.trim();
-  const description = html.match(/<meta\s+[^>]*name=["']description["'][^>]*content=["']([^"']+)["'][^>]*>/i)?.[1]?.trim();
+  const descriptionTag = html.match(/<meta\b[^>]*>/gi)?.find((tag) => /\bname=["']description["']/i.test(tag));
+  const description = descriptionTag?.match(/\bcontent=["']([^"']+)["']/i)?.[1]?.trim();
   const h1Matches = [...html.matchAll(/<h1\b[^>]*>\s*([\s\S]*?)\s*<\/h1>/gi)];
   const h1 = h1Matches[0]?.[1]
     ?.replace(/<[^>]+>/g, '')
