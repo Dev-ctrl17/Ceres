@@ -5,6 +5,7 @@ import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 
 const TeamMemberCard = ({ member, index, failedPhotos, setFailedPhotos, getMemberBio }) => {
@@ -32,7 +33,7 @@ const TeamMemberCard = ({ member, index, failedPhotos, setFailedPhotos, getMembe
         <div className="relative aspect-[4/5] min-w-0 self-stretch overflow-hidden bg-[#f1ece3] md:aspect-auto md:h-full md:min-h-0">
           {member.photo && !failedPhotos.has(member.id) ? (
             <img
-              src={getOptimizedImageUrl("team-photos", member.photo, { width: 700, quality: 80, format: 'webp' }) || getFileUrl("team-photos", member.photo) || member.photo}
+              src={toCdnUrl(getOptimizedImageUrl("team-photos", member.photo, { width: 700, quality: 80, format: 'webp' }) || getFileUrl("team-photos", member.photo) || member.photo)}
               alt={`${member.name} - ${member.position || 'Team member'}`}
               className="block h-full w-full object-cover object-[center_20%] transition-transform duration-500 group-hover:scale-[1.02]"
               loading="lazy"

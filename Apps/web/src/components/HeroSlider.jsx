@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 import { Link } from 'react-router-dom';
 
 const HeroSlider = ({ slides, onSlideChange }) => {
@@ -96,7 +97,7 @@ const HeroSlider = ({ slides, onSlideChange }) => {
               - width/height prevent CLS
             */}
             <img
-              src={slide.image}
+              src={toCdnUrl(slide.image)}
               alt={slide.title || `Luxury real estate slide ${index + 1}`}
               className="hero-slide-img w-full h-full object-cover"
               fetchpriority={index === 0 ? 'high' : 'auto'}

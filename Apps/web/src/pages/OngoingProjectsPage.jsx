@@ -7,6 +7,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { getFileUrl } from '@/lib/supabaseService';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 import { useOngoingProjects } from '@/hooks/useOngoingProjects';
 
 const statusBadgeColor = (status) => {
@@ -99,7 +100,7 @@ const OngoingProjectsPage = () => {
                             };
                             return images.length > 0 ? (
                               <img
-                                src={resolve(images[0])}
+                                src={toCdnUrl(resolve(images[0]))}
                                 alt={project.name}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 loading="lazy"

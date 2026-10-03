@@ -6,6 +6,7 @@ import { useAgents } from '@/hooks/useAgents';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Phone, Star } from 'lucide-react';
 import { getFileUrl } from '@/lib/supabaseService';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const animationStyles = `
   @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
@@ -90,7 +91,7 @@ const AgentsPage = () => {
                         <div className="w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden bg-muted">
                           {photoUrl ? (
                             <img
-                              src={photoUrl}
+                              src={toCdnUrl(photoUrl)}
                               alt={agent.name}
                               className="w-full h-full object-cover"
                               loading="lazy"

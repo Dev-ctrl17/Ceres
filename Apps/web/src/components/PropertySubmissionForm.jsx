@@ -19,6 +19,7 @@ import {
 import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { getFileUrl, uploadFile } from "@/lib/supabaseService";
+import { toCdnUrl } from "@/lib/imageUrl.js";
 import {
   getPropertyImageName,
   getUniqueUploadFolder,
@@ -111,7 +112,7 @@ const PropertySubmissionForm = () => {
                 uploadFolder,
                 { fileName: getPropertyImageName(data.title, file.name, index) }
               );
-              return getFileUrl("property-images", path) || path;
+              return toCdnUrl(getFileUrl("property-images", path) || path);
             } catch (uploadError) {
               console.warn("Image upload failed for file, skipping:", uploadError);
               return null;

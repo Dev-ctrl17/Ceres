@@ -7,6 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Phone, Star } from 'lucide-react';
 import { getFileUrl } from '@/lib/supabaseService';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const AgentsPage = () => {
   const { agents, loading } = useAgents();
@@ -119,7 +120,7 @@ const AgentsPage = () => {
                         <div className="relative w-full aspect-[4/3] bg-[#12211d] overflow-hidden">
                           {photoUrl ? (
                             <img
-                              src={photoUrl}
+                              src={toCdnUrl(photoUrl)}
                               alt={agent.name}
                               className="w-full h-full object-cover"
                               style={{ filter: 'saturate(0.92) contrast(1.03)' }}

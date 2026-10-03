@@ -9,6 +9,7 @@ import { buildAbsoluteUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl }
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { FileText, Calendar, Home, MapPin, Tag, ArrowLeft, ExternalLink, Phone, Mail } from "lucide-react";
+import { toCdnUrl } from "@/lib/imageUrl.js";
 
 const InvestmentBriefFallbackMetadata = () => (
   <Helmet>
@@ -181,7 +182,7 @@ const InvestmentBriefPage = () => {
     brochure.description || `Review the investment brief for ${brochure.title}, including property details, location, pricing, and viewing information.`,
     'Contact Luxury Properties Ltd for verified details and a private investment consultation.',
   );
-  const socialImage = thumbUrl || getCanonicalUrl('/og-image.png');
+  const socialImage = toCdnUrl(thumbUrl || getCanonicalUrl('/og-image.png'));
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -236,7 +237,7 @@ const InvestmentBriefPage = () => {
                 {thumbUrl && (
                   <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0 hidden sm:block">
                     <img
-                      src={thumbUrl}
+                      src={toCdnUrl(thumbUrl)}
                       alt={brochure.title}
                       className="w-full h-full object-cover"
                     />

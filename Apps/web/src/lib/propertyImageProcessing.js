@@ -1,5 +1,8 @@
+import imageCompression from 'browser-image-compression';
+
 const allowedMimeTypes = new Set(['image/jpeg', 'image/png', 'image/webp']);
 const allowedExtensions = new Set(['jpg', 'jpeg', 'png', 'webp']);
+const MAX_IMAGE_BYTES = 400_000;
 
 export function isSupportedPropertyImage(file) {
   if (!file) return false;
@@ -9,7 +12,7 @@ export function isSupportedPropertyImage(file) {
   return allowedMimeTypes.has(mime) || (!mime && allowedExtensions.has(extension));
 }
 
-export async function preparePropertyImage(file, { maxDimension = 1600, quality = 0.86 } = {}) {
+export async function preparePropertyImage(file, { maxDimension = 1600 } = {}) {
   if (!isSupportedPropertyImage(file)) {
     throw new Error('Property images must be JPG, PNG, or WebP files.');
   }
@@ -26,25 +29,33 @@ export async function preparePropertyImage(file, { maxDimension = 1600, quality 
   }
 
   try {
-    if (String(file.type || '').toLowerCase() === 'image/webp' && Math.max(bitmap.width, bitmap.height) <= maxDimension) {
+    if (
+      String(file.type || '').toLowerCase() === 'image/webp' &&
+      file.size < MAX_IMAGE_BYTES &&
+      Math.max(bitmap.width, bitmap.height) <= maxDimension
+    ) {
       return file;
     }
-    const scale = Math.min(1, maxDimension / Math.max(bitmap.width, bitmap.height));
-    const width = Math.max(1, Math.round(bitmap.width * scale));
-    const height = Math.max(1, Math.round(bitmap.height * scale));
-    const canvas = document.createElement('canvas');
-    canvas.width = width;
-    canvas.height = height;
-    const context = canvas.getContext('2d');
-    if (!context) throw new Error('Unable to prepare image canvas.');
-    context.drawImage(bitmap, 0, 0, width, height);
-
-    const blob = await new Promise((resolve) => canvas.toBlob(resolve, 'image/webp', quality));
-    if (!blob || blob.type !== 'image/webp') throw new Error(`Unable to convert ${file.name} to WebP.`);
-
-    const baseName = String(file.name || 'property-image').replace(/\.[^.]+$/, '');
-    return new File([blob], `${baseName}.webp`, { type: 'image/webp', lastModified: Date.now() });
   } finally {
     bitmap.close?.();
   }
+
+  let compressedFile;
+  try {
+    compressedFile = await imageCompression(file, {
+      maxSizeMB: 0.38,
+      maxWidthOrHeight: maxDimension,
+      useWebWorker: true,
+      fileType: 'image/webp',
+      initialQuality: 0.82,
+      maxIteration: 12,
+    });
+  } catch (error) {
+    throw new Error(`Unable to compress image: ${file.name}`, { cause: error });
+  }
+
+  if (compressedFile.type !== 'image/webp' || compressedFile.size >= MAX_IMAGE_BYTES) {
+    throw new Error('The compressed image must be WebP and smaller than 400 KB.');
+  }
+  return compressedFile;
 }

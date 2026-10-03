@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { relatedPosts } from '@/data/relatedPosts.js';
 import { getCanonicalUrl } from '@/lib/siteConfig.js';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const ContentImage = ({ src, alt, caption }) => (
   <figure className="my-8">
     <img
-      src={src}
+      src={toCdnUrl(src)}
       alt={alt}
       className="w-full rounded-lg shadow-md"
       loading="lazy"

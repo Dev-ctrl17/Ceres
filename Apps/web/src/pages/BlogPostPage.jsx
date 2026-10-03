@@ -7,6 +7,7 @@ import BlogPostLayout from '@/components/BlogPostLayout.jsx';
 import { blogPostsData, loadPostContent } from '@/data/blogPosts.js';
 import { generateFAQSchema } from '@/lib/structuredData';
 import { buildImageUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from '@/lib/siteConfig.js';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -132,7 +133,7 @@ const BlogPostPage = () => {
           <div className="absolute inset-0 z-0">
             {post.ogImage ? (
               <img
-                src={post.ogImage}
+                src={toCdnUrl(post.ogImage)}
                 alt={post.title}
                 className="w-full h-full object-cover"
               />

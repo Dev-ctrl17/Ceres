@@ -6,6 +6,8 @@
 // HTTPS URLs. Status values are normalized to the EstateOS enum.
 // ============================================================
 
+import { toCdnUrl } from '../../../src/lib/imageUrl.js';
+
 // EstateOS status enum
 export const ESTATEOS_STATUSES = ['DRAFT', 'PRIVATE', 'ACTIVE', 'SOLD', 'RENTED', 'ARCHIVED'];
 
@@ -144,13 +146,13 @@ export function normalizeImages(images, origin = DEFAULT_ORIGIN) {
 
     // Already absolute HTTPS
     if (raw.startsWith('https://')) {
-      normalized.push(raw);
+      normalized.push(toCdnUrl(raw));
       continue;
     }
 
     // HTTP -> upgrade to HTTPS
     if (raw.startsWith('http://')) {
-      normalized.push(`https://${raw.slice('http://'.length)}`);
+      normalized.push(toCdnUrl(`https://${raw.slice('http://'.length)}`));
       continue;
     }
 
@@ -161,7 +163,7 @@ export function normalizeImages(images, origin = DEFAULT_ORIGIN) {
         .split('/')
         .map((segment) => encodeURIComponent(segment))
         .join('/');
-      normalized.push(`https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/${safePath}`);
+      normalized.push(toCdnUrl(`https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/${safePath}`));
       continue;
     }
 

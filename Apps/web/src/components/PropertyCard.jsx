@@ -3,56 +3,35 @@ import { Link } from "react-router-dom";
 import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getFileUrl, getOptimizedImageUrl } from "@/lib/supabaseService";
+import { getFileUrl } from "@/lib/supabaseService";
 import { getCanonicalUrl } from "@/lib/siteConfig.js";
 import { getCurrentPropertySlug } from "@/lib/slug.js";
 import { getPropertyArea, getPropertyListingName } from "@/lib/propertySeo.js";
+import { toCdnUrl } from "@/lib/imageUrl.js";
 
-const PLACEHOLDER_IMAGE = "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg";
+const PLACEHOLDER_IMAGE = toCdnUrl("https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg");
 const LOCAL_PLACEHOLDER_IMAGE = "/property-image-placeholder.svg";
 
 const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
-  // Prefer first image from images array, fall back to image_url
-  const firstImage = property.images?.length ? property.images[0] : property.image_url;
-  const rawImageUrl = firstImage ? getFileUrl("property-images", firstImage) || firstImage : "";
-  const [imageSource, setImageSource] = useState(firstImage ? "optimized" : "placeholder");
+  const firstImage = property.image_url || property.first_image || property.images?.[0];
+  const rawImageUrl = firstImage
+    ? toCdnUrl(getFileUrl("property-images", firstImage) || firstImage)
+    : "";
+  const [imageSource, setImageSource] = useState(firstImage ? "original" : "placeholder");
   useEffect(() => {
-    setImageSource(firstImage ? "optimized" : "placeholder");
+    setImageSource(firstImage ? "original" : "placeholder");
   }, [firstImage]);
-  const imageWidths = [320, 400, 640];
-  const supportsSupabaseTransforms = firstImage &&
-    (!/^https?:\/\//i.test(firstImage) || firstImage.includes('/storage/v1/'));
-  const webpSources = supportsSupabaseTransforms
-    ? imageWidths.map((width) => ({
-        width,
-        url: getOptimizedImageUrl("property-images", firstImage, { width, quality: 75, format: 'webp' }),
-      }))
-    : [];
-  const avifSources = supportsSupabaseTransforms
-    ? imageWidths.map((width) => ({
-        width,
-        url: getOptimizedImageUrl("property-images", firstImage, { width, quality: 70, format: 'avif' }),
-      }))
-    : [];
-  const imageUrl = imageSource === "optimized"
-    ? webpSources[1]?.url || rawImageUrl || PLACEHOLDER_IMAGE
-    : imageSource === "original"
-      ? rawImageUrl || PLACEHOLDER_IMAGE
-      : imageSource === "local-placeholder"
-        ? LOCAL_PLACEHOLDER_IMAGE
-        : PLACEHOLDER_IMAGE;
-  const webpSrcSet = webpSources.filter(({ url }) => url).map(({ url, width }) => `${url} ${width}w`).join(', ');
-  const avifSrcSet = avifSources.filter(({ url }) => url).map(({ url, width }) => `${url} ${width}w`).join(', ');
+  const imageUrl = imageSource === "original"
+    ? rawImageUrl || PLACEHOLDER_IMAGE
+    : imageSource === "local-placeholder"
+      ? LOCAL_PLACEHOLDER_IMAGE
+      : PLACEHOLDER_IMAGE;
   const area = getPropertyArea(property.address || property.location, property.city || property.location);
   const listingName = getPropertyListingName(property);
   const hasBedrooms = Number(property.bedrooms) > 0;
   const hasBathrooms = Number(property.bathrooms) > 0;
 
   const handleImageError = () => {
-    if (imageSource === "optimized" && rawImageUrl && rawImageUrl !== imageUrl) {
-      setImageSource("original");
-      return;
-    }
     if (imageSource === "original") {
       setImageSource("placeholder");
       onImageUnavailable?.(property);
@@ -92,23 +71,16 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
         }`}
       >
         <div className="relative overflow-hidden aspect-[4/3]">
-          <picture>
-            {imageSource === "optimized" && avifSrcSet && <source srcSet={avifSrcSet} type="image/avif" />}
-            {imageSource === "optimized" && webpSrcSet && <source srcSet={webpSrcSet} type="image/webp" />}
-            <img
-              src={imageUrl}
-              alt={getImageAltText()}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              loading={featured ? "eager" : "lazy"}
-              decoding="async"
-              width={800}
-              height={600}
-              fetchPriority={featured ? "high" : "auto"}
-              onError={handleImageError}
-              srcSet={imageSource === "optimized" ? webpSrcSet || undefined : undefined}
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-          </picture>
+          <img
+            src={toCdnUrl(imageUrl)}
+            alt={getImageAltText()}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+            decoding="async"
+            width={800}
+            height={600}
+            onError={handleImageError}
+          />
           {property.is_verified && (
             <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
               <CheckCircle className="w-3 h-3 mr-1" />

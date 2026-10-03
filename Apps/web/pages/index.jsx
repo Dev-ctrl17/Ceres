@@ -17,6 +17,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
+import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
 import { validateEmail } from '@/services/emailValidation';
 
 const heroSlides = [
@@ -88,13 +89,13 @@ const heroSlides = [
           const [featuredResult, latestResult] = await Promise.allSettled([
             supabase
               .from('properties')
-              .select('*')
+              .select(PROPERTY_CARD_COLUMNS)
               .eq('status', 'Available')
               .order('price', { ascending: false })
               .limit(5),
             supabase
               .from('properties')
-              .select('*')
+              .select(PROPERTY_CARD_COLUMNS)
               .eq('status', 'Available')
               .order('created_at', { ascending: false })
               .limit(10)

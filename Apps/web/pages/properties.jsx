@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import PropertyCard from '@/components/PropertyCard';
 import { Search, Filter, ArrowRight } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
+import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
 
 const PropertiesPage = () => {
   const [properties, setProperties] = useState([]);
@@ -29,7 +30,7 @@ const PropertiesPage = () => {
     try {
       const { data, error } = await supabase
         .from('properties')
-        .select('*')
+        .select(PROPERTY_CARD_COLUMNS)
         .eq('status', 'Available')
         .order('created_at', { ascending: false });
 

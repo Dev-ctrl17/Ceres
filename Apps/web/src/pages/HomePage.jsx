@@ -31,6 +31,7 @@ import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { validateEmail } from "@/services/emailValidation";
 import { usePageBackgrounds } from "@/hooks/usePageBackgrounds";
+import { PROPERTY_CARD_COLUMNS } from "@/lib/propertyFields.js";
 
 // Framer Motion Variants - defined at module scope
 const cardContainerVariants = {
@@ -146,13 +147,13 @@ const HomePage = () => {
           // No manual toggle needed — this is fully automatic.
           supabase
             .from("properties")
-            .select("*")
+            .select(PROPERTY_CARD_COLUMNS)
             .eq("status", "Available")
             .order("price", { ascending: false })
             .limit(30),
           supabase
             .from("properties")
-            .select("*")
+            .select(PROPERTY_CARD_COLUMNS)
             .eq("status", "Available")
             .order("created_at", { ascending: false })
             .limit(10),
@@ -187,7 +188,7 @@ const HomePage = () => {
   }, []);
 
   const visibleFeaturedProperties = featuredProperties
-    .filter((property) => property.slug && (property.image_url || property.images?.some(Boolean)))
+    .filter((property) => property.slug && (property.image_url || property.first_image))
     .filter((property) => !unavailableFeaturedIds.has(property.id))
     .slice(0, 5);
 

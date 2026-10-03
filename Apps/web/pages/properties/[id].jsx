@@ -13,6 +13,7 @@ import {
 import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl } from '@/lib/supabaseService';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const PropertyDetailsPage = () => {
   const router = useRouter();
@@ -125,9 +126,13 @@ const PropertyDetailsPage = () => {
                 <div className="aspect-[4/3] rounded-xl overflow-hidden bg-muted mb-4">
                   {images[selectedImage] ? (
                     <img
-                      src={images[selectedImage].startsWith('http') ? images[selectedImage] : getFileUrl('property-images', images[selectedImage])}
+                      src={toCdnUrl(images[selectedImage].startsWith('http') ? images[selectedImage] : getFileUrl('property-images', images[selectedImage]))}
                       alt={property.title}
                       className="w-full h-full object-cover"
+                      loading={selectedImage === 0 ? 'eager' : 'lazy'}
+                      decoding="async"
+                      width={1200}
+                      height={900}
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
@@ -147,9 +152,13 @@ const PropertyDetailsPage = () => {
                         }`}
                       >
                         <img
-                          src={img.startsWith('http') ? img : getFileUrl('property-images', img)}
+                          src={toCdnUrl(img.startsWith('http') ? img : getFileUrl('property-images', img))}
                           alt={`${property.title} - ${index + 1}`}
                           className="w-full h-full object-cover"
+                          loading={index === 0 ? 'eager' : 'lazy'}
+                          decoding="async"
+                          width={400}
+                          height={400}
                         />
                       </button>
                     ))}

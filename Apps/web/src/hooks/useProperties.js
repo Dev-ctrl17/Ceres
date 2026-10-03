@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import supabase from '@/lib/supabaseClient';
+import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
 
 export const useProperties = (filters = {}) => {
   const [properties, setProperties] = useState([]);
@@ -14,7 +15,7 @@ export const useProperties = (filters = {}) => {
         const pageSize = 24;
         let query = supabase
           .from('properties')
-          .select('*', { count: 'exact' })
+          .select(PROPERTY_CARD_COLUMNS, { count: 'exact' })
           .order('created_at', { ascending: false });
 
         if (filters.status && filters.status !== 'all') {

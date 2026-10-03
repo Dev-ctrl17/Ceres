@@ -7,6 +7,7 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { getFileUrl } from '@/lib/supabaseService';
 import { useOngoingProject } from '@/hooks/useOngoingProjects';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const statusBadgeColor = (status) => {
   switch (status) {
@@ -115,7 +116,7 @@ const OngoingProjectDetailsPage = () => {
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/ongoing-projects/${project.id}`} />
-        {images[0] && <meta property="og:image" content={resolveImage(images[0])} />}
+        {images[0] && <meta property="og:image" content={toCdnUrl(resolveImage(images[0]))} />}
       </Helmet>
 
       <Header />
@@ -146,7 +147,7 @@ const OngoingProjectDetailsPage = () => {
                 <div className="aspect-video bg-muted rounded-2xl overflow-hidden relative">
                   {images.length > 0 ? (
                     <img
-                      src={resolveImage(images[activeImage])}
+                      src={toCdnUrl(resolveImage(images[activeImage]))}
                       alt={`${project.name} — image ${activeImage + 1}`}
                       className="w-full h-full object-cover"
                     />
@@ -194,7 +195,7 @@ const OngoingProjectDetailsPage = () => {
                         }`}
                       >
                         <img
-                          src={resolveImage(img)}
+                          src={toCdnUrl(resolveImage(img))}
                           alt={`${project.name} thumbnail ${index + 1}`}
                           className="w-full h-full object-cover"
                         />

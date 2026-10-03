@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
-const PLACEHOLDER_IMAGE = 'https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg';
+const PLACEHOLDER_IMAGE = toCdnUrl('https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg');
 const LOCAL_PLACEHOLDER_IMAGE = '/property-image-placeholder.svg';
 
 const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
@@ -51,11 +52,11 @@ const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
         return (
           <img
             key={index}
-            src={imageSrc}
+            src={toCdnUrl(imageSrc)}
             alt={stage === 'original' ? alt : 'Property photo coming soon'}
             width={1200}
             height={675}
-            loading={index === currentIndex ? 'eager' : 'lazy'}
+            loading={index === 0 ? 'eager' : 'lazy'}
             decoding="async"
             onError={() => {
               setFailedImages((previous) => new Map(previous).set(index, stage === 'original' ? 'placeholder' : 'local'));

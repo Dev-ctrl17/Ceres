@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const ReviewsPage = () => {
   const [reviews, setReviews] = useState([]);
@@ -128,7 +129,7 @@ const ReviewsPage = () => {
                     <div className="flex items-center gap-4">
                       <div className="w-16 h-16 rounded-full overflow-hidden bg-muted">
                         <img
-                          src={featuredReviews[currentIndex].image}
+                          src={toCdnUrl(featuredReviews[currentIndex].image)}
                           alt={featuredReviews[currentIndex].name}
                           className="w-full h-full object-cover"
                         />
@@ -210,7 +211,7 @@ const ReviewsPage = () => {
                         <div className="w-12 h-12 rounded-full overflow-hidden bg-muted">
                           {review.image_url ? (
                             <img
-                              src={review.image_url}
+                              src={toCdnUrl(review.image_url)}
                               alt={review.name}
                               className="w-full h-full object-cover"
                             />

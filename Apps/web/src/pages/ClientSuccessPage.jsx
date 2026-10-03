@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { proposalsApi } from '@/lib/supabaseService';
 import { toast } from 'sonner';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const ClientSuccessPage = () => {
   const [proposals, setProposals] = useState([]);
@@ -151,7 +152,7 @@ const ClientSuccessPage = () => {
                         <div className="aspect-video bg-muted rounded-t-xl overflow-hidden relative">
                           {proposal.cover_image_url ? (
                             <img
-                              src={proposal.cover_image_url}
+                              src={toCdnUrl(proposal.cover_image_url)}
                               alt={proposal.title}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                               loading="lazy"

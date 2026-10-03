@@ -17,6 +17,8 @@ import {
   getUniqueUploadFolder,
 } from "@/lib/propertyImageNaming";
 import { isSupportedPropertyImage, preparePropertyImage } from "@/lib/propertyImageProcessing.js";
+import { toCdnUrl } from "@/lib/imageUrl.js";
+import { PROPERTY_CARD_COLUMNS } from "@/lib/propertyFields.js";
 import {
   Package,
   Users,
@@ -75,7 +77,7 @@ const PROPERTY_TYPES = [
   "Bungalow",
   "Terrace",
 ];
-const PROPERTY_IMAGE_PLACEHOLDER = "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg";
+const PROPERTY_IMAGE_PLACEHOLDER = toCdnUrl("https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg");
 const LOCAL_PROPERTY_IMAGE_PLACEHOLDER = "/property-image-placeholder.svg";
 
 const AdminDashboard = () => {
@@ -363,7 +365,7 @@ const SubmissionsManager = () => {
                   <div className="flex items-start gap-3 flex-1 min-w-0">
                     <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
                       {thumb ? (
-                        <img src={thumb} alt={s.title} className="w-full h-full object-cover" />
+                        <img src={toCdnUrl(thumb)} alt={s.title} className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
                           No img
@@ -448,13 +450,13 @@ const PropertiesManager = () => {
   const { register, handleSubmit, reset, formState: { errors }, control } = useForm();
 
   const MIN_IMAGES = 1;
-  const MAX_IMAGES = 50;
+  const MAX_IMAGES = 7;
 
   const fetchProperties = async () => {
     try {
       const { data, error } = await supabase
         .from("properties")
-        .select("*")
+        .select(PROPERTY_CARD_COLUMNS)
         .order("created_at", { ascending: false });
 
       if (error) throw error;
@@ -486,7 +488,22 @@ const PropertiesManager = () => {
     setDialogOpen(true);
   };
 
-  const openEdit = (property) => {
+  const openEdit = async (propertySummary) => {
+    let property;
+    try {
+      const { data, error } = await supabase
+        .from("properties")
+        .select("*")
+        .eq("id", propertySummary.id)
+        .single();
+      if (error) throw error;
+      property = data;
+    } catch (error) {
+      console.error("Failed to load property for editing:", error);
+      toast.error("Failed to load property details");
+      return;
+    }
+
     setEditing(property.id);
     reset({
       title: property.title,
@@ -518,11 +535,11 @@ const PropertiesManager = () => {
     const totalImages = existingImages.length + imageFiles.length + files.length;
 
     if (totalImages > MAX_IMAGES) {
+      const remainingImages = Math.max(0, MAX_IMAGES - existingImages.length - imageFiles.length);
       toast.error(
-        `Maximum ${MAX_IMAGES} images allowed. You can add ${
-          MAX_IMAGES - existingImages.length - imageFiles.length
-        } more.`
+        `Maximum ${MAX_IMAGES} images allowed. You can add at most ${remainingImages} more.`
       );
+      input.value = "";
       return;
     }
 
@@ -641,7 +658,7 @@ const PropertiesManager = () => {
         ));
 
         uploadedUrls = uploadedPaths.map(
-          (path) => getFileUrl("property-images", path) || path
+          (path) => toCdnUrl(getFileUrl("property-images", path) || path)
         );
 
       }
@@ -733,16 +750,10 @@ const PropertiesManager = () => {
   };
 
   const getPropertyImageUrl = (property) => {
-    if (property.images && property.images.length > 0) {
-      const firstImage = property.images[0];
-      if (firstImage.startsWith('http')) return firstImage;
-      return getFileUrl("property-images", firstImage) || firstImage;
-    }
-    if (property.image_url) {
-      if (property.image_url.startsWith('http')) return property.image_url;
-      return getFileUrl("property-images", property.image_url) || property.image_url;
-    }
-    return null;
+    const firstImage = property.image_url || property.first_image || property.images?.[0];
+    if (!firstImage) return null;
+    if (firstImage.startsWith('http')) return toCdnUrl(firstImage);
+    return toCdnUrl(getFileUrl("property-images", firstImage) || firstImage);
   };
 
   const totalImageCount = existingImages.length + imageFiles.length;
@@ -868,7 +879,7 @@ const PropertiesManager = () => {
                         return (
                           <div key={`existing-${index}`} className="relative group">
                             <img
-                              src={imgUrl}
+                              src={toCdnUrl(imgUrl)}
                               alt={`Existing ${index + 1}`}
                               className="w-20 h-20 object-cover rounded-lg border"
                             />
@@ -898,7 +909,7 @@ const PropertiesManager = () => {
                       {imagePreviews.map((preview, index) => (
                         <div key={`new-${index}`} className="relative group">
                           <img
-                            src={preview}
+                            src={toCdnUrl(preview)}
                             alt={`New ${index + 1}`}
                             className="w-20 h-20 object-cover rounded-lg border"
                           />
@@ -1038,12 +1049,12 @@ const PropertiesManager = () => {
                 {(() => {
                   const url = getPropertyImageUrl(p);
                   const imageFailed = imageErrorIds.has(p.id);
-                  const hasStoredImage = Boolean(p.image_url || p.images?.some(Boolean));
+                  const hasStoredImage = Boolean(p.image_url || p.first_image || p.images?.some(Boolean));
                   return (
                     <img
-                      src={imageFailed || !url
+                      src={toCdnUrl(imageFailed || !url
                         ? localPlaceholderIds.has(p.id) ? LOCAL_PROPERTY_IMAGE_PLACEHOLDER : PROPERTY_IMAGE_PLACEHOLDER
-                        : url}
+                        : url)}
                       alt={imageFailed || !hasStoredImage ? `Photo coming soon for ${p.title}` : p.title}
                       className="w-full h-full object-cover"
                       onError={() => {
@@ -1060,7 +1071,7 @@ const PropertiesManager = () => {
               <div>
                 <div className="flex flex-wrap items-center gap-2">
                   <h3 className="font-semibold">{p.title}</h3>
-                  {(!(p.image_url || p.images?.some(Boolean)) || imageErrorIds.has(p.id)) && (
+                  {(!(p.image_url || p.first_image || p.images?.some(Boolean)) || imageErrorIds.has(p.id)) && (
                     <span className="rounded border border-amber-300 bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900">
                       Missing image
                     </span>
@@ -1407,7 +1418,7 @@ const AgentsManager = () => {
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
                   {photoUrl ? (
                     <img
-                      src={photoUrl}
+                      src={toCdnUrl(photoUrl)}
                       alt={a.name}
                       className="w-full h-full object-cover"
                     />
@@ -2057,7 +2068,7 @@ const ProposalsManager = () => {
                 {(coverImagePreview || existingCoverImage) && (
                   <div className="mt-2">
                     <img
-                      src={coverImagePreview || existingCoverImage}
+                      src={toCdnUrl(coverImagePreview || existingCoverImage)}
                       alt="Cover preview"
                       className="w-full h-32 object-cover rounded-lg"
                     />
@@ -2078,7 +2089,7 @@ const ProposalsManager = () => {
                     {galleryPreviews.map((preview, index) => (
                       <img
                         key={index}
-                        src={preview}
+                        src={toCdnUrl(preview)}
                         alt={`Gallery ${index + 1}`}
                         className="w-full h-20 object-cover rounded"
                       />
@@ -2179,7 +2190,7 @@ const ProposalsManager = () => {
                 <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
                   {imageUrl ? (
                     <img
-                      src={imageUrl}
+                      src={toCdnUrl(imageUrl)}
                       alt={p.title}
                       className="w-full h-full object-cover"
                     />
@@ -2524,7 +2535,7 @@ const BrochuresManager = () => {
                 {(thumbnailPreview || (editing && getThumbnailUrl(brochures.find(b => b.id === editing)))) && (
                   <div className="mt-2">
                     <img
-                      src={thumbnailPreview || getThumbnailUrl(brochures.find(b => b.id === editing))}
+                      src={toCdnUrl(thumbnailPreview || getThumbnailUrl(brochures.find(b => b.id === editing)))}
                       alt="Thumbnail preview"
                       className="w-full h-40 object-cover rounded-lg"
                     />
@@ -2622,7 +2633,7 @@ const BrochuresManager = () => {
                   <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
                     {thumbUrl ? (
                       <img
-                        src={thumbUrl}
+                        src={toCdnUrl(thumbUrl)}
                         alt={b.title}
                         className="w-full h-full object-cover"
                       />
@@ -2739,7 +2750,7 @@ const AgentApplicationsManager = () => {
                 <div className="flex min-w-0 items-center gap-4">
                   {photoUrl ? (
                     <button type="button" className="h-16 w-16 flex-shrink-0 overflow-hidden rounded-lg" onClick={() => setSelectedPhoto(photoUrl)} aria-label={`Open ${application.full_name}'s photo`}>
-                      <img src={photoUrl} alt={application.full_name} className="h-full w-full object-cover" />
+                      <img src={toCdnUrl(photoUrl)} alt={application.full_name} className="h-full w-full object-cover" />
                     </button>
                   ) : <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-lg bg-gray-100 text-xs text-gray-400">No photo</div>}
                   <div className="min-w-0">
@@ -2767,7 +2778,7 @@ const AgentApplicationsManager = () => {
             <DialogTitle>Applicant photo</DialogTitle>
             <DialogDescription>View the selected applicant photo.</DialogDescription>
           </DialogHeader>
-          {selectedPhoto && <img src={selectedPhoto} alt="Applicant full size" className="max-h-[70vh] w-full object-contain" />}
+          {selectedPhoto && <img src={toCdnUrl(selectedPhoto)} alt="Applicant full size" className="max-h-[70vh] w-full object-contain" />}
         </DialogContent>
       </Dialog>
     </div>
@@ -2967,7 +2978,7 @@ const TeamMembersManager = () => {
                 <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
                   {photoUrl ? (
                     <img
-                      src={photoUrl}
+                      src={toCdnUrl(photoUrl)}
                       alt={m.name}
                       className="w-full h-full object-cover"
                     />
@@ -3359,7 +3370,7 @@ const OngoingProjectsManager = () => {
                         return (
                           <div key={`existing-${index}`} className="relative group">
                             <img
-                              src={imgUrl}
+                              src={toCdnUrl(imgUrl)}
                               alt={`Existing ${index + 1}`}
                               className="w-20 h-20 object-cover rounded-lg border"
                             />
@@ -3387,7 +3398,7 @@ const OngoingProjectsManager = () => {
                       {imagePreviews.map((preview, index) => (
                         <div key={`new-${index}`} className="relative group">
                           <img
-                            src={preview}
+                            src={toCdnUrl(preview)}
                             alt={`New ${index + 1}`}
                             className="w-20 h-20 object-cover rounded-lg border"
                           />
@@ -3532,11 +3543,11 @@ const OngoingProjectsManager = () => {
                 <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0 relative">
                   {(p.image_urls?.length > 0 || p.image_url) ? (
                     <img
-                      src={
+                      src={toCdnUrl(
                         p.image_urls?.length > 0
                           ? (p.image_urls[0].startsWith("http") ? p.image_urls[0] : getFileUrl("ongoing-project-images", p.image_urls[0]))
                           : (p.image_url.startsWith("http") ? p.image_url : getFileUrl("ongoing-project-images", p.image_url))
-                      }
+                      )}
                       alt={p.name}
                       className="w-full h-full object-cover"
                     />
@@ -3789,7 +3800,7 @@ const BackgroundsManager = () => {
                 className="bg-white p-4 rounded-lg shadow flex flex-col sm:flex-row sm:items-center gap-4"
               >
                 <div className="w-full sm:w-32 h-20 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
-                  <img src={currentImage} alt={slot.label} className="w-full h-full object-cover" />
+                  <img src={toCdnUrl(currentImage)} alt={slot.label} className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">

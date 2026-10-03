@@ -1,5 +1,8 @@
 import supabase from './supabaseClient';
 import { normalizeSupabaseStoragePath } from './supabaseStoragePath.js';
+import { NEW_IMAGE_BASE_URL, toCdnUrl } from './imageUrl.js';
+import { preparePropertyImage } from './propertyImageProcessing.js';
+import { PROPERTY_CARD_COLUMNS } from './propertyFields.js';
 export { normalizeSupabaseStoragePath } from './supabaseStoragePath.js';
 
 // ============================================================
@@ -151,18 +154,28 @@ export async function uploadFile(
     if (!session?.access_token) throw new Error('You must be signed in to upload this file.');
   }
 
-  const safeName = (fileName || file.name)
+  const uploadPayload = bucket === 'property-images' ? await preparePropertyImage(file) : file;
+  const requestedName = fileName || uploadPayload.name || file.name || 'file';
+  const safeName = requestedName
     .trim()
     .replace(/[^a-zA-Z0-9.\-_]/g, '_')
     .replace(/_+/g, '_');
-  const uniquePrefix = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
-  const filePath = path
-    ? `${path}/${fileName ? safeName : `${uniquePrefix}_${safeName}`}`
-    : `${fileName ? safeName : `${uniquePrefix}_${safeName}`}`;
+  const uniqueSuffix = `${Date.now()}_${globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2, 10)}`;
+  let storedName = safeName;
+  if (bucket === 'property-images') {
+    const extension = uploadPayload.type === 'image/webp'
+      ? 'webp'
+      : safeName.match(/\.([a-zA-Z0-9]+)$/)?.[1] || 'bin';
+    const baseName = safeName.replace(/\.[^.]*$/, '');
+    storedName = `${baseName}_${uniqueSuffix}.${extension}`;
+  } else if (!fileName) {
+    storedName = `${uniqueSuffix}_${safeName}`;
+  }
+  const filePath = path ? `${path}/${storedName}` : storedName;
 
   const { data, error } = await supabase.storage
     .from(bucket)
-    .upload(filePath, file, {
+    .upload(filePath, uploadPayload, {
       cacheControl: '31536000',
       upsert: false,
     });
@@ -205,11 +218,14 @@ export function getFileUrl(bucket, filePath) {
 
   const normalizedPath = normalizeSupabaseStoragePath(filePath);
   const { data } = supabase.storage.from(bucket).getPublicUrl(normalizedPath);
-  return data?.publicUrl ?? null;
+  return data?.publicUrl ? toCdnUrl(data.publicUrl) : null;
 }
 
 export function getStoragePath(bucket, filePath) {
   if (!filePath) return null;
+  if (filePath.startsWith(NEW_IMAGE_BASE_URL)) {
+    return decodeURIComponent(filePath.slice(NEW_IMAGE_BASE_URL.length).split('?')[0]);
+  }
   if (!/^https?:\/\//i.test(filePath)) return filePath;
 
   const storageObject = filePath.match(
@@ -229,28 +245,27 @@ export function encodeSupabaseStoragePath(filePath) {
 }
 
 /**
- * Get an optimized image URL using Supabase's image transform endpoint.
+ * Property images bypass Supabase transforms and load through the CDN.
+ * Other buckets continue using Supabase image transforms.
  * @param {string} bucket - Storage bucket name
  * @param {string} filePath - File path in bucket
- * @param {object} options - Transform options
- * @param {number} [options.width=800] - Target width in pixels
- * @param {number} [options.quality=75] - Quality (1-100)
- * @param {string} [options.format='webp'] - Output format ('webp', 'avif', 'jpeg', 'png')
- * @returns {string|null} - Optimized image URL
+ * @param {object} options - Transform options for non-property image buckets
+ * @returns {string|null} - Image URL
  */
 export function getOptimizedImageUrl(bucket, filePath, options = {}) {
   if (!filePath) return null;
+  if (bucket === 'property-images') {
+    return toCdnUrl(getFileUrl(bucket, filePath));
+  }
 
   const { width = 800, quality = 75, format = 'webp' } = options;
-
   if (/^https?:\/\//i.test(filePath) && !filePath.includes('/storage/v1/')) return filePath;
 
   const normalizedPath = normalizeSupabaseStoragePath(filePath);
   const { data } = supabase.storage.from(bucket).getPublicUrl(normalizedPath, {
     transform: { width, quality, format },
   });
-
-  return data?.publicUrl ?? null;
+  return data?.publicUrl ? toCdnUrl(data.publicUrl) : null;
 }
 
 // ============================================================
@@ -345,7 +360,7 @@ function parseFilterString(filterString) {
   // --- Properties ---
   export const propertiesApi = {
     getAll: (filters = {}) => {
-      let query = supabase.from('properties').select('*');
+      let query = supabase.from('properties').select(PROPERTY_CARD_COLUMNS);
       
       // Only filter by status if explicitly provided
       if (filters.status && filters.status !== 'all') {

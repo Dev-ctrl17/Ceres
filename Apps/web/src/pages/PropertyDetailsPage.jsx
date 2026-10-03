@@ -17,6 +17,8 @@ import { generatePropertySchema, generateAEOContent } from '@/lib/structuredData
 import { isUUID } from '@/lib/slug.js';
 import { getCanonicalUrl } from '@/lib/siteConfig.js';
 import { buildPropertySeo } from '@/lib/propertySeo.js';
+import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const PROPERTY_IMAGE_PLACEHOLDER = '/property-image-placeholder.svg';
 
@@ -125,7 +127,7 @@ const PropertyDetailsPage = () => {
         const targetPrice = Number(String(record.price || '').replace(/[^\d.]/g, ''));
         let similarQuery = supabase
           .from('properties')
-          .select('*')
+          .select(PROPERTY_CARD_COLUMNS)
           .neq('id', record.id)
           .order('created_at', { ascending: false });
         if (record.location) similarQuery = similarQuery.ilike('location', `%${record.location}%`);
@@ -139,7 +141,7 @@ const PropertyDetailsPage = () => {
           if (recommendations.length < 4 && record.location) {
             const { data: areaMatches } = await supabase
               .from('properties')
-              .select('*')
+              .select(PROPERTY_CARD_COLUMNS)
               .ilike('location', `%${record.location}%`)
               .neq('id', record.id)
               .order('created_at', { ascending: false })
@@ -150,7 +152,7 @@ const PropertyDetailsPage = () => {
           if (recommendations.length < 4 && record.property_type) {
             const { data: typeMatches } = await supabase
               .from('properties')
-              .select('*')
+              .select(PROPERTY_CARD_COLUMNS)
               .eq('property_type', record.property_type)
               .neq('id', record.id)
               .order('created_at', { ascending: false })
@@ -219,8 +221,11 @@ const PropertyDetailsPage = () => {
 
   const getImageUrl = (image, width = 800) => {
     if (!image) return '';
-    if (image.startsWith('http')) return image;
-    return getOptimizedImageUrl("property-images", image, { width, quality: 75, format: 'webp' }) || getFileUrl("property-images", image) || image;
+    return toCdnUrl(
+      getOptimizedImageUrl("property-images", image, { width, quality: 75, format: 'webp' }) ||
+      getFileUrl("property-images", image) ||
+      image
+    );
   };
 
   const images = property.images?.length ? property.images : property.image_url ? [property.image_url] : [];
@@ -631,7 +636,7 @@ const PropertyDetailsPage = () => {
           
           <div className="max-w-6xl w-full">
             <img
-              src={lightboxImageFailed ? PROPERTY_IMAGE_PLACEHOLDER : getImageUrl(images[currentImageIndex], 1200)}
+              src={toCdnUrl(lightboxImageFailed ? PROPERTY_IMAGE_PLACEHOLDER : getImageUrl(images[currentImageIndex], 1200))}
               alt={`${property.title} ${currentImageIndex + 1}`}
               className="w-full h-auto rounded-xl max-h-[80vh] object-contain"
               loading="lazy"

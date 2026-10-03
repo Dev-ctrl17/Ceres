@@ -2,6 +2,7 @@ import { readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createClient } from '@supabase/supabase-js';
+import { toCdnUrl } from '../src/lib/imageUrl.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const appDir = resolve(__dirname, '..');
@@ -27,4 +28,4 @@ const { error } = await supabase.storage
   });
 
 if (error) throw new Error(`Placeholder upload failed: ${error.message}`);
-console.log(supabase.storage.from('property-images').getPublicUrl(storagePath).data.publicUrl);
+console.log(toCdnUrl(supabase.storage.from('property-images').getPublicUrl(storagePath).data.publicUrl));

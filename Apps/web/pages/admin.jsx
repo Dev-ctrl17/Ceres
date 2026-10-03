@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import supabase from "@/lib/supabaseClient";
 import { getFileUrl, uploadFile } from "@/lib/supabaseService";
+import { toCdnUrl } from "@/lib/imageUrl.js";
 import {
   Package,
   Users,
@@ -297,7 +298,7 @@ const SubmissionsManager = () => {
                   <div className="flex items-start gap-3 flex-1 min-w-0">
                     <div className="w-20 h-16 rounded-lg overflow-hidden bg-gray-200 flex-shrink-0">
                       {thumb ? (
-                        <img src={thumb} alt={s.title} className="w-full h-full object-cover" />
+                        <img src={toCdnUrl(thumb)} alt={s.title} className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-gray-400 text-xs">
                           No img

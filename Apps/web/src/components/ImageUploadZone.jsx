@@ -2,6 +2,7 @@ import React, { useCallback, useState } from "react";
 import { UploadCloud, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getFileUrl } from "@/lib/supabaseService";
+import { toCdnUrl } from "@/lib/imageUrl.js";
 
 const ImageUploadZone = ({
   images,
@@ -95,7 +96,7 @@ const ImageUploadZone = ({
               className="relative group aspect-video rounded-lg overflow-hidden border bg-muted"
             >
               <img
-                src={getImageUrl(filename)}
+                src={toCdnUrl(getImageUrl(filename))}
                 alt={`Property ${idx}`}
                 className="w-full h-full object-cover"
                 loading="lazy"

@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Target, Eye, Award } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl } from '@/lib/supabaseService';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const animationStyles = `
   @keyframes fadeInUp {
@@ -303,7 +304,7 @@ const AboutPage = () => {
                       <div className="w-32 h-32 mx-auto mb-4 rounded-xl overflow-hidden bg-muted">
                         {member.photo ? (
                           <img
-                            src={getFileUrl("team-photos", member.photo) || member.photo}
+                            src={toCdnUrl(getFileUrl("team-photos", member.photo) || member.photo)}
                             alt={member.name}
                             className="w-full h-full object-cover"
                             loading="lazy"

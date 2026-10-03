@@ -1,3 +1,5 @@
+import { toCdnUrl } from './imageUrl.js';
+
 const DEFAULT_SITE_URL = 'https://www.luxurypropertiesltd.com.ng';
 
 export const SITE_URL = (() => {
@@ -71,6 +73,6 @@ export function buildSeoDescription(description, fallback = '') {
 
 export function buildImageUrl(path = '/') {
   if (!path) return `${SITE_URL}/og-image.png`;
-  if (/^https?:\/\//i.test(path)) return path;
-  return buildAbsoluteUrl(path);
+  if (/^https?:\/\//i.test(path)) return toCdnUrl(path);
+  return toCdnUrl(buildAbsoluteUrl(path));
 }

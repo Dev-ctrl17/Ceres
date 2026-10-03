@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { proposalsApi, getFileUrl } from '@/lib/supabaseService';
 import { toast } from 'sonner';
+import { toCdnUrl } from '@/lib/imageUrl.js';
 
 const ClientSuccessDetailPage = () => {
   const { slug } = useParams();
@@ -136,7 +137,7 @@ const ClientSuccessDetailPage = () => {
 
   // Parse gallery (handles both array and JSON string) and resolve URLs
   const galleryImages = parseGallery(proposal.gallery).map(resolveImageUrl).filter(Boolean);
-  const coverImage = resolveImageUrl(proposal.cover_image_url);
+  const coverImage = toCdnUrl(resolveImageUrl(proposal.cover_image_url));
   
   const images = galleryImages.length > 0 
     ? galleryImages 
@@ -241,7 +242,7 @@ const ClientSuccessDetailPage = () => {
                       className="aspect-video rounded-xl overflow-hidden"
                     >
                       <img
-                        src={img}
+                        src={toCdnUrl(img)}
                         alt={`${proposal.title} - Image ${index + 1}`}
                         className="w-full h-full object-cover"
                         loading="lazy"

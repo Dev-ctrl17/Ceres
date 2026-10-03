@@ -3,6 +3,7 @@ import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createClient } from '@supabase/supabase-js';
 import { normalizeSupabaseStoragePath } from '../src/lib/supabaseStoragePath.js';
+import { toCdnUrl } from '../src/lib/imageUrl.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const appDir = resolve(__dirname, '..');
@@ -22,16 +23,14 @@ function loadEnv() {
 }
 
 function resolveRawUrl(client, bucket, reference) {
-  if (/^https?:\/\//i.test(reference)) return reference;
+  if (/^https?:\/\//i.test(reference)) return toCdnUrl(reference);
   const path = normalizeSupabaseStoragePath(reference);
-  return client.storage.from(bucket).getPublicUrl(path).data.publicUrl;
+  return toCdnUrl(client.storage.from(bucket).getPublicUrl(path).data.publicUrl);
 }
 
-function resolveTransformUrl(client, bucket, reference) {
+function resolveCardUrl(client, bucket, reference) {
   const path = normalizeSupabaseStoragePath(reference);
-  return client.storage.from(bucket).getPublicUrl(path, {
-    transform: { width: 400, quality: 75, format: 'webp' },
-  }).data.publicUrl;
+  return toCdnUrl(client.storage.from(bucket).getPublicUrl(path).data.publicUrl);
 }
 
 async function checkUrl(url) {
@@ -100,13 +99,13 @@ const rawResults = await mapWithConcurrency([...rawReferences], 4, async ([url, 
 }));
 const cardResults = await mapWithConcurrency(cardReferences, 4, async ({ property, reference }) => {
   if (!reference) return { title: property.title, slug: property.slug, status: 'MISSING', url: '' };
-  const url = resolveTransformUrl(client, 'property-images', reference);
+  const url = resolveCardUrl(client, 'property-images', reference);
   return { title: property.title, slug: property.slug, url, ...(await checkUrl(url)) };
 });
 
 const rawFailures = rawResults.filter((result) => result.status !== 200);
 const cardFailures = cardResults.filter((result) => result.status !== 200);
-console.log(`[property-images] ${properties?.length || 0} properties; ${rawResults.length} unique raw image URLs; ${rawFailures.length} raw failures; ${cardFailures.length} card transform failures/missing.`);
+console.log(`[property-images] ${properties?.length || 0} properties; ${rawResults.length} unique raw image URLs; ${rawFailures.length} raw failures; ${cardFailures.length} card image URL failures/missing.`);
 if (process.argv.includes('--report')) {
   const reportPath = resolve(appDir, 'property-image-audit.json');
   writeFileSync(reportPath, `${JSON.stringify({

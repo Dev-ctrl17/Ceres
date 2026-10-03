@@ -2,6 +2,7 @@
 // This enables crawlers to see fully rendered property listings
 
 import { createClient } from '@supabase/supabase-js';
+import { toCdnUrl } from '../src/lib/imageUrl.js';
 
 // Helper: run a promise with a hard timeout so this serverless function
 // can NEVER be killed by Vercel's FUNCTION_INVOCATION_TIMEOUT.
@@ -92,7 +93,7 @@ export default async function handler(req, res) {
 
     const images = (property.images?.length ? property.images : property.image_url ? [property.image_url] : [])
       .filter((image) => typeof image === 'string' && image.trim())
-      .map((image) => image.startsWith('http') ? image : `https://www.luxurypropertiesltd.com.ng/${image.replace(/^\/+/, '')}`);
+      .map((image) => toCdnUrl(image.startsWith('http') ? image : `https://www.luxurypropertiesltd.com.ng/${image.replace(/^\/+/, '')}`));
     const primaryImage = images[0] || 'https://www.luxurypropertiesltd.com.ng/og-image.png';
     const location = String(property.location || property.city || 'Nigeria').trim();
     const propertyName = String(property.title || `Property in ${location}`).trim();
