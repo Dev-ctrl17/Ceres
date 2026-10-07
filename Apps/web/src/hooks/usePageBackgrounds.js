@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import supabase from "@/lib/supabaseClient";
 import { toCdnUrl } from "@/lib/imageUrl.js";
+import { resolveMediaUrl } from "@/lib/mediaUrls.js";
 
 // Simple in-memory cache so every page/section using this hook shares one
 // fetch per browser session instead of each hero section querying separately.
@@ -65,7 +66,12 @@ export function usePageBackgrounds() {
   }, []);
 
   const getBackground = useCallback(
-    (sectionKey, fallbackUrl) => toCdnUrl(backgrounds[sectionKey] || fallbackUrl),
+    (sectionKey, fallbackUrl) => {
+      const configured = backgrounds[sectionKey]
+        ? resolveMediaUrl(backgrounds[sectionKey], 'site-assets')
+        : null;
+      return toCdnUrl(configured || fallbackUrl);
+    },
     [backgrounds]
   );
 

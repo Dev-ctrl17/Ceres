@@ -1,8 +1,9 @@
-export const OLD_IMAGE_BASE_URL = 'https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/';
-export const NEW_IMAGE_BASE_URL = 'https://images.luxurypropertiesltd.com.ng/';
+import { resolveMediaUrl } from './mediaUrls.js';
 
 export function toCdnUrl(url) {
-  if (typeof url !== 'string' || !url) return url;
-  if (!url.startsWith(OLD_IMAGE_BASE_URL)) return url;
-  return `${NEW_IMAGE_BASE_URL}${url.slice(OLD_IMAGE_BASE_URL.length)}`;
+  if (typeof url !== 'string' || !url) return null;
+  const resolved = resolveMediaUrl(url);
+  if (resolved) return resolved;
+  if (/supabase\.co|images\.luxurypropertiesltd\.com\.ng/i.test(url)) return null;
+  return url;
 }

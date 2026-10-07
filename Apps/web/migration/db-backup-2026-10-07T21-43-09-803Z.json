@@ -1,0 +1,435 @@
+{
+  "created_at": "2026-10-07T21:43:09.803Z",
+  "values": [
+    {
+      "table": "properties",
+      "row_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+      "column": "images",
+      "old_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/59903b55-cae4-599b-ad99-aebd78387df8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/7f29b26d-6612-53a7-9a29-3c49e0ad8e43",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/3c284949-31c4-5ae2-bd4b-60ea0643523b",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/36b5f2f2-65d3-5997-a708-6514463c081c",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/c5041796-8fd0-57db-8eb3-c7dc4cb7c73c",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782078635375_mop6.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782078635375_mop7.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/59903b55-cae4-599b-ad99-aebd78387df8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/7f29b26d-6612-53a7-9a29-3c49e0ad8e43",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/3c284949-31c4-5ae2-bd4b-60ea0643523b",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/36b5f2f2-65d3-5997-a708-6514463c081c",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/c5041796-8fd0-57db-8eb3-c7dc4cb7c73c",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782078635375_mop6.jpeg",
+          "new_public_id": "properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea",
+          "entity": "properties",
+          "entity_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782078635375_mop6.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782078635375_mop7.jpeg",
+          "new_public_id": "properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64",
+          "entity": "properties",
+          "entity_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782078635375_mop7.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+          "public_id": "properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409389/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 18722,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "4-Bedroom Terrace Duplex image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782078635375_mop6.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+          "public_id": "properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409390/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 20934,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "4-Bedroom Terrace Duplex image 7",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782078635375_mop7.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+      "column": "image_url",
+      "old_value": "https://images.luxurypropertiesltd.com.ng/properties/1782413719157.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782413719157.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782413719157.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409391/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8.webp",
+          "width": 1169,
+          "height": 1280,
+          "bytes": 141890,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "🏡 LONG LEASE INVESTMENT OPPORTUNITY image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782413719157.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+      "column": "images",
+      "old_value": [
+        "https://images.luxurypropertiesltd.com.ng/properties/1782413719157.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401768_1000609596.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401769_1000609608.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609615.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609618.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609621.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609602.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609615.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609618.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609621.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609602.jpg"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782413719157.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782413719157.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782416401768_1000609596.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401768_1000609596.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782416401769_1000609608.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401769_1000609608.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409391/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8.webp",
+          "width": 1169,
+          "height": 1280,
+          "bytes": 141890,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "🏡 LONG LEASE INVESTMENT OPPORTUNITY image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782413719157.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409392/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521.webp",
+          "width": 764,
+          "height": 1080,
+          "bytes": 93948,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "🏡 LONG LEASE INVESTMENT OPPORTUNITY image 2",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401768_1000609596.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409392/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e.webp",
+          "width": 810,
+          "height": 1080,
+          "bytes": 35752,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "🏡 LONG LEASE INVESTMENT OPPORTUNITY image 3",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401769_1000609608.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782413719157.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782413719157.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782413719157.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409391/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8.webp",
+          "width": 1169,
+          "height": 1280,
+          "bytes": 141890,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782413719157.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782413719157.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401768_1000609596.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401769_1000609608.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609615.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609618.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609621.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609602.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609615.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609618.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609621.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609602.jpg"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782413719157.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782413719157.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401768_1000609596.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401768_1000609596.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401769_1000609608.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401769_1000609608.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409391/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8.webp",
+          "width": 1169,
+          "height": 1280,
+          "bytes": 141890,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782413719157.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409392/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521.webp",
+          "width": 764,
+          "height": 1080,
+          "bytes": 93948,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "properties image 2",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401768_1000609596.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409392/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e.webp",
+          "width": 810,
+          "height": 1080,
+          "bytes": 35752,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "properties image 3",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401769_1000609608.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+      "column": "images",
+      "old_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/59903b55-cae4-599b-ad99-aebd78387df8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/7f29b26d-6612-53a7-9a29-3c49e0ad8e43",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/3c284949-31c4-5ae2-bd4b-60ea0643523b",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/36b5f2f2-65d3-5997-a708-6514463c081c",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/c5041796-8fd0-57db-8eb3-c7dc4cb7c73c",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop6.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop7.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/59903b55-cae4-599b-ad99-aebd78387df8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/7f29b26d-6612-53a7-9a29-3c49e0ad8e43",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/3c284949-31c4-5ae2-bd4b-60ea0643523b",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/36b5f2f2-65d3-5997-a708-6514463c081c",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/c5041796-8fd0-57db-8eb3-c7dc4cb7c73c",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop6.jpeg",
+          "new_public_id": "properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea",
+          "entity": "properties",
+          "entity_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782078635375_mop6.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782078635375_mop7.jpeg",
+          "new_public_id": "properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64",
+          "entity": "properties",
+          "entity_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782078635375_mop7.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+          "public_id": "properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409389/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/b58638bc-3073-51ce-8948-50cf9e06ebea.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 18722,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "properties image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782078635375_mop6.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+          "public_id": "properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409390/properties/238b408a-16ce-4d05-bc62-5973ff7baa8d/55e558ed-4e6c-5034-a845-a8242e736f64.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 20934,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "properties image 7",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782078635375_mop7.jpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -111,13 +111,14 @@ const Footer = () => {
           <div>
             <div className="mb-6">
               <img
-                src="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png"
-                alt="Luxury Property"
+                src="https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo"
+                alt="Luxury Properties Ltd"
                 className="h-32 w-auto object-contain"
-                width="280"
-                height="128"
+                width="640"
+                height="427"
                 style={{ maxWidth: "280px" }}
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <p

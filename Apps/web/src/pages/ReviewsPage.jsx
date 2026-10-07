@@ -7,6 +7,7 @@ import { Star } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getFileUrl } from '@/lib/supabaseService';
 import { toCdnUrl } from '@/lib/imageUrl.js';
+import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 const ReviewsPage = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -21,7 +22,7 @@ const ReviewsPage = () => {
           .order('created_at', { ascending: false });
 
         if (error) throw error;
-        setTestimonials(data || []);
+        setTestimonials(rewriteMediaContent(data || [], 'agent-photos'));
       } catch (error) {
         console.error('Failed to fetch testimonials:', error);
       } finally {
@@ -129,6 +130,8 @@ const ReviewsPage = () => {
                               alt={testimonial.clientName}
                               className="w-12 h-12 rounded-xl object-cover"
                               loading="lazy"
+                              width="48"
+                              height="48"
                             />
                           ) : (
                             <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">

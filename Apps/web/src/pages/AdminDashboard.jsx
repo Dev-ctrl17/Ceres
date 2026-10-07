@@ -6,17 +6,11 @@ import Footer from "@/components/Footer.jsx";
 import supabase from "@/lib/supabaseClient";
 import { uniqueSlug } from "@/lib/slug.js";
 import {
-  deleteFile,
   getFileUrl,
-  getStoragePath,
   uploadFile,
   uploadFiles,
 } from "@/lib/supabaseService";
-import {
-  getPropertyImageName,
-  getUniqueUploadFolder,
-} from "@/lib/propertyImageNaming";
-import { isSupportedPropertyImage, preparePropertyImage } from "@/lib/propertyImageProcessing.js";
+import { isSupportedPropertyImage } from "@/lib/propertyImageProcessing.js";
 import { toCdnUrl } from "@/lib/imageUrl.js";
 import { PROPERTY_CARD_COLUMNS } from "@/lib/propertyFields.js";
 import {
@@ -77,8 +71,8 @@ const PROPERTY_TYPES = [
   "Bungalow",
   "Terrace",
 ];
-const PROPERTY_IMAGE_PLACEHOLDER = toCdnUrl("https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg");
 const LOCAL_PROPERTY_IMAGE_PLACEHOLDER = "/property-image-placeholder.svg";
+const PROPERTY_IMAGE_PLACEHOLDER = LOCAL_PROPERTY_IMAGE_PLACEHOLDER;
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
@@ -547,15 +541,14 @@ const PropertiesManager = () => {
       !isSupportedPropertyImage(file) || file.size > 10 * 1024 * 1024
     );
     if (invalidFiles.length > 0) {
-      toast.error("Choose JPG, PNG, or WebP images under 10 MB");
+      toast.error("Choose JPG, PNG, WebP, or HEIC images under 10 MB");
       input.value = "";
       return;
     }
 
     try {
-      const preparedFiles = await Promise.all(files.map((file) => preparePropertyImage(file)));
-      const newPreviews = preparedFiles.map((file) => URL.createObjectURL(file));
-      setImageFiles((prev) => [...prev, ...preparedFiles]);
+      const newPreviews = files.map((file) => URL.createObjectURL(file));
+      setImageFiles((prev) => [...prev, ...files]);
       setImagePreviews((prev) => [...prev, ...newPreviews]);
     } catch (error) {
       toast.error(error.message || "Unable to validate the selected images");
@@ -578,7 +571,7 @@ const PropertiesManager = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const validTypes = ["video/mp4", "video/webm", "video/quicktime"];
+    const validTypes = ["video/mp4", "video/quicktime"];
     if (!validTypes.includes(file.type)) {
       toast.error("Only MP4, WebM, or MOV videos are allowed");
       e.target.value = "";
@@ -619,59 +612,35 @@ const PropertiesManager = () => {
 
     setUploading(true);
     try {
-      // Re-upload the complete image list so every image uses the current
-      // property title and its position in the listing.
+      // Keep legacy sources intact and upload only newly selected images.
       let uploadedUrls = [];
-      const oldImagePaths = existingImages
-        .map((image) => getStoragePath("property-images", image))
-        .filter(Boolean);
-
-      if (existingImages.length > 0 || imageFiles.length > 0) {
-        toast.info(`Uploading ${existingImages.length + imageFiles.length} image(s)...`);
-        const uploadFolder = getUniqueUploadFolder("properties");
-        const imageFilesToUpload = [];
-
-        for (const imageUrl of existingImages) {
-          const response = await fetch(getFileUrl("property-images", imageUrl));
-          if (!response.ok) {
-            throw new Error("Unable to prepare an existing property image for renaming");
-          }
-          const blob = await response.blob();
-          const fileName = imageUrl.split("/").pop()?.split("?")[0] || "image.jpg";
-          imageFilesToUpload.push({
-            file: new File([blob], fileName, { type: blob.type || "image/jpeg" }),
-            originalPath: getStoragePath("property-images", imageUrl),
-          });
-        }
-
-        imageFiles.forEach((file) => {
-          imageFilesToUpload.push({ file, originalPath: null });
-        });
-
-        const preparedFiles = await Promise.all(
-          imageFilesToUpload.map(({ file }) => preparePropertyImage(file))
-        );
-        const uploadedPaths = await Promise.all(preparedFiles.map((file, index) =>
-          uploadFile("property-images", file, uploadFolder, {
-            fileName: getPropertyImageName(data.title, file.name, index),
+      const propertyId = editing || globalThis.crypto.randomUUID();
+      if (imageFiles.length > 0) {
+        toast.info(`Uploading ${imageFiles.length} image(s)...`);
+        uploadedUrls = await Promise.all(imageFiles.map((file, index) =>
+          uploadFile("property-images", file, "", {
+            requireAuth: true,
+            entity: "properties",
+            entityId: propertyId,
+            sortOrder: existingImages.length + index,
+            altText: `${data.title} property image ${existingImages.length + index + 1}`,
           })
         ));
-
-        uploadedUrls = uploadedPaths.map(
-          (path) => toCdnUrl(getFileUrl("property-images", path) || path)
-        );
-
       }
 
-      const allImages = uploadedUrls.length > 0 ? uploadedUrls : existingImages;
+      const allImages = [...existingImages, ...uploadedUrls];
 
       // Upload video tour if a new file was selected; otherwise keep
       // whatever existing URL was already on the property (or none).
       let videoTourUrl = existingVideoUrl;
       if (videoFile) {
         toast.info("Uploading video tour...");
-        const videoPath = await uploadFile("property-videos", videoFile, "properties");
-        videoTourUrl = getFileUrl("property-videos", videoPath) || videoPath;
+        videoTourUrl = await uploadFile("property-videos", videoFile, "", {
+          requireAuth: true,
+          entity: "properties",
+          entityId: propertyId,
+          altText: `${data.title} video tour`,
+        });
       }
 
       // Auto-generate a URL-safe slug from the title so property/brochure
@@ -685,6 +654,7 @@ const PropertiesManager = () => {
       );
 
       const submitData = {
+        id: propertyId,
         title: data.title,
         slug: existingSlug || uniqueSlug(
           data.title,
@@ -715,12 +685,6 @@ const PropertiesManager = () => {
       const { error } = await saveProperty(submitData);
 
       if (error) throw error;
-
-      if (editing && oldImagePaths.length > 0) {
-        await Promise.all(
-          oldImagePaths.map((path) => deleteFile("property-images", path))
-        );
-      }
 
       toast.success(editing ? "Property updated" : "Property created");
 
@@ -940,7 +904,7 @@ const PropertiesManager = () => {
                       </div>
                       <input
                         type="file"
-                        accept="image/jpeg,image/png,image/webp"
+                        accept="image/jpeg,image/png,image/webp,image/heic,.heic"
                         multiple
                         className="hidden"
                         onChange={handleFileSelect}
@@ -1012,7 +976,7 @@ const PropertiesManager = () => {
                     </div>
                     <input
                       type="file"
-                      accept="video/mp4,video/webm,video/quicktime"
+                      accept="video/mp4,video/quicktime,.mp4,.mov"
                       className="hidden"
                       onChange={handleVideoSelect}
                     />
@@ -1197,7 +1161,9 @@ const AgentsManager = () => {
     }
     setIsSubmitting(true);
     try {
+      const agentId = editing || globalThis.crypto.randomUUID();
       const submitData = {
+        id: agentId,
         name: formValues.name,
         email: formValues.email,
         phone: formValues.phone,
@@ -1215,11 +1181,15 @@ const AgentsManager = () => {
 
       if (photoFile) {
         try {
-          const photoPath = await uploadFile("agent-photos", photoFile, "agents");
-          // Convert path → public URL before saving
-          submitData.photo = getFileUrl("agent-photos", photoPath) || photoPath;
+          submitData.photo = await uploadFile("agent-photos", photoFile, "", {
+            requireAuth: true,
+            entity: "agents",
+            entityId: agentId,
+            altText: `${formValues.name} profile photo`,
+          });
         } catch (uploadErr) {
-          toast.error("Photo upload failed, but agent will be saved");
+          toast.error("Photo upload failed. The agent was not saved.");
+          throw uploadErr;
         }
       }
 
@@ -1904,6 +1874,7 @@ const ProposalsManager = () => {
 
     setUploading(true);
     try {
+      const proposalId = editing || globalThis.crypto.randomUUID();
       let coverImageUrl = existingCoverImage;
       let galleryUrls = [...existingGallery];
       let documentUrl = existingDocument;
@@ -1911,26 +1882,40 @@ const ProposalsManager = () => {
       // Upload cover image
       if (coverImageFile) {
         toast.info("Uploading cover image...");
-        const coverPath = await uploadFile("proposal-files", coverImageFile, "proposals");
-        coverImageUrl = getFileUrl("proposal-files", coverPath) || coverPath;
+        coverImageUrl = await uploadFile("proposal-files", coverImageFile, "", {
+          requireAuth: true,
+          entity: "proposals",
+          entityId: proposalId,
+          altText: `${data.title} client success cover`,
+        });
       }
 
       // Upload gallery images
       if (galleryFiles.length > 0) {
         toast.info(`Uploading ${galleryFiles.length} gallery images...`);
-        const galleryPaths = await uploadFiles("proposal-files", galleryFiles, "proposals");
-        const newGalleryUrls = galleryPaths.map(path => getFileUrl("proposal-files", path) || path);
+        const newGalleryUrls = await uploadFiles("proposal-files", galleryFiles, "", {
+          requireAuth: true,
+          entity: "proposals",
+          entityId: proposalId,
+          sortOrder: galleryUrls.length,
+          altText: `${data.title} client success gallery image`,
+        });
         galleryUrls = [...existingGallery, ...newGalleryUrls];
       }
 
       // Upload document
       if (documentFile) {
         toast.info("Uploading document...");
-        const docPath = await uploadFile("proposal-files", documentFile, "proposals");
-        documentUrl = getFileUrl("proposal-files", docPath) || docPath;
+        documentUrl = await uploadFile("proposal-files", documentFile, "", {
+          requireAuth: true,
+          entity: "proposals",
+          entityId: proposalId,
+          altText: `${data.title} client success document`,
+        });
       }
 
       const submitData = {
+        id: proposalId,
         title: data.title,
         client_name: data.client_name || null,
         summary: data.summary,
@@ -2341,7 +2326,7 @@ const BrochuresManager = () => {
     const file = e.target.files[0];
     if (!file) return;
 
-    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/heic"];
     if (!validTypes.includes(file.type)) {
       toast.error("Only JPG, PNG, and WebP images are allowed");
       e.target.value = "";
@@ -2362,6 +2347,7 @@ const BrochuresManager = () => {
     setUploadProgress(10);
 
     try {
+      const brochureId = editing || globalThis.crypto.randomUUID();
       let pdfPath = editing ? (brochures.find(b => b.id === editing)?.pdf_file || "") : "";
       let thumbnailUrl = editing ? (brochures.find(b => b.id === editing)?.thumbnail || "") : "";
 
@@ -2369,7 +2355,12 @@ const BrochuresManager = () => {
       if (pdfFile) {
         setUploadProgress(30);
         toast.info("Uploading PDF...");
-        pdfPath = await uploadFile("brochures", pdfFile, "brochures");
+        pdfPath = await uploadFile("brochures", pdfFile, "", {
+          requireAuth: true,
+          entity: "brochures",
+          entityId: brochureId,
+          altText: `${data.title} brochure PDF`,
+        });
         const pdfPublicUrl = getFileUrl("brochures", pdfPath);
         if (pdfPublicUrl) pdfPath = pdfPublicUrl;
         setUploadProgress(60);
@@ -2379,7 +2370,12 @@ const BrochuresManager = () => {
       if (thumbnailFile) {
         setUploadProgress(75);
         toast.info("Uploading thumbnail...");
-        const thumbPath = await uploadFile("brochures", thumbnailFile, "brochures");
+        const thumbPath = await uploadFile("brochures", thumbnailFile, "", {
+          requireAuth: true,
+          entity: "brochures",
+          entityId: brochureId,
+          altText: `${data.title} brochure cover`,
+        });
         const thumbPublicUrl = getFileUrl("brochures", thumbPath);
         thumbnailUrl = thumbPublicUrl || thumbPath;
       }
@@ -2391,6 +2387,7 @@ const BrochuresManager = () => {
       const userId = userData?.user?.id || null;
 
       const submitData = {
+        id: brochureId,
         title: data.title,
         description: data.description || "",
         pdf_file: pdfPath,
@@ -2431,11 +2428,6 @@ const BrochuresManager = () => {
   const handleDelete = async (brochure) => {
     if (!window.confirm(`Delete the brochure "${brochure.title}"? This cannot be undone.`)) return;
     try {
-      // Delete PDF file from storage if it's a stored path
-      if (brochure.pdf_file && !brochure.pdf_file.startsWith("http")) {
-        await supabase.storage.from("brochures").remove([brochure.pdf_file]);
-      }
-
       const { error } = await supabase
         .from("brochures")
         .delete()
@@ -2836,7 +2828,9 @@ const TeamMembersManager = () => {
         return;
       }
 
+      const memberId = editing || globalThis.crypto.randomUUID();
       const memberData = {
+        id: memberId,
         name: data.name,
         position: data.position || "",
         bio: data.bio || "",
@@ -2847,8 +2841,13 @@ const TeamMembersManager = () => {
           const photoPath = await uploadFile(
             "team-photos",
             photoFile,
-            "teammembers",
-            { requireAuth: true }
+            "",
+            {
+              requireAuth: true,
+              entity: "teammembers",
+              entityId: memberId,
+              altText: `${data.name} team member portrait`,
+            }
           );
           memberData.photo = photoPath;
         } catch (uploadErr) {
@@ -3117,7 +3116,7 @@ const OngoingProjectsManager = () => {
       return;
     }
 
-    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif", "image/webp"];
+    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/heic"];
     const invalidFiles = files.filter((f) => !validTypes.includes(f.type));
     if (invalidFiles.length > 0) {
       toast.error("Only JPG, PNG, GIF, and WebP images are allowed");
@@ -3146,7 +3145,7 @@ const OngoingProjectsManager = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    const validTypes = ["video/mp4", "video/webm", "video/quicktime"];
+    const validTypes = ["video/mp4", "video/quicktime"];
     if (!validTypes.includes(file.type)) {
       toast.error("Only MP4, WebM, or MOV videos are allowed");
       e.target.value = "";
@@ -3176,19 +3175,22 @@ const OngoingProjectsManager = () => {
   const onSubmit = async (data) => {
     setUploading(true);
     try {
+      const projectId = editing || globalThis.crypto.randomUUID();
       // Upload any newly selected files and convert storage paths to
       // full public URLs, mirroring the Properties image upload flow.
       let uploadedUrls = [];
       if (imageFiles.length > 0) {
         toast.info(`Uploading ${imageFiles.length} image(s)...`);
 
-        const uploadPromises = imageFiles.map((file) =>
-          uploadFile("ongoing-project-images", file, "ongoing_projects")
-        );
-        const uploadedPaths = await Promise.all(uploadPromises);
-        uploadedUrls = uploadedPaths.map(
-          (path) => getFileUrl("ongoing-project-images", path) || path
-        );
+        uploadedUrls = await Promise.all(imageFiles.map((file, index) =>
+          uploadFile("ongoing-project-images", file, "", {
+            requireAuth: true,
+            entity: "ongoing_projects",
+            entityId: projectId,
+            sortOrder: existingImages.length + index,
+            altText: `${data.name} ongoing project image ${existingImages.length + index + 1}`,
+          })
+        ));
       }
 
       // existingImages are already full public URLs (set during openEdit)
@@ -3200,13 +3202,18 @@ const OngoingProjectsManager = () => {
       let videoUrl = existingVideoUrl;
       if (videoFile) {
         toast.info("Uploading video...");
-        const videoPath = await uploadFile("ongoing-project-videos", videoFile, "ongoing_projects");
-        videoUrl = getFileUrl("ongoing-project-videos", videoPath) || videoPath;
+        videoUrl = await uploadFile("ongoing-project-videos", videoFile, "", {
+          requireAuth: true,
+          entity: "ongoing_projects",
+          entityId: projectId,
+          altText: `${data.name} project progress video`,
+        });
       } else if (videoLinkInput.trim()) {
         videoUrl = videoLinkInput.trim();
       }
 
       const submitData = {
+        id: projectId,
         name: data.name,
         // Empty date input → nil / no set delivery date
         estimated_delivery: data.estimated_delivery || null,
@@ -3429,7 +3436,7 @@ const OngoingProjectsManager = () => {
                       </div>
                       <input
                         type="file"
-                        accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+                        accept="image/jpeg,image/jpg,image/png,image/webp,image/heic,.heic"
                         multiple
                         className="hidden"
                         onChange={handleFileSelect}
@@ -3495,7 +3502,7 @@ const OngoingProjectsManager = () => {
                       </div>
                       <input
                         type="file"
-                        accept="video/mp4,video/webm,video/quicktime"
+                        accept="video/mp4,video/quicktime,.mp4,.mov"
                         className="hidden"
                         onChange={handleVideoSelect}
                       />
@@ -3675,7 +3682,7 @@ const PAGE_BACKGROUND_SLOTS = [
   {
     key: "agents_hero",
     label: "Agents Page — Hero",
-    defaultImage: "https://i.ibb.co/rKjnczKk/agent.jpg",
+    defaultImage: "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/site-assets/legacy-ibb/agents-hero",
   },
   {
     key: "blog_hero",
@@ -3686,7 +3693,7 @@ const PAGE_BACKGROUND_SLOTS = [
   {
     key: "epan_hero",
     label: "EPAN Page — Hero",
-    defaultImage: "https://i.ibb.co/5h4SDhF1/epan.jpg",
+    defaultImage: "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/site-assets/legacy-ibb/epan-hero",
   },
   {
     key: "epan_why_join",
@@ -3727,7 +3734,7 @@ const BackgroundsManager = () => {
     e.target.value = "";
     if (!file) return;
 
-    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
+    const validTypes = ["image/jpeg", "image/jpg", "image/png", "image/webp", "image/heic"];
     if (!validTypes.includes(file.type)) {
       toast.error("Only JPG, PNG, or WebP images are allowed");
       return;
@@ -3735,8 +3742,12 @@ const BackgroundsManager = () => {
 
     setUploadingKey(slot.key);
     try {
-      const path = await uploadFile("page-backgrounds", file, slot.key);
-      const publicUrl = getFileUrl("page-backgrounds", path) || path;
+      const publicUrl = await uploadFile("page-backgrounds", file, "", {
+        requireAuth: true,
+        entity: "page_backgrounds",
+        entityId: slot.key,
+        altText: `${slot.label} page background`,
+      });
 
       const { error } = await supabase.from("page_backgrounds").upsert(
         {
@@ -3827,7 +3838,7 @@ const BackgroundsManager = () => {
                     {isUploading ? "Uploading..." : "Replace"}
                     <input
                       type="file"
-                      accept="image/jpeg,image/jpg,image/png,image/webp"
+                      accept="image/jpeg,image/jpg,image/png,image/webp,image/heic,.heic"
                       className="hidden"
                       onChange={(e) => handleFileSelect(slot, e)}
                     />

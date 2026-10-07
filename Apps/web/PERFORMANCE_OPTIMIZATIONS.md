@@ -10,7 +10,7 @@
 ## 1. Image Optimization (Est. savings: 84+ KiB)
 
 ### Current Issues:
-- Logo image (ibb.co): 87.3 KiB - PNG format, could be WebP
+- Logo image: migrated to a compressed Cloudinary WebP delivery URL
 - Content images (image2url.com): 85.8 KiB - JPEG, oversized for display dimensions
 
 ### Recommended Actions:
@@ -30,9 +30,9 @@ Replace static image URLs with responsive srcset:
 ```jsx
 // In Header.jsx - Logo
 <img
-  src="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.webp"
-  srcSet="https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.webp 160w,
-          https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM@2x.webp 320w"
+  src="https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo"
+  srcSet="https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo 160w,
+          https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_800,c_limit/site-assets/legacy-ibb/footer-brand-logo 320w"
   sizes="(max-width: 640px) 120px, (max-width: 1024px) 140px, 160px"
   alt="Luxury Property"
   loading="eager"
@@ -53,7 +53,7 @@ Replace static image URLs with responsive srcset:
 #### D. Use CDN with Auto-Optimization
 Consider using Cloudinary, Imgix, or similar CDN that auto-converts to WebP:
 ```
-https://res.cloudinary.com/your-cloud/image/fetch/w_160,q_auto,f_webp/https://i.ibb.co/...
+https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo
 ```
 
 ## 2. Reduce Render-Blocking Resources (Est. savings: 600ms)

@@ -1,0 +1,346 @@
+WARNING: 17 database storage references do not resolve to a listed bucket object.
+MISSING_SOURCE property-videos/properties/1783808587279_WhatsApp Video 2026-07-11 at 9.50.48 PM.mp4
+  MISSING_REFERENCE properties id=b4a0d887-c20d-40f4-828a-e0ba7dea3829 column=video_tour label=" 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ"
+MISSING_SOURCE property-videos/properties/1782078470737.mp4
+  MISSING_REFERENCE properties id=238b408a-16ce-4d05-bc62-5973ff7baa8d column=video_tour label="4-Bedroom Terrace Duplex"
+MISSING_SOURCE property-videos/properties/1783810295001_WhatsApp Video 2026-07-11 at 9.53.15 PM.mp4
+  MISSING_REFERENCE properties id=8c01f1e4-4022-4f5b-af67-f6893f6c19a0 column=video_tour label="4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ "
+MISSING_SOURCE property-videos/properties/1783812259222_WhatsApp Video 2026-07-11 at 9.58.08 PM.mp4
+  MISSING_REFERENCE properties id=089de2ab-4d8a-4398-bee3-e3e5b03a0e2c column=video_tour label="4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ "
+MISSING_SOURCE property-videos/properties/1785598709071_document_6012793565443268604.mp4
+  MISSING_REFERENCE properties id=5d5ff147-b392-40bc-8322-ee407097afa2 column=video_tour label="JUST LISTED | COMING SOON TO GBAGADA PHASE 1"
+MISSING_SOURCE property-videos/properties/1785598599925.mp4
+  MISSING_REFERENCE properties id=5d5ff147-b392-40bc-8322-ee407097afa2 column=video_tour_url label="JUST LISTED | COMING SOON TO GBAGADA PHASE 1"
+MISSING_SOURCE property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.41 PM.jpeg
+  MISSING_REFERENCE properties id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=image_url label="LUXURY 5-BEDROOM FULLY DETACHED DUPLEX"
+  MISSING_REFERENCE properties id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images label="LUXURY 5-BEDROOM FULLY DETACHED DUPLEX"
+  MISSING_REFERENCE properties_image_backup id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=image_url
+  MISSING_REFERENCE properties_image_backup id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images
+MISSING_SOURCE property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg
+  MISSING_REFERENCE properties id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images label="LUXURY 5-BEDROOM FULLY DETACHED DUPLEX"
+  MISSING_REFERENCE properties_image_backup id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images
+MISSING_SOURCE property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg
+  MISSING_REFERENCE properties id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images label="LUXURY 5-BEDROOM FULLY DETACHED DUPLEX"
+  MISSING_REFERENCE properties_image_backup id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images
+MISSING_SOURCE property-videos/properties/1783812819593_WhatsApp Video 2026-07-11 at 10.01.43 PM.mp4
+  MISSING_REFERENCE properties id=58031de5-50b3-420e-9535-011095610405 column=video_tour label="5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ "
+MISSING_SOURCE property-videos/properties/1782778167093.mp4
+  MISSING_REFERENCE properties id=36d08c80-c13c-4f96-85b1-8c86d557536e column=video_tour label="C of O"
+MISSING_SOURCE property-videos/properties/1783809980608_WhatsApp Video 2026-07-11 at 4.50.51 PM.mp4
+  MISSING_REFERENCE properties id=bf938c73-07a2-40b1-9bc5-81306df422bf column=video_tour label="EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE"
+MISSING_SOURCE property-videos/properties/1782418559518_1782417342511-5f087009-f5e9-41d4-8a78-048515904af3.mp4
+  MISSING_REFERENCE properties id=88482ba1-7540-4e82-96e4-a8b0bf2c753c column=video_tour label="🏡 LONG LEASE INVESTMENT OPPORTUNITY"
+MISSING_SOURCE property-videos/properties/1789910925725.mp4
+  MISSING_REFERENCE properties id=09c1b090-a105-48c1-a543-a2ddef010e29 column=video_tour_url label="Luxury 2 bedroom Short-let apartment"
+MISSING_SOURCE property-videos/properties/1785845756618_document_6019418350633885191.mp4
+  MISSING_REFERENCE properties id=3e8ce8e7-7e1e-45ee-9186-cc41c5d5402b column=video_tour label="The pantheon terraces "
+MISSING_SOURCE ongoing-project-videos/ongoing_projects/1784762397804_20260722_132905.mp4
+  MISSING_REFERENCE ongoing_projects id=01141c35-d973-4ce7-9ac2-d7e9f99bb827 column=video_url label="Enclaves court"
+MISSING_SOURCE ongoing-project-videos/ongoing_projects/1785005923092_WhatsApp Video 2026-07-24 at 3.08.52 PM.mp4
+  MISSING_REFERENCE ongoing_projects id=5cd0266e-f9ab-467b-a923-56c8fb6f4c52 column=video_url label="4 bedroom semi-detached Duplex with modern infrastructure and ample parking space"
+UNREFERENCED_ARCHIVE_PLAN count=229 source_bytes=41127350
+ARCHIVE_ONLY brochures/brochures/1783702429241_Mini Flat Investment Brief (Long Lease)_20260706_165336_0000.pdf | 11394875 bytes
+ARCHIVE_ONLY ongoing-project-videos/ongoing_projects/.emptyFolderPlaceholder | 0 bytes
+ARCHIVE_ONLY property-images/properties/1781696986197_num.jpeg | 60591 bytes
+ARCHIVE_ONLY property-images/properties/1781696986198_num1.jpeg | 200436 bytes
+ARCHIVE_ONLY property-images/properties/1781696986198_num2.jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1781698238672_num2.jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1781705237667_num2.jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1781715774713_wope5.jpeg | 27305 bytes
+ARCHIVE_ONLY property-images/properties/1781715774716_wope1.jpeg | 35924 bytes
+ARCHIVE_ONLY property-images/properties/1781715774716_wope6.jpeg | 25532 bytes
+ARCHIVE_ONLY property-images/properties/1781715774716_wope7.jpeg | 27985 bytes
+ARCHIVE_ONLY property-images/properties/1781715774716_wope8.jpeg | 34465 bytes
+ARCHIVE_ONLY property-images/properties/1781715774717_wope2.jpeg | 27495 bytes
+ARCHIVE_ONLY property-images/properties/1781715774717_wope3.jpeg | 32763 bytes
+ARCHIVE_ONLY property-images/properties/1781716363044_wope1.jpeg | 58551 bytes
+ARCHIVE_ONLY property-images/properties/1781716363044_wope2.jpeg | 18783 bytes
+ARCHIVE_ONLY property-images/properties/1781716363044_wope3.jpeg | 32711 bytes
+ARCHIVE_ONLY property-images/properties/1781716363044_wope4.jpeg | 14184 bytes
+ARCHIVE_ONLY property-images/properties/1781716363045_wope5.jpeg | 19438 bytes
+ARCHIVE_ONLY property-images/properties/1781716363045_wope6.jpeg | 9392 bytes
+ARCHIVE_ONLY property-images/properties/1781716363045_wope7.jpeg | 28372 bytes
+ARCHIVE_ONLY property-images/properties/1781716884715_wope1.jpeg | 40586 bytes
+ARCHIVE_ONLY property-images/properties/1781716884716_wope2.jpeg | 27669 bytes
+ARCHIVE_ONLY property-images/properties/1781716884716_wope3.jpeg | 41118 bytes
+ARCHIVE_ONLY property-images/properties/1781716884716_wope4.jpeg | 22209 bytes
+ARCHIVE_ONLY property-images/properties/1781716884716_wope5.jpeg | 31429 bytes
+ARCHIVE_ONLY property-images/properties/1781716884716_wope6.jpeg | 24288 bytes
+ARCHIVE_ONLY property-images/properties/1781716884716_wope7.jpeg | 16427 bytes
+ARCHIVE_ONLY property-images/properties/1781716945068_wope2.jpeg | 27669 bytes
+ARCHIVE_ONLY property-images/properties/1781716945068_wope3.jpeg | 41118 bytes
+ARCHIVE_ONLY property-images/properties/1781716945068_wope4.jpeg | 22209 bytes
+ARCHIVE_ONLY property-images/properties/1781716945069_wope5.jpeg | 31429 bytes
+ARCHIVE_ONLY property-images/properties/1781716945069_wope6.jpeg | 24288 bytes
+ARCHIVE_ONLY property-images/properties/1781716945069_wope7.jpeg | 16427 bytes
+ARCHIVE_ONLY property-images/properties/1781717214002_wope1.jpeg | 88625 bytes
+ARCHIVE_ONLY property-images/properties/1781717214003_wope2.jpeg | 148312 bytes
+ARCHIVE_ONLY property-images/properties/1781717214003_wope3.jpeg | 160299 bytes
+ARCHIVE_ONLY property-images/properties/1781717874114_wope4.jpeg | 73625 bytes
+ARCHIVE_ONLY property-images/properties/1781717874114_wope5.jpeg | 61310 bytes
+ARCHIVE_ONLY property-images/properties/1781718142049_wope1.jpeg | 60591 bytes
+ARCHIVE_ONLY property-images/properties/1781718142049_wope2.jpeg | 200436 bytes
+ARCHIVE_ONLY property-images/properties/1781718451515_wope3.jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1781719037860_wope1.jpeg | 93289 bytes
+ARCHIVE_ONLY property-images/properties/1781719037860_wope2.jpeg | 96285 bytes
+ARCHIVE_ONLY property-images/properties/1781719037860_wope3.jpeg | 68616 bytes
+ARCHIVE_ONLY property-images/properties/1781719037860_wope4.jpeg | 79683 bytes
+ARCHIVE_ONLY property-images/properties/1781719037860_wope5.jpeg | 93985 bytes
+ARCHIVE_ONLY property-images/properties/1781719037860_wope6.jpeg | 69928 bytes
+ARCHIVE_ONLY property-images/properties/1781719037860_wope7.jpeg | 142302 bytes
+ARCHIVE_ONLY property-images/properties/1781719125031_wope1.jpeg | 93289 bytes
+ARCHIVE_ONLY property-images/properties/1781719125031_wope2.jpeg | 96285 bytes
+ARCHIVE_ONLY property-images/properties/1781719125031_wope3.jpeg | 68616 bytes
+ARCHIVE_ONLY property-images/properties/1781719125031_wope4.jpeg | 79683 bytes
+ARCHIVE_ONLY property-images/properties/1781719125031_wope5.jpeg | 93985 bytes
+ARCHIVE_ONLY property-images/properties/1781719125031_wope6.jpeg | 69928 bytes
+ARCHIVE_ONLY property-images/properties/1781719125031_wope7.jpeg | 142302 bytes
+ARCHIVE_ONLY property-images/properties/1781721285036_wope1.jpeg | 99217 bytes
+ARCHIVE_ONLY property-images/properties/1781721285036_wope2.jpeg | 99217 bytes
+ARCHIVE_ONLY property-images/properties/1781888362683.jpg | 92782 bytes
+ARCHIVE_ONLY property-images/properties/1781965631522_wope1.jpeg | 99217 bytes
+ARCHIVE_ONLY property-images/properties/1782064204578.jpg | 112691 bytes
+ARCHIVE_ONLY property-images/properties/1782078838184_WhatsApp Image 2026-06-16 at 3.39.04 PM (1).jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1782078838186_WhatsApp Image 2026-06-16 at 3.39.04 PM.jpeg | 200436 bytes
+ARCHIVE_ONLY property-images/properties/1782078868855_WhatsApp Image 2026-06-16 at 3.39.04 PM (1).jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1782078868856_WhatsApp Image 2026-06-16 at 3.39.04 PM.jpeg | 200436 bytes
+ARCHIVE_ONLY property-images/properties/1782078955482_WhatsApp Image 2026-06-16 at 3.39.04 PM (1).jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1782078955482_WhatsApp Image 2026-06-16 at 3.39.04 PM.jpeg | 200436 bytes
+ARCHIVE_ONLY property-images/properties/1782079023535_waris.jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1782079055700_waris.jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1782079055701_WhatsApp Image 2026-06-16 at 3.39.04 PM.jpeg | 200436 bytes
+ARCHIVE_ONLY property-images/properties/1782079082995_waris.jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1782079101544_waris.jpeg | 197975 bytes
+ARCHIVE_ONLY property-images/properties/1782079309628_map4.jpeg | 44413 bytes
+ARCHIVE_ONLY property-images/properties/1782419164770_0697783c0a8a34-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg | 11625 bytes
+ARCHIVE_ONLY property-images/properties/1782419164772_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg | 8382 bytes
+ARCHIVE_ONLY property-images/properties/1782419164772_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg | 10955 bytes
+ARCHIVE_ONLY property-images/properties/1782419164772_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg | 9452 bytes
+ARCHIVE_ONLY property-images/properties/1782419164772_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg | 62890 bytes
+ARCHIVE_ONLY property-images/properties/1782419164772_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg | 73377 bytes
+ARCHIVE_ONLY property-images/properties/1782419171000_0697783c0a8a34-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg | 11625 bytes
+ARCHIVE_ONLY property-images/properties/1785592540782_WhatsApp Image 2026-07-31 at 11.58.21 PM.jpeg | 87373 bytes
+ARCHIVE_ONLY property-images/properties/1785592540783_photo_6012722909396274920_y.jpg | 96449 bytes
+ARCHIVE_ONLY property-images/properties/1785592540783_photo_6012722909396274921_y.jpg | 174108 bytes
+ARCHIVE_ONLY property-images/properties/1785592540784_photo_6012722909396274922_y.jpg | 96202 bytes
+ARCHIVE_ONLY property-images/properties/1785592540784_photo_6012722909396274923_y.jpg | 107254 bytes
+ARCHIVE_ONLY property-images/properties/1785592540784_photo_6012722909396274924_y.jpg | 106194 bytes
+ARCHIVE_ONLY property-images/properties/1785592540784_photo_6012722909396274925_y.jpg | 114932 bytes
+ARCHIVE_ONLY property-images/properties/1785592540784_photo_6012722909396274926_y.jpg | 127283 bytes
+ARCHIVE_ONLY property-images/properties/1785592540784_photo_6012722909396274927_y.jpg | 89124 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_photo_6012722909396274920_y.jpg | 96449 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_photo_6012722909396274921_y.jpg | 174108 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_photo_6012722909396274922_y.jpg | 96202 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_photo_6012722909396274923_y.jpg | 107254 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_photo_6012722909396274924_y.jpg | 106194 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_photo_6012722909396274925_y.jpg | 114932 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_photo_6012722909396274926_y.jpg | 127283 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_photo_6012722909396274927_y.jpg | 89124 bytes
+ARCHIVE_ONLY property-images/properties/1785592555090_WhatsApp Image 2026-07-31 at 11.58.21 PM.jpeg | 87373 bytes
+ARCHIVE_ONLY property-images/properties/1785841543290_photo_6019418351093878215_y.jpg | 37919 bytes
+ARCHIVE_ONLY property-images/properties/1785841543294_photo_6019418351093878216_y.jpg | 51572 bytes
+ARCHIVE_ONLY property-images/properties/1785841543295_photo_6019418351093878217_y.jpg | 52084 bytes
+ARCHIVE_ONLY property-images/properties/1785841543295_photo_6019418351093878218_y.jpg | 20863 bytes
+ARCHIVE_ONLY property-images/properties/1785841543295_photo_6019418351093878219_y.jpg | 35199 bytes
+ARCHIVE_ONLY property-images/properties/1785841543295_photo_6019418351093878220_y.jpg | 40212 bytes
+ARCHIVE_ONLY property-images/properties/1785841543296_photo_6019418351093878221_y.jpg | 27669 bytes
+ARCHIVE_ONLY property-images/properties/1785841543296_photo_6019418351093878222_y.jpg | 30981 bytes
+ARCHIVE_ONLY property-images/properties/1785841543296_photo_6019418351093878223_y.jpg | 47591 bytes
+ARCHIVE_ONLY property-images/properties/1785841739642_photo_6019418351093878215_y.jpg | 37919 bytes
+ARCHIVE_ONLY property-images/properties/1785841739643_photo_6019418351093878216_y.jpg | 51572 bytes
+ARCHIVE_ONLY property-images/properties/1785841739643_photo_6019418351093878217_y.jpg | 52084 bytes
+ARCHIVE_ONLY property-images/properties/1785841739643_photo_6019418351093878218_y.jpg | 20863 bytes
+ARCHIVE_ONLY property-images/properties/1785841739643_photo_6019418351093878219_y.jpg | 35199 bytes
+ARCHIVE_ONLY property-images/properties/1785841739643_photo_6019418351093878220_y.jpg | 40212 bytes
+ARCHIVE_ONLY property-images/properties/1785841739643_photo_6019418351093878221_y.jpg | 27669 bytes
+ARCHIVE_ONLY property-images/properties/1785841739643_photo_6019418351093878222_y.jpg | 30981 bytes
+ARCHIVE_ONLY property-images/properties/1785841739643_photo_6019418351093878223_y.jpg | 47591 bytes
+ARCHIVE_ONLY property-images/properties/1785844017147_photo_6019418351093878215_y.jpg | 37919 bytes
+ARCHIVE_ONLY property-images/properties/1785844017147_photo_6019418351093878216_y.jpg | 51572 bytes
+ARCHIVE_ONLY property-images/properties/1785844017147_photo_6019418351093878217_y.jpg | 52084 bytes
+ARCHIVE_ONLY property-images/properties/1785844017147_photo_6019418351093878218_y.jpg | 20863 bytes
+ARCHIVE_ONLY property-images/properties/1785844017147_photo_6019418351093878219_y.jpg | 35199 bytes
+ARCHIVE_ONLY property-images/properties/1785844017147_photo_6019418351093878220_y.jpg | 40212 bytes
+ARCHIVE_ONLY property-images/properties/1785844017147_photo_6019418351093878221_y.jpg | 27669 bytes
+ARCHIVE_ONLY property-images/properties/1785844017147_photo_6019418351093878222_y.jpg | 30981 bytes
+ARCHIVE_ONLY property-images/properties/1785844017148_photo_6019418351093878223_y.jpg | 47591 bytes
+ARCHIVE_ONLY property-images/properties/1787426861788_WhatsApp Image 2026-08-21 at 3.02.01 PM (1).jpeg | 19116 bytes
+ARCHIVE_ONLY property-images/properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.52 PM.jpeg | 22384 bytes
+ARCHIVE_ONLY property-images/properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.53 PM.jpeg | 49704 bytes
+ARCHIVE_ONLY property-images/properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg | 29785 bytes
+ARCHIVE_ONLY property-images/properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg | 26402 bytes
+ARCHIVE_ONLY property-images/properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.58 PM.jpeg | 26954 bytes
+ARCHIVE_ONLY property-images/properties/1787426861792_WhatsApp Image 2026-08-21 at 3.02.01 PM.jpeg | 26778 bytes
+ARCHIVE_ONLY property-images/properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.40 PM.jpeg | 72927 bytes
+ARCHIVE_ONLY property-images/properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.41 PM.jpeg | 72927 bytes
+ARCHIVE_ONLY property-images/properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.42 PM.jpeg | 41221 bytes
+ARCHIVE_ONLY property-images/properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.44 PM.jpeg | 35559 bytes
+ARCHIVE_ONLY property-images/properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.47 PM (1).jpeg | 47947 bytes
+ARCHIVE_ONLY property-images/properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.47 PM.jpeg | 79581 bytes
+ARCHIVE_ONLY property-images/properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.50 PM.jpeg | 23646 bytes
+ARCHIVE_ONLY property-images/properties/1787426904074_WhatsApp Image 2026-08-21 at 3.02.01 PM (1).jpeg | 19116 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.47 PM (1).jpeg | 47947 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.47 PM.jpeg | 79581 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.50 PM.jpeg | 23646 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.52 PM.jpeg | 22384 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.53 PM.jpeg | 49704 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg | 29785 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg | 26402 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.58 PM.jpeg | 26954 bytes
+ARCHIVE_ONLY property-images/properties/1787426904075_WhatsApp Image 2026-08-21 at 3.02.01 PM.jpeg | 26778 bytes
+ARCHIVE_ONLY property-images/properties/1787426904076_WhatsApp Image 2026-08-21 at 3.01.42 PM.jpeg | 41221 bytes
+ARCHIVE_ONLY property-images/properties/1787426904076_WhatsApp Image 2026-08-21 at 3.01.44 PM.jpeg | 35559 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.42 PM.jpeg | 41221 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.44 PM.jpeg | 35559 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.47 PM (1).jpeg | 47947 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.47 PM.jpeg | 79581 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.50 PM.jpeg | 23646 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.52 PM.jpeg | 22384 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.53 PM.jpeg | 49704 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg | 29785 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg | 26402 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.58 PM.jpeg | 26954 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.02.01 PM (1).jpeg | 19116 bytes
+ARCHIVE_ONLY property-images/properties/1787426909871_WhatsApp Image 2026-08-21 at 3.02.01 PM.jpeg | 26778 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.42 PM.jpeg | 41221 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.44 PM.jpeg | 35559 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.47 PM (1).jpeg | 47947 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.47 PM.jpeg | 79581 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.50 PM.jpeg | 23646 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.52 PM.jpeg | 22384 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.53 PM.jpeg | 49704 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg | 29785 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg | 26402 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.02.01 PM (1).jpeg | 19116 bytes
+ARCHIVE_ONLY property-images/properties/1787426913077_WhatsApp Image 2026-08-21 at 3.02.01 PM.jpeg | 26778 bytes
+ARCHIVE_ONLY property-images/submissions/1783894045334-t3kfb4kbups.jpeg | 2056283 bytes
+ARCHIVE_ONLY property-images/submissions/1783943766646-9rogxup7z15.jpeg | 2056283 bytes
+ARCHIVE_ONLY property-images/submissions/1783951972835-b0t6ea2r3fa.jpg | 848459 bytes
+ARCHIVE_ONLY property-images/submissions/1784425351543-q1n1xoso0pe.jpg | 115632 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291798-c103rz56cpa.jpg | 75635 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291800-8jpazce3a79.jpg | 58053 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291801-68saot1mu2d.jpg | 86141 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291801-9x3r07n37eu.jpg | 108243 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291801-hc41j7huh48.jpg | 90812 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291801-k7g49rnn5e.jpg | 226100 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291801-kylg187r6ce.jpg | 88975 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291801-so41g6pnlbc.jpg | 181630 bytes
+ARCHIVE_ONLY property-images/submissions/1784427291801-vyx1ks60x.jpg | 81298 bytes
+ARCHIVE_ONLY property-images/submissions/1784510642923-zzjbalke0u.jpg | 101072 bytes
+ARCHIVE_ONLY property-images/submissions/1786096932182-urau87xi3gs.jpg | 2597978 bytes
+ARCHIVE_ONLY property-images/submissions/1786096932192-2khxip8s7sz.jpg | 366509 bytes
+ARCHIVE_ONLY property-images/submissions/1786096932193-jxt28m8zp4i.jpg | 256981 bytes
+ARCHIVE_ONLY property-images/submissions/1786096932194-1myqf0dee26.jpg | 313855 bytes
+ARCHIVE_ONLY property-images/submissions/1786096932194-hsfdj5ywav9.jpg | 357154 bytes
+ARCHIVE_ONLY property-images/submissions/1786096932195-au730ffc0k5.jpg | 140664 bytes
+ARCHIVE_ONLY property-images/submissions/1786096932195-sekoj990s2.jpg | 351286 bytes
+ARCHIVE_ONLY property-images/submissions/5b3c43ed-0ffd-41ad-bbdb-e09590e740f3/monte_luxor_a_luxurious_fully_detached_duplex_4.png | 1496630 bytes
+ARCHIVE_ONLY property-videos/properties/.emptyFolderPlaceholder | 0 bytes
+ARCHIVE_ONLY site-assets/logo-optimized.png | 35901 bytes
+ARCHIVE_ONLY site-assets/logo-optimized.webp | 19490 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787437963194_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg | 130900 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787438630781_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg | 10605 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787438635230_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg | 10605 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787438636486_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg | 10605 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787438729724_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg | 8135 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787438976968_WhatsApp_Image_2026-08-20_at_5.53.32_AM.jpeg | 9752 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787439030969_WhatsApp_Image_2026-08-20_at_5.53.32_AM.jpeg | 8316 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787609162679_ChatGPT_Image_Aug_24-_2026-_02_39_03_PM.png | 2012191 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787611866355_ChatGPT_Image_Aug_24-_2026-_03_31_54_PM.png | 88704 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787611880942_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png | 78899 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787611893060_ChatGPT_Image_Aug_24-_2026-_02_40_00_PM.png | 115009 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787611917060_ChatGPT_Image_Aug_24-_2026-_03_31_54_PM.png | 88704 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787611989090_ChatGPT_Image_Aug_24-_2026-_02_39_03_PM.png | 101505 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787612390838_ChatGPT_Image_Aug_24-_2026-_03_31_54_PM.png | 102785 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787612924063_ChatGPT_Image_Aug_24-_2026-_04_08_23_PM.png | 1777567 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787612991319_ChatGPT_Image_Aug_24-_2026-_04_08_23_PM.png | 84318 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787613137028_ChatGPT_Image_Aug_24-_2026-_04_10_12_PM.png | 105919 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787613218711_ChatGPT_Image_Aug_24-_2026-_04_10_12_PM.png | 108238 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787613288632_ChatGPT_Image_Aug_24-_2026-_04_10_12_PM.png | 111653 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787614096210_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png | 78899 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787614191746_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png | 111279 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787614287178_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png | 133302 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787614365501_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png | 135959 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787614413654_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png | 152300 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787614493462_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png | 154066 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787614544578_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png | 156854 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787615252378_WhatsApp_Image_2026-08-24_at_4.43.44_PM.jpeg | 11472 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787615344835_WhatsApp_Image_2026-08-24_at_4.43.44_PM.jpeg | 12766 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787615403605_WhatsApp_Image_2026-08-24_at_4.43.44_PM.jpeg | 13594 bytes
+ARCHIVE_ONLY team-photos/teammembers/1787615482314_WhatsApp_Image_2026-08-24_at_4.43.44_PM.jpeg | 13715 bytes
+EXECUTION PLAN
+FILE property-images/properties/1783812813473_WhatsApp Image 2026-07-11 at 10.01.44 PM.jpeg | 0 bytes | image/jpeg | image | properties/58031de5-50b3-420e-9535-011095610405/aaa47f4e-36a7-59b2-8090-19d99c92f40c | failed
+  DB properties id=58031de5-50b3-420e-9535-011095610405 column=images
+  DB properties_image_backup id=58031de5-50b3-420e-9535-011095610405 column=images
+FILE property-images/properties/1785592347238.jpg | 180896 bytes | image/jpeg | image | properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73 | failed
+  DB properties id=8d1ffc37-6eda-44b0-a10a-1f2e56c413ef column=image_url
+  DB properties id=8d1ffc37-6eda-44b0-a10a-1f2e56c413ef column=images
+  DB properties_image_backup id=8d1ffc37-6eda-44b0-a10a-1f2e56c413ef column=image_url
+  DB properties_image_backup id=8d1ffc37-6eda-44b0-a10a-1f2e56c413ef column=images
+FILE property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg | 557318 bytes | image/jpeg | image | properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e | failed
+  DB properties id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=image_url
+  DB properties id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+  DB properties_image_backup id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=image_url
+  DB properties_image_backup id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+FILE property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg | 464651 bytes | image/jpeg | image | properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a | failed
+  DB properties id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+  DB properties_image_backup id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+FILE property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg | 525838 bytes | image/jpeg | image | properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639 | failed
+  DB properties id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+  DB properties_image_backup id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+FILE property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg | 515890 bytes | image/jpeg | image | properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34 | failed
+  DB properties id=c4267017-7549-4ff7-9ffe-72229c31d30e column=image_url
+  DB properties id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+  DB properties_image_backup id=c4267017-7549-4ff7-9ffe-72229c31d30e column=image_url
+  DB properties_image_backup id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+FILE property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg | 495080 bytes | image/jpeg | image | properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45 | failed
+  DB properties id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+  DB properties_image_backup id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+FILE property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg | 515890 bytes | image/jpeg | image | properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d | failed
+  DB properties id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+  DB properties_image_backup id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+SUMMARY {"files":8,"by_status":{"failed":8},"by_bucket":{"property-images":{"files":8,"bytes":3255563}},"bytes":3255563,"database_references":22}
+ARCHIVE PLAN SAVED (no source objects copied): C:\Users\BELLO IREBAMI\Downloads\Ceres-main\Ceres-main\Apps\web\migration\archive-plan.json
+Storage check: current 0.000 GiB; source bytes selected 0.003 GiB; projected 0.012 GiB after a conservative 4x image-derivative allowance. 25 credits are not a storage-only quota; delivery bandwidth/transforms also consume credits.
+FAILED property-images/properties/1783812813473_WhatsApp Image 2026-07-11 at 10.01.44 PM.jpeg: Input file contains unsupported image format
+VERIFIED property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg (338935 bytes, image/jpeg)
+VERIFIED property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg (398017 bytes, image/jpeg)
+VERIFIED property-images/properties/1785592347238.jpg (137588 bytes, image/jpeg)
+VERIFIED property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg (361555 bytes, image/jpeg)
+VERIFIED property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg (373190 bytes, image/jpeg)
+VERIFIED property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg (350813 bytes, image/jpeg)
+VERIFIED property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg (361555 bytes, image/jpeg)
+DATABASE BACKUP SAVED BEFORE WRITES: C:\Users\BELLO IREBAMI\Downloads\Ceres-main\Ceres-main\Apps\web\migration\db-backup-2026-10-07T21-54-51-481Z.json
+DATABASE ROWS UPDATED: 12
+FILE property-images/properties/1783812813473_WhatsApp Image 2026-07-11 at 10.01.44 PM.jpeg | 0 bytes | image/jpeg | image | properties/58031de5-50b3-420e-9535-011095610405/aaa47f4e-36a7-59b2-8090-19d99c92f40c | failed
+  DB properties id=58031de5-50b3-420e-9535-011095610405 column=images
+  DB properties_image_backup id=58031de5-50b3-420e-9535-011095610405 column=images
+FILE property-images/properties/1785592347238.jpg | 180896 bytes | image/jpeg | image | properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73 | db_updated
+  DB properties id=8d1ffc37-6eda-44b0-a10a-1f2e56c413ef column=image_url
+  DB properties id=8d1ffc37-6eda-44b0-a10a-1f2e56c413ef column=images
+  DB properties_image_backup id=8d1ffc37-6eda-44b0-a10a-1f2e56c413ef column=image_url
+  DB properties_image_backup id=8d1ffc37-6eda-44b0-a10a-1f2e56c413ef column=images
+FILE property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg | 557318 bytes | image/jpeg | image | properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e | db_updated
+  DB properties id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=image_url
+  DB properties id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+  DB properties_image_backup id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=image_url
+  DB properties_image_backup id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+FILE property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg | 464651 bytes | image/jpeg | image | properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a | db_updated
+  DB properties id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+  DB properties_image_backup id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+FILE property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg | 525838 bytes | image/jpeg | image | properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639 | db_updated
+  DB properties id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+  DB properties_image_backup id=df3c72c8-1cfc-4bc2-953d-fb10cde834e9 column=images
+FILE property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg | 515890 bytes | image/jpeg | image | properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34 | db_updated
+  DB properties id=c4267017-7549-4ff7-9ffe-72229c31d30e column=image_url
+  DB properties id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+  DB properties_image_backup id=c4267017-7549-4ff7-9ffe-72229c31d30e column=image_url
+  DB properties_image_backup id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+FILE property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg | 495080 bytes | image/jpeg | image | properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45 | db_updated
+  DB properties id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+  DB properties_image_backup id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+FILE property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg | 515890 bytes | image/jpeg | image | properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d | db_updated
+  DB properties id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+  DB properties_image_backup id=c4267017-7549-4ff7-9ffe-72229c31d30e column=images
+SUMMARY {"files":8,"by_status":{"failed":1,"db_updated":7},"by_bucket":{"property-images":{"files":8,"bytes":3255563}},"bytes":3255563,"database_references":22}
+FINAL {"total_files":8,"uploaded":7,"verified":7,"db_fields_updated":12,"failed":1,"skipped":0,"total_source_bytes":3255563,"manifest":"C:\\Users\\BELLO IREBAMI\\Downloads\\Ceres-main\\Ceres-main\\Apps\\web\\migration\\manifest.json","archive_plan":"C:\\Users\\BELLO IREBAMI\\Downloads\\Ceres-main\\Ceres-main\\Apps\\web\\migration\\archive-plan.json","log":"C:\\Users\\BELLO IREBAMI\\Downloads\\Ceres-main\\Ceres-main\\Apps\\web\\migration\\log-2026-10-07T21-54-21-317Z.txt"}

@@ -1,0 +1,1371 @@
+{
+  "created_at": "2026-10-07T22:01:14.499Z",
+  "values": [
+    {
+      "table": "agent_applications",
+      "row_id": "6fd1cf66-6072-4030-bdae-02e800fd83c9",
+      "column": "photo_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/agent-photos/applications/1788216080122_20260529_143652.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/agent_applications/6fd1cf66-6072-4030-bdae-02e800fd83c9/78ea232f-02bc-5459-98f8-1b19ea48490d",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/agent-photos/applications/1788216080122_20260529_143652.jpg",
+          "new_public_id": "agent_applications/6fd1cf66-6072-4030-bdae-02e800fd83c9/78ea232f-02bc-5459-98f8-1b19ea48490d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/agent_applications/6fd1cf66-6072-4030-bdae-02e800fd83c9/78ea232f-02bc-5459-98f8-1b19ea48490d",
+          "entity": "agent_applications",
+          "entity_id": "6fd1cf66-6072-4030-bdae-02e800fd83c9",
+          "source_bucket": "agent-photos",
+          "source_path": "applications/1788216080122_20260529_143652.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "agent_applications",
+          "entity_id": "6fd1cf66-6072-4030-bdae-02e800fd83c9",
+          "public_id": "agent_applications/6fd1cf66-6072-4030-bdae-02e800fd83c9/78ea232f-02bc-5459-98f8-1b19ea48490d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410411/agent_applications/6fd1cf66-6072-4030-bdae-02e800fd83c9/78ea232f-02bc-5459-98f8-1b19ea48490d.webp",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 221374,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Faith image 1",
+          "source_bucket": "agent-photos",
+          "source_path": "applications/1788216080122_20260529_143652.jpg"
+        }
+      ]
+    },
+    {
+      "table": "agent_applications",
+      "row_id": "3376e197-5d1f-45be-9642-f4119b921b0c",
+      "column": "photo_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/agent-photos/applications/1791376330899_a46219d0-064a-4dcf-af91-c7f751a91432_Screenshot_20191203-105955.png",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/agent_applications/3376e197-5d1f-45be-9642-f4119b921b0c/a516f55d-d603-5c3d-8e68-2b08551e0928",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/agent-photos/applications/1791376330899_a46219d0-064a-4dcf-af91-c7f751a91432_Screenshot_20191203-105955.png",
+          "new_public_id": "agent_applications/3376e197-5d1f-45be-9642-f4119b921b0c/a516f55d-d603-5c3d-8e68-2b08551e0928",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/agent_applications/3376e197-5d1f-45be-9642-f4119b921b0c/a516f55d-d603-5c3d-8e68-2b08551e0928",
+          "entity": "agent_applications",
+          "entity_id": "3376e197-5d1f-45be-9642-f4119b921b0c",
+          "source_bucket": "agent-photos",
+          "source_path": "applications/1791376330899_a46219d0-064a-4dcf-af91-c7f751a91432_Screenshot_20191203-105955.png"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "agent_applications",
+          "entity_id": "3376e197-5d1f-45be-9642-f4119b921b0c",
+          "public_id": "agent_applications/3376e197-5d1f-45be-9642-f4119b921b0c/a516f55d-d603-5c3d-8e68-2b08551e0928",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410412/agent_applications/3376e197-5d1f-45be-9642-f4119b921b0c/a516f55d-d603-5c3d-8e68-2b08551e0928.webp",
+          "width": 720,
+          "height": 1232,
+          "bytes": 38524,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Funmilayo Odedina image 1",
+          "source_bucket": "agent-photos",
+          "source_path": "applications/1791376330899_a46219d0-064a-4dcf-af91-c7f751a91432_Screenshot_20191203-105955.png"
+        }
+      ]
+    },
+    {
+      "table": "agents",
+      "row_id": "5d9cac0c-83aa-46f1-9606-84842be5cb67",
+      "column": "photo",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/agent-photos/properties/1783861354875.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/agents/5d9cac0c-83aa-46f1-9606-84842be5cb67/aa9e37a6-d631-559a-af99-fef1dae0e141",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/agent-photos/properties/1783861354875.jpg",
+          "new_public_id": "agents/5d9cac0c-83aa-46f1-9606-84842be5cb67/aa9e37a6-d631-559a-af99-fef1dae0e141",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/agents/5d9cac0c-83aa-46f1-9606-84842be5cb67/aa9e37a6-d631-559a-af99-fef1dae0e141",
+          "entity": "agents",
+          "entity_id": "5d9cac0c-83aa-46f1-9606-84842be5cb67",
+          "source_bucket": "agent-photos",
+          "source_path": "properties/1783861354875.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "agents",
+          "entity_id": "5d9cac0c-83aa-46f1-9606-84842be5cb67",
+          "public_id": "agents/5d9cac0c-83aa-46f1-9606-84842be5cb67/aa9e37a6-d631-559a-af99-fef1dae0e141",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410411/agents/5d9cac0c-83aa-46f1-9606-84842be5cb67/aa9e37a6-d631-559a-af99-fef1dae0e141.webp",
+          "width": 600,
+          "height": 800,
+          "bytes": 23158,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Kehinde Adelaja image 1",
+          "source_bucket": "agent-photos",
+          "source_path": "properties/1783861354875.jpg"
+        }
+      ]
+    },
+    {
+      "table": "agents",
+      "row_id": "6e467859-8a28-4eea-9556-ce11fc48e6fe",
+      "column": "photo",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/agent-photos/properties/1785246395881.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/agents/6e467859-8a28-4eea-9556-ce11fc48e6fe/c1a4128f-6426-5258-b56a-f0769736f0b3",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/agent-photos/properties/1785246395881.jpg",
+          "new_public_id": "agents/6e467859-8a28-4eea-9556-ce11fc48e6fe/c1a4128f-6426-5258-b56a-f0769736f0b3",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/agents/6e467859-8a28-4eea-9556-ce11fc48e6fe/c1a4128f-6426-5258-b56a-f0769736f0b3",
+          "entity": "agents",
+          "entity_id": "6e467859-8a28-4eea-9556-ce11fc48e6fe",
+          "source_bucket": "agent-photos",
+          "source_path": "properties/1785246395881.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "agents",
+          "entity_id": "6e467859-8a28-4eea-9556-ce11fc48e6fe",
+          "public_id": "agents/6e467859-8a28-4eea-9556-ce11fc48e6fe/c1a4128f-6426-5258-b56a-f0769736f0b3",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410418/agents/6e467859-8a28-4eea-9556-ce11fc48e6fe/c1a4128f-6426-5258-b56a-f0769736f0b3.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 19636,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Kalu J Kalu image 1",
+          "source_bucket": "agent-photos",
+          "source_path": "properties/1785246395881.jpg"
+        }
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "row_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784759538460_20260722_150026.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784759538460_20260722_150026.jpg",
+          "new_public_id": "ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71",
+          "entity": "ongoing_projects",
+          "entity_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784759538460_20260722_150026.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+          "public_id": "ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410419/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 474088,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": " 3 bedroom Grace court maisonette image 1",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784759538460_20260722_150026.jpg"
+        }
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "row_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+      "column": "image_urls",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784759538460_20260722_150026.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784759538462_20260722_150039.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784759538462_20260722_150046.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/4c0c6b3f-8662-5db2-bdc0-5fccb148659d",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/6e76432e-d86a-5971-a22b-e7e153956567"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784759538460_20260722_150026.jpg",
+          "new_public_id": "ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71",
+          "entity": "ongoing_projects",
+          "entity_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784759538460_20260722_150026.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784759538462_20260722_150039.jpg",
+          "new_public_id": "ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/4c0c6b3f-8662-5db2-bdc0-5fccb148659d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/4c0c6b3f-8662-5db2-bdc0-5fccb148659d",
+          "entity": "ongoing_projects",
+          "entity_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784759538462_20260722_150039.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784759538462_20260722_150046.jpg",
+          "new_public_id": "ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/6e76432e-d86a-5971-a22b-e7e153956567",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/6e76432e-d86a-5971-a22b-e7e153956567",
+          "entity": "ongoing_projects",
+          "entity_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784759538462_20260722_150046.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+          "public_id": "ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410419/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/c2d2d6e1-a158-56b4-aa82-b68d4e637f71.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 474088,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": " 3 bedroom Grace court maisonette image 1",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784759538460_20260722_150026.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+          "public_id": "ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/4c0c6b3f-8662-5db2-bdc0-5fccb148659d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410418/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/4c0c6b3f-8662-5db2-bdc0-5fccb148659d.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 420373,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": " 3 bedroom Grace court maisonette image 2",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784759538462_20260722_150039.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "9066b8fb-5ac2-4d75-a768-17acf526b152",
+          "public_id": "ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/6e76432e-d86a-5971-a22b-e7e153956567",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410422/ongoing_projects/9066b8fb-5ac2-4d75-a768-17acf526b152/6e76432e-d86a-5971-a22b-e7e153956567.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 468876,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": " 3 bedroom Grace court maisonette image 3",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784759538462_20260722_150046.jpg"
+        }
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "row_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358730_1000124375.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358730_1000124375.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358730_1000124375.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410422/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 478696,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "4 bedroom Residential Maisonette image 1",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358730_1000124375.jpg"
+        }
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "row_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+      "column": "image_urls",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358730_1000124375.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358732_1000124376.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358733_1000124378.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358733_1000124379.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519678_1000124381.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519678_1000124400.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519679_1000124379.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519679_1000124375.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519679_1000124376.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/01a7f4e9-77ff-5f7c-b0b5-23b9d17b5a63",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/f34b0667-f9c0-50ad-a94c-ad485fe0c349",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/99d0a4be-44d0-5bb2-92fd-7cf8a93af3b8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/ced5b801-bcb8-5cf2-9402-aa661dcd79a0",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/c67cd628-2849-5ee2-9494-c8ecf472eb01",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/0353ecf3-a1d0-5c7e-8707-cadfafe51a69",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/04c091a1-5171-5157-bc42-0109e0ae1794",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/8febbe2a-c966-56ac-bf83-2dfe4a99c5c3"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358730_1000124375.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358730_1000124375.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358732_1000124376.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/01a7f4e9-77ff-5f7c-b0b5-23b9d17b5a63",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/01a7f4e9-77ff-5f7c-b0b5-23b9d17b5a63",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358732_1000124376.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358733_1000124378.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/f34b0667-f9c0-50ad-a94c-ad485fe0c349",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/f34b0667-f9c0-50ad-a94c-ad485fe0c349",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358733_1000124378.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760358733_1000124379.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/99d0a4be-44d0-5bb2-92fd-7cf8a93af3b8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/99d0a4be-44d0-5bb2-92fd-7cf8a93af3b8",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358733_1000124379.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519678_1000124381.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/ced5b801-bcb8-5cf2-9402-aa661dcd79a0",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/ced5b801-bcb8-5cf2-9402-aa661dcd79a0",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519678_1000124381.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519678_1000124400.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/c67cd628-2849-5ee2-9494-c8ecf472eb01",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/c67cd628-2849-5ee2-9494-c8ecf472eb01",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519678_1000124400.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519679_1000124379.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/0353ecf3-a1d0-5c7e-8707-cadfafe51a69",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/0353ecf3-a1d0-5c7e-8707-cadfafe51a69",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519679_1000124379.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519679_1000124375.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/04c091a1-5171-5157-bc42-0109e0ae1794",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/04c091a1-5171-5157-bc42-0109e0ae1794",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519679_1000124375.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760519679_1000124376.jpg",
+          "new_public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/8febbe2a-c966-56ac-bf83-2dfe4a99c5c3",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/8febbe2a-c966-56ac-bf83-2dfe4a99c5c3",
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519679_1000124376.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410422/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/59e8a7c3-bf4d-5167-a3df-598f2c933c05.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 478696,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "4 bedroom Residential Maisonette image 1",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358730_1000124375.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/01a7f4e9-77ff-5f7c-b0b5-23b9d17b5a63",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410424/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/01a7f4e9-77ff-5f7c-b0b5-23b9d17b5a63.webp",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 434370,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "4 bedroom Residential Maisonette image 2",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358732_1000124376.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/f34b0667-f9c0-50ad-a94c-ad485fe0c349",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410426/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/f34b0667-f9c0-50ad-a94c-ad485fe0c349.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 349603,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "4 bedroom Residential Maisonette image 3",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358733_1000124378.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/99d0a4be-44d0-5bb2-92fd-7cf8a93af3b8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410426/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/99d0a4be-44d0-5bb2-92fd-7cf8a93af3b8.webp",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 280870,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "4 bedroom Residential Maisonette image 4",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760358733_1000124379.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/ced5b801-bcb8-5cf2-9402-aa661dcd79a0",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410428/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/ced5b801-bcb8-5cf2-9402-aa661dcd79a0.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 384207,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "4 bedroom Residential Maisonette image 5",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519678_1000124381.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/c67cd628-2849-5ee2-9494-c8ecf472eb01",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410430/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/c67cd628-2849-5ee2-9494-c8ecf472eb01.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 563584,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "4 bedroom Residential Maisonette image 6",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519678_1000124400.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/0353ecf3-a1d0-5c7e-8707-cadfafe51a69",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410436/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/0353ecf3-a1d0-5c7e-8707-cadfafe51a69.webp",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 280870,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "4 bedroom Residential Maisonette image 7",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519679_1000124379.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/04c091a1-5171-5157-bc42-0109e0ae1794",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410430/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/04c091a1-5171-5157-bc42-0109e0ae1794.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 478696,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 7,
+          "alt_text": "4 bedroom Residential Maisonette image 8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519679_1000124375.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8",
+          "public_id": "ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/8febbe2a-c966-56ac-bf83-2dfe4a99c5c3",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410434/ongoing_projects/d94fe0cb-c7c4-43b6-bfba-5e97b7a734a8/8febbe2a-c966-56ac-bf83-2dfe4a99c5c3.webp",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 434370,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 8,
+          "alt_text": "4 bedroom Residential Maisonette image 9",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760519679_1000124376.jpg"
+        }
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "row_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758101_20260722_132546.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758101_20260722_132546.jpg",
+          "new_public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba",
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758101_20260722_132546.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410439/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 315252,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Enclaves court image 1",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758101_20260722_132546.jpg"
+        }
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "row_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+      "column": "image_urls",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758101_20260722_132546.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758102_20260722_132612.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758102_20260722_132648.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758102_20260722_132653.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758105_20260722_132753.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758105_20260722_132808.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/5e2eae13-d4cf-57bf-9336-0cc04d39a35f",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/4315d7a5-6073-5d82-bcb4-e0180910d457",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/446d640c-0876-5802-b37f-c65eba6f2dd2",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/9ed2926a-efed-5599-b0ca-3dabba0bfe5b",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/eeb5b0c1-06cc-5cd3-a603-9fd41796c6fc"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758101_20260722_132546.jpg",
+          "new_public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba",
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758101_20260722_132546.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758102_20260722_132612.jpg",
+          "new_public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/5e2eae13-d4cf-57bf-9336-0cc04d39a35f",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/5e2eae13-d4cf-57bf-9336-0cc04d39a35f",
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758102_20260722_132612.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758102_20260722_132648.jpg",
+          "new_public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/4315d7a5-6073-5d82-bcb4-e0180910d457",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/4315d7a5-6073-5d82-bcb4-e0180910d457",
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758102_20260722_132648.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758102_20260722_132653.jpg",
+          "new_public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/446d640c-0876-5802-b37f-c65eba6f2dd2",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/446d640c-0876-5802-b37f-c65eba6f2dd2",
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758102_20260722_132653.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758105_20260722_132753.jpg",
+          "new_public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/9ed2926a-efed-5599-b0ca-3dabba0bfe5b",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/9ed2926a-efed-5599-b0ca-3dabba0bfe5b",
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758105_20260722_132753.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784760758105_20260722_132808.jpg",
+          "new_public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/eeb5b0c1-06cc-5cd3-a603-9fd41796c6fc",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/eeb5b0c1-06cc-5cd3-a603-9fd41796c6fc",
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758105_20260722_132808.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410439/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/582c5995-5dc4-54e2-96f2-9dc3050a0eba.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 315252,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Enclaves court image 1",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758101_20260722_132546.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/5e2eae13-d4cf-57bf-9336-0cc04d39a35f",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410442/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/5e2eae13-d4cf-57bf-9336-0cc04d39a35f.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 398720,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "Enclaves court image 2",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758102_20260722_132612.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/4315d7a5-6073-5d82-bcb4-e0180910d457",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410445/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/4315d7a5-6073-5d82-bcb4-e0180910d457.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 469164,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "Enclaves court image 3",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758102_20260722_132648.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/446d640c-0876-5802-b37f-c65eba6f2dd2",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410447/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/446d640c-0876-5802-b37f-c65eba6f2dd2.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 551914,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "Enclaves court image 4",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758102_20260722_132653.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/9ed2926a-efed-5599-b0ca-3dabba0bfe5b",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410447/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/9ed2926a-efed-5599-b0ca-3dabba0bfe5b.webp",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 244346,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "Enclaves court image 5",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758105_20260722_132753.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+          "public_id": "ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/eeb5b0c1-06cc-5cd3-a603-9fd41796c6fc",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410449/ongoing_projects/01141c35-d973-4ce7-9ac2-d7e9f99bb827/eeb5b0c1-06cc-5cd3-a603-9fd41796c6fc.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 315262,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "Enclaves court image 6",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784760758105_20260722_132808.jpg"
+        }
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "row_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005706_1000128517.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005706_1000128517.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005706_1000128517.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410451/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 528635,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 1",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005706_1000128517.jpg"
+        }
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "row_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+      "column": "image_urls",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005706_1000128517.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128518.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128520.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128521.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128522.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128523.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128524.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128525.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128532.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128538.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128555.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128556.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/8e7b8c47-6501-5d14-a5d5-8c839589655c",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/94cad3b7-402c-5827-92dc-7801c4a49467",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/65024316-d496-5ff1-91cc-ed22ffdd2570",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/0af39c08-37b3-5eac-8b06-6d7a930b8c69",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c8994a24-7a2b-5b79-b5a0-1f1e7c0fbb0d",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/24553549-46ec-527e-a742-296827b1bff2",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5c30dabe-b642-512b-816a-1c5fb75015ff",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c5d4d586-df53-5538-bbf1-c8fda54493bc",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/513683f1-8aba-5083-b268-030b900d6ee0",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/d3458d59-8ce6-5f5d-918a-f8b97a442a96",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5e1e1855-b00a-5adb-a060-7436c6a48ef2"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005706_1000128517.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005706_1000128517.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128518.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/8e7b8c47-6501-5d14-a5d5-8c839589655c",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/8e7b8c47-6501-5d14-a5d5-8c839589655c",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128518.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128520.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/94cad3b7-402c-5827-92dc-7801c4a49467",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/94cad3b7-402c-5827-92dc-7801c4a49467",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128520.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128521.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/65024316-d496-5ff1-91cc-ed22ffdd2570",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/65024316-d496-5ff1-91cc-ed22ffdd2570",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128521.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128522.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/0af39c08-37b3-5eac-8b06-6d7a930b8c69",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/0af39c08-37b3-5eac-8b06-6d7a930b8c69",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128522.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128523.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c8994a24-7a2b-5b79-b5a0-1f1e7c0fbb0d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c8994a24-7a2b-5b79-b5a0-1f1e7c0fbb0d",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128523.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128524.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/24553549-46ec-527e-a742-296827b1bff2",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/24553549-46ec-527e-a742-296827b1bff2",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128524.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128525.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5c30dabe-b642-512b-816a-1c5fb75015ff",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5c30dabe-b642-512b-816a-1c5fb75015ff",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128525.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128532.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c5d4d586-df53-5538-bbf1-c8fda54493bc",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c5d4d586-df53-5538-bbf1-c8fda54493bc",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128532.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128538.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/513683f1-8aba-5083-b268-030b900d6ee0",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/513683f1-8aba-5083-b268-030b900d6ee0",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128538.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128555.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/d3458d59-8ce6-5f5d-918a-f8b97a442a96",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/d3458d59-8ce6-5f5d-918a-f8b97a442a96",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128555.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/ongoing-project-images/ongoing_projects/1784994005708_1000128556.jpg",
+          "new_public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5e1e1855-b00a-5adb-a060-7436c6a48ef2",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5e1e1855-b00a-5adb-a060-7436c6a48ef2",
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128556.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410451/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/2b774c88-5b2d-5733-88c6-35c247931887.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 528635,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 1",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005706_1000128517.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/8e7b8c47-6501-5d14-a5d5-8c839589655c",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410452/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/8e7b8c47-6501-5d14-a5d5-8c839589655c.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 465714,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 2",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128518.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/94cad3b7-402c-5827-92dc-7801c4a49467",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410453/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/94cad3b7-402c-5827-92dc-7801c4a49467.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 342251,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 3",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128520.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/65024316-d496-5ff1-91cc-ed22ffdd2570",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410455/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/65024316-d496-5ff1-91cc-ed22ffdd2570.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 350191,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 4",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128521.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/0af39c08-37b3-5eac-8b06-6d7a930b8c69",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410456/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/0af39c08-37b3-5eac-8b06-6d7a930b8c69.webp",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 223818,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 5",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128522.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c8994a24-7a2b-5b79-b5a0-1f1e7c0fbb0d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410459/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c8994a24-7a2b-5b79-b5a0-1f1e7c0fbb0d.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 322164,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 6",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128523.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/24553549-46ec-527e-a742-296827b1bff2",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410460/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/24553549-46ec-527e-a742-296827b1bff2.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 343551,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 7",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128524.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5c30dabe-b642-512b-816a-1c5fb75015ff",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410461/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5c30dabe-b642-512b-816a-1c5fb75015ff.webp",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 180426,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 7,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 8",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128525.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c5d4d586-df53-5538-bbf1-c8fda54493bc",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410463/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/c5d4d586-df53-5538-bbf1-c8fda54493bc.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 312552,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 8,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 9",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128532.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/513683f1-8aba-5083-b268-030b900d6ee0",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410466/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/513683f1-8aba-5083-b268-030b900d6ee0.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 450906,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 9,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 10",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128538.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/d3458d59-8ce6-5f5d-918a-f8b97a442a96",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410465/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/d3458d59-8ce6-5f5d-918a-f8b97a442a96.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 442090,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 10,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 11",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128555.jpg"
+        },
+        {
+          "entity": "ongoing_projects",
+          "entity_id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+          "public_id": "ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5e1e1855-b00a-5adb-a060-7436c6a48ef2",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410467/ongoing_projects/5cd0266e-f9ab-467b-a923-56c8fb6f4c52/5e1e1855-b00a-5adb-a060-7436c6a48ef2.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 395335,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 11,
+          "alt_text": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space image 12",
+          "source_bucket": "ongoing-project-images",
+          "source_path": "ongoing_projects/1784994005708_1000128556.jpg"
+        }
+      ]
+    },
+    {
+      "table": "teammembers",
+      "row_id": "9be37fc0-c156-4927-badd-ce5011125249",
+      "column": "photo",
+      "old_value": "teammembers/1787616328594_WhatsApp_Image_2026-08-24_at_5.04.55_PM.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/9be37fc0-c156-4927-badd-ce5011125249/d9bf8074-88f5-5597-9e47-72760a362586",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/team-photos/teammembers/1787616328594_WhatsApp_Image_2026-08-24_at_5.04.55_PM.jpeg",
+          "new_public_id": "teammembers/9be37fc0-c156-4927-badd-ce5011125249/d9bf8074-88f5-5597-9e47-72760a362586",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/9be37fc0-c156-4927-badd-ce5011125249/d9bf8074-88f5-5597-9e47-72760a362586",
+          "entity": "teammembers",
+          "entity_id": "9be37fc0-c156-4927-badd-ce5011125249",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787616328594_WhatsApp_Image_2026-08-24_at_5.04.55_PM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "teammembers",
+          "entity_id": "9be37fc0-c156-4927-badd-ce5011125249",
+          "public_id": "teammembers/9be37fc0-c156-4927-badd-ce5011125249/d9bf8074-88f5-5597-9e47-72760a362586",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410475/teammembers/9be37fc0-c156-4927-badd-ce5011125249/d9bf8074-88f5-5597-9e47-72760a362586.webp",
+          "width": 813,
+          "height": 1280,
+          "bytes": 45336,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Mrs. Blessing A.O. image 1",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787616328594_WhatsApp_Image_2026-08-24_at_5.04.55_PM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "teammembers",
+      "row_id": "e5a57f86-ec30-4d4c-8857-dd66aa6852c6",
+      "column": "photo",
+      "old_value": "teammembers/1787614665194_WhatsApp_Image_2026-08-24_at_4.20.55_AM.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/e5a57f86-ec30-4d4c-8857-dd66aa6852c6/856ef59f-4a42-5729-b14e-dc51062305a0",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/team-photos/teammembers/1787614665194_WhatsApp_Image_2026-08-24_at_4.20.55_AM.jpeg",
+          "new_public_id": "teammembers/e5a57f86-ec30-4d4c-8857-dd66aa6852c6/856ef59f-4a42-5729-b14e-dc51062305a0",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/e5a57f86-ec30-4d4c-8857-dd66aa6852c6/856ef59f-4a42-5729-b14e-dc51062305a0",
+          "entity": "teammembers",
+          "entity_id": "e5a57f86-ec30-4d4c-8857-dd66aa6852c6",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787614665194_WhatsApp_Image_2026-08-24_at_4.20.55_AM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "teammembers",
+          "entity_id": "e5a57f86-ec30-4d4c-8857-dd66aa6852c6",
+          "public_id": "teammembers/e5a57f86-ec30-4d4c-8857-dd66aa6852c6/856ef59f-4a42-5729-b14e-dc51062305a0",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410468/teammembers/e5a57f86-ec30-4d4c-8857-dd66aa6852c6/856ef59f-4a42-5729-b14e-dc51062305a0.webp",
+          "width": 810,
+          "height": 1080,
+          "bytes": 31706,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Adelaja Kehinde Ossieni image 1",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787614665194_WhatsApp_Image_2026-08-24_at_4.20.55_AM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "teammembers",
+      "row_id": "8d7ada40-468d-426b-9799-f0baf39c871c",
+      "column": "photo",
+      "old_value": "teammembers/1787615614639_WhatsApp_Image_2026-08-24_at_4.53.10_PM.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/8d7ada40-468d-426b-9799-f0baf39c871c/7e73ac88-e94f-5ddd-a54b-0e9e7b4708fd",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/team-photos/teammembers/1787615614639_WhatsApp_Image_2026-08-24_at_4.53.10_PM.jpeg",
+          "new_public_id": "teammembers/8d7ada40-468d-426b-9799-f0baf39c871c/7e73ac88-e94f-5ddd-a54b-0e9e7b4708fd",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/8d7ada40-468d-426b-9799-f0baf39c871c/7e73ac88-e94f-5ddd-a54b-0e9e7b4708fd",
+          "entity": "teammembers",
+          "entity_id": "8d7ada40-468d-426b-9799-f0baf39c871c",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787615614639_WhatsApp_Image_2026-08-24_at_4.53.10_PM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "teammembers",
+          "entity_id": "8d7ada40-468d-426b-9799-f0baf39c871c",
+          "public_id": "teammembers/8d7ada40-468d-426b-9799-f0baf39c871c/7e73ac88-e94f-5ddd-a54b-0e9e7b4708fd",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410469/teammembers/8d7ada40-468d-426b-9799-f0baf39c871c/7e73ac88-e94f-5ddd-a54b-0e9e7b4708fd.webp",
+          "width": 848,
+          "height": 1110,
+          "bytes": 36246,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Waris Bello  image 1",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787615614639_WhatsApp_Image_2026-08-24_at_4.53.10_PM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "teammembers",
+      "row_id": "28402cba-ca5b-471f-8ddd-64771a57acfd",
+      "column": "photo",
+      "old_value": "teammembers/1787616212047_WhatsApp_Image_2026-08-24_at_5.03.05_PM.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/28402cba-ca5b-471f-8ddd-64771a57acfd/2d332d7b-8b5d-55bf-a9f7-70664b914d30",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/team-photos/teammembers/1787616212047_WhatsApp_Image_2026-08-24_at_5.03.05_PM.jpeg",
+          "new_public_id": "teammembers/28402cba-ca5b-471f-8ddd-64771a57acfd/2d332d7b-8b5d-55bf-a9f7-70664b914d30",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/28402cba-ca5b-471f-8ddd-64771a57acfd/2d332d7b-8b5d-55bf-a9f7-70664b914d30",
+          "entity": "teammembers",
+          "entity_id": "28402cba-ca5b-471f-8ddd-64771a57acfd",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787616212047_WhatsApp_Image_2026-08-24_at_5.03.05_PM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "teammembers",
+          "entity_id": "28402cba-ca5b-471f-8ddd-64771a57acfd",
+          "public_id": "teammembers/28402cba-ca5b-471f-8ddd-64771a57acfd/2d332d7b-8b5d-55bf-a9f7-70664b914d30",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410474/teammembers/28402cba-ca5b-471f-8ddd-64771a57acfd/2d332d7b-8b5d-55bf-a9f7-70664b914d30.webp",
+          "width": 731,
+          "height": 1280,
+          "bytes": 80260,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Miriam Ogunniran image 1",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787616212047_WhatsApp_Image_2026-08-24_at_5.03.05_PM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "teammembers",
+      "row_id": "3757b7f4-985e-4a95-a356-8e0922ee552c",
+      "column": "photo",
+      "old_value": "teammembers/1787616017812_WhatsApp_Image_2026-08-24_at_4.59.51_PM.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/3757b7f4-985e-4a95-a356-8e0922ee552c/e0f42270-181b-5f97-83ff-e4a9a0ca1d30",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/team-photos/teammembers/1787616017812_WhatsApp_Image_2026-08-24_at_4.59.51_PM.jpeg",
+          "new_public_id": "teammembers/3757b7f4-985e-4a95-a356-8e0922ee552c/e0f42270-181b-5f97-83ff-e4a9a0ca1d30",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/3757b7f4-985e-4a95-a356-8e0922ee552c/e0f42270-181b-5f97-83ff-e4a9a0ca1d30",
+          "entity": "teammembers",
+          "entity_id": "3757b7f4-985e-4a95-a356-8e0922ee552c",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787616017812_WhatsApp_Image_2026-08-24_at_4.59.51_PM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "teammembers",
+          "entity_id": "3757b7f4-985e-4a95-a356-8e0922ee552c",
+          "public_id": "teammembers/3757b7f4-985e-4a95-a356-8e0922ee552c/e0f42270-181b-5f97-83ff-e4a9a0ca1d30",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410473/teammembers/3757b7f4-985e-4a95-a356-8e0922ee552c/e0f42270-181b-5f97-83ff-e4a9a0ca1d30.webp",
+          "width": 776,
+          "height": 1280,
+          "bytes": 38418,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Onoja Ainoko Jeremiah image 1",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787616017812_WhatsApp_Image_2026-08-24_at_4.59.51_PM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "teammembers",
+      "row_id": "45c8a906-262a-4384-92fa-e06fa22df19e",
+      "column": "photo",
+      "old_value": "teammembers/1787616088616_WhatsApp_Image_2026-08-24_at_5.01.08_PM.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/45c8a906-262a-4384-92fa-e06fa22df19e/6e575c38-4ced-5fd7-a318-9f35a1f57780",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/team-photos/teammembers/1787616088616_WhatsApp_Image_2026-08-24_at_5.01.08_PM.jpeg",
+          "new_public_id": "teammembers/45c8a906-262a-4384-92fa-e06fa22df19e/6e575c38-4ced-5fd7-a318-9f35a1f57780",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/teammembers/45c8a906-262a-4384-92fa-e06fa22df19e/6e575c38-4ced-5fd7-a318-9f35a1f57780",
+          "entity": "teammembers",
+          "entity_id": "45c8a906-262a-4384-92fa-e06fa22df19e",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787616088616_WhatsApp_Image_2026-08-24_at_5.01.08_PM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "teammembers",
+          "entity_id": "45c8a906-262a-4384-92fa-e06fa22df19e",
+          "public_id": "teammembers/45c8a906-262a-4384-92fa-e06fa22df19e/6e575c38-4ced-5fd7-a318-9f35a1f57780",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410472/teammembers/45c8a906-262a-4384-92fa-e06fa22df19e/6e575c38-4ced-5fd7-a318-9f35a1f57780.webp",
+          "width": 929,
+          "height": 1280,
+          "bytes": 49648,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Agene Sunday image 1",
+          "source_bucket": "team-photos",
+          "source_path": "teammembers/1787616088616_WhatsApp_Image_2026-08-24_at_5.01.08_PM.jpeg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+WARNING: 17 database storage references do not resolve to a listed bucket object.
+MISSING_SOURCE property-videos/properties/1782078470737.mp4
+  MISSING_REFERENCE properties id=238b408a-16ce-4d05-bc62-5973ff7baa8d column=video_tour label="4-Bedroom Terrace Duplex"
+MISSING_SOURCE property-videos/properties/1785598709071_document_6012793565443268604.mp4
+  MISSING_REFERENCE properties id=5d5ff147-b392-40bc-8322-ee407097afa2 column=video_tour label="JUST LISTED | COMING SOON TO GBAGADA PHASE 1"
+MISSING_SOURCE property-videos/properties/1785598599925.mp4
+  MISSING_REFERENCE properties id=5d5ff147-b392-40bc-8322-ee407097afa2 column=video_tour_url label="JUST LISTED | COMING SOON TO GBAGADA PHASE 1"
+MISSING_SOURCE property-videos/properties/1782418559518_1782417342511-5f087009-f5e9-41d4-8a78-048515904af3.mp4
+  MISSING_REFERENCE properties id=88482ba1-7540-4e82-96e4-a8b0bf2c753c column=video_tour label="🏡 LONG LEASE INVESTMENT OPPORTUNITY"
+MISSING_SOURCE property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.41 PM.jpeg
+  MISSING_REFERENCE properties id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=image_url label="LUXURY 5-BEDROOM FULLY DETACHED DUPLEX"
+  MISSING_REFERENCE properties id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images label="LUXURY 5-BEDROOM FULLY DETACHED DUPLEX"
+  MISSING_REFERENCE properties_image_backup id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=image_url
+  MISSING_REFERENCE properties_image_backup id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images
+MISSING_SOURCE property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg
+  MISSING_REFERENCE properties id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images label="LUXURY 5-BEDROOM FULLY DETACHED DUPLEX"
+  MISSING_REFERENCE properties_image_backup id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images
+MISSING_SOURCE property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg
+  MISSING_REFERENCE properties id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images label="LUXURY 5-BEDROOM FULLY DETACHED DUPLEX"
+  MISSING_REFERENCE properties_image_backup id=acaa35bf-c8d1-41b9-b24e-6675c355d180 column=images
+MISSING_SOURCE property-videos/properties/1782778167093.mp4
+  MISSING_REFERENCE properties id=36d08c80-c13c-4f96-85b1-8c86d557536e column=video_tour label="C of O"
+MISSING_SOURCE property-videos/properties/1783809980608_WhatsApp Video 2026-07-11 at 4.50.51 PM.mp4
+  MISSING_REFERENCE properties id=bf938c73-07a2-40b1-9bc5-81306df422bf column=video_tour label="EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE"
+MISSING_SOURCE property-videos/properties/1783808587279_WhatsApp Video 2026-07-11 at 9.50.48 PM.mp4
+  MISSING_REFERENCE properties id=b4a0d887-c20d-40f4-828a-e0ba7dea3829 column=video_tour label=" 4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ"
+MISSING_SOURCE property-videos/properties/1783810295001_WhatsApp Video 2026-07-11 at 9.53.15 PM.mp4
+  MISSING_REFERENCE properties id=8c01f1e4-4022-4f5b-af67-f6893f6c19a0 column=video_tour label="4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ "
+MISSING_SOURCE property-videos/properties/1783812259222_WhatsApp Video 2026-07-11 at 9.58.08 PM.mp4
+  MISSING_REFERENCE properties id=089de2ab-4d8a-4398-bee3-e3e5b03a0e2c column=video_tour label="4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ "
+MISSING_SOURCE property-videos/properties/1783812819593_WhatsApp Video 2026-07-11 at 10.01.43 PM.mp4
+  MISSING_REFERENCE properties id=58031de5-50b3-420e-9535-011095610405 column=video_tour label="5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ "
+MISSING_SOURCE property-videos/properties/1789910925725.mp4
+  MISSING_REFERENCE properties id=09c1b090-a105-48c1-a543-a2ddef010e29 column=video_tour_url label="Luxury 2 bedroom Short-let apartment"
+MISSING_SOURCE property-videos/properties/1785845756618_document_6019418350633885191.mp4
+  MISSING_REFERENCE properties id=3e8ce8e7-7e1e-45ee-9186-cc41c5d5402b column=video_tour label="The pantheon terraces "
+MISSING_SOURCE ongoing-project-videos/ongoing_projects/1784762397804_20260722_132905.mp4
+  MISSING_REFERENCE ongoing_projects id=01141c35-d973-4ce7-9ac2-d7e9f99bb827 column=video_url label="Enclaves court"
+MISSING_SOURCE ongoing-project-videos/ongoing_projects/1785005923092_WhatsApp Video 2026-07-24 at 3.08.52 PM.mp4
+  MISSING_REFERENCE ongoing_projects id=5cd0266e-f9ab-467b-a923-56c8fb6f4c52 column=video_url label="4 bedroom semi-detached Duplex with modern infrastructure and ample parking space"
+EXECUTION PLAN
+FILE brochures/brochures/1783701406136_Mini Flat Investment Brief (Long Lease)_20260706_165336_0000.pdf | 11394875 bytes | application/pdf | raw | brochures/8da8d8fc-ac27-4c9c-b9ce-15657e26ea3a/1185c40f-c3e4-55f1-9a11-a34e4fad617f.pdf | pending
+  DB brochures id=8da8d8fc-ac27-4c9c-b9ce-15657e26ea3a column=pdf_file
+SUMMARY {"files":1,"by_status":{"pending":1},"by_bucket":{"brochures":{"files":1,"bytes":11394875}},"bytes":11394875,"database_references":1}
+Storage check: current 0.000 GiB; source bytes selected 0.011 GiB; projected 0.011 GiB after a conservative 4x image-derivative allowance. 25 credits are not a storage-only quota; delivery bandwidth/transforms also consume credits.
+FAILED brochures/brochures/1783701406136_Mini Flat Investment Brief (Long Lease)_20260706_165336_0000.pdf: Cloudinary chunked upload returned HTTP 400.
+FILE brochures/brochures/1783701406136_Mini Flat Investment Brief (Long Lease)_20260706_165336_0000.pdf | 11394875 bytes | application/pdf | raw | brochures/8da8d8fc-ac27-4c9c-b9ce-15657e26ea3a/1185c40f-c3e4-55f1-9a11-a34e4fad617f.pdf | failed
+  DB brochures id=8da8d8fc-ac27-4c9c-b9ce-15657e26ea3a column=pdf_file
+SUMMARY {"files":1,"by_status":{"failed":1},"by_bucket":{"brochures":{"files":1,"bytes":11394875}},"bytes":11394875,"database_references":1}
+FINAL {"total_files":1,"uploaded":0,"verified":0,"db_fields_updated":0,"failed":1,"skipped":0,"total_source_bytes":11394875,"manifest":"C:\\Users\\BELLO IREBAMI\\Downloads\\Ceres-main\\Ceres-main\\Apps\\web\\migration\\manifest.json","log":"C:\\Users\\BELLO IREBAMI\\Downloads\\Ceres-main\\Ceres-main\\Apps\\web\\migration\\log-2026-10-07T21-13-16-681Z.txt"}

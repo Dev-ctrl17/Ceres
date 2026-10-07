@@ -2,7 +2,7 @@
 // This enables crawlers to see fully rendered property listings
 
 import { createClient } from '@supabase/supabase-js';
-import { toCdnUrl } from '../src/lib/imageUrl.js';
+import { resolveMediaUrl, rewriteMediaContent } from '../src/lib/mediaUrls.js';
 
 // Helper: run a promise with a hard timeout so this serverless function
 // can NEVER be killed by Vercel's FUNCTION_INVOCATION_TIMEOUT.
@@ -93,10 +93,15 @@ export default async function handler(req, res) {
 
     const images = (property.images?.length ? property.images : property.image_url ? [property.image_url] : [])
       .filter((image) => typeof image === 'string' && image.trim())
-      .map((image) => toCdnUrl(image.startsWith('http') ? image : `https://www.luxurypropertiesltd.com.ng/${image.replace(/^\/+/, '')}`));
+      .map((image) => resolveMediaUrl(image, 'property-images'))
+      .filter(Boolean);
     const primaryImage = images[0] || 'https://www.luxurypropertiesltd.com.ng/og-image.png';
     const location = String(property.location || property.city || 'Nigeria').trim();
     const propertyName = String(property.title || `Property in ${location}`).trim();
+    const propertyDescription = rewriteMediaContent(
+      property.description || `${propertyName} in ${location}`,
+      'property-images',
+    );
     const price = Number(String(property.price ?? '').replace(/[^\d.]/g, ''));
 
     // Build JSON-LD structured data
@@ -104,7 +109,7 @@ export default async function handler(req, res) {
       "@context": "https://schema.org/",
       "@type": "Residence",
       "name": propertyName,
-      "description": String(property.description || `${propertyName} in ${location}`).trim(),
+      "description": String(propertyDescription).trim(),
       "image": images.length ? images : [primaryImage],
       "url": `https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`,
       "address": {
@@ -152,12 +157,12 @@ export default async function handler(req, res) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${property.title} - Luxury Properties Ltd</title>
-  <meta name="description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
+  <meta name="description" content="${propertyDescription.substring(0, 160)}" />
     <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/properties/${property.slug}" />
   
   <!-- Open Graph -->
   <meta property="og:title" content="${property.title} - Luxury Properties Ltd" />
-  <meta property="og:description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
+  <meta property="og:description" content="${propertyDescription.substring(0, 160)}" />
   <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/properties/${property.slug}" />
   <meta property="og:image" content="${primaryImage}" />
@@ -170,7 +175,7 @@ export default async function handler(req, res) {
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${property.title} - Luxury Properties Ltd" />
-  <meta name="twitter:description" content="${(property.description || `${property.title} in ${property.location}`).substring(0, 160)}" />
+  <meta name="twitter:description" content="${propertyDescription.substring(0, 160)}" />
   <meta name="twitter:image" content="${primaryImage}" />
   <meta name="twitter:image:alt" content="${property.title}" />
   
@@ -210,7 +215,7 @@ export default async function handler(req, res) {
     ${property.bathrooms ? `<p>${property.bathrooms} Bathrooms</p>` : ''}
     ${property.area_sqm ? `<p>${property.area_sqm} sqm</p>` : ''}
     <p><strong>Location:</strong> ${property.location}</p>
-    ${property.description ? `<div class="description"><h2>Description</h2><p>${property.description}</p></div>` : ''}
+    ${propertyDescription ? `<div class="description"><h2>Description</h2><p>${propertyDescription}</p></div>` : ''}
     ${amenitiesList.length > 0 ? `
       <div class="amenities">
         <h2>Amenities & Features</h2>

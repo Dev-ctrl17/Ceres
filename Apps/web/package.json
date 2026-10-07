@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "node --max-old-space-size=4096 node_modules/vite/bin/vite.js",
-    "build": "node scripts/generate-sitemap.mjs && node prerender.mjs && node scripts/validate-sitemap.mjs && node scripts/audit-internal-links.mjs && node scripts/validate-structured-data.mjs",
+    "build": "node scripts/export-media-migration-map.mjs && node scripts/generate-sitemap.mjs && node prerender.mjs && node scripts/validate-sitemap.mjs && node scripts/audit-internal-links.mjs && node scripts/validate-structured-data.mjs",
     "preview": "vite preview",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "seo:check": "node scripts/validate-sitemap.mjs && node scripts/audit-internal-links.mjs && node scripts/validate-structured-data.mjs",
+    "audit:egress": "node scripts/audit-rendered-egress.mjs",
     "indexnow": "node scripts/submit-indexnow.mjs",
     "images:check": "node scripts/check-property-images.mjs",
     "images:check:report": "node scripts/check-property-images.mjs --report",

@@ -1,0 +1,122 @@
+{
+  "created_at": "2026-10-07T21:57:24.781Z",
+  "values": [
+    {
+      "table": "property_submissions",
+      "row_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966868-wy4bemqqm7m.jpeg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2202b7f9-78a1-595f-90bc-1e7f90d32299",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2f5b8f6d-d765-5748-8763-696234859b11",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/db22f88b-5784-55e7-b5cb-154eecbefdae",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/f5992ddc-ff49-5b97-b76a-2062b1bbdc85",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/4e3e81a0-0281-5883-9a76-f043f9d08c23",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2feec935-22b1-599b-9f3f-34d5e9798d88",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/d20cf77a-70a4-5cf1-9a9d-6dea517b7984",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966872-92akgxcjz5b.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2202b7f9-78a1-595f-90bc-1e7f90d32299",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2f5b8f6d-d765-5748-8763-696234859b11",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/db22f88b-5784-55e7-b5cb-154eecbefdae",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/f5992ddc-ff49-5b97-b76a-2062b1bbdc85",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/4e3e81a0-0281-5883-9a76-f043f9d08c23",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2feec935-22b1-599b-9f3f-34d5e9798d88",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/d20cf77a-70a4-5cf1-9a9d-6dea517b7984",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/9432318c-cd50-5811-8130-506cb9a8dcd5"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966868-wy4bemqqm7m.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966868-wy4bemqqm7m.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966872-92akgxcjz5b.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/9432318c-cd50-5811-8130-506cb9a8dcd5",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/9432318c-cd50-5811-8130-506cb9a8dcd5",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966872-92akgxcjz5b.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410133/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1.jpg",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 399250,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "7 full plots for sales image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966868-wy4bemqqm7m.jpeg"
+        },
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/9432318c-cd50-5811-8130-506cb9a8dcd5",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410143/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/9432318c-cd50-5811-8130-506cb9a8dcd5.jpg",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 510064,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 8,
+          "alt_text": "7 full plots for sales image 9",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966872-92akgxcjz5b.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966868-wy4bemqqm7m.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966868-wy4bemqqm7m.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966868-wy4bemqqm7m.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410133/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/6810f3b1-07b1-5fc6-b66b-33aedb065ef1.jpg",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 399250,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "7 full plots for sales image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966868-wy4bemqqm7m.jpeg"
+        }
+      ]
+    }
+  ]
+}

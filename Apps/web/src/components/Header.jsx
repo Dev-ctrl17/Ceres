@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
-import { getFileUrl } from '@/lib/supabaseService';
 import ProspectReferralCTA from "./ProspectReferralCTA.jsx";
 const groups = [
   {
@@ -53,19 +52,15 @@ export default function Header() {
           className="flex items-center"
           aria-label="Luxury Properties home"
         >
-          <picture>
-            <source
-              srcSet={getFileUrl('site-assets', 'logo-optimized.webp') || 'https://placehold.co/120x64?text=LP'}
-              type="image/webp"
-            />
-            <img
-              src={getFileUrl('site-assets', 'logo-optimized.webp') || 'https://placehold.co/120x64?text=LP'}
-              alt="Luxury Properties Ltd"
-              className="h-12 w-auto object-contain"
-              width="120"
-              height="80"
-            />
-          </picture>
+          <span className="flex items-center gap-3" aria-label="Luxury Properties Ltd">
+            <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-500 text-sm font-bold text-amber-600">
+              LP
+            </span>
+            <span className="leading-tight">
+              <span className="block text-sm font-semibold tracking-wide text-stone-900">LUXURY</span>
+              <span className="block text-[0.65rem] tracking-[0.16em] text-stone-600">PROPERTIES LTD</span>
+            </span>
+          </span>
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           <Link

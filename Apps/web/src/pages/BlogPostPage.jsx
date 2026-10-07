@@ -8,6 +8,7 @@ import { blogPostsData, loadPostContent } from '@/data/blogPosts.js';
 import { generateFAQSchema } from '@/lib/structuredData';
 import { buildImageUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from '@/lib/siteConfig.js';
 import { toCdnUrl } from '@/lib/imageUrl.js';
+import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -20,7 +21,7 @@ const BlogPostPage = () => {
       setLoading(true);
       const fullPost = await loadPostContent(slug);
       if (fullPost) {
-        setPost(fullPost);
+        setPost(rewriteMediaContent(fullPost, 'site-assets'));
         setNotFound(false);
       } else {
         setNotFound(true);
@@ -136,6 +137,9 @@ const BlogPostPage = () => {
                 src={toCdnUrl(post.ogImage)}
                 alt={post.title}
                 className="w-full h-full object-cover"
+                width="1200"
+                height="630"
+                loading="eager"
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-primary via-primary/90 to-primary/80" />

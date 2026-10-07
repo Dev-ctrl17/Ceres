@@ -13,14 +13,17 @@ for (const [name, type] of [
 for (const [name, type] of [
   ['animated.gif', 'image/gif'],
   ['scan.tiff', 'image/tiff'],
-  ['image.heic', 'image/heic'],
 ]) {
   test(`rejects ${name}`, () => assert.equal(isSupportedPropertyImage({ name, type }), false));
 }
 
+test('accepts HEIC for server-side format conversion', () => {
+  assert.equal(isSupportedPropertyImage({ name: 'image.heic', type: 'image/heic' }), true);
+});
+
 test('does not attempt to convert an unsupported format', async () => {
   await assert.rejects(
     preparePropertyImage({ name: 'animated.gif', type: 'image/gif' }),
-    /JPG, PNG, or WebP/,
+    /JPG, PNG, WebP, or HEIC/,
   );
 });

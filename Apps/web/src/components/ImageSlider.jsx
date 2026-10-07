@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { toCdnUrl } from '@/lib/imageUrl.js';
-
-const PLACEHOLDER_IMAGE = toCdnUrl('https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg');
 const LOCAL_PLACEHOLDER_IMAGE = '/property-image-placeholder.svg';
 
 const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [failedImages, setFailedImages] = useState(() => new Map());
-  const galleryImages = images?.length ? images : [null];
+  const galleryImages = images || [];
 
   const goToSlide = useCallback((index) => {
     setCurrentIndex(index);
@@ -47,19 +45,21 @@ const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
       onMouseLeave={() => setIsHovering(false)}
     >
       {galleryImages.map((src, index) => {
-        const stage = failedImages.get(index) || (src ? 'original' : 'placeholder');
-        const imageSrc = stage === 'original' ? src : stage === 'local' ? LOCAL_PLACEHOLDER_IMAGE : PLACEHOLDER_IMAGE;
+        const stage = failedImages.get(index) || 'original';
+        const imageSrc = stage === 'original' ? src : LOCAL_PLACEHOLDER_IMAGE;
         return (
           <img
             key={index}
             src={toCdnUrl(imageSrc)}
-            alt={stage === 'original' ? alt : 'Property photo coming soon'}
+            alt={stage === 'original' ? alt : 'Property photo unavailable'}
             width={1200}
             height={675}
             loading={index === 0 ? 'eager' : 'lazy'}
             decoding="async"
             onError={() => {
-              setFailedImages((previous) => new Map(previous).set(index, stage === 'original' ? 'placeholder' : 'local'));
+              if (stage === 'original') {
+                setFailedImages((previous) => new Map(previous).set(index, 'local'));
+              }
             }}
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-800 ease-in-out"
             style={{

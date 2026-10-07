@@ -4,12 +4,12 @@ import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
 import BrochureViewer from "@/components/BrochureViewer.jsx";
 import supabase from "@/lib/supabaseClient";
-import { getFileUrl } from "@/lib/supabaseService";
 import { buildAbsoluteUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from "@/lib/siteConfig.js";
 import { Helmet } from "react-helmet";
 import { Button } from "@/components/ui/button";
 import { FileText, Calendar, Home, MapPin, Tag, ArrowLeft, ExternalLink, Phone, Mail } from "lucide-react";
 import { toCdnUrl } from "@/lib/imageUrl.js";
+import { resolveMediaUrl, rewriteMediaContent } from "@/lib/mediaUrls.js";
 
 const InvestmentBriefFallbackMetadata = () => (
   <Helmet>
@@ -89,7 +89,7 @@ const InvestmentBriefPage = () => {
           throw fetchError;
         }
       } else {
-        setBrochure(data);
+        setBrochure(rewriteMediaContent(data, 'brochures'));
       }
     } catch (err) {
       setError(err.message || "Failed to load brochure");
@@ -100,16 +100,12 @@ const InvestmentBriefPage = () => {
 
   const getPdfUrl = () => {
     if (!brochure?.pdf_file) return null;
-    return brochure.pdf_file.startsWith("http")
-      ? brochure.pdf_file
-      : getFileUrl("brochures", brochure.pdf_file);
+    return resolveMediaUrl(brochure.pdf_file, "brochures");
   };
 
   const getThumbnailUrl = () => {
     if (!brochure?.thumbnail) return null;
-    return brochure.thumbnail.startsWith("http")
-      ? brochure.thumbnail
-      : getFileUrl("brochures", brochure.thumbnail);
+    return resolveMediaUrl(brochure.thumbnail, "brochures");
   };
 
   const formatDate = (dateStr) => {

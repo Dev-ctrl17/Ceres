@@ -6,8 +6,9 @@ import { HardHat, Calendar, MapPin, FileText, PlayCircle } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Card, CardContent } from '@/components/ui/card';
-import { getFileUrl } from '@/lib/supabaseService';
 import { toCdnUrl } from '@/lib/imageUrl.js';
+import { resolveMediaUrl } from '@/lib/mediaUrls.js';
+import { filterKnownMissingMedia } from '@/lib/missingMedia.js';
 import { useOngoingProjects } from '@/hooks/useOngoingProjects';
 
 const statusBadgeColor = (status) => {
@@ -92,18 +93,19 @@ const OngoingProjectsPage = () => {
                       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
                         <div className="aspect-video bg-muted rounded-t-xl overflow-hidden relative">
                           {(() => {
-                            const images = project.image_urls?.length ? project.image_urls : (project.image_url ? [project.image_url] : []);
-                            const resolve = (img) => {
-                              if (!img) return '';
-                              if (img.startsWith('http')) return img;
-                              return getFileUrl('ongoing-project-images', img) || img;
-                            };
-                            return images.length > 0 ? (
+                            const images = filterKnownMissingMedia(
+                              project.image_urls?.length ? project.image_urls : (project.image_url ? [project.image_url] : []),
+                              'ongoing-project-images',
+                            );
+                            const imageUrl = resolveMediaUrl(images[0], 'ongoing-project-images');
+                            return imageUrl ? (
                               <img
-                                src={toCdnUrl(resolve(images[0]))}
+                                src={toCdnUrl(imageUrl)}
                                 alt={project.name}
                                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                                 loading="lazy"
+                                width="1200"
+                                height="675"
                               />
                             ) : (
                               <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
@@ -116,7 +118,7 @@ const OngoingProjectsPage = () => {
                               +{project.image_urls.length - 1} more
                             </div>
                           )}
-                          {project.video_url && (
+                          {resolveMediaUrl(project.video_url, 'ongoing-project-videos') && (
                             <div className="absolute bottom-3 right-3 flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium bg-black/60 text-white">
                               <PlayCircle className="w-3.5 h-3.5" />
                               <span>Video</span>

@@ -1,0 +1,733 @@
+{
+  "created_at": "2026-10-07T21:54:51.482Z",
+  "values": [
+    {
+      "table": "properties",
+      "row_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+      "column": "image_url",
+      "old_value": "https://images.luxurypropertiesltd.com.ng/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+          "new_public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409874/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 361555,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+      "column": "images",
+      "old_value": [
+        "https://images.luxurypropertiesltd.com.ng/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/0b371d2b-735c-5eb0-af90-3ecc8369c783",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/bd7d5ff5-728a-5c32-8b19-716d274cbe29",
+        "https://images.luxurypropertiesltd.com.ng/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/a7c49e3d-cbef-5911-b0c3-319f251fd73d",
+        "https://images.luxurypropertiesltd.com.ng/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/a965be5a-2d28-5748-b4f7-cd1ea8c6a6b3"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/0b371d2b-735c-5eb0-af90-3ecc8369c783",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/bd7d5ff5-728a-5c32-8b19-716d274cbe29",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/a7c49e3d-cbef-5911-b0c3-319f251fd73d",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/a965be5a-2d28-5748-b4f7-cd1ea8c6a6b3"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+          "new_public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg",
+          "new_public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45",
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg",
+          "new_public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d",
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409874/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 361555,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409879/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 350813,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409883/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 361555,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "EXCLUSIVE 5-BEDROOM FULLY DETACHED LUXURY DUPLEX image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+      "column": "image_url",
+      "old_value": "https://images.luxurypropertiesltd.com.ng/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+          "new_public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409863/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 398017,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "LUXURY CONTEMPORARY RESIDENCE image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+      "column": "images",
+      "old_value": [
+        "https://images.luxurypropertiesltd.com.ng/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/35e1ab2e-26cd-52b9-8b9f-1496f214bb44",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/797d011f-2ab5-536c-bf53-0657e236f1a4",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/91325d29-d745-50cc-9020-e39a7a5c369a",
+        "https://images.luxurypropertiesltd.com.ng/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/c2918ebd-2aae-5424-be1e-8dd7ca824a36"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/35e1ab2e-26cd-52b9-8b9f-1496f214bb44",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/797d011f-2ab5-536c-bf53-0657e236f1a4",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/91325d29-d745-50cc-9020-e39a7a5c369a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/c2918ebd-2aae-5424-be1e-8dd7ca824a36"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+          "new_public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg",
+          "new_public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a",
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg",
+          "new_public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639",
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409863/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 398017,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "LUXURY CONTEMPORARY RESIDENCE image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409875/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 338935,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "LUXURY CONTEMPORARY RESIDENCE image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409871/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 373190,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "LUXURY CONTEMPORARY RESIDENCE image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+      "column": "image_url",
+      "old_value": "https://images.luxurypropertiesltd.com.ng/properties/1785592347238.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1785592347238.jpg",
+          "new_public_id": "properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "entity": "properties",
+          "entity_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+          "source_bucket": "property-images",
+          "source_path": "properties/1785592347238.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+          "public_id": "properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409760/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73.jpg",
+          "width": 720,
+          "height": 953,
+          "bytes": 137588,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Governor's Consent, Approved building plan image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1785592347238.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+      "column": "images",
+      "old_value": [
+        "https://images.luxurypropertiesltd.com.ng/properties/1785592347238.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/cbf61bce-42d8-5c24-b738-498263b95dd0",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/b4a32963-5de8-5a0b-b13a-06f1e62f2961",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/a6d8427f-316d-5b2e-8115-38abffb75d2a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/a0284699-af00-5b1a-880b-75a636e63d67",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/cb877a39-eb59-53fe-b817-b76945032a73",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/638fa4c5-8618-5311-b11b-4ac621bbc38d"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/cbf61bce-42d8-5c24-b738-498263b95dd0",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/b4a32963-5de8-5a0b-b13a-06f1e62f2961",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/a6d8427f-316d-5b2e-8115-38abffb75d2a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/a0284699-af00-5b1a-880b-75a636e63d67",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/cb877a39-eb59-53fe-b817-b76945032a73",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/638fa4c5-8618-5311-b11b-4ac621bbc38d"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1785592347238.jpg",
+          "new_public_id": "properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "entity": "properties",
+          "entity_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+          "source_bucket": "property-images",
+          "source_path": "properties/1785592347238.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+          "public_id": "properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409760/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73.jpg",
+          "width": 720,
+          "height": 953,
+          "bytes": 137588,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Governor's Consent, Approved building plan image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1785592347238.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785592347238.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785592347238.jpg",
+          "new_public_id": "properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "entity": "properties",
+          "entity_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+          "source_bucket": "property-images",
+          "source_path": "properties/1785592347238.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+          "public_id": "properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409760/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73.jpg",
+          "width": 720,
+          "height": 953,
+          "bytes": 137588,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1785592347238.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785592347238.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/cbf61bce-42d8-5c24-b738-498263b95dd0",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/b4a32963-5de8-5a0b-b13a-06f1e62f2961",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/a6d8427f-316d-5b2e-8115-38abffb75d2a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/a0284699-af00-5b1a-880b-75a636e63d67",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/cb877a39-eb59-53fe-b817-b76945032a73",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/638fa4c5-8618-5311-b11b-4ac621bbc38d"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/cbf61bce-42d8-5c24-b738-498263b95dd0",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/b4a32963-5de8-5a0b-b13a-06f1e62f2961",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/a6d8427f-316d-5b2e-8115-38abffb75d2a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/a0284699-af00-5b1a-880b-75a636e63d67",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/cb877a39-eb59-53fe-b817-b76945032a73",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/638fa4c5-8618-5311-b11b-4ac621bbc38d"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1785592347238.jpg",
+          "new_public_id": "properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "entity": "properties",
+          "entity_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+          "source_bucket": "property-images",
+          "source_path": "properties/1785592347238.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "8d1ffc37-6eda-44b0-a10a-1f2e56c413ef",
+          "public_id": "properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409760/properties/8d1ffc37-6eda-44b0-a10a-1f2e56c413ef/47553a5a-3cb4-5c30-a3e5-f9baf0ed5a73.jpg",
+          "width": 720,
+          "height": 953,
+          "bytes": 137588,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1785592347238.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+          "new_public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409863/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 398017,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/35e1ab2e-26cd-52b9-8b9f-1496f214bb44",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/797d011f-2ab5-536c-bf53-0657e236f1a4",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/91325d29-d745-50cc-9020-e39a7a5c369a",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/c2918ebd-2aae-5424-be1e-8dd7ca824a36"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/35e1ab2e-26cd-52b9-8b9f-1496f214bb44",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/797d011f-2ab5-536c-bf53-0657e236f1a4",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/91325d29-d745-50cc-9020-e39a7a5c369a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/c2918ebd-2aae-5424-be1e-8dd7ca824a36"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg",
+          "new_public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg",
+          "new_public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a",
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg",
+          "new_public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639",
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409863/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/61d970be-ace6-5a5e-af1f-ad536057511e.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 398017,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_1.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409875/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/42089d86-0d5b-58f9-89ec-fc263d7c796a.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 338935,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "properties image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_5.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "df3c72c8-1cfc-4bc2-953d-fb10cde834e9",
+          "public_id": "properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409871/properties/df3c72c8-1cfc-4bc2-953d-fb10cde834e9/1048e817-be3b-5128-b5ad-bde516475639.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 373190,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "properties image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/7f484187-c897-43a5-8cf9-893f5f91baf3/luxury_contemporary_residence_6.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+          "new_public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409874/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 361555,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/0b371d2b-735c-5eb0-af90-3ecc8369c783",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/bd7d5ff5-728a-5c32-8b19-716d274cbe29",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/a7c49e3d-cbef-5911-b0c3-319f251fd73d",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/a965be5a-2d28-5748-b4f7-cd1ea8c6a6b3"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/0b371d2b-735c-5eb0-af90-3ecc8369c783",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/bd7d5ff5-728a-5c32-8b19-716d274cbe29",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/a7c49e3d-cbef-5911-b0c3-319f251fd73d",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/a965be5a-2d28-5748-b4f7-cd1ea8c6a6b3"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg",
+          "new_public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg",
+          "new_public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45",
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg",
+          "new_public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d",
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409874/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d5011909-4cd1-5199-8ee9-85a8c32aae34.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 361555,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_1.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409879/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/d40eef60-1be8-5257-9f93-8e26b8d72a45.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 350813,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "properties image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_4.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "c4267017-7549-4ff7-9ffe-72229c31d30e",
+          "public_id": "properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409883/properties/c4267017-7549-4ff7-9ffe-72229c31d30e/5f36dc2a-f3d0-501a-aef0-fb877a6f5a1d.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 361555,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "properties image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/a13997fd-83a6-479a-b817-2d3a67765921/exclusive_5_bedroom_fully_detached_luxury_duplex_6.jpg"
+        }
+      ]
+    }
+  ]
+}

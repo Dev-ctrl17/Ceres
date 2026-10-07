@@ -115,10 +115,13 @@ const EPANPage = () => {
         <section className="relative min-h-[80dvh] flex items-center justify-center py-24">
           <div className="absolute inset-0 z-0">
             <img 
-              src={getBackground('epan_hero', "https://i.ibb.co/5h4SDhF1/epan.jpg")} 
+              src={getBackground('epan_hero', "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/site-assets/legacy-ibb/epan-hero")} 
               alt="Elite Property Agents Network" 
               className="w-full h-full object-cover"
+              width="640"
+              height="498"
               loading="lazy"
+              decoding="async"
             />
             <div className="absolute inset-0 bg-slate-950/70 mix-blend-multiply" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-950/50 to-background" />

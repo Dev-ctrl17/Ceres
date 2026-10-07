@@ -18,12 +18,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
-import { getFileUrl, uploadFile } from "@/lib/supabaseService";
-import { toCdnUrl } from "@/lib/imageUrl.js";
-import {
-  getPropertyImageName,
-  getUniqueUploadFolder,
-} from "@/lib/propertyImageNaming";
+import { uploadFile } from "@/lib/supabaseService";
 import { useEmailValidation } from "@/hooks/useEmailValidation";
 import { Loader2, MailCheck, MailX } from "lucide-react";
 import { sendFormspreeNotification } from "@/hooks/useFormspree";
@@ -82,6 +77,7 @@ const PropertySubmissionForm = () => {
       }
 
       const submissionData = {
+        id: globalThis.crypto.randomUUID(),
         title: data.title,
         description: data.description || "",
         price: parseFloat(data.price) || 0,
@@ -103,24 +99,20 @@ const PropertySubmissionForm = () => {
       if (files.length > 0) {
         try {
           toast.info(`Uploading ${files.length} image(s)...`);
-          const uploadFolder = getUniqueUploadFolder("submissions");
           const uploadPromises = files.map(async (file, index) => {
-            try {
-              const path = await uploadFile(
-                "property-images",
-                file,
-                uploadFolder,
-                { fileName: getPropertyImageName(data.title, file.name, index) }
-              );
-              return toCdnUrl(getFileUrl("property-images", path) || path);
-            } catch (uploadError) {
-              console.warn("Image upload failed for file, skipping:", uploadError);
-              return null;
-            }
+            return uploadFile("property-images", file, "", {
+              requireAuth: false,
+              entity: "property_submissions",
+              entityId: submissionData.id,
+              sortOrder: index,
+              altText: `${data.title} submitted property image ${index + 1}`,
+            });
           });
-          imageUrls = (await Promise.all(uploadPromises)).filter(Boolean);
+          imageUrls = await Promise.all(uploadPromises);
         } catch (uploadError) {
-          console.error("Image upload error:", uploadError);
+          console.error("Property submission image upload failed:", uploadError.message);
+          toast.warning(`Photos could not be uploaded. Your submission will continue without them: ${uploadError.message}`);
+          imageUrls = [];
         }
       }
 

@@ -6,19 +6,22 @@ import Footer from '@/components/Footer.jsx';
 import ContactForm from '@/components/ContactForm.jsx';
 import PropertyCard from '@/components/PropertyCard.jsx';
 import ImageSlider from '@/components/ImageSlider.jsx';
+import { filterKnownMissingMedia } from '@/lib/missingMedia.js';
 import PropertyEnquiryForm from '@/components/PropertyEnquiryForm.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { MapPin, Bed, Bath, CheckCircle, MessageCircle, Phone, Calendar, FileText, X, ChevronLeft, ChevronRight, Banknote, Home } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
-import { getFileUrl, getOptimizedImageUrl } from '@/lib/supabaseService';
+import { getOptimizedImageUrl } from '@/lib/supabaseService';
 import { generatePropertySchema, generateAEOContent } from '@/lib/structuredData';
 import { isUUID } from '@/lib/slug.js';
 import { getCanonicalUrl } from '@/lib/siteConfig.js';
 import { buildPropertySeo } from '@/lib/propertySeo.js';
 import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
 import { toCdnUrl } from '@/lib/imageUrl.js';
+import { resolveMediaUrl, rewriteMediaContent } from '@/lib/mediaUrls.js';
+import { getCloudinaryVideoUrl, getCloudinaryVideoPosterUrl } from '@/lib/cloudinaryUrls.js';
 
 const PROPERTY_IMAGE_PLACEHOLDER = '/property-image-placeholder.svg';
 
@@ -121,7 +124,7 @@ const PropertyDetailsPage = () => {
 
         if (error) throw error;
 
-        setProperty(record);
+        setProperty(rewriteMediaContent(record, 'property-images'));
 
 
         const targetPrice = Number(String(record.price || '').replace(/[^\d.]/g, ''));
@@ -160,7 +163,7 @@ const PropertyDetailsPage = () => {
             const ids = new Set(recommendations.map((item) => item.id));
             recommendations = [...recommendations, ...(typeMatches || []).filter((item) => !ids.has(item.id))];
           }
-          setSimilarProperties(recommendations.slice(0, 4));
+          setSimilarProperties(rewriteMediaContent(recommendations.slice(0, 4), 'property-images'));
         }
       } catch (error) {
         console.error('Failed to fetch property:', error);
@@ -221,19 +224,23 @@ const PropertyDetailsPage = () => {
 
   const getImageUrl = (image, width = 800) => {
     if (!image) return '';
-    return toCdnUrl(
-      getOptimizedImageUrl("property-images", image, { width, quality: 75, format: 'webp' }) ||
-      getFileUrl("property-images", image) ||
-      image
-    );
+    return getOptimizedImageUrl("property-images", image, { width }) || '';
   };
 
-  const images = property.images?.length ? property.images : property.image_url ? [property.image_url] : [];
-  const videoTours = property.video_tour_url?.length
+  const rawImages = property.images?.length ? property.images : property.image_url ? [property.image_url] : [];
+  const images = filterKnownMissingMedia(rawImages, 'property-images')
+    .map((image) => resolveMediaUrl(image, 'property-images'))
+    .filter(Boolean);
+  const rawVideoTours = Array.isArray(property.video_tour_url)
     ? property.video_tour_url
-    : property.video_tour
-      ? [property.video_tour]
-      : [];
+    : property.video_tour_url
+      ? [property.video_tour_url]
+      : property.video_tour
+        ? [property.video_tour]
+        : [];
+  const videoTours = filterKnownMissingMedia(rawVideoTours, 'property-videos')
+    .map((tour) => resolveMediaUrl(tour, 'property-videos'))
+    .filter(Boolean);
   const formatPrice = (price) => {
     return new Intl.NumberFormat('en-NG', {
       style: 'currency',
@@ -302,7 +309,7 @@ const PropertyDetailsPage = () => {
             <div className="lg:col-span-2">
               <div className="mb-8 relative aspect-video rounded-2xl overflow-hidden">
                 <ImageSlider
-                  images={images.map((img) => getImageUrl(img, 1200))}
+                  images={images.map((img) => getImageUrl(img, 1200)).filter(Boolean)}
                   alt={propertyTitle}
                   onSlideChange={(index) => setActiveSliderIndex(index)}
                 />
@@ -490,12 +497,13 @@ const PropertyDetailsPage = () => {
                   <div className={`grid gap-4 ${videoTours.length > 1 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1'}`}>
                     {videoTours.map((tour, index) => (
                       <div key={index} className="aspect-video rounded-2xl overflow-hidden bg-black">
-                        {/^https?:\/\/.*\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(tour) ? (
+                        {/res\.cloudinary\.com|^https?:\/\/.*\.(mp4|webm|mov|m4v)(\?.*)?$/i.test(tour) ? (
                           <video
-                            src={tour}
+                            src={getCloudinaryVideoUrl(tour)}
+                            poster={getCloudinaryVideoPosterUrl(tour, 800) || undefined}
                             controls
                             className="w-full h-full"
-                            preload="metadata"
+                            preload="none"
                           />
                         ) : (
                           <iframe

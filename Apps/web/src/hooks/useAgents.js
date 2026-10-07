@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { agentsApi } from '@/lib/supabaseService';
+import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 export const useAgents = () => {
   const [agents, setAgents] = useState([]);
@@ -13,7 +14,7 @@ export const useAgents = () => {
       try {
         const { data, error: fetchError } = await agentsApi.getAll();
         if (fetchError) throw new Error(fetchError.message);
-        setAgents(data || []);
+        setAgents(rewriteMediaContent(data || [], 'agent-photos'));
       } catch (err) {
         setError(err.message);
       } finally {

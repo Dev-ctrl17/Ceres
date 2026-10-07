@@ -13,7 +13,6 @@ export const cspDirectives = {
     "https://*.clarity.ms",
     "https://challenges.cloudflare.com",
     "https://elfsightcdn.com",
-    "https://i.ibb.co",
     "https://lrmljudwbzjawafuztwp.supabase.co",
   ],
   'style-src': [
@@ -28,8 +27,8 @@ export const cspDirectives = {
     "https:",
     "https://www.image2url.com",
     "https://images.unsplash.com",
-    "https://i.ibb.co",
     "https://lrmljudwbzjawafuztwp.supabase.co",
+    "https://res.cloudinary.com",
   ],
   'font-src': [
     "'self'",
@@ -37,6 +36,7 @@ export const cspDirectives = {
   ],
   'connect-src': [
     "'self'",
+    "https://api.cloudinary.com",
     "https://lrmljudwbzjawafuztwp.supabase.co",
     "https://www.google-analytics.com",
     "https://vitals.vercel-insights.com",
@@ -50,6 +50,11 @@ export const cspDirectives = {
     "https://www.youtube.com",
     "https://player.vimeo.com",
     "https://challenges.cloudflare.com",
+  ],
+  'media-src': [
+    "'self'",
+    "https://res.cloudinary.com",
+    "https://lrmljudwbzjawafuztwp.supabase.co",
   ],
   'object-src': ["'none'"],
   'base-uri': ["'self'"],

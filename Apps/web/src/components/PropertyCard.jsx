@@ -8,24 +8,28 @@ import { getCanonicalUrl } from "@/lib/siteConfig.js";
 import { getCurrentPropertySlug } from "@/lib/slug.js";
 import { getPropertyArea, getPropertyListingName } from "@/lib/propertySeo.js";
 import { toCdnUrl } from "@/lib/imageUrl.js";
-
-const PLACEHOLDER_IMAGE = toCdnUrl("https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/placeholders/property-image-placeholder.svg");
+import { filterKnownMissingMedia } from "@/lib/missingMedia.js";
 const LOCAL_PLACEHOLDER_IMAGE = "/property-image-placeholder.svg";
 
 const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
-  const firstImage = property.image_url || property.first_image || property.images?.[0];
+  const imageCandidates = filterKnownMissingMedia([
+    property.image_url,
+    property.first_image,
+    ...(Array.isArray(property.images) ? property.images : []),
+  ].filter(Boolean), "property-images");
+  const firstImage = imageCandidates[0];
   const rawImageUrl = firstImage
     ? toCdnUrl(getFileUrl("property-images", firstImage) || firstImage)
     : "";
-  const [imageSource, setImageSource] = useState(firstImage ? "original" : "placeholder");
+  const [imageSource, setImageSource] = useState(firstImage ? "original" : "unavailable");
   useEffect(() => {
-    setImageSource(firstImage ? "original" : "placeholder");
+    setImageSource(firstImage ? "original" : "unavailable");
   }, [firstImage]);
   const imageUrl = imageSource === "original"
-    ? rawImageUrl || PLACEHOLDER_IMAGE
+    ? rawImageUrl
     : imageSource === "local-placeholder"
       ? LOCAL_PLACEHOLDER_IMAGE
-      : PLACEHOLDER_IMAGE;
+      : "";
   const area = getPropertyArea(property.address || property.location, property.city || property.location);
   const listingName = getPropertyListingName(property);
   const hasBedrooms = Number(property.bedrooms) > 0;
@@ -33,12 +37,8 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
 
   const handleImageError = () => {
     if (imageSource === "original") {
-      setImageSource("placeholder");
-      onImageUnavailable?.(property);
-      return;
-    }
-    if (imageSource === "placeholder") {
       setImageSource("local-placeholder");
+      onImageUnavailable?.(property);
     }
   };
 
@@ -71,16 +71,18 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
         }`}
       >
         <div className="relative overflow-hidden aspect-[4/3]">
-          <img
-            src={toCdnUrl(imageUrl)}
-            alt={getImageAltText()}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            loading="lazy"
-            decoding="async"
-            width={800}
-            height={600}
-            onError={handleImageError}
-          />
+          {imageUrl ? (
+            <img
+              src={toCdnUrl(imageUrl)}
+              alt={getImageAltText()}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
+              width={800}
+              height={600}
+              onError={handleImageError}
+            />
+          ) : null}
           {property.is_verified && (
             <Badge className="absolute top-3 left-3 bg-primary text-primary-foreground">
               <CheckCircle className="w-3 h-3 mr-1" />

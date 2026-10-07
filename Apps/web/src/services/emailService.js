@@ -1,4 +1,5 @@
 import emailjs from '@emailjs/browser';
+import { resolveMediaUrl, rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 // EmailJS Configuration
 const EMAILJS_CONFIG = {
@@ -76,11 +77,11 @@ export async function sendPropertyNotification(propertyData) {
       price: formattedPrice,
       location: propertyData.location || 'N/A',
       property_type: propertyData.property_type || 'N/A',
-      description: propertyData.description || 'No description provided',
+      description: rewriteMediaContent(propertyData.description || 'No description provided', 'property-images'),
       owner_name: propertyData.owner_name || 'N/A',
       owner_email: propertyData.owner_email || 'N/A',
       owner_phone: propertyData.owner_phone || 'N/A',
-      image_url: propertyData.image_url || '',
+      image_url: resolveMediaUrl(propertyData.image_url, 'property-images') || '',
       status: propertyData.status || 'Pending',
       submitted_at: new Date().toLocaleString('en-NG', {
         timeZone: 'Africa/Lagos',
@@ -118,7 +119,7 @@ export async function sendGeneralNotification(data) {
   try {
     const templateParams = {
       subject: data.subject || 'New Notification',
-      html: data.html || '',
+      html: rewriteMediaContent(data.html || ''),
       submitted_at: new Date().toLocaleString('en-NG', {
         timeZone: 'Africa/Lagos',
         dateStyle: 'medium',

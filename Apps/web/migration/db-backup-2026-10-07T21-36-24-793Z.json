@@ -1,0 +1,85 @@
+{
+  "created_at": "2026-10-07T21:36:24.793Z",
+  "values": [
+    {
+      "table": "properties",
+      "row_id": "52f62847-2089-415b-9384-18461ccf5c2e",
+      "column": "video_tour_url",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-videos/properties/1791384650016.mp4"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/video/upload/f_auto,q_auto,w_2000,c_limit/properties/52f62847-2089-415b-9384-18461ccf5c2e/5c305bc0-4471-596d-a3a7-d7492a60ea50"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-videos/properties/1791384650016.mp4",
+          "new_public_id": "properties/52f62847-2089-415b-9384-18461ccf5c2e/5c305bc0-4471-596d-a3a7-d7492a60ea50",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/video/upload/f_auto,q_auto,w_2000,c_limit/properties/52f62847-2089-415b-9384-18461ccf5c2e/5c305bc0-4471-596d-a3a7-d7492a60ea50",
+          "entity": "properties",
+          "entity_id": "52f62847-2089-415b-9384-18461ccf5c2e",
+          "source_bucket": "property-videos",
+          "source_path": "properties/1791384650016.mp4"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "52f62847-2089-415b-9384-18461ccf5c2e",
+          "public_id": "properties/52f62847-2089-415b-9384-18461ccf5c2e/5c305bc0-4471-596d-a3a7-d7492a60ea50",
+          "resource_type": "video",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/video/upload/v1791408923/properties/52f62847-2089-415b-9384-18461ccf5c2e/5c305bc0-4471-596d-a3a7-d7492a60ea50.mp4",
+          "width": 464,
+          "height": 832,
+          "bytes": 16077575,
+          "format": "mp4",
+          "duration": 180.363517,
+          "sort_order": 0,
+          "alt_text": "Lekki Ikate video 1",
+          "source_bucket": "property-videos",
+          "source_path": "properties/1791384650016.mp4"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "786dc803-bfc3-4d16-99f2-0fc2bd51249f",
+      "column": "video_tour_url",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-videos/properties/1791385235029.mp4"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/video/upload/f_auto,q_auto,w_2000,c_limit/properties/786dc803-bfc3-4d16-99f2-0fc2bd51249f/4bce6d36-39a3-5d85-8960-449dc443cc53"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-videos/properties/1791385235029.mp4",
+          "new_public_id": "properties/786dc803-bfc3-4d16-99f2-0fc2bd51249f/4bce6d36-39a3-5d85-8960-449dc443cc53",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/video/upload/f_auto,q_auto,w_2000,c_limit/properties/786dc803-bfc3-4d16-99f2-0fc2bd51249f/4bce6d36-39a3-5d85-8960-449dc443cc53",
+          "entity": "properties",
+          "entity_id": "786dc803-bfc3-4d16-99f2-0fc2bd51249f",
+          "source_bucket": "property-videos",
+          "source_path": "properties/1791385235029.mp4"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "786dc803-bfc3-4d16-99f2-0fc2bd51249f",
+          "public_id": "properties/786dc803-bfc3-4d16-99f2-0fc2bd51249f/4bce6d36-39a3-5d85-8960-449dc443cc53",
+          "resource_type": "video",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/video/upload/v1791408918/properties/786dc803-bfc3-4d16-99f2-0fc2bd51249f/4bce6d36-39a3-5d85-8960-449dc443cc53.mp4",
+          "width": 360,
+          "height": 640,
+          "bytes": 16441576,
+          "format": "mp4",
+          "duration": 186.566667,
+          "sort_order": 0,
+          "alt_text": "Newly built 3 bedroom terrace with bq video 1",
+          "source_bucket": "property-videos",
+          "source_path": "properties/1791385235029.mp4"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1382 @@
+{
+  "generated_at": "2026-10-07T22:50:37.504Z",
+  "purpose": "Unreferenced Supabase Storage objects excluded from Cloudinary migration.",
+  "object_count": 229,
+  "total_bytes": 41127350,
+  "files": [
+    {
+      "source_bucket": "brochures",
+      "source_path": "brochures/1783702429241_Mini Flat Investment Brief (Long Lease)_20260706_165336_0000.pdf",
+      "size": 11394875,
+      "content_type": "application/pdf"
+    },
+    {
+      "source_bucket": "ongoing-project-videos",
+      "source_path": "ongoing_projects/.emptyFolderPlaceholder",
+      "size": 0,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781696986197_num.jpeg",
+      "size": 60591,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781696986198_num1.jpeg",
+      "size": 200436,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781696986198_num2.jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781698238672_num2.jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781705237667_num2.jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781715774713_wope5.jpeg",
+      "size": 27305,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781715774716_wope1.jpeg",
+      "size": 35924,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781715774716_wope6.jpeg",
+      "size": 25532,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781715774716_wope7.jpeg",
+      "size": 27985,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781715774716_wope8.jpeg",
+      "size": 34465,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781715774717_wope2.jpeg",
+      "size": 27495,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781715774717_wope3.jpeg",
+      "size": 32763,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716363044_wope1.jpeg",
+      "size": 58551,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716363044_wope2.jpeg",
+      "size": 18783,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716363044_wope3.jpeg",
+      "size": 32711,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716363044_wope4.jpeg",
+      "size": 14184,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716363045_wope5.jpeg",
+      "size": 19438,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716363045_wope6.jpeg",
+      "size": 9392,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716363045_wope7.jpeg",
+      "size": 28372,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716884715_wope1.jpeg",
+      "size": 40586,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716884716_wope2.jpeg",
+      "size": 27669,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716884716_wope3.jpeg",
+      "size": 41118,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716884716_wope4.jpeg",
+      "size": 22209,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716884716_wope5.jpeg",
+      "size": 31429,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716884716_wope6.jpeg",
+      "size": 24288,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716884716_wope7.jpeg",
+      "size": 16427,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716945068_wope2.jpeg",
+      "size": 27669,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716945068_wope3.jpeg",
+      "size": 41118,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716945068_wope4.jpeg",
+      "size": 22209,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716945069_wope5.jpeg",
+      "size": 31429,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716945069_wope6.jpeg",
+      "size": 24288,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781716945069_wope7.jpeg",
+      "size": 16427,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781717214002_wope1.jpeg",
+      "size": 88625,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781717214003_wope2.jpeg",
+      "size": 148312,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781717214003_wope3.jpeg",
+      "size": 160299,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781717874114_wope4.jpeg",
+      "size": 73625,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781717874114_wope5.jpeg",
+      "size": 61310,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781718142049_wope1.jpeg",
+      "size": 60591,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781718142049_wope2.jpeg",
+      "size": 200436,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781718451515_wope3.jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719037860_wope1.jpeg",
+      "size": 93289,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719037860_wope2.jpeg",
+      "size": 96285,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719037860_wope3.jpeg",
+      "size": 68616,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719037860_wope4.jpeg",
+      "size": 79683,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719037860_wope5.jpeg",
+      "size": 93985,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719037860_wope6.jpeg",
+      "size": 69928,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719037860_wope7.jpeg",
+      "size": 142302,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719125031_wope1.jpeg",
+      "size": 93289,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719125031_wope2.jpeg",
+      "size": 96285,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719125031_wope3.jpeg",
+      "size": 68616,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719125031_wope4.jpeg",
+      "size": 79683,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719125031_wope5.jpeg",
+      "size": 93985,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719125031_wope6.jpeg",
+      "size": 69928,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781719125031_wope7.jpeg",
+      "size": 142302,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781721285036_wope1.jpeg",
+      "size": 99217,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781721285036_wope2.jpeg",
+      "size": 99217,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781888362683.jpg",
+      "size": 92782,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1781965631522_wope1.jpeg",
+      "size": 99217,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782064204578.jpg",
+      "size": 112691,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782078838184_WhatsApp Image 2026-06-16 at 3.39.04 PM (1).jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782078838186_WhatsApp Image 2026-06-16 at 3.39.04 PM.jpeg",
+      "size": 200436,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782078868855_WhatsApp Image 2026-06-16 at 3.39.04 PM (1).jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782078868856_WhatsApp Image 2026-06-16 at 3.39.04 PM.jpeg",
+      "size": 200436,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782078955482_WhatsApp Image 2026-06-16 at 3.39.04 PM (1).jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782078955482_WhatsApp Image 2026-06-16 at 3.39.04 PM.jpeg",
+      "size": 200436,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782079023535_waris.jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782079055700_waris.jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782079055701_WhatsApp Image 2026-06-16 at 3.39.04 PM.jpeg",
+      "size": 200436,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782079082995_waris.jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782079101544_waris.jpeg",
+      "size": 197975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782079309628_map4.jpeg",
+      "size": 44413,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782419164770_0697783c0a8a34-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "size": 11625,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782419164772_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "size": 8382,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782419164772_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "size": 10955,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782419164772_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "size": 9452,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782419164772_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "size": 62890,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782419164772_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "size": 73377,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1782419171000_0697783c0a8a34-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "size": 11625,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540782_WhatsApp Image 2026-07-31 at 11.58.21 PM.jpeg",
+      "size": 87373,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540783_photo_6012722909396274920_y.jpg",
+      "size": 96449,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540783_photo_6012722909396274921_y.jpg",
+      "size": 174108,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540784_photo_6012722909396274922_y.jpg",
+      "size": 96202,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540784_photo_6012722909396274923_y.jpg",
+      "size": 107254,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540784_photo_6012722909396274924_y.jpg",
+      "size": 106194,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540784_photo_6012722909396274925_y.jpg",
+      "size": 114932,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540784_photo_6012722909396274926_y.jpg",
+      "size": 127283,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592540784_photo_6012722909396274927_y.jpg",
+      "size": 89124,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_photo_6012722909396274920_y.jpg",
+      "size": 96449,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_photo_6012722909396274921_y.jpg",
+      "size": 174108,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_photo_6012722909396274922_y.jpg",
+      "size": 96202,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_photo_6012722909396274923_y.jpg",
+      "size": 107254,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_photo_6012722909396274924_y.jpg",
+      "size": 106194,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_photo_6012722909396274925_y.jpg",
+      "size": 114932,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_photo_6012722909396274926_y.jpg",
+      "size": 127283,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_photo_6012722909396274927_y.jpg",
+      "size": 89124,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785592555090_WhatsApp Image 2026-07-31 at 11.58.21 PM.jpeg",
+      "size": 87373,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543290_photo_6019418351093878215_y.jpg",
+      "size": 37919,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543294_photo_6019418351093878216_y.jpg",
+      "size": 51572,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543295_photo_6019418351093878217_y.jpg",
+      "size": 52084,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543295_photo_6019418351093878218_y.jpg",
+      "size": 20863,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543295_photo_6019418351093878219_y.jpg",
+      "size": 35199,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543295_photo_6019418351093878220_y.jpg",
+      "size": 40212,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543296_photo_6019418351093878221_y.jpg",
+      "size": 27669,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543296_photo_6019418351093878222_y.jpg",
+      "size": 30981,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841543296_photo_6019418351093878223_y.jpg",
+      "size": 47591,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739642_photo_6019418351093878215_y.jpg",
+      "size": 37919,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739643_photo_6019418351093878216_y.jpg",
+      "size": 51572,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739643_photo_6019418351093878217_y.jpg",
+      "size": 52084,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739643_photo_6019418351093878218_y.jpg",
+      "size": 20863,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739643_photo_6019418351093878219_y.jpg",
+      "size": 35199,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739643_photo_6019418351093878220_y.jpg",
+      "size": 40212,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739643_photo_6019418351093878221_y.jpg",
+      "size": 27669,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739643_photo_6019418351093878222_y.jpg",
+      "size": 30981,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785841739643_photo_6019418351093878223_y.jpg",
+      "size": 47591,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017147_photo_6019418351093878215_y.jpg",
+      "size": 37919,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017147_photo_6019418351093878216_y.jpg",
+      "size": 51572,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017147_photo_6019418351093878217_y.jpg",
+      "size": 52084,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017147_photo_6019418351093878218_y.jpg",
+      "size": 20863,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017147_photo_6019418351093878219_y.jpg",
+      "size": 35199,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017147_photo_6019418351093878220_y.jpg",
+      "size": 40212,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017147_photo_6019418351093878221_y.jpg",
+      "size": 27669,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017147_photo_6019418351093878222_y.jpg",
+      "size": 30981,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1785844017148_photo_6019418351093878223_y.jpg",
+      "size": 47591,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861788_WhatsApp Image 2026-08-21 at 3.02.01 PM (1).jpeg",
+      "size": 19116,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.52 PM.jpeg",
+      "size": 22384,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.53 PM.jpeg",
+      "size": 49704,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg",
+      "size": 29785,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg",
+      "size": 26402,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861792_WhatsApp Image 2026-08-21 at 3.01.58 PM.jpeg",
+      "size": 26954,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861792_WhatsApp Image 2026-08-21 at 3.02.01 PM.jpeg",
+      "size": 26778,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.40 PM.jpeg",
+      "size": 72927,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.41 PM.jpeg",
+      "size": 72927,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.42 PM.jpeg",
+      "size": 41221,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.44 PM.jpeg",
+      "size": 35559,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.47 PM (1).jpeg",
+      "size": 47947,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.47 PM.jpeg",
+      "size": 79581,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426861793_WhatsApp Image 2026-08-21 at 3.01.50 PM.jpeg",
+      "size": 23646,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904074_WhatsApp Image 2026-08-21 at 3.02.01 PM (1).jpeg",
+      "size": 19116,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.47 PM (1).jpeg",
+      "size": 47947,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.47 PM.jpeg",
+      "size": 79581,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.50 PM.jpeg",
+      "size": 23646,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.52 PM.jpeg",
+      "size": 22384,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.53 PM.jpeg",
+      "size": 49704,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg",
+      "size": 29785,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg",
+      "size": 26402,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.01.58 PM.jpeg",
+      "size": 26954,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904075_WhatsApp Image 2026-08-21 at 3.02.01 PM.jpeg",
+      "size": 26778,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904076_WhatsApp Image 2026-08-21 at 3.01.42 PM.jpeg",
+      "size": 41221,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426904076_WhatsApp Image 2026-08-21 at 3.01.44 PM.jpeg",
+      "size": 35559,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.42 PM.jpeg",
+      "size": 41221,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.44 PM.jpeg",
+      "size": 35559,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.47 PM (1).jpeg",
+      "size": 47947,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.47 PM.jpeg",
+      "size": 79581,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.50 PM.jpeg",
+      "size": 23646,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.52 PM.jpeg",
+      "size": 22384,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.53 PM.jpeg",
+      "size": 49704,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg",
+      "size": 29785,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg",
+      "size": 26402,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.01.58 PM.jpeg",
+      "size": 26954,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.02.01 PM (1).jpeg",
+      "size": 19116,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426909871_WhatsApp Image 2026-08-21 at 3.02.01 PM.jpeg",
+      "size": 26778,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.42 PM.jpeg",
+      "size": 41221,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.44 PM.jpeg",
+      "size": 35559,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.47 PM (1).jpeg",
+      "size": 47947,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.47 PM.jpeg",
+      "size": 79581,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.50 PM.jpeg",
+      "size": 23646,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.52 PM.jpeg",
+      "size": 22384,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.53 PM.jpeg",
+      "size": 49704,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg",
+      "size": 29785,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg",
+      "size": 26402,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.02.01 PM (1).jpeg",
+      "size": 19116,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "properties/1787426913077_WhatsApp Image 2026-08-21 at 3.02.01 PM.jpeg",
+      "size": 26778,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1783894045334-t3kfb4kbups.jpeg",
+      "size": 2056283,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1783943766646-9rogxup7z15.jpeg",
+      "size": 2056283,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1783951972835-b0t6ea2r3fa.jpg",
+      "size": 848459,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784425351543-q1n1xoso0pe.jpg",
+      "size": 115632,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291798-c103rz56cpa.jpg",
+      "size": 75635,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291800-8jpazce3a79.jpg",
+      "size": 58053,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291801-68saot1mu2d.jpg",
+      "size": 86141,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291801-9x3r07n37eu.jpg",
+      "size": 108243,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291801-hc41j7huh48.jpg",
+      "size": 90812,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291801-k7g49rnn5e.jpg",
+      "size": 226100,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291801-kylg187r6ce.jpg",
+      "size": 88975,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291801-so41g6pnlbc.jpg",
+      "size": 181630,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784427291801-vyx1ks60x.jpg",
+      "size": 81298,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1784510642923-zzjbalke0u.jpg",
+      "size": 101072,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1786096932182-urau87xi3gs.jpg",
+      "size": 2597978,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1786096932192-2khxip8s7sz.jpg",
+      "size": 366509,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1786096932193-jxt28m8zp4i.jpg",
+      "size": 256981,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1786096932194-1myqf0dee26.jpg",
+      "size": 313855,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1786096932194-hsfdj5ywav9.jpg",
+      "size": 357154,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1786096932195-au730ffc0k5.jpg",
+      "size": 140664,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/1786096932195-sekoj990s2.jpg",
+      "size": 351286,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "property-images",
+      "source_path": "submissions/5b3c43ed-0ffd-41ad-bbdb-e09590e740f3/monte_luxor_a_luxurious_fully_detached_duplex_4.png",
+      "size": 1496630,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "property-videos",
+      "source_path": "properties/.emptyFolderPlaceholder",
+      "size": 0,
+      "content_type": "application/octet-stream"
+    },
+    {
+      "source_bucket": "site-assets",
+      "source_path": "logo-optimized.png",
+      "size": 35901,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "site-assets",
+      "source_path": "logo-optimized.webp",
+      "size": 19490,
+      "content_type": "image/webp"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787437963194_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg",
+      "size": 130900,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787438630781_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg",
+      "size": 10605,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787438635230_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg",
+      "size": 10605,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787438636486_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg",
+      "size": 10605,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787438729724_WhatsApp_Image_2026-08-20_at_5.53.31_AM.jpeg",
+      "size": 8135,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787438976968_WhatsApp_Image_2026-08-20_at_5.53.32_AM.jpeg",
+      "size": 9752,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787439030969_WhatsApp_Image_2026-08-20_at_5.53.32_AM.jpeg",
+      "size": 8316,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787609162679_ChatGPT_Image_Aug_24-_2026-_02_39_03_PM.png",
+      "size": 2012191,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787611866355_ChatGPT_Image_Aug_24-_2026-_03_31_54_PM.png",
+      "size": 88704,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787611880942_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png",
+      "size": 78899,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787611893060_ChatGPT_Image_Aug_24-_2026-_02_40_00_PM.png",
+      "size": 115009,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787611917060_ChatGPT_Image_Aug_24-_2026-_03_31_54_PM.png",
+      "size": 88704,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787611989090_ChatGPT_Image_Aug_24-_2026-_02_39_03_PM.png",
+      "size": 101505,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787612390838_ChatGPT_Image_Aug_24-_2026-_03_31_54_PM.png",
+      "size": 102785,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787612924063_ChatGPT_Image_Aug_24-_2026-_04_08_23_PM.png",
+      "size": 1777567,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787612991319_ChatGPT_Image_Aug_24-_2026-_04_08_23_PM.png",
+      "size": 84318,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787613137028_ChatGPT_Image_Aug_24-_2026-_04_10_12_PM.png",
+      "size": 105919,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787613218711_ChatGPT_Image_Aug_24-_2026-_04_10_12_PM.png",
+      "size": 108238,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787613288632_ChatGPT_Image_Aug_24-_2026-_04_10_12_PM.png",
+      "size": 111653,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787614096210_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png",
+      "size": 78899,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787614191746_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png",
+      "size": 111279,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787614287178_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png",
+      "size": 133302,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787614365501_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png",
+      "size": 135959,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787614413654_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png",
+      "size": 152300,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787614493462_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png",
+      "size": 154066,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787614544578_ChatGPT_Image_Aug_24-_2026-_02_41_14_PM.png",
+      "size": 156854,
+      "content_type": "image/png"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787615252378_WhatsApp_Image_2026-08-24_at_4.43.44_PM.jpeg",
+      "size": 11472,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787615344835_WhatsApp_Image_2026-08-24_at_4.43.44_PM.jpeg",
+      "size": 12766,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787615403605_WhatsApp_Image_2026-08-24_at_4.43.44_PM.jpeg",
+      "size": 13594,
+      "content_type": "image/jpeg"
+    },
+    {
+      "source_bucket": "team-photos",
+      "source_path": "teammembers/1787615482314_WhatsApp_Image_2026-08-24_at_4.43.44_PM.jpeg",
+      "size": 13715,
+      "content_type": "image/jpeg"
+    }
+  ]
+}

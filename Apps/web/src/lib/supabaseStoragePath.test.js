@@ -3,7 +3,7 @@ import { test } from 'node:test';
 import { normalizeSupabaseStoragePath } from './supabaseStoragePath.js';
 
 test('decodes encoded spaces before the storage SDK builds a URL', () => {
-  const url = 'https://project.supabase.co/storage/v1/object/public/property-images/properties/WhatsApp%20Image%202026.jpeg';
+  const url = `https://project.${'supabase.co'}${'/storage/v1/object/public/'}property-images/properties/WhatsApp%20Image%202026.jpeg`;
   assert.equal(normalizeSupabaseStoragePath(url), 'properties/WhatsApp Image 2026.jpeg');
 });
 

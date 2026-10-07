@@ -74,10 +74,13 @@ const AgentsPage = () => {
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
-              src={getBackground('agents_hero', "https://i.ibb.co/rKjnczKk/agent.jpg")}
+              src={getBackground('agents_hero', "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/site-assets/legacy-ibb/agents-hero")}
               alt="Our Professional Agents" 
               className="w-full h-full object-cover hero-image"
+              width="640"
+              height="498"
               loading="eager"
+              decoding="async"
               fetchpriority="high"
             />
           </div>
@@ -125,6 +128,8 @@ const AgentsPage = () => {
                               className="w-full h-full object-cover"
                               style={{ filter: 'saturate(0.92) contrast(1.03)' }}
                               loading="lazy"
+                              width="800"
+                              height="600"
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#c8a24d]/20 to-transparent">

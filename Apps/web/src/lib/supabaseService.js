@@ -1,8 +1,9 @@
 import supabase from './supabaseClient';
 import { normalizeSupabaseStoragePath } from './supabaseStoragePath.js';
-import { NEW_IMAGE_BASE_URL, toCdnUrl } from './imageUrl.js';
-import { preparePropertyImage } from './propertyImageProcessing.js';
+import { resolveMediaUrl } from './mediaUrls.js';
+import { getCloudinaryImageUrl } from './cloudinaryUrls.js';
 import { PROPERTY_CARD_COLUMNS } from './propertyFields.js';
+import { uploadToCloudinary } from './cloudinaryUpload.js';
 export { normalizeSupabaseStoragePath } from './supabaseStoragePath.js';
 
 // ============================================================
@@ -139,93 +140,37 @@ export async function deleteRecord(table, id) {
 // FILE / STORAGE HELPERS
 // ============================================================
 
-/**
- * Upload a file to Supabase Storage
- */
 export async function uploadFile(
   bucket,
   file,
-  path = '',
-  { requireAuth = false, fileName = null } = {},
+  _legacyPath = '',
+  options = {},
 ) {
-  if (requireAuth) {
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    if (sessionError) throw new Error(`Unable to verify admin session: ${sessionError.message}`);
-    if (!session?.access_token) throw new Error('You must be signed in to upload this file.');
-  }
-
-  const uploadPayload = bucket === 'property-images' ? await preparePropertyImage(file) : file;
-  const requestedName = fileName || uploadPayload.name || file.name || 'file';
-  const safeName = requestedName
-    .trim()
-    .replace(/[^a-zA-Z0-9.\-_]/g, '_')
-    .replace(/_+/g, '_');
-  const uniqueSuffix = `${Date.now()}_${globalThis.crypto?.randomUUID?.() || Math.random().toString(36).slice(2, 10)}`;
-  let storedName = safeName;
-  if (bucket === 'property-images') {
-    const extension = uploadPayload.type === 'image/webp'
-      ? 'webp'
-      : safeName.match(/\.([a-zA-Z0-9]+)$/)?.[1] || 'bin';
-    const baseName = safeName.replace(/\.[^.]*$/, '');
-    storedName = `${baseName}_${uniqueSuffix}.${extension}`;
-  } else if (!fileName) {
-    storedName = `${uniqueSuffix}_${safeName}`;
-  }
-  const filePath = path ? `${path}/${storedName}` : storedName;
-
-  const { data, error } = await supabase.storage
-    .from(bucket)
-    .upload(filePath, uploadPayload, {
-      cacheControl: '31536000',
-      upsert: false,
-    });
-
-  if (error) throw new Error(error.message);
-  return data.path;
+  return (await uploadToCloudinary(bucket, file, options)).secure_url;
 }
 
-/**
- * Upload multiple files
- */
-export async function uploadFiles(bucket, files, path = '') {
-  const uploadPromises = files.map(file => uploadFile(bucket, file, path));
+export async function uploadFiles(bucket, files, path = '', options = {}) {
+  const uploadPromises = files.map((file, index) =>
+    uploadFile(bucket, file, path, {
+      ...options,
+      sortOrder: (options.sortOrder || 0) + index,
+      altText: options.altText
+        ? `${options.altText} ${index + 1}`
+        : undefined,
+    }),
+  );
   return Promise.all(uploadPromises);
-}
-
-/**
- * Delete a file from Supabase Storage
- */
-export async function deleteFile(bucket, filePath) {
-  const { error } = await supabase.storage
-    .from(bucket)
-    .remove([filePath]);
-
-  if (error) throw new Error(error.message);
-  return true;
 }
 
 /**
  * Get the public URL for a file
  */
 export function getFileUrl(bucket, filePath) {
-  if (!filePath) return null;
-  if (/^https?:\/\//i.test(filePath)) {
-    const storageObject = filePath.match(/\/storage\/v1\/(?:object|render\/image)\/(?:public\/|authenticated\/)?([^/]+)\/(.+)$/);
-    if (!storageObject) return filePath;
-    if (storageObject[1] !== bucket) return filePath;
-    filePath = storageObject[2];
-  }
-
-  const normalizedPath = normalizeSupabaseStoragePath(filePath);
-  const { data } = supabase.storage.from(bucket).getPublicUrl(normalizedPath);
-  return data?.publicUrl ? toCdnUrl(data.publicUrl) : null;
+  return resolveMediaUrl(filePath, bucket);
 }
 
 export function getStoragePath(bucket, filePath) {
   if (!filePath) return null;
-  if (filePath.startsWith(NEW_IMAGE_BASE_URL)) {
-    return decodeURIComponent(filePath.slice(NEW_IMAGE_BASE_URL.length).split('?')[0]);
-  }
   if (!/^https?:\/\//i.test(filePath)) return filePath;
 
   const storageObject = filePath.match(
@@ -253,19 +198,12 @@ export function encodeSupabaseStoragePath(filePath) {
  * @returns {string|null} - Image URL
  */
 export function getOptimizedImageUrl(bucket, filePath, options = {}) {
-  if (!filePath) return null;
-  if (bucket === 'property-images') {
-    return toCdnUrl(getFileUrl(bucket, filePath));
-  }
-
-  const { width = 800, quality = 75, format = 'webp' } = options;
-  if (/^https?:\/\//i.test(filePath) && !filePath.includes('/storage/v1/')) return filePath;
-
-  const normalizedPath = normalizeSupabaseStoragePath(filePath);
-  const { data } = supabase.storage.from(bucket).getPublicUrl(normalizedPath, {
-    transform: { width, quality, format },
-  });
-  return data?.publicUrl ? toCdnUrl(data.publicUrl) : null;
+  const resolvedUrl = resolveMediaUrl(filePath, bucket);
+  if (!resolvedUrl) return null;
+  const { width = 800 } = options;
+  return /^https:\/\/res\.cloudinary\.com\//i.test(resolvedUrl)
+    ? getCloudinaryImageUrl(resolvedUrl, width <= 400 ? 400 : width <= 800 ? 800 : 1200)
+    : resolvedUrl;
 }
 
 // ============================================================

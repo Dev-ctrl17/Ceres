@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { proposalsApi } from '@/lib/supabaseService';
 import { toast } from 'sonner';
-import { toCdnUrl } from '@/lib/imageUrl.js';
+import { resolveMediaUrl, rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 const ClientSuccessPage = () => {
   const [proposals, setProposals] = useState([]);
@@ -32,7 +32,7 @@ const ClientSuccessPage = () => {
       const { data, error } = await proposalsApi.getAll(filters);
       if (error) throw error;
       
-      setProposals(data || []);
+      setProposals(rewriteMediaContent(data || [], 'proposal-files'));
       
       // Extract unique property types for filter
       const types = [...new Set(data?.map(p => p.property_type).filter(Boolean) || [])];
@@ -150,12 +150,14 @@ const ClientSuccessPage = () => {
                     <Link to={`/client-success/${proposal.slug}`}>
                       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
                         <div className="aspect-video bg-muted rounded-t-xl overflow-hidden relative">
-                          {proposal.cover_image_url ? (
+                          {resolveMediaUrl(proposal.cover_image_url, 'proposal-files') ? (
                             <img
-                              src={toCdnUrl(proposal.cover_image_url)}
+                              src={resolveMediaUrl(proposal.cover_image_url, 'proposal-files')}
                               alt={proposal.title}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                               loading="lazy"
+                              width="1200"
+                              height="800"
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">

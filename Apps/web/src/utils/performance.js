@@ -13,7 +13,6 @@ export const resourceHints = {
   // DNS prefetch for less critical resources
   dnsPrefetch: [
     'https://images.unsplash.com',
-    'https://i.ibb.co',
     'https://www.google-analytics.com',
   ],
   

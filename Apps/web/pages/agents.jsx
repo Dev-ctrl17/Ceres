@@ -51,10 +51,13 @@ const AgentsPage = () => {
         <section className="relative py-24 xs:py-28 sm:py-32 lg:py-40 xl:py-44 min-h-[60vh] xs:min-h-[65vh] sm:min-h-[70vh] flex items-center justify-center hero-section">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://i.ibb.co/rKjnczKk/agent.jpg"
+              src="https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/site-assets/legacy-ibb/agents-hero"
               alt="Our Professional Agents" 
               className="w-full h-full object-cover hero-image"
+              width="640"
+              height="498"
               loading="lazy"
+              decoding="async"
             />
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 xs:px-5 sm:px-6 lg:px-8 text-center">

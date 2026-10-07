@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import supabase from '@/lib/supabaseClient';
 import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
+import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 export const useProperties = (filters = {}) => {
   const [properties, setProperties] = useState([]);
@@ -39,7 +40,7 @@ export const useProperties = (filters = {}) => {
 
         const { data, count, error } = await query.range((page - 1) * pageSize, page * pageSize - 1);
         if (error) throw error;
-        setProperties(data || []);
+        setProperties(rewriteMediaContent(data || [], 'property-images'));
         setTotal(count || 0);
       } catch (err) {
         console.error('useProperties error:', err);

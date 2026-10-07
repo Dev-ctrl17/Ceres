@@ -16,6 +16,8 @@
 // the form type in the data sent.
 // ============================================================
 
+import { resolveMediaUrl, rewriteMediaContent } from '@/lib/mediaUrls.js';
+
 const FORMSPREE_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || 'https://formspree.io/f/xwvgegde';
 const FORMSPREE_PROPERTY_ENDPOINT = import.meta.env.VITE_FORMSPREE_PROPERTY_ENDPOINT || FORMSPREE_ENDPOINT;
 
@@ -96,11 +98,11 @@ export async function sendPropertyNotification(data) {
         price: formattedPrice,
         location: data.location || 'N/A',
         property_type: data.property_type || 'N/A',
-        description: data.description || 'No description',
+        description: rewriteMediaContent(data.description || 'No description', 'property-images'),
         owner_name: data.owner_name || 'N/A',
         owner_email: data.owner_email || 'N/A',
         owner_phone: data.owner_phone || 'N/A',
-        image_url: data.image_url || '',
+        image_url: resolveMediaUrl(data.image_url, 'property-images') || '',
         status: data.status || 'Pending',
         submitted_at: new Date().toLocaleString('en-NG', {
           timeZone: 'Africa/Lagos',

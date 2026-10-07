@@ -95,10 +95,6 @@ export function getKnownImagePaths(src) {
   if (!src) return null;
   
   const knownImages = {
-    'i.ibb.co': {
-      hasLocalWebp: false,
-      isCDN: true,
-    },
     'www.image2url.com': {
       hasLocalWebp: false,
       isCDN: true,

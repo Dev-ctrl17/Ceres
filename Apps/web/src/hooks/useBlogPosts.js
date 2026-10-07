@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { blogPostsApi } from '@/lib/supabaseService';
+import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 export const useBlogPosts = (category = null) => {
   const [posts, setPosts] = useState([]);
@@ -13,7 +14,7 @@ export const useBlogPosts = (category = null) => {
       try {
         const { data, error: fetchError } = await blogPostsApi.getAll(category);
         if (fetchError) throw new Error(fetchError.message);
-        setPosts(data || []);
+        setPosts(rewriteMediaContent(data || [], 'site-assets'));
       } catch (err) {
         setError(err.message);
       } finally {

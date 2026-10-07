@@ -58,9 +58,6 @@ export const getOptimizedImageUrl = (url, options = {}) => {
     if (url.includes('unsplash.com')) {
       return `${url}?w=${width}&q=${quality}&fm=${format}`;
     }
-    if (url.includes('ibb.co')) {
-      return url; // Already optimized
-    }
     return url;
   }
 

@@ -20,7 +20,7 @@ const outputDir = join(__dirname, '..', 'public', 'assets', 'webp');
 // All image URLs currently used in the project that are hosted externally
 // We document these so they can be manually downloaded and converted
 const EXTERNAL_IMAGES = {
-  logo: 'https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png',
+  logo: 'https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo',
   hero1: 'https://www.image2url.com/r2/default/images/1781791838502-135e9be4-5709-483e-8271-4d1aa9e79fe2.jpeg',
   hero2: 'https://www.image2url.com/r2/default/images/1781791838490-d908b15e-9e31-41e6-88e8-06f7bef05dd2.jpeg',
   hero3: 'https://www.image2url.com/r2/default/images/1781791838479-a916452b-9681-4b5f-8c03-3c48e3557b68.jpeg',
@@ -30,8 +30,9 @@ const EXTERNAL_IMAGES = {
   rentHero: 'https://www.image2url.com/r2/default/images/1781618476860-202949ba-8ed6-4e3d-ba06-ec71d84c6e04.jpeg',
   servicesHero: 'https://www.image2url.com/r2/default/images/1781619622358-2b415786-e866-4142-ba9a-0fc97ffe39fb.jpeg',
   propertiesHero: 'https://www.image2url.com/r2/default/images/1781618537376-b115f9d3-7d9d-44a1-b434-f17755a0d94c.jpeg',
-  epanHero: 'https://i.ibb.co/5h4SDhF1/epan.jpg',
-  agentHero: 'https://i.ibb.co/rKjnczKk/agent.jpg',
+  epanHero: 'https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/site-assets/legacy-ibb/epan-hero',
+  agentHero: 'https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/site-assets/legacy-ibb/agents-hero',
+  investmentBlogHero: 'https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/site-assets/legacy-ibb/investment-blog-hero',
   reviewsHero: 'https://www.image2url.com/r2/default/images/1781315484156-19239477-a163-4063-9288-df5a0f6fe1b3.png',
   contactHero: 'https://www.image2url.com/r2/default/images/1781315550242-096ff39c-0b74-48d1-afcd-d1bccdb33620.png',
   why1: 'https://www.image2url.com/r2/default/images/1781618477582-1005fa15-bd99-4786-bb20-160a0f75d002.jpeg',
@@ -65,7 +66,7 @@ export const IMAGE_SOURCESET = {
   // Logo variants
   logo: {
     webp: '/assets/webp/logo.webp',
-    fallback: 'https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png',
+    fallback: 'https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo',
     srcset: '/assets/webp/logo-160w.webp 160w, /assets/webp/logo-320w.webp 320w',
     sizes: '(max-width: 640px) 120px, (max-width: 1024px) 140px, 160px',
   },

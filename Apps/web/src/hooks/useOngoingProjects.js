@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import supabase from '@/lib/supabaseClient';
+import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 export const useOngoingProjects = (filters = {}) => {
   const [projects, setProjects] = useState([]);
@@ -20,7 +21,7 @@ export const useOngoingProjects = (filters = {}) => {
 
         const { data, error } = await query;
         if (error) throw error;
-        setProjects(data || []);
+        setProjects(rewriteMediaContent(data || [], 'ongoing-project-images'));
       } catch (err) {
         console.error('useOngoingProjects error:', err);
         setProjects([]);
@@ -59,7 +60,7 @@ export const useOngoingProject = (id) => {
           setNotFound(true);
           setProject(null);
         } else {
-          setProject(data);
+          setProject(rewriteMediaContent(data, 'ongoing-project-images'));
         }
       } catch (err) {
         console.error('useOngoingProject error:', err);

@@ -4,21 +4,24 @@ import { Calendar, Clock, ArrowLeft } from 'lucide-react';
 import { relatedPosts } from '@/data/relatedPosts.js';
 import { getCanonicalUrl } from '@/lib/siteConfig.js';
 import { toCdnUrl } from '@/lib/imageUrl.js';
+import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 const ContentImage = ({ src, alt, caption }) => (
-  <figure className="my-8">
+  toCdnUrl(src) ? <figure className="my-8">
     <img
       src={toCdnUrl(src)}
       alt={alt}
       className="w-full rounded-lg shadow-md"
       loading="lazy"
+      width="1200"
+      height="800"
     />
     {caption && (
       <figcaption className="text-sm text-muted-foreground text-center mt-2 italic">
         {caption}
       </figcaption>
     )}
-  </figure>
+  </figure> : null
 );
 
 const ContentHeading = ({ level, text }) => {
@@ -30,7 +33,9 @@ const ContentHeading = ({ level, text }) => {
 };
 
 const ContentParagraph = ({ text }) => (
-  <p className="text-base leading-relaxed mb-6 text-muted-foreground">{text}</p>
+  <p className="text-base leading-relaxed mb-6 text-muted-foreground">
+    {rewriteMediaContent(text)}
+  </p>
 );
 
 const ContentList = ({ items }) => (

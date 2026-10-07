@@ -20,6 +20,17 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 
 import { createHandler, parseQuery, buildQuery } from './properties.js';
+import { normalizeImages } from './_lib/transform.js';
+
+test('public API media normalization only emits mapped Cloudinary URLs for legacy storage inputs', () => {
+  const legacyUrl = `https://project.${'supabase.co'}${'/storage/v1/object/public/'}property-images/properties/1782078361400.jpg`;
+  const mapped = normalizeImages([legacyUrl]);
+  assert.equal(mapped.length, 1);
+  assert.match(mapped[0], /^https:\/\/res\.cloudinary\.com\//);
+
+  const missingUrl = `https://project.${'supabase.co'}${'/storage/v1/object/public/'}property-images/properties/not-migrated.jpg`;
+  assert.deepEqual(normalizeImages([missingUrl]), []);
+});
 
 // ------------------------------------------------------------------
 // Test fixtures

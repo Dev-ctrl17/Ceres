@@ -1,0 +1,743 @@
+{
+  "created_at": "2026-10-07T21:56:01.590Z",
+  "values": [
+    {
+      "table": "property_submissions",
+      "row_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966868-wy4bemqqm7m.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-39n5utrfaas.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-zv4lqprelh9.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-ffkmzjqkfhw.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-3n30lsyzmw7.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-49fcq4bylpr.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-0u0ubkie5ff.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966872-hd6q6gqz8jj.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966872-92akgxcjz5b.jpeg"
+      ],
+      "new_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966868-wy4bemqqm7m.jpeg",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2202b7f9-78a1-595f-90bc-1e7f90d32299",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2f5b8f6d-d765-5748-8763-696234859b11",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/db22f88b-5784-55e7-b5cb-154eecbefdae",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/f5992ddc-ff49-5b97-b76a-2062b1bbdc85",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/4e3e81a0-0281-5883-9a76-f043f9d08c23",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2feec935-22b1-599b-9f3f-34d5e9798d88",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/d20cf77a-70a4-5cf1-9a9d-6dea517b7984",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966872-92akgxcjz5b.jpeg"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-39n5utrfaas.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2202b7f9-78a1-595f-90bc-1e7f90d32299",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2202b7f9-78a1-595f-90bc-1e7f90d32299",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-39n5utrfaas.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-zv4lqprelh9.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2f5b8f6d-d765-5748-8763-696234859b11",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2f5b8f6d-d765-5748-8763-696234859b11",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-zv4lqprelh9.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-ffkmzjqkfhw.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/db22f88b-5784-55e7-b5cb-154eecbefdae",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/db22f88b-5784-55e7-b5cb-154eecbefdae",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-ffkmzjqkfhw.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-3n30lsyzmw7.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/f5992ddc-ff49-5b97-b76a-2062b1bbdc85",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/f5992ddc-ff49-5b97-b76a-2062b1bbdc85",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-3n30lsyzmw7.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-49fcq4bylpr.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/4e3e81a0-0281-5883-9a76-f043f9d08c23",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/4e3e81a0-0281-5883-9a76-f043f9d08c23",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-49fcq4bylpr.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966871-0u0ubkie5ff.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2feec935-22b1-599b-9f3f-34d5e9798d88",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2feec935-22b1-599b-9f3f-34d5e9798d88",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-0u0ubkie5ff.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/1786228966872-hd6q6gqz8jj.jpeg",
+          "new_public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/d20cf77a-70a4-5cf1-9a9d-6dea517b7984",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/d20cf77a-70a4-5cf1-9a9d-6dea517b7984",
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966872-hd6q6gqz8jj.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2202b7f9-78a1-595f-90bc-1e7f90d32299",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410136/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2202b7f9-78a1-595f-90bc-1e7f90d32299.jpg",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 423396,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "7 full plots for sales image 2",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-39n5utrfaas.jpeg"
+        },
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2f5b8f6d-d765-5748-8763-696234859b11",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410141/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2f5b8f6d-d765-5748-8763-696234859b11.jpg",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 464530,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "7 full plots for sales image 3",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-zv4lqprelh9.jpeg"
+        },
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/db22f88b-5784-55e7-b5cb-154eecbefdae",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410141/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/db22f88b-5784-55e7-b5cb-154eecbefdae.jpg",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 515528,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "7 full plots for sales image 4",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-ffkmzjqkfhw.jpeg"
+        },
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/f5992ddc-ff49-5b97-b76a-2062b1bbdc85",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410139/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/f5992ddc-ff49-5b97-b76a-2062b1bbdc85.jpg",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 510045,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "7 full plots for sales image 5",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-3n30lsyzmw7.jpeg"
+        },
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/4e3e81a0-0281-5883-9a76-f043f9d08c23",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410138/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/4e3e81a0-0281-5883-9a76-f043f9d08c23.webp",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 235516,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "7 full plots for sales image 6",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-49fcq4bylpr.jpeg"
+        },
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2feec935-22b1-599b-9f3f-34d5e9798d88",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410133/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/2feec935-22b1-599b-9f3f-34d5e9798d88.jpg",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 473799,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "7 full plots for sales image 7",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966871-0u0ubkie5ff.jpeg"
+        },
+        {
+          "entity": "property_submissions",
+          "entity_id": "9554965e-38ef-46c5-a32d-a6f2a6823d36",
+          "public_id": "property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/d20cf77a-70a4-5cf1-9a9d-6dea517b7984",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410145/property_submissions/9554965e-38ef-46c5-a32d-a6f2a6823d36/d20cf77a-70a4-5cf1-9a9d-6dea517b7984.jpg",
+          "width": 1500,
+          "height": 2000,
+          "bytes": 626539,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 7,
+          "alt_text": "7 full plots for sales image 8",
+          "source_bucket": "property-images",
+          "source_path": "submissions/1786228966872-hd6q6gqz8jj.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/0f91ffc1-2709-4b67-b5ff-f262c2385f77/4_bedroom_in_obada_abeokuta_1.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/0f91ffc1-2709-4b67-b5ff-f262c2385f77/4_bedroom_in_obada_abeokuta_1.jpeg",
+          "new_public_id": "property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748",
+          "entity": "property_submissions",
+          "entity_id": "89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4",
+          "source_bucket": "property-images",
+          "source_path": "submissions/0f91ffc1-2709-4b67-b5ff-f262c2385f77/4_bedroom_in_obada_abeokuta_1.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4",
+          "public_id": "property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410131/property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748.webp",
+          "width": 1170,
+          "height": 1640,
+          "bytes": 50630,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "4-Bedroom in Obada Abeokuta  image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/0f91ffc1-2709-4b67-b5ff-f262c2385f77/4_bedroom_in_obada_abeokuta_1.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/0f91ffc1-2709-4b67-b5ff-f262c2385f77/4_bedroom_in_obada_abeokuta_1.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/0f91ffc1-2709-4b67-b5ff-f262c2385f77/4_bedroom_in_obada_abeokuta_1.jpeg",
+          "new_public_id": "property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748",
+          "entity": "property_submissions",
+          "entity_id": "89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4",
+          "source_bucket": "property-images",
+          "source_path": "submissions/0f91ffc1-2709-4b67-b5ff-f262c2385f77/4_bedroom_in_obada_abeokuta_1.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4",
+          "public_id": "property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410131/property_submissions/89ea2635-a4fb-4ad2-a1d5-08d6e6a86bb4/5b7881a4-7d08-5999-b238-fbdc05ca5748.webp",
+          "width": 1170,
+          "height": 1640,
+          "bytes": 50630,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "4-Bedroom in Obada Abeokuta  image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/0f91ffc1-2709-4b67-b5ff-f262c2385f77/4_bedroom_in_obada_abeokuta_1.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "256a865a-a1d1-44de-b696-72200ed9410f",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/8991807a-cab1-48cb-badc-e6b7b0a97172/luxury_4_bedroom_duplex_in_warri_delta_state_1.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/8991807a-cab1-48cb-badc-e6b7b0a97172/luxury_4_bedroom_duplex_in_warri_delta_state_1.jpg",
+          "new_public_id": "property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8",
+          "entity": "property_submissions",
+          "entity_id": "256a865a-a1d1-44de-b696-72200ed9410f",
+          "source_bucket": "property-images",
+          "source_path": "submissions/8991807a-cab1-48cb-badc-e6b7b0a97172/luxury_4_bedroom_duplex_in_warri_delta_state_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "256a865a-a1d1-44de-b696-72200ed9410f",
+          "public_id": "property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410157/property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8.webp",
+          "width": 878,
+          "height": 2000,
+          "bytes": 73640,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Luxury 4 bedroom duplex in warri , Delta state image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/8991807a-cab1-48cb-badc-e6b7b0a97172/luxury_4_bedroom_duplex_in_warri_delta_state_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "256a865a-a1d1-44de-b696-72200ed9410f",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/8991807a-cab1-48cb-badc-e6b7b0a97172/luxury_4_bedroom_duplex_in_warri_delta_state_1.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/8991807a-cab1-48cb-badc-e6b7b0a97172/luxury_4_bedroom_duplex_in_warri_delta_state_1.jpg",
+          "new_public_id": "property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8",
+          "entity": "property_submissions",
+          "entity_id": "256a865a-a1d1-44de-b696-72200ed9410f",
+          "source_bucket": "property-images",
+          "source_path": "submissions/8991807a-cab1-48cb-badc-e6b7b0a97172/luxury_4_bedroom_duplex_in_warri_delta_state_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "256a865a-a1d1-44de-b696-72200ed9410f",
+          "public_id": "property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410157/property_submissions/256a865a-a1d1-44de-b696-72200ed9410f/7585b3e6-6a89-50dc-809c-e6911f4fdef8.webp",
+          "width": 878,
+          "height": 2000,
+          "bytes": 73640,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Luxury 4 bedroom duplex in warri , Delta state image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/8991807a-cab1-48cb-badc-e6b7b0a97172/luxury_4_bedroom_duplex_in_warri_delta_state_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "8f0f4f55-04dd-4296-bd5b-8fabff4ee4af",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/6cb28960-264c-4b98-b6e0-6cb43359d861/standard_bungallow_for_sale_in_ughelli_1.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/6cb28960-264c-4b98-b6e0-6cb43359d861/standard_bungallow_for_sale_in_ughelli_1.jpg",
+          "new_public_id": "property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5",
+          "entity": "property_submissions",
+          "entity_id": "8f0f4f55-04dd-4296-bd5b-8fabff4ee4af",
+          "source_bucket": "property-images",
+          "source_path": "submissions/6cb28960-264c-4b98-b6e0-6cb43359d861/standard_bungallow_for_sale_in_ughelli_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "8f0f4f55-04dd-4296-bd5b-8fabff4ee4af",
+          "public_id": "property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410155/property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5.webp",
+          "width": 878,
+          "height": 2000,
+          "bytes": 76638,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Standard Bungallow for sale in Ughelli image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/6cb28960-264c-4b98-b6e0-6cb43359d861/standard_bungallow_for_sale_in_ughelli_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "8f0f4f55-04dd-4296-bd5b-8fabff4ee4af",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/6cb28960-264c-4b98-b6e0-6cb43359d861/standard_bungallow_for_sale_in_ughelli_1.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/6cb28960-264c-4b98-b6e0-6cb43359d861/standard_bungallow_for_sale_in_ughelli_1.jpg",
+          "new_public_id": "property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5",
+          "entity": "property_submissions",
+          "entity_id": "8f0f4f55-04dd-4296-bd5b-8fabff4ee4af",
+          "source_bucket": "property-images",
+          "source_path": "submissions/6cb28960-264c-4b98-b6e0-6cb43359d861/standard_bungallow_for_sale_in_ughelli_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "8f0f4f55-04dd-4296-bd5b-8fabff4ee4af",
+          "public_id": "property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410155/property_submissions/8f0f4f55-04dd-4296-bd5b-8fabff4ee4af/ccd06d3e-a50f-56c2-a7a8-6870f9ef65c5.webp",
+          "width": 878,
+          "height": 2000,
+          "bytes": 76638,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Standard Bungallow for sale in Ughelli image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/6cb28960-264c-4b98-b6e0-6cb43359d861/standard_bungallow_for_sale_in_ughelli_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "97185556-b15f-4503-85b8-0b35ab0551da",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/44561d15-1f27-42ea-b92a-fb1773eb1d78/3_bed_room_apartment_for_sale_1.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/44561d15-1f27-42ea-b92a-fb1773eb1d78/3_bed_room_apartment_for_sale_1.jpg",
+          "new_public_id": "property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d",
+          "entity": "property_submissions",
+          "entity_id": "97185556-b15f-4503-85b8-0b35ab0551da",
+          "source_bucket": "property-images",
+          "source_path": "submissions/44561d15-1f27-42ea-b92a-fb1773eb1d78/3_bed_room_apartment_for_sale_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "97185556-b15f-4503-85b8-0b35ab0551da",
+          "public_id": "property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410146/property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d.webp",
+          "width": 878,
+          "height": 2000,
+          "bytes": 94552,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "3 bed room apartment for sale image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/44561d15-1f27-42ea-b92a-fb1773eb1d78/3_bed_room_apartment_for_sale_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "97185556-b15f-4503-85b8-0b35ab0551da",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/44561d15-1f27-42ea-b92a-fb1773eb1d78/3_bed_room_apartment_for_sale_1.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/44561d15-1f27-42ea-b92a-fb1773eb1d78/3_bed_room_apartment_for_sale_1.jpg",
+          "new_public_id": "property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d",
+          "entity": "property_submissions",
+          "entity_id": "97185556-b15f-4503-85b8-0b35ab0551da",
+          "source_bucket": "property-images",
+          "source_path": "submissions/44561d15-1f27-42ea-b92a-fb1773eb1d78/3_bed_room_apartment_for_sale_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "97185556-b15f-4503-85b8-0b35ab0551da",
+          "public_id": "property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410146/property_submissions/97185556-b15f-4503-85b8-0b35ab0551da/4e4a7a27-a687-55f2-a277-369dbe8ac10d.webp",
+          "width": 878,
+          "height": 2000,
+          "bytes": 94552,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "3 bed room apartment for sale image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/44561d15-1f27-42ea-b92a-fb1773eb1d78/3_bed_room_apartment_for_sale_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "fe95205d-3c67-49e3-b3d9-d4d7bb262f72",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/61b0fdbe-4e8e-455d-8726-c0df35b6649a/5_units_of_three_bedroom_apartments_1.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/61b0fdbe-4e8e-455d-8726-c0df35b6649a/5_units_of_three_bedroom_apartments_1.jpg",
+          "new_public_id": "property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7",
+          "entity": "property_submissions",
+          "entity_id": "fe95205d-3c67-49e3-b3d9-d4d7bb262f72",
+          "source_bucket": "property-images",
+          "source_path": "submissions/61b0fdbe-4e8e-455d-8726-c0df35b6649a/5_units_of_three_bedroom_apartments_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "fe95205d-3c67-49e3-b3d9-d4d7bb262f72",
+          "public_id": "property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410148/property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7.webp",
+          "width": 878,
+          "height": 2000,
+          "bytes": 65644,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "5 units of three bedroom  apartments image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/61b0fdbe-4e8e-455d-8726-c0df35b6649a/5_units_of_three_bedroom_apartments_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "fe95205d-3c67-49e3-b3d9-d4d7bb262f72",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/61b0fdbe-4e8e-455d-8726-c0df35b6649a/5_units_of_three_bedroom_apartments_1.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/61b0fdbe-4e8e-455d-8726-c0df35b6649a/5_units_of_three_bedroom_apartments_1.jpg",
+          "new_public_id": "property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7",
+          "entity": "property_submissions",
+          "entity_id": "fe95205d-3c67-49e3-b3d9-d4d7bb262f72",
+          "source_bucket": "property-images",
+          "source_path": "submissions/61b0fdbe-4e8e-455d-8726-c0df35b6649a/5_units_of_three_bedroom_apartments_1.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "fe95205d-3c67-49e3-b3d9-d4d7bb262f72",
+          "public_id": "property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410148/property_submissions/fe95205d-3c67-49e3-b3d9-d4d7bb262f72/a8f627eb-a414-5e74-8ee4-7f5a995cfef7.webp",
+          "width": 878,
+          "height": 2000,
+          "bytes": 65644,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "5 units of three bedroom  apartments image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/61b0fdbe-4e8e-455d-8726-c0df35b6649a/5_units_of_three_bedroom_apartments_1.jpg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "2371b6e7-1370-411d-bac7-3a2a00a4d57f",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/fa01a7b7-32f6-4739-b1f7-3ff3193ce0f3/luxury_5_bed_room_bungalow_in_ihitte_uboma_imo_state_7.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/fa01a7b7-32f6-4739-b1f7-3ff3193ce0f3/luxury_5_bed_room_bungalow_in_ihitte_uboma_imo_state_7.jpeg",
+          "new_public_id": "property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581",
+          "entity": "property_submissions",
+          "entity_id": "2371b6e7-1370-411d-bac7-3a2a00a4d57f",
+          "source_bucket": "property-images",
+          "source_path": "submissions/fa01a7b7-32f6-4739-b1f7-3ff3193ce0f3/luxury_5_bed_room_bungalow_in_ihitte_uboma_imo_state_7.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "2371b6e7-1370-411d-bac7-3a2a00a4d57f",
+          "public_id": "property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410163/property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581.jpg",
+          "width": 2000,
+          "height": 1500,
+          "bytes": 528575,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Luxury 5 BED ROOM BUNGALOW IN IHITTE-UBOMA IMO STATE image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/fa01a7b7-32f6-4739-b1f7-3ff3193ce0f3/luxury_5_bed_room_bungalow_in_ihitte_uboma_imo_state_7.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "2371b6e7-1370-411d-bac7-3a2a00a4d57f",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/fa01a7b7-32f6-4739-b1f7-3ff3193ce0f3/luxury_5_bed_room_bungalow_in_ihitte_uboma_imo_state_7.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/fa01a7b7-32f6-4739-b1f7-3ff3193ce0f3/luxury_5_bed_room_bungalow_in_ihitte_uboma_imo_state_7.jpeg",
+          "new_public_id": "property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581",
+          "entity": "property_submissions",
+          "entity_id": "2371b6e7-1370-411d-bac7-3a2a00a4d57f",
+          "source_bucket": "property-images",
+          "source_path": "submissions/fa01a7b7-32f6-4739-b1f7-3ff3193ce0f3/luxury_5_bed_room_bungalow_in_ihitte_uboma_imo_state_7.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "2371b6e7-1370-411d-bac7-3a2a00a4d57f",
+          "public_id": "property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410163/property_submissions/2371b6e7-1370-411d-bac7-3a2a00a4d57f/3e5f4a89-abdc-516a-859f-b59110779581.jpg",
+          "width": 2000,
+          "height": 1500,
+          "bytes": 528575,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Luxury 5 BED ROOM BUNGALOW IN IHITTE-UBOMA IMO STATE image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/fa01a7b7-32f6-4739-b1f7-3ff3193ce0f3/luxury_5_bed_room_bungalow_in_ihitte_uboma_imo_state_7.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "36a6f094-5857-4640-be45-bd2bab1646e3",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/66afa288-1b28-45cb-b37d-73f9dd0a9caa/luxury_5_bedroom_bungalow_ihitte_uboma_imo_state_6.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/66afa288-1b28-45cb-b37d-73f9dd0a9caa/luxury_5_bedroom_bungalow_ihitte_uboma_imo_state_6.jpeg",
+          "new_public_id": "property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d",
+          "entity": "property_submissions",
+          "entity_id": "36a6f094-5857-4640-be45-bd2bab1646e3",
+          "source_bucket": "property-images",
+          "source_path": "submissions/66afa288-1b28-45cb-b37d-73f9dd0a9caa/luxury_5_bedroom_bungalow_ihitte_uboma_imo_state_6.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "36a6f094-5857-4640-be45-bd2bab1646e3",
+          "public_id": "property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410152/property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d.jpg",
+          "width": 2000,
+          "height": 1500,
+          "bytes": 564288,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Luxury 5 Bedroom Bungalow Ihitte Uboma imo state image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/66afa288-1b28-45cb-b37d-73f9dd0a9caa/luxury_5_bedroom_bungalow_ihitte_uboma_imo_state_6.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "property_submissions",
+      "row_id": "36a6f094-5857-4640-be45-bd2bab1646e3",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/66afa288-1b28-45cb-b37d-73f9dd0a9caa/luxury_5_bedroom_bungalow_ihitte_uboma_imo_state_6.jpeg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/submissions/66afa288-1b28-45cb-b37d-73f9dd0a9caa/luxury_5_bedroom_bungalow_ihitte_uboma_imo_state_6.jpeg",
+          "new_public_id": "property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d",
+          "entity": "property_submissions",
+          "entity_id": "36a6f094-5857-4640-be45-bd2bab1646e3",
+          "source_bucket": "property-images",
+          "source_path": "submissions/66afa288-1b28-45cb-b37d-73f9dd0a9caa/luxury_5_bedroom_bungalow_ihitte_uboma_imo_state_6.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "property_submissions",
+          "entity_id": "36a6f094-5857-4640-be45-bd2bab1646e3",
+          "public_id": "property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791410152/property_submissions/36a6f094-5857-4640-be45-bd2bab1646e3/0aedcb40-4e4b-5e58-be62-19dafca48b2d.jpg",
+          "width": 2000,
+          "height": 1500,
+          "bytes": 564288,
+          "format": "jpg",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Luxury 5 Bedroom Bungalow Ihitte Uboma imo state image 1",
+          "source_bucket": "property-images",
+          "source_path": "submissions/66afa288-1b28-45cb-b37d-73f9dd0a9caa/luxury_5_bedroom_bungalow_ihitte_uboma_imo_state_6.jpeg"
+        }
+      ]
+    }
+  ]
+}

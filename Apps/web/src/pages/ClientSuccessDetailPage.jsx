@@ -7,9 +7,9 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { proposalsApi, getFileUrl } from '@/lib/supabaseService';
+import { proposalsApi } from '@/lib/supabaseService';
 import { toast } from 'sonner';
-import { toCdnUrl } from '@/lib/imageUrl.js';
+import { resolveMediaUrl, rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 const ClientSuccessDetailPage = () => {
   const { slug } = useParams();
@@ -31,7 +31,7 @@ const ClientSuccessDetailPage = () => {
         return;
       }
       
-      setProposal(data);
+      setProposal(rewriteMediaContent(data, 'proposal-files'));
     } catch (error) {
       toast.error('Failed to load proposal');
       console.error(error);
@@ -83,11 +83,7 @@ const ClientSuccessDetailPage = () => {
    * @returns {string} Full public URL
    */
   const resolveImageUrl = (url) => {
-    if (!url) return null;
-    // If already a full URL, return as-is
-    if (url.startsWith('http')) return url;
-    // Otherwise, convert storage path to public URL
-    return getFileUrl('proposal-files', url) || url;
+    return resolveMediaUrl(url, 'proposal-files');
   };
 
   if (loading) {
@@ -137,7 +133,8 @@ const ClientSuccessDetailPage = () => {
 
   // Parse gallery (handles both array and JSON string) and resolve URLs
   const galleryImages = parseGallery(proposal.gallery).map(resolveImageUrl).filter(Boolean);
-  const coverImage = toCdnUrl(resolveImageUrl(proposal.cover_image_url));
+  const coverImage = resolveImageUrl(proposal.cover_image_url);
+  const documentUrl = resolveImageUrl(proposal.document_url);
   
   const images = galleryImages.length > 0 
     ? galleryImages 
@@ -242,10 +239,12 @@ const ClientSuccessDetailPage = () => {
                       className="aspect-video rounded-xl overflow-hidden"
                     >
                       <img
-                        src={toCdnUrl(img)}
+                        src={img}
                         alt={`${proposal.title} - Image ${index + 1}`}
                         className="w-full h-full object-cover"
                         loading="lazy"
+                        width="1200"
+                        height="800"
                       />
                     </motion.div>
                   ))}
@@ -267,7 +266,7 @@ const ClientSuccessDetailPage = () => {
                   <h3 className="font-semibold mb-4">Download Proposal</h3>
                   
                   {/* PDF Download */}
-                  {proposal.document_url && (
+                  {documentUrl && (
                     <div className="flex items-center justify-between mb-4">
                       <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
@@ -280,7 +279,7 @@ const ClientSuccessDetailPage = () => {
                       </div>
                       <div className="flex gap-2">
                         <a
-                          href={proposal.document_url}
+                          href={documentUrl}
                           download
                           target="_blank"
                           rel="noopener noreferrer"
@@ -291,7 +290,7 @@ const ClientSuccessDetailPage = () => {
                           </Button>
                         </a>
                         <a
-                          href={proposal.document_url}
+                          href={documentUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
@@ -306,7 +305,7 @@ const ClientSuccessDetailPage = () => {
 
                   {/* Gallery Download */}
                   {images.length > 0 && (
-                    <div className={`${proposal.document_url ? 'mb-4' : ''}`}>
+                    <div className={`${documentUrl ? 'mb-4' : ''}`}>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">

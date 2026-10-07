@@ -1,7 +1,7 @@
 import imageCompression from 'browser-image-compression';
 
-const allowedMimeTypes = new Set(['image/jpeg', 'image/png', 'image/webp']);
-const allowedExtensions = new Set(['jpg', 'jpeg', 'png', 'webp']);
+const allowedMimeTypes = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/heic']);
+const allowedExtensions = new Set(['jpg', 'jpeg', 'png', 'webp', 'heic']);
 const MAX_IMAGE_BYTES = 400_000;
 
 export function isSupportedPropertyImage(file) {
@@ -14,7 +14,7 @@ export function isSupportedPropertyImage(file) {
 
 export async function preparePropertyImage(file, { maxDimension = 1600 } = {}) {
   if (!isSupportedPropertyImage(file)) {
-    throw new Error('Property images must be JPG, PNG, or WebP files.');
+    throw new Error('Property images must be JPG, PNG, WebP, or HEIC files.');
   }
 
   if (typeof createImageBitmap !== 'function') {

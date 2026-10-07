@@ -5,9 +5,11 @@ import { motion } from 'framer-motion';
 import { HardHat, Calendar, MapPin, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
-import { getFileUrl } from '@/lib/supabaseService';
 import { useOngoingProject } from '@/hooks/useOngoingProjects';
 import { toCdnUrl } from '@/lib/imageUrl.js';
+import { filterKnownMissingMedia, isKnownMissingMedia } from '@/lib/missingMedia.js';
+import { resolveMediaUrl } from '@/lib/mediaUrls.js';
+import { getCloudinaryVideoUrl, getCloudinaryVideoPosterUrl } from '@/lib/cloudinaryUrls.js';
 
 const statusBadgeColor = (status) => {
   switch (status) {
@@ -41,11 +43,7 @@ const getEmbedUrl = (url) => {
   return null; // not a recognized embed link — treat as a direct video file
 };
 
-const resolveImage = (img) => {
-  if (!img) return null;
-  if (img.startsWith('http')) return img;
-  return getFileUrl('ongoing-project-images', img) || img;
-};
+const resolveImage = (img) => resolveMediaUrl(img, 'ongoing-project-images');
 
 const OngoingProjectDetailsPage = () => {
   const { id } = useParams();
@@ -92,13 +90,19 @@ const OngoingProjectDetailsPage = () => {
     );
   }
 
-  const images = project.image_urls?.length
+  const rawImages = project.image_urls?.length
     ? project.image_urls
     : project.image_url
     ? [project.image_url]
     : [];
+  const images = filterKnownMissingMedia(rawImages, 'ongoing-project-images')
+    .map(resolveImage)
+    .filter(Boolean);
 
-  const embedUrl = getEmbedUrl(project.video_url);
+  const videoUrl = isKnownMissingMedia(project.video_url, 'ongoing-project-videos')
+    ? null
+    : resolveMediaUrl(project.video_url, 'ongoing-project-videos');
+  const embedUrl = getEmbedUrl(videoUrl);
 
   return (
     <>
@@ -150,6 +154,8 @@ const OngoingProjectDetailsPage = () => {
                       src={toCdnUrl(resolveImage(images[activeImage]))}
                       alt={`${project.name} — image ${activeImage + 1}`}
                       className="w-full h-full object-cover"
+                      width="1200"
+                      height="675"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/10 to-primary/20">
@@ -198,6 +204,9 @@ const OngoingProjectDetailsPage = () => {
                           src={toCdnUrl(resolveImage(img))}
                           alt={`${project.name} thumbnail ${index + 1}`}
                           className="w-full h-full object-cover"
+                          width="160"
+                          height="120"
+                          loading="lazy"
                         />
                       </button>
                     ))}
@@ -205,7 +214,7 @@ const OngoingProjectDetailsPage = () => {
                 )}
 
                 {/* Video section */}
-                {project.video_url && (
+                {videoUrl && (
                   <div className="pt-2">
                     <h2 className="text-lg font-semibold mb-3">Project Video</h2>
                     <div className="aspect-video bg-black rounded-2xl overflow-hidden">
@@ -219,9 +228,11 @@ const OngoingProjectDetailsPage = () => {
                         />
                       ) : (
                         <video
-                          src={project.video_url}
+                          src={getCloudinaryVideoUrl(videoUrl)}
+                          poster={getCloudinaryVideoPosterUrl(videoUrl, 800) || undefined}
                           controls
                           className="w-full h-full"
+                          preload="none"
                         />
                       )}
                     </div>

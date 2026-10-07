@@ -1,0 +1,369 @@
+{
+  "created_at": "2026-10-07T22:50:51.316Z",
+  "values": [
+    {
+      "table": "proposals",
+      "row_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+      "column": "cover_image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990958436_197.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f35abea8-8c03-5860-8bfd-724b63a3e0fe",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990958436_197.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f35abea8-8c03-5860-8bfd-724b63a3e0fe",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f35abea8-8c03-5860-8bfd-724b63a3e0fe",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990958436_197.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f35abea8-8c03-5860-8bfd-724b63a3e0fe",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413446/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f35abea8-8c03-5860-8bfd-724b63a3e0fe.webp",
+          "width": 707,
+          "height": 1000,
+          "bytes": 66784,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 1",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990958436_197.jpg"
+        }
+      ]
+    },
+    {
+      "table": "proposals",
+      "row_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+      "column": "gallery",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960687_194.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_197.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_200.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_203.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_206.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_209.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_212.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_215.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960689_218.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/9cb16dda-40e4-5a11-91ae-e55ea9086efb",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e8903dfa-fc79-5df7-9b64-d4521ac067a8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/b0e4078d-8ace-5c9b-a061-6f2d45755326",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e3255852-46a4-510c-9d31-5325fb3e8688",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/94d083a0-1d57-509d-848b-8f95a8bac494",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/aceb3f79-cdc5-528c-80ff-5eb321121123",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/44cb742d-2b6d-5389-b57e-9d942fda0466",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/87031797-2bee-5a87-bdf5-52929195387e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f7394b8c-8267-5729-9a0e-f6f1d20cd8ed"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960687_194.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/9cb16dda-40e4-5a11-91ae-e55ea9086efb",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/9cb16dda-40e4-5a11-91ae-e55ea9086efb",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960687_194.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_197.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e8903dfa-fc79-5df7-9b64-d4521ac067a8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e8903dfa-fc79-5df7-9b64-d4521ac067a8",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_197.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_200.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/b0e4078d-8ace-5c9b-a061-6f2d45755326",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/b0e4078d-8ace-5c9b-a061-6f2d45755326",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_200.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_203.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e3255852-46a4-510c-9d31-5325fb3e8688",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e3255852-46a4-510c-9d31-5325fb3e8688",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_203.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_206.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/94d083a0-1d57-509d-848b-8f95a8bac494",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/94d083a0-1d57-509d-848b-8f95a8bac494",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_206.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_209.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/aceb3f79-cdc5-528c-80ff-5eb321121123",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/aceb3f79-cdc5-528c-80ff-5eb321121123",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_209.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_212.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/44cb742d-2b6d-5389-b57e-9d942fda0466",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/44cb742d-2b6d-5389-b57e-9d942fda0466",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_212.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960688_215.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/87031797-2bee-5a87-bdf5-52929195387e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/87031797-2bee-5a87-bdf5-52929195387e",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_215.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782990960689_218.jpg",
+          "new_public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f7394b8c-8267-5729-9a0e-f6f1d20cd8ed",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f7394b8c-8267-5729-9a0e-f6f1d20cd8ed",
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960689_218.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/9cb16dda-40e4-5a11-91ae-e55ea9086efb",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413446/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/9cb16dda-40e4-5a11-91ae-e55ea9086efb.webp",
+          "width": 707,
+          "height": 1000,
+          "bytes": 43806,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 1",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960687_194.jpg"
+        },
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e8903dfa-fc79-5df7-9b64-d4521ac067a8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413447/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e8903dfa-fc79-5df7-9b64-d4521ac067a8.webp",
+          "width": 707,
+          "height": 1000,
+          "bytes": 66784,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 2",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_197.jpg"
+        },
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/b0e4078d-8ace-5c9b-a061-6f2d45755326",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413448/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/b0e4078d-8ace-5c9b-a061-6f2d45755326.webp",
+          "width": 707,
+          "height": 1000,
+          "bytes": 45694,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 3",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_200.jpg"
+        },
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e3255852-46a4-510c-9d31-5325fb3e8688",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413449/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/e3255852-46a4-510c-9d31-5325fb3e8688.webp",
+          "width": 763,
+          "height": 1080,
+          "bytes": 25610,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 4",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_203.jpg"
+        },
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/94d083a0-1d57-509d-848b-8f95a8bac494",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413449/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/94d083a0-1d57-509d-848b-8f95a8bac494.webp",
+          "width": 763,
+          "height": 1080,
+          "bytes": 26642,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 5",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_206.jpg"
+        },
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/aceb3f79-cdc5-528c-80ff-5eb321121123",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413451/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/aceb3f79-cdc5-528c-80ff-5eb321121123.webp",
+          "width": 763,
+          "height": 1080,
+          "bytes": 34608,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 6",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_209.jpg"
+        },
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/44cb742d-2b6d-5389-b57e-9d942fda0466",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413451/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/44cb742d-2b6d-5389-b57e-9d942fda0466.webp",
+          "width": 763,
+          "height": 1080,
+          "bytes": 45938,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 7",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_212.jpg"
+        },
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/87031797-2bee-5a87-bdf5-52929195387e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413452/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/87031797-2bee-5a87-bdf5-52929195387e.webp",
+          "width": 763,
+          "height": 1080,
+          "bytes": 28414,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 7,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 8",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960688_215.jpg"
+        },
+        {
+          "entity": "proposals",
+          "entity_id": "0a63c549-5d13-460e-a69f-997c36d585b9",
+          "public_id": "proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f7394b8c-8267-5729-9a0e-f6f1d20cd8ed",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413453/proposals/0a63c549-5d13-460e-a69f-997c36d585b9/f7394b8c-8267-5729-9a0e-f6f1d20cd8ed.webp",
+          "width": 763,
+          "height": 1080,
+          "bytes": 36674,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 8,
+          "alt_text": "Parkview Estate — Exclusive Sales and Marketing Mandate image 9",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782990960689_218.jpg"
+        }
+      ]
+    },
+    {
+      "table": "proposals",
+      "row_id": "12ac08e7-e68d-4d0b-aa79-364a9f4145bd",
+      "column": "cover_image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782991663717_wd.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/12ac08e7-e68d-4d0b-aa79-364a9f4145bd/761e8f44-eaa0-55a3-9cbf-8a6fa4a6caaa",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782991663717_wd.jpg",
+          "new_public_id": "proposals/12ac08e7-e68d-4d0b-aa79-364a9f4145bd/761e8f44-eaa0-55a3-9cbf-8a6fa4a6caaa",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/12ac08e7-e68d-4d0b-aa79-364a9f4145bd/761e8f44-eaa0-55a3-9cbf-8a6fa4a6caaa",
+          "entity": "proposals",
+          "entity_id": "12ac08e7-e68d-4d0b-aa79-364a9f4145bd",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782991663717_wd.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "proposals",
+          "entity_id": "12ac08e7-e68d-4d0b-aa79-364a9f4145bd",
+          "public_id": "proposals/12ac08e7-e68d-4d0b-aa79-364a9f4145bd/761e8f44-eaa0-55a3-9cbf-8a6fa4a6caaa",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413453/proposals/12ac08e7-e68d-4d0b-aa79-364a9f4145bd/761e8f44-eaa0-55a3-9cbf-8a6fa4a6caaa.webp",
+          "width": 948,
+          "height": 534,
+          "bytes": 56190,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Exclusive Luxury Living in Ikoyi — 1st Homes Ltd image 1",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782991663717_wd.jpg"
+        }
+      ]
+    },
+    {
+      "table": "proposals",
+      "row_id": "9db3893e-1a65-4f0a-b9c2-9a0da99fe756",
+      "column": "cover_image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782992191730_ww.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/9db3893e-1a65-4f0a-b9c2-9a0da99fe756/65a47d2e-8e85-5f46-8f5e-e446d333ecd4",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/proposal-files/proposals/1782992191730_ww.jpg",
+          "new_public_id": "proposals/9db3893e-1a65-4f0a-b9c2-9a0da99fe756/65a47d2e-8e85-5f46-8f5e-e446d333ecd4",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/proposals/9db3893e-1a65-4f0a-b9c2-9a0da99fe756/65a47d2e-8e85-5f46-8f5e-e446d333ecd4",
+          "entity": "proposals",
+          "entity_id": "9db3893e-1a65-4f0a-b9c2-9a0da99fe756",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782992191730_ww.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "proposals",
+          "entity_id": "9db3893e-1a65-4f0a-b9c2-9a0da99fe756",
+          "public_id": "proposals/9db3893e-1a65-4f0a-b9c2-9a0da99fe756/65a47d2e-8e85-5f46-8f5e-e446d333ecd4",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791413454/proposals/9db3893e-1a65-4f0a-b9c2-9a0da99fe756/65a47d2e-8e85-5f46-8f5e-e446d333ecd4.webp",
+          "width": 908,
+          "height": 570,
+          "bytes": 34880,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Parkview Estate Ikoyi — Exclusive Sales, Marketing & Investment Partnership Proposal image 1",
+          "source_bucket": "proposal-files",
+          "source_path": "proposals/1782992191730_ww.jpg"
+        }
+      ]
+    }
+  ]
+}

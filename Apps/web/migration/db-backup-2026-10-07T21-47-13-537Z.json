@@ -1,0 +1,1793 @@
+{
+  "created_at": "2026-10-07T21:47:13.537Z",
+  "values": [
+    {
+      "table": "properties",
+      "row_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+      "column": "image_url",
+      "old_value": "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409614/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b.webp",
+          "width": 180,
+          "height": 400,
+          "bytes": 4840,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "5 Bedroom Fully Detached with BQ image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+      "column": "images",
+      "old_value": [
+        "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409614/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b.webp",
+          "width": 180,
+          "height": 400,
+          "bytes": 4840,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "5 Bedroom Fully Detached with BQ image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409615/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010.webp",
+          "width": 180,
+          "height": 400,
+          "bytes": 7368,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "5 Bedroom Fully Detached with BQ image 2",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409618/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9.webp",
+          "width": 540,
+          "height": 1200,
+          "bytes": 36772,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "5 Bedroom Fully Detached with BQ image 3",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409620/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a.webp",
+          "width": 540,
+          "height": 1200,
+          "bytes": 47072,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "5 Bedroom Fully Detached with BQ image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409617/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e.webp",
+          "width": 180,
+          "height": 400,
+          "bytes": 5766,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "5 Bedroom Fully Detached with BQ image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409617/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3.webp",
+          "width": 540,
+          "height": 1200,
+          "bytes": 33782,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "5 Bedroom Fully Detached with BQ image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409621/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39.webp",
+          "width": 540,
+          "height": 1200,
+          "bytes": 31754,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "5 Bedroom Fully Detached with BQ image 7",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+      "column": "image_url",
+      "old_value": "https://images.luxurypropertiesltd.com.ng/properties/1782778088945.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782778088945.jpg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782778088945.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409623/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978.webp",
+          "width": 720,
+          "height": 1280,
+          "bytes": 40422,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "C of O image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782778088945.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+      "column": "images",
+      "old_value": [
+        "https://images.luxurypropertiesltd.com.ng/properties/1782778088945.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780771533_WhatsApp%20Image%202026-06-30%20at%2012.44.57%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.44.59%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.45.01%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.45.06%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.12%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.14%20AM.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782778088945.jpg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782778088945.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780771533_WhatsApp%20Image%202026-06-30%20at%2012.44.57%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771533_WhatsApp Image 2026-06-30 at 12.44.57 AM.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.44.59%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771535_WhatsApp Image 2026-06-30 at 12.44.59 AM.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.45.01%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771535_WhatsApp Image 2026-06-30 at 12.45.01 AM.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.45.06%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.45.06 AM.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.12%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.47.12 AM.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.14%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.47.14 AM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409623/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978.webp",
+          "width": 720,
+          "height": 1280,
+          "bytes": 40422,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "C of O image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782778088945.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409625/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 24026,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "C of O image 2",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771533_WhatsApp Image 2026-06-30 at 12.44.57 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409626/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 19410,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "C of O image 3",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771535_WhatsApp Image 2026-06-30 at 12.44.59 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409628/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 26796,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "C of O image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771535_WhatsApp Image 2026-06-30 at 12.45.01 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409630/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e.webp",
+          "width": 540,
+          "height": 960,
+          "bytes": 11168,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "C of O image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.45.06 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409630/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4.webp",
+          "width": 540,
+          "height": 960,
+          "bytes": 20134,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "C of O image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.47.12 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409631/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7.webp",
+          "width": 720,
+          "height": 1280,
+          "bytes": 46708,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "C of O image 7",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.47.14 AM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+      "column": "image_url",
+      "old_value": "https://images.luxurypropertiesltd.com.ng/properties/1782779115749.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782779115749.jpg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782779115749.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409624/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 35020,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Governor's Consent image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782779115749.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+      "column": "images",
+      "old_value": [
+        "https://images.luxurypropertiesltd.com.ng/properties/1782779115749.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780931883_WhatsApp%20Image%202026-06-30%20at%2012.37.26%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM%20(1).jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.29%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.32%20AM.jpeg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.33%20AM.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.33%20AM.jpeg"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782779115749.jpg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782779115749.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780931883_WhatsApp%20Image%202026-06-30%20at%2012.37.26%20AM.jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931883_WhatsApp Image 2026-06-30 at 12.37.26 AM.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM%20(1).jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.28 AM (1).jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM.jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.28 AM.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.29%20AM.jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.29 AM.jpeg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.32%20AM.jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.32 AM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409624/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 35020,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Governor's Consent image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782779115749.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409632/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 33268,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "Governor's Consent image 2",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931883_WhatsApp Image 2026-06-30 at 12.37.26 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409633/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 33804,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "Governor's Consent image 3",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.28 AM (1).jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409633/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 75260,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "Governor's Consent image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.28 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409635/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 41600,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "Governor's Consent image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.29 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409635/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 51336,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "Governor's Consent image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.32 AM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+      "column": "image_url",
+      "old_value": "https://images.luxurypropertiesltd.com.ng/properties/1782777669570.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782777669570.jpg",
+          "new_public_id": "properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "entity": "properties",
+          "entity_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782777669570.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+          "public_id": "properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409621/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83.webp",
+          "width": 1080,
+          "height": 810,
+          "bytes": 60952,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Governor's Consent image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782777669570.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+      "column": "images",
+      "old_value": [
+        "https://images.luxurypropertiesltd.com.ng/properties/1782777669570.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782781052172_WhatsApp%20Image%202026-06-30%20at%2012.52.04%20AM.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782781052172_WhatsApp%20Image%202026-06-30%20at%2012.52.04%20AM.jpeg"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782777669570.jpg",
+          "new_public_id": "properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "entity": "properties",
+          "entity_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782777669570.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+          "public_id": "properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409621/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83.webp",
+          "width": 1080,
+          "height": 810,
+          "bytes": 60952,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "Governor's Consent image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782777669570.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties",
+      "row_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+      "column": "images",
+      "old_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609615.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609618.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609621.jpg",
+        "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609602.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6"
+      ],
+      "maps": [
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609615.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609615.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609618.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609618.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609621.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609621.jpg"
+        },
+        {
+          "old_url": "https://images.luxurypropertiesltd.com.ng/properties/1782416401770_1000609602.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609602.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409610/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171.webp",
+          "width": 788,
+          "height": 1080,
+          "bytes": 43824,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "🏡 LONG LEASE INVESTMENT OPPORTUNITY image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609615.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409612/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a.webp",
+          "width": 810,
+          "height": 1080,
+          "bytes": 85822,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "🏡 LONG LEASE INVESTMENT OPPORTUNITY image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609618.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409614/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 80198,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "🏡 LONG LEASE INVESTMENT OPPORTUNITY image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609621.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409610/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6.webp",
+          "width": 810,
+          "height": 1080,
+          "bytes": 39812,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "🏡 LONG LEASE INVESTMENT OPPORTUNITY image 7",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609602.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782777669570.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782777669570.jpg",
+          "new_public_id": "properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "entity": "properties",
+          "entity_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782777669570.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+          "public_id": "properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409621/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83.webp",
+          "width": 1080,
+          "height": 810,
+          "bytes": 60952,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782777669570.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782777669570.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782781052172_WhatsApp%20Image%202026-06-30%20at%2012.52.04%20AM.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782781052172_WhatsApp%20Image%202026-06-30%20at%2012.52.04%20AM.jpeg"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782777669570.jpg",
+          "new_public_id": "properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "entity": "properties",
+          "entity_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782777669570.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "45c57232-1951-4f64-a6c8-1ce3386d8094",
+          "public_id": "properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409621/properties/45c57232-1951-4f64-a6c8-1ce3386d8094/3b7f707f-6e6f-5f1e-926a-83b3eb0d0e83.webp",
+          "width": 1080,
+          "height": 810,
+          "bytes": 60952,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782777669570.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409614/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b.webp",
+          "width": 180,
+          "height": 400,
+          "bytes": 4840,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg",
+          "new_public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39",
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409614/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/2f367722-9b9e-5ec1-ab7a-4eed55ecd83b.webp",
+          "width": 180,
+          "height": 400,
+          "bytes": 4840,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783ec05569-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409615/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/8d316170-8229-5f4b-9347-866277c99010.webp",
+          "width": 180,
+          "height": 400,
+          "bytes": 7368,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "properties image 2",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697783fc1e4ba-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409618/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/e1cb7ed2-b55c-50b1-ae01-20a10b3254b9.webp",
+          "width": 540,
+          "height": 1200,
+          "bytes": 36772,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "properties image 3",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784c83f80e-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409620/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/19095097-4ba2-5bf4-a8ec-3a3d5f8c477a.webp",
+          "width": 540,
+          "height": 1200,
+          "bytes": 47072,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "properties image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784e3cc3b6-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409617/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/d99ed651-fab4-5bc4-a886-d17693cfc88e.webp",
+          "width": 180,
+          "height": 400,
+          "bytes": 5766,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "properties image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_06977842ee85a0-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409617/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/5e112814-7df9-51a0-9a1b-306c1e85f6b3.webp",
+          "width": 540,
+          "height": 1200,
+          "bytes": 33782,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "properties image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782419171000_0697784872c613-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81",
+          "public_id": "properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409621/properties/d7bb3b39-c1f4-429e-ac2e-f8fcebfb0e81/c812dde0-bd81-539d-bddb-f67d3f5cef39.webp",
+          "width": 540,
+          "height": 1200,
+          "bytes": 31754,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "properties image 7",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782563317451_06977847655060-5-bedroom-fully-detached-with-bq-detached-duplexes-for-sale-osapa-lekki-lagos.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782778088945.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782778088945.jpg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782778088945.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409623/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978.webp",
+          "width": 720,
+          "height": 1280,
+          "bytes": 40422,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782778088945.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782778088945.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771533_WhatsApp%20Image%202026-06-30%20at%2012.44.57%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.44.59%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.45.01%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.45.06%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.12%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.14%20AM.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782778088945.jpg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782778088945.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771533_WhatsApp%20Image%202026-06-30%20at%2012.44.57%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771533_WhatsApp Image 2026-06-30 at 12.44.57 AM.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.44.59%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771535_WhatsApp Image 2026-06-30 at 12.44.59 AM.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771535_WhatsApp%20Image%202026-06-30%20at%2012.45.01%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771535_WhatsApp Image 2026-06-30 at 12.45.01 AM.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.45.06%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.45.06 AM.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.12%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.47.12 AM.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780771536_WhatsApp%20Image%202026-06-30%20at%2012.47.14%20AM.jpeg",
+          "new_public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7",
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.47.14 AM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409623/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/ce4e42b6-fb7b-58b8-9bd5-e6b0fee2b978.webp",
+          "width": 720,
+          "height": 1280,
+          "bytes": 40422,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782778088945.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409625/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/b891e959-0975-5aaf-a41d-b6d5b7b4553f.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 24026,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "properties image 2",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771533_WhatsApp Image 2026-06-30 at 12.44.57 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409626/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/13394f41-bbe3-54d6-a9b0-4f4ebbc3c6f8.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 19410,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "properties image 3",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771535_WhatsApp Image 2026-06-30 at 12.44.59 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409628/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/6c3af7f7-d5f2-5caf-bafa-bd56ae87ec21.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 26796,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "properties image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771535_WhatsApp Image 2026-06-30 at 12.45.01 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409630/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/834526ee-a168-52ff-a216-ec843d47c40e.webp",
+          "width": 540,
+          "height": 960,
+          "bytes": 11168,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "properties image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.45.06 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409630/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/753395b6-8da9-51b2-b762-5a097305c6d4.webp",
+          "width": 540,
+          "height": 960,
+          "bytes": 20134,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "properties image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.47.12 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+          "public_id": "properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409631/properties/36d08c80-c13c-4f96-85b1-8c86d557536e/18aa0af3-c9d1-5231-8a93-aa1319d8abd7.webp",
+          "width": 720,
+          "height": 1280,
+          "bytes": 46708,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "properties image 7",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780771536_WhatsApp Image 2026-06-30 at 12.47.14 AM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+      "column": "image_url",
+      "old_value": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782779115749.jpg",
+      "new_value": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782779115749.jpg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782779115749.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409624/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 35020,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782779115749.jpg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+      "column": "images",
+      "old_value": [
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782779115749.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931883_WhatsApp%20Image%202026-06-30%20at%2012.37.26%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM%20(1).jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.29%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.32%20AM.jpeg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.33%20AM.jpeg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.33%20AM.jpeg"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782779115749.jpg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782779115749.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931883_WhatsApp%20Image%202026-06-30%20at%2012.37.26%20AM.jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931883_WhatsApp Image 2026-06-30 at 12.37.26 AM.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM%20(1).jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.28 AM (1).jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.28%20AM.jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.28 AM.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.29%20AM.jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.29 AM.jpeg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782780931884_WhatsApp%20Image%202026-06-30%20at%2012.37.32%20AM.jpeg",
+          "new_public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793",
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.32 AM.jpeg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409624/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/9e8a4dbe-da05-5f38-ae5b-faf49c7cafff.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 35020,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 0,
+          "alt_text": "properties image 1",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782779115749.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409632/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/378e2a67-c328-550f-a1f5-8630316ca545.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 33268,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 1,
+          "alt_text": "properties image 2",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931883_WhatsApp Image 2026-06-30 at 12.37.26 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409633/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/83b94b29-0833-5516-b004-00fb9e5757ef.webp",
+          "width": 432,
+          "height": 960,
+          "bytes": 33804,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 2,
+          "alt_text": "properties image 3",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.28 AM (1).jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409633/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/99e47839-703f-5c6a-80f4-acf81c15f444.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 75260,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "properties image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.28 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409635/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/166db525-e712-5f6b-b862-c6e38888ca00.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 41600,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "properties image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.29 AM.jpeg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "3436a13b-ff72-4798-b2b8-46a7404cd939",
+          "public_id": "properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409635/properties/3436a13b-ff72-4798-b2b8-46a7404cd939/7d6dabdb-4e0c-50f3-9c50-9865efd72793.webp",
+          "width": 576,
+          "height": 1280,
+          "bytes": 51336,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "properties image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782780931884_WhatsApp Image 2026-06-30 at 12.37.32 AM.jpeg"
+        }
+      ]
+    },
+    {
+      "table": "properties_image_backup",
+      "row_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+      "column": "images",
+      "old_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609615.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609618.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609621.jpg",
+        "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609602.jpg"
+      ],
+      "new_value": [
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/57b3aae4-449b-5d1c-b051-12bc2536b3f8",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d4d79064-8334-53df-96d3-5ff2b2566521",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/25c280e9-fbcb-5308-a67d-77feac28404e",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91",
+        "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6"
+      ],
+      "maps": [
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609615.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609615.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609618.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609618.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609621.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609621.jpg"
+        },
+        {
+          "old_url": "https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/property-images/properties/1782416401770_1000609602.jpg",
+          "new_public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6",
+          "new_url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_1200,c_limit/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6",
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609602.jpg"
+        }
+      ],
+      "assets": [
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409610/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/125dddf7-91a2-585b-a547-b4f0c3d70171.webp",
+          "width": 788,
+          "height": 1080,
+          "bytes": 43824,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 3,
+          "alt_text": "properties image 4",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609615.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409612/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/d690be9e-090b-5a31-b787-7fa3fd8cb02a.webp",
+          "width": 810,
+          "height": 1080,
+          "bytes": 85822,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 4,
+          "alt_text": "properties image 5",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609618.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409614/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/3badd755-1b96-52d9-a907-04b40b18db91.webp",
+          "width": 1024,
+          "height": 1024,
+          "bytes": 80198,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 5,
+          "alt_text": "properties image 6",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609621.jpg"
+        },
+        {
+          "entity": "properties",
+          "entity_id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+          "public_id": "properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6",
+          "resource_type": "image",
+          "secure_url": "https://res.cloudinary.com/vmyie4dw/image/upload/v1791409610/properties/88482ba1-7540-4e82-96e4-a8b0bf2c753c/e2240485-d0b8-5a55-bc84-951f7c44e3e6.webp",
+          "width": 810,
+          "height": 1080,
+          "bytes": 39812,
+          "format": "webp",
+          "duration": null,
+          "sort_order": 6,
+          "alt_text": "properties image 7",
+          "source_bucket": "property-images",
+          "source_path": "properties/1782416401770_1000609602.jpg"
+        }
+      ]
+    }
+  ]
+}

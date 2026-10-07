@@ -1396,7 +1396,7 @@
             "entity": "image2url.com"
           },
           {
-            "url": "https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png",
+            "url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo",
             "sessionTargetType": "page",
             "protocol": "h2",
             "cache": "none",
@@ -1411,7 +1411,7 @@
             "resourceType": "Image",
             "priority": "Low",
             "experimentalFromMainFrame": true,
-            "entity": "ibb.co"
+            "entity": "res.cloudinary.com"
           },
           {
             "url": "http://127.0.0.1:4174/hero/slide-2-1600.webp",
@@ -2053,7 +2053,7 @@
             "rtt": 245.89200000000002
           },
           {
-            "origin": "https://i.ibb.co",
+            "origin": "https://res.cloudinary.com",
             "rtt": 243.34300000000002
           },
           {
@@ -2156,7 +2156,7 @@
             "serverResponseTime": 23.47550000000004
           },
           {
-            "origin": "https://i.ibb.co",
+            "origin": "https://res.cloudinary.com",
             "serverResponseTime": 0
           }
         ],
@@ -4494,7 +4494,7 @@
             "totalBytes": 101670
           },
           {
-            "url": "https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png",
+            "url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo",
             "totalBytes": 90113
           },
           {
@@ -6828,14 +6828,14 @@
             }
           },
           {
-            "entity": "ibb.co",
+            "entity": "res.cloudinary.com",
             "mainThreadTime": 0,
             "transferSize": 90113,
             "subItems": {
               "type": "subitems",
               "items": [
                 {
-                  "url": "https://i.ibb.co/39gLw9kX/Chat-GPT-Image-Jun-12-2026-01-18-03-AM.png",
+                  "url": "https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo",
                   "mainThreadTime": 0,
                   "transferSize": 90113
                 }
@@ -7913,9 +7913,9 @@
       "isUnrecognized": true
     },
     {
-      "name": "ibb.co",
+      "name": "res.cloudinary.com",
       "origins": [
-        "https://i.ibb.co"
+        "https://res.cloudinary.com"
       ],
       "isUnrecognized": true
     },

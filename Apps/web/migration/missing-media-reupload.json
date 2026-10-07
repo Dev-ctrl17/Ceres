@@ -1,0 +1,133 @@
+{
+  "generated_from": "2026-10-07 read-only Supabase media inventory",
+  "missing_object_count": 18,
+  "affected_records": [
+    {
+      "table": "properties",
+      "id": "238b408a-16ce-4d05-bc62-5973ff7baa8d",
+      "title": "4-Bedroom Terrace Duplex",
+      "columns": ["video_tour"],
+      "missing_paths": ["property-videos/properties/1782078470737.mp4"]
+    },
+    {
+      "table": "properties",
+      "id": "5d5ff147-b392-40bc-8322-ee407097afa2",
+      "title": "JUST LISTED | COMING SOON TO GBAGADA PHASE 1",
+      "columns": ["video_tour", "video_tour_url"],
+      "missing_paths": [
+        "property-videos/properties/1785598709071_document_6012793565443268604.mp4",
+        "property-videos/properties/1785598599925.mp4"
+      ]
+    },
+    {
+      "table": "properties",
+      "id": "88482ba1-7540-4e82-96e4-a8b0bf2c753c",
+      "title": "🏡 LONG LEASE INVESTMENT OPPORTUNITY",
+      "columns": ["video_tour"],
+      "missing_paths": [
+        "property-videos/properties/1782418559518_1782417342511-5f087009-f5e9-41d4-8a78-048515904af3.mp4"
+      ]
+    },
+    {
+      "table": "properties",
+      "id": "acaa35bf-c8d1-41b9-b24e-6675c355d180",
+      "title": "LUXURY 5-BEDROOM FULLY DETACHED DUPLEX",
+      "columns": ["image_url", "images"],
+      "missing_paths": [
+        "property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.41 PM.jpeg",
+        "property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.55 PM.jpeg",
+        "property-images/properties/1787427017629_WhatsApp Image 2026-08-21 at 3.01.56 PM.jpeg"
+      ]
+    },
+    {
+      "table": "properties",
+      "id": "36d08c80-c13c-4f96-85b1-8c86d557536e",
+      "title": "C of O",
+      "columns": ["video_tour"],
+      "missing_paths": ["property-videos/properties/1782778167093.mp4"]
+    },
+    {
+      "table": "properties",
+      "id": "bf938c73-07a2-40b1-9bc5-81306df422bf",
+      "title": "EXQUISITE 5-BEDROOM FULLY DETACHED SMART LUXURY RESIDENCE",
+      "columns": ["video_tour"],
+      "missing_paths": [
+        "property-videos/properties/1783809980608_WhatsApp Video 2026-07-11 at 4.50.51 PM.mp4"
+      ]
+    },
+    {
+      "table": "properties",
+      "id": "b4a0d887-07a2-40b1-9bc5-81306df422bf",
+      "title": "4 BEDROOM FULLY DETACHED DUPLEX + 1 BEDROOM BQ",
+      "columns": ["video_tour"],
+      "missing_paths": [
+        "property-videos/properties/1783808587279_WhatsApp Video 2026-07-11 at 9.50.48 PM.mp4"
+      ]
+    },
+    {
+      "table": "properties",
+      "id": "8c01f1e4-4022-4f5b-af67-f6893f6c19a0",
+      "title": "4 BEDROOM FULLY DETACHED DUPLEX + 2 BEDROOM BQ",
+      "columns": ["video_tour"],
+      "missing_paths": [
+        "property-videos/properties/1783810295001_WhatsApp Video 2026-07-11 at 9.53.15 PM.mp4"
+      ]
+    },
+    {
+      "table": "properties",
+      "id": "089de2ab-4d8a-4398-bee3-e3e5b03a0e2c",
+      "title": "4 BEDROOM SEMI DETACHED DUPLEX (2 KITCHENS + 2 BEDROOM BQ)",
+      "columns": ["video_tour"],
+      "missing_paths": [
+        "property-videos/properties/1783812259222_WhatsApp Video 2026-07-11 at 9.58.08 PM.mp4"
+      ]
+    },
+    {
+      "table": "properties",
+      "id": "58031de5-50b3-420e-9535-011095610405",
+      "title": "5 BEDROOM FULLY DETACHED DUPLEX (2 KITCHENS – WET & DRY) + 2 BEDROOM BQ",
+      "columns": ["video_tour", "images"],
+      "missing_paths": [
+        "property-videos/properties/1783812819593_WhatsApp Video 2026-07-11 at 10.01.43 PM.mp4",
+        "property-images/properties/1783812813473_WhatsApp Image 2026-07-11 at 10.01.44 PM.jpeg"
+      ],
+      "missing_source_reasons": {
+        "property-images/properties/1783812813473_WhatsApp Image 2026-07-11 at 10.01.44 PM.jpeg": "The storage object is 0 bytes and unreadable; re-upload is required."
+      }
+    },
+    {
+      "table": "properties",
+      "id": "09c1b090-a105-48c1-a543-a2ddef010e29",
+      "title": "Luxury 2 bedroom Short-let apartment",
+      "columns": ["video_tour_url"],
+      "missing_paths": ["property-videos/properties/1789910925725.mp4"]
+    },
+    {
+      "table": "properties",
+      "id": "3e8ce8e7-7e1e-45ee-9186-cc41c5d5402b",
+      "title": "The pantheon terraces",
+      "columns": ["video_tour"],
+      "missing_paths": [
+        "property-videos/properties/1785845756618_document_6019418350633885191.mp4"
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "id": "01141c35-d973-4ce7-9ac2-d7e9f99bb827",
+      "title": "Enclaves court",
+      "columns": ["video_url"],
+      "missing_paths": [
+        "ongoing-project-videos/ongoing_projects/1784762397804_20260722_132905.mp4"
+      ]
+    },
+    {
+      "table": "ongoing_projects",
+      "id": "5cd0266e-f9ab-467b-a923-56c8fb6f4c52",
+      "title": "4 bedroom semi-detached Duplex with modern infrastructure and ample parking space",
+      "columns": ["video_url"],
+      "missing_paths": [
+        "ongoing-project-videos/ongoing_projects/1785005923092_WhatsApp Video 2026-07-24 at 3.08.52 PM.mp4"
+      ]
+    }
+  ]
+}

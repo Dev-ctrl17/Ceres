@@ -12,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import supabase from '@/lib/supabaseClient';
-import { getFileUrl, uploadFile } from '@/lib/supabaseService';
+import { uploadFile } from '@/lib/supabaseService';
 import { sendLeadNotification } from '@/services/formspreeService';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
 import EarnBigButton from '@/components/EarnBigButton.jsx';
@@ -64,18 +64,23 @@ const LuxuryAgentPage = () => {
       return;
     }
     setIsSubmitting(true);
+    const applicationId = globalThis.crypto.randomUUID();
     let photoUrl = '';
     try {
-      let photoPath;
       try {
-        photoPath = await uploadFile('agent-photos', photoFile, 'applications');
-        photoUrl = getFileUrl('agent-photos', photoPath) || photoPath;
+        photoUrl = await uploadFile('agent-photos', photoFile, '', {
+          requireAuth: false,
+          entity: 'agent_applications',
+          entityId: applicationId,
+          altText: `${data.fullName} agent application portrait`,
+        });
       } catch (uploadError) {
         console.error('Agent photo upload failed:', uploadError);
         throw new Error('Photo upload failed. Please try again.');
       }
 
       const application = {
+        id: applicationId,
         full_name: data.fullName,
         email: data.email,
         phone: data.phone,
