@@ -15,7 +15,7 @@ import { MapPin, Bed, Bath, CheckCircle, MessageCircle, Phone, Calendar, FileTex
 import supabase from '@/lib/supabaseClient';
 import { getOptimizedImageUrl } from '@/lib/supabaseService';
 import { generatePropertySchema, generateAEOContent } from '@/lib/structuredData';
-import { isUUID } from '@/lib/slug.js';
+import { isUUID, isUsablePropertySlug } from '@/lib/slug.js';
 import { getCanonicalUrl } from '@/lib/siteConfig.js';
 import { buildPropertySeo } from '@/lib/propertySeo.js';
 import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
@@ -98,6 +98,15 @@ const PropertyDetailsPage = () => {
 
   useEffect(() => {
     const fetchProperty = async () => {
+      if (!isUsablePropertySlug(slug)) {
+        setProperty(null);
+        setLoading(false);
+        document.dispatchEvent(new Event('render-event'));
+        return;
+      }
+
+      setProperty(null);
+      setLoading(true);
       try {
         // Legacy UUID redirect (edge func /api/propertyRedirect.js on prod;
         // this guard covers local dev + non-Vercel hosts).
@@ -107,8 +116,8 @@ const PropertyDetailsPage = () => {
             .select('slug')
             .eq('id', slug)
             .single();
-          if (legacy?.slug) {
-            navigate(`/properties/${legacy.slug}`, { replace: true });
+          if (isUsablePropertySlug(legacy?.slug)) {
+            navigate(`/properties/${encodeURIComponent(legacy.slug)}`, { replace: true });
             return;
           }
           if (legacyError) {
@@ -564,6 +573,7 @@ const PropertyDetailsPage = () => {
                   {/* Book Inspection */}
                   <Link
                     to={`/contact?property=${encodeURIComponent(property.slug)}&inquiry=inspection`}
+                    rel="nofollow"
                     className="w-full inline-flex items-center justify-center gap-3 bg-transparent border-2 border-primary text-primary font-bold text-base px-6 py-4 rounded-xl mb-4 transition-all duration-300 hover:bg-primary/5 hover:scale-[1.02]"
                   >
                     <Calendar className="w-5 h-5" />

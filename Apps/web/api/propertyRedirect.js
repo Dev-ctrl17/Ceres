@@ -21,6 +21,10 @@ import { createClient } from '@supabase/supabase-js';
 // no dependency on the client bundle.
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const DOMAIN = 'https://www.luxurypropertiesltd.com.ng';
+const isUsableSlug = (slug) =>
+  typeof slug === 'string' &&
+  slug.trim().length > 0 &&
+  !/^(?:null|undefined)$/i.test(slug.trim());
 
 export default async function (req, res) {
   const uuid = req.query?.uuid;
@@ -44,17 +48,18 @@ export default async function (req, res) {
       supabase.from('properties').select('slug').eq('id', uuid).single(),
       new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 6000)),
     ]);
-    if (error) throw error;
+    if (error && error.code !== 'PGRST116') throw error;
     slug = data?.slug;
   } catch (err) {
     console.error('[propertyRedirect] lookup failed:', err?.message || err);
+    return res.status(503).send('Property lookup unavailable');
   }
 
-  if (!slug) {
+  if (!isUsableSlug(slug)) {
     return res.status(404).send('Property not found');
   }
 
   // 301 (permanent): preserves link equity from previously shared
   // UUID-based URLs → canonical slug URL.
-  return res.redirect(301, `${DOMAIN}/properties/${slug}`);
+  return res.redirect(301, `${DOMAIN}/properties/${encodeURIComponent(slug.trim())}`);
 }

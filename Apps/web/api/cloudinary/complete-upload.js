@@ -25,7 +25,7 @@ function parseBody(body) {
 function validAsset(asset, folder, cloudName) {
   if (!asset || typeof asset !== 'object') return false;
   if (typeof asset.public_id !== 'string' || !asset.public_id.startsWith(`${folder}/`)) return false;
-  if (!/\/[0-9a-f-]{36}$/i.test(asset.public_id)) return false;
+  if (!/\/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}-[a-z0-9]+(?:-[a-z0-9]+)*$/i.test(asset.public_id)) return false;
   if (!['image', 'video', 'raw'].includes(asset.resource_type)) return false;
   if (!Number.isSafeInteger(asset.bytes) || asset.bytes < 1) return false;
   if (typeof asset.format !== 'string' || !/^[a-z0-9]{1,12}$/i.test(asset.format)) return false;

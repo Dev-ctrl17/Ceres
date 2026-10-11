@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { HardHat, Calendar, MapPin, ArrowLeft, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -10,6 +10,7 @@ import { toCdnUrl } from '@/lib/imageUrl.js';
 import { filterKnownMissingMedia, isKnownMissingMedia } from '@/lib/missingMedia.js';
 import { resolveMediaUrl } from '@/lib/mediaUrls.js';
 import { getCloudinaryVideoUrl, getCloudinaryVideoPosterUrl } from '@/lib/cloudinaryUrls.js';
+import { isUUID } from '@/lib/slug.js';
 
 const statusBadgeColor = (status) => {
   switch (status) {
@@ -49,6 +50,13 @@ const OngoingProjectDetailsPage = () => {
   const { id } = useParams();
   const { project, loading, notFound } = useOngoingProject(id);
   const [activeImage, setActiveImage] = useState(0);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loading && project?.slug && isUUID(id)) {
+      navigate(`/ongoing-projects/${encodeURIComponent(project.slug)}`, { replace: true });
+    }
+  }, [id, loading, navigate, project]);
 
   if (loading) {
     return (
@@ -112,14 +120,14 @@ const OngoingProjectDetailsPage = () => {
           name="description"
           content={project.description || `Details for ${project.name}, an ongoing property development by Luxury Properties Ltd.`}
         />
-        <link rel="canonical" href={`https://www.luxurypropertiesltd.com.ng/ongoing-projects/${project.id}`} />
+        <link rel="canonical" href={`https://www.luxurypropertiesltd.com.ng/ongoing-projects/${encodeURIComponent(project.slug || project.id)}`} />
         <meta property="og:title" content={`${project.name} — Ongoing Projects`} />
         <meta
           property="og:description"
           content={project.description || `Details for ${project.name}, an ongoing property development by Luxury Properties Ltd.`}
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/ongoing-projects/${project.id}`} />
+        <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/ongoing-projects/${encodeURIComponent(project.slug || project.id)}`} />
         {images[0] && <meta property="og:image" content={toCdnUrl(resolveImage(images[0]))} />}
       </Helmet>
 

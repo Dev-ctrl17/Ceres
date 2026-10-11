@@ -124,10 +124,12 @@ export async function uploadToCloudinary(bucket, file, {
     throw new Error(signed.error || `Unable to prepare upload (${signResponse.status}).`);
   }
 
-  if (!signed.cloud_name) throw new Error('Upload service did not provide a Cloudinary cloud name.');
+  if (!signed.cloud_name || !signed.filename) {
+    throw new Error('Upload service did not provide a safe Cloudinary filename.');
+  }
 
   const uploadForm = new FormData();
-  uploadForm.append('file', file);
+  uploadForm.append('file', file, signed.filename);
   for (const [key, value] of Object.entries(signed)) {
     if (key === 'signature' || key === 'api_key' || key === 'resource_type' || key === 'cloud_name') continue;
     if (value !== undefined && value !== null) uploadForm.append(key, String(value));

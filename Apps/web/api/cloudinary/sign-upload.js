@@ -1,4 +1,5 @@
 import { randomUUID } from 'node:crypto';
+import { slugifyFilename } from '../../src/lib/propertyImageNaming.js';
 import {
   authorizeUpload,
   getCloudinaryConfig,
@@ -72,7 +73,8 @@ export default async function signUpload(req, res) {
     }
 
     const folder = `${body.entity}/${body.entity_id}`;
-    const publicId = randomUUID();
+    const filename = slugifyFilename(file.name, randomUUID());
+    const publicId = filename.replace(/\.[a-z0-9]+$/i, '');
     const timestamp = Math.floor(Date.now() / 1000);
     const allowedFormats = resourceType === 'image'
       ? 'jpg,jpeg,png,webp,heic'
@@ -100,6 +102,7 @@ export default async function signUpload(req, res) {
       api_key: cloudinary.apiKey,
       cloud_name: cloudinary.cloudName,
       folder,
+      filename,
       public_id: publicId,
       resource_type: resourceType,
       timestamp,

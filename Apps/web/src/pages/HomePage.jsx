@@ -188,7 +188,7 @@ const HomePage = () => {
   }, []);
 
   const visibleFeaturedProperties = featuredProperties
-    .filter((property) => property.slug && (property.image_url || property.first_image))
+    .filter((property) => property.image_url || property.first_image)
     .filter((property) => !unavailableFeaturedIds.has(property.id))
     .slice(0, 5);
 
@@ -662,6 +662,29 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="border-t bg-stone-50 py-16">
+          <div className="mx-auto grid max-w-7xl gap-8 px-4 sm:grid-cols-2 sm:px-6 lg:px-8">
+            <article className="rounded-2xl border bg-white p-8">
+              <h2 className="mb-3 text-2xl font-semibold">Ongoing projects</h2>
+              <p className="mb-5 text-muted-foreground">
+                Follow the progress of our current luxury developments across Nigeria.
+              </p>
+              <Link to="/ongoing-projects" className="font-semibold text-primary hover:underline">
+                Explore ongoing projects <ArrowRight className="ml-1 inline h-4 w-4" />
+              </Link>
+            </article>
+            <article className="rounded-2xl border bg-white p-8">
+              <h2 className="mb-3 text-2xl font-semibold">Client success stories</h2>
+              <p className="mb-5 text-muted-foreground">
+                See how our team has supported clients through landmark property transactions.
+              </p>
+              <Link to="/client-success" className="font-semibold text-primary hover:underline">
+                Read client success stories <ArrowRight className="ml-1 inline h-4 w-4" />
+              </Link>
+            </article>
           </div>
         </section>
 

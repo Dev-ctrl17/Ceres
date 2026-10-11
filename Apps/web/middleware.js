@@ -109,6 +109,81 @@ const BOT_USER_AGENTS = [
 // external prerender request unless it is explicitly enabled.
 const PRERENDER_ENABLED = process.env.PRERENDER_ENABLED === "true";
 
+const PROPERTY_UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+function propertyNotFoundResponse(status = 404) {
+  const title = status === 404 ? "Property not found" : "Property lookup unavailable";
+  const message = status === 404
+    ? "The property you requested is not available."
+    : "We could not verify this property right now. Please try again.";
+  return new Response(
+    `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow"><title>${title} | Luxury Properties Ltd</title></head><body><main><h1>${title}</h1><p>${message}</p><a href="/properties">Browse properties</a></main></body></html>`,
+    {
+      status,
+      headers: {
+        "Content-Type": "text/html; charset=utf-8",
+        "X-Robots-Tag": "noindex, nofollow",
+        "Cache-Control": "public, max-age=0, s-maxage=300",
+      },
+    },
+  );
+}
+
+async function validatePropertyRoute(url) {
+  const route = url.pathname.match(/^\/properties\/([^/]+)\/?$/);
+  if (!route) return null;
+
+  let slug;
+  try {
+    slug = decodeURIComponent(route[1]).trim();
+  } catch {
+    return propertyNotFoundResponse();
+  }
+  if (!slug || /^(?:null|undefined)$/i.test(slug) || slug.includes("/")) {
+    return propertyNotFoundResponse();
+  }
+  if (PROPERTY_UUID_RE.test(slug)) return null;
+
+  const supabaseUrl = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
+  const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+  if (!supabaseUrl || !supabaseKey) {
+    console.error("[propertyRoute] Supabase public configuration is missing.");
+    return propertyNotFoundResponse(503);
+  }
+
+  const queryUrl = new URL("/rest/v1/properties", supabaseUrl);
+  queryUrl.searchParams.set("select", "id");
+  queryUrl.searchParams.set("slug", `eq.${slug}`);
+  queryUrl.searchParams.set("limit", "1");
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 2500);
+
+  try {
+    const response = await fetch(queryUrl, {
+      headers: {
+        apikey: supabaseKey,
+        Authorization: `Bearer ${supabaseKey}`,
+      },
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      console.error("[propertyRoute] Supabase slug lookup failed:", response.status);
+      return propertyNotFoundResponse(503);
+    }
+    const rows = await response.json();
+    if (!Array.isArray(rows)) {
+      console.error("[propertyRoute] Supabase slug lookup returned an invalid response.");
+      return propertyNotFoundResponse(503);
+    }
+    return rows.length ? null : propertyNotFoundResponse();
+  } catch (error) {
+    console.error("[propertyRoute] Supabase slug lookup failed:", error?.message || error);
+    return propertyNotFoundResponse(503);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 function isBot(userAgent) {
   if (!userAgent) return false;
   const ua = userAgent.toLowerCase();
@@ -116,6 +191,22 @@ function isBot(userAgent) {
 }
 
 export default async function middleware(request) {
+  const url = new URL(request.url);
+  const canonicalHost = "www.luxurypropertiesltd.com.ng";
+  const apexHost = "luxurypropertiesltd.com.ng";
+  const forwardedProtocol = request.headers.get("x-forwarded-proto");
+  if (
+    (url.hostname === apexHost || url.hostname === canonicalHost) &&
+    (url.hostname !== canonicalHost || url.protocol !== "https:" || forwardedProtocol === "http")
+  ) {
+    url.protocol = "https:";
+    url.hostname = canonicalHost;
+    return Response.redirect(url, 301);
+  }
+
+  const propertyResponse = await validatePropertyRoute(url);
+  if (propertyResponse) return propertyResponse;
+
   const prerenderToken = process.env.PRERENDER_TOKEN;
   console.log("[prerender] runtime check", {
     enabled: PRERENDER_ENABLED,
@@ -148,8 +239,6 @@ export default async function middleware(request) {
   ) {
     return;
   }
-
-  const url = new URL(request.url);
 
   if (!prerenderToken) {
     console.error(

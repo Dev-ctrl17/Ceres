@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { FileText, Calendar, Home, MapPin, Tag, ArrowLeft, ExternalLink, Phone, Mail } from "lucide-react";
 import { toCdnUrl } from "@/lib/imageUrl.js";
 import { resolveMediaUrl, rewriteMediaContent } from "@/lib/mediaUrls.js";
+import { getPropertyRouteSegment } from "@/lib/slug.js";
 
 const InvestmentBriefFallbackMetadata = () => (
   <Helmet>
@@ -172,6 +173,7 @@ const InvestmentBriefPage = () => {
   const pdfUrl = getPdfUrl();
   const thumbUrl = getThumbnailUrl();
   const property = brochure.property;
+  const propertyRouteSegment = getPropertyRouteSegment(property);
   const canonicalUrl = getCanonicalUrl('/investment-brief');
   const seoTitle = buildSeoTitle(`${brochure.title} Investment Brief`);
   const seoDescription = buildSeoDescription(
@@ -336,33 +338,46 @@ const InvestmentBriefPage = () => {
 
                 {/* CTA Buttons */}
                 <div className="space-y-3">
-                                    <Link to={`/properties/${property.slug}`}>
-                    <Button className="w-full">
-                      <ExternalLink className="w-4 h-4 mr-2" />
-                      View Property Details
-                    </Button>
-                  </Link>
+                  {propertyRouteSegment && (
+                    <>
+                      <Link to={`/properties/${encodeURIComponent(propertyRouteSegment)}`}>
+                        <Button className="w-full">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          View Property Details
+                        </Button>
+                      </Link>
 
-                  <Link to={`/contact?property=${encodeURIComponent(property.slug)}&inquiry=enquiry`}>
-                    <Button variant="outline" className="w-full">
-                      <Mail className="w-4 h-4 mr-2" />
-                      Apply Now
-                    </Button>
-                  </Link>
+                      <Link
+                        to={`/contact?property=${encodeURIComponent(propertyRouteSegment)}&inquiry=enquiry`}
+                        rel="nofollow"
+                      >
+                        <Button variant="outline" className="w-full">
+                          <Mail className="w-4 h-4 mr-2" />
+                          Apply Now
+                        </Button>
+                      </Link>
 
-                  <Link to={`/contact?property=${encodeURIComponent(property.slug)}&inquiry=agent`}>
-                    <Button variant="outline" className="w-full">
-                      <Phone className="w-4 h-4 mr-2" />
-                      Contact Agent
-                    </Button>
-                  </Link>
+                      <Link
+                        to={`/contact?property=${encodeURIComponent(propertyRouteSegment)}&inquiry=agent`}
+                        rel="nofollow"
+                      >
+                        <Button variant="outline" className="w-full">
+                          <Phone className="w-4 h-4 mr-2" />
+                          Contact Agent
+                        </Button>
+                      </Link>
 
-                  <Link to={`/contact?property=${encodeURIComponent(property.slug)}&inquiry=inspection`}>
-                    <Button variant="outline" className="w-full">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      Schedule Inspection
-                    </Button>
-                  </Link>
+                      <Link
+                        to={`/contact?property=${encodeURIComponent(propertyRouteSegment)}&inquiry=inspection`}
+                        rel="nofollow"
+                      >
+                        <Button variant="outline" className="w-full">
+                          <Calendar className="w-4 h-4 mr-2" />
+                          Schedule Inspection
+                        </Button>
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             )}
@@ -381,9 +396,9 @@ const InvestmentBriefPage = () => {
                   <FileText className="w-4 h-4" />
                   Download Brochure
                 </a>
-                {property?.slug && (
+                {propertyRouteSegment && (
                   <Link
-                    to={`/investment-briefs/${property.slug}`}
+                    to={`/investment-briefs/${encodeURIComponent(propertyRouteSegment)}`}
                     className="flex items-center gap-2 text-sm text-primary hover:underline"
                   >
                     <ExternalLink className="w-4 h-4" />

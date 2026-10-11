@@ -18,6 +18,10 @@
       "source": "/properties/:uuid([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})",
       "destination": "/api/propertyRedirect.js?uuid=$1"
     },
+    {
+      "source": "/ongoing-projects/:uuid([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})",
+      "destination": "/api/ongoingProjectRedirect.js?uuid=$1"
+    },
     { "source": "/((?!api/|assets/|favicon|og-image|ai-catalog|llms|robots|sitemap|google|blog/|landing/).*)", "destination": "/index.html" }
   ],
   "redirects": [
@@ -41,11 +45,20 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/(?!refer-and-earn(?:/|$))(.*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
           "value": "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+        }
+      ]
+    },
+    {
+      "source": "/refer-and-earn(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, follow"
         }
       ]
     },
@@ -131,7 +144,25 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=86400"
+          "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/about",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
+      "source": "/landing/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, s-maxage=86400, stale-while-revalidate=604800"
         }
       ]
     },
@@ -154,7 +185,7 @@
       ]
     },
     {
-      "source": "/(.*)",
+      "source": "/(?!blog(?:/|$)|landing(?:/|$)|about(?:/|$))(.*)",
       "headers": [
         {
           "key": "Cache-Control",

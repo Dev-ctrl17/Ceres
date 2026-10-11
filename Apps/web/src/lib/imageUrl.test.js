@@ -35,6 +35,7 @@ test('rewrites mapped embedded URLs and removes unmapped storage references', ()
 
 test('preserves local and unrelated external URLs', () => {
   assert.equal(toCdnUrl('/og-image.png'), '/og-image.png');
+  assert.equal(toCdnUrl('/property photos/living room.jpg'), '/property%20photos/living%20room.jpg');
   assert.equal(toCdnUrl('https://example.com/home.webp'), 'https://example.com/home.webp');
   assert.equal(toCdnUrl(''), null);
   assert.equal(toCdnUrl(42), null);

@@ -89,7 +89,7 @@ const OngoingProjectsPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <Link to={`/ongoing-projects/${project.id}`} className="block h-full">
+                    <Link to={`/ongoing-projects/${encodeURIComponent(project.slug || project.id)}`} className="block h-full">
                       <Card className="h-full hover:shadow-lg transition-shadow cursor-pointer group">
                         <div className="aspect-video bg-muted rounded-t-xl overflow-hidden relative">
                           {(() => {

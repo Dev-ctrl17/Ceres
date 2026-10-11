@@ -5,5 +5,22 @@ export function toCdnUrl(url) {
   const resolved = resolveMediaUrl(url);
   if (resolved) return resolved;
   if (/supabase\.co|images\.luxurypropertiesltd\.com\.ng/i.test(url)) return null;
-  return url;
+  try {
+    const encoded = new URL(url, 'https://local.invalid');
+    encoded.pathname = encoded.pathname
+      .split('/')
+      .map((segment) => {
+        try {
+          return encodeURIComponent(decodeURIComponent(segment));
+        } catch {
+          return encodeURIComponent(segment);
+        }
+      })
+      .join('/');
+    return encoded.origin === 'https://local.invalid'
+      ? `${encoded.pathname}${encoded.search}${encoded.hash}`
+      : encoded.toString();
+  } catch {
+    return null;
+  }
 }

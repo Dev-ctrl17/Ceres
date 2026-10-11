@@ -48,7 +48,7 @@ const TeamMemberCard = ({ member, index, failedPhotos, setFailedPhotos, getMembe
               }}
             />
           ) : (
-            <img src="/default-team-avatar.svg" alt="" className="block h-full w-full object-cover object-[center_20%]" />
+            <img src="/default-team-avatar.svg" alt="Luxury Properties team member" className="block h-full w-full object-cover object-[center_20%]" />
           )}
           <span className="absolute left-6 top-6 h-8 w-8 border-l border-t border-[#A9754B]/80" aria-hidden="true" />
         </div>

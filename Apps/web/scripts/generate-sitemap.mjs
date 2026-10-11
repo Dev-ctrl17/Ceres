@@ -79,14 +79,14 @@ export async function fetchSecondaryRoutes() {
   const supabase = createClient(url, anon);
   const [{ data: proposals, error: proposalsError }, { data: projects, error: projectsError }] = await Promise.all([
     supabase.from('proposals').select('slug').eq('status', 'published'),
-    supabase.from('ongoing_projects').select('id'),
+    supabase.from('ongoing_projects').select('slug'),
   ]);
   if (proposalsError) throw new Error(`Supabase proposal query failed: ${proposalsError.message}`);
   if (projectsError) throw new Error(`Supabase project query failed: ${projectsError.message}`);
 
   return [
     ...(proposals || []).filter((item) => item.slug).map((item) => `/client-success/${encodeURIComponent(item.slug)}`),
-    ...(projects || []).filter((item) => item.id).map((item) => `/ongoing-projects/${encodeURIComponent(item.id)}`),
+    ...(projects || []).filter((item) => item.slug).map((item) => `/ongoing-projects/${encodeURIComponent(item.slug)}`),
   ];
 }
 

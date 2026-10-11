@@ -4,8 +4,7 @@ import { MapPin, Bed, Bath, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getFileUrl } from "@/lib/supabaseService";
-import { getCanonicalUrl } from "@/lib/siteConfig.js";
-import { getCurrentPropertySlug } from "@/lib/slug.js";
+import { getPropertyRouteSegment } from "@/lib/slug.js";
 import { getPropertyArea, getPropertyListingName } from "@/lib/propertySeo.js";
 import { toCdnUrl } from "@/lib/imageUrl.js";
 import { filterKnownMissingMedia } from "@/lib/missingMedia.js";
@@ -21,10 +20,11 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
   const rawImageUrl = firstImage
     ? toCdnUrl(getFileUrl("property-images", firstImage) || firstImage)
     : "";
-  const [imageSource, setImageSource] = useState(firstImage ? "original" : "unavailable");
+  const initialImageSource = rawImageUrl ? "original" : firstImage ? "local-placeholder" : "unavailable";
+  const [imageSource, setImageSource] = useState(initialImageSource);
   useEffect(() => {
-    setImageSource(firstImage ? "original" : "unavailable");
-  }, [firstImage]);
+    setImageSource(initialImageSource);
+  }, [firstImage, rawImageUrl]);
   const imageUrl = imageSource === "original"
     ? rawImageUrl
     : imageSource === "local-placeholder"
@@ -32,6 +32,7 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
       : "";
   const area = getPropertyArea(property.address || property.location, property.city || property.location);
   const listingName = getPropertyListingName(property);
+  const routeSegment = getPropertyRouteSegment(property);
   const hasBedrooms = Number(property.bedrooms) > 0;
   const hasBathrooms = Number(property.bathrooms) > 0;
 
@@ -39,6 +40,8 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
     if (imageSource === "original") {
       setImageSource("local-placeholder");
       onImageUnavailable?.(property);
+    } else if (imageSource === "local-placeholder") {
+      setImageSource("unavailable");
     }
   };
 
@@ -48,8 +51,7 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
     const parts = [];
     if (hasBedrooms) parts.push(`${property.bedrooms}-bedroom`);
     if (property.property_type) parts.push(property.property_type);
-    parts.push('in');
-    if (area) parts.push(area);
+    if (area) parts.push('in', area);
     return parts.join(' ') || listingName || 'Property image';
   };
 
@@ -61,8 +63,7 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
     }).format(price);
   };
 
-  return (
-        <Link to={new URL(getCanonicalUrl(`/properties/${getCurrentPropertySlug(property.slug)}`)).pathname}>
+  const card = (
       <Card
         className={`group overflow-hidden transition-all duration-300 ${
           featured
@@ -138,8 +139,11 @@ const PropertyCard = ({ property, featured = false, onImageUnavailable }) => {
           )}
         </CardContent>
       </Card>
-    </Link>
   );
+
+  return routeSegment ? (
+    <Link to={`/properties/${encodeURIComponent(routeSegment)}`}>{card}</Link>
+  ) : card;
 };
 
 export default PropertyCard;

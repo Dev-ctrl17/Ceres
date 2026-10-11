@@ -21,6 +21,10 @@ function withTimeout(promise, ms, label) {
 // Matches a legacy UUID used in the pre-slug public URL form:
 // /properties/<uuid>. Genuine slug URLs never match.
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const isUsableSlug = (slug) =>
+  typeof slug === 'string' &&
+  slug.trim().length > 0 &&
+  !/^(?:null|undefined)$/i.test(slug.trim());
 
 export default async function handler(req, res) {
   const { id } = req.query;
@@ -60,18 +64,19 @@ export default async function handler(req, res) {
         6000,
         'Supabase legacy UUID lookup'
       );
-      if (legacy?.slug) {
+      if (isUsableSlug(legacy?.slug)) {
         res.writeHead(301, {
-          Location: `https://www.luxurypropertiesltd.com.ng/properties/${legacy.slug}`,
+          Location: `https://www.luxurypropertiesltd.com.ng/properties/${encodeURIComponent(legacy.slug.trim())}`,
           'Cache-Control': 'public, max-age=300, s-maxage=86400',
         });
         return res.end();
       }
     }
 
-    if (error || !property) {
+    if (error || !property || !isUsableSlug(property.slug)) {
       return res.status(404).send('Property not found');
     }
+    const propertyRoute = `/properties/${encodeURIComponent(property.slug.trim())}`;
 
     // Format price
     const formatPrice = (price) => {
@@ -111,7 +116,7 @@ export default async function handler(req, res) {
       "name": propertyName,
       "description": String(propertyDescription).trim(),
       "image": images.length ? images : [primaryImage],
-      "url": `https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`,
+      "url": `https://www.luxurypropertiesltd.com.ng${propertyRoute}`,
       "address": {
         "@type": "PostalAddress",
         "streetAddress": property.address || property.location,
@@ -158,13 +163,13 @@ export default async function handler(req, res) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${property.title} - Luxury Properties Ltd</title>
   <meta name="description" content="${propertyDescription.substring(0, 160)}" />
-    <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/properties/${property.slug}" />
+    <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng${propertyRoute}" />
   
   <!-- Open Graph -->
   <meta property="og:title" content="${property.title} - Luxury Properties Ltd" />
   <meta property="og:description" content="${propertyDescription.substring(0, 160)}" />
   <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/properties/${property.slug}" />
+    <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng${propertyRoute}" />
   <meta property="og:image" content="${primaryImage}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
@@ -192,7 +197,7 @@ export default async function handler(req, res) {
     "itemListElement": [
       {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.luxurypropertiesltd.com.ng"},
       {"@type": "ListItem", "position": 2, "name": "Properties", "item": "https://www.luxurypropertiesltd.com.ng/properties"},
-      {"@type": "ListItem", "position": 3, "name": "${property.title.replace(/"/g, '\\"')}", "item": "https://www.luxurypropertiesltd.com.ng/properties/${property.slug}"}
+      {"@type": "ListItem", "position": 3, "name": "${property.title.replace(/"/g, '\\"')}", "item": "https://www.luxurypropertiesltd.com.ng${propertyRoute}"}
     ]
   }
   </script>
@@ -222,7 +227,7 @@ export default async function handler(req, res) {
         ${amenitiesList.map(a => `<div class="amenity"><span>✓</span> ${a}</div>`).join('')}
       </div>
     ` : ''}
-        <p><em>View full details at <a href="https://www.luxurypropertiesltd.com.ng/properties/${property.slug}">luxurypropertiesltd.com.ng/properties/${property.slug}</a></em></p>
+        <p><em>View full details at <a href="https://www.luxurypropertiesltd.com.ng${propertyRoute}">luxurypropertiesltd.com.ng${propertyRoute}</a></em></p>
   </div>
 </body>
 </html>`;

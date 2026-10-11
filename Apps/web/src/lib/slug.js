@@ -35,6 +35,16 @@ const CURRENT_PROPERTY_SLUGS = {
 
 export const getCurrentPropertySlug = (slug) => CURRENT_PROPERTY_SLUGS[slug] || slug;
 
+export const isUsablePropertySlug = (slug) =>
+  typeof slug === 'string' &&
+  slug.trim().length > 0 &&
+  !/^(?:null|undefined)$/i.test(slug.trim());
+
+export const getPropertyRouteSegment = (property) => {
+  const slug = typeof property?.slug === 'string' ? property.slug.trim() : '';
+  return isUsablePropertySlug(slug) ? getCurrentPropertySlug(slug) : null;
+};
+
 /**
  * Build a URL-safe slug, guaranteeing uniqueness against a Set of
  * already-taken slugs by appending "-2", "-3", etc.

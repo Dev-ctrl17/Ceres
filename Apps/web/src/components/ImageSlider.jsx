@@ -8,6 +8,7 @@ const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [failedImages, setFailedImages] = useState(() => new Map());
   const galleryImages = images || [];
+  const galleryKey = galleryImages.join('\u0000');
 
   const goToSlide = useCallback((index) => {
     setCurrentIndex(index);
@@ -38,6 +39,10 @@ const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
     return () => clearInterval(interval);
   }, [isHovering, goToNext]);
 
+  useEffect(() => {
+    setFailedImages(new Map());
+  }, [galleryKey]);
+
   return (
     <div
       className="relative w-full h-full overflow-hidden"
@@ -46,6 +51,7 @@ const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
     >
       {galleryImages.map((src, index) => {
         const stage = failedImages.get(index) || 'original';
+        if (stage === 'unavailable') return null;
         const imageSrc = stage === 'original' ? src : LOCAL_PLACEHOLDER_IMAGE;
         return (
           <img
@@ -59,6 +65,8 @@ const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
             onError={() => {
               if (stage === 'original') {
                 setFailedImages((previous) => new Map(previous).set(index, 'local'));
+              } else if (stage === 'local') {
+                setFailedImages((previous) => new Map(previous).set(index, 'unavailable'));
               }
             }}
             className="absolute inset-0 w-full h-full object-cover transition-opacity duration-800 ease-in-out"

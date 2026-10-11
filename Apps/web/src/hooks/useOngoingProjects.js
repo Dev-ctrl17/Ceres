@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import supabase from '@/lib/supabaseClient';
 import { rewriteMediaContent } from '@/lib/mediaUrls.js';
+import { isUUID } from '@/lib/slug.js';
 
 export const useOngoingProjects = (filters = {}) => {
   const [projects, setProjects] = useState([]);
@@ -37,22 +38,23 @@ export const useOngoingProjects = (filters = {}) => {
 };
 
 // Fetch a single ongoing project by id — used by the project details page.
-export const useOngoingProject = (id) => {
+export const useOngoingProject = (identifier) => {
   const [project, setProject] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
-    if (!id) return;
+    if (!identifier) return;
 
     const fetchProject = async () => {
       setLoading(true);
       setNotFound(false);
       try {
-        const { data, error } = await supabase
+        const query = supabase
           .from('ongoing_projects')
-          .select('*')
-          .eq('id', id)
+          .select('*');
+        const { data, error } = await query
+          .eq(isUUID(identifier) ? 'id' : 'slug', identifier)
           .maybeSingle();
 
         if (error) throw error;
@@ -72,7 +74,7 @@ export const useOngoingProject = (id) => {
     };
 
     fetchProject();
-  }, [id]);
+  }, [identifier]);
 
   return { project, loading, notFound };
 };
