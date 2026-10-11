@@ -78,8 +78,11 @@ const BlogPostPage = () => {
 
   const canonicalUrl = getCanonicalUrl(`/blog/${post.slug}`);
   const postMetadata = blogPostsData.find((item) => item.slug === post.slug) || {};
-  const title = buildSeoTitle(post.title);
-  const description = buildSeoDescription(post.metaDescription, 'Explore verified luxury real estate insights from Luxury Properties Ltd.');
+  const isCertificateOfOccupancyGuide = post.slug === 'certificate-of-occupancy-vs-governors-consent';
+  const title = isCertificateOfOccupancyGuide ? post.title : buildSeoTitle(post.title);
+  const description = isCertificateOfOccupancyGuide
+    ? post.metaDescription
+    : buildSeoDescription(post.metaDescription, 'Explore verified luxury real estate insights from Luxury Properties Ltd.');
   const socialImage = buildImageUrl(post.ogImage || '/og-image.png');
   const faqSchema = post.faqSchema?.length ? generateFAQSchema(post.faqSchema) : null;
   const schemaGraph = {
@@ -92,7 +95,9 @@ const BlogPostPage = () => {
         headline: post.title,
         description,
         image: socialImage,
-        author: { '@id': `${getCanonicalUrl('/')}#organization` },
+        author: post.authorName
+          ? { '@type': 'Person', name: post.authorName }
+          : { '@id': `${getCanonicalUrl('/')}#organization` },
         publisher: { '@id': `${getCanonicalUrl('/')}#organization` },
         datePublished: post.datePublished || postMetadata.datePublished || undefined,
         dateModified: post.dateModified || postMetadata.dateModified || undefined,

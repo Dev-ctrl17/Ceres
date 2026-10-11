@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import { company } from '@/config/company.js';
 
 const CompanyRegistrationPage = () => {
   return (
@@ -81,7 +82,7 @@ const CompanyRegistrationPage = () => {
                     </tr>
                     <tr>
                       <td className="py-3 font-semibold">Email</td>
-                      <td className="py-3">info@luxurypropertiesltd.com.ng</td>
+                      <td className="py-3">{company.email}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -206,7 +207,7 @@ const CompanyRegistrationPage = () => {
               </p>
               <ul className="list-disc pl-6 mb-4 space-y-2">
                 <li>Visiting the <a href="https://www.cac.gov.ng" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">Corporate Affairs Commission website</a></li>
-                <li>Contacting us at <a href="mailto:info@luxurypropertiesltd.com.ng" className="text-primary hover:underline">info@luxurypropertiesltd.com.ng</a> for a copy of our CAC certificate</li>
+                <li>Contacting us at <a href={`mailto:${company.email}`} className="text-primary hover:underline">{company.email}</a> for a copy of our CAC certificate</li>
               </ul>
             </section>
 
@@ -217,7 +218,7 @@ const CompanyRegistrationPage = () => {
               </p>
               <address className="not-italic">
                 <strong>Luxury Properties Ltd</strong><br />
-                Email: <a href="mailto:info@luxurypropertiesltd.com.ng" className="text-primary hover:underline">info@luxurypropertiesltd.com.ng</a><br />
+                Email: <a href={`mailto:${company.email}`} className="text-primary hover:underline">{company.email}</a><br />
                 Phone: <a href="tel:+2349056201176" className="text-primary hover:underline">+234 905 620 1176</a><br />
                 Address: Lagos, Nigeria
               </address>

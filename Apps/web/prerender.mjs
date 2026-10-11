@@ -35,13 +35,14 @@ function normalizeStaticMetadata(html, filePath) {
   const descriptionTags = [...html.matchAll(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/gi)];
   const originalDescription = descriptionTags.at(-1)?.[1] || '';
   const isProperty = new URL(normalizedCanonical).pathname.startsWith('/properties/');
+  const isCertificateGuide = new URL(normalizedCanonical).pathname === '/blog/certificate-of-occupancy-vs-governors-consent';
   if (originalTitle.length > 60) console.warn(`[seo-guard] Title exceeds 60 characters in ${filePath}: ${originalTitle.length}`);
   if (originalDescription.length < 120 || originalDescription.length > 155) {
     console.warn(`[seo-guard] Description must be 120-155 characters in ${filePath}: ${originalDescription.length}`);
   }
 
-  const title = isProperty ? originalTitle : buildSeoTitle(originalTitle);
-  const description = isProperty ? originalDescription : buildSeoDescription(originalDescription);
+  const title = isProperty || isCertificateGuide ? originalTitle : buildSeoTitle(originalTitle);
+  const description = isProperty || isCertificateGuide ? originalDescription : buildSeoDescription(originalDescription);
   const imageTags = [...html.matchAll(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']*)["']/gi)];
   const image = imageTags.at(-1)?.[1];
   const socialImage = buildImageUrl(image || '/og-image.png');

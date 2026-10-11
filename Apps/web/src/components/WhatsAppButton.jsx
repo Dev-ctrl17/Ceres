@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { company, getInternationalPhoneNumber } from '@/config/company.js';
 
-const WHATSAPP_SALES_NUMBER = '2349056201176';
-const WHATSAPP_SUPPORT_NUMBER = '2347039726375';
+const WHATSAPP_SALES_NUMBER = company.phoneNumbers[0];
+const WHATSAPP_SUPPORT_NUMBER = company.phoneNumbers[1];
 const PRE_FILLED_MESSAGE = "Hello%20Luxury%20Properties,%20I'm%20interested%20in%20one%20of%20your%20properties.";
-const INSTAGRAM_URL = 'https://www.instagram.com/dmluxurypropertiesltd/';
+const INSTAGRAM_URL = company.socialLinks.find(({ platform }) => platform === 'Instagram')?.url;
 
 const WhatsAppButton = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -39,7 +40,7 @@ const WhatsAppButton = () => {
   const handleOptionClick = (number) => {
     setIsPopupOpen(false);
     window.open(
-      `https://wa.me/${number}?text=${PRE_FILLED_MESSAGE}`,
+      `https://wa.me/${getInternationalPhoneNumber(number).replace(/\D/g, '')}?text=${PRE_FILLED_MESSAGE}`,
       '_blank',
       'noopener,noreferrer'
     );

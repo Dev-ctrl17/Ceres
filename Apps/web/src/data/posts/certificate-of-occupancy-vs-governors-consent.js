@@ -1,35 +1,51 @@
+const faqs = [
+  {
+    question: "What is the difference between a C of O and Governor's Consent?",
+    answer: "A Certificate of Occupancy (C of O) records the original right to occupy land, while Governor's Consent is the state approval generally required to transfer an interest in that land. When buying in Lagos, ask a qualified property lawyer to verify the title documents and the transaction history before paying or completing a transfer."
+  },
+  {
+    question: "How can a buyer check title documents in Lagos?",
+    answer: "When buying in Lagos, ask an independent Nigerian property lawyer to inspect the title document, the seller's authority to transfer, any prior Governor's Consent or other transfer approvals, and the chain of title. Which documents apply depends on the property's history; do not rely only on copies provided by a seller."
+  },
+  {
+    question: "What does Governor's Consent mean for a property transfer?",
+    answer: "Governor's Consent is approval from the relevant state authority for a transfer of an interest in land where consent is required. It relates to a transaction and the property's title history; it is not a substitute for reviewing earlier documents. A lawyer should confirm whether it applies and verify the records for the specific property."
+  }
+];
+
 export const post = {
-  title: "Certificate of Occupancy vs Governor's Consent",
+  title: "Certificate of Occupancy vs Governor's Consent in Nigeria",
   slug: "certificate-of-occupancy-vs-governors-consent",
   date: "2026-06-16",
+  authorName: "",
   readTime: "11 min read",
   category: "Legal Guide",
   excerpt: "Understanding the difference between Certificate of Occupancy and Governor's Consent in Nigerian real estate. Which do you need and how to obtain the right documentation.",
-  metaDescription: "Certificate of Occupancy vs Governor's Consent explained. Learn which document you need and how to obtain property title documentation in Nigeria.",
+  metaDescription: "Learn how a Certificate of Occupancy differs from Governor's Consent in Nigeria, what each document does, and what Lagos buyers should verify before purchase.",
   ogImage: "",
   datePublished: "2026-06-16",
-  dateModified: "2026-06-16",
-  faqSchema: [
-    { question: "What is the difference between a C of O and Governor's Consent?", answer: "A C of O is the primary title document from the government, while Governor's Consent is the approval needed to transfer ownership after a C of O has been issued." },
-    { question: "Which document is more important?", answer: "Both are important. The C of O proves ownership, while Governor's Consent is required to legally transfer that ownership." },
-    { question: "How do I obtain Governor's Consent?", answer: "Apply through the state land bureau with the assistance of a licensed lawyer, paying the required fees and providing all necessary documentation." }
-  ],
+  dateModified: "2026-10-10",
+  faqSchema: faqs,
   content: [
-    { type: "paragraph", text: "Understanding the legal documents involved in Nigerian property transactions is crucial for buyers and sellers. Two of the most important documents are the Certificate of Occupancy (C of O) and Governor's Consent." },
-    { type: "heading", level: 2, text: "What is a Certificate of Occupancy?" },
-    { type: "paragraph", text: "A Certificate of Occupancy (C of O) is a legal document issued by the state government that grants the holder a 99-year leasehold interest in land. It is the primary document proving ownership rights in Nigeria." },
+    { type: "paragraph", text: "Understanding the documents involved in a Nigerian property transaction matters because a title document and the approvals for later transfers serve different purposes. The documents that apply depend on the property's history, so buyers should obtain independent legal advice before paying or completing a transfer." },
+    { type: "heading", level: 2, text: "What is the difference between a C of O and Governor's Consent?" },
+    { type: "paragraph", text: "A Certificate of Occupancy (C of O) records the original right to occupy land, while Governor's Consent is the state approval generally required to transfer an interest in that land. When buying in Lagos, ask a qualified property lawyer to verify the title documents and the transaction history before paying or completing a transfer." },
+    { type: "heading", level: 2, text: "What is a Certificate of Occupancy (C of O)?" },
+    { type: "paragraph", text: "A Certificate of Occupancy is a land document issued by a state government that records the holder's right to occupy land subject to its terms. It is not by itself proof that every later transfer was properly completed; buyers should have a lawyer verify the document and the property's chain of title." },
     { type: "heading", level: 2, text: "What is Governor's Consent?" },
-    { type: "paragraph", text: "Governor's Consent is the formal approval from the state Governor required under the Land Use Act for the transfer of ownership rights from one party to another on land with a C of O." },
+    { type: "paragraph", text: "Governor's Consent is approval from the relevant state authority for a transfer of an interest in land where consent is required. It relates to a transaction and the property's title history; it is not a substitute for reviewing earlier documents. A lawyer should confirm whether it applies and verify the records for the specific property." },
     { type: "heading", level: 2, text: "Key Differences" },
     { type: "table", headers: ["Aspect", "Certificate of Occupancy", "Governor's Consent"], rows: [
-      ["Purpose", "Initial proof of ownership", "Approval to transfer ownership"],
-      ["Issued When", "Original allocation/purchase", "During property transfer"],
-      ["Validity", "99 years from issuance", "Consent for specific transfer"],
-      ["Issuing Authority", "State Government", "State Governor"],
-      ["Required For", "All land ownership", "Transfers after C of O issued"]
+      ["Purpose", "Records original right to occupy land", "Approval for a transfer where required"],
+      ["Issued When", "According to the title history", "During a property transfer where consent is required"],
+      ["Cost", "₦50K - ₦200K (estimate)", "Approximately 10% of assessed property value (estimate)"],
+      ["Timeline", "5-14 days (estimate)", "6-12 weeks (estimate)"]
     ]},
+    { type: "paragraph", text: "Fees and processing times vary by property, title history and current Lagos State assessment. The figures above are estimates, not a fee quote. Confirm current charges and required documents with the relevant Lagos State office and an independent Nigerian property lawyer before completing a transaction." },
     { type: "heading", level: 2, text: "Why Both Documents Matter" },
-    { type: "paragraph", text: "When buying property in Nigeria, ensure the seller has a valid C of O and that previous Governor's Consents were obtained for all prior transfers. Your lawyer should verify this chain of title during due diligence." },
-    { type: "cta", title: "Need Legal Guidance?", text: "Our legal team specializes in Nigerian property law and can assist with document verification and title perfection.", buttonText: "Get Legal Help", buttonLink: "/contact" }
+    { type: "paragraph", text: "When buying in Lagos, ask an independent Nigerian property lawyer to inspect the title document, the seller's authority to transfer, any prior Governor's Consent or other transfer approvals, and the chain of title. Which documents apply depends on the property's history; do not rely only on copies provided by a seller." },
+    { type: "paragraph", text: "This article provides general information and is not legal advice. Speak with an independent Nigerian property lawyer about the documents and requirements for a specific transaction." },
+    { type: "faq", items: faqs.map(({ question, answer }) => ({ q: question, a: answer })) },
+    { type: "cta", title: "Need Help with Property Documents?", text: "Contact Luxury Properties Ltd to ask about assistance with property document enquiries.", buttonText: "Contact Us", buttonLink: "/contact" }
   ]
 };

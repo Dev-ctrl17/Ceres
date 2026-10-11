@@ -1,3 +1,5 @@
+import { company } from '../config/company.js';
+
 const trailingLocationSegments = new Set(['lagos', 'lagos state', 'abuja', 'fct', 'nigeria']);
 const genericAreaPattern = /^(?:estate|phase\s*\d+|road)$/i;
 
@@ -62,19 +64,6 @@ function getHeadingQualifier(property) {
   return '';
 }
 
-function getTransactionLabel(property) {
-  const detail = `${property?.purpose || ''} ${property?.property_type || ''} ${getPropertyListingName(property)}`.toLowerCase();
-  if (/short\s*-?let/.test(detail)) return 'short-let';
-  if (/\brent\b|\brented\b|\brental\b/.test(detail)) return 'rent';
-  return 'sale';
-}
-
-function formatPrice(price) {
-  const amount = Number(String(price ?? '').replace(/[^\d.]/g, ''));
-  if (!Number.isFinite(amount) || amount <= 0) return '';
-  return `₦${new Intl.NumberFormat('en-NG', { maximumFractionDigits: 0 }).format(amount)}`;
-}
-
 export function buildPropertySeo(property) {
   const area = getPropertyArea(property?.address || property?.location, property?.city || property?.location);
   const typeLabel = getPropertyTypeLabel(property);
@@ -83,18 +72,18 @@ export function buildPropertySeo(property) {
   const qualifier = getHeadingQualifier(property);
   const baseHeading = `${bedroomPrefix}${typeLabel}${area ? ` in ${area}` : ''}`;
   const heading = `${baseHeading}${qualifier ? ` - ${qualifier}` : ''}`;
-  const brandedTitle = `${heading} | Luxury Properties Ltd`;
-  let title = brandedTitle.length <= 60 ? brandedTitle : heading;
-  if (title.length > 60) {
-    const shortQualifier = getHeadingQualifier(property)
-      .split(', ')
-      .sort((left, right) => left.length - right.length)[0];
-    const compactTitle = shortQualifier ? `${baseHeading} - ${shortQualifier}` : baseHeading;
-    title = compactTitle.length <= 60 ? compactTitle : `${compactTitle.slice(0, 57).trimEnd()}...`;
-  }
-  const transaction = getTransactionLabel(property);
-  const price = formatPrice(property?.price);
-  const description = `${bedroomCount ? `${bedroomCount}-bedroom ` : ''}${typeLabel.toLowerCase()} for ${transaction}${area ? ` in ${area}` : ''}, Lagos.${price ? ` ${price}.` : ''} Verified listing with Luxury Properties Ltd.`;
+  const listingName = getPropertyListingName(property) || heading;
+  const title = `${listingName} | ${company.name}`;
+  const region = String(property?.city || property?.state || '').trim();
+  const propertyLocation = [area, region]
+    .filter((value, index, values) => value && !values.slice(0, index).some((existing) => (
+      existing.toLowerCase().includes(value.toLowerCase()) || value.toLowerCase().includes(existing.toLowerCase())
+    )))
+    .join(', ');
+  const descriptionBase = `Explore ${listingName}${propertyLocation ? ` in ${propertyLocation}` : ''}. Contact ${company.name} to arrange an inspection.`;
+  const description = descriptionBase.length <= 155
+    ? descriptionBase
+    : `${descriptionBase.slice(0, 152).trimEnd()}...`;
 
-  return { area, typeLabel, heading, title, description, listingName: getPropertyListingName(property) };
+  return { area, typeLabel, heading, title, description, listingName };
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import { company } from '@/config/company.js';
 
 const RefundPolicyPage = () => {
   return (
@@ -99,7 +100,7 @@ const RefundPolicyPage = () => {
               <h2 className="text-2xl font-bold mb-4">5. Refund Request Process</h2>
               <p className="mb-4">To request a refund:</p>
               <ol className="list-decimal pl-6 mb-4 space-y-2">
-                <li>Submit a written refund request to info@luxurypropertiesltd.com.ng</li>
+                <li>Submit a written refund request to {company.email}</li>
                 <li>Include your full name, contact details, transaction reference, and reason for refund</li>
                 <li>Attach supporting documentation (receipts, agreements, correspondence)</li>
                 <li>Allow 10-14 business days for review and processing</li>
@@ -145,7 +146,7 @@ const RefundPolicyPage = () => {
               </p>
               <address className="not-italic">
                 <strong>Luxury Properties Ltd</strong><br />
-                Email: <a href="mailto:info@luxurypropertiesltd.com.ng" className="text-primary hover:underline">info@luxurypropertiesltd.com.ng</a><br />
+                Email: <a href={`mailto:${company.email}`} className="text-primary hover:underline">{company.email}</a><br />
                 Phone: <a href="tel:+2349056201176" className="text-primary hover:underline">+234 905 620 1176</a><br />
                 Address: Lagos, Nigeria
               </address>

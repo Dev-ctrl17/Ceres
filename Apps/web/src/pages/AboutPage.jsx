@@ -143,39 +143,6 @@ const AboutPage = () => {
         <meta name="twitter:title" content="About Luxury Properties Ltd | Nigeria's Leading Real Estate Agency" />
         <meta name="twitter:description" content="Learn about Nigeria's premier luxury real estate agency. 15+ years of excellence in Lagos, Abuja, and Port Harcourt." />
 
-        {/* JSON-LD Organization Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Luxury Properties Ltd",
-            "description": "Premium luxury real estate agency in Nigeria. Exclusive high-end listings, concierge service, and off-market properties in Lagos, Abuja, and across Nigeria.",
-            "url": "https://www.luxurypropertiesltd.com.ng",
-            "logo": "https://www.luxurypropertiesltd.com.ng/favicon.svg",
-            "telephone": "+234-9056201176",
-            "email": "info@luxurypropertiesltd.com.ng",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "Pedro, Gbagada",
-              "addressLocality": "Lagos",
-              "addressRegion": "Lagos State",
-              "addressCountry": "NG"
-            },
-            "sameAs": [
-              "https://www.instagram.com/dmluxurypropertiesltd/",
-              "https://www.linkedin.com/company/luxury-properties-ltd/posts/?feedView=all",
-              "https://web.facebook.com/luxurypropertiesLtd",
-              "https://www.youtube.com/@luxuryproperties_ltd"
-            ],
-            "foundingDate": "2010",
-            "numberOfEmployees": {
-              "@type": "QuantitativeValue",
-              "minValue": 50,
-              "maxValue": 200
-            }
-          })}
-        </script>
-
         {/* JSON-LD BreadcrumbList Schema */}
         <script type="application/ld+json">
           {JSON.stringify({

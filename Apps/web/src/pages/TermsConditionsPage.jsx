@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import { company } from '@/config/company.js';
 
 const TermsConditionsPage = () => {
   return (
@@ -133,7 +134,7 @@ const TermsConditionsPage = () => {
               </p>
               <address className="not-italic">
                 <strong>Luxury Properties Ltd</strong><br />
-                Email: <a href="mailto:info@luxurypropertiesltd.com.ng" className="text-primary hover:underline">info@luxurypropertiesltd.com.ng</a><br />
+                Email: <a href={`mailto:${company.email}`} className="text-primary hover:underline">{company.email}</a><br />
                 Phone: <a href="tel:+2349056201176" className="text-primary hover:underline">+234 905 620 1176</a><br />
                 Address: Lagos, Nigeria
               </address>

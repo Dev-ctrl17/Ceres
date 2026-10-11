@@ -3,9 +3,7 @@ import { Link } from "react-router-dom";
 import {
   Facebook,
   Instagram,
-  Twitter,
   Linkedin,
-  Youtube,
   Mail,
   Phone,
   MapPin,
@@ -17,6 +15,7 @@ import { toast } from "sonner";
 import supabase from "@/lib/supabaseClient";
 import { validateEmail } from "@/services/emailValidation";
 import { getCanonicalUrl } from "@/lib/siteConfig.js";
+import { company } from "@/config/company.js";
 
 const browseLinks = [
   ["Luxury Apartments in Nigeria", "/landing/luxury-apartments-nigeria"],
@@ -75,33 +74,7 @@ const Footer = () => {
     }
   };
 
-  const socialLinks = [
-    {
-      href: "https://web.facebook.com/luxurypropertiesLtd",
-      icon: <Facebook className="w-4 h-4" />,
-      label: "Facebook",
-    },
-    {
-      href: "https://www.instagram.com/dmluxurypropertiesltd/",
-      icon: <Instagram className="w-4 h-4" />,
-      label: "Instagram",
-    },
-    {
-      href: "https://twitter.com",
-      icon: <Twitter className="w-4 h-4" />,
-      label: "Twitter",
-    },
-    {
-      href: "https://www.linkedin.com/company/luxury-properties-ltd/posts/?feedView=all",
-      icon: <Linkedin className="w-4 h-4" />,
-      label: "LinkedIn",
-    },
-    {
-      href: "https://www.youtube.com/@luxuryproperties_ltd",
-      icon: <Youtube className="w-4 h-4" />,
-      label: "YouTube",
-    },
-  ];
+  const socialIcons = { Facebook, Instagram, LinkedIn: Linkedin };
 
   return (
     <footer style={{ backgroundColor: "#0B1120", color: "#FFFFFF" }}>
@@ -112,7 +85,7 @@ const Footer = () => {
             <div className="mb-6">
               <img
                 src="https://res.cloudinary.com/vmyie4dw/image/upload/f_auto,q_auto,w_400,c_limit/site-assets/legacy-ibb/footer-brand-logo"
-                alt="Luxury Properties Ltd"
+                alt={company.name}
                 className="h-32 w-auto object-contain"
                 width="640"
                 height="427"
@@ -129,22 +102,25 @@ const Footer = () => {
               professional, innovative real estate solutions.
             </p>
             <div className="flex space-x-3">
-              {socialLinks.map(({ href, icon, label }) => (
+              {company.socialLinks.map(({ url, platform }) => {
+                const Icon = socialIcons[platform];
+                return (
                 <a
-                  key={href}
-                  href={href}
+                  key={url}
+                  href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`Follow us on ${label}`}
+                  aria-label={`Follow us on ${platform}`}
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-opacity hover:opacity-80"
                   style={{
                     backgroundColor: "rgba(212,175,55,0.15)",
                     color: "#D4AF37",
                   }}
                 >
-                  {icon}
+                  <Icon className="w-4 h-4" />
                 </a>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -208,31 +184,7 @@ const Footer = () => {
                   className="text-sm"
                   style={{ color: "rgba(255,255,255,0.8)" }}
                 >
-                  +234 703 972 6375
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <Phone
-                  className="w-4 h-4 mt-1 flex-shrink-0"
-                  style={{ color: "#D4AF37" }}
-                />
-                <span
-                  className="text-sm"
-                  style={{ color: "rgba(255,255,255,0.8)" }}
-                >
-                  +234 913 798 1102
-                </span>
-              </li>
-              <li className="flex items-start space-x-3">
-                <Phone
-                  className="w-4 h-4 mt-1 flex-shrink-0"
-                  style={{ color: "#D4AF37" }}
-                />
-                <span
-                  className="text-sm"
-                  style={{ color: "rgba(255,255,255,0.8)" }}
-                >
-                  +234 706 928 6610
+                  {company.phoneNumbers.join(" / ")}
                 </span>
               </li>
               <li className="flex items-start space-x-3">
@@ -244,7 +196,7 @@ const Footer = () => {
                   className="text-sm"
                   style={{ color: "rgba(255,255,255,0.8)" }}
                 >
-                  info@luxurypropertiesltd.com.ng
+                  {company.email}
                 </span>
               </li>
               <li className="flex items-start space-x-3">
@@ -256,7 +208,7 @@ const Footer = () => {
                   className="text-sm"
                   style={{ color: "rgba(255,255,255,0.8)" }}
                 >
-                  Pedro, Gbagada, Lagos, Nigeria
+                  {company.address.display}
                 </span>
               </li>
             </ul>
@@ -332,7 +284,7 @@ const Footer = () => {
           style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}
         >
           <p className="text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-            © 2026 Luxury Properties Ltd. All rights reserved.
+            © 2026 {company.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
             {[

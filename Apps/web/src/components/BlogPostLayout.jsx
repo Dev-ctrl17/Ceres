@@ -115,7 +115,7 @@ const ContentFAQ = ({ items }) => (
     </h2>
     {items.map((item, i) => (
       <div key={i} className="border-b border-border pb-4">
-        <p className="font-semibold text-foreground mb-2">{i + 1}. {item.q}</p>
+        <h3 className="font-semibold text-foreground mb-2">{item.q}</h3>
         <p className="text-muted-foreground leading-relaxed">{item.a}</p>
       </div>
     ))}
@@ -208,6 +208,21 @@ const BlogPostLayout = ({ post }) => {
             {post.readTime}
           </span>
         </div>
+        {post.authorName !== undefined && (
+          <>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Author: {post.authorName || 'Author name to be added'}
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Last updated: {new Intl.DateTimeFormat('en-NG', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                timeZone: 'UTC',
+              }).format(new Date(`${post.dateModified || post.date}T00:00:00Z`))}
+            </p>
+          </>
+        )}
       </header>
 
       {/* Content */}

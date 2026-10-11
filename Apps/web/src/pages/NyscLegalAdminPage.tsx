@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { company } from "@/config/company.js";
 import {
   ChevronRight,
   Home,
@@ -39,7 +40,7 @@ export const NyscLegalAdminPageTSX: React.FC = () => {
 
   const subjectLine: string = "NYSC LEGAL & ADMINISTRATIVE SUPPORT";
   const whatsappNumber: string = "2349056201176";
-  const emailAddress: string = "info@luxurypropertiesltd.com.ng";
+  const emailAddress: string = company.email;
   const pageUrl: string =
     typeof window !== "undefined"
       ? window.location.href
@@ -419,7 +420,7 @@ export const NyscLegalAdminPageTSX: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-amber-500 shrink-0" />
-                  <span className="truncate">info@luxurypropertiesltd.com.ng</span>
+                  <span className="truncate">{emailAddress}</span>
                 </div>
               </div>
             </div>

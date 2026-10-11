@@ -22,6 +22,7 @@ import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
 import { toCdnUrl } from '@/lib/imageUrl.js';
 import { resolveMediaUrl, rewriteMediaContent } from '@/lib/mediaUrls.js';
 import { getCloudinaryVideoUrl, getCloudinaryVideoPosterUrl } from '@/lib/cloudinaryUrls.js';
+import { company, getInternationalPhoneNumber, getWhatsAppUrl } from '@/config/company.js';
 
 const PROPERTY_IMAGE_PLACEHOLDER = '/property-image-placeholder.svg';
 
@@ -259,10 +260,10 @@ const PropertyDetailsPage = () => {
   };
 
   const propertySeo = buildPropertySeo(property);
-  const propertyTitle = propertySeo.listingName || 'Luxury Property';
+  const propertyTitle = String(property.title || propertySeo.listingName || 'Luxury Property').trim();
   const location = propertySeo.area || property.location || property.city || property.state || '';
 
-  const amenitiesList = property.amenities
+  const propertyAmenities = property.amenities
     ? (Array.isArray(property.amenities)
         ? property.amenities
         : typeof property.amenities === 'string'
@@ -270,6 +271,42 @@ const PropertyDetailsPage = () => {
           : [])
     : [];
   const descriptionSections = parsePropertyDescription(property.description);
+  const amenitiesList = [...new Set([...propertyAmenities, ...descriptionSections.features].filter(Boolean))];
+  const amenityAnswer = amenitiesList.length
+    ? `Amenities listed for this property include ${amenitiesList.join(', ')}.`
+    : `This listing does not specify its amenities; contact ${company.name} to ask for the current property details.`;
+  const listingLocation = [property.location || property.address, property.city, property.state]
+    .map((value) => String(value || '').trim())
+    .filter((value, index, values) => value && !values.slice(0, index).some((existing) => (
+      existing.toLowerCase().includes(value.toLowerCase()) || value.toLowerCase().includes(existing.toLowerCase())
+    )))
+    .join(', ');
+  const locationAnswer = listingLocation
+    ? `The listing places this property in ${listingLocation}.`
+    : `The listing does not specify a property location; contact ${company.name} to confirm it before arranging a viewing.`;
+  const numericPrice = Number(String(property.price || '').replace(/[^\d.]/g, ''));
+  const publishedPrice = Number.isFinite(numericPrice) && numericPrice > 0
+    ? formatPrice(numericPrice)
+    : descriptionSections.price || '';
+  const phoneSummary = company.phoneNumbers.join(' or ');
+  const propertyFaqs = [
+    { question: 'Where is this property located?', answer: locationAnswer },
+    { question: 'What amenities does this property have?', answer: amenityAnswer },
+    {
+      question: 'What is the asking price?',
+      answer: publishedPrice
+        ? `The published asking price is ${publishedPrice}. Call ${phoneSummary} or email ${company.email} to confirm current availability and arrange a viewing.`
+        : `No asking price is published for this listing. Call ${phoneSummary} or email ${company.email} to ask about current pricing and availability.`,
+    },
+    {
+      question: 'How can I arrange an inspection?',
+      answer: `To arrange an inspection, call ${phoneSummary} or email ${company.email}.`,
+    },
+    {
+      question: 'Which title documents should I check before buying in Lagos?',
+      answer: "Ask an independent Nigerian property lawyer to review the property's title history, including its Certificate of Occupancy and any Governor's Consent or transfer approvals applicable to the ownership history, before paying or completing the purchase.",
+    },
+  ];
 
   // Generate structured data
   const canonicalUrl = getCanonicalUrl(`/properties/${property.slug}`);
@@ -278,27 +315,33 @@ const PropertyDetailsPage = () => {
     { name: 'Home', item: getCanonicalUrl('/') },
     { name: 'Properties', item: getCanonicalUrl('/properties') },
     { name: propertySeo.heading, item: canonicalUrl },
-  ]);
+  ], amenitiesList, images);
+  const faqSchema = generateFAQSchema(propertyFaqs);
+  const imageAltArea = String(property.location || property.city || propertySeo.area || 'Lagos')
+    .replace(/,\s*Lagos(?:\s+State)?$/i, '')
+    .trim();
+  const imageAltLocation = /lagos/i.test(imageAltArea) ? imageAltArea : `${imageAltArea}, Lagos`;
+  const propertyImageAlt = `${Number(property.bedrooms) > 0 ? `${property.bedrooms}-bedroom ` : ''}${String(property.property_type || 'property').toLowerCase()} in ${imageAltLocation}`;
 
   return (
     <>
       <Helmet>
-        <title>{propertySeo.title}</title>
+        <title>{`${propertyTitle} | ${company.name}`}</title>
         <meta name="description" content={propertySeo.description} />
         <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph */}
-        <meta property="og:title" content={propertySeo.title} />
+        <meta property="og:title" content={`${propertyTitle} | ${company.name}`} />
         <meta property="og:description" content={propertySeo.description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={`https://www.luxurypropertiesltd.com.ng/properties/${property.slug}`} />
+        <meta property="og:url" content={canonicalUrl} />
         <meta property="og:image" content={socialImage} />
-        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:site_name" content={company.name} />
         <meta property="og:locale" content="en_NG" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={propertySeo.title} />
+        <meta name="twitter:title" content={`${propertyTitle} | ${company.name}`} />
         <meta name="twitter:description" content={propertySeo.description} />
         <meta name="twitter:image" content={socialImage} />
         
@@ -307,6 +350,9 @@ const PropertyDetailsPage = () => {
           <script type="application/ld+json">
             {JSON.stringify(propertySchema)}
           </script>
+        )}
+        {faqSchema && (
+          <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
         )}
       </Helmet>
 
@@ -319,7 +365,7 @@ const PropertyDetailsPage = () => {
               <div className="mb-8 relative aspect-video rounded-2xl overflow-hidden">
                 <ImageSlider
                   images={images.map((img) => getImageUrl(img, 1200)).filter(Boolean)}
-                  alt={propertyTitle}
+                  alt={propertyImageAlt}
                   onSlideChange={(index) => setActiveSliderIndex(index)}
                 />
                 {images.length > 0 && (
@@ -359,11 +405,13 @@ const PropertyDetailsPage = () => {
                 </div>
 
                 <div className="flex items-center justify-between gap-4 mb-6 flex-wrap">
-                  <p className="text-4xl font-bold text-primary">{property.price ? formatPrice(property.price) : 'Price on request'}</p>
+                  <p className="text-4xl font-bold text-primary">{publishedPrice || 'Price on request'}</p>
                   {property.property_type && (
                     <Badge variant="outline" className="text-base px-4 py-2">{property.property_type}</Badge>
                   )}
                 </div>
+
+                <p className="mb-6 text-muted-foreground leading-relaxed">{amenityAnswer}</p>
 
                 <div className="mb-6">
                   <Link to="/properties" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80">
@@ -464,9 +512,16 @@ const PropertyDetailsPage = () => {
                           <div>
                             <h3 className="font-semibold text-lg">Arrange a private inspection</h3>
                             <div className="mt-2 space-y-1 text-sm text-slate-300">
-                              {descriptionSections.contactLines.map((line, index) => (
-                                <p key={index}>{line.replace(/^📞\s*/, '')}</p>
+                              {company.phoneNumbers.map((phoneNumber) => (
+                                <p key={phoneNumber}>
+                                  <a href={`tel:${getInternationalPhoneNumber(phoneNumber)}`} className="hover:underline">
+                                    {phoneNumber}
+                                  </a>
+                                </p>
                               ))}
+                              <p>
+                                <a href={`mailto:${company.email}`} className="hover:underline">{company.email}</a>
+                              </p>
                             </div>
                             <p className="mt-3 text-sm text-primary">
                               {descriptionSections.appointmentLine || 'Appointments are strictly by arrangement.'}
@@ -552,16 +607,16 @@ const PropertyDetailsPage = () => {
                   
                   {/* Primary CTA: Call Now */}
                   <a
-                    href="tel:+2349056201176"
+                    href={`tel:${getInternationalPhoneNumber(company.phoneNumbers[0])}`}
                     className="w-full inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground font-bold text-base px-6 py-4 rounded-xl mb-4 transition-all duration-300 hover:bg-primary/90 hover:scale-[1.02] shadow-lg"
                   >
                     <Phone className="w-5 h-5" />
-                    Call Now — +234 905 620 1176
+                    Call Now — {company.phoneNumbers[0]}
                   </a>
 
                   {/* WhatsApp Now */}
                   <a
-                    href={`https://wa.me/2347039726375?text=I'm%20interested%20in%20${encodeURIComponent(property.title)}%20in%20${encodeURIComponent(property.location || '')}%20-%20₦${property.price?.toLocaleString() || ''}`}
+                    href={`${getWhatsAppUrl(company.phoneNumbers[0])}?text=${encodeURIComponent(`I'm interested in ${property.title} in ${property.location || ''}${publishedPrice ? ` - ${publishedPrice}` : ''}`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20BA5A] text-white font-bold text-base px-6 py-4 rounded-xl mb-4 transition-all duration-300 hover:scale-[1.02] shadow-lg"
@@ -597,6 +652,18 @@ const PropertyDetailsPage = () => {
               </Card>
             </div>
           </div>
+
+          <section className="mt-12 rounded-2xl border bg-card p-6 sm:p-8" aria-labelledby="property-faq-heading">
+            <h2 id="property-faq-heading" className="text-2xl font-bold mb-6">Property Frequently Asked Questions</h2>
+            <div className="space-y-6">
+              {propertyFaqs.map(({ question, answer }) => (
+                <div key={question}>
+                  <h3 className="font-semibold text-lg mb-2">{question}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{answer}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
           {similarProperties.length > 0 && (
             <section className="mt-20">
@@ -655,7 +722,9 @@ const PropertyDetailsPage = () => {
           <div className="max-w-6xl w-full">
             <img
               src={toCdnUrl(lightboxImageFailed ? PROPERTY_IMAGE_PLACEHOLDER : getImageUrl(images[currentImageIndex], 1200))}
-              alt={`${property.title} ${currentImageIndex + 1}`}
+              alt={`${propertyImageAlt} - photo ${currentImageIndex + 1}`}
+              width="1200"
+              height="675"
               className="w-full h-auto rounded-xl max-h-[80vh] object-contain"
               loading="lazy"
               onError={() => setLightboxImageFailed(true)}

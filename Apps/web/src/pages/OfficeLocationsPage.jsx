@@ -2,6 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import { company, getInternationalPhoneNumber, getWhatsAppUrl } from '@/config/company.js';
 
 const OfficeLocationsPage = () => {
   return (
@@ -167,11 +168,11 @@ const OfficeLocationsPage = () => {
               </div>
               <div>
                 <h3 className="font-semibold mb-2">Email</h3>
-                <a href="mailto:info@luxurypropertiesltd.com.ng" className="text-primary hover:underline">info@luxurypropertiesltd.com.ng</a>
+                <a href={`mailto:${company.email}`} className="text-primary hover:underline">{company.email}</a>
               </div>
               <div>
                 <h3 className="font-semibold mb-2">WhatsApp</h3>
-                <a href="https://wa.me/2347039726375" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">+234 703 972 6375</a>
+                <a href={getWhatsAppUrl(company.phoneNumbers[0])} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">{getInternationalPhoneNumber(company.phoneNumbers[0])}</a>
               </div>
             </div>
           </div>

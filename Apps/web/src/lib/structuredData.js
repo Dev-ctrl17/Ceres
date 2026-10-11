@@ -2,46 +2,56 @@
 // Automatically generates schema.org markup for property listings
 import { buildAbsoluteUrl, buildImageUrl, getCanonicalUrl } from './siteConfig.js';
 import { buildPropertySeo } from './propertySeo.js';
+import { company, getInternationalPhoneNumber } from '@/config/company.js';
 
 const ORGANIZATION_ID = `${getCanonicalUrl('/')}#organization`;
+const REAL_ESTATE_AGENT_ID = `${getCanonicalUrl('/')}#real-estate-agent`;
 
-export const generatePropertySchema = (property, breadcrumbItems = []) => {
+export const generatePropertySchema = (property, breadcrumbItems = [], amenities = [], listingImages = null) => {
   if (!property) return null;
 
   const url = getCanonicalUrl(`/properties/${property.slug}`);
-  const title = buildPropertySeo(property).heading;
-  const propertyType = String(property.property_type || '').toLowerCase();
-  const schemaType = propertyType.includes('apartment')
-    ? 'Apartment'
-    : /house|duplex|villa|terrace/.test(propertyType)
-      ? 'House'
-      : 'Residence';
-  const sourceImages = Array.isArray(property.images) ? property.images : [];
-  const images = [...sourceImages, property.image_url]
+  const title = String(property.title || buildPropertySeo(property).listingName).trim();
+  const sourceImages = Array.isArray(listingImages)
+    ? listingImages
+    : [...(Array.isArray(property.images) ? property.images : []), property.image_url];
+  const images = sourceImages
     .filter((image) => typeof image === 'string' && image.trim())
     .map((image) => buildImageUrl(image.trim()));
-  if (images.length === 0) images.push(getCanonicalUrl('/og-image.png'));
 
   const listing = {
-    '@type': schemaType,
+    '@type': 'RealEstateListing',
     '@id': `${url}#listing`,
     name: title,
     url,
-    image: [...new Set(images)],
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: String(property.city || property.location || 'Lagos').trim(),
-      addressRegion: String(property.state || 'Lagos State').trim(),
-      addressCountry: 'NG',
+    seller: { '@id': REAL_ESTATE_AGENT_ID },
+    itemOffered: {
+      '@type': 'House',
+      name: title,
     },
   };
-  const description = String(property.description || '').replace(/\s+/g, ' ').trim();
-  if (description) listing.description = description;
-  if (property.address) listing.address.streetAddress = String(property.address).trim();
-  if (Number(property.bedrooms) > 0) listing.numberOfBedrooms = Number(property.bedrooms);
-  if (Number(property.bathrooms) > 0) listing.numberOfBathroomsTotal = Number(property.bathrooms);
-  if (Number(property.area_sqm) > 0) {
-    listing.floorSize = { '@type': 'QuantitativeValue', value: Number(property.area_sqm), unitCode: 'MTK' };
+  const description = String(property.description || '').replace(/\s+/g, ' ').trim() || buildPropertySeo(property).description;
+  listing.description = description;
+  const address = { '@type': 'PostalAddress', addressCountry: 'NG' };
+  if (property.address) address.streetAddress = String(property.address).trim();
+  if (property.location || property.city) {
+    address.addressLocality = String(property.location || property.city).trim();
+  }
+  if (property.state) address.addressRegion = String(property.state).trim();
+  if (Object.keys(address).length > 2) listing.address = address;
+  if (images.length) listing.image = [...new Set(images)];
+
+  const bedrooms = Number(property.bedrooms);
+  if (Number.isFinite(bedrooms) && bedrooms > 0) {
+    listing.itemOffered.numberOfBedrooms = bedrooms;
+  }
+  const validAmenities = [...new Set(amenities.map((amenity) => String(amenity).trim()).filter(Boolean))];
+  if (validAmenities.length) {
+    listing.itemOffered.amenityFeature = validAmenities.map((name) => ({
+      '@type': 'LocationFeatureSpecification',
+      name,
+      value: true,
+    }));
   }
 
   const graph = [listing];
@@ -53,7 +63,7 @@ export const generatePropertySchema = (property, breadcrumbItems = []) => {
       priceCurrency: 'NGN',
       price,
       availability: 'https://schema.org/InStock',
-      seller: { '@id': ORGANIZATION_ID },
+      seller: { '@id': REAL_ESTATE_AGENT_ID },
     };
   }
 
@@ -83,41 +93,41 @@ export const generateBreadcrumbSchema = (items) => {
 
 export const generateOrganizationSchema = () => {
   return {
-    "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    "@id": ORGANIZATION_ID,
-    "name": "Luxury Properties Ltd",
-    "description": "Premium luxury real estate agency in Nigeria. Exclusive high-end listings, concierge service, and off-market properties in Lagos, Abuja, and across Nigeria.",
-    "url": getCanonicalUrl('/'),
-    "logo": "https://www.luxurypropertiesltd.com.ng/favicon.svg",
-    "telephone": "+234-9056201176",
-    "email": "info@luxurypropertiesltd.com.ng",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Lagos",
-      "addressRegion": "Lagos State",
-      "addressCountry": "NG",
-    },
-    "priceRange": "₦50M - ₦5B",
-    "areaServed": ["Lagos", "Abuja", "Port Harcourt", "Nigeria"],
-    "sameAs": [
-      "https://www.instagram.com/dmluxurypropertiesltd/",
-      "https://www.linkedin.com/company/luxury-properties-ltd/posts/?feedView=all",
-      "https://web.facebook.com/luxurypropertiesLtd",
-      "https://www.youtube.com/@luxuryproperties_ltd",
-    ],
-    "openingHoursSpecification": [
+    '@context': 'https://schema.org',
+    '@graph': [
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "08:00",
-        "closes": "18:00",
+        '@type': 'Organization',
+        '@id': ORGANIZATION_ID,
+        name: company.name,
+        url: getCanonicalUrl('/'),
+        email: company.email,
+        telephone: company.phoneNumbers.map(getInternationalPhoneNumber),
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: company.address.streetAddress,
+          addressLocality: company.address.addressLocality,
+          addressRegion: company.address.addressRegion,
+          addressCountry: company.address.addressCountry,
+        },
+        sameAs: company.socialLinks.map(({ url }) => url),
       },
       {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "09:00",
-        "closes": "16:00",
+        '@type': 'RealEstateAgent',
+        '@id': REAL_ESTATE_AGENT_ID,
+        name: company.name,
+        url: getCanonicalUrl('/'),
+        email: company.email,
+        telephone: company.phoneNumbers.map(getInternationalPhoneNumber),
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: company.address.streetAddress,
+          addressLocality: company.address.addressLocality,
+          addressRegion: company.address.addressRegion,
+          addressCountry: company.address.addressCountry,
+        },
+        areaServed: ['Lagos', 'Abuja', 'Port Harcourt', 'Nigeria'],
+        sameAs: company.socialLinks.map(({ url }) => url),
+        parentOrganization: { '@id': ORGANIZATION_ID },
       },
     ],
   };

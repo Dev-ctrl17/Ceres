@@ -6,24 +6,25 @@ import ContactForm from '@/components/ContactForm.jsx';
 import { Card, CardContent } from '@/components/ui/card';
 import { Mail, Phone, MapPin, MessageCircle } from 'lucide-react';
 import { usePageBackgrounds } from '@/hooks/usePageBackgrounds';
+import { company, getInternationalPhoneNumber, getWhatsAppUrl } from '@/config/company.js';
 
 const ContactPage = () => {
   const { getBackground } = usePageBackgrounds();
   return (
     <>
       <Helmet>
-        <title>Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos</title>
-        <meta name="description" content="Contact Luxury Properties Ltd in Lagos for luxury real estate inquiries, property viewings, and expert advisory services. Call, email, or visit our office." />
+        <title>{`Contact ${company.name} | Lagos Real Estate`}</title>
+        <meta name="description" content={`Contact ${company.name} in Lagos for property viewings. Call ${company.phoneNumbers.join(' or ')} or email ${company.email}.`} />
         <link rel="canonical" href="https://www.luxurypropertiesltd.com.ng/contact" />
-        <meta property="og:title" content="Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos" />
-        <meta property="og:description" content="Get in touch with Luxury Properties Ltd for all your luxury real estate needs in Lagos and across Nigeria." />
+        <meta property="og:title" content={`Contact ${company.name} | Lagos Real Estate`} />
+        <meta property="og:description" content={`Get in touch with ${company.name} for property inquiries and viewings in Lagos.`} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.luxurypropertiesltd.com.ng/contact" />
-        <meta property="og:site_name" content="Luxury Properties Ltd" />
+        <meta property="og:site_name" content={company.name} />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact Us - Luxury Properties Ltd | Premium Real Estate Lagos" />
-        <meta name="twitter:description" content="Contact Luxury Properties Ltd for luxury real estate inquiries." />
+        <meta name="twitter:title" content={`Contact ${company.name} | Lagos Real Estate`} />
+        <meta name="twitter:description" content={`Contact ${company.name} for property inquiries.`} />
 
         {/* JSON-LD BreadcrumbList Schema */}
         <script type="application/ld+json">
@@ -73,9 +74,13 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">Telephone</h3>
-                        <p className="text-muted-foreground">+234 703 972 6375</p>
-                        <p className="text-muted-foreground">+234 913 798 1102</p>
-                        <p className="text-muted-foreground">+234 706 928 6610</p>
+                        {company.phoneNumbers.map((phoneNumber) => (
+                          <p key={phoneNumber} className="text-muted-foreground">
+                            <a href={`tel:${getInternationalPhoneNumber(phoneNumber)}`} className="hover:underline">
+                              {phoneNumber}
+                            </a>
+                          </p>
+                        ))}
                       </div>
                     </CardContent>
                   </Card>
@@ -87,7 +92,9 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">Email</h3>
-                        <p className="text-muted-foreground">info@luxurypropertiesltd.com.ng</p>
+                        <a href={`mailto:${company.email}`} className="text-muted-foreground hover:underline">
+                          {company.email}
+                        </a>
                       </div>
                     </CardContent>
                   </Card>
@@ -99,9 +106,7 @@ const ContactPage = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold mb-1">Head Office Address</h3>
-                        <p className="text-muted-foreground">
-                          Pedro, Gbagada, Lagos, Nigeria
-                        </p>
+                        <p className="text-muted-foreground">{company.address.display}</p>
                       </div>
                     </CardContent>
                   </Card>
@@ -114,7 +119,7 @@ const ContactPage = () => {
                       <div>
                         <h3 className="font-semibold mb-1">WhatsApp</h3>
                         <a
-                          href="https://wa.me/2347039726375"
+                          href={getWhatsAppUrl(company.phoneNumbers[0])}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary hover:underline"

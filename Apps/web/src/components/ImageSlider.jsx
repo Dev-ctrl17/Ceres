@@ -57,7 +57,7 @@ const ImageSlider = ({ images, onSlideChange, alt = 'Property photo' }) => {
           <img
             key={index}
             src={toCdnUrl(imageSrc)}
-            alt={stage === 'original' ? alt : 'Property photo unavailable'}
+            alt={stage === 'original' ? `${alt} - photo ${index + 1}` : `Property photo ${index + 1} unavailable`}
             width={1200}
             height={675}
             loading={index === 0 ? 'eager' : 'lazy'}

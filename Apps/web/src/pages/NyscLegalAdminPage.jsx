@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Header from "@/components/Header.jsx";
 import Footer from "@/components/Footer.jsx";
+import { company } from "@/config/company.js";
 import {
   ChevronRight,
   Home,
@@ -39,7 +40,7 @@ export default function NyscLegalAdminPage() {
 
   const subjectLine = "NYSC LEGAL & ADMINISTRATIVE SUPPORT";
   const whatsappNumber = "2349056201176";
-  const emailAddress = "info@luxurypropertiesltd.com.ng";
+  const emailAddress = company.email;
   const pageUrl =
     typeof window !== "undefined"
       ? window.location.href
@@ -427,7 +428,7 @@ export default function NyscLegalAdminPage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-amber-500 shrink-0" />
-                  <span className="truncate">info@luxurypropertiesltd.com.ng</span>
+                  <span className="truncate">{emailAddress}</span>
                 </div>
               </div>
             </div>
