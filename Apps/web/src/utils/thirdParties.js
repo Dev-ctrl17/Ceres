@@ -5,6 +5,18 @@ function prepareGoogleAdsTracking() {
   window.gtag = window.gtag || function (...args) {
     window.dataLayer.push(args);
   };
+  window.gtag_report_conversion = function (url) {
+    const callback = function () {
+      if (typeof url !== 'undefined') {
+        window.location = url;
+      }
+    };
+    window.gtag('event', 'conversion', {
+      send_to: 'AW-18266097278/1kG1CKyFgJ8dEP6M-oVE',
+      event_callback: callback,
+    });
+    return false;
+  };
   if (window.__luxuryGoogleAdsConfigured) return;
   window.__luxuryGoogleAdsConfigured = true;
   window.gtag('js', new Date());
@@ -48,6 +60,18 @@ export function scheduleThirdParties() {
   if (typeof window === 'undefined') return undefined;
   if (window.__PRERENDERING__) return undefined;
   prepareGoogleAdsTracking();
+  if (!window.__luxuryContactConversionListenerAttached) {
+    document.addEventListener('click', (event) => {
+      if (!(event.target instanceof Element)) return;
+      const link = event.target.closest('a[href]');
+      if (!link) return;
+      const href = link.getAttribute('href') || '';
+      if (/^(?:tel:|mailto:)|(?:^|\/\/)(?:[\w-]+\.)*wa\.me(?:\/|$)/i.test(href)) {
+        window.gtag_report_conversion();
+      }
+    });
+    window.__luxuryContactConversionListenerAttached = true;
+  }
   let scheduled = false;
   const events = ['scroll', 'pointerdown', 'keydown', 'touchstart'];
   const cleanup = () => events.forEach((event) => window.removeEventListener(event, load));

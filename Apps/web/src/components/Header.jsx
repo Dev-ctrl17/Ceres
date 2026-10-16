@@ -52,15 +52,14 @@ export default function Header() {
           className="flex items-center"
           aria-label="Luxury Properties home"
         >
-          <span className="flex items-center gap-3" aria-label="Luxury Properties Ltd">
-            <span aria-hidden="true" className="flex h-10 w-10 items-center justify-center rounded-full border border-amber-500 text-sm font-bold text-amber-600">
-              LP
-            </span>
-            <span className="leading-tight">
-              <span className="block text-sm font-semibold tracking-wide text-stone-900">LUXURY</span>
-              <span className="block text-[0.65rem] tracking-[0.16em] text-stone-600">PROPERTIES LTD</span>
-            </span>
-          </span>
+          <img
+            src="https://lrmljudwbzjawafuztwp.supabase.co/storage/v1/object/public/site-assets/logo-optimized.webp"
+            alt="Luxury Properties Ltd"
+            className="h-14 w-24 object-contain"
+            width="96"
+            height="64"
+            decoding="async"
+          />
         </Link>
         <nav className="hidden items-center gap-1 lg:flex">
           <Link

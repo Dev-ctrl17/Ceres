@@ -69,6 +69,8 @@ const ContactForm = ({ propertyId = null }) => {
 
       if (error) throw error;
 
+      window.gtag_report_conversion();
+
       // Send email notification via Formspree (fire-and-forget after Supabase save)
       const emailResult = await sendFormspreeNotification({
         _subject: `New Lead: ${leadData.name} - ${leadData.leadtype}`,
@@ -109,10 +111,6 @@ const ContactForm = ({ propertyId = null }) => {
       } else {
         toast.success("Message saved successfully. We will contact you soon.");
       }
-
-      window.gtag("event", "conversion", {
-        send_to: "AW-18266097278/EKtWCKiq4tIcEP6M-oVE",
-      });
 
       reset();
       setEmailStatus(null);
