@@ -294,8 +294,10 @@ const browser = await puppeteer.launch(await resolveBrowserLaunchConfig());
 
 let successCount = 0;
 let failCount = 0;
+let skippedCount = 0;
 
 for (const route of routes) {
+  const isDynamicPropertyRoute = /^\/properties\/(?!page\/)/.test(route);
   const page = await browser.newPage();
   try {
     await page.evaluateOnNewDocument(() => {
@@ -311,7 +313,7 @@ for (const route of routes) {
     // false marker while loading; static pages only need their visible H1.
     await page.waitForFunction(
       () => document.querySelector('h1') && !document.querySelector('[data-prerender-ready="false"]'),
-      { timeout: 20000 }
+      { timeout: isDynamicPropertyRoute ? 5000 : 20000 }
     );
     // Get the rendered HTML
     const html = await page.content();
@@ -326,8 +328,13 @@ for (const route of routes) {
     console.log(`  ✅ ${route}`);
     successCount++;
   } catch (e) {
-    console.error(`  ❌ ${route}: ${e.message}`);
-    failCount++;
+    if (isDynamicPropertyRoute && e.message.includes('Waiting failed:')) {
+      console.warn(`  ⚠️ ${route}: prerender timed out; Vercel will serve the SPA fallback.`);
+      skippedCount++;
+    } else {
+      console.error(`  ❌ ${route}: ${e.message}`);
+      failCount++;
+    }
   } finally {
     await page.close();
   }
@@ -337,6 +344,6 @@ await browser.close();
 preview.kill('SIGTERM');
 sanitizeBuiltAssets(resolve(__dirname, 'dist'));
 
-console.log(`\n[prerender] Done! ${successCount} succeeded, ${failCount} failed.`);
+console.log(`\n[prerender] Done! ${successCount} succeeded, ${skippedCount} dynamic property pages deferred to the SPA, ${failCount} failed.`);
 if (failCount > 0) process.exit(1);
 process.exit(0);

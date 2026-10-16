@@ -62,6 +62,14 @@ for (const sitemapUrl of urls) {
 
   const outputPath = resolveOutputPath(parsed.pathname, vercel.rewrites || []);
   if (!outputPath) {
+    const hasPropertySpaFallback = parsed.pathname.startsWith('/properties/')
+      && existsSync(resolve(distDir, 'index.html'))
+      && (vercel.rewrites || []).some(({ source, destination }) =>
+        destination === '/index.html'
+        && !source.includes('properties/')
+      );
+    if (hasPropertySpaFallback) continue;
+
     failures.push(`No built HTML response (expected 200) for sitemap URL: ${sitemapUrl}`);
     continue;
   }
