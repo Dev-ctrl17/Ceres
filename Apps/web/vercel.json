@@ -45,7 +45,7 @@
   ],
   "headers": [
     {
-      "source": "/(?!refer-and-earn(?:/|$))(.*)",
+      "source": "/((?!refer-and-earn(?:/|$)).*)",
       "headers": [
         {
           "key": "X-Robots-Tag",
@@ -185,7 +185,7 @@
       ]
     },
     {
-      "source": "/(?!blog(?:/|$)|landing(?:/|$)|about(?:/|$))(.*)",
+      "source": "/((?!blog(?:/|$)|landing(?:/|$)|about(?:/|$)).*)",
       "headers": [
         {
           "key": "Cache-Control",
