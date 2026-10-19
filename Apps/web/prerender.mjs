@@ -312,7 +312,10 @@ for (const route of routes) {
     // Require actual page content before capturing. Async pages expose a
     // false marker while loading; static pages only need their visible H1.
     await page.waitForFunction(
-      () => document.querySelector('h1') && !document.querySelector('[data-prerender-ready="false"]'),
+      () => document.querySelector('h1')
+        && document.title.trim()
+        && document.querySelector('meta[name="description"]')?.content.trim()
+        && !document.querySelector('[data-prerender-ready="false"]'),
       { timeout: isDynamicPropertyRoute ? 5000 : 20000 }
     );
     // Get the rendered HTML
