@@ -39,6 +39,7 @@ const WhatsAppButton = () => {
 
   const handleOptionClick = (number) => {
     setIsPopupOpen(false);
+    window.gtag_report_conversion();
     window.open(
       `https://wa.me/${getInternationalPhoneNumber(number).replace(/\D/g, '')}?text=${PRE_FILLED_MESSAGE}`,
       '_blank',
