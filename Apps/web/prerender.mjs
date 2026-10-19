@@ -298,6 +298,9 @@ let skippedCount = 0;
 
 for (const route of routes) {
   const isDynamicPropertyRoute = /^\/properties\/(?!page\/)/.test(route);
+  const expectedCanonical = route.startsWith('/investment-brief/')
+    ? null
+    : getCanonicalUrl(route);
   const page = await browser.newPage();
   try {
     await page.evaluateOnNewDocument(() => {
@@ -312,11 +315,13 @@ for (const route of routes) {
     // Require actual page content before capturing. Async pages expose a
     // false marker while loading; static pages only need their visible H1.
     await page.waitForFunction(
-      () => document.querySelector('h1')
+      (canonicalUrl) => document.querySelector('h1')
         && document.title.trim()
         && document.querySelector('meta[name="description"]')?.content.trim()
+        && (!canonicalUrl || document.querySelector('link[rel="canonical"]')?.href === canonicalUrl)
         && !document.querySelector('[data-prerender-ready="false"]'),
-      { timeout: isDynamicPropertyRoute ? 5000 : 20000 }
+      { timeout: isDynamicPropertyRoute ? 5000 : 20000 },
+      expectedCanonical,
     );
     // Get the rendered HTML
     const html = await page.content();
