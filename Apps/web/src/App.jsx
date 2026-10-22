@@ -13,7 +13,7 @@ import { generateOrganizationSchema } from "./lib/structuredData.js";
 const RouteCanonicalMetadata = () => {
   const { pathname, search } = useLocation();
   const canonicalUrl = getCanonicalUrl(pathname);
-  const isNoindexRoute = /^\/(?:login|admin(?:\/|$)|consultant-portal(?:\/|$)|register(?:\/|$)|refer-and-earn(?:\/|$)|thank-you(?:\/|$))/.test(pathname);
+  const isNoindexRoute = /^\/(?:login|admin(?:\/|$)|consultant-portal(?:\/|$)|register(?:\/|$)|thank-you(?:\/|$))/.test(pathname);
   const isNoindexVariant = isNoindexRoute || Boolean(search);
 
   return (

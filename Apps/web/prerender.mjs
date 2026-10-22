@@ -133,6 +133,14 @@ function normalizeStaticMetadata(html, filePath) {
   output = setMetaTag(output, 'name', 'twitter:title', title);
   output = setMetaTag(output, 'name', 'twitter:description', description);
   output = setMetaTag(output, 'name', 'twitter:image', socialImage);
+  if (pathname !== '/') {
+    output = output.replace(/<link\b[^>]*>/gi, (tag) => (
+      getAttribute(tag, 'rel').toLowerCase() === 'preload'
+      && getAttribute(tag, 'href') === '/hero/slide-1-1600.webp'
+        ? ''
+        : tag
+    ));
+  }
 
   const blogSlug = new URL(normalizedCanonical).pathname.split('/').filter(Boolean).at(-1);
   const post = blogPostsData.find((item) => item.slug === blogSlug);
