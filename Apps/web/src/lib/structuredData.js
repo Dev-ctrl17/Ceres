@@ -7,6 +7,26 @@ import { company, getInternationalPhoneNumber } from '@/config/company.js';
 const ORGANIZATION_ID = `${getCanonicalUrl('/')}#organization`;
 const REAL_ESTATE_AGENT_ID = `${getCanonicalUrl('/')}#real-estate-agent`;
 
+function getListingAvailability(status) {
+  const normalizedStatus = String(status || '').trim().toLowerCase();
+  const availabilityByStatus = {
+    available: 'https://schema.org/InStock',
+    active: 'https://schema.org/InStock',
+    'for sale': 'https://schema.org/InStock',
+    'for rent': 'https://schema.org/InStock',
+    'under offer': 'https://schema.org/LimitedAvailability',
+    reserved: 'https://schema.org/LimitedAvailability',
+    sold: 'https://schema.org/SoldOut',
+    unavailable: 'https://schema.org/OutOfStock',
+    'off market': 'https://schema.org/OutOfStock',
+  };
+  const availability = availabilityByStatus[normalizedStatus];
+  if (!availability) {
+    throw new Error(`Cannot generate listing schema for unknown availability status "${status || '(missing)'}".`);
+  }
+  return availability;
+}
+
 export const generatePropertySchema = (property, breadcrumbItems = [], amenities = [], listingImages = null) => {
   if (!property) return null;
 
@@ -18,26 +38,26 @@ export const generatePropertySchema = (property, breadcrumbItems = [], amenities
   const images = sourceImages
     .filter((image) => typeof image === 'string' && image.trim())
     .map((image) => buildImageUrl(image.trim()));
+  if (images.length === 0) images.push(buildImageUrl('/og-image.png'));
 
   const listing = {
     '@type': 'RealEstateListing',
     '@id': `${url}#listing`,
     name: title,
+    description: String(property.description || '').replace(/\s+/g, ' ').trim() || buildPropertySeo(property).description,
     url,
-    seller: { '@id': REAL_ESTATE_AGENT_ID },
+    seller: { '@type': 'RealEstateAgent', '@id': REAL_ESTATE_AGENT_ID, name: company.name },
     itemOffered: {
       '@type': 'House',
       name: title,
     },
   };
-  const description = String(property.description || '').replace(/\s+/g, ' ').trim() || buildPropertySeo(property).description;
-  listing.description = description;
   const address = { '@type': 'PostalAddress', addressCountry: 'NG' };
   if (property.address) address.streetAddress = String(property.address).trim();
   if (property.location || property.city) {
     address.addressLocality = String(property.location || property.city).trim();
   }
-  if (property.state) address.addressRegion = String(property.state).trim();
+  address.addressRegion = 'Lagos';
   if (Object.keys(address).length > 2) listing.address = address;
   if (images.length) listing.image = [...new Set(images)];
 
@@ -62,8 +82,8 @@ export const generatePropertySchema = (property, breadcrumbItems = [], amenities
       url,
       priceCurrency: 'NGN',
       price,
-      availability: 'https://schema.org/InStock',
-      seller: { '@id': REAL_ESTATE_AGENT_ID },
+      availability: getListingAvailability(property.status),
+      seller: { '@type': 'RealEstateAgent', '@id': REAL_ESTATE_AGENT_ID, name: company.name },
     };
   }
 

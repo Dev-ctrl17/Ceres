@@ -15,6 +15,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
 const WAIT_MS = 1500;
+const HOMEPAGE_TITLE = 'Luxury Properties Ltd - Premium Real Estate in Nigeria';
+const HOMEPAGE_CANONICAL = getCanonicalUrl('/');
 const isPropertyDetailRoute = (route) => /^\/properties\/(?!page\/)[^/]+\/?$/.test(route);
 
 function escapeAttribute(value) {
@@ -31,6 +33,27 @@ function getMetaContent(html, attribute, name) {
     .map(([match]) => match)
     .find((match) => new RegExp(`\\b${attribute}\\s*=["']${name}["']`, 'i').test(match));
   return tag ? getAttribute(tag, 'content') : '';
+}
+
+function decodeHtmlEntities(value) {
+  return value
+    .replaceAll('&amp;', '&')
+    .replaceAll('&quot;', '"')
+    .replaceAll('&#39;', "'")
+    .replaceAll('&apos;', "'")
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>');
+}
+
+function collectJsonLdValues(value, values = []) {
+  if (!value || typeof value !== 'object') return values;
+  if (Array.isArray(value)) {
+    value.forEach((item) => collectJsonLdValues(item, values));
+    return values;
+  }
+  if (value['@type']) values.push(value);
+  Object.values(value).forEach((item) => collectJsonLdValues(item, values));
+  return values;
 }
 
 function setMetaTag(html, attribute, name, value) {
@@ -217,9 +240,13 @@ function sanitizeBuiltAssets(directory) {
   }
 }
 
-function validateRenderedHtml(html, route) {
-  const title = html.match(/<title[^>]*>\s*([^<]+?)\s*<\/title>/i)?.[1]?.trim();
-  const description = getMetaContent(html, 'name', 'description').trim();
+function validateRenderedHtml(html, route, property = null) {
+  const titleTags = [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)];
+  const title = decodeHtmlEntities(titleTags[0]?.[1]?.replace(/<[^>]+>/g, '').trim() || '');
+  const descriptionTags = [...html.matchAll(/<meta\b[^>]*>/gi)]
+    .map(([tag]) => tag)
+    .filter((tag) => /\bname=["']description["']/i.test(tag));
+  const description = decodeHtmlEntities(getMetaContent(html, 'name', 'description').trim());
   const h1Matches = [...html.matchAll(/<h1\b[^>]*>\s*([\s\S]*?)\s*<\/h1>/gi)];
   const h1 = h1Matches[0]?.[1]
     ?.replace(/<[^>]+>/g, '')
@@ -230,14 +257,23 @@ function validateRenderedHtml(html, route) {
     ['property', 'og:title'],
     ['property', 'og:description'],
     ['property', 'og:url'],
+    ['property', 'og:image'],
     ['name', 'twitter:card'],
     ['name', 'twitter:title'],
     ['name', 'twitter:description'],
     ['name', 'twitter:image'],
   ];
 
-  if (!title || !description || !h1 || h1Matches.length !== 1) {
-    throw new Error(`Invalid page metadata for ${route} (title: ${Boolean(title)}, description: ${Boolean(description)}, h1 count: ${h1Matches.length})`);
+  const canonicalTags = [...html.matchAll(/<link\b[^>]*\brel=["']canonical["'][^>]*>/gi)];
+  const canonical = canonicalTags.length ? getAttribute(canonicalTags[0][0], 'href') : '';
+  if (!title || titleTags.length !== 1 || !description || descriptionTags.length !== 1 || !h1 || h1Matches.length !== 1) {
+    throw new Error(`Invalid page metadata for ${route} (title count: ${titleTags.length}, description count: ${descriptionTags.length}, h1 count: ${h1Matches.length})`);
+  }
+  if (route !== '/' && (title === HOMEPAGE_TITLE || canonical === HOMEPAGE_CANONICAL)) {
+    throw new Error(`Homepage title or canonical leaked into ${route}`);
+  }
+  if (isPropertyDetailRoute(route) && (canonicalTags.length !== 1 || canonical !== getCanonicalUrl(route))) {
+    throw new Error(`Listing canonical is not unique and self-referencing in ${route}: ${canonical || '(missing)'}`);
   }
 
   if (isPropertyDetailRoute(route)) {
@@ -250,6 +286,47 @@ function validateRenderedHtml(html, route) {
     }
     if (!/"@type"\s*:\s*"RealEstateListing"/.test(html)) {
       throw new Error(`RealEstateListing JSON-LD is missing for ${route}`);
+    }
+    if (!property) throw new Error(`Listing data is missing for ${route}`);
+    const numericPrice = Number(String(property.price || '').replace(/[^\d.]/g, ''));
+    if (!Number.isFinite(numericPrice) || numericPrice <= 0) {
+      throw new Error(`Listing price is missing or invalid for ${route}`);
+    }
+    const visiblePrice = new Intl.NumberFormat('en-NG', {
+      style: 'currency',
+      currency: 'NGN',
+      minimumFractionDigits: 0,
+    }).format(numericPrice);
+    const body = html.slice(html.indexOf('</head>') + 7).toLocaleLowerCase();
+    if (!body.includes(visiblePrice.toLocaleLowerCase())) {
+      throw new Error(`Listing price in NGN is missing from rendered HTML for ${route}`);
+    }
+    const location = buildPropertySeo(property).area;
+    if (!location || !body.includes(location.toLocaleLowerCase())) {
+      throw new Error(`Listing location is missing from rendered HTML for ${route}`);
+    }
+    if (!property.property_type || !body.includes(String(property.property_type).toLocaleLowerCase())) {
+      throw new Error(`Listing key facts are missing from rendered HTML for ${route}`);
+    }
+    const jsonLdValues = [...html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)]
+      .flatMap(([, json]) => {
+        try {
+          return collectJsonLdValues(JSON.parse(json));
+        } catch (error) {
+          throw new Error(`Invalid JSON-LD in ${route}: ${error.message}`);
+        }
+      });
+    const listing = jsonLdValues.find((value) => value['@type'] === 'RealEstateListing');
+    const offer = listing?.offers;
+    const availability = offer?.availability;
+    if (!listing?.image || !listing.address?.addressLocality
+      || listing.address.addressRegion !== 'Lagos'
+      || listing.address.addressCountry !== 'NG'
+      || listing.seller?.['@type'] !== 'RealEstateAgent'
+      || !offer || offer.priceCurrency !== 'NGN'
+      || Number(offer.price) !== numericPrice
+      || !/^https:\/\/schema\.org\/(?:InStock|LimitedAvailability|SoldOut|OutOfStock)$/.test(availability || '')) {
+      throw new Error(`RealEstateListing JSON-LD has incomplete or invalid listing data for ${route}`);
     }
   } else if (title.length > 60) {
     console.warn(`[seo-guard] Title exceeds 60 characters in ${route}: ${title.length}`);
@@ -441,7 +518,10 @@ for (const route of routes) {
     }
     // Get the rendered HTML
     const html = await page.content();
-    validateRenderedHtml(html, route);
+    const property = isDynamicPropertyRoute
+      ? propertyRecordsBySlug.get(decodeURIComponent(route.slice('/properties/'.length)))
+      : null;
+    validateRenderedHtml(html, route, property);
 
     // Write the HTML to the appropriate output path
     const outPath = route === '/'

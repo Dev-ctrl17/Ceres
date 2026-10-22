@@ -73,34 +73,29 @@ export const STATIC_ROUTES = [
  */
 export async function getAllRoutes() {
   const routes = [...STATIC_ROUTES];
+  const propertyRecords = [];
 
   // --- Fetch property IDs from Supabase ---
   if (supabaseUrl && supabaseAnonKey) {
-    try {
-      const supabase = createClient(supabaseUrl, supabaseAnonKey);
-      const { data: properties, error } = await supabase
-        .from('properties')
-        .select('slug');
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+    const { data: properties, error } = await supabase
+      .from('properties')
+      .select('*');
 
-      if (error) {
-        console.warn('[getRoutes] Failed to fetch properties from Supabase:', error.message);
-      } else if (properties && properties.length > 0) {
-        properties.forEach(prop => {
-          if (prop.slug && !REDIRECTED_PROPERTY_SLUGS.has(prop.slug) && prop.slug === generateSlug(prop.slug) && prop.slug === getCurrentPropertySlug(prop.slug)) {
-            routes.push(`/properties/${encodeURIComponent(prop.slug)}`);
-          }
-        });
-        const listingPages = Math.ceil(properties.length / 24);
-        for (let page = 2; page <= listingPages; page++) routes.push(`/properties/page/${page}`);
-        console.log(`[getRoutes] Found ${properties.length} property routes`);
-      } else {
-        console.warn('[getRoutes] No properties found in Supabase');
-      }
-    } catch (err) {
-      console.warn('[getRoutes] Error connecting to Supabase:', err.message);
+    if (error) {
+      throw new Error(`[getRoutes] Failed to fetch property data for prerendering: ${error.message}`);
     }
+    propertyRecords.push(...(properties || []));
+    propertyRecords.forEach((property) => {
+      if (property.slug && !REDIRECTED_PROPERTY_SLUGS.has(property.slug) && property.slug === generateSlug(property.slug) && property.slug === getCurrentPropertySlug(property.slug)) {
+        routes.push(`/properties/${encodeURIComponent(property.slug)}`);
+      }
+    });
+    const listingPages = Math.ceil(propertyRecords.length / 24);
+    for (let page = 2; page <= listingPages; page++) routes.push(`/properties/page/${page}`);
+    console.log(`[getRoutes] Found ${propertyRecords.length} property records for prerendering`);
   } else {
-    console.warn('[getRoutes] Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY — skipping property routes');
+    throw new Error('[getRoutes] Missing VITE_SUPABASE_URL or VITE_SUPABASE_ANON_KEY; refusing to skip property prerendering.');
   }
 
   if (supabaseUrl && supabaseAnonKey) {
@@ -140,6 +135,7 @@ export async function getAllRoutes() {
   }
 
   const uniqueRoutes = [...new Set(routes)];
+  Object.defineProperty(uniqueRoutes, 'propertyRecords', { value: propertyRecords });
   console.log(`[getRoutes] Total routes to prerender: ${uniqueRoutes.length}`);
   return uniqueRoutes;
 }
