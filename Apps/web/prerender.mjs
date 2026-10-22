@@ -7,6 +7,7 @@ import chromium from '@sparticuz/chromium';
 import puppeteer from 'puppeteer-core';
 import { getAllRoutes } from './scripts/getRoutes.js';
 import { buildImageUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from './src/lib/siteConfig.js';
+import { buildPropertySeo } from './src/lib/propertySeo.js';
 import { blogPostsData } from './src/data/blogPosts.js';
 
 const require = createRequire(import.meta.url);
@@ -14,9 +15,22 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const PORT = 4173;
 const BASE_URL = `http://localhost:${PORT}`;
 const WAIT_MS = 1500;
+const isPropertyDetailRoute = (route) => /^\/properties\/(?!page\/)[^/]+\/?$/.test(route);
 
 function escapeAttribute(value) {
   return String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;');
+}
+
+function getAttribute(tag, name) {
+  const match = tag.match(new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'));
+  return match?.[1] ?? match?.[2] ?? match?.[3] ?? '';
+}
+
+function getMetaContent(html, attribute, name) {
+  const tag = [...html.matchAll(/<meta\b[^>]*>/gi)]
+    .map(([match]) => match)
+    .find((match) => new RegExp(`\\b${attribute}\\s*=["']${name}["']`, 'i').test(match));
+  return tag ? getAttribute(tag, 'content') : '';
 }
 
 function setMetaTag(html, attribute, name, value) {
@@ -26,25 +40,24 @@ function setMetaTag(html, attribute, name, value) {
 }
 
 function normalizeStaticMetadata(html, filePath) {
-  const canonicalTags = [...html.matchAll(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/gi)];
-  const canonical = canonicalTags.at(-1)?.[1];
+  const canonicalTags = [...html.matchAll(/<link\b[^>]*\brel=["']canonical["'][^>]*>/gi)];
+  const canonical = canonicalTags.length ? getAttribute(canonicalTags.at(-1)[0], 'href') : '';
   if (!canonical) return html;
 
   const normalizedCanonical = getCanonicalUrl(canonical);
   const originalTitle = [...html.matchAll(/<title[^>]*>([\s\S]*?)<\/title>/gi)].at(-1)?.[1]?.trim() || '';
-  const descriptionTags = [...html.matchAll(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/gi)];
-  const originalDescription = descriptionTags.at(-1)?.[1] || '';
+  const originalDescription = getMetaContent(html, 'name', 'description');
   const isProperty = new URL(normalizedCanonical).pathname.startsWith('/properties/');
-  const isCertificateGuide = new URL(normalizedCanonical).pathname === '/blog/certificate-of-occupancy-vs-governors-consent';
-  if (originalTitle.length > 60) console.warn(`[seo-guard] Title exceeds 60 characters in ${filePath}: ${originalTitle.length}`);
-  if (originalDescription.length < 120 || originalDescription.length > 155) {
-    console.warn(`[seo-guard] Description must be 120-155 characters in ${filePath}: ${originalDescription.length}`);
+  const pathname = new URL(normalizedCanonical).pathname;
+  const isCertificateGuide = pathname === '/blog/certificate-of-occupancy-vs-governors-consent';
+  const isCookiePolicy = pathname === '/cookie-policy';
+  if (isProperty && (!originalTitle || !originalDescription)) {
+    throw new Error(`[seo-guard] Listing metadata is missing in ${filePath}`);
   }
 
-  const title = isProperty || isCertificateGuide ? originalTitle : buildSeoTitle(originalTitle);
-  const description = isProperty || isCertificateGuide ? originalDescription : buildSeoDescription(originalDescription);
-  const imageTags = [...html.matchAll(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']*)["']/gi)];
-  const image = imageTags.at(-1)?.[1];
+  const title = isProperty || isCertificateGuide || isCookiePolicy ? originalTitle : buildSeoTitle(originalTitle);
+  const description = isProperty || isCertificateGuide || isCookiePolicy ? originalDescription : buildSeoDescription(originalDescription);
+  const image = getMetaContent(html, 'property', 'og:image');
   const socialImage = buildImageUrl(image || '/og-image.png');
   const isBlog = /[\\/]blog[\\/]/i.test(filePath)
     && !/[\\/]blog[\\/](?:index\.html|comparison[\\/]index\.html|listicle[\\/]index\.html)$/i.test(filePath);
@@ -68,7 +81,8 @@ function normalizeStaticMetadata(html, filePath) {
 
   const blogSlug = new URL(normalizedCanonical).pathname.split('/').filter(Boolean).at(-1);
   const post = blogPostsData.find((item) => item.slug === blogSlug);
-  if (post?.datePublished) {
+  let hasBlogPosting = false;
+  if (isBlog && post) {
     output = output.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (tag, open, json, close) => {
       try {
         const schema = JSON.parse(json);
@@ -76,18 +90,80 @@ function normalizeStaticMetadata(html, filePath) {
           if (!value || typeof value !== 'object') return;
           if (Array.isArray(value)) return value.forEach(enrichArticle);
           if (['Article', 'BlogPosting', 'NewsArticle'].includes(value['@type'])) {
+            value['@type'] = 'BlogPosting';
+            value['@id'] ||= `${normalizedCanonical}#blogposting`;
+            value.headline ||= post.title;
+            value.description ||= post.metaDescription || description;
             value.image ||= buildImageUrl(post.ogImage || '/og-image.png');
             value.datePublished ||= post.datePublished;
-            if (post.dateModified) value.dateModified ||= post.dateModified;
+            value.dateModified ||= post.dateModified || post.datePublished;
+            value.mainEntityOfPage ||= { '@type': 'WebPage', '@id': normalizedCanonical };
+            if (!value.author?.['@type']) {
+              value.author = { '@type': 'Organization', name: 'Luxury Properties Ltd', url: getCanonicalUrl('/') };
+            }
+            if (!value.publisher?.logo) {
+              value.publisher = {
+                '@type': 'Organization',
+                name: 'Luxury Properties Ltd',
+                url: getCanonicalUrl('/'),
+                logo: { '@type': 'ImageObject', url: getCanonicalUrl('/favicon.svg') },
+              };
+            }
+            value.inLanguage ||= 'en-NG';
+            hasBlogPosting = true;
           }
           Object.values(value).forEach(enrichArticle);
         };
         enrichArticle(schema);
         return `${open}${JSON.stringify(schema)}${close}`;
-      } catch {
+      } catch (error) {
+        console.warn(`[seo-guard] Could not enrich JSON-LD in ${filePath}: ${error.message}`);
         return tag;
       }
     });
+  }
+
+  if (isBlog && !post) {
+    throw new Error(`[seo-guard] No blog metadata found for ${normalizedCanonical}`);
+  }
+  if (isBlog && post && !hasBlogPosting) {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      '@id': `${normalizedCanonical}#blogposting`,
+      headline: post.title,
+      description: post.metaDescription || description,
+      image: buildImageUrl(post.ogImage || '/og-image.png'),
+      datePublished: post.datePublished,
+      dateModified: post.dateModified || post.datePublished,
+      author: post.authorName
+        ? { '@type': 'Person', name: post.authorName }
+        : { '@type': 'Organization', name: 'Luxury Properties Ltd', url: getCanonicalUrl('/') },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Luxury Properties Ltd',
+        url: getCanonicalUrl('/'),
+        logo: { '@type': 'ImageObject', url: getCanonicalUrl('/favicon.svg') },
+      },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': normalizedCanonical },
+      inLanguage: 'en-NG',
+    };
+    output = output.replace('</head>', `<script type="application/ld+json">${JSON.stringify(schema)}</script>\n</head>`);
+  }
+
+  if (isCookiePolicy) {
+    const hasWebPage = /"@type"\s*:\s*"WebPage"/.test(output);
+    if (!hasWebPage) {
+      const schema = {
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: title,
+        description,
+        url: normalizedCanonical,
+        inLanguage: 'en-NG',
+      };
+      output = output.replace('</head>', `<script type="application/ld+json">${JSON.stringify(schema)}</script>\n</head>`);
+    }
   }
 
   return output;
@@ -143,8 +219,7 @@ function sanitizeBuiltAssets(directory) {
 
 function validateRenderedHtml(html, route) {
   const title = html.match(/<title[^>]*>\s*([^<]+?)\s*<\/title>/i)?.[1]?.trim();
-  const descriptionTag = html.match(/<meta\b[^>]*>/gi)?.find((tag) => /\bname=["']description["']/i.test(tag));
-  const description = descriptionTag?.match(/\bcontent=["']([^"']+)["']/i)?.[1]?.trim();
+  const description = getMetaContent(html, 'name', 'description').trim();
   const h1Matches = [...html.matchAll(/<h1\b[^>]*>\s*([\s\S]*?)\s*<\/h1>/gi)];
   const h1 = h1Matches[0]?.[1]
     ?.replace(/<[^>]+>/g, '')
@@ -165,9 +240,22 @@ function validateRenderedHtml(html, route) {
     throw new Error(`Invalid page metadata for ${route} (title: ${Boolean(title)}, description: ${Boolean(description)}, h1 count: ${h1Matches.length})`);
   }
 
-  if (title.length > 60) console.warn(`[seo-guard] Title exceeds 60 characters in ${route}: ${title.length}`);
-  if (description.length < 120 || description.length > 155) {
-    console.warn(`[seo-guard] Description must be 120-155 characters in ${route}: ${description.length}`);
+  if (isPropertyDetailRoute(route)) {
+    if (title.length > 60) throw new Error(`Listing title exceeds 60 characters in ${route}: ${title.length}`);
+    if (description.length < 140 || description.length > 160) {
+      throw new Error(`Listing description must be 140-160 characters in ${route}: ${description.length}`);
+    }
+    if (!/data-listing-ready=["']true["']/.test(html)) {
+      throw new Error(`Listing data is missing from prerendered HTML for ${route}`);
+    }
+    if (!/"@type"\s*:\s*"RealEstateListing"/.test(html)) {
+      throw new Error(`RealEstateListing JSON-LD is missing for ${route}`);
+    }
+  } else if (title.length > 60) {
+    console.warn(`[seo-guard] Title exceeds 60 characters in ${route}: ${title.length}`);
+  }
+  if (!isPropertyDetailRoute(route) && (description.length < 70 || description.length > 160)) {
+    console.warn(`[seo-guard] Description should be 70-160 characters in ${route}: ${description.length}`);
   }
 
   if (!route.startsWith('/blog/')) {
@@ -231,6 +319,25 @@ await new Promise(async (resolveReady) => {
 
 // Get all routes to prerender
 const routes = await getAllRoutes();
+const propertyRecords = routes.propertyRecords || [];
+const propertyRecordsBySlug = new Map(propertyRecords.map((property) => [property.slug, property]));
+const missingListingData = routes
+  .filter(isPropertyDetailRoute)
+  .map((route) => {
+    const slug = decodeURIComponent(route.slice('/properties/'.length));
+    const property = propertyRecordsBySlug.get(slug);
+    const seo = property ? buildPropertySeo(property) : null;
+    if (!(Number(property?.bedrooms) > 0)) {
+      console.warn(`[seo-guard] Bedroom count is missing for ${route}; using a property-specific title without a bedroom count.`);
+    }
+    const missing = [!property?.title && 'title', !seo?.area && 'neighbourhood'].filter(Boolean);
+    return missing.length ? `${route}: ${missing.join(', ')}` : '';
+  })
+  .filter(Boolean);
+if (missingListingData.length) {
+  preview.kill('SIGTERM');
+  throw new Error(`[prerender] Cannot emit listing SEO without complete listing data:\n- ${missingListingData.join('\n- ')}`);
+}
 console.log(`[prerender] Prerendering ${routes.length} routes...\n`);
 
 async function resolveBrowserLaunchConfig() {
@@ -294,18 +401,22 @@ const browser = await puppeteer.launch(await resolveBrowserLaunchConfig());
 
 let successCount = 0;
 let failCount = 0;
-let skippedCount = 0;
 
 for (const route of routes) {
-  const isDynamicPropertyRoute = /^\/properties\/(?!page\/)/.test(route);
+  const isDynamicPropertyRoute = isPropertyDetailRoute(route);
   const expectedCanonical = route.startsWith('/investment-brief/')
     ? null
     : getCanonicalUrl(route);
   const page = await browser.newPage();
+  const pageErrors = [];
+  page.on('pageerror', (error) => pageErrors.push(error));
   try {
     await page.evaluateOnNewDocument(() => {
       window.__PRERENDERING__ = true;
     });
+    await page.evaluateOnNewDocument((records) => {
+      window.__PRERENDER_PROPERTIES__ = records;
+    }, propertyRecords);
     // Set a reasonable viewport
     await page.setViewport({ width: 1280, height: 720 });
 
@@ -315,14 +426,19 @@ for (const route of routes) {
     // Require actual page content before capturing. Async pages expose a
     // false marker while loading; static pages only need their visible H1.
     await page.waitForFunction(
-      (canonicalUrl) => document.querySelector('h1')
+      (canonicalUrl, propertyRoute) => document.querySelector('h1')
         && document.title.trim()
         && document.querySelector('meta[name="description"]')?.content.trim()
         && (!canonicalUrl || document.querySelector('link[rel="canonical"]')?.href === canonicalUrl)
+        && (!propertyRoute || document.querySelector('[data-listing-ready="true"]'))
         && !document.querySelector('[data-prerender-ready="false"]'),
-      { timeout: isDynamicPropertyRoute ? 5000 : 20000 },
+      { timeout: isDynamicPropertyRoute ? 30000 : 20000 },
       expectedCanonical,
+      isDynamicPropertyRoute,
     );
+    if (pageErrors.length > 0) {
+      throw new Error(`Uncaught browser error on ${route}: ${pageErrors.map((error) => error.message).join('; ')}`);
+    }
     // Get the rendered HTML
     const html = await page.content();
     validateRenderedHtml(html, route);
@@ -336,13 +452,8 @@ for (const route of routes) {
     console.log(`  ✅ ${route}`);
     successCount++;
   } catch (e) {
-    if (isDynamicPropertyRoute && e.message.includes('Waiting failed:')) {
-      console.warn(`  ⚠️ ${route}: prerender timed out; Vercel will serve the SPA fallback.`);
-      skippedCount++;
-    } else {
-      console.error(`  ❌ ${route}: ${e.message}`);
-      failCount++;
-    }
+    console.error(`  ❌ ${route}: ${e.message}`);
+    failCount++;
   } finally {
     await page.close();
   }
@@ -352,6 +463,6 @@ await browser.close();
 preview.kill('SIGTERM');
 sanitizeBuiltAssets(resolve(__dirname, 'dist'));
 
-console.log(`\n[prerender] Done! ${successCount} succeeded, ${skippedCount} dynamic property pages deferred to the SPA, ${failCount} failed.`);
+console.log(`\n[prerender] Done! ${successCount} succeeded, ${failCount} failed.`);
 if (failCount > 0) process.exit(1);
 process.exit(0);

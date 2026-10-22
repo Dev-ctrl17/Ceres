@@ -14,7 +14,7 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Bed, Bath, CheckCircle, MessageCircle, Phone, Calendar, FileText, X, ChevronLeft, ChevronRight, Banknote, Home } from 'lucide-react';
 import supabase from '@/lib/supabaseClient';
 import { getOptimizedImageUrl } from '@/lib/supabaseService';
-import { generatePropertySchema, generateAEOContent } from '@/lib/structuredData';
+import { generatePropertySchema, generateAEOContent, generateFAQSchema } from '@/lib/structuredData';
 import { isUUID, isUsablePropertySlug } from '@/lib/slug.js';
 import { getCanonicalUrl } from '@/lib/siteConfig.js';
 import { buildPropertySeo } from '@/lib/propertySeo.js';
@@ -108,6 +108,35 @@ const PropertyDetailsPage = () => {
 
       setProperty(null);
       setLoading(true);
+      if (window.__PRERENDERING__ && Array.isArray(window.__PRERENDER_PROPERTIES__)) {
+        const record = window.__PRERENDER_PROPERTIES__.find((item) => item.slug === slug);
+        if (!record) {
+          console.error(`[seo-guard] No listing data was supplied for /properties/${slug}`);
+          setLoading(false);
+          document.dispatchEvent(new Event('render-event'));
+          return;
+        }
+
+        const otherProperties = window.__PRERENDER_PROPERTIES__.filter((item) => item.id !== record.id);
+        const targetPrice = Number(String(record.price || '').replace(/[^\d.]/g, ''));
+        const sameLocation = otherProperties.filter((item) => (
+          record.location && item.location?.toLowerCase().includes(record.location.toLowerCase())
+        ));
+        const priceMatches = sameLocation.filter((item) => {
+          const price = Number(String(item.price || '').replace(/[^\d.]/g, ''));
+          return targetPrice > 0 && price >= targetPrice * 0.5 && price <= targetPrice * 1.5;
+        });
+        const related = [...priceMatches, ...sameLocation, ...otherProperties.filter((item) => (
+          record.property_type && item.property_type === record.property_type
+        ))];
+        const selected = [...new Map(related.map((item) => [item.id, item])).values()].slice(0, 4);
+        setProperty(rewriteMediaContent(record, 'property-images'));
+        setSimilarProperties(rewriteMediaContent(selected, 'property-images'));
+        setLoading(false);
+        document.dispatchEvent(new Event('render-event'));
+        return;
+      }
+
       try {
         // Legacy UUID redirect (edge func /api/propertyRedirect.js on prod;
         // this guard covers local dev + non-Vercel hosts).
@@ -218,7 +247,7 @@ const PropertyDetailsPage = () => {
           <meta name="robots" content="noindex, nofollow" />
         </Helmet>
         <Header />
-        <main className="min-h-screen flex items-center justify-center" data-prerender-ready="true">
+        <main className="min-h-screen flex items-center justify-center" data-prerender-ready="true" data-listing-ready="false">
           <div className="text-center">
             <h1 className="text-2xl font-bold mb-4">Property not found</h1>
             <p className="text-muted-foreground mb-6">This listing may have been sold, moved, or is no longer available.</p>
@@ -260,6 +289,20 @@ const PropertyDetailsPage = () => {
   };
 
   const propertySeo = buildPropertySeo(property);
+  const bedroomCount = Number(property.bedrooms);
+  if (!property.slug || !property.title || !propertySeo.area) {
+    const error = new Error(`Listing data is incomplete for property route "${slug}".`);
+    console.error('[seo-guard]', error.message);
+    throw error;
+  }
+  if (!Number.isFinite(bedroomCount) || bedroomCount < 1) {
+    console.warn(`[seo-guard] Bedroom count is missing for property route "${slug}".`);
+  }
+  if (propertySeo.title.length > 60 || propertySeo.description.length < 140 || propertySeo.description.length > 160) {
+    const error = new Error(`Listing SEO metadata is outside the required length for property route "${slug}".`);
+    console.error('[seo-guard]', error.message);
+    throw error;
+  }
   const propertyTitle = String(property.title || propertySeo.listingName || 'Luxury Property').trim();
   const location = propertySeo.area || property.location || property.city || property.state || '';
 
@@ -326,12 +369,12 @@ const PropertyDetailsPage = () => {
   return (
     <>
       <Helmet>
-        <title>{`${propertyTitle} | ${company.name}`}</title>
+        <title>{propertySeo.title}</title>
         <meta name="description" content={propertySeo.description} />
         <link rel="canonical" href={canonicalUrl} />
         
         {/* Open Graph */}
-        <meta property="og:title" content={`${propertyTitle} | ${company.name}`} />
+        <meta property="og:title" content={propertySeo.title} />
         <meta property="og:description" content={propertySeo.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
@@ -341,7 +384,7 @@ const PropertyDetailsPage = () => {
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${propertyTitle} | ${company.name}`} />
+        <meta name="twitter:title" content={propertySeo.title} />
         <meta name="twitter:description" content={propertySeo.description} />
         <meta name="twitter:image" content={socialImage} />
         
@@ -358,7 +401,7 @@ const PropertyDetailsPage = () => {
 
       <Header />
 
-      <main className="py-12" data-prerender-ready="true">
+      <main className="py-12" data-prerender-ready="true" data-listing-ready="true">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-2">
