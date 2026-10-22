@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "sitemap": "node scripts/generate-sitemap.mjs",
     "seo:check": "node scripts/validate-sitemap.mjs && node scripts/audit-internal-links.mjs && node scripts/validate-structured-data.mjs",
+    "seo:http-check": "node scripts/audit-sitemap-http.mjs",
     "audit:egress": "node scripts/audit-rendered-egress.mjs",
     "indexnow": "node scripts/submit-indexnow.mjs",
     "images:check": "node scripts/check-property-images.mjs",

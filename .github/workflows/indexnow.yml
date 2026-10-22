@@ -1,0 +1,30 @@
+name: IndexNow after production deployment
+
+on:
+  deployment_status:
+
+permissions:
+  contents: read
+
+jobs:
+  submit-indexnow:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.deployment.sha }}
+          fetch-depth: 0
+      - name: Submit new and changed sitemap URLs
+        working-directory: Apps/web
+        env:
+          INDEXNOW_PREVIOUS_REF: ${{ github.event.deployment.sha }}^
+          INDEXNOW_SITEMAP_URL: https://www.luxurypropertiesltd.com.ng/sitemap.xml
+        run: |
+          node -e "const fs=require('fs'); const path='public'; const names=fs.readdirSync(path).filter(name=>/^[a-f0-9]{32}\.txt$/i.test(name)); const valid=names.filter(name=>fs.readFileSync(path+'/'+name,'utf8').trim()===name.slice(0,-4)); if(valid.length!==1) throw new Error('Expected exactly one valid public IndexNow key file'); console.log('INDEXNOW_KEY='+valid[0].slice(0,-4))" >> "$GITHUB_ENV"
+      - name: Ping changed URLs
+        working-directory: Apps/web
+        env:
+          INDEXNOW_PREVIOUS_REF: ${{ github.event.deployment.sha }}^
+          INDEXNOW_SITEMAP_URL: https://www.luxurypropertiesltd.com.ng/sitemap.xml
+        run: node scripts/submit-indexnow.mjs

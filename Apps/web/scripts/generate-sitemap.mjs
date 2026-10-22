@@ -24,8 +24,6 @@ const LANDING_SLUGS = new Map([
   ['house-for-sale-lekki', 'houses-for-sale-lekki'],
   ['shortlet-apartment-lagos', 'shortlet-apartments-lagos'],
 ]);
-const NON_INDEXABLE_ROUTES = new Set(['/refer-and-earn']);
-
 function loadEnv() {
   const envPath = resolve(__dirname, '../.env');
   if (!existsSync(envPath)) return;
@@ -78,15 +76,20 @@ export async function fetchSecondaryRoutes() {
 
   const supabase = createClient(url, anon);
   const [{ data: proposals, error: proposalsError }, { data: projects, error: projectsError }] = await Promise.all([
-    supabase.from('proposals').select('slug').eq('status', 'published'),
+    supabase.from('proposals').select('slug, updated_at').eq('status', 'published'),
     supabase.from('ongoing_projects').select('id'),
   ]);
   if (proposalsError) throw new Error(`Supabase proposal query failed: ${proposalsError.message}`);
   if (projectsError) throw new Error(`Supabase project query failed: ${projectsError.message}`);
 
   return [
-    ...(proposals || []).filter((item) => item.slug).map((item) => `/client-success/${encodeURIComponent(item.slug)}`),
-    ...(projects || []).filter((item) => item.id).map((item) => `/ongoing-projects/${encodeURIComponent(item.id)}`),
+    ...(proposals || []).filter((item) => item.slug).map((item) => ({
+      route: `/client-success/${encodeURIComponent(item.slug)}`,
+      updatedAt: item.updated_at,
+    })),
+    ...(projects || []).filter((item) => item.id).map((item) => ({
+      route: `/ongoing-projects/${encodeURIComponent(item.id)}`,
+    })),
   ];
 }
 
@@ -97,16 +100,22 @@ function validLastmod(value) {
 }
 
 export function buildSitemap(propertyRecords = [], secondaryRoutes = []) {
-  const routes = new Set(STATIC_ROUTES.filter((route) => !NON_INDEXABLE_ROUTES.has(route)));
+  const routes = new Set(STATIC_ROUTES);
   const lastmodByRoute = new Map();
 
-  for (const route of secondaryRoutes) routes.add(route);
+  for (const item of secondaryRoutes) {
+    const route = typeof item === 'string' ? item : item.route;
+    if (!route) continue;
+    routes.add(route);
+    const lastmod = validLastmod(item.updatedAt);
+    if (lastmod) lastmodByRoute.set(route, lastmod);
+  }
 
   for (const post of blogPostsData) {
     if (post.slug) {
       const route = `/blog/${post.slug}`;
       routes.add(route);
-      const lastmod = validLastmod(post.dateModified || post.datePublished);
+      const lastmod = validLastmod(post.dateModified);
       if (lastmod) lastmodByRoute.set(route, lastmod);
     }
   }
@@ -121,13 +130,17 @@ export function buildSitemap(propertyRecords = [], secondaryRoutes = []) {
   const properties = propertyRecords.map((property) =>
     typeof property === 'string' ? { slug: property } : property
   );
+  let latestPropertyLastmod = '';
   for (const property of properties) {
     const { slug } = property || {};
     if (slug && slug === generateSlug(slug) && !REDIRECTED_PROPERTY_SLUGS.has(slug)) {
       const route = `/properties/${slug}`;
       routes.add(route);
       const lastmod = validLastmod(property.updated_at);
-      if (lastmod) lastmodByRoute.set(route, lastmod);
+      if (lastmod) {
+        lastmodByRoute.set(route, lastmod);
+        if (!latestPropertyLastmod || lastmod > latestPropertyLastmod) latestPropertyLastmod = lastmod;
+      }
     }
   }
 
@@ -135,6 +148,13 @@ export function buildSitemap(propertyRecords = [], secondaryRoutes = []) {
   for (let page = 2; page <= pageCount; page++) routes.add(`/properties/page/${page}`);
 
   const urls = [...routes]
+    .map((route) => {
+      const isPropertyCollection = route === '/properties' || route.startsWith('/properties/page/');
+      if (!lastmodByRoute.has(route) && isPropertyCollection && latestPropertyLastmod) {
+        lastmodByRoute.set(route, latestPropertyLastmod);
+      }
+      return route;
+    })
     .map((route) => getCanonicalUrl(route))
     .filter((url, index, all) => all.indexOf(url) === index)
     .sort()
