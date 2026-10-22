@@ -73,7 +73,7 @@ export async function authorizeUpload(req, supabase, entity) {
   if (token) {
     const { data, error } = await supabase.auth.getUser(token);
     if (error || !data?.user) {
-      return { ok: false, status: 401, error: 'A valid sign-in is required.' };
+      return { ok: false, status: 401, error: 'Your session is invalid or expired. Please sign in again.' };
     }
     const { data: profile, error: profileError } = await supabase
       .from('profiles')
@@ -91,7 +91,7 @@ export async function authorizeUpload(req, supabase, entity) {
   }
 
   if (!PUBLIC_UPLOAD_ENTITIES.has(entity)) {
-    return { ok: false, status: 401, error: 'A valid sign-in is required.' };
+    return { ok: false, status: 401, error: 'Sign in is required to upload this media.' };
   }
   const limited = await consumePublicUploadLimit(req, supabase);
   return limited.ok

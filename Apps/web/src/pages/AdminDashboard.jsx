@@ -617,15 +617,15 @@ const PropertiesManager = () => {
       const propertyId = editing || globalThis.crypto.randomUUID();
       if (imageFiles.length > 0) {
         toast.info(`Uploading ${imageFiles.length} image(s)...`);
-        uploadedUrls = await Promise.all(imageFiles.map((file, index) =>
-          uploadFile("property-images", file, "", {
+        for (let index = 0; index < imageFiles.length; index += 1) {
+          uploadedUrls.push(await uploadFile("property-images", imageFiles[index], "", {
             requireAuth: true,
             entity: "properties",
             entityId: propertyId,
             sortOrder: existingImages.length + index,
             altText: `${data.title} property image ${existingImages.length + index + 1}`,
-          })
-        ));
+          }));
+        }
       }
 
       const allImages = [...existingImages, ...uploadedUrls];
@@ -3181,16 +3181,15 @@ const OngoingProjectsManager = () => {
       let uploadedUrls = [];
       if (imageFiles.length > 0) {
         toast.info(`Uploading ${imageFiles.length} image(s)...`);
-
-        uploadedUrls = await Promise.all(imageFiles.map((file, index) =>
-          uploadFile("ongoing-project-images", file, "", {
+        for (let index = 0; index < imageFiles.length; index += 1) {
+          uploadedUrls.push(await uploadFile("ongoing-project-images", imageFiles[index], "", {
             requireAuth: true,
             entity: "ongoing_projects",
             entityId: projectId,
             sortOrder: existingImages.length + index,
             altText: `${data.name} ongoing project image ${existingImages.length + index + 1}`,
-          })
-        ));
+          }));
+        }
       }
 
       // existingImages are already full public URLs (set during openEdit)

@@ -64,8 +64,32 @@ async function getAccessToken(requireAuth) {
   if (!requireAuth) return null;
   const { data, error } = await supabase.auth.getSession();
   if (error) throw new Error(`Unable to verify administrator session: ${error.message}`);
-  if (!data.session?.access_token) throw new Error('Sign in as an administrator to upload media.');
+  if (!data.session?.access_token) throw new Error('Sign in is required to upload this media.');
   return data.session.access_token;
+}
+
+async function fetchWithSessionRefresh(url, options, accessToken, requireAuth) {
+  const send = (token) => fetch(url, {
+    ...options,
+    headers: {
+      ...options.headers,
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+  });
+  const response = await send(accessToken);
+  if (response.status !== 401 || !requireAuth) {
+    return { response, accessToken };
+  }
+
+  const { data, error } = await supabase.auth.refreshSession();
+  if (error || !data.session?.access_token) {
+    throw new Error('Your session expired or could not be refreshed. Please sign in again.');
+  }
+  const refreshedToken = data.session.access_token;
+  return {
+    response: await send(refreshedToken),
+    accessToken: refreshedToken,
+  };
 }
 
 function defaultAltText(resourceType, entity) {
@@ -100,11 +124,10 @@ export async function uploadToCloudinary(bucket, file, {
   }
 
   const duration = resourceType === 'video' ? await getVideoDuration(file) : undefined;
-  const token = await getAccessToken(requireAuth);
+  const accessToken = await getAccessToken(requireAuth);
   const headers = { 'Content-Type': 'application/json' };
-  if (token) headers.Authorization = `Bearer ${token}`;
 
-  const signResponse = await fetch('/api/cloudinary/sign-upload', {
+  const signResult = await fetchWithSessionRefresh('/api/cloudinary/sign-upload', {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -118,7 +141,9 @@ export async function uploadToCloudinary(bucket, file, {
         ...(duration === undefined ? {} : { duration }),
       },
     }),
-  });
+  }, accessToken, requireAuth);
+  const signResponse = signResult.response;
+  const currentAccessToken = signResult.accessToken;
   const signed = await signResponse.json().catch(() => ({}));
   if (!signResponse.ok) {
     throw new Error(signed.error || `Unable to prepare upload (${signResponse.status}).`);
@@ -146,7 +171,7 @@ export async function uploadToCloudinary(bucket, file, {
     throw new Error(uploaded.error?.message || `Cloudinary upload failed (${uploadResponse.status}).`);
   }
 
-  const completeResponse = await fetch('/api/cloudinary/complete-upload', {
+  const completeResult = await fetchWithSessionRefresh('/api/cloudinary/complete-upload', {
     method: 'POST',
     headers,
     body: JSON.stringify({
@@ -156,7 +181,8 @@ export async function uploadToCloudinary(bucket, file, {
       alt_text: altText || defaultAltText(resourceType, entity),
       assets: [uploaded],
     }),
-  });
+  }, currentAccessToken, requireAuth);
+  const completeResponse = completeResult.response;
   const completed = await completeResponse.json().catch(() => ({}));
   if (!completeResponse.ok) {
     throw new Error(completed.error || `Unable to save uploaded media metadata (${completeResponse.status}).`);
