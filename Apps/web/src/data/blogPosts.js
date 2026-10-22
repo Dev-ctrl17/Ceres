@@ -211,7 +211,7 @@ export const blogPostsData = [
     readTime: "11 min read",
     category: "Legal Guide",
     excerpt: "Understanding the difference between Certificate of Occupancy and Governor's Consent in Nigerian real estate. Which do you need and how to obtain the right documentation.",
-    metaDescription: "Learn how a Certificate of Occupancy differs from Governor's Consent in Nigeria, what each document does, and what Lagos buyers should verify before purchase.",
+    metaDescription: "Compare a Certificate of Occupancy with Governor's Consent in Nigeria, learn how each affects transfers, and what Lagos buyers should verify before purchase.",
     ogImage: "",
     datePublished: "2026-06-16",
     dateModified: "2026-10-10"

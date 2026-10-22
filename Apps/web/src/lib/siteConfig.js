@@ -30,8 +30,46 @@ export function getCanonicalUrl(path = '/') {
   return `${DEFAULT_SITE_URL}${normalizedPath}`;
 }
 
+function decodeHtmlEntities(value) {
+  const entities = {
+    amp: '&',
+    apos: "'",
+    gt: '>',
+    lt: '<',
+    nbsp: ' ',
+    quot: '"',
+    rsquo: '\u2019',
+    lsquo: '\u2018',
+    rdquo: '\u201d',
+    ldquo: '\u201c',
+    ndash: '\u2013',
+    mdash: '\u2014',
+    hellip: '\u2026',
+  };
+  return String(value || '').replace(/&(#x[\da-f]+|#\d+|[a-z]+);/gi, (entity, value) => {
+    if (value[0] === '#') {
+      const codePoint = value[1].toLowerCase() === 'x'
+        ? Number.parseInt(value.slice(2), 16)
+        : Number.parseInt(value.slice(1), 10);
+      return Number.isFinite(codePoint) && codePoint > 0 && codePoint <= 0x10ffff
+        ? String.fromCodePoint(codePoint)
+        : entity;
+    }
+    return entities[value.toLowerCase()] ?? entity;
+  });
+}
+
+function trimAtWordBoundary(value, maxLength) {
+  if (value.length <= maxLength) return value;
+  const prefix = value.slice(0, Math.max(1, maxLength)).trimEnd();
+  const boundary = prefix.lastIndexOf(' ');
+  return (boundary > 0 ? prefix.slice(0, boundary) : prefix)
+    .replace(/[\s.,;:!?&–—-]+$/u, '')
+    .trimEnd();
+}
+
 export function buildSeoTitle(title, maxLength = 60) {
-  let clean = String(title || '')
+  let clean = decodeHtmlEntities(title)
     .replace(/\p{Extended_Pictographic}/gu, '')
     .replace(/\s+/g, ' ')
     .replace(/Luxury Properties Ltd/gi, '')
@@ -45,16 +83,14 @@ export function buildSeoTitle(title, maxLength = 60) {
   }
   clean = clean.replace(/\b[A-Z]{2,}\b/g, (word) => `${word[0]}${word.slice(1).toLowerCase()}`);
 
-  const suffix = '| Luxury Properties Ltd';
-  const budget = Math.max(1, maxLength - suffix.length - 1);
-  if (clean.length > budget) {
-    clean = `${clean.slice(0, Math.max(1, budget - 3)).trimEnd()}...`;
-  }
-  return `${clean || 'Luxury Real Estate'} ${suffix}`;
+  const suffix = ' | Luxury Properties Ltd';
+  const budget = Math.max(1, maxLength - suffix.length);
+  clean = trimAtWordBoundary(clean, budget);
+  return `${clean || 'Luxury Real Estate'}${suffix}`;
 }
 
 export function buildSeoDescription(description, fallback = '') {
-  const cleanText = (value) => String(value || '')
+  const cleanText = (value) => decodeHtmlEntities(value)
     .replace(/\p{Extended_Pictographic}/gu, '')
     .replace(/\s+/g, ' ')
     .trim();
@@ -67,7 +103,7 @@ export function buildSeoDescription(description, fallback = '') {
   while (clean.length < 120) {
     clean = `${clean}${clean ? ' ' : ''}Contact Luxury Properties Ltd for verified information and private viewing arrangements.`;
   }
-  if (clean.length > 155) clean = `${clean.slice(0, 152).trimEnd()}...`;
+  if (clean.length > 155) clean = trimAtWordBoundary(clean, 155);
   return clean;
 }
 
