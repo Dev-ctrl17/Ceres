@@ -12,6 +12,7 @@ export const cspDirectives = {
     "https://clarity.ms",
     "https://*.clarity.ms",
     "https://challenges.cloudflare.com",
+    "https://static.cloudflareinsights.com",
     "https://elfsightcdn.com",
     "https://lrmljudwbzjawafuztwp.supabase.co",
   ],
@@ -43,6 +44,7 @@ export const cspDirectives = {
     "https://clarity.ms",
     "https://*.clarity.ms",
     "https://challenges.cloudflare.com",
+    "https://cloudflareinsights.com",
   ],
   'frame-src': [
     "'self'",
