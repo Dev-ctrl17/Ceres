@@ -24,6 +24,19 @@ const LANDING_SLUGS = new Map([
   ['house-for-sale-lekki', 'houses-for-sale-lekki'],
   ['shortlet-apartment-lagos', 'shortlet-apartments-lagos'],
 ]);
+
+function getSupabaseCredentials() {
+  const url = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
+  const anon = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
+  const missing = [];
+  if (!url) missing.push('VITE_SUPABASE_URL or SUPABASE_URL');
+  if (!anon) missing.push('VITE_SUPABASE_ANON_KEY or SUPABASE_ANON_KEY');
+  if (missing.length) {
+    throw new Error(`Missing Supabase environment variable(s): ${missing.join('; ')}. Refusing to write an incomplete sitemap.`);
+  }
+  return { url, anon };
+}
+
 function loadEnv() {
   const envPath = resolve(__dirname, '../.env');
   if (!existsSync(envPath)) return;
@@ -48,12 +61,7 @@ function isIndexableLanding(slug) {
 
 export async function fetchPropertySlugs() {
   loadEnv();
-  const url = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-  const anon = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
-  if (!url || !anon) {
-    throw new Error('Missing Supabase credentials; refusing to write an incomplete sitemap.');
-  }
-
+  const { url, anon } = getSupabaseCredentials();
   const supabase = createClient(url, anon);
   const { data, count, error } = await supabase.from('properties').select('slug, updated_at', { count: 'exact' });
   if (error) throw new Error(`Supabase property query failed: ${error.message}`);
@@ -70,10 +78,7 @@ export async function fetchPropertySlugs() {
 
 export async function fetchSecondaryRoutes() {
   loadEnv();
-  const url = process.env.VITE_SUPABASE_URL || process.env.SUPABASE_URL;
-  const anon = process.env.VITE_SUPABASE_ANON_KEY || process.env.SUPABASE_ANON_KEY;
-  if (!url || !anon) throw new Error('Missing Supabase credentials; refusing to write an incomplete sitemap.');
-
+  const { url, anon } = getSupabaseCredentials();
   const supabase = createClient(url, anon);
   const [{ data: proposals, error: proposalsError }, { data: projects, error: projectsError }] = await Promise.all([
     supabase.from('proposals').select('slug, updated_at').eq('status', 'published'),
