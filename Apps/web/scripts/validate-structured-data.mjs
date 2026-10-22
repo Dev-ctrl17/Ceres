@@ -53,10 +53,24 @@ function visit(value, file, context = '') {
     }
 
     if (['Article', 'BlogPosting', 'NewsArticle'].includes(type)) {
-      for (const required of ['headline', 'image', 'datePublished', 'author', 'publisher']) {
+      for (const required of ['headline', 'description', 'image', 'datePublished', 'author', 'publisher']) {
         if (value[required] === undefined || value[required] === '') {
           failures.push(`${label}: missing ${required}`);
         }
+      }
+      for (const required of ['dateModified', 'mainEntityOfPage', 'inLanguage']) {
+        if (value[required] === undefined || value[required] === '') {
+          failures.push(`${label}: missing ${required}`);
+        }
+      }
+      if (type === 'BlogPosting' && !['Person', 'Organization'].includes(value.author?.['@type'])) {
+        failures.push(`${label}: author must be a Person or Organization`);
+      }
+      if (type === 'BlogPosting' && !value.publisher?.logo) {
+        failures.push(`${label}: publisher must include a logo`);
+      }
+      if (type === 'BlogPosting' && value.inLanguage !== 'en-NG') {
+        failures.push(`${label}: inLanguage must be en-NG`);
       }
     }
     if (type === 'Offer' && (!value.priceCurrency || value.priceCurrency !== 'NGN')) {
@@ -64,6 +78,16 @@ function visit(value, file, context = '') {
     }
     if (['Residence', 'House', 'Apartment', 'RealEstateListing'].includes(type) && !value.name) {
       failures.push(`${label}: missing name`);
+    }
+    if (type === 'RealEstateListing') {
+      if (!value.description) failures.push(`${label}: missing description`);
+      if (!value.image) failures.push(`${label}: missing image`);
+      if (!value.address?.addressLocality) failures.push(`${label}: missing addressLocality`);
+      if (value.address?.addressRegion !== 'Lagos') failures.push(`${label}: addressRegion must be Lagos`);
+      if (value.address?.addressCountry !== 'NG') failures.push(`${label}: addressCountry must be NG`);
+      if (value.seller?.['@type'] !== 'RealEstateAgent') failures.push(`${label}: seller must be a RealEstateAgent`);
+      if (!value.offers) failures.push(`${label}: missing price offer`);
+      if (value.offers?.availability !== 'https://schema.org/InStock') failures.push(`${label}: missing listing availability`);
     }
     return;
   }
@@ -74,6 +98,22 @@ for (const path of getHtmlFiles(distDir)) {
   const html = readFileSync(path, 'utf8');
   if (!/<h1\b/i.test(html)) continue;
   pageCount++;
+  if (/cookie-policy/i.test(file)) {
+    if (!/"@type"\s*:\s*"WebPage"/.test(html)) {
+      failures.push(`${file}: cookie policy must include WebPage JSON-LD`);
+    }
+    if (/"@type"\s*:\s*"(?:Article|BlogPosting|NewsArticle)"/.test(html)) {
+      failures.push(`${file}: cookie policy must not include Article JSON-LD`);
+    }
+  }
+  if (/blog\//i.test(file) && !/^blog\/(?:index\.html|listicle\/index\.html)$/i.test(file)) {
+    if (/\[author name to be added\]/i.test(html)) {
+      failures.push(`${file}: author placeholder must be replaced`);
+    }
+    if (!/"@type"\s*:\s*"BlogPosting"/.test(html)) {
+      failures.push(`${file}: missing BlogPosting JSON-LD`);
+    }
+  }
   for (const match of html.matchAll(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi)) {
     blockCount++;
     try {

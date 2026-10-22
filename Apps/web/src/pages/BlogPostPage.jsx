@@ -84,21 +84,36 @@ const BlogPostPage = () => {
     ? post.metaDescription
     : buildSeoDescription(post.metaDescription, 'Explore verified luxury real estate insights from Luxury Properties Ltd.');
   const socialImage = buildImageUrl(post.ogImage || '/og-image.png');
-  const faqSchema = post.faqSchema?.length ? generateFAQSchema(post.faqSchema) : null;
+  const authorName = String(post.authorName || postMetadata.authorName || '').trim();
+  if (/^\[author name to be added\]$/i.test(authorName)) {
+    throw new Error(`Blog author placeholder must be replaced in CMS data for "${post.slug}".`);
+  }
+  const visibleFaqs = (post.content || [])
+    .filter((block) => block.type === 'faq' && Array.isArray(block.items))
+    .flatMap((block) => block.items)
+    .filter(({ q, a }) => typeof q === 'string' && typeof a === 'string')
+    .map(({ q, a }) => ({ question: q, answer: a }));
+  const faqSchema = visibleFaqs.length ? generateFAQSchema(visibleFaqs) : null;
   const schemaGraph = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Article',
-        '@id': `${canonicalUrl}#article`,
+        '@type': 'BlogPosting',
+        '@id': `${canonicalUrl}#blogposting`,
         mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
         headline: post.title,
         description,
         image: socialImage,
-        author: post.authorName
-          ? { '@type': 'Person', name: post.authorName }
-          : { '@id': `${getCanonicalUrl('/')}#organization` },
-        publisher: { '@id': `${getCanonicalUrl('/')}#organization` },
+        author: authorName
+          ? { '@type': 'Person', name: authorName }
+          : { '@type': 'Organization', name: 'Luxury Properties Ltd', url: getCanonicalUrl('/') },
+        publisher: {
+          '@type': 'Organization',
+          name: 'Luxury Properties Ltd',
+          url: getCanonicalUrl('/'),
+          logo: { '@type': 'ImageObject', url: getCanonicalUrl('/og-image.png') },
+        },
+        inLanguage: 'en-NG',
         datePublished: post.datePublished || postMetadata.datePublished || undefined,
         dateModified: post.dateModified || postMetadata.dateModified || undefined,
       },
@@ -125,7 +140,7 @@ const BlogPostPage = () => {
         <meta name="twitter:image" content={socialImage} />
         <meta property="article:published_time" content={post.datePublished} />
         <meta property="article:modified_time" content={post.dateModified} />
-        <meta property="article:author" content="Luxury Properties Ltd" />
+        <meta property="article:author" content={authorName || 'Luxury Properties Ltd'} />
 
         {/* JSON-LD Article Schema */}
         <script type="application/ld+json">{JSON.stringify(schemaGraph)}</script>

@@ -208,20 +208,20 @@ const BlogPostLayout = ({ post }) => {
             {post.readTime}
           </span>
         </div>
+        {post.authorName && (
+          <p className="mt-3 text-sm text-muted-foreground">
+            Author: {post.authorName}
+          </p>
+        )}
         {post.authorName !== undefined && (
-          <>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Author: {post.authorName || 'Author name to be added'}
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Last updated: {new Intl.DateTimeFormat('en-NG', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                timeZone: 'UTC',
-              }).format(new Date(`${post.dateModified || post.date}T00:00:00Z`))}
-            </p>
-          </>
+          <p className="text-sm text-muted-foreground">
+            Last updated: {new Intl.DateTimeFormat('en-NG', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              timeZone: 'UTC',
+            }).format(new Date(`${post.dateModified || post.date}T00:00:00Z`))}
+          </p>
         )}
       </header>
 

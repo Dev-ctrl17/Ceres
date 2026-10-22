@@ -56,6 +56,38 @@ function collectJsonLdValues(value, values = []) {
   return values;
 }
 
+function getVisibleText(html) {
+  return decodeHtmlEntities(html
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, ' ')
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, ' ')
+    .replace(/<[^>]+>/g, ' '))
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLocaleLowerCase();
+}
+
+function filterInvisibleFaqSchemas(value, visibleText) {
+  if (Array.isArray(value)) {
+    return value
+      .map((item) => filterInvisibleFaqSchemas(item, visibleText))
+      .filter((item) => item !== null);
+  }
+  if (!value || typeof value !== 'object') return value;
+  if (value['@type'] === 'FAQPage') {
+    const questions = Array.isArray(value.mainEntity) ? value.mainEntity : [];
+    const matchesVisibleContent = questions.length > 0 && questions.every((question) => (
+      question?.name
+      && question.acceptedAnswer?.text
+      && visibleText.includes(decodeHtmlEntities(String(question.name)).toLocaleLowerCase())
+      && visibleText.includes(decodeHtmlEntities(String(question.acceptedAnswer.text)).toLocaleLowerCase())
+    ));
+    if (!matchesVisibleContent) return null;
+  }
+  return Object.fromEntries(Object.entries(value)
+    .map(([key, child]) => [key, filterInvisibleFaqSchemas(child, visibleText)])
+    .filter(([, child]) => child !== null));
+}
+
 function setMetaTag(html, attribute, name, value) {
   const pattern = new RegExp(`<meta\\b(?=[^>]*\\b${attribute}\\s*=["']${name}["'])[^>]*>`, 'gi');
   const tag = `<meta ${attribute}="${name}" content="${escapeAttribute(value)}">`;
@@ -83,7 +115,7 @@ function normalizeStaticMetadata(html, filePath) {
   const image = getMetaContent(html, 'property', 'og:image');
   const socialImage = buildImageUrl(image || '/og-image.png');
   const isBlog = /[\\/]blog[\\/]/i.test(filePath)
-    && !/[\\/]blog[\\/](?:index\.html|comparison[\\/]index\.html|listicle[\\/]index\.html)$/i.test(filePath);
+    && !/[\\/]blog[\\/](?:index\.html|listicle(?:[\\/]index\.html)?)$/i.test(filePath);
   const canonicalTag = `<link rel="canonical" href="${escapeAttribute(normalizedCanonical)}">`;
   let output = html.replace(/<title[^>]*>[\s\S]*?<\/title>/gi, '');
   output = output.replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, '');
@@ -105,24 +137,31 @@ function normalizeStaticMetadata(html, filePath) {
   const blogSlug = new URL(normalizedCanonical).pathname.split('/').filter(Boolean).at(-1);
   const post = blogPostsData.find((item) => item.slug === blogSlug);
   let hasBlogPosting = false;
-  if (isBlog && post) {
+  if (isBlog) {
+    if (/\[author name to be added\]/i.test(html) || /\[author name to be added\]/i.test(post?.authorName || '')) {
+      throw new Error(`[seo-guard] Blog author placeholder found in ${filePath}`);
+    }
+    const visibleText = getVisibleText(html);
     output = output.replace(/(<script\b[^>]*type=["']application\/ld\+json["'][^>]*>)([\s\S]*?)(<\/script>)/gi, (tag, open, json, close) => {
       try {
-        const schema = JSON.parse(json);
+        const schema = filterInvisibleFaqSchemas(JSON.parse(json), visibleText);
+        if (!schema) return '';
         const enrichArticle = (value) => {
           if (!value || typeof value !== 'object') return;
           if (Array.isArray(value)) return value.forEach(enrichArticle);
           if (['Article', 'BlogPosting', 'NewsArticle'].includes(value['@type'])) {
             value['@type'] = 'BlogPosting';
             value['@id'] ||= `${normalizedCanonical}#blogposting`;
-            value.headline ||= post.title;
-            value.description ||= post.metaDescription || description;
-            value.image ||= buildImageUrl(post.ogImage || '/og-image.png');
-            value.datePublished ||= post.datePublished;
-            value.dateModified ||= post.dateModified || post.datePublished;
+            value.headline ||= post?.title || title;
+            value.description ||= post?.metaDescription || description;
+            value.image ||= buildImageUrl(post?.ogImage || image || '/og-image.png');
+            value.datePublished ||= post?.datePublished;
+            value.dateModified ||= post?.dateModified || post?.datePublished;
             value.mainEntityOfPage ||= { '@type': 'WebPage', '@id': normalizedCanonical };
             if (!value.author?.['@type']) {
-              value.author = { '@type': 'Organization', name: 'Luxury Properties Ltd', url: getCanonicalUrl('/') };
+              value.author = post?.authorName
+                ? { '@type': 'Person', name: post.authorName }
+                : { '@type': 'Organization', name: 'Luxury Properties Ltd', url: getCanonicalUrl('/') };
             }
             if (!value.publisher?.logo) {
               value.publisher = {
@@ -146,7 +185,7 @@ function normalizeStaticMetadata(html, filePath) {
     });
   }
 
-  if (isBlog && !post) {
+  if (isBlog && !post && !hasBlogPosting) {
     throw new Error(`[seo-guard] No blog metadata found for ${normalizedCanonical}`);
   }
   if (isBlog && post && !hasBlogPosting) {
