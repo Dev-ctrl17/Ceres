@@ -38,6 +38,10 @@ const PropertiesPage = () => {
   const { properties, loading, total } = useProperties({ ...appliedFilters, page });
   const canonicalUrl = getCanonicalUrl(page > 1 ? `/properties/page/${page}` : '/properties');
   const pageCount = Math.ceil(total / 24);
+  const pageTitle = page > 1 ? `Luxury Homes for Sale in Lagos (Page ${page}) | Luxury Properties Ltd` : 'Luxury Homes for Sale in Lagos | Luxury Properties Ltd';
+  const pageDescription = page > 1
+    ? `Explore page ${page} of verified luxury homes, apartments, duplexes and investment properties for sale and rent in Lagos, Abuja and across Nigeria.`
+    : 'Browse our complete collection of verified luxury properties for sale and rent in Lagos, Abuja, and across Nigeria. Filter by location, type, and budget.';
 
   const handleSearch = () => {
     setAppliedFilters(filters);
@@ -46,18 +50,18 @@ const PropertiesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Luxury Homes for Sale in Lagos | Luxury Properties Ltd</title>
-        <meta name="description" content="Browse our complete collection of verified luxury properties for sale and rent in Lagos, Abuja, and across Nigeria. Filter by location, type, and budget." />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content="Browse Properties for Sale & Rent in Lagos | Luxury Properties Ltd" />
-        <meta property="og:description" content="Browse our complete collection of verified luxury properties for sale and rent across Nigeria. Filter by location, type, and budget." />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content="Luxury Properties Ltd" />
         <meta property="og:locale" content="en_NG" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Browse Properties for Sale & Rent in Lagos | Luxury Properties Ltd" />
-        <meta name="twitter:description" content="Browse verified luxury properties for sale and rent across Nigeria." />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
 
         {/* JSON-LD BreadcrumbList Schema */}
         <script type="application/ld+json">

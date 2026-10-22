@@ -88,6 +88,7 @@ for (const sitemapUrl of urls) {
   const h1Count = [...html.matchAll(/<h1\b[^>]*>/gi)].length;
   if (h1Count !== 1) failures.push(`Sitemap page must have exactly one H1 (${h1Count} found): ${sitemapUrl}`);
   if (titleMatches.length !== 1 || !title) failures.push(`Sitemap page must have exactly one non-empty title: ${sitemapUrl}`);
+  if (title.includes('...') || title.includes('…')) failures.push(`Sitemap page title must not contain an ellipsis: ${sitemapUrl}`);
   if (descriptionTags.length !== 1 || descriptionValue.length < 70 || descriptionValue.length > 160) {
     failures.push(`Sitemap page must have exactly one meta description of 70-160 characters: ${sitemapUrl}`);
   }

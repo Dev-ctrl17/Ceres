@@ -32,8 +32,10 @@ test('builds a self-consistent heading, title, transaction description and type 
   });
 
   assert.equal(seo.heading, '5-Bedroom Luxury Home in Ikoyi - 2 Kitchens, 2-Bedroom BQ');
-  assert.equal(seo.title, seo.heading);
-  assert.match(seo.description, /5-bedroom luxury home for sale in Ikoyi, Lagos\./);
+  assert.match(seo.title, /^5-Bedroom Luxury Home in Ikoyi \+2K \| Luxury Properties Ltd$/);
+  assert.ok(seo.title.length <= 60);
+  assert.doesNotMatch(seo.title, /\.{3}|…/);
+  assert.match(seo.description, /5-bedroom luxury home in Ikoyi, Lagos\./);
   assert.match(seo.description, /₦2,000,000,000/);
 });
 
@@ -47,8 +49,21 @@ test('uses the brand suffix when it fits and falls back to the heading when it d
     property_type: 'Detached',
     bedrooms: 5,
   });
-  assert.equal(long.title, long.heading);
   assert.ok(long.title.length <= 60);
+  assert.ok(long.title.endsWith(' | Luxury Properties Ltd'));
+  assert.doesNotMatch(long.title, /\.{3}|…/);
+});
+
+test('truncates long title locations at a word boundary without an ellipsis', () => {
+  const seo = buildPropertySeo({
+    title: 'Luxury home',
+    address: 'A Very Long Neighborhood Name That Needs Truncation, Lagos',
+    property_type: 'Detached',
+    bedrooms: 4,
+  });
+
+  assert.ok(seo.title.length <= 60);
+  assert.doesNotMatch(seo.title, /\.{3}|…/);
 });
 
 test('distinguishes the current Ikoyi heading collision groups', () => {
@@ -65,6 +80,7 @@ test('distinguishes the current Ikoyi heading collision groups', () => {
   assert.equal(new Set(generated.map((seo) => seo.heading)).size, listings.length);
   assert.equal(new Set(generated.map((seo) => seo.title)).size, listings.length);
   assert.ok(generated.every((seo) => seo.title.length <= 60));
+  assert.ok(generated.every((seo) => !/\.{3}|…/.test(seo.title)));
 });
 
 test('normalizes the misspelled EXQUIISITE slug for internal links', () => {
