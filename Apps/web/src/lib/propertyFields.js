@@ -1,3 +1,5 @@
+export const PUBLIC_PROPERTY_STATUS = 'Available';
+
 export const PROPERTY_CARD_COLUMNS = [
   'id',
   'slug',

@@ -266,12 +266,19 @@ export const blogPostsData = [
   }
 ];
 
+const postContentLoaders = typeof import.meta.glob === 'function'
+  ? import.meta.glob('./posts/*.js')
+  : null;
+
 // Lazy load full post content
 export async function loadPostContent(slug) {
-  try {
+  if (!blogPostsData.some((post) => post.slug === slug)) return null;
+  const loadPost = postContentLoaders?.[`./posts/${slug}.js`];
+  if (!loadPost) {
+    if (postContentLoaders) return null;
     const module = await import(`./posts/${slug}.js`);
     return module.post;
-  } catch {
-    return null;
   }
+  const module = await loadPost();
+  return module.post;
 }

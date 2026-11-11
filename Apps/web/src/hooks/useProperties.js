@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import supabase from '@/lib/supabaseClient';
-import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
+import { PROPERTY_CARD_COLUMNS, PUBLIC_PROPERTY_STATUS } from '@/lib/propertyFields.js';
 import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
 export const useProperties = (filters = {}) => {
@@ -17,6 +17,7 @@ export const useProperties = (filters = {}) => {
         let query = supabase
           .from('properties')
           .select(PROPERTY_CARD_COLUMNS, { count: 'exact' })
+          .eq('status', PUBLIC_PROPERTY_STATUS)
           .order('created_at', { ascending: false });
 
         if (filters.status && filters.status !== 'all') {

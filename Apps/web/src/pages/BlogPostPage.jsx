@@ -6,7 +6,7 @@ import Footer from '@/components/Footer.jsx';
 import BlogPostLayout from '@/components/BlogPostLayout.jsx';
 import { blogPostsData, loadPostContent } from '@/data/blogPosts.js';
 import { generateFAQSchema } from '@/lib/structuredData';
-import { buildImageUrl, buildSeoDescription, buildSeoTitle, getCanonicalUrl } from '@/lib/siteConfig.js';
+import { buildImageUrl, buildSeoDescription, getCanonicalUrl } from '@/lib/siteConfig.js';
 import { toCdnUrl } from '@/lib/imageUrl.js';
 import { rewriteMediaContent } from '@/lib/mediaUrls.js';
 
@@ -19,6 +19,8 @@ const BlogPostPage = () => {
   useEffect(() => {
     async function fetchPost() {
       setLoading(true);
+      setPost(null);
+      setNotFound(false);
       const fullPost = await loadPostContent(slug);
       if (fullPost) {
         setPost(rewriteMediaContent(fullPost, 'site-assets'));
@@ -34,12 +36,9 @@ const BlogPostPage = () => {
     fetchPost();
   }, [slug]);
 
-  if (loading) {
+  if (loading || (post && post.slug !== slug)) {
     return (
       <>
-        <Helmet>
-          <title>Loading... | Luxury Properties Ltd</title>
-        </Helmet>
         <Header />
         <main className="min-h-[60vh] flex items-center justify-center">
           <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
@@ -53,7 +52,6 @@ const BlogPostPage = () => {
     return (
       <>
         <Helmet>
-          <title>Blog Post Not Found | Luxury Properties Ltd</title>
           <meta name="robots" content="noindex" />
         </Helmet>
         <Header />
@@ -79,7 +77,7 @@ const BlogPostPage = () => {
   const canonicalUrl = getCanonicalUrl(`/blog/${post.slug}`);
   const postMetadata = blogPostsData.find((item) => item.slug === post.slug) || {};
   const isCertificateOfOccupancyGuide = post.slug === 'certificate-of-occupancy-vs-governors-consent';
-  const title = isCertificateOfOccupancyGuide ? post.title : buildSeoTitle(post.title);
+  const title = post.title;
   const description = isCertificateOfOccupancyGuide
     ? post.metaDescription
     : buildSeoDescription(post.metaDescription, 'Explore verified luxury real estate insights from Luxury Properties Ltd.');

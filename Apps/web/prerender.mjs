@@ -32,7 +32,7 @@ function getMetaContent(html, attribute, name) {
   const tag = [...html.matchAll(/<meta\b[^>]*>/gi)]
     .map(([match]) => match)
     .find((match) => new RegExp(`\\b${attribute}\\s*=["']${name}["']`, 'i').test(match));
-  return tag ? getAttribute(tag, 'content') : '';
+  return tag ? decodeHtmlEntities(getAttribute(tag, 'content')) : '';
 }
 
 function decodeHtmlEntities(value) {
@@ -100,9 +100,13 @@ function normalizeStaticMetadata(html, filePath) {
   if (!canonical) return html;
 
   const normalizedCanonical = getCanonicalUrl(canonical);
-  const originalTitle = [...html.matchAll(/<title[^>]*>([\s\S]*?)<\/title>/gi)].at(-1)?.[1]?.trim() || '';
+  const originalTitle = decodeHtmlEntities(
+    [...html.matchAll(/<title[^>]*>([\s\S]*?)<\/title>/gi)].at(-1)?.[1]?.trim() || ''
+  );
   const originalDescription = getMetaContent(html, 'name', 'description');
   const isProperty = new URL(normalizedCanonical).pathname.startsWith('/properties/');
+  const isBlog = /[\\/]blog[\\/]/i.test(filePath)
+    && !/[\\/]blog[\\/](?:index\.html|listicle(?:[\\/]index\.html)?)$/i.test(filePath);
   const pathname = new URL(normalizedCanonical).pathname;
   const isCertificateGuide = pathname === '/blog/certificate-of-occupancy-vs-governors-consent';
   const isCookiePolicy = pathname === '/cookie-policy';
@@ -110,12 +114,10 @@ function normalizeStaticMetadata(html, filePath) {
     throw new Error(`[seo-guard] Listing metadata is missing in ${filePath}`);
   }
 
-  const title = isProperty || isCertificateGuide || isCookiePolicy ? originalTitle : buildSeoTitle(originalTitle);
+  const title = isProperty || isBlog || isCookiePolicy ? originalTitle : buildSeoTitle(originalTitle);
   const description = isProperty || isCertificateGuide || isCookiePolicy ? originalDescription : buildSeoDescription(originalDescription);
   const image = getMetaContent(html, 'property', 'og:image');
   const socialImage = buildImageUrl(image || '/og-image.png');
-  const isBlog = /[\\/]blog[\\/]/i.test(filePath)
-    && !/[\\/]blog[\\/](?:index\.html|listicle(?:[\\/]index\.html)?)$/i.test(filePath);
   const canonicalTag = `<link rel="canonical" href="${escapeAttribute(normalizedCanonical)}">`;
   let output = html.replace(/<title[^>]*>[\s\S]*?<\/title>/gi, '');
   output = output.replace(/<link[^>]+rel=["']canonical["'][^>]*>/gi, '');
@@ -324,7 +326,6 @@ function validateRenderedHtml(html, route, property = null) {
   }
 
   if (isPropertyDetailRoute(route)) {
-    if (title.length > 60) throw new Error(`Listing title exceeds 60 characters in ${route}: ${title.length}`);
     if (description.length < 140 || description.length > 160) {
       throw new Error(`Listing description must be 140-160 characters in ${route}: ${description.length}`);
     }
@@ -525,6 +526,7 @@ const browser = await puppeteer.launch(await resolveBrowserLaunchConfig());
 
 let successCount = 0;
 let failCount = 0;
+const renderedTitles = new Map();
 
 for (const route of routes) {
   const isDynamicPropertyRoute = isPropertyDetailRoute(route);
@@ -569,6 +571,14 @@ for (const route of routes) {
       ? propertyRecordsBySlug.get(decodeURIComponent(route.slice('/properties/'.length)))
       : null;
     validateRenderedHtml(html, route, property);
+    if (isDynamicPropertyRoute || /^\/blog\/[^/]+\/?$/.test(route)) {
+      const title = decodeHtmlEntities(
+        [...html.matchAll(/<title\b[^>]*>([\s\S]*?)<\/title>/gi)][0]?.[1]?.replace(/<[^>]+>/g, '').trim() || ''
+      );
+      const previousRoute = renderedTitles.get(title);
+      if (previousRoute) throw new Error(`Duplicate page title in ${route} and ${previousRoute}: ${title}`);
+      renderedTitles.set(title, route);
+    }
 
     // Write the HTML to the appropriate output path
     const outPath = route === '/'

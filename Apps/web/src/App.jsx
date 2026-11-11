@@ -13,13 +13,14 @@ import { generateOrganizationSchema } from "./lib/structuredData.js";
 const RouteCanonicalMetadata = () => {
   const { pathname, search } = useLocation();
   const canonicalUrl = getCanonicalUrl(pathname);
+  const isDataDrivenRoute = /^\/(?:properties\/(?!page\/)[^/]+|blog\/[^/]+)\/?$/.test(pathname);
   const isNoindexRoute = /^\/(?:login|admin(?:\/|$)|consultant-portal(?:\/|$)|register(?:\/|$)|thank-you(?:\/|$))/.test(pathname);
   const isNoindexVariant = isNoindexRoute || Boolean(search);
 
   return (
     <Helmet>
-      <link rel="canonical" href={canonicalUrl} />
-      <meta property="og:url" content={canonicalUrl} />
+      {!isDataDrivenRoute && <link rel="canonical" href={canonicalUrl} />}
+      {!isDataDrivenRoute && <meta property="og:url" content={canonicalUrl} />}
       {isNoindexVariant && <meta name="robots" content="noindex, follow" />}
       <script type="application/ld+json">{JSON.stringify(generateOrganizationSchema())}</script>
     </Helmet>

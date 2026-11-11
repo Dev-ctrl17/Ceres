@@ -6,6 +6,7 @@ import { STATIC_ROUTES } from './getRoutes.js';
 import { blogPostsData } from '../src/data/blogPosts.js';
 import { generateSlug } from '../src/lib/slug.js';
 import { getCanonicalUrl } from '../src/lib/siteConfig.js';
+import { PUBLIC_PROPERTY_STATUS } from '../src/lib/propertyFields.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = resolve(__dirname, '../public');
@@ -19,6 +20,7 @@ const REDIRECTED_PROPERTY_SLUGS = new Set([
   'governor-s-consent-approved-building-plan-dhu4',
   '-long-lease-investment-opportunity',
   'exquiisite-5-bedroom-fully-detached-smart-luxury-residence',
+  'luxury-5-bedroom-fully-detached-duplex',
 ]);
 const LANDING_SLUGS = new Map([
   ['house-for-sale-lekki', 'houses-for-sale-lekki'],
@@ -63,7 +65,10 @@ export async function fetchPropertySlugs() {
   loadEnv();
   const { url, anon } = getSupabaseCredentials();
   const supabase = createClient(url, anon);
-  const { data, count, error } = await supabase.from('properties').select('slug, updated_at', { count: 'exact' });
+  const { data, count, error } = await supabase
+    .from('properties')
+    .select('slug, updated_at, status', { count: 'exact' })
+    .eq('status', PUBLIC_PROPERTY_STATUS);
   if (error) throw new Error(`Supabase property query failed: ${error.message}`);
 
   const seen = new Set();
@@ -138,7 +143,12 @@ export function buildSitemap(propertyRecords = [], secondaryRoutes = []) {
   let latestPropertyLastmod = '';
   for (const property of properties) {
     const { slug } = property || {};
-    if (slug && slug === generateSlug(slug) && !REDIRECTED_PROPERTY_SLUGS.has(slug)) {
+    if (
+      slug
+      && property.status === PUBLIC_PROPERTY_STATUS
+      && slug === generateSlug(slug)
+      && !REDIRECTED_PROPERTY_SLUGS.has(slug)
+    ) {
       const route = `/properties/${slug}`;
       routes.add(route);
       const lastmod = validLastmod(property.updated_at);

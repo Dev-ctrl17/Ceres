@@ -1,5 +1,6 @@
 ﻿import { createClient } from '@supabase/supabase-js';
 import { generateSlug, getCurrentPropertySlug } from '../src/lib/slug.js';
+import { PUBLIC_PROPERTY_STATUS } from '../src/lib/propertyFields.js';
 import { readFileSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -7,6 +8,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REDIRECTED_PROPERTY_SLUGS = new Set([
   'exquiisite-5-bedroom-fully-detached-smart-luxury-residence',
+  'luxury-5-bedroom-fully-detached-duplex',
 ]);
 
 // Load .env file manually (Vite loads it for config, but this script may also be run standalone)
@@ -80,7 +82,8 @@ export async function getAllRoutes() {
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
     const { data: properties, error } = await supabase
       .from('properties')
-      .select('*');
+      .select('*')
+      .eq('status', PUBLIC_PROPERTY_STATUS);
 
     if (error) {
       throw new Error(`[getRoutes] Failed to fetch property data for prerendering: ${error.message}`);

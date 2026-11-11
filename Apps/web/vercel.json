@@ -36,6 +36,7 @@
     { "source": "/listings", "destination": "/properties", "permanent": true },
     { "source": "/referrals", "destination": "/dashboard/referrals", "permanent": true },
     { "source": "/properties/lekki-penthouse-old", "destination": "/properties/lekki-penthouse", "permanent": true },
+    { "source": "/properties/luxury-5-bedroom-fully-detached-duplex", "destination": "/properties/5-bedroom-fully-detached-duplex-2-kitchens-wet-dry-2-bedroom-bq", "statusCode": 301 },
     { "source": "/properties/exquiisite-5-bedroom-fully-detached-smart-luxury-residence", "destination": "/properties/exquisite-5-bedroom-fully-detached-smart-luxury-residence", "permanent": true },
     { "source": "/properties/-long-lease-investment-opportunity", "destination": "/properties/long-lease-investment-opportunity", "permanent": true },
     { "source": "/properties/governor-s-consent-approved-building-plan", "destination": "/properties/governors-consent", "permanent": true },
@@ -162,7 +163,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=86400"
+          "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800"
         }
       ]
     },

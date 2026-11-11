@@ -18,7 +18,7 @@ import { generatePropertySchema, generateAEOContent, generateFAQSchema } from '@
 import { isUUID, isUsablePropertySlug } from '@/lib/slug.js';
 import { getCanonicalUrl } from '@/lib/siteConfig.js';
 import { buildPropertySeo } from '@/lib/propertySeo.js';
-import { PROPERTY_CARD_COLUMNS } from '@/lib/propertyFields.js';
+import { PROPERTY_CARD_COLUMNS, PUBLIC_PROPERTY_STATUS } from '@/lib/propertyFields.js';
 import { toCdnUrl } from '@/lib/imageUrl.js';
 import { resolveMediaUrl, rewriteMediaContent } from '@/lib/mediaUrls.js';
 import { getCloudinaryVideoUrl, getCloudinaryVideoPosterUrl } from '@/lib/cloudinaryUrls.js';
@@ -86,6 +86,7 @@ const PropertyDetailsPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [property, setProperty] = useState(null);
+  const [hasDuplicateTitle, setHasDuplicateTitle] = useState(false);
   const [similarProperties, setSimilarProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -107,6 +108,7 @@ const PropertyDetailsPage = () => {
       }
 
       setProperty(null);
+      setHasDuplicateTitle(false);
       setLoading(true);
       if (window.__PRERENDERING__ && Array.isArray(window.__PRERENDER_PROPERTIES__)) {
         const record = window.__PRERENDER_PROPERTIES__.find((item) => item.slug === slug);
@@ -118,6 +120,9 @@ const PropertyDetailsPage = () => {
         }
 
         const otherProperties = window.__PRERENDER_PROPERTIES__.filter((item) => item.id !== record.id);
+        setHasDuplicateTitle(window.__PRERENDER_PROPERTIES__.filter((item) => (
+          item.status === PUBLIC_PROPERTY_STATUS && item.title === record.title
+        )).length > 1);
         const targetPrice = Number(String(record.price || '').replace(/[^\d.]/g, ''));
         const sameLocation = otherProperties.filter((item) => (
           record.location && item.location?.toLowerCase().includes(record.location.toLowerCase())
@@ -159,10 +164,16 @@ const PropertyDetailsPage = () => {
           .from('properties')
           .select('*')
           .eq('slug', slug)
+          .eq('status', PUBLIC_PROPERTY_STATUS)
           .single();
 
         if (error) throw error;
 
+        const duplicateTitleQuery = supabase
+          .from('properties')
+          .select('slug', { count: 'exact', head: true })
+          .eq('title', record.title)
+          .eq('status', PUBLIC_PROPERTY_STATUS);
         setProperty(rewriteMediaContent(record, 'property-images'));
 
 
@@ -170,6 +181,7 @@ const PropertyDetailsPage = () => {
         let similarQuery = supabase
           .from('properties')
           .select(PROPERTY_CARD_COLUMNS)
+          .eq('status', PUBLIC_PROPERTY_STATUS)
           .neq('id', record.id)
           .order('created_at', { ascending: false });
         if (record.location) similarQuery = similarQuery.ilike('location', `%${record.location}%`);
@@ -184,6 +196,7 @@ const PropertyDetailsPage = () => {
             const { data: areaMatches } = await supabase
               .from('properties')
               .select(PROPERTY_CARD_COLUMNS)
+              .eq('status', PUBLIC_PROPERTY_STATUS)
               .ilike('location', `%${record.location}%`)
               .neq('id', record.id)
               .order('created_at', { ascending: false })
@@ -195,6 +208,7 @@ const PropertyDetailsPage = () => {
             const { data: typeMatches } = await supabase
               .from('properties')
               .select(PROPERTY_CARD_COLUMNS)
+              .eq('status', PUBLIC_PROPERTY_STATUS)
               .eq('property_type', record.property_type)
               .neq('id', record.id)
               .order('created_at', { ascending: false })
@@ -203,6 +217,13 @@ const PropertyDetailsPage = () => {
             recommendations = [...recommendations, ...(typeMatches || []).filter((item) => !ids.has(item.id))];
           }
           setSimilarProperties(rewriteMediaContent(recommendations.slice(0, 4), 'property-images'));
+        }
+        const { count: sameTitleCount, error: duplicateTitleError } = await duplicateTitleQuery;
+        if (duplicateTitleError) {
+          console.error('Failed to check listing title uniqueness:', duplicateTitleError);
+          setHasDuplicateTitle(true);
+        } else {
+          setHasDuplicateTitle(sameTitleCount > 1);
         }
       } catch (error) {
         console.error('Failed to fetch property:', error);
@@ -217,14 +238,9 @@ const PropertyDetailsPage = () => {
     fetchProperty();
   }, [slug, navigate]);
 
-  if (loading) {
+  if (loading || (property && property.slug !== slug)) {
     return (
       <>
-        <Helmet>
-          <title>Loading property details | Luxury Properties Ltd</title>
-          <meta name="description" content="Loading luxury property details from our verified listings." />
-          <meta name="robots" content="noindex, nofollow" />
-        </Helmet>
         <Header />
         <main className="min-h-screen flex items-center justify-center" data-prerender-ready="false">
           <div className="text-center">
@@ -242,7 +258,6 @@ const PropertyDetailsPage = () => {
     return (
       <>
         <Helmet>
-          <title>Property not found | Luxury Properties Ltd</title>
           <meta name="description" content="The property you requested is not available. Browse our current luxury listings in Lagos, Abuja, and across Nigeria." />
           <meta name="robots" content="noindex, nofollow" />
         </Helmet>
@@ -304,6 +319,8 @@ const PropertyDetailsPage = () => {
     throw error;
   }
   const propertyTitle = String(property.title || propertySeo.listingName || 'Luxury Property').trim();
+  const uniquePropertyTitle = hasDuplicateTitle ? `${propertyTitle} (${property.slug})` : propertyTitle;
+  const pageTitle = `${uniquePropertyTitle} | Luxury Properties Ltd`;
   const location = propertySeo.area || property.location || property.city || property.state || '';
 
   const propertyAmenities = property.amenities
@@ -353,6 +370,9 @@ const PropertyDetailsPage = () => {
 
   // Generate structured data
   const canonicalUrl = getCanonicalUrl(`/properties/${property.slug}`);
+  const visibleRelatedListingLinks = relatedListingLinks.filter(([, path]) => (
+    similarProperties.some((item) => getCanonicalUrl(`/properties/${item.slug}`) === getCanonicalUrl(path))
+  ));
   const socialImage = images[0] ? getImageUrl(images[0], 1200) : getCanonicalUrl('/og-image.png');
   const propertySchema = generatePropertySchema(property, [
     { name: 'Home', item: getCanonicalUrl('/') },
@@ -369,7 +389,7 @@ const PropertyDetailsPage = () => {
   return (
     <>
       <Helmet>
-        <title>{propertySeo.title}</title>
+        <title>{pageTitle}</title>
         <meta name="description" content={propertySeo.description} />
         <link rel="canonical" href={canonicalUrl} />
         
@@ -721,7 +741,7 @@ const PropertyDetailsPage = () => {
           <nav aria-label="More property listings" className="mt-12 border-t pt-6">
             <h2 className="text-xl font-semibold mb-4">Browse More Verified Listings</h2>
             <ul className="flex flex-wrap gap-x-6 gap-y-3">
-              {relatedListingLinks.map(([label, path]) => (
+              {visibleRelatedListingLinks.map(([label, path]) => (
                 <li key={path}>
                   <Link className="text-primary underline-offset-4 hover:underline" to={new URL(getCanonicalUrl(path)).pathname}>
                     {label}
